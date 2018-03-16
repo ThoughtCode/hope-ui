@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
-import Auth from './containers/Auth/Auth';
+import Layout from './containers/Layout/Layout';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          <Auth />
-        </p>
-      </div>
-    );
-  }
+    render() {
+        return (
+        <BrowserRouter>
+            <div className="App">
+                <Layout />        
+            </div>
+        </BrowserRouter>
+        );
+    }
 }
 
 export default App;

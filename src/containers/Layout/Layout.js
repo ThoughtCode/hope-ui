@@ -5,9 +5,9 @@ class Layout extends Component {
     render () {
         return (
             <div>
-                <Navbar />
-                <p className="App-intro">
-                </p>
+                <main>
+                    {this.props.children}
+                </main>
             </div>
         );
     }

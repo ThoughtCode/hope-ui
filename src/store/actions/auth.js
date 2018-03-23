@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import axios from '../../axios-dev';
 
 export const authStart = () => {
     return {
@@ -23,5 +24,20 @@ export const authFail = (error) => {
 export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
+        const authData = {
+            customer: {
+                email: email,
+                password: password
+            }
+        }
+        axios.post('/customers/signin', authData)
+            .then( response => {
+                console.log(response);
+                dispatch(authSuccess(response.data));
+            })
+            .catch( err => {
+                console.log(err);
+                dispatch(authFail(err));
+            });
     };
 };

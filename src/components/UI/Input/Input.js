@@ -45,11 +45,13 @@ const input = ( props ) => {
         //     );
         //     break;
         default:
-            inputElement = <input
-                // className={inputClasses.join(' ')}
+            inputElement = <TextField
+                autoComplete='off'
+                errorText={props.errorText}
                 {...props.elementConfig}
                 value={props.value}
-                onChange={props.changed} />;
+                onChange={props.changed}
+            />;
     }
 
     return (

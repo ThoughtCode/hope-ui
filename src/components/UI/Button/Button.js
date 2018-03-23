@@ -6,7 +6,12 @@ const style = {
   };
 
 const button = (props) => (
-    <RaisedButton type="submit" label={props.label} primary={true} style={style} />
+    <RaisedButton 
+        type="submit" 
+        label={props.label} 
+        primary={true} 
+        style={style} 
+        disabled={props.disabled}/>
     // <button
     //     disabled={props.disabled}
     //     className={[classes.Button, classes[props.btnType]].join(' ')}

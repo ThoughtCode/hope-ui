@@ -16,10 +16,12 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    isEmail: true
                 },
                 valid: false,
-                touched: false
+                touched: false,
+                errorText: null
             },
             password: {
                 elementType: 'input',
@@ -29,7 +31,8 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6
                 },
                 valid: false,
                 touched: false
@@ -42,7 +45,8 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
-                    required: true
+                    required: true,
+                    minLength: 6
                 },
                 valid: false,
                 touched: false
@@ -53,20 +57,42 @@ class Register extends Component {
 
     checkValidity(value, rules) {
         let isValid = true;
-
+        let errorText = null;
+        if (!rules) {
+            return true;
+        }
+        
         if (rules.required) {
             isValid = value.trim() !== '' && isValid;
+            errorText = "Requerido."
         }
 
         if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid;
+            isValid = value.length >= rules.minLength && isValid
+            errorText = "Debe contener mas de " + rules.minLength + " caracteres."
         }
 
         if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid;
+            isValid = value.length <= rules.maxLength && isValid
+            errorText = "Debe contener menos de " + rules.maxLength + " caracteres."
         }
 
-        return isValid;
+        if (rules.isEmail) {
+            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+            isValid = pattern.test(value) && isValid
+            errorText = "Debe ser un email valido."
+        }
+
+        if (rules.isNumeric) {
+            const pattern = /^\d+$/;
+            isValid = pattern.test(value) && isValid
+            errorText = "Debe ser solo numerico."
+        }
+
+        return {
+            isValid,
+            errorText
+        };
     }
 
     registerHandler = (event) => {
@@ -88,11 +114,21 @@ class Register extends Component {
             [controlName]: {
                 ...this.state.registerForm[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.registerForm[controlName].validation),
+                valid: this.checkValidity(event.target.value, this.state.registerForm[controlName].validation).isValid,
+                errorText: this.checkValidity(event.target.value, this.state.registerForm[controlName].validation).errorText,
                 touched: true
             }
         };
-        this.setState({registerForm: updatedControls});
+
+        let formIsValid = true;
+        for (let inputIdentifier in updatedControls) {
+            formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+        }
+
+        this.setState({
+            registerForm: updatedControls,
+            formIsValid: formIsValid
+        });
     }
 
     render () {
@@ -114,7 +150,9 @@ class Register extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
-                        touched={formElement.config.touched}/>
+                        touched={formElement.config.touched}
+                        errorText={formElement.config.errorText}
+                    />
                 ))}
                 <Button btnType="Success" label="Registrar" disabled={!this.state.formIsValid}></Button>
             </form>

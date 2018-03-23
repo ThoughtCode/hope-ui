@@ -5,7 +5,6 @@ import TextField from 'material-ui/TextField';
 const input = ( props ) => {
     let inputElement = null;
     let errorText = null;
-
     if (props.invalid && props.shouldValidate && props.touched) {
         errorText = props.errorText;
     }
@@ -13,6 +12,7 @@ const input = ( props ) => {
     switch ( props.elementType ) {
         case ( 'input' ):
             inputElement = <TextField
+                id={props.key}
                 autoComplete='off'
                 errorText={errorText}
                 {...props.elementConfig}

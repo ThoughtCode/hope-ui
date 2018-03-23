@@ -5,6 +5,7 @@ class Layout extends Component {
     render () {
         return (
             <div>
+                {/* <Navbar status={this.props.status}/> */}
                 <main>
                     {this.props.children}
                 </main>
@@ -12,5 +13,6 @@ class Layout extends Component {
         );
     }
 }
+
 
 export default Layout;

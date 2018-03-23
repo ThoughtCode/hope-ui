@@ -12,7 +12,7 @@ class Client extends Component {
     render () {
         return (
             <div>
-                <Navbar status="cliente"/>                
+                <Navbar status="cliente"/>             
                 <h1>Cliente</h1>
                 <Route path={this.props.match.url + '/registro'} exact component={Register}/>
                 <Route path={this.props.match.url + '/ingreso'} exact component={Auth}/>

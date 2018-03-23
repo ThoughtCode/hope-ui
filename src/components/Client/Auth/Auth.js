@@ -35,38 +35,48 @@ class Auth extends Component {
                 valid: false,
                 touched: false
             }
-        }
+        },
+        formIsValid: false
     }
 
     checkValidity(value, rules) {
         let isValid = true;
+        let errorText = null;
         if (!rules) {
             return true;
         }
         
         if (rules.required) {
             isValid = value.trim() !== '' && isValid;
+            errorText = "Requerido."
         }
 
         if (rules.minLength) {
             isValid = value.length >= rules.minLength && isValid
+            errorText = "Debe contener mas de " + rules.minLength + " caracteres."
         }
 
         if (rules.maxLength) {
             isValid = value.length <= rules.maxLength && isValid
+            errorText = "Debe contener menos de " + rules.maxLength + " caracteres."
         }
 
         if (rules.isEmail) {
             const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
             isValid = pattern.test(value) && isValid
+            errorText = "Debe ser un email valido."
         }
 
         if (rules.isNumeric) {
             const pattern = /^\d+$/;
             isValid = pattern.test(value) && isValid
+            errorText = "Debe ser solo numerico."
         }
 
-        return isValid;
+        return {
+            isValid,
+            errorText
+        };
     }
 
     submitHandler = (event) => {
@@ -80,11 +90,20 @@ class Auth extends Component {
             [controlName]: {
                 ...this.state.controls[controlName],
                 value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation),
+                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation).isValid,
+                errorText: this.checkValidity(event.target.value, this.state.controls[controlName].validation).errorText,
                 touched: true
             }
         };
-        this.setState({controls: updatedControls});
+
+        let formIsValid = true;
+        for (let inputIdentifier in updatedControls) {
+            formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+        }
+        this.setState({
+            controls: updatedControls,
+            formIsValid: formIsValid
+        });
     }
 
     render () {
@@ -107,7 +126,9 @@ class Auth extends Component {
                         changed={(event) => this.inputChangedHandler(event, formElement.id)}
                         invalid={!formElement.config.valid}
                         shouldValidate={formElement.config.validation}
-                        touched={formElement.config.touched}/>
+                        touched={formElement.config.touched}
+                        errorText={formElement.config.errorText}
+                    />
                 ))}
                 <Button btnType="Success" label="Login" disabled={!this.state.formIsValid}></Button>
             </form>

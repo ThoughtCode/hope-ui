@@ -9,12 +9,14 @@ import thunk from 'redux-thunk';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import registerReducer from './store/reducers/register';
+import clientRegisterReducer from './store/reducers/register';
+import clientAuthReducer from './store/reducers/auth';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    register: registerReducer
+    register: clientRegisterReducer,
+    auth: clientAuthReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

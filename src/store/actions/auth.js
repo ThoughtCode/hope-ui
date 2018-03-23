@@ -7,10 +7,11 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (authData) => {
+export const authSuccess = (token, userId) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
-        authData: authData
+        token: token,
+        userId: userId
     };
 };
 
@@ -18,6 +19,12 @@ export const authFail = (error) => {
     return {
         type: actionTypes.AUTH_FAIL,
         error: error
+    };
+};
+
+export const authLogout = (error) => {
+    return {
+        type: actionTypes.AUTH_LOGOUT
     };
 };
 
@@ -33,7 +40,8 @@ export const auth = (email, password) => {
         axios.post('/customers/signin', authData)
             .then( response => {
                 console.log(response);
-                dispatch(authSuccess(response.data));
+                localStorage.setItem('token', response.data.access_token);
+                dispatch(authSuccess(response.data.access_token, response.data.id));
             })
             .catch( err => {
                 console.log(err);

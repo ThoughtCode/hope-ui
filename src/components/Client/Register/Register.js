@@ -8,6 +8,34 @@ import * as action from '../../../store/actions';
 class Register extends Component {
     state = {
         registerForm: {
+            first_name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    floatingLabelText: 'First Name',
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false,
+                errorText: null
+            },
+            last_name: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'text',
+                    floatingLabelText: 'Last Name',
+                },
+                value: '',
+                validation: {
+                    required: true,
+                },
+                valid: false,
+                touched: false,
+                errorText: null
+            },
             email: {
                 elementType: 'input',
                 elementConfig: {
@@ -105,7 +133,7 @@ class Register extends Component {
             customer: formData
         };
         this.props.onRegisterUser(customer);
-        this.props.history.push('/');
+        
     }
 
     inputChangedHandler = (event, controlName) => {

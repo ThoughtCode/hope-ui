@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Navbar from '../../components/UI/Navigation/Navbar/Navbar';
 import Register from '../../components/Agent/Register/Register';

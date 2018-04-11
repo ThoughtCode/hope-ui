@@ -12,7 +12,6 @@ const input = ( props ) => {
     switch ( props.elementType ) {
         case ( 'input' ):
             inputElement = <TextField
-                id={props.key}
                 autoComplete='off'
                 errorText={errorText}
                 {...props.elementConfig}
@@ -53,7 +52,6 @@ const input = ( props ) => {
                 onChange={props.changed}
             />;
     }
-
     return (
         <div>
             {inputElement}

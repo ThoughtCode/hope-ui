@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Input from '../../UI/Input/Input';
-import Button from '../../UI/Button/Button';
+// import Button from '../../UI/Button/Button';
 import * as action from '../../../store/actions';
 
 class Register extends Component {
@@ -182,7 +182,7 @@ class Register extends Component {
                         errorText={formElement.config.errorText}
                     />
                 ))}
-                <Button btnType="Success" label="Registrar" disabled={!this.state.formIsValid}></Button>
+                {/* <Button btnType="Success" label="Registrar" disabled={!this.state.formIsValid}></Button> */}
             </form>
         );
         return (

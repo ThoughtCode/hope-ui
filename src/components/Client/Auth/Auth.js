@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Input from '../../../components/UI/Input/Input';
-import Button from '../../../components/UI/Button/Button';
+import Button from 'material-ui/Button';
+
 import * as actions from '../../../store/actions'
 
 class Auth extends Component {
@@ -10,6 +11,7 @@ class Auth extends Component {
         controls: {
             email: {
                 elementType: 'input',
+                label: 'Email',
                 elementConfig: {
                     type: 'email',
                     placeholder: 'example@example.com'
@@ -24,6 +26,7 @@ class Auth extends Component {
             },
             password: {
                 elementType: 'input',
+                label: 'Password',
                 elementConfig: {
                     type: 'password',
                     placeholder: 'Password'
@@ -120,6 +123,8 @@ class Auth extends Component {
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
+                        id={formElement.id}
+                        label={formElement.config.label}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
@@ -130,7 +135,9 @@ class Auth extends Component {
                         errorText={formElement.config.errorText}
                     />
                 ))}
-                <Button btnType="Success" label="Login" disabled={!this.state.formIsValid}></Button>
+                <Button variant="raised" color="primary">
+                    Login
+                </Button>
             </form>
         );
             return (

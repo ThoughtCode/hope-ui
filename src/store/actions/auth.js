@@ -42,7 +42,6 @@ export const auth = (email, password) => {
                 console.log(response);
                 localStorage.setItem('token', response.data.access_token);
                 dispatch(authSuccess(response.data.access_token, response.data.id));
-                this.props.history.push('/');
             })
             .catch( err => {
                 console.log(err);

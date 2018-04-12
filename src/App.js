@@ -5,7 +5,8 @@ import './App.css';
 import Layout from './containers/Layout/Layout';
 import Agent from './containers/Agent/Agent';
 import Client from './containers/Client/Client';
-import Home from './components/Home/Home';
+import Landing from './containers/Landing/Landing'
+// import Home from './components/Home/Home';
 
 class App extends Component {
 
@@ -19,7 +20,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/agente" component={Agent}/> 
                         <Route path="/cliente" component={Client}/>
-                        <Route path="/" exact component={Home}/>
+                        <Route path="/" exact component={Landing}/>
                     </Switch>
                 </Layout>
             </div>

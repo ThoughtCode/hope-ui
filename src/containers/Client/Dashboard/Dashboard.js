@@ -6,10 +6,7 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
-import Register from '../../components/Client/Register/Register';
-import Login from '../../components/Client/Login/Login';
-
-import Logo from '../../logo_white.png';
+import Logo from '../../../logo_white.png';
 
 const styles = {
     root: {
@@ -23,7 +20,7 @@ const styles = {
         marginRight: 20,
     },
 };
-class Client extends Component {
+class Dashboard extends Component {
     
     render () {
         const { classes } = this.props;
@@ -34,17 +31,12 @@ class Client extends Component {
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             <img src={Logo} height="62px" alt="Logo"></img>
                         </Typography>
-                        <Button component={Link} to="/cliente" color="inherit">Customer</Button>
-                        <Button color="inherit">Agent</Button>
                     </Toolbar>
                 </AppBar>
-                <Route path='/cliente'
-                    exact
-                    component={Login}/>
-                <Route path={this.props.match.url + '/registro'} exact component={Register}/>
+                Dashboard
             </div>
         );
     }
 }
 
-export default withStyles(styles)(Client);
+export default withStyles(styles)(Dashboard);

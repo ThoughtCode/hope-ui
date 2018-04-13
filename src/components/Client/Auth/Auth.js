@@ -135,7 +135,7 @@ class Auth extends Component {
                         errorText={formElement.config.errorText}
                     />
                 ))}
-                <Button variant="raised" color="primary">
+                <Button type="submit" variant="raised" color="primary">
                     Login
                 </Button>
             </form>

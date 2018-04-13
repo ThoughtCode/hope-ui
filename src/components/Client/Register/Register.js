@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import Input from '../../UI/Input/Input';
-// import Button from '../../UI/Button/Button';
+import Button from 'material-ui/Button';
 import * as action from '../../../store/actions';
 
 class Register extends Component {
@@ -10,9 +11,10 @@ class Register extends Component {
         registerForm: {
             first_name: {
                 elementType: 'input',
+                label: 'Nombre',
                 elementConfig: {
                     type: 'text',
-                    floatingLabelText: 'First Name',
+                    placeholder: 'Nombre',
                 },
                 value: '',
                 validation: {
@@ -24,9 +26,10 @@ class Register extends Component {
             },
             last_name: {
                 elementType: 'input',
+                label: 'Apellido',
                 elementConfig: {
                     type: 'text',
-                    floatingLabelText: 'Last Name',
+                    placeholder: 'Apellido',
                 },
                 value: '',
                 validation: {
@@ -38,9 +41,10 @@ class Register extends Component {
             },
             email: {
                 elementType: 'input',
+                label: 'Correo',
                 elementConfig: {
                     type: 'email',
-                    floatingLabelText: 'Email',
+                    placeholder: 'ejemplo@ejemplo.com',
                 },
                 value: '',
                 validation: {
@@ -53,9 +57,10 @@ class Register extends Component {
             },
             password: {
                 elementType: 'input',
+                label: 'Contraseña',
                 elementConfig: {
                     type: 'password',
-                    floatingLabelText: 'Password',
+                    placeholder: 'Password',
                 },
                 value: '',
                 validation: {
@@ -67,9 +72,10 @@ class Register extends Component {
             },
             password_confirmation: {
                 elementType: 'input',
+                label: 'Confirmar contraseña',
                 elementConfig: {
                     type: 'password',
-                    floatingLabelText: 'Password',
+                    placeholder: 'Password',
                 },
                 value: '',
                 validation: {
@@ -123,7 +129,7 @@ class Register extends Component {
         };
     }
 
-    registerHandler = (event) => {
+    registerHandler = event => {
         event.preventDefault();
         const formData = {};
         for (let formElementIdentifier in this.state.registerForm) {
@@ -172,6 +178,8 @@ class Register extends Component {
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}
+                        id={formElement.id}
+                        label={formElement.config.label}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.config.value}
@@ -182,12 +190,18 @@ class Register extends Component {
                         errorText={formElement.config.errorText}
                     />
                 ))}
-                {/* <Button btnType="Success" label="Registrar" disabled={!this.state.formIsValid}></Button> */}
+                <Button type="submit" variant="raised" color="primary" disabled={!this.state.formIsValid}>
+                    Registrar
+                </Button>
             </form>
         );
         return (
-            <div>
+            <div style={{textAlign: 'center'}}>
+                <h1>Registro</h1>
                 {form}
+                <Button component={Link} to="/cliente" style={{margin: '10px 0'}}>
+                    Volver al login
+                </Button>
             </div>
         );
     };

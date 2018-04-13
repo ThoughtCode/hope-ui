@@ -5,7 +5,8 @@ import './App.css';
 import Layout from './containers/Layout/Layout';
 import Agent from './containers/Agent/Agent';
 import Client from './containers/Client/Client';
-import Landing from './containers/Landing/Landing'
+import Landing from './containers/Landing/Landing';
+import Dashboard from './containers/Client/Dashboard/Dashboard';
 // import Home from './components/Home/Home';
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
                 <Layout>
                     <Switch>
                         <Route path="/agente" component={Agent}/> 
+                        <Route path="/cliente/dashboard" component={Dashboard}/>
                         <Route path="/cliente" component={Client}/>
                         <Route path="/" exact component={Landing}/>
                     </Switch>

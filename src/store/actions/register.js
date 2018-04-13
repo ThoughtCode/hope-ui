@@ -1,8 +1,9 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-dev';
+import { push } from 'react-router-redux'
 
 export const registerClientSuccess = (id, formData) => {
-    this.props.history.push('/');
+    console.log(id);
     return {
         type: actionTypes.REGISTER_CLIENT_SUCCESS,
         clientId: id,
@@ -25,11 +26,11 @@ export const registerClientStart = () => {
 
 export const registerClient = (formData) => {
     return dispatch => {
-        console.log(formData);
         axios.post("/customers/signup/", formData )
             .then(response => {
-                localStorage.setItem('token', response.data.access_token);
-                dispatch(registerClientSuccess(response.data, formData))
+                localStorage.setItem('token', response.data.data.data.attributes.access_token);
+                dispatch(registerClientSuccess(response.data.data.data.id, formData))
+                dispatch(push('/cliente'))
             })
             .catch(error => {
                 dispatch(registerClientFail(error))

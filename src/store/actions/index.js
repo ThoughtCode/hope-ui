@@ -2,5 +2,6 @@ export {
     registerClient
 } from './register';
 export {
-    auth
+    auth,
+    facebookLogin
 } from './auth';

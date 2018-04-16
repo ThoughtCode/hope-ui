@@ -23,7 +23,8 @@ export const authFail = (error) => {
     };
 };
 
-export const authLogout = (error) => {
+export const authLogout = () => {
+    localStorage.clear()
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -39,15 +40,37 @@ export const auth = (email, password) => {
             }
         }
         axios.post('/customers/signin', authData)
-            .then( response => {
+            .then(response => {
                 const customer = response.data.customer.data
                 localStorage.setItem('token', customer.attributes.access_token);
                 dispatch(authSuccess(customer.attributes.access_token, customer.id));
                 dispatch(push('/cliente/dashboard'))
             })
-            .catch( err => {
+            .catch(err => {
                 console.log(err);
                 dispatch(authFail(err));
             });
     };
 };
+
+export const facebookLogin = (access_token) => {
+    return dispatch => {
+        dispatch(authStart());
+        const facebookData = {
+            customer: {
+                facebook_access_token: access_token
+            }
+        }
+        axios.post('/customers/facebook', facebookData)
+            .then(response => {
+                const customer = response.data.customer.data
+                localStorage.setItem('token', customer.attributes.access_token);
+                dispatch(authSuccess(customer.attributes.access_token, customer.id));
+                dispatch(push('/cliente/dashboard'))
+            })
+            .catch(err => {
+                console.log(err)
+                dispatch(authFail(err));
+            });
+    }
+}

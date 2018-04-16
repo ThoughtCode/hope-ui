@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 
 import './App.css';
 import Layout from './containers/Layout/Layout';
-import Agent from './containers/Agent/Agent';
 import Client from './containers/Client/Client';
 import Landing from './containers/Landing/Landing';
 import Dashboard from './containers/Client/Dashboard/Dashboard';
@@ -19,7 +18,7 @@ class App extends Component {
             <div className="App">
                 <Layout>
                     <Switch>
-                        <Route path="/agente" component={Agent}/> 
+                        {/* <Route path="/agente" component={Agent}/>  */}
                         <Route path="/cliente/dashboard" component={Dashboard}/>
                         <Route path="/cliente" component={Client}/>
                         <Route path="/" exact component={Landing}/>

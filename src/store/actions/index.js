@@ -3,5 +3,6 @@ export {
 } from './register';
 export {
     auth,
-    facebookLogin
+    facebookLogin,
+    logout
 } from './auth';

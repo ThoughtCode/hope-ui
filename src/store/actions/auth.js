@@ -24,11 +24,18 @@ export const authFail = (error) => {
 };
 
 export const authLogout = () => {
-    localStorage.clear()
     return {
         type: actionTypes.AUTH_LOGOUT
     };
 };
+
+export const logout = () => {
+    return dispatch => {
+        localStorage.clear()
+        dispatch(authLogout())
+        dispatch(push('/'))
+    }
+}
 
 export const auth = (email, password) => {
     return dispatch => {

@@ -4,5 +4,6 @@ export {
 export {
     auth,
     facebookLogin,
-    logout
+    logout,
+    authCheckState
 } from './auth';

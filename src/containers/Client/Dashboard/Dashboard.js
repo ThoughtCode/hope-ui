@@ -50,6 +50,8 @@ class Dashboard extends Component {
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             <img src={Logo} height="62px" alt="Logo"></img>
                         </Typography>
+                        <Button color="inherit" component={Link} to={this.props.match.path + '/propiedades'}>Mis Trabajos</Button>
+                        <Button color="inherit">Mis Propiedades</Button>
                         <Button color="inherit" onClick={this.logoutHandler}>Logout</Button>
                     </Toolbar>
                 </AppBar>

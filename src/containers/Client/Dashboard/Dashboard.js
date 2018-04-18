@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -7,6 +9,8 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Avatar from 'material-ui/Avatar';
+
+import * as actions from '../../../store/actions'
 
 import Logo from '../../../logo_white.png';
 
@@ -34,7 +38,9 @@ const styles = {
     },
 };
 class Dashboard extends Component {
-    
+    logoutHandler = () => {
+        this.props.onLogout();
+    }
     render () {
         const { classes } = this.props;
         return (
@@ -44,7 +50,9 @@ class Dashboard extends Component {
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             <img src={Logo} height="62px" alt="Logo"></img>
                         </Typography>
-                        <Avatar alt="Remy Sharp" className={classes.avatar} />
+                        <Button color="inherit" component={Link} to={this.props.match.path + '/propiedades'}>Mis Trabajos</Button>
+                        <Button color="inherit">Mis Propiedades</Button>
+                        <Button color="inherit" onClick={this.logoutHandler}>Logout</Button>
                     </Toolbar>
                 </AppBar>
                 Dashboard
@@ -53,4 +61,10 @@ class Dashboard extends Component {
     }
 }
 
-export default withStyles(styles)(Dashboard);
+const mapDispatchToProps = dispatch => {
+    return {
+        onLogout: () => dispatch(actions.logout())
+    };
+};
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(Dashboard));

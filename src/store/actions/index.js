@@ -3,5 +3,7 @@ export {
 } from './register';
 export {
     auth,
-    facebookLogin
+    facebookLogin,
+    logout,
+    authCheckState
 } from './auth';

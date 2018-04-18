@@ -24,11 +24,18 @@ export const authFail = (error) => {
 };
 
 export const authLogout = () => {
-    localStorage.clear()
     return {
         type: actionTypes.AUTH_LOGOUT
     };
 };
+
+export const logout = () => {
+    return dispatch => {
+        localStorage.clear();
+        dispatch(authLogout());
+        dispatch(push('/'));
+    }
+}
 
 export const auth = (email, password) => {
     return dispatch => {
@@ -43,6 +50,8 @@ export const auth = (email, password) => {
             .then(response => {
                 const customer = response.data.customer.data
                 localStorage.setItem('token', customer.attributes.access_token);
+                localStorage.setItem('userId', customer.id);
+                localStorage.setItem('signInAs', 'customer');
                 dispatch(authSuccess(customer.attributes.access_token, customer.id));
                 dispatch(push('/cliente/dashboard'))
             })
@@ -65,12 +74,26 @@ export const facebookLogin = (access_token) => {
             .then(response => {
                 const customer = response.data.customer.data
                 localStorage.setItem('token', customer.attributes.access_token);
+                localStorage.setItem('userId', customer.id);
+                localStorage.setItem('signInAs', 'customer');
                 dispatch(authSuccess(customer.attributes.access_token, customer.id));
-                dispatch(push('/cliente/dashboard'))
+                dispatch(push('/cliente/dashboard'));
             })
             .catch(err => {
                 console.log(err)
                 dispatch(authFail(err));
             });
+    }
+}
+
+export const authCheckState = () => {
+    return dispatch => {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            dispatch(logout());
+        } else {
+            const userId = localStorage.getItem('userId')
+            dispatch(authSuccess(token, userId));
+        }
     }
 }

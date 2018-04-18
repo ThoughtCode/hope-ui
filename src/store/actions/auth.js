@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-prod';
+import { push } from 'react-router-redux';
 
 export const authStart = () => {
     return {
@@ -39,9 +40,10 @@ export const auth = (email, password) => {
         }
         axios.post('/customers/signin', authData)
             .then( response => {
-                console.log(response);
-                localStorage.setItem('token', response.data.access_token);
-                dispatch(authSuccess(response.data.access_token, response.data.id));
+                const customer = response.data.customer.data
+                localStorage.setItem('token', customer.attributes.access_token);
+                dispatch(authSuccess(customer.attributes.access_token, customer.id));
+                dispatch(push('/cliente/dashboard'))
             })
             .catch( err => {
                 console.log(err);

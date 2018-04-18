@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-dev';
-import { push } from 'react-router-redux'
+import axios from '../../axios-prod';
+import { push } from 'react-router-redux';
 
 export const registerClientSuccess = (id, formData) => {
     console.log(id);
@@ -28,9 +28,10 @@ export const registerClient = (formData) => {
     return dispatch => {
         axios.post("/customers/signup/", formData )
             .then(response => {
-                localStorage.setItem('token', response.data.data.data.attributes.access_token);
-                dispatch(registerClientSuccess(response.data.data.data.id, formData))
-                dispatch(push('/cliente'))
+                const customer = response.data.customer.data
+                localStorage.setItem('token', customer.attributes.access_token);
+                dispatch(registerClientSuccess(customer.id, formData))
+                dispatch(push('/cliente/dashboard'))
             })
             .catch(error => {
                 dispatch(registerClientFail(error))

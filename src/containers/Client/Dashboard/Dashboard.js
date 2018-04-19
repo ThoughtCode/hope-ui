@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { withStyles } from 'material-ui/styles';
@@ -7,10 +7,11 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
-import AccountCircle from '@material-ui/icons/AccountCircle';
-import Avatar from 'material-ui/Avatar';
 
-import * as actions from '../../../store/actions'
+import Jobs from '../../../components/Client/Dashboard/Jobs/Jobs';
+import Properties from './Properties/Properties';
+import Main from '../../../components/Client/Dashboard/Main/Main';
+import * as actions from '../../../store/actions';
 
 import Logo from '../../../logo_white.png';
 
@@ -25,8 +26,8 @@ const styles = {
         marginLeft: -12,
         marginRight: 20,
     },
-    row: {
-        display: 'flex',
+    display: 'flex',
+        row: {
         justifyContent: 'center',
     },
     avatar: {
@@ -50,12 +51,18 @@ class Dashboard extends Component {
                         <Typography variant="title" color="inherit" className={classes.flex}>
                             <img src={Logo} height="62px" alt="Logo"></img>
                         </Typography>
-                        <Button color="inherit" component={Link} to={this.props.match.path + '/propiedades'}>Mis Trabajos</Button>
-                        <Button color="inherit">Mis Propiedades</Button>
+                        <Button color="inherit" component={Link} to={this.props.match.path}>Inicio</Button>
+                        <Button color="inherit" component={Link} to={this.props.match.path + '/trabajos'}>Mis Trabajos</Button>
+                        <Button color="inherit" component={Link} to={this.props.match.path + '/propiedades'}>Mis Propiedades</Button>
                         <Button color="inherit" onClick={this.logoutHandler}>Logout</Button>
                     </Toolbar>
                 </AppBar>
-                Dashboard
+                <Switch>
+                    <Route path={this.props.match.path + '/trabajos'} component={Jobs}/>
+                    {/* <Route path={this.props.match.path + '/propiedades/:id'} component={Property} /> */}
+                    <Route path={this.props.match.path + '/propiedades'} component={Properties} />
+                    <Route path={this.props.match.path} component={Main}/>
+                </Switch>
             </div>
         );
     }

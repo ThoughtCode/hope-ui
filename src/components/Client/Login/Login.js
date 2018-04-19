@@ -6,39 +6,40 @@ import FacebookLogin from 'react-facebook-login';
 import Button from 'material-ui/Button';
 import Auth from '../Auth/Auth';
 
-import * as actions from '../../../store/actions'
+import * as actions from '../../../store/actions';
 
 class Login extends Component {
   state = {
-    accessToken: null
-  }
-
-  responseFacebook = (response) => {
-    let accessToken = response.accessToken;
-    this.setState(
-      {
-        accessToken: accessToken
-      },
-      this.onLoginWithFacebook
-    );
+    accessToken: null,
   }
 
   onLoginWithFacebook = () => {
-    this.props.onLogin(this.state.accessToken)
+    this.props.onLogin(this.state.accessToken);
   }
 
-  render () {
+  responseFacebook = (response) => {
+    const { accessToken } = response.accessToken;
+    this.setState(
+      {
+        accessToken,
+      },
+      this.onLoginWithFacebook,
+    );
+  }
+
+  render() {
     return (
       <div>
-        <div style={{textAlign: 'center'}}>
+        <div style={{ textAlign: 'center' }}>
           <h1>Login</h1>
           <FacebookLogin
             appId="2057031764572769"
             autoLoad={false}
             fields="name,email"
-            callback={this.responseFacebook} />
+            callback={this.responseFacebook}
+          />
           <Auth />
-          <Button component={Link} to="/cliente/registro" style={{margin: '10px 0'}}>
+          <Button component={Link} to="/cliente/registro" style={{ margin: '10px 0' }}>
             Registro
           </Button>
         </div>
@@ -47,10 +48,9 @@ class Login extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onLogin: (access_token) => dispatch(actions.facebookLogin(access_token))
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  onLogin: accessToken => dispatch(actions
+    .facebookLogin(accessToken)),
+});
 
 export default connect(null, mapDispatchToProps)(Login);

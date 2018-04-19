@@ -15,6 +15,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import clientRegisterReducer from './store/reducers/register';
 import clientAuthReducer from './store/reducers/auth';
+import clientPropertyReducer from './store/reducers/property';
 
 const history = createHistory()
 
@@ -24,7 +25,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
     register: clientRegisterReducer,
-    auth: clientAuthReducer
+    auth: clientAuthReducer,
+    property: clientPropertyReducer
 });
 
 const store = createStore(rootReducer, composeEnhancers(

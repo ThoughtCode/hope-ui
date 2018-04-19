@@ -9,4 +9,6 @@ export {
   fetchProperties,
   fetchProperty,
   createProperty,
+  updateProperty,
+  deleteProperty,
 } from './property';

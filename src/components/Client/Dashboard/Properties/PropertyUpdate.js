@@ -6,9 +6,9 @@ import Input from '../../../UI/Input/Input';
 
 import * as action from '../../../../store/actions';
 
-class PropertyCreate extends Component {
+class PropertyUpdate extends Component {
   state = {
-    createForm: {
+    updateForm: {
       name: {
         elementType: 'input',
         label: 'Nombre',
@@ -16,12 +16,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Nombre',
         },
-        value: '',
+        value: this.props.property.attributes.name,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       city: {
@@ -31,12 +30,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Ciudad',
         },
-        value: '',
+        value: this.props.property.attributes.city_id,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       neightborhood_id: {
@@ -46,12 +44,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Barrio',
         },
-        value: '',
+        value: this.props.property.attributes.neightborhood_id,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       p_street: {
@@ -61,12 +58,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Calle Principal',
         },
-        value: '',
+        value: this.props.property.attributes.p_street,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       number: {
@@ -76,12 +72,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Numero',
         },
-        value: '',
+        value: this.props.property.attributes.number,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       s_street: {
@@ -91,12 +86,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Calle Secundaria',
         },
-        value: '',
+        value: this.props.property.attributes.s_street,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       details: {
@@ -106,12 +100,11 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Detalles',
         },
-        value: '',
+        value: this.props.property.attributes.details,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
       cell_phone: {
@@ -121,16 +114,16 @@ class PropertyCreate extends Component {
           type: 'text',
           placeholder: 'Celular',
         },
-        value: '',
+        value: this.props.property.attributes.cell_phone,
         validation: {
           required: true,
         },
-        valid: false,
-        touched: false,
+        valid: true,
         errorText: null,
       },
     },
-  }
+    formIsValid: true,
+  };
 
   checkValidity(value, rules) {
     let isValid = true;
@@ -172,33 +165,32 @@ class PropertyCreate extends Component {
     };
   }
 
-  createHandler = (event) => {
+  updateHandler = (event) => {
     event.preventDefault();
     const formData = {};
-    for (const formElementIdentifier in this.state.createForm) {
-      formData[formElementIdentifier] = this.state.createForm[formElementIdentifier].value;
+    for (const formElementIdentifier in this.state.updateForm) {
+      formData[formElementIdentifier] = this.state.updateForm[formElementIdentifier].value;
     }
     const property = {
       property: formData,
     };
-    this.props.onCreateProperty(this.props.token, property);
+    this.props.onUpdateProperty(this.props.token, property, this.props.property.id);
   }
 
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
-      ...this.state.createForm,
+      ...this.state.updateForm,
       [controlName]: {
-        ...this.state.createForm[controlName],
+        ...this.state.updateForm[controlName],
         value: event.target.value,
         valid: this.checkValidity(
           event.target.value,
-          this.state.createForm[controlName].validation,
+          this.state.updateForm[controlName].validation,
         ).isValid,
         errorText: this.checkValidity(
           event.target.value,
-          this.state.createForm[controlName].validation,
+          this.state.updateForm[controlName].validation,
         ).errorText,
-        touched: true,
       },
     };
 
@@ -207,21 +199,20 @@ class PropertyCreate extends Component {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
     this.setState({
-      createForm: updatedControls,
+      updateForm: updatedControls,
       formIsValid,
     });
   }
-
   render() {
     const formElementsArray = [];
-    for (const key in this.state.createForm) {
+    for (const key in this.state.updateForm) {
       formElementsArray.push({
-        config: this.state.createForm[key],
+        config: this.state.updateForm[key],
         id: key,
       });
     }
     const form = (
-      <form onSubmit={this.createHandler}>
+      <form onSubmit={this.updateHandler}>
         {formElementsArray.map(formElement => (
           <Input
             key={formElement.id}
@@ -238,13 +229,13 @@ class PropertyCreate extends Component {
           />
             ))}
         <Button type="submit" variant="raised" color="primary" disabled={!this.state.formIsValid}>
-          Registrar
+          Actualizar
         </Button>
       </form>
     );
     return (
       <div style={{ textAlign: 'center' }}>
-        <h1>Crear propiedad</h1>
+        <h1>Actualizar propiedad</h1>
         {form}
       </div>
     );
@@ -252,11 +243,11 @@ class PropertyCreate extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onCreateProperty: (token, formData) => dispatch(action.createProperty(token, formData)),
+  onUpdateProperty: (token, formData, id) => dispatch(action.updateProperty(token, formData, id)),
 });
 
 const mapStateToProps = state => ({
   token: state.auth.token,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(PropertyCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(PropertyUpdate);

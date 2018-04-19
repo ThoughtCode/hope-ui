@@ -79,6 +79,7 @@ class Register extends Component {
                 },
                 value: '',
                 validation: {
+                    passwordValid: true,
                     required: true,
                     minLength: 6
                 },
@@ -121,6 +122,11 @@ class Register extends Component {
             const pattern = /^\d+$/;
             isValid = pattern.test(value) && isValid
             errorText = "Debe ser solo numerico."
+        }
+
+        if (rules.passwordValid) {
+            isValid = value === this.state.registerForm.password.value
+            errorText = "Las claves deben coincidir."
         }
 
         return {

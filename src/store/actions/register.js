@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-dev';
+import axios from '../../axios-prod';
 
 export const registerClientSuccess = (id, formData) => ({
   type: actionTypes.REGISTER_CLIENT_SUCCESS,

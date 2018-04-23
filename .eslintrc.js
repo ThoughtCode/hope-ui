@@ -1,6 +1,9 @@
 module.exports = {
     "parser": "babel-eslint",
     "extends": "airbnb",
+    "env": {
+        "browser": true,
+    },
     "plugins": [
         "react",
         "jsx-a11y",
@@ -11,6 +14,7 @@ module.exports = {
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "guard-for-in": 0,
         "no-restricted-syntax": 0,
-        "class-methods-use-this": 0
+        "class-methods-use-this": 0,
+        "no-unused-vars": 1
     }
 };

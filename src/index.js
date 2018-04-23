@@ -1,13 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-
-import createHistory from 'history/createBrowserHistory'
-
-import { ConnectedRouter, routerMiddleware } from 'react-router-redux'
-
+import createHistory from 'history/createBrowserHistory';
+import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
 import './index.css';
@@ -17,28 +13,27 @@ import clientRegisterReducer from './store/reducers/register';
 import clientAuthReducer from './store/reducers/auth';
 import clientPropertyReducer from './store/reducers/property';
 
-const history = createHistory()
+const history = createHistory();
 
-const middleware = routerMiddleware(history)
+const middleware = routerMiddleware(history);
 
+/* eslint no-underscore-dangle: 0 */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    register: clientRegisterReducer,
-    auth: clientAuthReducer,
-    property: clientPropertyReducer
+  register: clientRegisterReducer,
+  auth: clientAuthReducer,
+  property: clientPropertyReducer,
 });
 
-const store = createStore(rootReducer, composeEnhancers(
-    applyMiddleware(thunk, middleware)
-));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));
 
 const app = (
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App />
-        </ConnectedRouter>
-    </Provider>
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>
 );
 
 

@@ -1,6 +1,6 @@
-import * as actionTypes from './actionTypes';
-import axios from '../../axios-dev';
 import { push } from 'react-router-redux';
+import * as actionTypes from './actionTypes';
+import axios from '../../axios-instance';
 
 export const authStart = () => {
     return {

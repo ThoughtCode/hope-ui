@@ -1,10 +1,6 @@
 import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
-<<<<<<< b6ae16fe45b752907b55e74f60d558846682f2fb
-import axios from '../../axios-prod';
-=======
-import axios from '../../axios-dev';
->>>>>>> Creanting CRUD for Properties WIP
+import axios from '../../axios-instance';
 
 export const registerClientSuccess = (id, formData) => ({
   type: actionTypes.REGISTER_CLIENT_SUCCESS,

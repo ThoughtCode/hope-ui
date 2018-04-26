@@ -1,3 +1,4 @@
+import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
@@ -69,6 +70,34 @@ export const createPropertySuccess = property => ({
   property,
 });
 
+export const updatePropertyStart = () => ({
+  type: actionTypes.UPDATE_PROPERTY_START,
+});
+
+export const updatePropertySuccess = property => ({
+  type: actionTypes.UPDATE_PROPERTY_SUCCESS,
+  property,
+});
+
+export const updatePropertyFail = error => ({
+  type: actionTypes.UPDATE_PROPERTY_FAIL,
+  error,
+});
+
+export const deletePropertyStart = () => ({
+  type: actionTypes.DELETE_PROPERTY_START,
+});
+
+export const deletePropertySuccess = id => ({
+  type: actionTypes.DELETE_PROPERTY_SUCCESS,
+  id,
+});
+
+export const deletePropertyFail = error => ({
+  type: actionTypes.DELETE_PROPERTY_FAIL,
+  error,
+});
+
 export const createProperty = (token, formData) => (dispatch) => {
   dispatch(createPropertyStart());
   const headers = {
@@ -80,8 +109,45 @@ export const createProperty = (token, formData) => (dispatch) => {
     .then((res) => {
       const property = res.data.property.data;
       dispatch(createPropertySuccess(property));
+      dispatch(push('/cliente/dashboard/propiedades'));
     })
     .catch((err) => {
       dispatch(createPropertyFail(err));
+    });
+};
+
+export const updateProperty = (token, formData, id) => (dispatch) => {
+  dispatch(updatePropertyStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put(`/customers/properties/${id}`, formData, headers)
+    .then((res) => {
+      const property = res.data.property.data;
+      dispatch(updatePropertySuccess(property));
+      dispatch(push('/cliente/dashboard/propiedades'));
+    })
+    .catch((err) => {
+      dispatch(updatePropertyFail(err));
+    });
+};
+
+export const deleteProperty = (token, id) => (dispatch) => {
+  dispatch(deletePropertyStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.delete(`/customers/properties/${id}`, headers)
+    .then((res) => {
+      console.log(res);
+      dispatch(deletePropertySuccess(id));
+      dispatch(push('/cliente/dashboard/propiedades'));
+    })
+    .catch((err) => {
+      dispatch(deletePropertyFail(err));
     });
 };

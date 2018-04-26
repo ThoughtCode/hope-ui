@@ -31,7 +31,7 @@ const styles = {
 
 class Properties extends Component {
   componentDidMount() {
-    this.props.onFetchProperties(this.props.token, this.props.userId);
+    this.props.onFetchProperties(this.props.token);
   }
 
   showProperty = (id) => {
@@ -60,12 +60,12 @@ class Properties extends Component {
 const mapStateToProps = state => ({
   properties: state.property.properties,
   loading: state.property.loading,
-  token: state.auth.token,
+  token: state.auth.token || localStorage.getItem('token'),
   userId: state.auth.userId,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onFetchProperties: (token, userId) => dispatch(actions.fetchProperties(token, userId)),
+  onFetchProperties: token => dispatch(actions.fetchProperties(token)),
 });
 
 

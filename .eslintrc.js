@@ -15,6 +15,7 @@ module.exports = {
         "guard-for-in": 0,
         "no-restricted-syntax": 0,
         "class-methods-use-this": 0,
-        "no-unused-vars": 1
+        "no-unused-vars": 1,
+        "react/no-unused-state": 1,
     }
 };

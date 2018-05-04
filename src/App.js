@@ -1,55 +1,71 @@
+// Dependencias
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
+import grey from 'material-ui/colors/grey';
+import blue from 'material-ui/colors/blue';
 
+// Component
 import './App.css';
-import Layout from './containers/Layout/Layout';
-import Client from './containers/Client/Client';
-import Landing from './containers/Landing/Landing';
-import Dashboard from './containers/Client/Dashboard/Dashboard';
+import MenuBar from './containers/MenuBar/MenuBar';
+import Main from './containers/Home/Main';
+import Download from './containers/Home/Download';
+import Funtion from './containers/Home/Funtion'
+import Aside from './containers/Home/Aside'
+import Testimonials from './containers/Home/Testimonials'
+import Contact from './containers/Home/Contact'
 
-import * as actions from './store/actions';
+const styles = myTheme => ({
+  root: myTheme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
+    marginTop: myTheme.spacing.unit * 3,
+  }),
+});
 
 class App extends Component {
-  componentDidMount() {
-    this.props.onTryAutoSignup();
-  }
-
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
   render() {
-    let routes = (
-      <Switch>
-        {/* <Route path="/agente" component={Agent}/>  */}
-        <Route path="/cliente" component={Client} />
-        <Route path="/" exact component={Landing} />
-        <Redirect to="/" />
-      </Switch>
-    );
+    const theme = createMuiTheme({
+      palette:{
+        primary: { 
+          light: grey[50],
+          main: grey[0],
+          dark: grey[700],
+          contrastText: '#000',
+        },
+        secondary: {
+          light: blue[50],
+          main: blue[400],
+          dark: blue[500],
+          contrastText: '#000',
+        },
+        accent: grey,
+        error: grey,
+      },
+      typography: {
+        // Tell Material-UI what's the font-size on the html element is.
+        fontSize: 12,
+        fontFamily: 'Fabada',
+      },
+    });
 
-    if (this.props.isAuthenticated) {
-      routes = (
-        <Switch>
-          {/* <Route path="/agente" component={Agent}/>  */}
-          <Route path="/cliente/dashboard" component={Dashboard} />
-          <Redirect to="/cliente/dashboard" />
-        </Switch>
-      );
-    }
     return (
-      <div className="App">
-        <Layout>
-          {routes}
-        </Layout>
-      </div>
+      <MuiThemeProvider theme={theme}>
+        <div className="App">
+          <MenuBar />
+          <Main />
+          <Download />
+          <Funtion />
+          <Aside />
+          <Testimonials />
+          <Contact />
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.token !== null || localStorage.getItem('token'),
-});
-
-const mapDispatchToProps = dispatch => ({
-  onTryAutoSignup: () => dispatch(actions.authCheckState()),
-});
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withStyles(styles) (App);

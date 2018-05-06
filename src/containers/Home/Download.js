@@ -10,10 +10,19 @@ import GooglePlay from '../Img/GooglePlay.png';
 import './Download.css';
 
 const stylesBox1 = {
-  backgroundColor: '#0069a7',
   color: '#fff',
-  padding: 30,
+  padding: 90,
+  paddingTop: 180,
 };
+
+const img = {
+  width: 350,
+}
+
+const imgButton = {
+  width: 200,
+  paddingRight: 10,
+}
 
 class Download extends Component {
   render() {
@@ -22,22 +31,22 @@ class Download extends Component {
         <Grid container spacing={16} style={stylesBox1} justify='center'>
           <Grid item xs={8}>
             <Grid container>
-              <Grid item xs={12} sm={6}>
-                <img src={AppLogo} alt="AppLogo" />
+              <Grid item xs={12} sm={5}>
+                <img src={AppLogo} alt="AppLogo" style={img} />
               </Grid>                
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={7} style={{padding: 50}}>
                 <Grid container>
                   <Grid item xs={12}>
-                    <Typography variant="headline" gutterBottom align="right">Download our Download</Typography>
+                    <Typography variant="headline" gutterBottom align="left">Download our Download</Typography>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="subheadin" gutterBottom align="right">
+                  <Grid item xs={12} style={{ paddingTop: 40, fontFamily: 'Fabada' }}>
+                    <Typography variant="subheadin" gutterBottom align="left">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </Typography>
                   </Grid>
-                  <Grid item xs={12} align="right">
-                    <img src={GooglePlay}  alt="GoolglePlay" />
-                    <img src={AppStore}  alt="App Store" />
+                  <Grid item xs={12} style={{ paddingTop: 40, fontFamily: 'Fabada' }} align="left">
+                    <img src={GooglePlay}  alt="GoolglePlay" style={imgButton} />
+                    <img src={AppStore}  alt="App Store" style={imgButton} />
                   </Grid>
                 </Grid>
               </Grid>

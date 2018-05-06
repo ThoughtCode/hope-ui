@@ -1,0 +1,13 @@
+#root > div > div.Contact > div > div > div > div:nth-child(2) > form > div > label{
+  color: #fff;
+}
+#email, #name {
+  color: #fff;
+}
+.MuiInput-underline-215:hover:not(.MuiInput-disabled-214):before{
+  background-color: #fff !important;
+}
+
+.MuiInput-underline-215:before{
+  background-color: #ddd !important;
+}

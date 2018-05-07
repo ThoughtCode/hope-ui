@@ -1,0 +1,8 @@
+.Download{
+  background-size: 111rem;
+  background-color: #0069a7;
+  background-image: url('../Img/BackgrounDownload.png');
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-attachment: fixed;
+}

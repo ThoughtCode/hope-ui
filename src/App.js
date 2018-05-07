@@ -47,7 +47,7 @@ class App extends Component {
       },
       typography: {
         // Tell Material-UI what's the font-size on the html element is.
-        fontSize: 12,
+        fontSize: 20,
         fontFamily: 'Fabada',
       },
     });

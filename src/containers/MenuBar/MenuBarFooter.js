@@ -49,7 +49,7 @@ class MenuAppBar extends React.Component {
     return (
       <div className={classes.root}>
        
-          <AppBar topFixed elevation={1}>
+          <AppBar elevation={1}>
             <Toolbar>
               <Typography variant="title" color="secondary" className={classes.flex}>
                 <img src={Logo} className="App-logo" alt="logo" />

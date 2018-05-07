@@ -1,6 +1,6 @@
 @font-face {
-  font-family: Fabada;
-  src: url('./containers/Fonts/Fabada-regular.ttf')
+  font-family: Fabada, Arial;
+  src: url('./containers/Fonts/Fabada-regular.ttf', './containers/Fonts/arial.ttf');
 }
 
 .App-background-Download{

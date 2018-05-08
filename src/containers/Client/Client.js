@@ -44,7 +44,7 @@ class Client extends Component {
                 <Route path={this.props.match.url + '/registro'} exact component={Register}/>
             </div>
         );
-    }
+    };
 }
 
 export default withStyles(styles)(Client);

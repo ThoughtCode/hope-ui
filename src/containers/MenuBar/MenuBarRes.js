@@ -10,6 +10,19 @@ import Logo from './img/logo.svg';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import './css/MenuBar.css'
 
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  flex: {
+    flex: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
 class MenuAppBar extends React.Component {
   state = {
     auth: true,
@@ -36,7 +49,7 @@ class MenuAppBar extends React.Component {
     return (
       <div className={classes.root}>
        
-          <AppBar elevation={1}>
+          <AppBar topFixed elevation={1}>
             <Toolbar>
               <Typography variant="title" color="secondary" className={classes.flex}>
                 <img src={Logo} className="App-logo" alt="logo" />
@@ -45,6 +58,28 @@ class MenuAppBar extends React.Component {
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Cómo Funciona</MenuItem>
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Testimonios</MenuItem>
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Contactos</MenuItem>
+              {auth && (
+                <div>
+                    <div className="App-name"></div>
+                  <Menu
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={open}
+                    onClose={this.handleClose}
+                  >
+                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={this.handleClose}>Log Out</MenuItem>
+                  </Menu>
+                </div>
+              )}
             </Toolbar>
           </AppBar>
         

@@ -10,7 +10,6 @@ import Twitter from '../Img/Twitter.png';
 // Component
 import './Contact.css';
 import LogoNocNoc from '../Img/LogoBlanco.svg';
-import MenuBar from '../../containers/MenuBar/MenuBarFooter';
 
 const stylesBox1 = {
   backgroundColor: '#0069a7',
@@ -69,7 +68,6 @@ class Contact extends Component {
                   </Grid>
                 </Grid>
               </Grid>
-              <MenuBar />
             </Grid>
           </Grid>
         </Grid>

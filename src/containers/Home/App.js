@@ -7,9 +7,9 @@ import blue from 'material-ui/colors/blue';
 
 // Component
 import '../../App.css';
-import MenuBar from '../../containers/MenuBar/MenuBar';
+import MenuBar from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../containers/Home/Main';
-import Download from '../../containers/Home/Download';
+import Download from '../../containers/Home/Download2';
 import Funtion from '../../containers/Home/Funtion'
 import Aside from '../../containers/Home/Aside'
 import Testimonials from '../../containers/Home/Testimonials'
@@ -47,7 +47,7 @@ class App extends Component {
       },
       typography: {
         // Tell Material-UI what's the font-size on the html element is.
-        fontSize: 20,
+        fontSize: 14,
         fontFamily: 'Fabada',
       },
     });
@@ -57,7 +57,7 @@ class App extends Component {
         <div className="App">
           <MenuBar />
           <Main />
-          <Download />
+          <Download id="Download" />
           <Funtion />
           <Aside />
           <Testimonials />

@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Grid from 'material-ui/Grid';
 
 import Button from 'material-ui/Button';
 
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
+
+const stylesBox1 = {
+  backgroundColor: '#0069a7',
+  color: '#eee',
+  padding: 45,
+  justifyContent: 'center',
+  textAlign: 'center',
+};
 
 class Register extends Component {
     state = {
@@ -202,12 +211,14 @@ class Register extends Component {
         </form>
       );
       return (
-        <div style={{ textAlign: 'center' }}>
-          <h1>Registro</h1>
-          {form}
-          <Button component={Link} to="/cliente" style={{ margin: '10px 0' }}>
-                    Volver al login
-          </Button>
+        <div>
+          <Grid container spacing={16} style={stylesBox1} justify='center'>
+            <Grid item xs={12} sm={8}>
+              <h1>Registro</h1>
+              {form}
+              <Button component={Link} to="/cliente" style={{ margin: '10px 0' }}>Volver al login</Button>
+            </Grid>
+          </Grid>
         </div>
       );
     }

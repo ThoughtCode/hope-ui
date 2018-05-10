@@ -1,14 +1,16 @@
-import React from 'react';
+// Dependencias
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Route, Switch, NavLink } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-// import MenuLogo from '@material-ui/icons/Menu';
-import Logo from './img/logo.svg';
-// import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu, { MenuItem } from 'material-ui/Menu';
-import './css/MenuBar.css'
+
+// Component
+import './css/MenuBar.css';
+import Logo from './img/logo.svg';
 
 const styles = {
   root: {
@@ -43,8 +45,6 @@ class MenuAppBar extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
 
     return (
       <div className={classes.root}>
@@ -54,32 +54,10 @@ class MenuAppBar extends React.Component {
               <Typography variant="title" color="secondary" className={classes.flex}>
                 <img src={Logo} className="App-logo" alt="logo" />
               </Typography>
-              <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Descargas</MenuItem>
+              <a href="#Download" activeClassName="selected"><MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Descargas</MenuItem></a>
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Cómo Funciona</MenuItem>
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Testimonios</MenuItem>
               <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Contactos</MenuItem>
-              {auth && (
-                <div>
-                    <div className="App-name"></div>
-                  <Menu
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={open}
-                    onClose={this.handleClose}
-                  >
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Log Out</MenuItem>
-                  </Menu>
-                </div>
-              )}
             </Toolbar>
           </AppBar>
         

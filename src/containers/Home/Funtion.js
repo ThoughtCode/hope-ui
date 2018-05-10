@@ -2,8 +2,10 @@
 import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import IconUno from '../Img/IconUno.png'
-import Congratulation from '../Img/Congratulation.png'
+import IconUno from '../Img/IconUno.svg'
+import IconDos from '../Img/IconDos.svg'
+import IconTres from '../Img/IconTres.svg'
+import Congratulation from '../Img/Congratulation.svg'
 import One from '../Img/One.png'
 import Two from '../Img/Two.png'
 import Three from '../Img/Three.png'
@@ -67,7 +69,7 @@ class Funtion extends Component {
                   </Grid>
                   <Grid xs={12} sm={2}>
                     <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <img src={IconUno} alt="AppLogo" />
+                      <img src={IconDos} alt="AppLogo" />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -77,7 +79,7 @@ class Funtion extends Component {
                 <Grid container style={{padding:30}}>
                   <Grid xs={12} sm={2}>
                     <Grid container>
-                      <img src={IconUno} alt="AppLogo" />
+                      <img src={IconTres} alt="AppLogo" />
                     </Grid>
                   </Grid>
                   <Grid xs={12} sm={10}>

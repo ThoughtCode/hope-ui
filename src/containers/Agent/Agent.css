@@ -1,0 +1,8 @@
+.Agent{
+  background-attachment: fixed;
+  background-color: #fff;
+  background-image: url('../Img/BackgrounAgent.png');
+  background-repeat: no-repeat;
+  background-size: 98rem;
+  height: 100vh;
+}

@@ -17,12 +17,24 @@ const stylesBox1 = {
 
 const img = {
   width: 350,
-}
+};
 
 const imgButton = {
   width: 200,
   paddingRight: 10,
-}
+};
+
+const styles = theme => ({
+  root: {
+    padding: theme.spacing.unit,
+    [theme.breakpoints.up('md')]: {
+      backgroundColor: theme.palette.primary.main,
+    },
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: theme.palette.secondary.main,
+    },
+  },
+});
 
 class Download extends Component {
   render() {
@@ -32,7 +44,7 @@ class Download extends Component {
           <Grid item xs={8}>
             <Grid container>
               <Grid item xs={12} sm={5}>
-                <img src={AppLogo} alt="AppLogo" style={img} />
+                <img src={AppLogo} alt="AppLogo" style={img} xs={6} sm={3} />
               </Grid>                
               <Grid item xs={12} sm={7} style={{padding: 50}}>
                 <Grid container>

@@ -2,7 +2,7 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 
 // Component
-import Register from '../../../components/Agent/Register/Register';
+import Register from '../Register/Register';
 
 const styles = theme => ({
   container: {
@@ -28,6 +28,5 @@ const form = (props) => {
     </div>
   );
 };
-
 
 export default withStyles(styles)(form);

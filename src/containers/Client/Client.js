@@ -4,14 +4,14 @@ import Grid from 'material-ui/Grid';
 
 // COMPONENTES
 import MenuBar from '../../containers/MenuBar/MenuBarClientRes';
-import './Client.css'
+import './Client.css';
 
 const style = {
   paddingTop: 50,
 };
 
 class Agent extends Component {
-  render () {
+  render() {
     return (
       <div className="Agent">
         <MenuBar />

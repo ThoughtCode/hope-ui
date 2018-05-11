@@ -17,5 +17,6 @@ module.exports = {
         "class-methods-use-this": 0,
         "no-unused-vars": 1,
         "react/no-unused-state": 1,
+        "react/prefer-stateless-function": 1,
     }
 };

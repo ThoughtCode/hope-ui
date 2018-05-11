@@ -5,7 +5,7 @@ import Typography from 'material-ui/Typography';
 
 // COMPONENTES
 import AppLogo from '../../containers/Img/Logo.svg';
-import Form from './Form/Form';
+import Form from '../../components/Agent/Form/Form';
 import './Agent.css';
 
 const style = {

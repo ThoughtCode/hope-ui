@@ -7,7 +7,7 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 // Component
-import './Testimonials.css'
+import cls from './Testimonials.css'
 
 const styleTestimonials = {
   padding: 90,
@@ -29,7 +29,7 @@ function FullWidthGrid(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={24} style={styleTestimonials} justify="center">
+      <Grid container spacing={24} className={cls.styleTestimonials} justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             <Grid item xs={12}>

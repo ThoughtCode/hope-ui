@@ -4,13 +4,15 @@ import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey';
 import blue from 'material-ui/colors/blue';
+import Typography from 'material-ui/Typography';
 
 // Component
 import '../../App.css';
-import MenuBar from '../../containers/MenuBar/MenuResponsive';
+import MenuBar from '../../containers/MenuBar/MenuBar';
+import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../containers/Home/Main';
-import Download from '../../containers/Home/Download2';
-import Funtion from '../../containers/Home/Funtion'
+import Download from '../../containers/Home/Download';
+import Funtion from '../../containers/Home/Funtion';
 import Aside from '../../containers/Home/Aside'
 import Testimonials from '../../containers/Home/Testimonials'
 import Contact from '../../containers/Home/Contact'
@@ -23,7 +25,7 @@ const styles = myTheme => ({
   }),
 });
 
-class App extends Component {
+class Home extends Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
@@ -54,18 +56,36 @@ class App extends Component {
 
     return (
       <MuiThemeProvider theme={theme}>
-        <div className="App">
-          <MenuBar />
-          <Main />
-          <Download id="Download" />
-          <Funtion />
-          <Aside />
-          <Testimonials />
-          <Contact />
+        <div>
+          <div className="MenuBar">
+            <MenuBar />
+          </div>
+          <div className="MenuNone" >
+            <MenuResponsive />
+          </div>
+          <div id="main">
+            <Main />
+          </div>
+          <div id="download">
+            <Download />
+          </div>
+          <div id="works">
+            <Funtion />
+          </div>
+          <div>
+            <Aside />
+          </div>
+          <div id="testimonios">
+            <Testimonials />
+          </div>
+          <div id="contact">
+            <Contact />
+            <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>Powerare by Thoughtcode</Typography>
+          </div>
         </div>
       </MuiThemeProvider>
     );
   }
 }
 
-export default withStyles(styles) (App);
+export default withStyles(styles) (Home);

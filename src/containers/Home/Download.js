@@ -1,81 +1,83 @@
-// Dependencias
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import AppLogo from '../Img/AppLogo.png';
-import AppStore from '../Img/AppStore.png';
-import GooglePlay from '../Img/GooglePlay.png';
 
-// Component
+//Component
+import GooglePlay from '../Img/GooglePlay.png';
+import AppStore from '../Img/AppStore.png';
 import './Download.css';
 
-const stylesBox1 = {
-  color: '#fff',
-  padding: 90,
+const stylesDownload = {
+  padding: 60,
   paddingTop: 180,
 };
 
-const img = {
-  width: 350,
-};
-
-const imgButton = {
-  width: 200,
-  paddingRight: 10,
-};
+const stylePaper = {
+  backgroundColor: 'transparent',
+}
 
 const styles = theme => ({
   root: {
-    padding: theme.spacing.unit,
-    [theme.breakpoints.up('md')]: {
-      backgroundColor: theme.palette.primary.main,
-    },
-    [theme.breakpoints.down('sm')]: {
-      backgroundColor: theme.palette.secondary.main,
-    },
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'left',
   },
 });
 
-class Download extends Component {
-  render() {
-    return (
-      <div className="Download">
-        <Grid container spacing={16} style={stylesBox1} justify='center'>
-          <Grid item xs={8}>
-            <Grid container>
-              <Grid item xs={12} sm={5}>
-                <img src={AppLogo} alt="AppLogo" style={img} xs={6} sm={3} />
-              </Grid>                
-              <Grid item xs={12} sm={7} style={{padding: 50}}>
-                <Grid container>
-                  <Grid item xs={12}>
-                    <Typography variant="headline" gutterBottom align="left">Download our Download</Typography>
-                  </Grid>
-                  <Grid item xs={12} style={{ paddingTop: 40, fontFamily: 'Fabada' }}>
-                    <Typography variant="subheadin" gutterBottom align="left">
+function Download(props) {
+  const { classes } = props;
+
+  return (
+    <div className="{classes.root}, Download" style={stylesDownload}>
+      <Grid container spacing={24} justify="center">
+        <Grid item xs={12} md={8} sm={12}>
+          <Grid container>
+            <Grid item xs={12} sm={8} lg={6}>
+              <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                    <Typography variant="headline" gutterBottom align="left" style={{ fontSize: '2rem' }}>Download our Download</Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                    <Typography variant="subheading" gutterBottom align="left">
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                     </Typography>
-                  </Grid>
-                  <Grid item xs={12} style={{ paddingTop: 40, fontFamily: 'Fabada' }} align="left">
-                    <img src={GooglePlay}  alt="GoolglePlay" style={imgButton} />
-                    <img src={AppStore}  alt="App Store" style={imgButton} />
-                  </Grid>
+                  </Paper>
                 </Grid>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={8}>
-            <Grid container>
-            </Grid>
-          </Grid>
-          <Grid item xs={8} >
-            <Grid container>
+                <Grid item xs={12} >
+                  <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                    <Grid container spacing={24}>
+                      <Grid item xs={12} sm={6} md={6} xl={6}>
+                        <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                          <img src={GooglePlay}  alt="GoolglePlay" />
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12} sm={6} md={6} xl={6}>
+                        <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                          <img src={AppStore}  alt="App Store" />
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
-      </div>
-    );
-  }
+      </Grid>
+    </div>
+  );
 }
 
-export default (Download);
+Download.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Download);

@@ -10,6 +10,7 @@
     "history": "^4.7.2",
     "material-ui": "^1.0.0-beta.41",
     "react": "^16.2.0",
+    "react-anchor-link-smooth-scroll": "^1.0.9",
     "react-dom": "^16.2.0",
     "react-facebook-login": "^4.0.1",
     "react-redux": "^5.0.7",

@@ -5,7 +5,7 @@ import { Route, Switch } from 'react-router-dom';
 //Component
 import './App.css';
 import Layout from './containers/Layout/Layout';
-import Home from './containers/Home/App';
+import Home from './containers/Home/Home';
 import Client from './containers/Client/Client';
 import Agent from './containers/Agent/Agent';
 

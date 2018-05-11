@@ -1,16 +1,21 @@
 // Dependencias
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Route, Switch, NavLink } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import { MenuItem } from 'material-ui/Menu';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 // Component
 import './css/MenuBar.css';
 import Logo from './img/logo.svg';
+
+const styleAnchor = {
+  textDecoration: 'none',
+  color: 'rgba(0, 0, 0, 0.87)'
+};
 
 const styles = {
   root: {
@@ -26,41 +31,52 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
-  state = {
-    auth: true,
-    anchorEl: null,
-  };
-
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
-
-  handleMenu = event => {
-    this.setState({ anchorEl: event.currentTarget });
-  };
-
-  handleClose = () => {
-    this.setState({ anchorEl: null });
-  };
-
+  constructor(props){
+    super(props);
+    this.state = {
+      auth: true,
+      anchorEl: null,
+      bgColor: 'transparent'
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+  handleScroll() {
+    const html = document.documentElement;
+    if (html.scrollTop >= 100) {
+      this.setState({ bgColor: 'rgba(255, 255, 255, 0.70)' });
+    } else {
+      this.setState({ bgColor: 'transparent' });
+    }
+  }
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
   render() {
     const { classes } = this.props;
 
     return (
       <div className={classes.root}>
-       
-          <AppBar topFixed elevation={1}>
-            <Toolbar>
-              <Typography variant="title" color="secondary" className={classes.flex}>
+        <AppBar topfixed="true" style={{backgroundColor: 'transparent'}} elevation={0}>
+          <Toolbar style={{ backgroundColor: this.state.bgColor }}>
+            <Typography variant="title" color="secondary" className={classes.flex}>
+              <AnchorLink style={ styleAnchor } href='#main'>
                 <img src={Logo} className="App-logo" alt="logo" />
-              </Typography>
-              <a href="#Download" activeClassName="selected"><MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Descargas</MenuItem></a>
-              <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Cómo Funciona</MenuItem>
-              <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Testimonios</MenuItem>
-              <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Contactos</MenuItem>
-            </Toolbar>
-          </AppBar>
-        
+              </AnchorLink>
+            </Typography>
+            <MenuItem style={{fontFamily: 'Arial'}}>
+              <AnchorLink style={ styleAnchor } href='#download'>Descargas</AnchorLink>
+            </MenuItem>
+            <MenuItem style={{fontFamily: 'Arial'}}>
+              <AnchorLink style={ styleAnchor } href='#works'>Cómo Funciona</AnchorLink>
+            </MenuItem>
+            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+              <AnchorLink style={ styleAnchor } href='#testimonios'>Testimonios</AnchorLink>
+            </MenuItem>
+            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+              <AnchorLink style={ styleAnchor } href='#contact'>Contactos</AnchorLink>
+            </MenuItem>
+          </Toolbar>
+        </AppBar>
       </div>
     );
   }

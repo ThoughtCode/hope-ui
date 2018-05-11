@@ -6,22 +6,9 @@ import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 
 // Component
-import './Aside.css';
+import cls from './Aside.css';
 import Registro from '../../components/Client/Register/Register';
 
-const stylesBox1 = {
-  backgroundColor: '#0069a7',
-  color: '#eee',
-  padding: 45,
-  justifyContent: 'center',
-};
-
-const styleButton = {
-  fontFamily: 'Fabada',
-  backgroundColor: '#eee',
-  color: '#0069a7',
-  textAlign: 'center',
-}
 
 function rand() {
   return Math.round(Math.random() * 20) - 10;
@@ -53,8 +40,8 @@ class Aside extends Component {
   };
   render() {
     return (
-      <div className="Aside">
-        <Grid container spacing={16} style={stylesBox1} direction={'column'} justify={'center'} align={'center'}>
+      <div className={cls.Aside}>
+        <Grid container spacing={16} className={cls.stylesBox1} direction={'column'} justify={'center'} align={'center'}>
           <Grid item xs={8}>
             <Grid container>
               <Grid item xs={12} sm={12}>
@@ -64,7 +51,7 @@ class Aside extends Component {
                 Lorem ipsum dolor sit ament, consectetur adipisicing elit.
               </Grid>
               <Grid item xs={12} sm={12} style={{paddingTop: 30}}>
-                <Button style={styleButton} onClick={this.handleOpen}>REGISTRATE AHORA</Button>
+                <Button className={cls.styleButton} onClick={this.handleOpen}>REGISTRATE AHORA</Button>
                 <Modal
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"

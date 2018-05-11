@@ -1,6 +1,20 @@
-.Aside{
+.Aside {
   /*background-image: url('../../assets/open.svg');
   background-repeat: no-repeat;
   background-size: 100%;*/
   padding-top: 8rem;
+}
+
+.stylesBox1 {
+  background-color: #0069a7;
+  color: #eee;
+  padding: 10r;
+  justify-content: center;
+};
+
+.styleButton {
+  font-family: Fabada;
+  background-color: #eee;
+  color: #0069a7;
+  text-align: center;
 }

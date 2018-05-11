@@ -48,24 +48,24 @@ function FullWidthGrid(props) {
             </Grid>
             <Grid item xs={12} sm={12} md={8}>
               <Paper className={classes.paper} elevation={0}>
-                <img align = 'right' className="imagetestimonialsMain" src="http://sunrise-treecare.com/wp-content/uploads/2016/08/testimonialssmiley.png" alt="AppLogo" />
+                <img align = 'right' className={cls.imagetestimonialsMain} src="http://sunrise-treecare.com/wp-content/uploads/2016/08/testimonialssmiley.png" alt="AppLogo" />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
-                <img className="imagetestimonials" src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
+                <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
                 <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
-                <img className="imagetestimonials" src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
+                <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
                 <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
-                <img className="imagetestimonials" src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
+                <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
                 <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
               </Paper>
             </Grid>

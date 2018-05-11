@@ -13,6 +13,9 @@ import AnchorLink from 'react-anchor-link-smooth-scroll';
 // Component
 import Logo from './img/logo.svg';
 
+// CSS
+import cls from './MenuResponsive.css'
+
 const styleAnchor = {
   textDecoration: 'none',
   color: 'rgba(0, 0, 0, 0.87)'
@@ -60,7 +63,7 @@ class MenuAppBar extends React.Component {
           <Toolbar>
             <Typography variant="title" color="inherit" className={classes.flex}>
               <AnchorLink style={ styleAnchor } href='#main'>
-                <img src={Logo} className="App-logo" alt="logo" />
+                <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
             {auth && (

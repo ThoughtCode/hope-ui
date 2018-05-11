@@ -1,6 +1,5 @@
 // Dependencias
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
 import grey from 'material-ui/colors/grey';
 import blue from 'material-ui/colors/blue';

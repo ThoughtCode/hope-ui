@@ -9,10 +9,6 @@ import Typography from 'material-ui/Typography';
 // Component
 import cls from './Testimonials.css'
 
-const styleTestimonials = {
-  padding: 90,
-};
-
 const styles = theme => ({
   root: {
     flexGrow: 1,

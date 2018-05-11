@@ -1,4 +1,7 @@
-export { registerClient } from './register';
+export {
+  registerClient,
+  registerAgent,
+} from './register';
 export {
   auth,
   facebookLogin,

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 
 import Button from 'material-ui/Button';
@@ -8,13 +7,13 @@ import Button from 'material-ui/Button';
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
 
-const stylesBox1 = {
-  backgroundColor: '#0069a7',
-  color: '#eee',
-  padding: 45,
-  justifyContent: 'center',
-  textAlign: 'center',
-};
+// const stylesBox1 = {
+//   backgroundColor: '#0069a7',
+//   color: '#eee',
+//   padding: 45,
+//   justifyContent: 'center',
+//   textAlign: 'center',
+// };
 
 class Register extends Component {
     state = {
@@ -95,6 +94,53 @@ class Register extends Component {
           valid: false,
           touched: false,
         },
+        national_id: {
+          elementType: 'input',
+          label: 'Cedula',
+          elementConfig: {
+            type: 'text',
+            placeholder: 'Cedula',
+          },
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        cell_phone: {
+          elementType: 'input',
+          label: 'Celular',
+          elementConfig: {
+            type: 'text',
+            placeholder: 'Celular',
+          },
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        birthday: {
+          elementType: 'input',
+          label: 'Fecha de nacimiento',
+          elementConfig: {
+            type: 'date',
+            placeholder: 'Fecha de nacimiento',
+            InputLabelProps: {
+              shrink: true,
+            },
+          },
+          value: '',
+          validation: {
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
       },
       formIsValid: false,
     }
@@ -145,10 +191,10 @@ class Register extends Component {
       for (const formElementIdentifier in this.state.registerForm) {
         formData[formElementIdentifier] = this.state.registerForm[formElementIdentifier].value;
       }
-      const customer = {
-        customer: formData,
+      const agent = {
+        agent: formData,
       };
-      this.props.onRegisterUser(customer);
+      this.props.onRegisterUser(agent);
     }
 
     inputChangedHandler = (event, controlName) => {
@@ -212,11 +258,10 @@ class Register extends Component {
       );
       return (
         <div>
-          <Grid container spacing={16} style={stylesBox1} justify="center">
+          <Grid container spacing={16} justify="center">
             <Grid item xs={12} sm={8}>
               <h1>Registro</h1>
               {form}
-              <Button component={Link} to="/cliente" style={{ margin: '10px 0' }}>Volver al login</Button>
             </Grid>
           </Grid>
         </div>
@@ -225,7 +270,7 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onRegisterUser: formData => dispatch(action.registerClient(formData)),
+  onRegisterUser: formData => dispatch(action.registerAgent(formData)),
 });
 
 export default connect(null, mapDispatchToProps)(Register);

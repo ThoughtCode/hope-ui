@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 import { withStyles } from 'material-ui/styles';
-import MenuItem from 'material-ui/Menu/MenuItem';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 
@@ -43,7 +42,6 @@ class TextFields extends React.Component {
   };
 
   render() {
-    const { classes } = this.props;
 
     return (
       <form style={{ backgroundColor: "#bfbfbf", padding: 20, borderRadius: 5, fontFamily: 'Fabada' }}>

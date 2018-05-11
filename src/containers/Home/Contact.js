@@ -1,49 +1,75 @@
 // Dependencias
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
-import Facebook from '../Img/Facebook.png';
-import Twitter from '../Img/Twitter.png';
+
 
 // Component
-import './Contact.css';
 import LogoNocNoc from '../Img/LogoBlanco.svg';
+import Twitter from '../Img/twittericon.svg';
+import Facebook from '../Img/facebookicon.svg';
+import './Contact.css';
 
-const stylesBox1 = {
+const stylesContact = {
   backgroundColor: '#0069a7',
   color: '#fff',
-  padding: 60,
+  padding: 90,
   textField: {
     color: "#ffffff",
   },
 };
 
-const style2 = {
-  paddingTop: 40,
-}
-
 const styleButton = {
   backgroundColor: '#eee',
   color: '#0069a7',
   fontFamily: 'Arial',
-}
+};
 
-class Contact extends Component {
-  render() {
-    return (
-      <div className="Contact" direction={'column'} style={stylesBox1} >
-        <Grid container spacing={16} justify='center'>
-          <Grid item xs={8}>
-            <Grid container>
-              <Grid item xs={12} sm={2}>
-                <Typography variant="headline" gutterBottom></Typography>
+const stylePaper = {
+  backgroundColor: 'transparent',
+  textAlign: 'left',
+  color: '#fff'
+};
+
+const Styleicon = {
+  height: '3rem',
+};
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 2,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+});
+
+function FullWidthGrid(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root} style={stylesContact}>
+      <Grid container spacing={24} justify="center">
+        <Grid item xs={12} md={8} sm={12}>
+          <Grid container>
+            
+            <Grid item xs={12} sm={12} md={4} lg={2}>
+              <Paper className={classes.paper} elevation={0} style={stylePaper}>
                 <Typography variant="title">
                   <img src={LogoNocNoc} height="100px" alt="Logo"></img>
                 </Typography>
-              </Grid>
-              <Grid item xs={12} sm={5} style={{ paddingRight: 30, paddingLeft: 30 }}>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={8} lg={5}>
+              <Paper className={classes.paper} elevation={0} style={stylePaper}>
                 <form>
                   <TextField id="email" label="E-mail" fullWidth margin = "normal" />
                   <TextField id="name" label="Full Name" fullWidth margin = "normal" />
@@ -54,26 +80,45 @@ class Contact extends Component {
                     </Grid>
                   </Grid>
                 </form>
-              </Grid>
-              <Grid item xs={12} sm={5} style={{ paddingLeft: 30 }}>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt numquam eius ducimus natus mollitia sequi nemo dicta.
-                <Grid container>
-                  <Grid item xs={12} style={style2}>
-                    <Typography gutterBottom style={{color:'#fff'}}>Teléfono:</Typography>
-                    <Typography gutterBottom style={{color:'#fff'}}>E-mail:</Typography>
+              </Paper>
+            </Grid>
+            
+            <Grid item xs={12} sm={6} md={12} lg={5}>
+              <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt numquam eius ducimus natus mollitia sequi nemo dicta.
+                    </Paper>
                   </Grid>
-                  <Grid item xs={12} style={style2}>
-                    <img src={Facebook} alt="Icon Facebook" style={{height:'150%', paddingRight: 60}} />
-                    <img src={Twitter} alt="Icon Twitter" style={{height:'150%'}} />
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                      <Typography gutterBottom style={{color:'#fff'}}>Teléfono:</Typography>
+                      <Typography gutterBottom style={{color:'#fff'}}>E-mail:</Typography>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
+                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                      <img src={Facebook} alt="AppLogo" style={Styleicon} />
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={3}>
+                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                      <img src={Twitter} alt="AppLogo" style={Styleicon} />
+                    </Paper>
                   </Grid>
                 </Grid>
-              </Grid>
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
-      </div>
-    );
-  }
+      </Grid>
+    </div>
+  );
 }
 
-export default (Contact);
+FullWidthGrid.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(FullWidthGrid);

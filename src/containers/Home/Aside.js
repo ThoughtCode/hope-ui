@@ -1,7 +1,5 @@
 // Dependencias
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Modal from 'material-ui/Modal';
@@ -40,16 +38,6 @@ function getModalStyle() {
   };
 }
 
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    width: theme.spacing.unit * 50,
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
-  },
-});
-
 
 class Aside extends Component {
   state = {
@@ -64,7 +52,6 @@ class Aside extends Component {
     this.setState({ open: false });
   };
   render() {
-    const { classes } = this.props;
     return (
       <div className="Aside">
         <Grid container spacing={16} style={stylesBox1} direction={'column'} justify={'center'} align={'center'}>
@@ -96,9 +83,5 @@ class Aside extends Component {
     );
   }
 }
-
-Aside.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default (Aside);

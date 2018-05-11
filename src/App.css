@@ -1,3 +1,12 @@
-.App-background-Download{
-  background-image: url("./containers/Img/BackgrounDownload.jpg");
+.MenuNone{
+  display: none;  
+}
+
+@media (max-width: 960px) {
+  .MenuNone {
+    display: block;
+  }
+  .MenuBar {
+  	display: none;
+  }
 }

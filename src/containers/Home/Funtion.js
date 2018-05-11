@@ -1,129 +1,159 @@
-// Dependencias
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import IconUno from '../Img/IconUno.svg'
-import IconDos from '../Img/IconDos.svg'
-import IconTres from '../Img/IconTres.svg'
-import Congratulation from '../Img/Congratulation.svg'
-import One from '../Img/One.png'
-import Two from '../Img/Two.png'
-import Three from '../Img/Three.png'
 
-// Component
-import './Funtion.css';
 
-class Funtion extends Component {
-  render() {
-    return (
-      <div className="Funtion">
-        <Grid container spacing={16} style={{ padding: 60 }} justify='center'>
-          <Grid item xs={8}>
-            <Grid container>
-              <Grid item xs={12} sm={12} align='center'>
-                <Typography variant="headline" gutterBottom >How it Works.</Typography>
-              </Grid>
+//Component
+import IconUno from '../Img/IconUno.svg';
+import IconDos from '../Img/IconDos.svg';
+import IconTres from '../Img/IconTres.svg';
+import Congratulation from '../Img/Congratulation.svg';
+import One from '../Img/One.png';
+import Two from '../Img/Two.png';
+import Three from '../Img/Three.png';
+
+const styles = theme => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 1,
+    textAlign: 'flex-end',
+  },
+});
+
+const Styleicon = {
+  height: '6rem',
+};
+
+const stylesFuntion = {
+  padding: 100,
+};
+
+function FullWidthGrid(props) {
+  const { classes } = props;
+
+  return (
+    <div className={classes.root} style={stylesFuntion}>
+      <Grid container spacing={24} justify="center">
+        <Grid item xs={12} md={8} sm={12}>
+          <Grid container>
+
+            <Grid item xs={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <Typography variant="headline" gutterBottom style={{textAlign: 'center', fontSize: '2rem'}} >How it Works.</Typography>
+              </Paper>
             </Grid>
-          </Grid>
-          <Grid item xs={6} >
-            <Grid container>
 
-              <Grid xs={12} sm={12}>
-                <Grid container style={{padding:30}}>
-                  <Grid xs={12} sm={2}>
-                    <Grid container>
-                      <img src={IconUno} alt="AppLogo" />
-                    </Grid>
-                  </Grid>
-                  <Grid xs={12} sm={10}>
-                    <Grid container>
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <img src={IconUno} alt="AppLogo" style={Styleicon} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0}>
                       <img src={One} alt="AppLogo" />
-                    </Grid>
-                    <Grid container>
-                      <Grid xs={12} sm={11}>
-                        <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
-                      </Grid>
-                      <Typography variant="subheadin" gutterBottom align="right">
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="subheading" gutterBottom>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       </Typography>
-                    </Grid>
+                    </Paper>
                   </Grid>
                 </Grid>
-              </Grid>
-
-              <Grid xs={12} sm={12}>
-                <Grid container style={{padding:30}}>
-                  
-                  <Grid xs={12} sm={10}>
-                    <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <img src={Two} alt="AppLogo" />
-                    </Grid>
-                    <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <Grid xs={12} sm={11} direction={'column'} justify={'end'} align={'end'}>
-                        <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
-                      </Grid>
-                      <Typography variant="subheadin" gutterBottom>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid xs={12} sm={2}>
-                    <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <img src={IconDos} alt="AppLogo" />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid xs={12} sm={12}>
-                <Grid container style={{padding:30}}>
-                  <Grid xs={12} sm={2}>
-                    <Grid container>
-                      <img src={IconTres} alt="AppLogo" />
-                    </Grid>
-                  </Grid>
-                  <Grid xs={12} sm={10}>
-                    <Grid container>
-                      <img src={Three} alt="AppLogo" />
-                    </Grid>
-                    <Grid container>
-                      <Grid xs={12} sm={11}>
-                        <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
-                      </Grid>
-                      <Typography variant="subheadin" gutterBottom align="right">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-
-              <Grid xs={12} sm={12}>
-                <Grid container style={{padding:30}}>
-                  <Grid xs={12} sm={10}>
-                    <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <Grid xs={12} sm={11} direction={'column'} justify={'end'} align={'end'}>
-                        <Typography variant="headline" gutterBottom>CONGRATULATIONS.</Typography>
-                      </Grid>
-                      <Typography variant="subheadin" gutterBottom>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid xs={12} sm={2}>
-                    <Grid container justify={'flex-end'} align={'flex-end'}>
-                      <img src={Congratulation} alt="AppLogo" />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-
+              </Paper>
             </Grid>
-          </Grid>
-        </Grid>
-      </div>
-    );
-  }
+
+            <Grid item xs={12} sm={10} style={{textAlign: 'right'}}>
+              <Paper className={classes.paper} elevation={0}>
+                <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0}>
+                      <img src={Two} alt="AppLogo" />
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="subheading" gutterBottom>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Paper className={classes.paper} elevation={0}>
+                <img src={IconDos} alt="AppLogo" style={Styleicon} />
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <img src={IconTres} alt="AppLogo" style={Styleicon} />
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0}>
+                      <img src={Three} alt="AppLogo" />
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="subheading" gutterBottom>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+
+            <Grid item xs={12} sm={10} style={{textAlign: 'right'}}>
+              <Paper className={classes.paper} elevation={0}>
+                <Grid container spacing={24}>
+                  <Grid item xs={12}>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="headline" gutterBottom>CONGRATULATIONS.</Typography>
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="subheading" gutterBottom>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                      </Typography>
+                    </Paper>
+                  </Grid>
+                </Grid>
+              </Paper>
+            </Grid>
+            <Grid item xs={12} sm={2}>
+              <Paper className={classes.paper} elevation={0}>
+                <img src={Congratulation} alt="AppLogo" style={Styleicon} />
+              </Paper>
+            </Grid>
+
+          </Grid>  
+        </Grid>  
+      </Grid>
+    </div>
+  );
 }
 
-export default (Funtion);
+FullWidthGrid.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(FullWidthGrid);

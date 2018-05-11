@@ -1,6 +1,5 @@
 // Dependencias
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -27,7 +26,7 @@ function getModalStyle() {
 }
 
 const style = {
-  padding: 90,
+  padding: 60,
   paddingTop: 200,
   color: "#c6c5c5",
   fontSize: '1.5rem',
@@ -38,6 +37,7 @@ const styleButton = {
   backgroundColor: "#0069a7",
   color: "#fff",
   marginTop: 10,
+  fontSize: '1.4rem',
 };
 
 const styles = theme => ({
@@ -61,16 +61,16 @@ class Main extends Component {
 
   handleClose = () => {
     this.setState({ open: false });
-  };
+  }
 
   render() {
     return (
       <div className="Main">
         <Grid container spacing={24} style={ style } justify='center' className="Main-bg">
-          <Grid item xs={8}>
+          <Grid item xs={12} md={8} sm={12}>
             <Grid container>
               <Grid item xs={12} sm={8}>
-                <Typography variant="headline" gutterBottom style={{ color: "#0069a7" }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Typography>
+                <Typography variant="headline" gutterBottom style={{ color:'#0069a7', fontSize: '2rem' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Typography>
               </Grid>
               <Grid item xs={12} sm={4} align="right">
                 <Button onClick={this.handleOpen} color="secondary" style={ styleButton }>REGÍSTRATE</Button>
@@ -88,10 +88,10 @@ class Main extends Component {
               </Grid>
             </Grid>
           </Grid>
-          <Grid item xs={8} >
+          <Grid item xs={12} md={8} sm={12}>
             <Grid container>
               <Grid item xs={12} sm={8}>
-                <Typography variant="subheadin" gutterBottom style={{ paddingTop: 40, fontFamily: 'Fabada' }}>
+                <Typography variant="subheading" gutterBottom style={{ color: '#000', paddingTop: 40, fontFamily: 'Fabada' }}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </Typography>
               </Grid>
@@ -102,10 +102,6 @@ class Main extends Component {
     );
   }
 }
-
-Main.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 const RegistroWa = withStyles(styles)(Main);
 

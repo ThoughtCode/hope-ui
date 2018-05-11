@@ -1,3 +1,6 @@
-.Testimonials{
-  height: 100vh;
+.imagetestimonialsMain{
+  width: 100%;
+}
+.imagetestimonials{
+  width: 80%;
 }

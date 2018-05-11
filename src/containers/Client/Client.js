@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Grid from 'material-ui/Grid';
 
 // COMPONENTES
-import MenuBar from '../../containers/MenuBar/MenuBarClientRes';
+import MenuBar from '../../containers/MenuBar/MenuBar';
 import './Client.css'
 
 const style = {

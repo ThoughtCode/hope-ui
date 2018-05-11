@@ -1,3 +1,4 @@
+// Dependencias
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
@@ -7,9 +8,15 @@ import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
+import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 // Component
 import Logo from './img/logo.svg';
+
+const styleAnchor = {
+  textDecoration: 'none',
+  color: 'rgba(0, 0, 0, 0.87)'
+};
 
 const styles = {
   root: {
@@ -49,10 +56,12 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar>
+        <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
           <Toolbar>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              <img src={Logo} className="App-logo" alt="logo" />
+              <AnchorLink style={ styleAnchor } href='#main'>
+                <img src={Logo} className="App-logo" alt="logo" />
+              </AnchorLink>
             </Typography>
             {auth && (
               <div>
@@ -78,10 +87,18 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Descargas</MenuItem>
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Cómo Funciona</MenuItem>
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Testimonios</MenuItem>
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>Contactos</MenuItem>
+                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='#download'>Descargas</AnchorLink>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='#works'>Cómo Funciona</AnchorLink>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='#testimonios'>Testimonios</AnchorLink>
+                  </MenuItem>
+                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='#contact'>Contactos</AnchorLink>
+                  </MenuItem>
                 </Menu>
               </div>
             )}

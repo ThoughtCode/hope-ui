@@ -9,7 +9,7 @@ import { MenuItem } from 'material-ui/Menu';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 
 // Component
-import './css/MenuBar.css';
+import cls from './css/MenuBar.css';
 import Logo from './img/logo.svg';
 
 const styleAnchor = {
@@ -60,7 +60,7 @@ class MenuAppBar extends React.Component {
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
             <Typography variant="title" color="secondary" className={classes.flex}>
               <AnchorLink style={ styleAnchor } href='#main'>
-                <img src={Logo} className="App-logo" alt="logo" />
+                <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
             <MenuItem style={{fontFamily: 'Arial'}}>

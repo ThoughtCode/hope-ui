@@ -7,7 +7,7 @@ import blue from 'material-ui/colors/blue';
 import Typography from 'material-ui/Typography';
 
 // Component
-import '../../App.css';
+import classes from '../../App.css';
 import MenuBar from '../../containers/MenuBar/MenuBar';
 import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../containers/Home/Main';
@@ -26,9 +26,6 @@ const styles = myTheme => ({
 });
 
 class Home extends Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
   render() {
     const theme = createMuiTheme({
       palette:{
@@ -57,10 +54,10 @@ class Home extends Component {
     return (
       <MuiThemeProvider theme={theme}>
         <div>
-          <div className="MenuBar">
+          <div className={classes.MenuBar}>
             <MenuBar />
           </div>
-          <div className="MenuNone" >
+          <div className={classes.MenuNone} >
             <MenuResponsive />
           </div>
           <div id="main">
@@ -88,4 +85,4 @@ class Home extends Component {
   }
 }
 
-export default withStyles(styles) (Home);
+export default withStyles(styles)(Home);

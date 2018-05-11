@@ -24,7 +24,6 @@ const styles = {
     },
 };
 class Client extends Component {
-    
     render () {
         const { classes } = this.props;
         return (

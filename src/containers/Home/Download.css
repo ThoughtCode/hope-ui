@@ -2,5 +2,6 @@
   background-image: url('../Img/BackgrounDownload.jpg');
   background-repeat: no-repeat;
   background-size: 100rem;
-  height: 100vh
+  height: 100vh;
+  flex-grow: 1;
 }

@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography';
 //Component
 import GooglePlay from '../Img/GooglePlay.png';
 import AppStore from '../Img/AppStore.png';
-import './Download.css';
+import cls from './Download.css';
 
 const stylesDownload = {
   padding: 60,
@@ -20,9 +20,6 @@ const stylePaper = {
 }
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing.unit * 2,
     textAlign: 'left',
@@ -33,7 +30,7 @@ function Download(props) {
   const { classes } = props;
 
   return (
-    <div className="{classes.root}, Download" style={stylesDownload}>
+    <div className={cls.Download} style={stylesDownload}>
       <Grid container spacing={24} justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
@@ -75,9 +72,5 @@ function Download(props) {
     </div>
   );
 }
-
-Download.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(Download);

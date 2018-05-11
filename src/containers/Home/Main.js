@@ -7,7 +7,7 @@ import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 
 // Component
-import './Main.css';
+import classes from './Main.css';
 import Registro from '../../components/Client/Register/Register';
 
 function rand() {
@@ -65,7 +65,7 @@ class Main extends Component {
 
   render() {
     return (
-      <div className="Main">
+      <div className={classes.Main}>
         <Grid container spacing={24} style={ style } justify='center' className="Main-bg">
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>

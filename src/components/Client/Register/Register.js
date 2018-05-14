@@ -212,7 +212,11 @@ class Register extends Component {
       );
       return (
         <div>
+<<<<<<< Updated upstream
           <Grid container spacing={16} style={stylesBox1} justify='center'>
+=======
+          <Grid container spacing={16} style={this.props.formClass} justify="center">
+>>>>>>> Stashed changes
             <Grid item xs={12} sm={8}>
               <h1>Registro</h1>
               {form}

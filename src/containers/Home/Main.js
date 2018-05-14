@@ -7,23 +7,8 @@ import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
 
 // Component
-import classes from './Main.css';
+import cls from './Main.css';
 import Registro from '../../components/Client/Register/Register';
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 0 + rand();
-  const left = 0 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
 
 const style = {
   padding: 60,
@@ -64,9 +49,10 @@ class Main extends Component {
   }
 
   render() {
+    const { classes } = this.props;
     return (
-      <div className={classes.Main}>
-        <Grid container spacing={24} style={ style } justify='center' className="Main-bg">
+      <div className={cls.Main}>
+        <Grid container spacing={24} style={ style } justify="center" className="Main-bg">
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>
               <Grid item xs={12} sm={8}>
@@ -80,9 +66,8 @@ class Main extends Component {
                   open={this.state.open}
                   onClose={this.handleClose}
                 >
-                  <div style={getModalStyle()}>
+                  <div className={`${cls.Modal} ${classes.paper}`}>
                     <Registro />
-                    <RegistroWa />
                   </div>
                 </Modal>
               </Grid>
@@ -105,4 +90,4 @@ class Main extends Component {
 
 const RegistroWa = withStyles(styles)(Main);
 
-export default Main;
+export default RegistroWa;

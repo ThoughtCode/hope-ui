@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         users: state.users.concat(newAgent),
       };
-    case actionTypes.REGISTER_CLIENT_FAIL:
+    case actionTypes.REGISTER_AGENT_FAIL:
       return {
         ...state,
       };

@@ -6,3 +6,13 @@
   background-size: 100rem;
   height: 100vh;
 }
+
+.Test {
+  background-color: black;
+}
+
+.Applogo {
+  height: 3.5rem;
+  margin: 0.5rem;
+  margin-left: 2rem;
+}

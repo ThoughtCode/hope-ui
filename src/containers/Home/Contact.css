@@ -1,4 +1,4 @@
-.MuiInput-underline-238:hover:not(.MuiInput-disabled-237):before{
+/* .MuiInput-underline-238:hover:not(.MuiInput-disabled-237):before{
   background-color: #fff !important;
 }
 .MuiInput-underline-238:before{
@@ -10,35 +10,64 @@
 
 .MuiFormLabel-root-229, .MuiInput-root-234 {
   color: #fff !important;
+} */
+
+.Contact {
+  background-color: #0069A7 !important;
+  color: #fff !important;
+  padding: 90px !important;
+  flex-grow: 1 !important;
 }
 
-.stylesContact {
-  background-color: '#0069a7';
-  color: #fff;
-  padding: 90;
-  flex-grow: 1;
+.textField > label {
+   color: #ffffff !important;
 }
 
-.textField {
-   color: "#ffffff";
+.textField > div:before {
+  background-color: #ffffff !important;
 }
 
-.styleButton {
-  background-color: #eee;
-  color: #0069a7;
-  font-family: Arial;
+.textField > div:after {
+  background-color: #ffffff !important;
+}
+
+.textField > div > input {
+  color: #ffffff !important;
+}
+
+.textField > div > textarea {
+  color: #ffffff !important;
+}
+
+.MuiInput-underline-236:after {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  content: "";
+  position: absolute;
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+  pointer-events: none;
+  background-color: #fff;
+}
+
+.Button {
+  background-color: #eee !important;
+  color: #0069a7 !important;
+  font-family: Arial !important;
 }
 
 .style2 {
-  padding-top: 40;
+  padding-top: 40px !important;
 }
 
-.stylePaper {
-  backgroundColor: transparent;
-  textAlign: left;
-  color: #fff;
+.Paper {
+  background-color: transparent !important;
+  text-align: left !important;
+  color: #fff !important;
 }
 
 .Styleicon {
-  height: 3rem;
+  height: 3rem !important;
 }

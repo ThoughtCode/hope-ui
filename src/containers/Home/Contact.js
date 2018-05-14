@@ -13,37 +13,9 @@ import Button from 'material-ui/Button';
 import LogoNocNoc from '../Img/LogoBlanco.svg';
 import Twitter from '../Img/twittericon.svg';
 import Facebook from '../Img/facebookicon.svg';
-import './Contact.css';
-
-const stylesContact = {
-  backgroundColor: '#0069a7',
-  color: '#fff',
-  padding: 90,
-  textField: {
-    color: "#ffffff",
-  },
-};
-
-const styleButton = {
-  backgroundColor: '#eee',
-  color: '#0069a7',
-  fontFamily: 'Arial',
-};
-
-const stylePaper = {
-  backgroundColor: 'transparent',
-  textAlign: 'left',
-  color: '#fff'
-};
-
-const Styleicon = {
-  height: '3rem',
-};
+import cls from './Contact.css';
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
   paper: {
     padding: theme.spacing.unit * 2,
     textAlign: 'center',
@@ -52,16 +24,14 @@ const styles = theme => ({
 });
 
 function FullWidthGrid(props) {
-  const { classes } = props;
-
   return (
-    <div className={classes.root} style={stylesContact}>
+    <div className={cls.stylesContact}>
       <Grid container spacing={24} justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             
             <Grid item xs={12} sm={12} md={4} lg={2}>
-              <Paper className={classes.paper} elevation={0} style={stylePaper}>
+              <Paper className={cls.styleSPaper} elevation={0}>
                 <Typography variant="title">
                   <img src={LogoNocNoc} height="100px" alt="Logo"></img>
                 </Typography>
@@ -69,14 +39,14 @@ function FullWidthGrid(props) {
             </Grid>
             
             <Grid item xs={12} sm={6} md={8} lg={5}>
-              <Paper className={classes.paper} elevation={0} style={stylePaper}>
+              <Paper className={cls.stylePaper} elevation={0}>
                 <form>
                   <TextField id="email" label="E-mail" fullWidth margin = "normal" />
                   <TextField id="name" label="Full Name" fullWidth margin = "normal" />
                   <TextField id="multiline-static" label="Message" multiline rows="4" fullWidth margin = "normal" />
                   <Grid container justify='flex-end'>
                     <Grid item>
-                      <Button style={styleButton}>ENVIAR</Button>
+                      <Button className={cls.styleButton}>ENVIAR</Button>
                     </Grid>
                   </Grid>
                 </form>
@@ -84,27 +54,27 @@ function FullWidthGrid(props) {
             </Grid>
             
             <Grid item xs={12} sm={6} md={12} lg={5}>
-              <Paper className={classes.paper} elevation={0} style={stylePaper}>
+              <Paper className={cls.stylePaper} elevation={0}>
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                    <Paper className={cls.stylePaper} elevation={0}>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt numquam eius ducimus natus mollitia sequi nemo dicta.
                     </Paper>
                   </Grid>
                   <Grid item xs={12}>
-                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
+                    <Paper className={cls.stylePaper} elevation={0}>
                       <Typography gutterBottom style={{color:'#fff'}}>Teléfono:</Typography>
                       <Typography gutterBottom style={{color:'#fff'}}>E-mail:</Typography>
                     </Paper>
                   </Grid>
                   <Grid item xs={12} sm={3}>
-                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
-                      <img src={Facebook} alt="AppLogo" style={Styleicon} />
+                    <Paper className={cls.stylePaper} elevation={0}>
+                      <img src={Facebook} alt="AppLogo" className={cls.Styleicon} />
                     </Paper>
                   </Grid>
                   <Grid item xs={12} sm={3}>
-                    <Paper className={classes.paper} elevation={0} style={stylePaper}>
-                      <img src={Twitter} alt="AppLogo" style={Styleicon} />
+                    <Paper className={cls.stylePaper} elevation={0}>
+                      <img src={Twitter} alt="AppLogo" className={cls.Styleicon} />
                     </Paper>
                   </Grid>
                 </Grid>

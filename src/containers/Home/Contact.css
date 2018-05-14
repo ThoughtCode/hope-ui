@@ -11,3 +11,34 @@
 .MuiFormLabel-root-229, .MuiInput-root-234 {
   color: #fff !important;
 }
+
+.stylesContact {
+  background-color: '#0069a7';
+  color: #fff;
+  padding: 90;
+  flex-grow: 1;
+}
+
+.textField {
+   color: "#ffffff";
+}
+
+.styleButton {
+  background-color: #eee;
+  color: #0069a7;
+  font-family: Arial;
+}
+
+.style2 {
+  padding-top: 40;
+}
+
+.stylePaper {
+  backgroundColor: transparent;
+  textAlign: left;
+  color: #fff;
+}
+
+.Styleicon {
+  height: 3rem;
+}

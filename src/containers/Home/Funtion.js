@@ -7,13 +7,13 @@ import Typography from 'material-ui/Typography';
 
 
 //Component
-import IconUno from '../Img/IconUno.svg';
-import IconDos from '../Img/IconDos.svg';
-import IconTres from '../Img/IconTres.svg';
-import Congratulation from '../Img/Congratulation.svg';
-import One from '../Img/One.png';
-import Two from '../Img/Two.png';
-import Three from '../Img/Three.png';
+import IconUno from '../../assets/IconUno.svg';
+import IconDos from '../../assets/IconDos.svg';
+import IconTres from '../../assets/IconTres.svg';
+import Congratulation from '../../assets/Congratulation.svg';
+import One from '../../assets/One.png';
+import Two from '../../assets/Two.png';
+import Three from '../../assets/Three.png';
 
 const styles = theme => ({
   root: {
@@ -48,12 +48,12 @@ function FullWidthGrid(props) {
               </Paper>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
                 <img src={IconUno} alt="AppLogo" style={Styleicon} />
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={10}>
               <Paper className={classes.paper} elevation={0}>
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
@@ -98,12 +98,12 @@ function FullWidthGrid(props) {
               </Paper>
             </Grid>
 
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
                 <img src={IconTres} alt="AppLogo" style={Styleicon} />
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12} sm={10}>
               <Paper className={classes.paper} elevation={0}>
                 <Grid container spacing={24}>
                   <Grid item xs={12}>

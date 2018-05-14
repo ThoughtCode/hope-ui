@@ -1,35 +1,76 @@
 // DEPENDENCIAS
 import React, { Component } from 'react';
-import Grid from 'material-ui/Grid';
 
 // COMPONENTES
 import MenuBar from '../../containers/MenuBar/MenuBar';
-import './Client.css'
+import cls from './Client.css'
+import Jumbotron from '../../components/Client/Jumbotron/Jumbotron';
+import Services from '../../components/Client/Services/Services';
+import NextJobs from '../../components/Client/NextJobs/NextJobs';
+import PastJobs from '../../components/Client/PastJobs/PastJobs';
 
-const style = {
-  paddingTop: 50,
-};
 
-class Agent extends Component {
+class Client extends Component {
+  state = {
+    services: [
+      {
+        id: 1,
+        name: 'Limpieza de casa'
+      },
+      {
+        id: 2,
+        name: 'Limpieza de auto'
+      },
+      {
+        id: 3,
+        name: 'Limpieza de ventana'
+      },
+    ],
+    jobs: [
+      {
+        "id": "5aeb490a483a2766d2d8b681",
+        "type": "job",
+        "attributes": {
+          "id": 34,
+          "property_id": 1,
+          "started_at": "2018-05-03T21:54:21.000Z",
+          "finished_at": "2018-05-04T02:54:21.000Z",
+          "duration": 5,
+          "total": 50,
+          "status": 0,
+          "job_details": [
+            {
+              "id": 100,
+              "service_id": 2,
+              "value": 1,
+              "time": 2,
+              "price_total": 20,
+              "service": {
+                  "id": 2,
+                  "service_type_id": 1,
+                  "type_service": "addon",
+                  "name": "Limpieza de ventanas",
+                  "quantity": false,
+                  "time": 2,
+                  "price": 20
+              }
+            },    
+          ]
+        }
+      },
+    ],
+  }
   render () {
     return (
-      <div className="Agent">
-        <MenuBar />
-        <Grid container className="Agent" spacing={24} justify='center' style={ style }>
-          <Grid item xs={8}>
-            <Grid container>
-              <Grid item xs={12} sm={8}>
-                Hola
-              </Grid>
-              <Grid item xs={12} sm={4}>
-                Hola Mundo
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+      <div className={cls.Client}>
+        <MenuBar className={cls.Menu} />
+        <Jumbotron />
+        <Services services={this.state.services} />
+        <NextJobs jobs={this.state.jobs}/>
+        <PastJobs jobs={this.state.jobs} />
       </div>
     );
   }
 }
 
-export default Agent;
+export default Client;

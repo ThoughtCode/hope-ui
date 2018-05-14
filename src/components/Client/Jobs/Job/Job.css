@@ -1,0 +1,23 @@
+.Card {
+  padding: 10px !important;
+  max-width: 100%;
+  border-radius: 5px !important;
+}
+
+.CardDate {
+  padding: 5px 5px;
+  background-color: #0069a7;
+  border-radius: 3px;
+}
+
+.CardDateTypo {
+  color: white !important;
+}
+
+.CardSubTitle {
+  padding: 5px 5px;
+}
+
+.CardParragraph {
+  color: #0069a7 !important;
+}

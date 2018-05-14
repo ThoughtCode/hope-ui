@@ -1,11 +1,11 @@
 // Core Imports
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
 // CSS Framework Imports
 import { withStyles } from 'material-ui/styles';
 import Card, { CardContent, CardMedia } from 'material-ui/Card';
 import Typography from 'material-ui/Typography';
+
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 

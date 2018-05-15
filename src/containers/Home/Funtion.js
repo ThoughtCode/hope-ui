@@ -14,6 +14,7 @@ import Congratulation from '../../assets/Congratulation.svg';
 import One from '../../assets/One.png';
 import Two from '../../assets/Two.png';
 import Three from '../../assets/Three.png';
+import cls from './Funtion.css'
 
 const styles = theme => ({
   root: {
@@ -25,32 +26,24 @@ const styles = theme => ({
   },
 });
 
-const Styleicon = {
-  height: '6rem',
-};
-
-const stylesFuntion = {
-  padding: 100,
-};
-
 function FullWidthGrid(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root} style={stylesFuntion}>
-      <Grid container spacing={24} justify="center">
+    <div className={`${classes.root} ${cls.stylesFuntion}`}>
+      <Grid container justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
 
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom style={{textAlign: 'center', fontSize: '2rem'}} >How it Works.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra} align="center" >How it Works.</Typography>
               </Paper>
             </Grid>
 
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
-                <img src={IconUno} alt="AppLogo" style={Styleicon} />
+                <img src={IconUno} alt="AppLogo" className={cls.Styleicon} />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={10}>
@@ -58,13 +51,13 @@ function FullWidthGrid(props) {
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
-                      <img src={One} alt="AppLogo" />
+                      <img src={One} alt="AppLogo" className={cls.imgicon} />
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       </Typography>
                     </Paper>
@@ -78,13 +71,13 @@ function FullWidthGrid(props) {
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
-                      <img src={Two} alt="AppLogo" />
+                      <img src={Two} alt="AppLogo" className={cls.imgicon}/>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       </Typography>
                     </Paper>
@@ -94,13 +87,13 @@ function FullWidthGrid(props) {
             </Grid>
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
-                <img src={IconDos} alt="AppLogo" style={Styleicon} />
+                <img src={IconDos} alt="AppLogo" className={cls.Styleicon} />
               </Paper>
             </Grid>
 
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
-                <img src={IconTres} alt="AppLogo" style={Styleicon} />
+                <img src={IconTres} alt="AppLogo" className={cls.Styleicon} />
               </Paper>
             </Grid>
             <Grid item xs={12} sm={10}>
@@ -108,13 +101,13 @@ function FullWidthGrid(props) {
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
-                      <img src={Three} alt="AppLogo" />
+                      <img src={Three} alt="AppLogo" className={cls.imgicon} />
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       </Typography>
                     </Paper>
@@ -128,10 +121,10 @@ function FullWidthGrid(props) {
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom>CONGRATULATIONS.</Typography>
+                      <Typography variant="subheading" gutterBottom className={cls.congratulation}>CONGRATULATIONS.</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="subheading" gutterBottom>
+                      <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                       </Typography>
                     </Paper>
@@ -141,7 +134,7 @@ function FullWidthGrid(props) {
             </Grid>
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
-                <img src={Congratulation} alt="AppLogo" style={Styleicon} />
+                <img src={Congratulation} alt="AppLogo" className={cls.Styleicon} />
               </Paper>
             </Grid>
 

@@ -26,14 +26,14 @@ const styles = theme => ({
 function FullWidthGrid(props) {
   return (
     <div className={cls.Contact}>
-      <Grid container spacing={24} justify="center">
+      <Grid container justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             
             <Grid item xs={12} sm={12} md={4} lg={2}>
               <Paper className={cls.Paper} elevation={0}>
                 <Typography variant="title">
-                  <img src={LogoNocNoc} height="100px" alt="Logo"></img>
+                  <img src={LogoNocNoc} height="100px" alt="Logo" className={cls.LogoNocNoc}></img>
                 </Typography>
               </Paper>
             </Grid>
@@ -55,7 +55,7 @@ function FullWidthGrid(props) {
             
             <Grid item xs={12} sm={6} md={12} lg={5}>
               <Paper className={cls.Paper} elevation={0}>
-                <Grid container spacing={24}>
+                <Grid container>
                   <Grid item xs={12}>
                     <Paper className={cls.Paper} elevation={0}>
                       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt numquam eius ducimus natus mollitia sequi nemo dicta.
@@ -67,12 +67,12 @@ function FullWidthGrid(props) {
                       <Typography gutterBottom style={{color:'#fff'}}>E-mail:</Typography>
                     </Paper>
                   </Grid>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item xs={4} sm={3}>
                     <Paper className={cls.Paper} elevation={0}>
                       <img src={Facebook} alt="AppLogo" className={cls.Styleicon} />
                     </Paper>
                   </Grid>
-                  <Grid item xs={12} sm={3}>
+                  <Grid item xs={4} sm={3}>
                     <Paper className={cls.Paper} elevation={0}>
                       <img src={Twitter} alt="AppLogo" className={cls.Styleicon} />
                     </Paper>

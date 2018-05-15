@@ -8,14 +8,6 @@ import Button from 'material-ui/Button';
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
 
-const stylesBox1 = {
-  backgroundColor: '#0069a7',
-  color: '#eee',
-  padding: 45,
-  justifyContent: 'center',
-  textAlign: 'center',
-};
-
 class Register extends Component {
     state = {
       registerForm: {
@@ -212,11 +204,7 @@ class Register extends Component {
       );
       return (
         <div>
-<<<<<<< Updated upstream
-          <Grid container spacing={16} style={stylesBox1} justify='center'>
-=======
           <Grid container spacing={16} style={this.props.formClass} justify="center">
->>>>>>> Stashed changes
             <Grid item xs={12} sm={8}>
               <h1>Registro</h1>
               {form}

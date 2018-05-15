@@ -10,9 +10,9 @@ import Button from 'material-ui/Button';
 
 
 // Component
-import LogoNocNoc from '../Img/LogoBlanco.svg';
-import Twitter from '../Img/twittericon.svg';
-import Facebook from '../Img/facebookicon.svg';
+import LogoNocNoc from '../../assets/LogoBlanco.svg';
+import Twitter from '../../assets/twittericon.svg';
+import Facebook from '../../assets/facebookicon.svg';
 import cls from './Contact.css';
 
 const styles = theme => ({

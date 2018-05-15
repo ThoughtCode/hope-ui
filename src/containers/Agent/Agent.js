@@ -4,7 +4,7 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 // COMPONENTES
-import AppLogo from '../../containers/Img/Logo.svg';
+import AppLogo from '../../assets/Logo.svg';
 import From from './Form/Form';
 import './Agent.css'
 

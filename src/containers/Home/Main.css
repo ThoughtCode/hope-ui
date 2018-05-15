@@ -2,7 +2,7 @@
   background-attachment: fixed;
   background-image: url('../../assets/BackgrounMain.jpg');
   background-repeat: no-repeat;
-  background-size: 100rem;
+  background-size: cover;
   height: 100vh;
 }
 
@@ -10,4 +10,66 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.style {
+  padding: 60px;
+  padding-top: 200px;
+  color: #c6c5c5;
+  font-size: 1.5rem;
+}
+
+.StyleButton {
+  font-family: Arial !important;
+  background-color: #0069a7 !important;
+  color: #fff !important;
+  margin-top: 10px !important;
+  font-size: 1.4rem !important;
+}
+
+.Typogra {
+  color: #0069a7 !important;
+  font-size: 2rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Main {
+  	background-attachment: fixed;
+	  background-size: auto;
+	  height: 100vh;
+  }
+  .style {
+    padding: 40px;
+    padding-top: 120px;
+    font-size: 0.5rem !important;
+  }
+  .Typogra {
+  	font-size: 1.4rem !important;
+  	text-align: justify;
+  }
+  .SubTypogra {
+  	font-size: 1rem !important;
+  	text-align: justify;
+  	padding-top: 2rem;
+  }
+  .MuiGrid-item-3 .MuiGrid-grid-xs-12-39 .MuiGrid-grid-sm-4-44 {
+  	align: center;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .style {
+    padding: 40px;
+    padding-top: 200px;
+    font-size: 0.5rem !important;
+  }
+  .Typogra {
+  	font-size: 2rem !important;
+  }
+  .SubTypogra {
+  	padding-top: 2rem;
+  }
+  .Typogra {
+  	font-size: 1rem;
+  }
 }

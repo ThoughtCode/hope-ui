@@ -40,12 +40,12 @@ class Aside extends Component {
   };
   render() {
     return (
-      <div className={cls.Aside}>
-        <Grid container spacing={16} className={cls.stylesBox1} direction={'column'} justify={'center'} align={'center'}>
-          <Grid item xs={8}>
+      <div>
+        <Grid container className={cls.Aside} direction={'column'} justify={'center'} align={'center'}>
+          <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12} sm={12}>
-                <Typography variant="headline" gutterBottom style={{color: "#fff"}}>Lorem ipsum dolor sit ament, consectetur adipisicing elit.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit ament, consectetur adipisicing elit.</Typography>
               </Grid>
               <Grid item xs={12} sm={12} style={{paddingTop: 30}}>
                 Lorem ipsum dolor sit ament, consectetur adipisicing elit.

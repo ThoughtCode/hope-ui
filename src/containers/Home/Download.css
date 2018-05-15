@@ -1,7 +1,27 @@
 .Download{
   background-image: url('../../assets/BackgrounDownload.jpg');
   background-repeat: no-repeat;
-  background-size: 100rem;
+  background-size: cover;
   height: 100vh;
   flex-grow: 1;
+}
+
+.stylesDownload {
+  padding: 60px;
+  padding-top: 180px;
+}
+
+.Typogra {
+  font-size: 2rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .stylesDownload {
+    padding: 0.5rem;
+    padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+  }
 }

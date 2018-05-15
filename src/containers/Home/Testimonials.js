@@ -25,21 +25,27 @@ function FullWidthGrid(props) {
 
   return (
     <div className={classes.root}>
-      <Grid container spacing={24} className={cls.styleTestimonials} justify="center">
+      <Grid container className={cls.styleTestimonials} justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom>Testimonials</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Testimonials</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={12} md={4}>
               <Paper className={classes.paper} elevation={0}>
-                <Paper className={classes.paper} elevation={0}>
-                  <i className="material-icons">home</i>
-                </Paper>
-                <Typography variant="headline" gutterBottom>Lorem ipsum dolor.</Typography>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates.
+                <Grid container>
+                  <Grid item xs={2} md={12}>
+                    <i className="material-icons" >home</i>
+                  </Grid>
+                  <Grid item xs={10} md={12}>
+                    <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
+                  </Grid>
+                  <Grid item xs={12} className={cls.SubSubTypogra}>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates.
+                  </Grid>
+                </Grid>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={12} md={8}>
@@ -50,19 +56,19 @@ function FullWidthGrid(props) {
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
                 <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
-                <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
+                <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
                 <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
-                <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
+                <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
               <Paper className={classes.paper} elevation={0}>
                 <img className={cls.imagetestimonials} src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo" />
-                <Typography variant="headline" gutterBottom>"Testimonials 1"</Typography>
+                <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
               </Paper>
             </Grid>
           </Grid>

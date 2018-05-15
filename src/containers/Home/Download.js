@@ -9,11 +9,6 @@ import GooglePlay from '../../assets/GooglePlay.png';
 import AppStore from '../../assets/AppStore.png';
 import cls from './Download.css';
 
-const stylesDownload = {
-  padding: 60,
-  paddingTop: 180,
-};
-
 const stylePaper = {
   backgroundColor: 'transparent',
 }
@@ -29,15 +24,15 @@ function Download(props) {
   const { classes } = props;
 
   return (
-    <div className={cls.Download} style={stylesDownload}>
-      <Grid container spacing={24} justify="center">
+    <div className={`${cls.Download} ${cls.stylesDownload}`}>
+      <Grid container justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             <Grid item xs={12} sm={8} lg={6}>
               <Paper className={classes.paper} elevation={0} style={stylePaper}>
                 <Grid item xs={12}>
                   <Paper className={classes.paper} elevation={0} style={stylePaper}>
-                    <Typography variant="headline" gutterBottom align="left" style={{ fontSize: '2rem' }}>Download our Download</Typography>
+                    <Typography variant="headline" gutterBottom align="left" className={cls.Typogra}>Download our Download</Typography>
                   </Paper>
                 </Grid>
                 <Grid item xs={12}>

@@ -1,3 +1,7 @@
+.styleTestimonials {
+  padding: 60px;
+  padding-top: 180px;
+}
 .imagetestimonialsMain{
   width: 100%;
 }
@@ -5,6 +9,29 @@
   width: 80%;
 }
 
-.styleTestimonials {
-  padding: 90px;
-};
+@media only screen and (max-width: 600px) {
+  .styleTestimonials {
+  	padding: 2rem;
+  	padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+  	font-weight: bold !important;
+  }
+  .SubTypogra {
+  	font-size: 1rem !important;
+  }
+  .SubSubTypogra{
+  	text-align: justify;
+  }
+  .SubTytle{
+  	font-size: 1rem !important;
+  	font-weight: bold !important;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .styleTestimonials {
+    padding-top: 5rem;
+  }
+}

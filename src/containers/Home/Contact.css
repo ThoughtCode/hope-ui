@@ -71,3 +71,36 @@
 .Styleicon {
   height: 3rem !important;
 }
+
+@media only screen and (max-width: 600px) {
+  .Contact {
+    padding: 2rem !important;
+    padding-top: 2rem !important;
+    flex-grow: 1 !important;
+  }
+  .LogoNocNoc{
+    display: none !important;
+  }
+  .textField{
+    font-size: 0.5rem !important;
+  }
+  .Paper{
+    font-size: 0.6rem !important;
+    padding-top: 0.5rem;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .LogoNocNoc{
+    display: block;
+  }
+  .Paper{
+    padding: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .Paper{
+    padding: 0.5rem !important;
+  }
+}

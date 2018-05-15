@@ -4,7 +4,6 @@ import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles
 import grey from 'material-ui/colors/grey';
 import blue from 'material-ui/colors/blue';
 import Typography from 'material-ui/Typography';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
 // Component
@@ -47,55 +46,40 @@ class Home extends Component {
       },
       typography: {
         // Tell Material-UI what's the font-size on the html element is.
+        fontSize: 14,
         fontFamily: 'Fabada',
       },
     });
 
     return (
       <MuiThemeProvider theme={theme}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={`${classes.paper} ${classes.MenuBar}`}>
-              <MenuBar />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={`${classes.paper} ${classes.MenuNone}`}>
-              <MenuResponsive />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="main">
-              <Main />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="download">
-              <Download />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="works">
-              <Funtion />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper}>
-              <Aside />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="testimonios">
-              <Testimonials />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="contact">
-              <Contact />
-              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>Powerare by Thoughtcode</Typography>
-            </Paper>
-          </Grid>
-        </Grid>
+        <div>
+          <div className={classes.MenuBar}>
+            <MenuBar />
+          </div>
+          <div className={classes.MenuNone} >
+            <MenuResponsive />
+          </div>
+          <div id="main">
+            <Main />
+          </div>
+          <div id="download">
+            <Download />
+          </div>
+          <div id="works">
+            <Funtion />
+          </div>
+          <div>
+            <Aside />
+          </div>
+          <div id="testimonios">
+            <Testimonials />
+          </div>
+          <div id="contact">
+            <Contact />
+            <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>Powerare by Thoughtcode</Typography>
+          </div>
+        </div>
       </MuiThemeProvider>
     );
   }

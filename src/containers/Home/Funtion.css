@@ -1,0 +1,66 @@
+.stylesFuntion {
+  padding: 3.7rem;
+  padding-top: 100px;
+}
+
+.Typogra {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.Styleicon {
+  height: 6rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .stylesFuntion {
+    padding: 2rem;
+    padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+  	font-weight: bold !important;
+  }
+  .Styleicon {
+    display: none;
+  }
+  .SubTypogra {
+  	font-size: 1rem !important;
+  	font-weight: bold !important;
+  }
+  .imgicon{
+  	width: 1.5rem;
+  }
+  .SubSubTypogra{
+  	text-align: justify;
+  }
+  .congratulation{
+  	text-align: center;
+  	font-weight: bold !important;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .stylesFuntion {
+    padding-top: 5rem;
+  }
+  .Styleicon {
+  	width: 4.5rem;
+  }
+  .imgicon{
+  	width: 1.5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+  	font-weight: bold !important;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .Styleicon {
+  	width: 5rem;
+  }
+  .imgicon{
+  	width: 2rem;
+  }
+}

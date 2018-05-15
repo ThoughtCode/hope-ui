@@ -10,28 +10,11 @@ import Button from 'material-ui/Button';
 import cls from './Main.css';
 import Registro from '../../components/Client/Register/Register';
 
-const style = {
-  padding: 60,
-  paddingTop: 200,
-  color: "#c6c5c5",
-  fontSize: '1.5rem',
-};
-
-const styleButton = {
-  fontFamily: 'Arial',
-  backgroundColor: "#0069a7",
-  color: "#fff",
-  marginTop: 10,
-  fontSize: '1.4rem',
-};
-
 const styles = theme => ({
   paper: {
     position: 'absolute',
-    width: theme.spacing.unit * 50,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-    padding: theme.spacing.unit * 4,
   },
 });
 
@@ -52,14 +35,14 @@ class Main extends Component {
     const { classes } = this.props;
     return (
       <div className={cls.Main}>
-        <Grid container spacing={24} style={ style } justify="center" className="Main-bg">
+        <Grid container justify="center" className={cls.style}>
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>
               <Grid item xs={12} sm={8}>
-                <Typography variant="headline" gutterBottom style={{ color:'#0069a7', fontSize: '2rem' }}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Typography>
               </Grid>
               <Grid item xs={12} sm={4} align="right">
-                <Button onClick={this.handleOpen} color="secondary" style={ styleButton }>REGÍSTRATE</Button>
+                <Button onClick={this.handleOpen} color="secondary" className={ cls.StyleButton }>REGÍSTRATE</Button>
                 <Modal
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"
@@ -76,7 +59,7 @@ class Main extends Component {
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>
               <Grid item xs={12} sm={8}>
-                <Typography variant="subheading" gutterBottom style={{ color: '#000', paddingTop: 40, fontFamily: 'Fabada' }}>
+                <Typography variant="subheading" gutterBottom className={cls.SubTypogra}>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 </Typography>
               </Grid>

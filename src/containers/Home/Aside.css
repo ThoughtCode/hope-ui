@@ -1,6 +1,6 @@
 .Aside {
   padding: 3.7rem;
-  padding-top: 5rem;
+  padding-top: 3.5rem;
   background-color: #0069a7;
   color: #eee;
   justify-content: center;
@@ -20,5 +20,9 @@
   .Aside {
     padding: 1rem !important;
     padding-top: 2rem;
+  }
+  .Typogra{
+    font-size: 1rem !important;
+    font-weight: bold !important;
   }
 }

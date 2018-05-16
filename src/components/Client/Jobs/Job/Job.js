@@ -49,8 +49,7 @@ const job = props => {
             </Grid>
             <Grid className={cls.CardSubTitle} item xs={12}>
               <Typography className={cls.CardParragraph}>
-                Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
-                Lorem Ipsum  
+                San Ignacio, Edificio Working Up
               </Typography>
             </Grid>
             <Grid className={cls.CardSubTitle} item xs={12}>

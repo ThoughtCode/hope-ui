@@ -8,6 +8,8 @@ import Jumbotron from '../../components/Client/Jumbotron/Jumbotron';
 import Services from '../../components/Client/Services/Services';
 import NextJobs from '../../components/Client/NextJobs/NextJobs';
 import PastJobs from '../../components/Client/PastJobs/PastJobs';
+import Download from '../Home/Download';
+import Contact from '../Home/Contact';
 
 
 class Client extends Component {
@@ -68,6 +70,8 @@ class Client extends Component {
         <Services services={this.state.services} />
         <NextJobs jobs={this.state.jobs}/>
         <PastJobs jobs={this.state.jobs} />
+        <Download />
+        <Contact />
       </div>
     );
   }

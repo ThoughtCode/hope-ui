@@ -10,9 +10,6 @@ import Client from './containers/Client/Client';
 import Agent from './containers/Agent/Agent';
 
 class App extends Component {
-  componentDidMount () {
-    console.log(this.props)
-  }
   render() {
     return (
       <div className="App">

@@ -1,15 +1,21 @@
 .stylesFuntion {
-  padding: 3.7rem;
-  padding-top: 100px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
 .Typogra {
   text-align: center;
   font-size: 2rem;
+  color: #0069a7 !important;
 }
 
 .Styleicon {
   height: 6rem;
+  padding-top: 3rem;
+}
+
+.SubSubTypogra{
+  font-family: Arial !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -19,24 +25,27 @@
   }
   .Typogra {
     font-size: 1.4rem !important;
-  	font-weight: bold !important;
+    font-weight: bold !important;
   }
   .Styleicon {
     display: none;
   }
   .SubTypogra {
-  	font-size: 1rem !important;
-  	font-weight: bold !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
   }
   .imgicon{
-  	width: 1.5rem;
+    width: 1.5rem;
   }
   .SubSubTypogra{
-  	text-align: justify;
+    text-align: justify;
+    font-family: Arial !important;
   }
   .congratulation{
-  	text-align: center;
-  	font-weight: bold !important;
+    font-size: 1rem !important;
+    text-align: center;
+    font-weight: bold !important;
+    color: #0069a7 !important;
   }
 }
 
@@ -45,22 +54,22 @@
     padding-top: 5rem;
   }
   .Styleicon {
-  	width: 4.5rem;
+    width: 4.5rem;
   }
   .imgicon{
-  	width: 1.5rem;
+    width: 1.5rem;
   }
   .Typogra {
     font-size: 1.4rem !important;
-  	font-weight: bold !important;
+    font-weight: bold !important;
   }
 }
 
 @media only screen and (max-width: 1280px) {
   .Styleicon {
-  	width: 5rem;
+    width: 5rem;
   }
   .imgicon{
-  	width: 2rem;
+    width: 2rem;
   }
 }

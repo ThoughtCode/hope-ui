@@ -38,11 +38,12 @@ class Main extends Component {
         <Grid container justify="center" className={cls.style}>
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>
-              <Grid item xs={12} sm={8}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</Typography>
+              <Grid item xs={12} sm={12}>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>
+                  Registrate y agenda los servicios que te ofrece Noc Noc.
+                </Typography>
               </Grid>
               <Grid item xs={12} sm={4} align="right">
-                <Button onClick={this.handleOpen} color="secondary" className={ cls.StyleButton }>REGÍSTRATE</Button>
                 <Modal
                   aria-labelledby="simple-modal-title"
                   aria-describedby="simple-modal-description"
@@ -58,11 +59,15 @@ class Main extends Component {
           </Grid>
           <Grid item xs={12} md={8} sm={12}>
             <Grid container>
-              <Grid item xs={12} sm={8}>
+              <Grid item xs={12} sm={12}>
                 <Typography variant="subheading" gutterBottom className={cls.SubTypogra}>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Es hora que alguien lo haga por ti, descarga la aplicación y reserva fácilmente tu servicio en el lugar que lo desees. Olvídate del efectivo, paga de forma segura con tu tarjeta a través de la aplicación.
                 </Typography>
               </Grid>
+              <div className={cls.LandingButton}>
+                <Button className={cls.pageButton} onClick={this.handleOpen}>REGISTRATE</Button>
+                <Button className={cls.pageButton} onClick={this.handleOpen}>INICIAR SESION</Button>
+              </div>
             </Grid>
           </Grid>
         </Grid>

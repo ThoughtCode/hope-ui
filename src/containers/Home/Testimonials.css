@@ -1,12 +1,20 @@
 .styleTestimonials {
-  padding: 60px;
-  padding-top: 180px;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 .imagetestimonialsMain{
-  width: 100%;
+  width: 70%;
+  text-align: right;
 }
 .imagetestimonials{
-  width: 80%;
+  width: 200px !important;
+  height: 200px !important;
+  margin: 3rem !important;
+}
+
+.TestimonialsContainer {
+  display: flex !important;
+  justify-content: center !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -14,19 +22,26 @@
   	padding: 2rem;
   	padding-top: 5rem;
   }
+  .imagetestimonialsMain{
+    width: 200px !important;
+  }
   .Typogra {
     font-size: 1.4rem !important;
-  	font-weight: bold !important;
+    font-weight: bold !important;
   }
   .SubTypogra {
-  	font-size: 1rem !important;
+    font-size: 1rem !important;
   }
   .SubSubTypogra{
-  	text-align: justify;
+    text-align: justify;
   }
   .SubTytle{
-  	font-size: 1rem !important;
-  	font-weight: bold !important;
+    font-size: 1rem !important;
+    font-weight: bold !important;
+  }
+  .MainTestimonials{
+    display: none;
+    text-align: center;
   }
 }
 

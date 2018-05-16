@@ -13,6 +13,9 @@ import Button from 'material-ui/Button';
 import LogoNocNoc from '../../assets/LogoBlanco.svg';
 import Twitter from '../../assets/twittericon.svg';
 import Facebook from '../../assets/facebookicon.svg';
+import Instagram from '../../assets/InstagramIcon.svg';
+import GooglePlay from '../../assets/GooglePlay.png';
+import AppStore from '../../assets/AppStore.png';
 import cls from './Contact.css';
 
 const styles = theme => ({
@@ -43,6 +46,8 @@ function FullWidthGrid(props) {
                 <form>
                   <TextField id="email" label="E-mail" className={cls.textField} fullWidth margin="normal" />
                   <TextField id="name" label="Full Name" className={cls.textField} fullWidth margin="normal" />
+                  <TextField id="ciudad" label="Ciudad" className={cls.textField} fullWidth margin="normal" />
+                  <TextField id="telefono" label="Telefono" className={cls.textField} fullWidth margin="normal" />
                   <TextField id="multiline-static" label="Message" className={cls.textField} multiline rows="4" fullWidth margin="normal" />
                   <Grid container justify='flex-end'>
                     <Grid item>
@@ -58,7 +63,7 @@ function FullWidthGrid(props) {
                 <Grid container>
                   <Grid item xs={12}>
                     <Paper className={cls.Paper} elevation={0}>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt numquam eius ducimus natus mollitia sequi nemo dicta.
+                      ¿Quieres contratar un servicio o quieres conversar con uno de nuestros asesores? Siempre es un gusto atenderte, déjanos tus datos:
                     </Paper>
                   </Grid>
                   <Grid item xs={12}>
@@ -76,6 +81,18 @@ function FullWidthGrid(props) {
                     <Paper className={cls.Paper} elevation={0}>
                       <img src={Twitter} alt="AppLogo" className={cls.Styleicon} />
                     </Paper>
+                  </Grid>
+                  <Grid item xs={4} sm={3}>
+                    <Paper className={cls.Paper} elevation={0}>
+                      <img src={Instagram} alt="AppLogo" className={cls.Styleicon} />
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12} sm={12}>
+                    <Paper className={cls.Paper} elevation={0}>
+                      Puedes tambien descarga nuestra APP en la tienda de tu smatphone
+                    </Paper>
+                    <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
+                    <img src={AppStore} className={cls.iconSocial} alt="App Store" />
                   </Grid>
                 </Grid>
               </Paper>

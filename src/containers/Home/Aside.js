@@ -45,10 +45,7 @@ class Aside extends Component {
           <Grid item xs={12}>
             <Grid container>
               <Grid item xs={12} sm={12}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit ament, consectetur adipisicing elit.</Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{paddingTop: 30}}>
-                Lorem ipsum dolor sit ament, consectetur adipisicing elit.
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Busca y contrata tu Servicio</Typography>
               </Grid>
               <Grid item xs={12} sm={12} style={{paddingTop: 30}}>
                 <Button className={cls.styleButton} onClick={this.handleOpen}>REGISTRATE AHORA</Button>

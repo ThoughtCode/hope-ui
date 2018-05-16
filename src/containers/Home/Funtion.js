@@ -37,7 +37,7 @@ function FullWidthGrid(props) {
 
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra} align="center" >How it Works.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra} align="center" >¿Cómo Funciona?</Typography>
               </Paper>
             </Grid>
 
@@ -54,11 +54,11 @@ function FullWidthGrid(props) {
                       <img src={One} alt="AppLogo" className={cls.imgicon} />
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Descarga y Registro</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Descarga nuestra aplicación en la tienda de tu Smartphone y regístrate
                       </Typography>
                     </Paper>
                   </Grid>
@@ -74,11 +74,11 @@ function FullWidthGrid(props) {
                       <img src={Two} alt="AppLogo" className={cls.imgicon}/>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Ingresa tu información y agenda un servicio</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Coloca tu dirección, fecha y selecciona qué necesitas realizar en tu hogar
                       </Typography>
                     </Paper>
                   </Grid>
@@ -104,11 +104,11 @@ function FullWidthGrid(props) {
                       <img src={Three} alt="AppLogo" className={cls.imgicon} />
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Lorem ipsum dolor.</Typography>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Selecciona un Asesor de Limpieza</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Revisa el perfil que más te guste y ¡elígelo!
                       </Typography>
                     </Paper>
                   </Grid>
@@ -121,11 +121,14 @@ function FullWidthGrid(props) {
                 <Grid container spacing={24}>
                   <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
-                      <Typography variant="subheading" gutterBottom className={cls.congratulation}>CONGRATULATIONS.</Typography>
+                      <img src={Two} alt="AppLogo" className={cls.imgicon}/>
+                    </Paper>
+                    <Paper className={classes.paper} elevation={0}>
+                      <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Realiza tu Pago</Typography>
                     </Paper>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Puedes pagar con cualquier tarjeta de crédito o débito
                       </Typography>
                     </Paper>
                   </Grid>
@@ -134,10 +137,20 @@ function FullWidthGrid(props) {
             </Grid>
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
-                <img src={Congratulation} alt="AppLogo" className={cls.Styleicon} />
+                <img src={IconDos} alt="AppLogo" className={cls.Styleicon} />
               </Paper>
             </Grid>
 
+            <Grid item xs={12} sm={12} align="center">
+              <Paper className={classes.paper} elevation={0}>
+                <img src={Congratulation} alt="AppLogo" className={cls.Styleicon} />
+              </Paper>
+              <Grid item xs={12} sm={8} align="center">
+                <Typography variant="headline" gutterBottom className={cls.congratulation}>
+                  Listo..!! Prepárate para sentir una experiencia inolvidable en tu hogar.
+                </Typography>
+              </Grid>
+            </Grid>
           </Grid>  
         </Grid>  
       </Grid>

@@ -35,10 +35,15 @@ const styles = {
 };
 
 class MenuAppBar extends React.Component {
-  state = {
-    auth: true,
-    anchorEl: null,
-  };
+  constructor(props){
+    super(props);
+    this.state = {
+      auth: true,
+      anchorEl: null,
+      bgColor: 'transparent'
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
 
   handleChange = (event, checked) => {
     this.setState({ auth: checked });
@@ -51,6 +56,17 @@ class MenuAppBar extends React.Component {
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
+  handleScroll() {
+    const html = document.documentElement;
+    if (html.scrollTop >= 100) {
+      this.setState({ bgColor: 'rgba(255, 255, 255, 0.70)' });
+    } else {
+      this.setState({ bgColor: 'transparent' });
+    }
+  }
+  componentDidMount() {
+    window.addEventListener("scroll", this.handleScroll);
+  }
 
   render() {
     const { classes } = this.props;
@@ -60,7 +76,7 @@ class MenuAppBar extends React.Component {
     return (
       <div className={classes.root}>
         <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
-          <Toolbar>
+          <Toolbar style={{ backgroundColor: this.state.bgColor }}>
             <Typography variant="title" color="inherit" className={classes.flex}>
               <AnchorLink style={ styleAnchor } href='#main'>
                 <img src={Logo} className={cls.Applogo} alt="logo" />
@@ -90,17 +106,20 @@ class MenuAppBar extends React.Component {
                   open={open}
                   onClose={this.handleClose}
                 >
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-                    <AnchorLink style={ styleAnchor } href='#download'>Descargas</AnchorLink>
+                  <MenuItem style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='##'>Agendar servicio</AnchorLink>
                   </MenuItem>
                   <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-                    <AnchorLink style={ styleAnchor } href='#works'>Cómo Funciona</AnchorLink>
+                    <AnchorLink style={ styleAnchor } href='##'>Nosotros</AnchorLink>
+                  </MenuItem>
+                  <MenuItem style={{fontFamily: 'Arial'}}>
+                    <AnchorLink style={ styleAnchor } href='#works'>¿Cómo Funciona?</AnchorLink>
                   </MenuItem>
                   <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-                    <AnchorLink style={ styleAnchor } href='#testimonios'>Testimonios</AnchorLink>
+                    <AnchorLink style={ styleAnchor } href='##'>Únete a Noc Noc</AnchorLink>
                   </MenuItem>
                   <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-                    <AnchorLink style={ styleAnchor } href='#contact'>Contactos</AnchorLink>
+                    <AnchorLink style={ styleAnchor } href='##'>Iniciar Sesion</AnchorLink>
                   </MenuItem>
                 </Menu>
               </div>

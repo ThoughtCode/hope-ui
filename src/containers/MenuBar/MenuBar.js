@@ -64,16 +64,19 @@ class MenuAppBar extends React.Component {
               </AnchorLink>
             </Typography>
             <MenuItem style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='#download'>Descargas</AnchorLink>
+              <AnchorLink style={ styleAnchor } href='##'>Agendar servicio</AnchorLink>
+            </MenuItem>
+            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
+              <AnchorLink style={ styleAnchor } href='##'>Nosotros</AnchorLink>
             </MenuItem>
             <MenuItem style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='#works'>Cómo Funciona</AnchorLink>
+              <AnchorLink style={ styleAnchor } href='#works'>¿Cómo Funciona?</AnchorLink>
             </MenuItem>
             <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='#testimonios'>Testimonios</AnchorLink>
+              <AnchorLink style={ styleAnchor } href='##'>Únete a Noc Noc</AnchorLink>
             </MenuItem>
             <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='#contact'>Contactos</AnchorLink>
+              <AnchorLink style={ styleAnchor } href="##">Iniciar Sesion</AnchorLink>
             </MenuItem>
           </Toolbar>
         </AppBar>

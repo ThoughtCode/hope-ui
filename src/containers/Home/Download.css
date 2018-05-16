@@ -1,18 +1,20 @@
 .Download{
-  background-image: url('../../assets/BackgrounDownload.jpg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
   flex-grow: 1;
+  padding-top: 60px;
+  padding-bottom: 30px;
 }
 
-.stylesDownload {
-  padding: 60px;
-  padding-top: 180px;
-}
 
 .Typogra {
   font-size: 2rem !important;
+  color: #0069a7 !important;
+}
+
+.img{
+  max-width: 100%;
+  position: center !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -24,4 +26,39 @@
     font-size: 1.4rem !important;
     font-weight: bold !important;
   }
+  .img{
+    display: none;
+  }
+  .iconSocial{
+    width: 100px;
+  }
 }
+
+@media only screen and (max-width: 960px) {
+  .stylesDownload {
+    padding: 0.5rem;
+    padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1rem !important;
+    font-weight: bold !important;
+  }
+  .img{
+    display: none;
+    /*max-width: 250px;
+    padding-top: 30px;*/
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  
+}
+
+@media only screen and (min-width: 1920px) {
+  .img{
+    padding-top: 3rem !important;
+    width: 70% !important;
+    position: left !important;
+  }
+}
+

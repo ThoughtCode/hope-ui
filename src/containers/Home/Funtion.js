@@ -23,6 +23,7 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 1,
     textAlign: 'flex-end',
+    backgroundColor: '#fafafa'
   },
 });
 

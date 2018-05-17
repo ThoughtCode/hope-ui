@@ -14,7 +14,7 @@ import Logo from './img/logo.svg';
 
 const styleAnchor = {
   textDecoration: 'none',
-  color: 'rgba(0, 0, 0, 0.87)'
+  color: '#0069A7'
 };
 
 const styles = {
@@ -36,16 +36,16 @@ class MenuAppBar extends React.Component {
     this.state = {
       auth: true,
       anchorEl: null,
-      bgColor: 'transparent'
+      bgColor: '#fff',
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
   handleScroll() {
     const html = document.documentElement;
-    if (html.scrollTop >= 100) {
-      this.setState({ bgColor: 'rgba(255, 255, 255, 0.70)' });
+    if (html.scrollTop >= 80) {
+      this.setState({ bgColor: '#fff' });
     } else {
-      this.setState({ bgColor: 'transparent' });
+      this.setState({ bgColor: '#fff' });
     }
   }
   componentDidMount() {

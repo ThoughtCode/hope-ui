@@ -18,7 +18,7 @@ import cls from './MenuResponsive.css'
 
 const styleAnchor = {
   textDecoration: 'none',
-  color: 'rgba(0, 0, 0, 0.87)'
+  color: '#0069A7'
 };
 
 const styles = {
@@ -40,7 +40,7 @@ class MenuAppBar extends React.Component {
     this.state = {
       auth: true,
       anchorEl: null,
-      bgColor: 'transparent'
+      bgColor: '#fff'
     };
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -59,9 +59,9 @@ class MenuAppBar extends React.Component {
   handleScroll() {
     const html = document.documentElement;
     if (html.scrollTop >= 100) {
-      this.setState({ bgColor: 'rgba(255, 255, 255, 0.70)' });
+      this.setState({ bgColor: '#fff' });
     } else {
-      this.setState({ bgColor: 'transparent' });
+      this.setState({ bgColor: '#fff' });
     }
   }
   componentDidMount() {

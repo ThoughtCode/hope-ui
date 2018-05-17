@@ -10,6 +10,7 @@ import Avatar from 'material-ui/Avatar';
 // Component
 import cls from './Testimonials.css'
 import Testimonials from '../../assets/Testimonials.jpg'
+import mood from '../../assets/mood.png'
 
 const styles = theme => ({
   root: {
@@ -64,29 +65,35 @@ function FullWidthGrid(props) {
             <Grid container justify="center">
               <Grid item xs={12} sm={6} md={4} className={cls.TestimonialsContainer}>
                 <Paper className={classes.paper} elevation={0}>
-                  <Avatar alt="Adelle Charles"
-                  src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo"
-                  className={cls.imagetestimonials}/>
-                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
+                  <Avatar alt="Adelle Charles" src={mood} alt="Avatar" className={cls.imagetestimonials} />
+                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Maria Castillo</Typography>
+                  <Grid item xs={12} className={cls.TestimonioComentario}>
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
+                  </Grid>
                 </Paper>
               </Grid>
             <Grid item xs={12} sm={6} md={4} className={cls.TestimonialsContainer}>
               <Paper className={classes.paper} elevation={0}>
               <Avatar alt="Adelle Charles"
-                src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo"
+                src="http://cdn2.salud180.com/sites/default/files/styles/medium/public/field/image/2013/11/hombreguapo.jpg" alt="AppLogo"
                 className={cls.imagetestimonials}/>
-                <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
+                <Typography variant="headline" gutterBottom className={cls.SubTytle}>Alberto Gonzalez</Typography>
+                <Grid item xs={12} className={cls.TestimonioComentario}>
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
+                </Grid>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6} md={4} className={cls.TestimonialsContainer}>
               <Paper className={classes.paper} elevation={0}>
-      <Avatar
-        alt="Adelle Charles"
-        src="https://static.wixstatic.com/media/d5f2d1977eb9475b95ee2119f340a3eb.jpg/v1/fill/w_278,h_280,al_c,q_80,usm_0.66_1.00_0.01/d5f2d1977eb9475b95ee2119f340a3eb.webp" alt="AppLogo"
-        className={cls.imagetestimonials}
-      />
-
-                <Typography variant="headline" gutterBottom className={cls.SubTytle}>"Testimonials 1"</Typography>
+                <Avatar
+                  alt="Adelle Charles"
+                  src="http://catesthill.com/wp-content/uploads/2016/01/catesthill-scandi-living-12.jpg" alt="Avatar"
+                  className={cls.imagetestimonials}
+                />
+                <Typography variant="headline" gutterBottom className={cls.SubTytle}>Angela Torre</Typography>
+                <Grid item xs={12} className={cls.TestimonioComentario}>
+                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
+                </Grid>
               </Paper>
             </Grid>
             </Grid>

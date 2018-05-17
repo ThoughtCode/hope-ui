@@ -33,7 +33,7 @@ function FullWidthGrid(props) {
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
             
-            <Grid item xs={12} sm={12} md={4} lg={2}>
+            <Grid item xs={12} sm={12} md={2} lg={2}>
               <Paper className={cls.Paper} elevation={0}>
                 <Typography variant="title">
                   <img src={LogoNocNoc} height="100px" alt="Logo" className={cls.LogoNocNoc}></img>
@@ -41,29 +41,12 @@ function FullWidthGrid(props) {
               </Paper>
             </Grid>
             
-            <Grid item xs={12} sm={6} md={8} lg={5}>
-              <Paper className={cls.Paper} elevation={0}>
-                <form>
-                  <TextField id="email" label="E-mail" className={cls.textField} fullWidth margin="normal" />
-                  <TextField id="name" label="Full Name" className={cls.textField} fullWidth margin="normal" />
-                  <TextField id="ciudad" label="Ciudad" className={cls.textField} fullWidth margin="normal" />
-                  <TextField id="telefono" label="Telefono" className={cls.textField} fullWidth margin="normal" />
-                  <TextField id="multiline-static" label="Message" className={cls.textField} multiline rows="4" fullWidth margin="normal" />
-                  <Grid container justify='flex-end'>
-                    <Grid item>
-                      <Button className={cls.Button}>ENVIAR</Button>
-                    </Grid>
-                  </Grid>
-                </form>
-              </Paper>
-            </Grid>
-            
-            <Grid item xs={12} sm={6} md={12} lg={5}>
+            <Grid item xs={12} sm={6} md={5} lg={5}>
               <Paper className={cls.Paper} elevation={0}>
                 <Grid container>
                   <Grid item xs={12}>
                     <Paper className={cls.Paper} elevation={0}>
-                      ¿Quieres contratar un servicio o quieres conversar con uno de nuestros asesores? Siempre es un gusto atenderte, déjanos tus datos:
+                      ¿Quieres contratar un servicio o quieres conversar con uno de nuestros asesores?
                     </Paper>
                   </Grid>
                   <Grid item xs={12}>
@@ -97,6 +80,27 @@ function FullWidthGrid(props) {
                 </Grid>
               </Paper>
             </Grid>
+
+            <Grid item xs={12} sm={6} md={5} lg={5}>
+              <Paper className={cls.Paper} elevation={0}>
+                <Paper className={cls.Paper} elevation={0}>
+                  Siempre es un gusto atenderte, déjanos tus datos:
+                </Paper>
+                <form>
+                  <TextField id="email" label="E-mail" className={cls.textField} fullWidth margin="dense" />
+                  <TextField id="name" label="Full Name" className={cls.textField} fullWidth margin="dense" />
+                  <TextField id="ciudad" label="Ciudad" className={cls.textField} fullWidth margin="dense" />
+                  <TextField id="telefono" label="Telefono" className={cls.textField} fullWidth margin="dense" />
+                  <TextField id="multiline-static" label="Message" className={cls.textField} multiline rows="4" fullWidth margin="dense" />
+                  <Grid container justify='flex-end'>
+                    <Grid item>
+                      <Button className={cls.Button}>ENVIAR</Button>
+                    </Grid>
+                  </Grid>
+                </form>
+              </Paper>
+            </Grid>
+
           </Grid>
         </Grid>
       </Grid>

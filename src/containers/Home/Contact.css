@@ -15,12 +15,12 @@
 .Contact {
   background-color: #0069A7 !important;
   color: #fff !important;
-  padding: 90px !important;
+  padding: 5vh !important;
   flex-grow: 1 !important;
 }
 
 .textField > label {
-   color: #ffffff !important;
+  color: #ffffff !important;
 }
 
 .textField > div:before {
@@ -95,12 +95,12 @@
     display: block;
   }
   .Paper{
-    padding: 0.5rem;
+    padding: 0.5rem 0;
   }
 }
 
 @media only screen and (min-width: 1280px) {
   .Paper{
-    padding: 0.5rem !important;
+    padding: 0.5rem 0 !important;
   }
 }

@@ -1,4 +1,6 @@
-export { registerClient } from './register';
+export {
+  registerClient
+} from './register';
 export {
   auth,
   facebookLogin,
@@ -12,3 +14,16 @@ export {
   updateProperty,
   deleteProperty,
 } from './property';
+export {
+  fetchServices,
+  fetchService,
+} from './service';
+export {
+  fetchCities,
+} from './city';
+export {
+  fetchNeightborhoods,
+} from './neightborhood';
+export {
+  createJob,
+} from './job';

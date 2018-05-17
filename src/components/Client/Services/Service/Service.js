@@ -15,7 +15,7 @@ import Image from '../Image/limpieza-hogar-mascota.jpg';
 
 const service = props => {
   return (
-    <Grid className={cls.Service} item xs={12} sm={6} md={4} lg={4}>
+    <Grid onClick={() => props.clicked(props.id)} className={cls.Service} item xs={12} sm={6} md={4} lg={4}>
       <Card className={cls.Card}>
         <CardMedia
           className={cls.Media}

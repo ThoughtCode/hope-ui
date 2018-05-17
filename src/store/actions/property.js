@@ -109,7 +109,6 @@ export const createProperty = (token, formData) => (dispatch) => {
     .then((res) => {
       const property = res.data.property.data;
       dispatch(createPropertySuccess(property));
-      dispatch(push('/cliente/dashboard/propiedades'));
     })
     .catch((err) => {
       dispatch(createPropertyFail(err));

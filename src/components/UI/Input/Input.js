@@ -1,5 +1,8 @@
 import React from 'react';
-import TextField from 'material-ui/TextField';
+import {
+  TextField,
+  MenuItem
+} from 'material-ui';
 
 const input = ( props ) => {
   let inputElement = null;
@@ -25,17 +28,23 @@ const input = ( props ) => {
       break;
     case ('select'):
       inputElement = <TextField
-        select
-        error={error}
-        helperText={errorText}
-        id={props.id}
-        autoComplete="off"
-        label={props.label}
-        value={props.value}
-        onChange={props.changed}
-        {...props.elementConfig}
-        margin="normal"
-      />
+            id={props.id}
+            select
+            label={props.label}
+            className={props.classes}
+            value={props.value}
+            onChange={props.changed}
+            margin="normal"
+          >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {props.options && props.options.map(option => (
+            <MenuItem
+              key={option.id}
+              value={option.id}>{option.attributes.name}</MenuItem>
+          ))}
+        </TextField>
       break;
     default:
       inputElement = <TextField

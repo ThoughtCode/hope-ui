@@ -1,6 +1,7 @@
 //Dependencias
 import React, { Component } from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 //Component
 import cls from './App.css';
@@ -15,8 +16,21 @@ import LoginAgent from './containers/Agent/Login/Login';
 import ResetCliente from './containers/Client/Reset/Reset';
 import ResetAgent from './containers/Agent/Reset/Reset';
 
+import * as actions from './store/actions';
+
 class App extends Component {
+  // componentDidMount () {
+  //   const email = 'rainieromadrid@gmail.com';
+  //   const password = 123456;
+  //   this.props.onLogin(email, password);
+  // }
   render() {
+    let routes = null;
+    if (this.props.auth) {
+      routes = (
+        <Route path="/cliente" component={Client}/>
+      )
+    }
     return (
       <div className={cls.body}>
         <Layout>
@@ -28,7 +42,7 @@ class App extends Component {
             <Route path="/registro" component={RegistroCliente}/>
             <Route path="/cliente" component={Client}/>
             <Route path="/agente/dashboard" component={Agent}/>
-            <Route path="/agente/registre" component={RegistreAgent}/>
+            <Route path="/agente/registro" component={RegistreAgent}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>
@@ -38,4 +52,16 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.token || localStorage.getItem('token')
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogin: (email, password) => dispatch(actions.auth(email, password))
+  };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

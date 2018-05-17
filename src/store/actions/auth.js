@@ -42,7 +42,7 @@ export const auth = (email, password) => (dispatch) => {
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');
       dispatch(authSuccess(customer.attributes.access_token, customer.id));
-      dispatch(push('/cliente/dashboard'));
+      // dispatch(push('/cliente/dashboard'));
     })
     .catch((err) => {
       dispatch(authFail(err));

@@ -16,7 +16,7 @@ class Client extends Component {
         <MenuBar />
         <Switch>
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
-          <Route path={`${this.props.match.url}/service/:service_id`} exact component={Service}/>
+          <Route path={`${this.props.match.url}/servicio/:service_id`} exact component={Service}/>
           <Redirect to={`${this.props.match.url}/dashboard`} />
         </Switch>
       </div>

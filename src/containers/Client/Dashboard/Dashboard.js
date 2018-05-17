@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import Jumbotron from '../../../components/Client/Jumbotron/Jumbotron';
@@ -11,22 +12,10 @@ import Contact from '../../Home/Contact';
 // Css
 import cls from './Dashboard.css'
 
+import * as actions from '../../../store/actions';
+
 class Dashboard extends Component {
   state = {
-    services: [
-      {
-        id: 1,
-        name: 'Limpieza de casa'
-      },
-      {
-        id: 2,
-        name: 'Limpieza de auto'
-      },
-      {
-        id: 3,
-        name: 'Limpieza de ventana'
-      },
-    ],
     jobs: [
       {
         "id": "5aeb490a483a2766d2d8b681",
@@ -62,12 +51,20 @@ class Dashboard extends Component {
     ],
   }
 
+  componentDidMount () {
+    this.props.onFetchServices(this.props.token);
+  }
+
+  showServiceClick = (id) => {
+    this.props.history.push(`servicio/${id}`);
+  }
+
   render () {
     return (
       <div className={cls.Dashboard}>
         <Jumbotron />
-        <Services services={this.state.services} />
-        <NextJobs jobs={this.state.jobs}/>
+        <Services clicked={this.showServiceClick} services={this.props.services} />
+        <NextJobs jobs={this.state.jobs} />
         <PastJobs jobs={this.state.jobs} />
         <Download />
         <Contact />
@@ -76,4 +73,17 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token || localStorage.getItem('token'),
+    services: state.service.services
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchServices: (token) => dispatch(actions.fetchServices(token))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

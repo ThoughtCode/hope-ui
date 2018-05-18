@@ -56,7 +56,7 @@ class MenuAppBar extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar topfixed="true" style={{backgroundColor: 'transparent'}} elevation={0}>
+        <AppBar topfixed="true" style={{backgroundColor: 'transparent'}} elevation={2}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
             <Typography variant="title" color="secondary" className={classes.flex}>
               <AnchorLink style={ styleAnchor } href='#main'>

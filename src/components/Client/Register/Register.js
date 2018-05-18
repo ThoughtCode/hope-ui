@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
+import Typography from 'material-ui/Typography';
 
 import Button from 'material-ui/Button';
 
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
+import cls from './css/Register.css'
 
 class Register extends Component {
     state = {
@@ -197,18 +199,19 @@ class Register extends Component {
               errorText={formElement.config.errorText}
             />
               ))}
-          <Button type="submit" variant="raised" color="primary" disabled={!this.state.formIsValid}>
-            Registrar
-          </Button>
+          <Button type="submit" variant="raised" disabled={!this.state.formIsValid} className={cls.pageButton} >Registrar</Button>
         </form>
       );
       return (
         <div>
           <Grid container spacing={16} style={this.props.formClass} justify="center">
             <Grid item xs={12} sm={8}>
-              <h1>Registro</h1>
-              {form}
-              <Button component={Link} to="/cliente" style={{ margin: '10px 0' }}>Volver al login</Button>
+              <Typography variant="headline" gutterBottom className={cls.Typogra}>Registro</Typography>
+              <div className={cls.form}>{form}</div>
+              <div className={cls.ButtonConten}>
+                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/cliente" >Registrate como Agente</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/cliente" >Volver al login</Button>
+              </div>
             </Grid>
           </Grid>
         </div>

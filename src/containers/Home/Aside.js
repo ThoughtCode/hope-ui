@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Modal from 'material-ui/Modal';
@@ -25,6 +26,13 @@ function getModalStyle() {
   };
 }
 
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+  },
+});
 
 class Aside extends Component {
   state = {
@@ -39,6 +47,7 @@ class Aside extends Component {
     this.setState({ open: false });
   };
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <Grid container className={cls.Aside} direction={'column'} justify={'center'} align={'center'}>
@@ -55,7 +64,7 @@ class Aside extends Component {
                   open={this.state.open}
                   onClose={this.handleClose}
                 >
-                  <div style={getModalStyle()}>
+                  <div className={`${cls.Modal} ${classes.paper}`}>
                     <Registro />
                   </div>
                 </Modal>
@@ -68,4 +77,4 @@ class Aside extends Component {
   }
 }
 
-export default (Aside);
+export default withStyles(styles)(Aside);

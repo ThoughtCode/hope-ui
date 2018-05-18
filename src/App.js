@@ -1,6 +1,6 @@
 //Dependencias
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 //Component
 import './App.css';
@@ -18,6 +18,7 @@ class App extends Component {
             <Route path="/cliente" component={Client}/>
             <Route path="/agente" component={Agent}/>
             <Route path="/" exact component={Home}/>
+            <Redirect to="/"/>
           </Switch>
         </Layout>
       </div>

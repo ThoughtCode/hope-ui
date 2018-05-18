@@ -1,0 +1,16 @@
+.BookingForm {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.Paper {
+  padding: 22px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.Item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}

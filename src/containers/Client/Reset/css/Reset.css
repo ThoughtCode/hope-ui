@@ -1,11 +1,15 @@
-.Register{
+.Reset{
   height: 100vh;
   text-align: center;
 }
 
-.RegisterContainer{
+.ResetContainer{
   padding-top: 10vh;
   flex-grow: 1;
+}
+
+.Applogo {
+  height: 3.5rem;
 }
 
 .pageButton {
@@ -19,9 +23,8 @@
   width: 200px !important;
 }
 
-.pageButtonLogin{
+.pageButtonFacebook{
   font-family: Arial !important;
-  width: 200px !important;
   margin: 4px 0 !important;
 }
 
@@ -41,14 +44,6 @@
   width: 200px !important;
 }
 
-.form{
-  text-align: center;
-}
-
-.ButtonConten {
-  text-align: center;
-}
-
 .ButtonClose{
   text-align: right;
 }
@@ -58,9 +53,9 @@
     font-size: 1rem !important;
   }
   .form{
-    padding: 0 !important;
+    padding: 0 3vh !important;
   }
-  .RegisterContainer{
-    padding-top: 0 !important;
+  .ButtonConten {
+    text-align: center;
   }
 }

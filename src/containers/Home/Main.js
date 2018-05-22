@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -65,8 +66,8 @@ class Main extends Component {
                 </Typography>
               </Grid>
               <div className={cls.LandingButton}>
-                <Button className={cls.pageButton} onClick={this.handleOpen}>REGISTRATE</Button>
-                <Button className={cls.pageButton} onClick={this.handleOpen}>INICIAR SESION</Button>
+                <Button className={cls.pageButton} component={Link} to="/registro" >REGISTRATE</Button>
+                <Button className={cls.pageButton} component={Link} to="/login" >INICIAR SESION</Button>
               </div>
             </Grid>
           </Grid>

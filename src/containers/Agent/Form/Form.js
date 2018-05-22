@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
@@ -47,10 +48,13 @@ class TextFields extends React.Component {
       <form style={{ backgroundColor: "#bfbfbf", padding: 20, borderRadius: 5, fontFamily: 'Fabada' }}>
         <Typography variant="title" gutterBottom style={{fontFamily: "Fabada" }}>LOREM IPSUM DOLOR SIT</Typography>
         <Typography variant="subheading" gutterBottom style={{fontFamily: "Fabada" }}>LOREM IPSUM DOLOR SIT</Typography>
-        <TextField id="name" label="First Name" fullWidth margin = "normal" />
-        <TextField id="name" label="Last Name" fullWidth margin = "normal" />
-        <TextField id="email" label="E-mail" fullWidth margin = "normal" />
-        <TextField id="password-input" label="Password" type="password" autoComplete="current-password" fullWidth margin="normal" />
+        <TextField id="name" label="First Name" fullWidth margin = "dense" />
+        <TextField id="last" label="Last Name" fullWidth margin = "dense" />
+        <TextField id="email" label="E-mail" fullWidth margin = "dense" />
+        <TextField id="password" label="Password" type="password" autoComplete="current-password" fullWidth margin="dense" />
+        <TextField id="password-confirmation" label="Password Confirmatión" type="password" autoComplete="current-password" fullWidth margin="dense" />
+        <TextField id="cedula" label="Cédula ó Pass" type="number" fullWidth margin="dense" />
+        <TextField id="celular" label="Celular" type="number" fullWidth margin="dense" />
         <Grid container style={{padding: 10}} justify="center">
           <Grid item>
             <Button style={styleButton}>INICIAR REGISTRO</Button>
@@ -59,7 +63,7 @@ class TextFields extends React.Component {
         <p style={{fontFamily: "Arial"}} >Al registrarte aceptas los <small style={{color: "#0069a7"}}>Terminos y politicas de privacidad.</small></p>
         <Grid container justify="center">
           <Grid item>
-            <Button style={{color: "#0069a7"}}>INICIAR SESIÓN</Button>
+            <Button style={{color: "#0069a7"}} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
           </Grid>
         </Grid>
       </form>

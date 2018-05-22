@@ -203,14 +203,21 @@ class Register extends Component {
         </form>
       );
       return (
-        <div>
-          <Grid container spacing={16} style={this.props.formClass} justify="center">
+        <div className={cls.Register}>
+          <Grid container className={cls.ButtonClose}>
+            <Grid item xs={12} sm={12}>
+              <Button component={Link} to="/">
+                <i className="material-icons">clear</i>
+              </Button>
+            </Grid>
+          </Grid>
+          <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >
             <Grid item xs={12} sm={8}>
               <Typography variant="headline" gutterBottom className={cls.Typogra}>Registro</Typography>
               <div className={cls.form}>{form}</div>
               <div className={cls.ButtonConten}>
-                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/cliente" >Registrate como Agente</Button>
-                <Button className={cls.pageButtonLogin} component={Link} to="/cliente" >Volver al login</Button>
+                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registre" >Registrate como Agente</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/login" >Volver al login</Button>
               </div>
             </Grid>
           </Grid>

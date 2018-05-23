@@ -1,6 +1,7 @@
 // Dependencias
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
@@ -9,6 +10,7 @@ import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Button from 'material-ui/Button';
 
 // Component
 import Logo from './img/logo.svg';
@@ -118,8 +120,8 @@ class MenuAppBar extends React.Component {
                   <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
                     <AnchorLink style={ styleAnchor } href='##'>Únete a Noc Noc</AnchorLink>
                   </MenuItem>
-                  <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-                    <AnchorLink style={ styleAnchor } href='##'>Iniciar Sesion</AnchorLink>
+                  <MenuItem onClick={this.handleClose}>
+                    <Button className={ cls.styleAnchor } component={Link} to="/login" >Iniciar Sesión</Button>
                   </MenuItem>
                 </Menu>
               </div>

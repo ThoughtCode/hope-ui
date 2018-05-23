@@ -10,22 +10,6 @@ import Button from 'material-ui/Button';
 import cls from './Aside.css';
 import Registro from '../../components/Client/Register/Register';
 
-
-function rand() {
-  return Math.round(Math.random() * 20) - 10;
-}
-
-function getModalStyle() {
-  const top = 0 + rand();
-  const left = 0 + rand();
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
 const styles = theme => ({
   paper: {
     position: 'absolute',

@@ -1,0 +1,11 @@
+.pageButton {
+  background-color: #0069a7 !important;
+  color: #eee !important;
+  font-family: Arial !important;
+  margin: 4px 0 !important;
+  font-size: 1rem !important;
+  font-weight: bold !important;
+  border-radius: 5px !important;
+  border: 1px solid #fff !important;
+  width: 200px !important;
+}

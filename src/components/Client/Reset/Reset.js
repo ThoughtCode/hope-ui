@@ -5,9 +5,9 @@ import Input from '../../../components/UI/Input/Input';
 import Button from 'material-ui/Button';
 
 import * as actions from '../../../store/actions';
-import cls from './css/Auth.css'
+import cls from './css/Reset.css'
 
-class Auth extends Component {
+class Reset extends Component {
     state = {
         controls: {
             email: {
@@ -21,20 +21,6 @@ class Auth extends Component {
                 validation: {
                     required: true,
                     isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            password: {
-                elementType: 'input',
-                label: 'Password',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
                 },
                 valid: false,
                 touched: false
@@ -136,7 +122,7 @@ class Auth extends Component {
                         errorText={formElement.config.errorText}
                     />
                 ))}
-                <Button type="submit" variant="raised" className={cls.pageButton} >Entrar</Button>
+                <Button type="submit" variant="raised" className={cls.pageButton} >RECUPERAR</Button>
             </form>
         );
             return (
@@ -153,4 +139,4 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(null, mapDispatchToProps)(Auth);
+export default connect(null, mapDispatchToProps)(Reset);

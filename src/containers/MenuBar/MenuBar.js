@@ -1,5 +1,6 @@
 // Dependencias
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -7,15 +8,11 @@ import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { MenuItem } from 'material-ui/Menu';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import Button from 'material-ui/Button';
 
 // Component
 import cls from './css/MenuBar.css';
 import Logo from './img/logo.svg';
-
-const styleAnchor = {
-  textDecoration: 'none',
-  color: '#0069A7'
-};
 
 const styles = {
   root: {
@@ -59,24 +56,24 @@ class MenuAppBar extends React.Component {
         <AppBar topfixed="true" style={{backgroundColor: 'transparent'}} elevation={2}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
             <Typography variant="title" color="secondary" className={classes.flex}>
-              <AnchorLink style={ styleAnchor } href='#main'>
+              <AnchorLink className={ cls.styleAnchor } href='#main'>
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <MenuItem style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='##'>Agendar servicio</AnchorLink>
+            <MenuItem>
+              <AnchorLink className={ cls.styleAnchor } href='##'>Agendar servicio</AnchorLink>
             </MenuItem>
-            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='##'>Nosotros</AnchorLink>
+            <MenuItem onClick={this.handleClose}>
+              <AnchorLink className={ cls.styleAnchor } href='##'>Nosotros</AnchorLink>
             </MenuItem>
-            <MenuItem style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='#works'>¿Cómo Funciona?</AnchorLink>
+            <MenuItem>
+              <AnchorLink className={ cls.styleAnchor } href='#works'>¿Cómo Funciona?</AnchorLink>
             </MenuItem>
-            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href='##'>Únete a Noc Noc</AnchorLink>
+            <MenuItem onClick={this.handleClose}>
+              <AnchorLink className={ cls.styleAnchor } href='##'>Únete a Noc Noc</AnchorLink>
             </MenuItem>
-            <MenuItem onClick={this.handleClose} style={{fontFamily: 'Arial'}}>
-              <AnchorLink style={ styleAnchor } href="##">Iniciar Sesion</AnchorLink>
+            <MenuItem onClick={this.handleClose}>
+              <Button className={ cls.styleAnchor } component={Link} to="/login" >Iniciar Sesión</Button>
             </MenuItem>
           </Toolbar>
         </AppBar>

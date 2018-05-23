@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 // Components
@@ -9,11 +10,12 @@ import Service from './Service/Service';
 // Css
 import cls from './Client.css'
 
+import * as actions from '../../store/actions'
 class Client extends Component {
   render () {
     return (
       <div className={cls.Client}>
-        <MenuBar />
+        <MenuBar auth={this.props.auth} logout={this.props.onLogout}/>
         <Switch>
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
           <Route path={`${this.props.match.url}/servicio/:service_id`} exact component={Service}/>
@@ -24,4 +26,16 @@ class Client extends Component {
   }
 }
 
-export default Client;
+const mapStateToProps = state => {
+  return {
+    auth: state.auth.token || localStorage.getItem('token')
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLogout: () => dispatch(actions.logout())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Client);

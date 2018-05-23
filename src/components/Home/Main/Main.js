@@ -66,8 +66,8 @@ class Main extends Component {
                 </Typography>
               </Grid>
               <div className={cls.LandingButton}>
-                <Button className={cls.pageButton} component={Link} to="/registro" >REGISTRATE</Button>
-                <Button className={cls.pageButton} component={Link} to="/login" >INICIAR SESION</Button>
+                <Button className={cls.pageButton} component={Link} to="/cliente/registro" >REGISTRATE</Button>
+                <Button className={cls.pageButton} component={Link} to="/cliente/login" >INICIAR SESION</Button>
               </div>
             </Grid>
           </Grid>

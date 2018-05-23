@@ -9,8 +9,8 @@ import Avatar from 'material-ui/Avatar';
 
 // Component
 import cls from './Testimonials.css'
-import Testimonials from '../../assets/Testimonials.jpg'
-import mood from '../../assets/mood.png'
+import Testimonials from '../../../assets/Testimonials.jpg'
+import mood from '../../../assets/mood.png'
 
 const styles = theme => ({
   root: {

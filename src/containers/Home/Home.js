@@ -11,12 +11,12 @@ import Grid from 'material-ui/Grid';
 import classes from '../../App.css';
 import MenuBar from '../../containers/MenuBar/MenuBar';
 import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
-import Main from '../../containers/Home/Main';
-import Download from '../../containers/Home/Download';
-import Funtion from '../../containers/Home/Funtion';
-import Aside from '../../containers/Home/Aside'
-import Testimonials from '../../containers/Home/Testimonials'
-import Contact from '../../containers/Home/Contact'
+import Main from '../../components/Home/Main/Main';
+import Download from '../../components/Home/Download/Download';
+import Funtion from '../../components/Home/Funtion/Funtion';
+import Aside from '../../components/Home/Aside/Aside';
+import Testimonials from '../../components/Home/Testimonials/Testimonials';
+import Contact from '../../components/Home/Contact/Contact';
 
 const styles = myTheme => ({
   root: myTheme.mixins.gutters({

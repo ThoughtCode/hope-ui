@@ -5,9 +5,9 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 //Component
-import GooglePlay from '../../assets/GooglePlay.png';
-import AppStore from '../../assets/AppStore.png';
-import Fondo from '../../assets/BackgrounDownload.png';
+import GooglePlay from '../../../assets/GooglePlay.png';
+import AppStore from '../../../assets/AppStore.png';
+import Fondo from '../../../assets/BackgrounDownload.png';
 import cls from './Download.css';
 
 const stylePaper = {

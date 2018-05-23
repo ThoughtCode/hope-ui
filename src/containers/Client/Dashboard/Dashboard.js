@@ -6,8 +6,8 @@ import Jumbotron from '../../../components/Client/Jumbotron/Jumbotron';
 import Services from '../../../components/Client/Services/Services';
 import NextJobs from '../../../components/Client/NextJobs/NextJobs';
 import PastJobs from '../../../components/Client/PastJobs/PastJobs';
-import Download from '../../Home/Download';
-import Contact from '../../Home/Contact';
+import Download from '../../../components/Home/Download/Download';
+import Contact from '../../../components/Home/Contact/Contact';
 
 // Css
 import cls from './Dashboard.css'

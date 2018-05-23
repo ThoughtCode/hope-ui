@@ -16,3 +16,19 @@
   color: #0069A7;
   font-family: Arial !important;
 }
+
+.AppBar {
+  background-color: transparent;
+}
+
+.Toolbar {
+  background-color: #fff;
+}
+
+.flex {
+  flex: 1;
+}
+
+.root {
+  flex-grow: 1;
+}

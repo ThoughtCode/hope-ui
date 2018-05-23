@@ -9,21 +9,16 @@ import Layout from './containers/Layout/Layout';
 import Home from './containers/Home/Home';
 import Client from './containers/Client/Client';
 import Agent from './containers/Agent/Agent';
-import RegistreAgent from './containers/Agent/Registre/Agent';
-import LoginCliente from './components/Client/Login/Login';
-import RegistroCliente from './components/Client/Register/Register';
+import RegisterAgent from './containers/Agent/Register/Register';
+import LoginClient from './components/Client/Login/Login';
+import RegisterClient from './components/Client/Register/Register';
 import LoginAgent from './containers/Agent/Login/Login';
-import ResetCliente from './containers/Client/Reset/Reset';
+import ResetClient from './containers/Client/Reset/Reset';
 import ResetAgent from './containers/Agent/Reset/Reset';
 
 import * as actions from './store/actions';
 
 class App extends Component {
-  // componentDidMount () {
-  //   const email = 'rainieromadrid@gmail.com';
-  //   const password = 123456;
-  //   this.props.onLogin(email, password);
-  // }
   render() {
     let routes = null;
     if (this.props.auth) {
@@ -35,14 +30,14 @@ class App extends Component {
       <div className={cls.body}>
         <Layout>
           <Switch>
-            <Route path="/reset" component={ResetCliente}/>
+            {routes}
+            <Route path="/reset" component={ResetClient}/>
             <Route path="/agente/reset" component={ResetAgent}/>
-            <Route path="/login" component={LoginCliente}/>
+            <Route path="/cliente/login" component={LoginClient}/>
             <Route path="/agente/login" component={LoginAgent}/>
-            <Route path="/registro" component={RegistroCliente}/>
-            <Route path="/cliente" component={Client}/>
+            <Route path="/cliente/registro" component={RegisterClient}/>
             <Route path="/agente/dashboard" component={Agent}/>
-            <Route path="/agente/registro" component={RegistreAgent}/>
+            <Route path="/agente/registro" component={RegisterAgent}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>

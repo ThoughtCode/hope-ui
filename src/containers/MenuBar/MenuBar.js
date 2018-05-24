@@ -16,7 +16,7 @@ const menuAppBar = props => {
   let menu = null; 
   if (props.auth) {
     menu = (
-      <AppBar topfixed="true" className={cls.AppBar} elevation={2}>
+      <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
         <Toolbar className={cls.Toolbar}>
           <Typography variant="title" color="secondary" className={cls.flex}>
             <AnchorLink className={cls.styleAnchor} href="#main">

@@ -38,7 +38,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, m
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: 'Fabada',
+    fontFamily: 'Helvetica',
   },
 });
 

@@ -1,7 +1,6 @@
 .Main{
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../assets/BackgrounMain.jpg');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
   background-attachment: fixed;
-  background-image: ;
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
@@ -71,7 +70,7 @@
     color: #fff;
   }
   .MuiGrid-item-3 .MuiGrid-grid-xs-12-39 .MuiGrid-grid-sm-4-44 {
-    align: center;
+    text-align: center;
   }
   .LandingButton{
     margin-top: 30px;

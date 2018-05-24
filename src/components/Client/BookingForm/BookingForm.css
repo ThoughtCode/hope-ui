@@ -14,3 +14,7 @@
   flex-wrap: wrap;
   align-items: flex-end;
 }
+
+.Select {
+  min-width: 200px !important;
+}

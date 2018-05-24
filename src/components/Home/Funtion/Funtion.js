@@ -7,13 +7,13 @@ import Typography from 'material-ui/Typography';
 
 
 //Component
-import IconUno from '../../assets/IconUno.svg';
-import IconDos from '../../assets/IconDos.svg';
-import IconTres from '../../assets/IconTres.svg';
-import Congratulation from '../../assets/Congratulation.svg';
-import One from '../../assets/One.png';
-import Two from '../../assets/Two.png';
-import Three from '../../assets/Three.png';
+import IconUno from '../../../assets/IconUno.svg';
+import IconDos from '../../../assets/IconDos.svg';
+import IconTres from '../../../assets/IconTres.svg';
+import Congratulation from '../../../assets/Congratulation.svg';
+import One from '../../../assets/One.png';
+import Two from '../../../assets/Two.png';
+import Three from '../../../assets/Three.png';
 import cls from './Funtion.css'
 
 const styles = theme => ({
@@ -35,13 +35,11 @@ function FullWidthGrid(props) {
       <Grid container justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container>
-
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra} align="center" >¿Cómo Funciona?</Typography>
               </Paper>
             </Grid>
-
             <Grid item xs={12} sm={2}>
               <Paper className={classes.paper} elevation={0}>
                 <img src={IconUno} alt="AppLogo" className={cls.Styleicon} />

@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 
 // Component
 import cls from './Aside.css';
-import Registro from '../../components/Client/Register/Register';
+import Registro from '../../../components/Client/Register/Register';
 
 const styles = theme => ({
   paper: {

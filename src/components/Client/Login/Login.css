@@ -12,7 +12,7 @@
   height: 3.5rem;
 }
 
-.pageButton {
+.Button {
   background-color: #0069a7 !important;
   color: #eee !important;
   font-family: Arial !important;
@@ -23,7 +23,7 @@
   width: 200px !important;
 }
 
-.pageButtonFacebook{
+.ButtonFacebook{
   font-family: Arial !important;
   margin: 4px 0 !important;
 }
@@ -36,7 +36,7 @@
   font-family: Fabada !important;
 }
 
-.pageButtonRegistroAgente{
+.ButtonRegistroAgente{
   font-family: Arial !important;
   font-size: 0.6rem !important;
   margin: 4px 0 !important;

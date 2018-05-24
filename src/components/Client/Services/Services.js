@@ -10,7 +10,7 @@ import Service from './Service/Service';
 
 const services = props => {
   const services = props.services.map(service => (
-    <Service key={service.id} name={service.name} />
+    <Service clicked={props.clicked} key={service.id} id={service.id} name={service.attributes.name} />
   ));
   return (
     <Grid container justify="center">

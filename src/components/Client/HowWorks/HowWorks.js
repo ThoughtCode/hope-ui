@@ -22,7 +22,7 @@ const howWorks = props => {
           <Typography variant="subheading" component="h3">
             1 Lorem ipsum dolor
           </Typography>
-          <Typography variant="body" component="p">
+          <Typography component="p">
             Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
           </Typography>
         </Grid>
@@ -30,7 +30,7 @@ const howWorks = props => {
           <Typography variant="subheading" component="h3">
             2 Lorem ipsum dolor
           </Typography>
-          <Typography variant="body" component="p">
+          <Typography component="p">
             Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
           </Typography>
         </Grid>
@@ -38,7 +38,7 @@ const howWorks = props => {
           <Typography variant="subheading" component="h3">
             3 Lorem ipsum dolor
           </Typography>
-          <Typography variant="body" component="p">
+          <Typography component="p">
             Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
           </Typography>
         </Grid>

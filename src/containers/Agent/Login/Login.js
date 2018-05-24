@@ -8,7 +8,7 @@ import Grid from 'material-ui/Grid';
 import FacebookLogin from 'react-facebook-login';
 import Button from 'material-ui/Button';
 import Auth from '../../../components/Agent/Auth/Auth';
-import cls from './css/Login.css';
+import cls from './Login.css';
 import Logo from '../../../assets/Logo.svg'
 
 import * as actions from '../../../store/actions';

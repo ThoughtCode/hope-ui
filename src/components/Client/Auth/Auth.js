@@ -5,7 +5,7 @@ import Input from '../../../components/UI/Input/Input';
 import Button from 'material-ui/Button';
 
 import * as actions from '../../../store/actions';
-import cls from './css/Auth.css'
+import cls from './Auth.css'
 
 class Auth extends Component {
     state = {

@@ -17,7 +17,9 @@ const serviceImage = props => {
         <Grid item xs={8} md={8}>
           <Grid container justify="center">
             <Grid item xs={12} md={8}>
-              <Typography className={cls.ServiceTitle} variant="headline" gutterBottom>Limpieza de casa</Typography>
+              <Typography className={cls.ServiceTitle} variant="headline" gutterBottom>
+               {props.title}
+              </Typography>
             </Grid>
           </Grid>
         </Grid>

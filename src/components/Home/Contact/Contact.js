@@ -10,12 +10,12 @@ import Button from 'material-ui/Button';
 
 
 // Component
-import LogoNocNoc from '../../assets/LogoBlanco.svg';
-import Twitter from '../../assets/twittericon.svg';
-import Facebook from '../../assets/facebookicon.svg';
-import Instagram from '../../assets/InstagramIcon.svg';
-import GooglePlay from '../../assets/GooglePlay.png';
-import AppStore from '../../assets/AppStore.png';
+import LogoNocNoc from '../../../assets/LogoBlanco.svg';
+import Twitter from '../../../assets/twittericon.svg';
+import Facebook from '../../../assets/facebookicon.svg';
+import Instagram from '../../../assets/InstagramIcon.svg';
+import GooglePlay from '../../../assets/GooglePlay.png';
+import AppStore from '../../../assets/AppStore.png';
 import cls from './Contact.css';
 
 const styles = theme => ({

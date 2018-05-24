@@ -8,7 +8,7 @@ import Button from 'material-ui/Button';
 
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
-import cls from './css/Register.css'
+import cls from './Register.css'
 
 class Register extends Component {
     state = {

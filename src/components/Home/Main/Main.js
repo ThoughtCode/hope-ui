@@ -9,7 +9,7 @@ import Button from 'material-ui/Button';
 
 // Component
 import cls from './Main.css';
-import Registro from '../../components/Client/Register/Register';
+import Registro from '../../../components/Client/Register/Register';
 
 const styles = theme => ({
   paper: {
@@ -66,8 +66,8 @@ class Main extends Component {
                 </Typography>
               </Grid>
               <div className={cls.LandingButton}>
-                <Button className={cls.pageButton} component={Link} to="/registro" >REGISTRATE</Button>
-                <Button className={cls.pageButton} component={Link} to="/login" >INICIAR SESION</Button>
+                <Button className={cls.pageButton} component={Link} to="/cliente/registro" >REGISTRATE</Button>
+                <Button className={cls.pageButton} component={Link} to="/cliente/login" >INICIAR SESION</Button>
               </div>
             </Grid>
           </Grid>

@@ -1,0 +1,52 @@
+.JobShow {
+  margin-top: 77px;
+}
+
+.Job {
+  margin-top: 20px;
+}
+
+.ServiceDate {
+  padding: 20px;
+  text-align: center;
+}
+
+.JobAgent {
+  padding: 20px;
+}
+
+.Services {
+  padding: 20px;
+}
+
+.OtherAgents {
+  padding: 20px;
+}
+
+.AvatarAgent {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.NameAgent {
+  flex: 1 1 auto;
+}
+
+.Name {
+  margin: 0;
+  display: block;
+}
+
+.AvatarMargin {
+  margin-right: 16px;
+}
+
+.Agents {
+  display: inline-flex !important;
+  margin-right: 16px;
+}
+
+.JobServices {
+  text-align: center;
+}

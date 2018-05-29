@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link,
+} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es';
 
@@ -70,7 +73,7 @@ const job = props => {
               </Grid>
               <Grid container alignItems="flex-end">
                 <Grid className={cls.ViewDetails} item xs={12}>
-                  <Button className={cls.Button}>
+                  <Button className={cls.Button} component={Link} to={`/cliente/trabajo/12345678`}>
                     Ver Detalles
                   </Button>
                 </Grid>

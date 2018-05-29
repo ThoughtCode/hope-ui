@@ -1,6 +1,8 @@
 .Main{
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
   background-attachment: fixed;
+  background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
+  background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;

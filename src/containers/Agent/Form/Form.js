@@ -1,69 +1,56 @@
+//Dependencias
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
-import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import Typography from 'material-ui/Typography';
 
-const styles = theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap',
-  },
-  textField: {
-    marginLeft: theme.spacing.unit,
-    marginRight: theme.spacing.unit,
-    width: 200,
-  },
-  menu: {
-    width: 200,
-  },
-});
+//Componentes
+import cls from './Form.css'
 
-const styleButton = {
-  backgroundColor: '#0069a7',
-  color: '#fff',
-  fontFamily: 'Arial',
-}
-
-class TextFields extends React.Component {
-  state = {
-    name: 'Cat in the Hat',
-    age: '',
-    multiline: 'Controlled',
-    currency: 'EUR',
-  };
-
-  handleChange = name => event => {
-    this.setState({
-      [name]: event.target.value,
-    });
-  };
-
+class Form extends React.Component {
   render() {
-
     return (
-      <form style={{ backgroundColor: "#bfbfbf", padding: 20, borderRadius: 5, fontFamily: 'Fabada' }}>
-        <Typography variant="title" gutterBottom style={{fontFamily: "Fabada" }}>LOREM IPSUM DOLOR SIT</Typography>
-        <Typography variant="subheading" gutterBottom style={{fontFamily: "Fabada" }}>LOREM IPSUM DOLOR SIT</Typography>
-        <TextField id="name" label="First Name" fullWidth margin = "dense" />
-        <TextField id="last" label="Last Name" fullWidth margin = "dense" />
-        <TextField id="email" label="E-mail" fullWidth margin = "dense" />
-        <TextField id="password" label="Password" type="password" autoComplete="current-password" fullWidth margin="dense" />
-        <TextField id="password-confirmation" label="Password Confirmatión" type="password" autoComplete="current-password" fullWidth margin="dense" />
-        <TextField id="cedula" label="Cédula ó Pass" type="number" fullWidth margin="dense" />
-        <TextField id="celular" label="Celular" type="number" fullWidth margin="dense" />
-        <Grid container style={{padding: 10}} justify="center">
-          <Grid item>
-            <Button style={styleButton}>INICIAR REGISTRO</Button>
+      <form className={cls.Form}>
+        <Grid container className={cls.containerForm} justify="center">
+          <Grid item xs={12}>
+            <Typography variant="title" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="subheading" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="name" label="Nombre" fullWidth margin = "dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="last" label="Apellido" fullWidth margin = "dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="email" label="Correo" fullWidth margin = "dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="password" label="Contraseña" type="password" autoComplete="current-password" fullWidth margin="dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="password-confirmation" label="Confirme contraseña" type="password" autoComplete="current-password" fullWidth margin="dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="cedula" label="Cédula" type="number" fullWidth margin="dense" />
+          </Grid>
+          <Grid item xs={12}>
+            <TextField id="celular" label="Celular" type="number" fullWidth margin="dense" />
           </Grid>
         </Grid>
-        <p style={{fontFamily: "Arial"}} >Al registrarte aceptas los <small style={{color: "#0069a7"}}>Terminos y politicas de privacidad.</small></p>
+        <Grid container style={{padding: 10}} justify="center">
+          <Grid item >
+            <Button className={cls.Button}>INICIAR REGISTRO</Button>
+          </Grid>
+        </Grid>
+        <p className={cls.None}>Al registrarte aceptas los <small className={cls.small}>Terminos y politicas de privacidad.</small></p>
         <Grid container justify="center">
-          <Grid item>
-            <Button style={{color: "#0069a7"}} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
+          <Grid item >
+            <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
           </Grid>
         </Grid>
       </form>
@@ -71,8 +58,4 @@ class TextFields extends React.Component {
   }
 }
 
-TextFields.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(TextFields);
+export default Form;

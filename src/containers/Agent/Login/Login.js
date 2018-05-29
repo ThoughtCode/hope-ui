@@ -72,7 +72,7 @@ class Login extends Component {
             </Grid>
             <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/login" >Entra como cliente</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/cliente/login" >Entra como cliente</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={2}>

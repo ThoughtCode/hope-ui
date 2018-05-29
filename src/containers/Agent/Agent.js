@@ -1,19 +1,27 @@
 // DEPENDENCIAS
-import React, { Component } from 'react';
+import React from 'react';
 
 // COMPONENTES
-import cls from './Agent.css'
+import Registro from './Register/Register';
+import Work from './Work/Work';
+import Itworks from './Itworks/Itworks';
+import AsideAgente from './Aside/Aside';
+import IsTold from './IsTold/IsTold';
+import Contact from '../../components/Home/Contact/Contact';
 
-class Client extends Component {
-  render () {
-    return (
-      <div className={cls.Client}>
-        <div className={cls.Main}>
-          AGENTE DASHBOARD
-        </div>
+function Agent(props) {
+  return (
+    <div>
+      <div id="RegistreAgente">
+        <Registro />
       </div>
-    );
-  }
+      <Work />
+      <Itworks />
+      <AsideAgente />
+      <IsTold />
+      <Contact />
+    </div>
+  );
 }
 
-export default Client;
+export default Agent;

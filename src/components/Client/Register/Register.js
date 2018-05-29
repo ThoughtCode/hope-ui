@@ -216,7 +216,7 @@ class Register extends Component {
               <Typography variant="headline" gutterBottom className={cls.Typogra}>Registro</Typography>
               <div className={cls.form}>{form}</div>
               <div className={cls.ButtonConten}>
-                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registre" >Registrate como Agente</Button>
+                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
                 <Button className={cls.pageButtonLogin} component={Link} to="/login" >Volver al login</Button>
               </div>
             </Grid>

@@ -1,16 +1,20 @@
-.Agent{
-  background-attachment: fixed;
-  background-color: #fff;
-  background-image: url('../../../assets/BackgrounAgent.png');
+.Registro{
+  background: -webkit-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),url(../../../assets/BackgrounAgent.png);
+  background: -o-linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),url(../../../assets/BackgrounAgent.png);
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),url(../../../assets/BackgrounAgent.png);
   background-repeat: no-repeat;
-  background-size: 98rem;
+  background-size: cover;
   height: 100vh;
+  flex-grow: 1;
+  font-family: Arial !important;
 }
 
 .Typogra{
-  color: #0069a7 !important;
-  font-family: Fabada !important;
-  font-size: 2rem !important;
+  color: #fff !important;
+  font-size: 3rem !important;
+  margin-top: 35vh !important;
+  text-align: left !important;
+  font-family: Arial !important;
 }
 
 .logo {
@@ -20,4 +24,45 @@
 
 .MuiFormControl-marginNormal-144{
   margin-top: 10px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Registro{
+    height: 130vh !important;
+  }
+  .Typogra{
+    margin-top: 0vh !important;
+    font-size: 1rem !important;
+    text-align: center !important;
+  }
+  .logo {
+    height: 2.5rem !important;
+    margin: 0rem !important;
+  }
+  .MuiFormControl-marginDense-172{
+    margin: 0px !important;
+  }
+  .None{
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .Registro{
+    height: 110vh !important;
+  }
+  .Typogra{
+    font-size: 1.75rem !important;
+  }
+}
+
+@media only screen and (max-width: 1280px) {
+  .Registro{
+    height: 150vh;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .Registro{
+    height: 100vh !important;
+  }
 }

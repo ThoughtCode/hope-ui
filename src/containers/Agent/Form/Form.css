@@ -1,0 +1,38 @@
+.Form{
+  background-color: #E8EBEF;
+  padding: 40px;
+  border-radius: 5px;
+}
+.containerForm{
+  font-family: Arial !important;
+}
+.Button{
+  background-color: #0069a7 !important;
+  color: #fff !important;
+  font-family: Arial !important;
+}
+.ButtonLogin{
+  color: #0069a7 !important;
+  font-family: Arial !important;
+}
+.small{
+  color: #0069a7;
+}
+
+@media only screen and (max-width: 600px) {
+  .Form{
+    padding: 10px !important;
+  }
+  .None{
+    display: none !important;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .Form{
+    padding: 10px !important;
+  }
+  .None{
+    display: none !important;
+  }
+}

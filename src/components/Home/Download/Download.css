@@ -4,14 +4,19 @@
   flex-grow: 1;
   padding-top: 60px;
   padding-bottom: 30px;
+  background-color: #fafafa;
 }
-
-
 .Typogra {
   font-size: 2rem !important;
-  color: #0069a7 !important;
+  font-family: Arial !important;
 }
-
+.SubheadingTypogra{
+  font-family: Arial !important;
+}
+.IconosDownload{
+  color: green !important;
+  padding: .5em .5em;
+}
 .img{
   max-width: 100%;
   position: center !important;

@@ -12,10 +12,13 @@ import classes from '../../App.css';
 import MenuBar from '../../containers/MenuBar/MenuBar';
 import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../components/Home/Main/Main';
-import Download from '../../components/Home/Download/Download';
+import Guarantees from '../../components/Home/Guarantees/Guarantees';
+import IsTold from '../../components/Home/IsTold/IsTold';
 import Funtion from '../../components/Home/Funtion/Funtion';
-import Aside from '../../components/Home/Aside/Aside';
-import Testimonials from '../../components/Home/Testimonials/Testimonials';
+import Services from '../../components/Home/Services/Services';
+import Testimonio from '../../components/Home/Testimonio/Testimonio';
+
+import Download from '../../components/Home/Download/Download';
 import Contact from '../../components/Home/Contact/Contact';
 
 const styles = myTheme => ({
@@ -71,7 +74,12 @@ class Home extends Component {
           </Grid>
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paper} id="download">
-              <Download />
+              <Guarantees />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper elevation={0} className={classes.paper} id="download">
+              <IsTold />
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -80,13 +88,18 @@ class Home extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper}>
-              <Aside />
+            <Paper elevation={0} className={classes.paper} id="Services">
+              <Services />
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="testimonios">
-              <Testimonials />
+            <Paper elevation={0} className={classes.paper} id="Services">
+              <Testimonio />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper elevation={0} className={classes.paper} id="download">
+              <Download />
             </Paper>
           </Grid>
           <Grid item xs={12}>

@@ -38,7 +38,7 @@ class Main extends Component {
       <div className={cls.Main}>
         <Grid container justify="center" className={cls.style}>
           <Grid item xs={12} md={8} sm={12}>
-            <Grid container>
+            <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>
                   Registrate y agenda los servicios que te ofrece Noc Noc.
@@ -59,15 +59,21 @@ class Main extends Component {
             </Grid>
           </Grid>
           <Grid item xs={12} md={8} sm={12}>
-            <Grid container>
+            <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="subheading" gutterBottom className={cls.SubTypogra}>
                   Es hora que alguien lo haga por ti, descarga la aplicación y reserva fácilmente tu servicio en el lugar que lo desees. Olvídate del efectivo, paga de forma segura con tu tarjeta a través de la aplicación.
                 </Typography>
               </Grid>
               <div className={cls.LandingButton}>
-                <Button className={cls.pageButton} component={Link} to="/cliente/registro" >REGISTRATE</Button>
-                <Button className={cls.pageButton} component={Link} to="/cliente/login" >INICIAR SESION</Button>
+                <Grid container>
+                  <Grid item xs={12} sm={6}>
+                    <Button className={cls.pageButtonActive} onClick={this.handleOpen} to="/cliente/registro" >REGISTRATE</Button>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <Button className={cls.pageButton} component={Link} to="/cliente/login" >INICIAR SESION</Button>
+                  </Grid>
+                </Grid>
               </div>
             </Grid>
           </Grid>

@@ -1,0 +1,49 @@
+.Testimonio{
+  background: url('//cache.hbfiles.com/assets/home/pro_card-d4fbec0ef8b50b14075c165beb05dca6.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right;
+  height: 55vh;
+  max-width: 155vh !important;
+  flex-grow: 1px,
+}
+.TopSeccion{
+  margin: 10vh 0 !important;
+}
+.Typogra {
+  font-size: 2.25em !important;
+  font-family: Arial !important;
+  color: #434343 !important;
+}
+.SubTypogra{
+  font-size: 1.375em !important;
+  font-weight: 300 !important;
+  line-height: 1.25em !important;
+  font-family: "Arial", "Helvetica", sans-serif !important;
+  text-align: left;
+  max-width: 17em;
+}
+
+@media only screen and (max-width: 600px) {
+  .Testimonio{
+  	padding: auto;
+  	padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    font-family: Arial !important;
+  }
+  .SubTypogra{
+    font-size: 1.3em !important;
+    font-weight: bold !important;
+    margin-top: 28vh !important;
+    margin-left: 3vh !important;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .Services{
+    padding-top: 5rem;
+  }
+}

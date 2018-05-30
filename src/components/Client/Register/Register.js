@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-
 import Button from 'material-ui/Button';
 
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
-import cls from './Register.css'
+import cls from './Register.css';
+import FacebookIcon from '../../../assets/facebookicon.svg'
 
 class Register extends Component {
     state = {
@@ -183,9 +183,10 @@ class Register extends Component {
         });
       }
       const form = (
-        <form onSubmit={this.registerHandler}>
+        <form onSubmit={this.registerHandler} className={cls.InputRegistre}>
           {formElementsArray.map(formElement => (
             <Input
+              className={cls.InputText}
               key={formElement.id}
               id={formElement.id}
               label={formElement.config.label}
@@ -198,13 +199,13 @@ class Register extends Component {
               touched={formElement.config.touched}
               errorText={formElement.config.errorText}
             />
-              ))}
+            ))}
           <Button type="submit" variant="raised" disabled={!this.state.formIsValid} className={cls.pageButton} >Registrar</Button>
         </form>
       );
       return (
         <div className={cls.Register}>
-          <Grid container className={cls.ButtonClose}>
+          <Grid container className={cls.ModalHeader}>
             <Grid item xs={12} sm={12}>
               <Button component={Link} to="/">
                 <i className="material-icons">clear</i>
@@ -212,8 +213,19 @@ class Register extends Component {
             </Grid>
           </Grid>
           <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >
-            <Grid item xs={12} sm={8}>
-              <Typography variant="headline" gutterBottom className={cls.Typogra}>Registro</Typography>
+              <div className={cls.ButtonFacebookContainer}>
+                <Button className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} component={Link} to="/agente/registro" >
+                  <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
+                  Registrate con Facebook
+                </Button>
+              </div>
+              <div className={cls.Divider}>
+                <i className="material-icons">circle</i>
+                <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
+                <i className="material-icons">circle</i>
+              </div>
+            <Grid item xs={12} sm={11}>
+              <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
               <div className={cls.form}>{form}</div>
               <div className={cls.ButtonConten}>
                 <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>

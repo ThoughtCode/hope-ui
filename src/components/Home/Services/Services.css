@@ -1,0 +1,79 @@
+.Services{
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background-color: #fafafa;
+}
+.Typogra {
+  font-size: 2.25em !important;
+  font-family: Arial !important;
+  color: #434343 !important;
+}
+.SubTytle{
+  position: absolute;
+  font-size: 1.5em !important;
+  font-weight: 300 !important;
+  line-height: 1.25em !important;
+  font-family: "Arial", "Helvetica", sans-serif !important;
+  color: #ffffff !important;
+  margin-top: 9.5em !important;
+  margin-left: 3vh !important;
+}
+.imageServices{
+  border-radius: 5px !important;
+  height: 280px !important;
+  max-width: 100% !important;
+}
+.ImageResponsive{
+  border-radius: 5px !important;
+  height: 280px !important;
+  max-width: 100% !important;
+}
+
+.TestimonialsContainer {
+  display: flex !important;
+  justify-content: center !important;
+}
+
+.TestimonioComentario{
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+  .Services{
+  	padding: auto;
+  	padding-top: 5rem;
+  }
+  .Typogra {
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    font-family: Arial !important;
+  }
+  .SubSubTypogra{
+    text-align: justify;
+  }
+  .SubTytle{
+    font-size: 1.3em !important;
+    font-weight: bold !important;
+    margin-top: 28vh !important;
+    margin-left: 3vh !important;
+  }
+  .imageServices{
+    height: 10rem !important;
+    max-width: auto !important;
+  }
+  .ImageResponsive{
+    height: 10rem !important;
+    max-width: auto !important;
+  }
+  .MainTestimonials{
+    display: none;
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .Services{
+    padding-top: 5rem;
+  }
+}

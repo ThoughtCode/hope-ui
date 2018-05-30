@@ -1,38 +1,85 @@
 .Register{
-  height: 100vh;
+  margin: 0px auto;
   text-align: center;
+  height: 80vh;
+  width: 600px;
 }
-
 .RegisterContainer{
-  padding-top: 10vh;
   flex-grow: 1;
 }
-
+.ModalHeader{
+  background-color: #0069a7;
+  border-radius: 5px 5px 0px 0px;
+  text-align: right;
+  font-weight: 500;
+  padding: 10px;
+  color: #FFF !important;
+}
+.ButtonFacebookContainer{
+  border-radius: 5px 5px 5px 5px !important;
+  padding: 20px;
+  width: 100%;
+}
+.ButtonFacebookText{
+  background-color: #337ab7 !important;
+  border-color: #2e6da4 !important;
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  font-family: Arial !important;
+  padding: 20px !important;
+}
+.IconFacebook{
+  width: 4vh;
+  margin: 0 3vh;
+}
+.Divider{
+  border: 0;
+  height: 1px;
+  margin: 20px 0;
+  background: #ddd;
+  text-align: center;
+  position: relative;
+  clear: both;
+  width: 90%;
+}
+.DividerIcon{
+  background: #fff;
+  color: #bbb;
+  line-height: 50px;
+  position: absolute;
+  width: 30px;
+  font-size: 1rem;
+  margin: 0 auto 0 -25px;
+  top: -25px;
+  left: 52%;
+}
 .pageButton {
   background-color: #0069a7 !important;
-  color: #eee !important;
-  font-family: Arial !important;
-  margin: 4px 0 !important;
-  font-size: 1rem !important;
-  border-radius: 5px !important;
+  border-radius: 4px !important;
+  border-color: #286090;
   border: 1px solid #fff !important;
-  width: 200px !important;
+  color: #eee !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+  margin: 4px 0 !important;
+  margin-top: 20px;
+  height: 52px;
+  line-height: 48px;
+  position: relative;
+  padding: 0px 32px;
+  vertical-align: baseline;
+  width: 100% !important;
+  width: 100%;
 }
-
 .pageButtonLogin{
   font-family: Arial !important;
   width: 200px !important;
   margin: 4px 0 !important;
 }
-
-.Typogra {
-  color: #0069a7 !important;
-  text-align: center !important;
-  font-size: 2rem !important;
-  padding-top: 2vh;
-  font-family: Fabada !important;
-}
-
 .pageButtonRegistroAgente{
   font-family: Arial !important;
   font-size: 0.6rem !important;
@@ -40,18 +87,30 @@
   justify-content: center;
   width: 200px !important;
 }
-
+.Typogra {
+  color: #0069a7 !important;
+  text-align: center !important;
+  font-size: 1.2rem !important;
+  padding-top: 2vh;
+  font-family: Arial !important;
+}
 .form{
   text-align: center;
+  display: inline-block !important;
+}
+
+.InputRegistre{
+  text-align: left !important;
+}
+.InputText{
+  font-family: Arial !important;
+  margin-top: 10px !important;
 }
 
 .ButtonConten {
   text-align: center;
 }
 
-.ButtonClose{
-  text-align: right;
-}
 
 @media only screen and (max-width: 600px) {
   .Typogra {

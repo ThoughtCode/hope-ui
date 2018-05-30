@@ -14,9 +14,11 @@ const nextJobs = props => {
   const jobs = props.jobs.map(job => (
     <Job
       key={job.id}
+      id={job.id}
       date={job.attributes.started_at}
       total={job.attributes.total}
-      job_details={job.attributes.job_details}/>
+      job_details={job.attributes.job_details}
+      property={job.attributes.property}/>
   ));
   return (
     <Grid container justify="center">
@@ -29,9 +31,6 @@ const nextJobs = props => {
           </Grid>
         </Grid>
         <Grid container spacing={16}>
-          {jobs}
-          {jobs}
-          {jobs}
           {jobs}
         </Grid>
       </Grid>

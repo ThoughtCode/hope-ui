@@ -26,4 +26,6 @@ export {
 } from './neightborhood';
 export {
   createJob,
+  fetchJobs,
+  fetchJob,
 } from './job';

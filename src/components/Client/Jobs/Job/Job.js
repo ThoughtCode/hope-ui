@@ -1,4 +1,7 @@
 import React from 'react';
+import {
+  Link,
+} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es';
 
@@ -21,9 +24,12 @@ moment.locale('es');
 const job = props => {
   let services = null;
   if (props.job_details) {
-    services = props.job_details.map(detail => (
-      detail.service.name
-    ));
+    services = props.job_details.map(detail => {
+      if (detail.service.type_service === 'base') {
+        return detail.service.name
+      }
+      return null;
+    });
   }
   return (
     <Grid item xs={12} sm={12} md={12} lg={6}>
@@ -54,7 +60,7 @@ const job = props => {
                   </Grid>
                   <Grid className={cls.CardSubTitle} item xs={12}>
                     <Typography>
-                      Propiedad: Working Up
+                      Propiedad: {props.property.name}
                     </Typography>
                   </Grid>
                 </CardContent>
@@ -70,7 +76,7 @@ const job = props => {
               </Grid>
               <Grid container alignItems="flex-end">
                 <Grid className={cls.ViewDetails} item xs={12}>
-                  <Button className={cls.Button}>
+                  <Button className={cls.Button} component={Link} to={`/cliente/trabajo/${props.id}`}>
                     Ver Detalles
                   </Button>
                 </Grid>

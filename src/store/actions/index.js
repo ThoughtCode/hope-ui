@@ -28,4 +28,6 @@ export {
   createJob,
   fetchJobs,
   fetchJob,
+  fetchHistoryJobs,
+  fetchNextJobs,
 } from './job';

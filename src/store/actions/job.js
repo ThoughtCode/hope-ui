@@ -43,14 +43,16 @@ export const fetchJobsSuccess = jobs => ({
   jobs,
 });
 
-export const fetchJobs = token => dispatch => {
+export const fetchJobs = (token, current_page) => dispatch => {
   dispatch(fetchJobsStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get('/customers/jobs', headers)
+  var body = [];
+  body.push(`current_page=${1}`)
+  axios.get(`/customers/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let jobs = [];
       jobs = res.data.job.data;
@@ -58,6 +60,78 @@ export const fetchJobs = token => dispatch => {
     })
     .catch((err) => {
       dispatch(fetchJobsFail(err));
+    });
+}
+
+export const fetchNextJobsStart = () => ({
+  type: actionTypes.FETCH_NEXTJOBS_START,
+});
+
+export const fetchNextJobsFail = error => ({
+  type: actionTypes.FETCH_NEXTJOBS_FAIL,
+  error,
+});
+
+export const fetchNextJobsSuccess = nextjobs => ({
+  type: actionTypes.FETCH_NEXTJOBS_SUCCESS,
+  nextjobs,
+});
+
+export const fetchNextJobs = (token) => dispatch => {
+  dispatch(fetchNextJobsStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  var body = [];
+  body.push(`status=nextjobs`);
+  body.push(`current_page=${1}`);
+  body.push(`limit=${4}`);
+  axios.get(`/customers/jobs?${body.join('&')}`, headers)
+    .then((res) => {
+      let nextjobs = [];
+      nextjobs = res.data.job.data;
+      dispatch(fetchNextJobsSuccess(nextjobs));
+    })
+    .catch((err) => {
+      dispatch(fetchNextJobsFail(err));
+    });
+}
+
+export const fetchHistoryJobsStart = () => ({
+  type: actionTypes.FETCH_HISTORYJOBS_START,
+});
+
+export const fetchHistoryJobsFail = error => ({
+  type: actionTypes.FETCH_HISTORYJOBS_FAIL,
+  error,
+});
+
+export const fetchHistoryJobsSuccess = historyjobs => ({
+  type: actionTypes.FETCH_HISTORYJOBS_SUCCESS,
+  historyjobs,
+});
+
+export const fetchHistoryJobs = (token) => dispatch => {
+  dispatch(fetchHistoryJobsStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  var body = [];
+  body.push(`status=history`);
+  body.push(`current_page=${1}`);
+  body.push(`limit=${4}`);
+  axios.get(`/customers/jobs?${body.join('&')}`, headers)
+    .then((res) => {
+      let historyjobs = [];
+      historyjobs = res.data.job.data;
+      dispatch(fetchHistoryJobsSuccess(historyjobs));
+    })
+    .catch((err) => {
+      dispatch(fetchHistoryJobsFail(err));
     });
 }
 

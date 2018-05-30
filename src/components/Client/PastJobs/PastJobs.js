@@ -20,7 +20,7 @@ const pastJobs = props => {
   ));
   return (
     <Grid className={cls.PastJobs} container justify="center">
-      <Grid item xs={8}>
+      <Grid item xs={11}>
         <Grid container>
           <Grid item xs={12}>
             <Typography className={cls.Title} variant="headline">

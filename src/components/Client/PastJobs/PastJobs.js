@@ -16,7 +16,8 @@ const pastJobs = props => {
       key={job.id}
       date={job.attributes.started_at}
       total={job.attributes.total}
-      job_details={job.attributes.job_details}/>
+      job_details={job.attributes.job_details}
+      property={job.attributes.property}/>
   ));
   return (
     <Grid className={cls.PastJobs} container justify="center">

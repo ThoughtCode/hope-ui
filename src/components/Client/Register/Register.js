@@ -186,7 +186,7 @@ class Register extends Component {
         <form onSubmit={this.registerHandler} className={cls.InputRegistre}>
           {formElementsArray.map(formElement => (
             <Input
-              className={cls.InputText}
+              classes={cls.InputText}
               key={formElement.id}
               id={formElement.id}
               label={formElement.config.label}

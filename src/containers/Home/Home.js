@@ -31,31 +31,8 @@ const styles = myTheme => ({
 
 class Home extends Component {
   render() {
-    const theme = createMuiTheme({
-      palette:{
-        primary: { 
-          light: grey[50],
-          main: grey[0],
-          dark: grey[700],
-          contrastText: '#000',
-        },
-        secondary: {
-          light: blue[50],
-          main: blue[400],
-          dark: blue[500],
-          contrastText: '#000',
-        },
-        accent: grey,
-        error: grey,
-      },
-      typography: {
-        // Tell Material-UI what's the font-size on the html element is.
-        fontFamily: 'Fabada',
-      },
-    });
 
     return (
-      <MuiThemeProvider theme={theme}>
         <Grid container>
           <Grid item xs={12}>
             <Paper elevation={0} className={`${classes.paper} ${classes.MenuBar}`}>
@@ -109,7 +86,6 @@ class Home extends Component {
             </Paper>
           </Grid>
         </Grid>
-      </MuiThemeProvider>
     );
   }
 }

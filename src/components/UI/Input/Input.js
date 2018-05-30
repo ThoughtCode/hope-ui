@@ -15,6 +15,7 @@ const input = ( props ) => {
   switch ( props.elementType ) {
     case ( 'input' ):
       inputElement = <TextField
+        className={props.classes}
         error={error}
         helperText={errorText}
         id={props.id}

@@ -1,15 +1,15 @@
 // Dependencias
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import React, {Component} from 'react';
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import Modal from 'material-ui/Modal';
 
 // Component
 import cls from './IsTold.css'
+import Registro from '../../Client/Register/Register'
 
 const styles = theme => ({
   paper: {
@@ -19,11 +19,23 @@ const styles = theme => ({
   },
 });
 
-function FullWidthGrid(props) {
-  const { classes } = props;
 
-  return (
-    <div className={classes.root}>
+class Aside extends Component {
+  state = {
+    open: false,
+  };
+
+  handleOpen = () => {
+    this.setState({ open: true });
+  };
+
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+  render() {
+    const { classes } = this.props;
+    return (
+      <div className={classes.root}>
       <Grid container className={cls.IsTold} justify="center">
         <Grid item xs={12} md={8} sm={12}>
           <Grid container align="center"  className={cls.TopSeccion}>
@@ -36,7 +48,15 @@ function FullWidthGrid(props) {
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <div className={cls.LandingButton}>
-                  <Button className={cls.pageButtonActive} component={Link} to="/cliente/registro" >Registrate</Button>
+                  <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Registrate</Button>
+                  <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                  >
+                  <Registro />
+                  </Modal>
                 </div>
               </Paper>
             </Grid>
@@ -44,11 +64,8 @@ function FullWidthGrid(props) {
         </Grid>
       </Grid>
     </div>
-  );
+    );
+  }
 }
 
-FullWidthGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(FullWidthGrid);
+export default withStyles(styles)(Aside);

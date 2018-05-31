@@ -5,8 +5,6 @@ import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
 
 
 // Component
@@ -86,18 +84,6 @@ function FullWidthGrid(props) {
                 <Paper className={cls.Paper} elevation={0}>
                   Siempre es un gusto atenderte, déjanos tus datos:
                 </Paper>
-                <form>
-                  <TextField id="email" label="E-mail" className={cls.textField} fullWidth margin="dense" />
-                  <TextField id="name" label="Full Name" className={cls.textField} fullWidth margin="dense" />
-                  <TextField id="ciudad" label="Ciudad" className={cls.textField} fullWidth margin="dense" />
-                  <TextField id="telefono" label="Telefono" className={cls.textField} fullWidth margin="dense" />
-                  <TextField id="multiline-static" label="Message" className={cls.textField} multiline rows="4" fullWidth margin="dense" />
-                  <Grid container justify='flex-end'>
-                    <Grid item>
-                      <Button className={cls.Button}>ENVIAR</Button>
-                    </Grid>
-                  </Grid>
-                </form>
               </Paper>
             </Grid>
 

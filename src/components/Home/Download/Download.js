@@ -40,7 +40,7 @@ function Download(props) {
                   <Paper className={classes.paper} elevation={0} style={stylePaper}>
                     <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
                       <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                      Contrata y agenda servicios
+                      <p>Contrata y agenda servicios</p>
                     </Typography>
                     <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
                       <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>

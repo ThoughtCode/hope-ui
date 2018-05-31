@@ -33,30 +33,37 @@ class Aside extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div>
-        <Grid container className={cls.Aside} direction={'column'} justify={'center'} align={'center'}>
-          <Grid item xs={12}>
-            <Grid container>
-              <Grid item xs={12} sm={12}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Busca y contrata tu Servicio</Typography>
-              </Grid>
-              <Grid item xs={12} sm={12} style={{paddingTop: 30}}>
-                <Button className={cls.styleButton} onClick={this.handleOpen}>REGISTRATE AHORA</Button>
-                <Modal
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                  open={this.state.open}
-                  onClose={this.handleClose}
-                >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
-                    <Registro />
-                  </div>
-                </Modal>
-              </Grid>
+      <div className={classes.root}>
+      <Grid container className={cls.IsTold} justify="center">
+        <Grid item xs={12} md={8} sm={12}>
+          <Grid container align="center"  className={cls.TopSeccion}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Es hora de que alguien lo haga por ti.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>"Busca y contrata tu servicio."</Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <div className={cls.LandingButton}>
+                  <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Registrate</Button>
+                  <Modal
+                    aria-labelledby="simple-modal-title"
+                    aria-describedby="simple-modal-description"
+                    open={this.state.open}
+                    onClose={this.handleClose}
+                  >
+                    <div className={`${cls.Modal} ${classes.paper}`}>
+                      <Registro />
+                    </div>
+                  </Modal>
+                </div>
+              </Paper>
             </Grid>
           </Grid>
         </Grid>
-      </div>
+      </Grid>
+    </div>
     );
   }
 }

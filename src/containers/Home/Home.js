@@ -1,8 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
-import grey from 'material-ui/colors/grey';
-import blue from 'material-ui/colors/blue';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
@@ -20,6 +18,7 @@ import Testimonio from '../../components/Home/Testimonio/Testimonio';
 
 import Download from '../../components/Home/Download/Download';
 import Contact from '../../components/Home/Contact/Contact';
+import cls from './Home.css';
 
 const styles = myTheme => ({
   root: myTheme.mixins.gutters({
@@ -50,12 +49,12 @@ class Home extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="download">
+            <Paper elevation={0} className={classes.paper} id="##">
               <Guarantees />
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="download">
+            <Paper elevation={0} className={classes.paper} id="##">
               <IsTold />
             </Paper>
           </Grid>
@@ -64,8 +63,8 @@ class Home extends Component {
               <Funtion />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="Services">
+          <Grid item xs={12} id="Services" className={cls.Services}>
+            <Paper elevation={0} className={classes.paper}>
               <Services />
             </Paper>
           </Grid>
@@ -74,8 +73,8 @@ class Home extends Component {
               <Testimonio />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="download">
+          <Grid item xs={12} id="Download" className={cls.Download}>
+            <Paper elevation={0} className={classes.paper}>
               <Download />
             </Paper>
           </Grid>

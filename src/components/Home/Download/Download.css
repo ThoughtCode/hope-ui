@@ -14,8 +14,9 @@
   font-family: Arial !important;
 }
 .IconosDownload{
-  color: green !important;
-  padding: .5em .5em;
+  color: #85c544 !important;
+  padding: .3em .3em;
+  font-weight: bold;
 }
 .img{
   max-width: 100%;

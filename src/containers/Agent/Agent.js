@@ -1,5 +1,5 @@
 // DEPENDENCIAS
-import React from 'react';
+import React,{ Component } from 'react';
 
 // COMPONENTES
 import Registro from './Register/Register';
@@ -9,19 +9,21 @@ import AsideAgente from './Aside/Aside';
 import IsTold from './IsTold/IsTold';
 import Contact from '../../components/Home/Contact/Contact';
 
-function Agent(props) {
-  return (
-    <div>
-      <div id="RegistreAgente">
-        <Registro />
+class Agent extends Component{
+  render() {
+    return (
+      <div>
+        <div id="RegistreAgente">
+          <Registro />
+        </div>
+        <Work />
+        <Itworks />
+        <AsideAgente />
+        <IsTold />
+        <Contact />
       </div>
-      <Work />
-      <Itworks />
-      <AsideAgente />
-      <IsTold />
-      <Contact />
-    </div>
-  );
+    );
+  }
 }
 
 export default Agent;

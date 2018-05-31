@@ -1,8 +1,10 @@
 .Register{
+  border-radius: 5px 5px 5px 5px !important;
   margin: 0px auto;
   text-align: center;
-  height: 80vh;
+  height: 90vh;
   width: 600px;
+  background-color: #ffffff !important;
 }
 .RegisterContainer{
   flex-grow: 1;
@@ -96,22 +98,17 @@
 }
 .form{
   text-align: center;
-  display: inline-block !important;
 }
 
 .InputRegistre{
-  text-align: left !important;
 }
-.InputText{
-  display: inline-block !important;
-  font-family: Arial !important;
-  margin-top: 10px !important;
+.InputText > div > input {
+  display: inline-flex;
 }
 
 .ButtonConten {
   text-align: center;
 }
-
 
 @media only screen and (max-width: 600px) {
   .Typogra {

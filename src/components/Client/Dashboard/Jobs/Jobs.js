@@ -1,6 +1,6 @@
 import React from 'react';
 
-const jobs = (propss) => {
+const jobs = (props) => {
   return <h1>Jobs</h1>;
 };
 

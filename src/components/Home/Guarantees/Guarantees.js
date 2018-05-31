@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography';
 
 // Component
 import cls from './Guarantees.css'
-import Profecionales from '../../../assets/GuaranteesProfecional.png'
+import Profesionales from '../../../assets/GuaranteesProfecional.png'
 import GuaranteesAlDia from '../../../assets/GuaranteesAlDia.png'
 import Guarante from '../../../assets/Guarante.png'
 
@@ -32,8 +32,8 @@ function FullWidthGrid(props) {
             <Grid container align="center" justify="center" className={cls.TopSeccion}>
               <Grid item xs={12} sm={4} md={4}>
                 <Paper className={classes.paper} elevation={0}>
-                  <img src={Profecionales} alt="Profecionales" />
-                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profecionales con experiencias</Typography>
+                  <img src={Profesionales} alt="Profesionales" />
+                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profesionales con experiencias</Typography>
                   <Grid item xs={12} className={cls.Text}>
                     Los profesionales que usan la plataforma NocNoc tienen experiencia, son amables y están en proceso de verificación de antecedentes.
                   </Grid>

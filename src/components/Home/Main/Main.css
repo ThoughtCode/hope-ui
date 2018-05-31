@@ -2,7 +2,7 @@
   background-attachment: fixed;
   background: -webkit-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
   background: -o-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
-  background: linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
+  background: url('../../../assets/BackgrounMain.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
   height: 70vh;
@@ -20,7 +20,7 @@
 }
 
 .LandingButton{
-  margin-top: 50px;
+  margin: 50px 0px;
   width: 100% !important;
 }
 
@@ -31,11 +31,16 @@
   font-size: .825em !important;
   border: 1px solid #0069a7 !important;
   text-decoration: none !important;
+  text-transform: none !important;
   padding: .75em 0 !important;
-  width: 65% !important;
+  width: 32% !important;
   /*margin-bottom: .875em !important;*/
-  margin: 4px 15px !important;
+  margin: 4px 20px !important;
   font-family: Arial !important;
+}
+
+.pageButtonActive:hover {
+  background-color: #0089d7 !important;
 }
 
 .pageButton {
@@ -45,11 +50,16 @@
   font-size: .825em !important;
   border: 1px solid #0069a7 !important;
   text-decoration: none !important;
+  text-transform: none !important;
   padding: .75em 0 !important;
-  width: 65% !important;
+  width: 32% !important;
   /*margin-bottom: .875em !important;*/
-  margin: 4px 15px !important;
+  margin: 4px 20px !important;
   font-family: Arial !important;
+}
+
+.pageButton:hover {
+  background-color: #F7FEFF !important;
 }
 
 .Typogra {

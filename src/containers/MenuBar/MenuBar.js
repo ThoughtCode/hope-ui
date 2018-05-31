@@ -45,9 +45,6 @@ class MenuAppBar extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <MenuItem component={Link} to="/">
-              Agendar servicio
-            </MenuItem>
             <MenuItem>
               Mis Trabajos
             </MenuItem>
@@ -94,16 +91,13 @@ class MenuAppBar extends Component {
                 </AnchorLink>
               </Typography>
               <MenuItem>
-                <AnchorLink className={cls.styleAnchor} href="##">Agendar servicio</AnchorLink>
-              </MenuItem>
-              <MenuItem>
-                <AnchorLink className={cls.styleAnchor} href="##">Nosotros</AnchorLink>
-              </MenuItem>
-              <MenuItem>
                 <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
               </MenuItem>
               <MenuItem>
-                <AnchorLink className={cls.styleAnchor} href="##">Únete a Noc Noc</AnchorLink>
+                <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
+              </MenuItem>
+              <MenuItem>
+                <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
               </MenuItem>
               <MenuItem>
                 <Button className={cls.styleAnchor} component={Link} to="/cliente/login" >Iniciar Sesión</Button>

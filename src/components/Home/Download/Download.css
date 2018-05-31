@@ -22,6 +22,10 @@
   max-width: 100%;
   position: center !important;
 }
+.iconSocial{
+  height: 3.25em;
+  margin: 1em;
+}
 
 @media only screen and (max-width: 600px) {
   .stylesDownload {

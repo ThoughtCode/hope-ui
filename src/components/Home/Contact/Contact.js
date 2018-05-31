@@ -12,8 +12,8 @@ import LogoNocNoc from '../../../assets/LogoBlanco.svg';
 import Twitter from '../../../assets/twittericon.svg';
 import Facebook from '../../../assets/facebookicon.svg';
 import Instagram from '../../../assets/InstagramIcon.svg';
-import GooglePlay from '../../../assets/GooglePlay.png';
-import AppStore from '../../../assets/AppStore.png';
+import GooglePlay from '../../../assets/AppPlayStore.svg';
+import AppStore from '../../../assets/AppStore.svg';
 import cls from './Contact.css';
 
 const styles = theme => ({
@@ -41,7 +41,7 @@ function FullWidthGrid(props) {
             
             <Grid item xs={12} sm={6} md={5} lg={5}>
               <Paper className={cls.Paper} elevation={0}>
-                <Grid container>
+                <Grid container xs={12} sm={6} md={12}>
                   <Grid item xs={12}>
                     <Paper className={cls.Paper} elevation={0}>
                       ¿Quieres contratar un servicio o quieres conversar con uno de nuestros asesores?
@@ -72,8 +72,16 @@ function FullWidthGrid(props) {
                     <Paper className={cls.Paper} elevation={0}>
                       Puedes tambien descarga nuestra APP en la tienda de tu smatphone
                     </Paper>
-                    <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
-                    <img src={AppStore} className={cls.iconSocial} alt="App Store" />
+                  </Grid>
+                  <Grid item xs={6} sm={6}>
+                    <Paper className={cls.Paper} elevation={0}>
+                      <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={6} sm={6}>
+                    <Paper className={cls.Paper} elevation={0}>
+                      <img src={AppStore} className={cls.iconSocial} alt="App Store" />
+                    </Paper>
                   </Grid>
                 </Grid>
               </Paper>

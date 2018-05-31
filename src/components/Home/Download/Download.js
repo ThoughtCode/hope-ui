@@ -5,8 +5,8 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 //Component
-import GooglePlay from '../../../assets/GooglePlay.png';
-import AppStore from '../../../assets/AppStore.png';
+import GooglePlay from '../../../assets/AppPlayStore.svg';
+import AppStore from '../../../assets/AppStore.svg';
 import Fondo from '../../../assets/MovilNocNoc2.png';
 import cls from './Download.css';
 
@@ -40,7 +40,7 @@ function Download(props) {
                   <Paper className={classes.paper} elevation={0} style={stylePaper}>
                     <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
                       <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                      <p>Contrata y agenda servicios</p>
+                      Contrata y agenda servicios
                     </Typography>
                     <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
                       <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>

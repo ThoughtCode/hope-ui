@@ -11,7 +11,12 @@ import cls from './Services.css';
 
 const services = props => {
   const services = props.services.map(service => (
-    <Service clicked={props.clicked} key={service.id} id={service.id} name={service.attributes.name} />
+    <Service
+      clicked={props.clicked}
+      key={service.id}
+      id={service.id}
+      name={service.attributes.name}
+      image={service.attributes.image.url}/>
   ));
   return (
     <Grid container justify="center">
@@ -24,8 +29,6 @@ const services = props => {
           </Grid>
         </Grid>
         <Grid container spacing={40}>
-          {services}
-          {services}
           {services}
         </Grid>
       </Grid>

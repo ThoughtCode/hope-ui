@@ -1,14 +1,23 @@
 import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
-// import { updateObject } from '../utility';
 
 const initialState = {
   jobs: [],
   job: [],
+  nextjobs: [],
+  historyjobs: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
   jobs: action.jobs,
+});
+
+const fetchNextJobsSuccess = (state, action) => updateObject(state, {
+  nextjobs: action.nextjobs,
+});
+
+const fetchHistoryJobsSuccess = (state, action) => updateObject(state, {
+  historyjobs: action.historyjobs,
 });
 
 const fetchJobSuccess = (state, action) => updateObject(state, {
@@ -23,6 +32,12 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_START: return state;
     case actionTypes.FETCH_JOB_SUCCESS: return fetchJobSuccess(state, action);
     case actionTypes.FETCH_JOB_FAIL: return state;
+    case actionTypes.FETCH_NEXTJOBS_START: return state;
+    case actionTypes.FETCH_NEXTJOBS_SUCCESS: return fetchNextJobsSuccess(state, action);
+    case actionTypes.FETCH_NEXTJOBS_FAIL: return state;
+    case actionTypes.FETCH_HISTORYJOBS_START: return state;
+    case actionTypes.FETCH_HISTORYJOBS_SUCCESS: return fetchHistoryJobsSuccess(state, action);
+    case actionTypes.FETCH_HISTORYJOBS_FAIL: return state;
     default: return state;
   }
 };

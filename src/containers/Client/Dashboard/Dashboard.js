@@ -17,7 +17,8 @@ import * as actions from '../../../store/actions';
 class Dashboard extends Component {
   componentDidMount () {
     this.props.onFetchServices(this.props.token);
-    this.props.onFetchJobs(this.props.token);
+    this.props.onFetchNextJobs(this.props.token);
+    this.props.onFetchHistoryJobs(this.props.token);
   }
 
   showServiceClick = (id) => {
@@ -29,8 +30,8 @@ class Dashboard extends Component {
       <div className={cls.Dashboard}>
         <Jumbotron />
         <Services clicked={this.showServiceClick} services={this.props.services} />
-        <NextJobs jobs={this.props.jobs} />
-        <PastJobs jobs={this.props.jobs} />
+        <NextJobs jobs={this.props.nextjobs} />
+        <PastJobs jobs={this.props.historyjobs} />
         <Download />
         <Contact />
       </div>
@@ -42,14 +43,16 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     services: state.service.services,
-    jobs: state.job.jobs,
+    nextjobs: state.job.nextjobs,
+    historyjobs: state.job.historyjobs,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     onFetchServices: (token) => dispatch(actions.fetchServices(token)),
-    onFetchJobs: (token) => dispatch(actions.fetchJobs(token))
+    onFetchNextJobs: (token) => dispatch(actions.fetchNextJobs(token)),
+    onFetchHistoryJobs: (token) => dispatch(actions.fetchHistoryJobs(token)),
   }
 }
 

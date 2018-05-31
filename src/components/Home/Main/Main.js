@@ -1,6 +1,5 @@
 // Dependencias
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -10,6 +9,7 @@ import Button from 'material-ui/Button';
 // Component
 import cls from './Main.css';
 import Registro from '../../../components/Client/Register/Register';
+import Login from '../../../components/Client/Login/Login';
 
 const styles = theme => ({
   paper: {
@@ -21,10 +21,19 @@ const styles = theme => ({
 
 class Main extends Component {
   state = {
-    open: false,
+    openRegister: false,
+    openLogin: false,
+    open: false
   };
 
-  handleOpen = () => {
+  handleOpen = (modal) => {
+    if (modal === "register") {
+      this.setState({ openLogin: false });
+      this.setState({ openRegister: true });
+    } else if(modal === "login") {
+      this.setState({ openRegister: false });
+      this.setState({ openLogin: true });
+    }
     this.setState({ open: true });
   };
 
@@ -38,7 +47,7 @@ class Main extends Component {
       <div className={cls.Main}>
         <Grid container justify="center" className={cls.style}>
           <Grid item xs={12} md={8} sm={12}>
-            <Grid container>
+            <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>
                   Registrate y agenda los servicios que te ofrece Noc Noc.
@@ -52,22 +61,33 @@ class Main extends Component {
                   onClose={this.handleClose}
                 >
                   <div className={`${cls.Modal} ${classes.paper}`}>
-                    <Registro />
+                    { this.state.openRegister && 
+                      <Registro />
+                    }
+                    { this.state.openLogin && 
+                      <Login />
+                    }
                   </div>
                 </Modal>
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} md={8} sm={12}>
-            <Grid container>
+            <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="subheading" gutterBottom className={cls.SubTypogra}>
                   Es hora que alguien lo haga por ti, descarga la aplicación y reserva fácilmente tu servicio en el lugar que lo desees. Olvídate del efectivo, paga de forma segura con tu tarjeta a través de la aplicación.
                 </Typography>
               </Grid>
               <div className={cls.LandingButton}>
-                <Button className={cls.pageButton} component={Link} to="/cliente/registro" >REGISTRATE</Button>
-                <Button className={cls.pageButton} component={Link} to="/cliente/login" >INICIAR SESION</Button>
+                <Grid container>
+                  <Grid item xs={12} sm={12}>
+                    <Button className={cls.pageButtonActive} onClick={() => this.handleOpen("register")}>Registrate</Button>
+                    <Button className={cls.pageButton} onClick={() => this.handleOpen("login")} >Iniciar Sesion</Button>
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                  </Grid>
+                </Grid>
               </div>
             </Grid>
           </Grid>

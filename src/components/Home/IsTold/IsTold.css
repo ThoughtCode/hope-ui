@@ -1,0 +1,66 @@
+.IsTold {
+  background: -webkit-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/testimonial-2a18446823cb4d64b677b07b7b24572d.jpeg);
+  background: -o-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/testimonial-2a18446823cb4d64b677b07b7b24572d.jpeg);
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/testimonial-2a18446823cb4d64b677b07b7b24572d.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+  flex-grow: 1;
+}
+.Modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40vh;
+}
+.TopSeccion{
+  margin: 5em 0 !important;
+}
+.Typogra{
+  font-size: 1.5em !important;
+  font-weight: 300 !important;
+  line-height: 1.25em !important;
+  text-align: center;
+  font-family: Arial !important;
+  color: #ffffff !important;
+}
+.LandingButton{
+  margin-top: 2vh;
+}
+.pageButtonActive {
+  background-color: #0069a7 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  font-size: 1em !important;
+  border: 1px solid #0069a7 !important;
+  text-decoration: none !important;
+  padding: .95em 0 !important;
+  width: 35% !important;
+  /*margin-bottom: .875em !important;*/
+  margin: 4px 15px !important;
+  font-family: Arial !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .IsTold {
+    background: -webkit-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/mobile_testimonial-16d4a5142f734b10e113bb3f55d2d6e5.jpeg);
+    background: -o-linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/mobile_testimonial-16d4a5142f734b10e113bb3f55d2d6e5.jpeg);
+    background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/mobile_testimonial-16d4a5142f734b10e113bb3f55d2d6e5.jpeg);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 0 1rem;
+  }
+  .TopSeccion{
+    margin: 0.5em 0 !important;
+  }
+  .LandingButton{
+    margin-top: 0 !important;
+  }
+  .pageButtonActive {
+    font-size: 1em !important;
+    border-radius: 5px !important;
+    padding: .85em 0 !important;
+    width: 100% !important;
+    margin: 4px 0px !important;
+  }
+}

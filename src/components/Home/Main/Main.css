@@ -1,16 +1,17 @@
 .Main{
-  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
   background-attachment: fixed;
+  background: -webkit-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
+  background: -o-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounMain.jpg');
+  background: url('../../../assets/BackgrounMain.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 70vh;
 }
 
 .Modal {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 40vh;
 }
 
 .style {
@@ -19,33 +20,63 @@
 }
 
 .LandingButton{
-  margin-top: 50px;
+  margin: 50px 0px;
   width: 100% !important;
-  text-align: center !important;
+}
+
+.pageButtonActive {
+  background-color: #0069a7 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  font-size: .825em !important;
+  border: 1px solid #0069a7 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  padding: .75em 0 !important;
+  width: 32% !important;
+  /*margin-bottom: .875em !important;*/
+  margin: 4px 20px !important;
+  font-family: Arial !important;
+}
+
+.pageButtonActive:hover {
+  background-color: #0089d7 !important;
 }
 
 .pageButton {
   background-color: #eee !important;
-  color: #0069a7 !important;
-  font-family: Arial !important;
-  margin: 4px 15px !important;
-  font-size: 1rem !important;
   border-radius: 5px !important;
-  border: 1px solid #fff !important;
-  width: 200px !important;
+  color: #0069a7 !important;
+  font-size: .825em !important;
+  border: 1px solid #0069a7 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  padding: .75em 0 !important;
+  width: 32% !important;
+  /*margin-bottom: .875em !important;*/
+  margin: 4px 20px !important;
+  font-family: Arial !important;
+}
+
+.pageButton:hover {
+  background-color: #F7FEFF !important;
 }
 
 .Typogra {
   color: #0069a7 !important;
+  font-size: 1.625em !important;
+  line-height: 1.5em;
+  max-width: 15.125em;
   text-align: center;
-  font-size: 2rem !important;
+  font-family: Arial !important;
 }
 
 .SubTypogra {
-  color: #fff !important;
+  color: #434343 !important;
   text-align: center;
-  font-size: 1.5rem !important;
+  font-size: 0.8em !important;
   font-family: Arial !important;
+  max-width: 50.125em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -56,16 +87,14 @@
   }
   .style {
     padding: 30px;
-    padding-top: 20vh !important;
+    padding-top: 18vh !important;
     font-size: 0.5rem !important;
   }
   .Typogra {
     font-size: 1.4rem !important;
-    text-align: justify;
   }
   .SubTypogra {
     font-size: 1rem !important;
-    text-align: justify;
     padding-top: 1rem;
     color: #fff;
   }
@@ -73,12 +102,25 @@
     text-align: center;
   }
   .LandingButton{
-    margin-top: 30px;
+    margin-top: 2vh;
+  }
+  .pageButtonActive {
+    font-size: 2.125em !important;
+    padding: .75em 0 !important;
+    width: 100% !important;
+    /*margin-bottom: .875em !important;*/
+    margin: 4px 0px !important;
+  }
+  .pageButton {
+    font-size: 2.125em !important;
+    padding: .75em 0 !important;
+    width: 100% !important;
+    margin: 4px 0px !important;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .style{
-    padding-top: 35vh !important;
+    padding-top: 20vh !important;
   }
 }

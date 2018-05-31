@@ -7,7 +7,7 @@ import Typography from 'material-ui/Typography';
 //Component
 import GooglePlay from '../../../assets/GooglePlay.png';
 import AppStore from '../../../assets/AppStore.png';
-import Fondo from '../../../assets/BackgrounDownload.png';
+import Fondo from '../../../assets/MovilNocNoc2.png';
 import cls from './Download.css';
 
 const stylePaper = {
@@ -38,24 +38,24 @@ function Download(props) {
                 </Grid>
                 <Grid item xs={12} sm={6} md={12}>
                   <Paper className={classes.paper} elevation={0} style={stylePaper}>
-                    <Typography variant="subheading" gutterBottom align="left">
-                      <i className="material-icons">check</i>
-                      Contrata y agenda servicios
+                    <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
+                      <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
+                      <p>Contrata y agenda servicios</p>
                     </Typography>
-                    <Typography variant="subheading" gutterBottom align="left">
-                      <i className="material-icons">check</i>
+                    <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
+                      <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
                       Elige el perfil de tu agente
                     </Typography>
-                    <Typography variant="subheading" gutterBottom align="left">
-                      <i className="material-icons">check</i>
+                    <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
+                      <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
                       Paga con tus tarjetas preferidas
                     </Typography>
-                    <Typography variant="subheading" gutterBottom align="left">
-                      <i className="material-icons">check</i>
+                    <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
+                      <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
                       Recibe notificaciones
                     </Typography>
-                    <Typography variant="subheading" gutterBottom align="left">
-                      <i className="material-icons">check</i>
+                    <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
+                      <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
                       Recibe notificaciones
                     </Typography>
                     <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />

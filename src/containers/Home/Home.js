@@ -1,8 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
-import { MuiThemeProvider, createMuiTheme, withStyles } from 'material-ui/styles';
-import grey from 'material-ui/colors/grey';
-import blue from 'material-ui/colors/blue';
+import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
@@ -12,11 +10,15 @@ import classes from '../../App.css';
 import MenuBar from '../../containers/MenuBar/MenuBar';
 import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../components/Home/Main/Main';
-import Download from '../../components/Home/Download/Download';
+import Guarantees from '../../components/Home/Guarantees/Guarantees';
+import IsTold from '../../components/Home/IsTold/IsTold';
 import Funtion from '../../components/Home/Funtion/Funtion';
-import Aside from '../../components/Home/Aside/Aside';
-import Testimonials from '../../components/Home/Testimonials/Testimonials';
+import Services from '../../components/Home/Services/Services';
+import Testimonio from '../../components/Home/Testimonio/Testimonio';
+
+import Download from '../../components/Home/Download/Download';
 import Contact from '../../components/Home/Contact/Contact';
+import cls from './Home.css';
 
 const styles = myTheme => ({
   root: myTheme.mixins.gutters({
@@ -28,31 +30,8 @@ const styles = myTheme => ({
 
 class Home extends Component {
   render() {
-    const theme = createMuiTheme({
-      palette:{
-        primary: { 
-          light: grey[50],
-          main: grey[0],
-          dark: grey[700],
-          contrastText: '#000',
-        },
-        secondary: {
-          light: blue[50],
-          main: blue[400],
-          dark: blue[500],
-          contrastText: '#000',
-        },
-        accent: grey,
-        error: grey,
-      },
-      typography: {
-        // Tell Material-UI what's the font-size on the html element is.
-        fontFamily: 'Fabada',
-      },
-    });
 
     return (
-      <MuiThemeProvider theme={theme}>
         <Grid container>
           <Grid item xs={12}>
             <Paper elevation={0} className={`${classes.paper} ${classes.MenuBar}`}>
@@ -70,8 +49,13 @@ class Home extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="download">
-              <Download />
+            <Paper elevation={0} className={classes.paper} id="##">
+              <Guarantees />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper elevation={0} className={classes.paper} id="##">
+              <IsTold />
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -79,14 +63,19 @@ class Home extends Component {
               <Funtion />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} id="Services" className={cls.Services}>
             <Paper elevation={0} className={classes.paper}>
-              <Aside />
+              <Services />
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="testimonios">
-              <Testimonials />
+            <Paper elevation={0} className={classes.paper} id="Services">
+              <Testimonio />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} id="Download" className={cls.Download}>
+            <Paper elevation={0} className={classes.paper}>
+              <Download />
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -96,7 +85,6 @@ class Home extends Component {
             </Paper>
           </Grid>
         </Grid>
-      </MuiThemeProvider>
     );
   }
 }

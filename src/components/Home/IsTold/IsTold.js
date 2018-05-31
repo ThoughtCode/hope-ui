@@ -1,22 +1,24 @@
 // Dependencias
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import { withStyles } from 'material-ui/styles';
+import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
-import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
+import Modal from 'material-ui/Modal';
 
 // Component
-import cls from './Aside.css';
-import Registro from '../../../components/Client/Register/Register';
+import cls from './IsTold.css'
+import Registro from '../../Client/Register/Register'
 
 const styles = theme => ({
   paper: {
-    position: 'absolute',
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 2,
+    color: theme.palette.text.secondary,
+    backgroundColor: 'transparent',
   },
 });
+
 
 class Aside extends Component {
   state = {
@@ -53,9 +55,7 @@ class Aside extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                   >
-                    <div className={`${cls.Modal} ${classes.paper}`}>
-                      <Registro />
-                    </div>
+                  <Registro />
                   </Modal>
                 </div>
               </Paper>

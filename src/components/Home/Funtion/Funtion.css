@@ -1,18 +1,22 @@
 .stylesFuntion {
   padding-top: 15vh;
   padding-bottom: 30px;
-  background-color: #fafafa;
 }
 
 .Typogra {
   text-align: center;
-  font-size: 2rem;
-  color: #0069a7 !important;
+  font-size: 2.25em !important;
+  color: #434343 !important;
+  font-family: Arial !important;
 }
 
 .Styleicon {
   height: 6rem;
   padding-top: 3rem;
+}
+
+.SubTypogra{
+  font-family: Arial !important;
 }
 
 .SubSubTypogra{

@@ -19,7 +19,7 @@ class Service extends Component {
     let serviceBooking = null;
     if (this.props.service.attributes) {
       serviceImage = (
-        <ServiceImage title={this.props.service.attributes.name} />
+        <ServiceImage title={this.props.service.attributes.name} image={this.props.service.attributes.image.url}/>
       )
       serviceBooking = (
         <ServiceBooking

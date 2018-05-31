@@ -11,7 +11,6 @@ import {
 
 // Css
 import cls from './Service.css';
-import Image from '../Image/limpieza-hogar-mascota.jpg';
 
 const service = props => {
   return (
@@ -19,7 +18,7 @@ const service = props => {
       <Card className={cls.Card}>
         <CardMedia
           className={cls.Media}
-          image={Image}
+          image={props.image}
           title="Contemplative Reptile"
         />
         <CardContent className={cls.CardContent}>

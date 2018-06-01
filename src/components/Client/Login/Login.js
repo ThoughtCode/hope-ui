@@ -9,7 +9,6 @@ import FacebookLogin from 'react-facebook-login';
 import Button from 'material-ui/Button';
 import Auth from '../Auth/Auth';
 import cls from './Login.css';
-import Logo from '../../../assets/Logo.svg'
 
 import * as actions from '../../../store/actions';
 
@@ -34,26 +33,25 @@ class Login extends Component {
     return (
       <div>
         <div className={cls.Login}>
-          <Grid container className={cls.ButtonClose}>
+          <Grid container className={cls.ModalHeader}>
             <Grid item xs={12} sm={12}>
-              <Paper elevation={0}>
-                <Button component={Link} to="/">
-                  <i className="material-icons">clear</i>
-                </Button>
-              </Paper>
+              <Button component={Link} to="/">
+                <i className="material-icons">clear</i>
+              </Button>
             </Grid>
           </Grid>
           <Grid container justify="center" className={cls.LoginContainer}>
             <Grid item xs={12} sm={12}>
-              <Paper elevation={0}>
-                 <Button component={Link} to="/" >
-                  <img src={Logo} className={cls.Applogo} alt="logo" />
-                 </Button>
-              </Paper>
             </Grid>
             <Grid item xs={12} sm={12}>
               <Paper elevation={0}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>CLIENTE</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Title}>Entra a la plataforma de tus sueños en servicios</Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper elevation={0}>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Es hora de que alguien lo haga por ti.</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>"Busca y contrata tu servicio."</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12}>
@@ -62,7 +60,7 @@ class Login extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-              <Paper className={cls.ButtonFacebook} elevation={0}>
+              <Paper elevation={0}>
                 <FacebookLogin
                   appId="2057031764572769"
                   autoLoad={false}
@@ -70,17 +68,19 @@ class Login extends Component {
                   callback={this.responseFacebook} />
               </Paper>
             </Grid>
+          </Grid>
+          <Grid container justify="center" className={cls.LoginContainer}>
             <Grid item xs={12}>
               <Paper elevation={0}>
                 <Button component={Link} to="/agente/login" >Entra como agente</Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} sm={6}>
               <Paper elevation={0}>
                 <Button component={Link} to="/registro" >¿NO TIENES UNA CUENTA?</Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={12} sm={6}>
               <Paper elevation={0}>
                 <Button component={Link} to="/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
               </Paper>

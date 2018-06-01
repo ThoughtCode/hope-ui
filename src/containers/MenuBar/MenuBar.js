@@ -16,8 +16,7 @@ import {
 // Component
 import cls from './MenuBar.css';
 import Logo from './img/logo.svg';
-
-import Profile from '../../components/Client/Jobs/Job/img/0.jpeg';
+import ImageDefault from '../../assets/avatar-default-300x300.jpg';
 
 class MenuAppBar extends Component {
   state = {
@@ -35,7 +34,7 @@ class MenuAppBar extends Component {
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
-    let menu = null; 
+    let menu = null;
     if (this.props.auth) {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
@@ -56,7 +55,7 @@ class MenuAppBar extends Component {
                 color="inherit"
               >
               <Avatar
-                src={Profile}/>
+                src={this.props.profile ? this.props.profile : ImageDefault}/>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -72,7 +71,7 @@ class MenuAppBar extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Mi Perfil</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to="/cliente/perfil">Mi Perfil</MenuItem>
                 <MenuItem onClick={this.props.logout} component={Link} to="/cliente/login">
                   Logout
                 </MenuItem>

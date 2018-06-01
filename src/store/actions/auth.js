@@ -6,10 +6,11 @@ export const authStart = () => ({
   type: actionTypes.AUTH_START,
 });
 
-export const authSuccess = (token, userId) => ({
+export const authSuccess = (token, userId, profile) => ({
   type: actionTypes.AUTH_SUCCESS,
   token,
   userId,
+  profile,
 });
 
 export const authFail = error => ({
@@ -37,11 +38,13 @@ export const auth = (email, password) => (dispatch) => {
   };
   axios.post('/customers/signin', authData)
     .then((response) => {
+      console.log(response);
       const customer = response.data.customer.data;
       localStorage.setItem('token', customer.attributes.access_token);
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');
-      dispatch(authSuccess(customer.attributes.access_token, customer.id));
+      localStorage.setItem('profile', customer.attributes.avatar.url);
+      dispatch(authSuccess(customer.attributes.access_token, customer.id, customer.attributes.avatar.url));
       dispatch(push('/cliente/dashboard'));
     })
     .catch((err) => {

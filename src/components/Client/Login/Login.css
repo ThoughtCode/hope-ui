@@ -1,15 +1,23 @@
 .Login{
-  height: 100vh;
+  border-radius: 5px 5px 5px 5px !important;
+  margin: 0px auto;
   text-align: center;
+  height: 70vh;
+  width: 600px;
+  background-color: #ffffff !important;
+}
+
+.ModalHeader{
+  background-color: #0069a7;
+  border-radius: 5px 5px 0px 0px;
+  text-align: right !important;
+  font-weight: 500;
+  padding: 10px;
+  color: #FFF !important;
 }
 
 .LoginContainer{
-  padding-top: 10vh;
   flex-grow: 1;
-}
-
-.Applogo {
-  height: 3.5rem;
 }
 
 .Button {
@@ -23,17 +31,16 @@
   width: 200px !important;
 }
 
-.ButtonFacebook{
-  font-family: Arial !important;
-  margin: 4px 0 !important;
+.Title{
+  padding-top: 4vh;
+  font-weight: bold !important;
 }
 
 .Typogra {
   color: #0069a7 !important;
   text-align: center !important;
-  font-size: 2rem !important;
-  padding-top: 2vh;
-  font-family: Fabada !important;
+  font-size: 1.2rem !important;
+  font-family: Arial !important;
 }
 
 .ButtonRegistroAgente{

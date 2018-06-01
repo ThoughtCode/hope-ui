@@ -120,7 +120,7 @@ class Auth extends Component {
         }
 
         let form = (
-            <form onSubmit={this.submitHandler}>
+            <form onSubmit={this.submitHandler} className={cls.Form}>
                 {formElementsArray.map(formElement => (
                     <Input
                         key={formElement.id}

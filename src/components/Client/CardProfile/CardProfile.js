@@ -17,26 +17,26 @@ const cardProfile = props => {
     <div className={cls.CardProfile}>
       <Grid container>
         <Grid item lg={3}>
-            <div>
+            <div className={cls.Div}>
               <ul className={cls.SideNav}>
                 <Route path="/cliente/perfil" exact children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink to="/cliente/perfil">Perfil</NavLink>
+                    <NavLink className={cls.Link} to="/cliente/perfil">Perfil</NavLink>
                   </li>
                 )}/>
                 <Route path="/cliente/perfil/contraseña" exact children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink to="/cliente/perfil/contraseña">Contraseña</NavLink>
+                    <NavLink className={cls.Link} to="/cliente/perfil/contraseña">Contraseña</NavLink>
                   </li>
                 )}/>
                 <Route path="/cliente/perfil/propiedades" exact children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink to="/cliente/perfil/propiedades">Propiedades</NavLink>
+                    <NavLink className={cls.Link} to="/cliente/perfil/propiedades">Propiedades</NavLink>
                   </li>
                 )}/>
                 <Route path="/cliente/perfil/metodo-pago" exact children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
+                    <NavLink className={cls.Link} to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
                   </li>
                 )}/>
               </ul>
@@ -45,7 +45,7 @@ const cardProfile = props => {
         <Grid item lg={9}>
           <Grid container className={cls.CardContainer}>
             <div className={cls.CardPrincipal}>
-              <div>
+              <div className={cls.Div}>
                 <Link className={cls.ButtonEdit} to="#"><span>Editar</span></Link>
                 <h3 className={cls.CardTitle}><span>Perfil</span></h3>
                 <Grid className={cls.CardPrincipalAccount} container>

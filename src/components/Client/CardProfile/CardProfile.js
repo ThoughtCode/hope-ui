@@ -1,27 +1,26 @@
 import React from 'react';
-import { Link, NavLink, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 
 // Components
 import {
- Grid, Avatar,
+ Grid,
 } from 'material-ui';
+import Info from './Info/Info';
+import Edit from './Info/Edit/Edit';
 
 // Css
 import cls from './CardProfile.css';
-
-// Test
-import Image from '../../../assets/avatar-default-300x300.jpg';
 
 const cardProfile = props => {
   return (
     <div className={cls.CardProfile}>
       <Grid container>
-        <Grid item lg={3}>
+        <Grid item xs={12} sm={4} md={3} lg={3}>
             <div className={cls.Div}>
               <ul className={cls.SideNav}>
-                <Route path="/cliente/perfil" exact children={({match}) => (
+                <Route path="/cliente/perfil/info" children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink className={cls.Link} to="/cliente/perfil">Perfil</NavLink>
+                    <NavLink className={cls.Link} to="/cliente/perfil/info">Perfil</NavLink>
                   </li>
                 )}/>
                 <Route path="/cliente/perfil/contraseña" exact children={({match}) => (
@@ -42,52 +41,11 @@ const cardProfile = props => {
               </ul>
             </div>
         </Grid>
-        <Grid item lg={9}>
+        <Grid item xs={12} sm={8} md={9} lg={9}>
           <Grid container className={cls.CardContainer}>
             <div className={cls.CardPrincipal}>
-              <div className={cls.Div}>
-                <Link className={cls.ButtonEdit} to="#"><span>Editar</span></Link>
-                <h3 className={cls.CardTitle}><span>Perfil</span></h3>
-                <Grid className={cls.CardPrincipalAccount} container>
-                  <Grid item lg={4}>
-                    <div className={cls.Container}>
-                      <Grid container justify="center">
-                        <Avatar
-                          alt="Adelle Charles"
-                          src={Image}
-                          className={cls.Avatar}/>
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item lg={8}>
-                    <div className={cls.Container}>
-                      <Grid container>
-                        <ul className={cls.AccountList}>
-                          <li>
-                            <i className="fas fa-user"></i>
-                            <span>Rai Romero</span>
-                          </li>
-                          <li>
-                            <i className="fas fa-envelope"></i>
-                            <span>Rainieromadrid@gmail.com</span>
-                          </li>
-                          <li>
-                            <i className="fas fa-phone"></i>
-                            <span>123456789</span>
-                          </li>
-                          <li>
-                            <i className="fas fa-map-marker-alt"></i>
-                            <span>Working Up</span>
-                          </li>
-                          <li>
-                            <Link className={cls.ButtonLogout} to="#"><span>Cerrar Sesion</span></Link>
-                          </li>
-                        </ul>
-                      </Grid>
-                    </div>
-                  </Grid>
-                </Grid>
-              </div>
+              <Route path="/cliente/perfil/info" exact component={Info}/>
+              <Route path="/cliente/perfil/info/editar" exact component={Edit}/>
             </div>
           </Grid>
         </Grid>

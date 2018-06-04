@@ -71,7 +71,7 @@ class MenuAppBar extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose} component={Link} to="/cliente/perfil">Mi Perfil</MenuItem>
+                <MenuItem onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
                 <MenuItem onClick={this.props.logout} component={Link} to="/cliente/login">
                   Logout
                 </MenuItem>

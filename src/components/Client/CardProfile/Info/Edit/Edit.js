@@ -40,7 +40,7 @@ const edit = props => {
                     <input className={cls.Input} type="text" name="first_name" value="Rai"/>
                   </Grid>
                 </Grid>
-                <Grid item xs={12} sm={12} className={cls.FormItem} md={12} lg={6}>
+                <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                   <Grid container>
                     <label for="first_name"><span>Apellido</span></label>
                     <input className={cls.Input} type="text" name="first_name" value="Rai"/>

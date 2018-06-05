@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import {
@@ -9,7 +10,14 @@ import CardProfile from '../../../components/Client/CardProfile/CardProfile';
 // Css
 import cls from './Profile.css';
 
+import * as actions from '../../../store/actions';
+import { FETCH_SERVICE_START } from '../../../store/actions/actionTypes';
+
 class Profile extends Component {
+  componentDidMount() {
+    this.props.onFetchUser(localStorage.getItem('token'));
+  }
+
   render() {
     return (
       <div>
@@ -30,4 +38,10 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(Profile);

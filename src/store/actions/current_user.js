@@ -24,12 +24,76 @@ export const fetchCurrentUser = token => (dispatch) => {
   };
   axios.get('/customers/current', headers)
     .then((res) => {
-      console.log(res);
-    //   let cities = [];
-    //   cities = res.data.city.data;
-    //   dispatch(fetchCitiesSuccess(cities));
+      let user = {};
+      user = res.data.customer.data;
+      dispatch(fetchCurrentUserSuccess(user));
     })
     .catch((err) => {
-    //   dispatch(fetchCitiesFail(err));
+      dispatch(fetchCurrentUserFail(err));
+    });
+};
+
+export const updatedCurrentUserStart = () => ({
+  type: actionTypes.UPDATED_CURRENT_USER_START,
+});
+
+export const updatedCurrentUserSuccess = (user) => ({
+  type: actionTypes.UPDATED_CURRENT_USER_SUCCESS,
+  user,
+});
+
+export const updatedCurrentUserFail = error => ({
+  type: actionTypes.UPDATED_CURRENT_USER_FAIL,
+});
+
+export const updatedCurrentUser = (token, form) => dispatch => {
+  dispatch(updatedCurrentUserStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/customers/update', form, headers)
+    .then((res) => {
+      console.log(res);
+      let user = {};
+      user = res.data.customer.data;
+      dispatch(updatedCurrentUserSuccess(user));
+    })
+    .catch((err) => {
+      dispatch(updatedCurrentUserFail(err));
+    });
+};
+
+export const updatedCurrentUserAvatarStart = () => ({
+  type: actionTypes.UPDATED_CURRENT_USER_START,
+});
+
+export const updatedCurrentUserAvatarSuccess = (user) => ({
+  type: actionTypes.UPDATED_CURRENT_USER_SUCCESS,
+  user,
+});
+
+export const updatedCurrentUserAvatarFail = error => ({
+  type: actionTypes.UPDATED_CURRENT_USER_FAIL,
+});
+
+export const updatedCurrentUserAvatar = (token, file) => dispatch => {
+  dispatch(updatedCurrentUserAvatarStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/customers/update', file, headers)
+    .then((res) => {
+      console.log(res);
+      let user = {};
+      user = res.data.customer.data;
+      localStorage.setItem('profile', user.attributes.avatar.url);
+      dispatch(updatedCurrentUserAvatarSuccess(user));
+    })
+    .catch((err) => {
+      dispatch(updatedCurrentUserAvatarFail(err));
     });
 };

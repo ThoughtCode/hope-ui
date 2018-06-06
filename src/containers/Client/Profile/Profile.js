@@ -11,7 +11,6 @@ import CardProfile from '../../../components/Client/CardProfile/CardProfile';
 import cls from './Profile.css';
 
 import * as actions from '../../../store/actions';
-import { FETCH_SERVICE_START } from '../../../store/actions/actionTypes';
 
 class Profile extends Component {
   componentDidMount() {
@@ -28,7 +27,7 @@ class Profile extends Component {
                 <h1>Mi Perfil</h1>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CardProfile />
+                <CardProfile user={this.props.user} update={this.props.onUpdateUser} updateAvatar={this.props.onUpdateAvatar}/>
               </Grid>
             </Grid>
           </Grid>
@@ -38,10 +37,18 @@ class Profile extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = state => {
   return {
-    onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
+    user: state.user.user,
   }
 }
 
-export default connect(null, mapDispatchToProps)(Profile);
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
+    onUpdateUser: (token, form) => dispatch(actions.updatedCurrentUser(token, form)),
+    onUpdateAvatar: (token, file) => dispatch(actions.updatedCurrentUserAvatar(token, file)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

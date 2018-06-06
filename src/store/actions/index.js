@@ -32,5 +32,7 @@ export {
   fetchNextJobs,
 } from './job';
 export {
-  fetchCurrentUser
+  fetchCurrentUser,
+  updatedCurrentUser,
+  updatedCurrentUserAvatar,
 } from './current_user';

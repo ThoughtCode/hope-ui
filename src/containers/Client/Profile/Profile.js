@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import {
@@ -9,7 +10,13 @@ import CardProfile from '../../../components/Client/CardProfile/CardProfile';
 // Css
 import cls from './Profile.css';
 
+import * as actions from '../../../store/actions';
+
 class Profile extends Component {
+  componentDidMount() {
+    this.props.onFetchUser(localStorage.getItem('token'));
+  }
+
   render() {
     return (
       <div>
@@ -20,7 +27,7 @@ class Profile extends Component {
                 <h1>Mi Perfil</h1>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CardProfile />
+                <CardProfile user={this.props.user} update={this.props.onUpdateUser} updateAvatar={this.props.onUpdateAvatar}/>
               </Grid>
             </Grid>
           </Grid>
@@ -30,4 +37,18 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    user: state.user.user,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
+    onUpdateUser: (token, form) => dispatch(actions.updatedCurrentUser(token, form)),
+    onUpdateAvatar: (token, file) => dispatch(actions.updatedCurrentUserAvatar(token, file)),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

@@ -31,3 +31,8 @@ export {
   fetchHistoryJobs,
   fetchNextJobs,
 } from './job';
+export {
+  fetchCurrentUser,
+  updatedCurrentUser,
+  updatedCurrentUserAvatar,
+} from './current_user';

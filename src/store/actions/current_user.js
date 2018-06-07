@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
+import Alert from 'react-s-alert';
 
 export const fetchCurrentUserStart = () => ({
   type: actionTypes.FETCH_CURRENT_USER_START,
@@ -59,9 +60,14 @@ export const updatedCurrentUser = (token, form) => dispatch => {
       let user = {};
       user = res.data.customer.data;
       dispatch(updatedCurrentUserSuccess(user));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(updatedCurrentUserFail(err));
+      Alert.error(err.data.message);
     });
 };
 
@@ -92,8 +98,13 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
       user = res.data.customer.data;
       localStorage.setItem('profile', user.attributes.avatar.url);
       dispatch(updatedCurrentUserAvatarSuccess(user));
+      Alert.success('Avatar actualizado exitosamente.', {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(updatedCurrentUserAvatarFail(err));
+      Alert.error(err.data.message);
     });
 };

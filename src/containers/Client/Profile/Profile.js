@@ -27,7 +27,11 @@ class Profile extends Component {
                 <h1>Mi Perfil</h1>
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CardProfile user={this.props.user} update={this.props.onUpdateUser} updateAvatar={this.props.onUpdateAvatar}/>
+                <CardProfile
+                  user={this.props.user}
+                  update={this.props.onUpdateUser}
+                  updateAvatar={this.props.onUpdateAvatar}
+                  loading={this.props.loading}/>
               </Grid>
             </Grid>
           </Grid>
@@ -40,6 +44,7 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.user,
+    loading: state.user.loading
   }
 }
 

@@ -1,6 +1,7 @@
 import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
+import Alert from 'react-s-alert';
 
 export const authStart = () => ({
   type: actionTypes.AUTH_START,
@@ -46,9 +47,15 @@ export const auth = (email, password) => (dispatch) => {
       localStorage.setItem('profile', customer.attributes.avatar.url);
       dispatch(authSuccess(customer.attributes.access_token, customer.id, customer.attributes.avatar.url));
       dispatch(push('/cliente/dashboard'));
+      Alert.success(response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(authFail(err));
+      console.log(err.response.data.message);
+      Alert.error(err.response.data.message);
     });
 };
 
@@ -70,6 +77,7 @@ export const facebookLogin = accessToken => (dispatch) => {
     })
     .catch((err) => {
       dispatch(authFail(err));
+      Alert.error(err.data);
     });
 };
 

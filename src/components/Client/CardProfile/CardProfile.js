@@ -45,7 +45,11 @@ const cardProfile = props => {
           <Grid container className={cls.CardContainer}>
             <div className={cls.CardPrincipal}>
               <Route path="/cliente/perfil/info" exact render={() => <Info user={props.user}/>}/>
-              <Route path="/cliente/perfil/info/editar" exact render={() => <Edit user={props.user} update={props.update} updateAvatar={props.updateAvatar}/>}/>
+              <Route path="/cliente/perfil/info/editar" exact render={() => <Edit
+                user={props.user}
+                update={props.update}
+                updateAvatar={props.updateAvatar}
+                loading={props.loading}/>}/>
             </div>
           </Grid>
         </Grid>

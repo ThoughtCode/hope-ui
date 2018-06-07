@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Alert from 'react-s-alert';
 
 // Components
 import {
   Grid,
 } from 'material-ui';
+import Spinner from '../../../../UI/Spinner/Spinner';
 
 // Css
 import cls from './Edit.css';
@@ -102,7 +104,7 @@ class Edit extends Component {
   }
 
   componentDidUpdate() {
-    if (!this.state.updated) {
+    if (!this.state.updated && this.props.user.attributes) {
       this.setStateWithUser();
     }
   }
@@ -197,6 +199,7 @@ class Edit extends Component {
   }
 
   render() {
+    let form = null;
     let avatar = (
       <div className={cls.Container}>
         <Grid container justify="center">
@@ -211,7 +214,23 @@ class Edit extends Component {
       </div>
     );
 
-    if (this.props.user.attributes) {
+    if (this.props.loading) {
+      avatar = (
+        <div className={cls.Container}>
+          <Grid container justify="center">
+            <div className={cls.AvatarContainer}>
+              <Spinner />
+              <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
+            </div>  
+            <label htmlFor="avatar">
+              <span>Subir nueva foto</span>
+            </label>
+          </Grid>
+        </div>
+      );
+    }
+
+    if (this.props.user.attributes && !this.props.loading) {
       avatar = (
         <div className={cls.Container}>
           <Grid container justify="center">
@@ -226,6 +245,85 @@ class Edit extends Component {
         </div>
       );
     }
+
+    if (this.props.user.attributes) {
+      form = (
+        <div className={cls.Container}>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="first_name"><span>Nombre</span></label>
+                <input className={`${cls.Input} ${(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && cls.ContainerError}`}
+                  type="text"
+                  name="first_name"
+                  value={this.state.customer.first_name.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'first_name')}/>
+                  {(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && (
+                    <div className={cls.Error}>{this.state.customer.first_name.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="last_name"><span>Apellido</span></label>
+                <input className={`${cls.Input} ${(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && cls.ContainerError}`}
+                  type="text"
+                  name="last_name"
+                  value={this.state.customer.last_name.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'last_name')}/>
+                  {(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && (
+                    <div className={cls.Error}>{this.state.customer.last_name.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="email"><span>Correo</span></label>
+                <input className={`${cls.Input} ${(!this.state.customer.email.valid && this.state.customer.email.touched) && cls.ContainerError}`}
+                  type="text"
+                  name="email"
+                  value={this.state.customer.email.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'email')}/>
+                  {(!this.state.customer.email.valid && this.state.customer.email.touched) && (
+                    <div className={cls.Error}>{this.state.customer.email.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="cell_phone"><span>Telefono</span></label>
+                <input className={`${cls.Input} ${(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && cls.ContainerError}`}
+                  type="text"
+                  name="cell_phone"
+                  value={this.state.customer.cell_phone.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}/>
+                  {(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && (
+                    <div className={cls.Error}>{this.state.customer.cell_phone.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
+              <Grid container>
+                <Link className={cls.Button} to="/cliente/perfil/info">
+                  Cancelar
+                </Link>
+                {this.state.formIsValid ? (
+                  <button onClick={this.updatedHandler} className={cls.ButtonSave}><span>Guardar</span></button>
+                ) : (
+                  <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
+                )}
+              </Grid>
+            </Grid>
+          </Grid>
+        </div>
+      );
+    }
     return (
       <div className={cls.Div}>
         <h3 className={cls.CardTitle}><span>Actualizar Perfil</span></h3>
@@ -235,80 +333,7 @@ class Edit extends Component {
               {avatar}
             </Grid>
             <Grid item xs={12} sm={12} md={8} lg={8}>
-              <div className={cls.Container}>
-                <Grid container>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-                      <label htmlFor="first_name"><span>Nombre</span></label>
-                      <input className={`${cls.Input} ${(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && cls.ContainerError}`}
-                        type="text"
-                        name="first_name"
-                        value={this.state.customer.first_name.value}
-                        onChange={(event) => this.inputChangedHandler(event, 'first_name')}/>
-                        {(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && (
-                          <div className={cls.Error}>{this.state.customer.first_name.errorText}</div>
-                        )}
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-                      <label htmlFor="last_name"><span>Apellido</span></label>
-                      <input className={`${cls.Input} ${(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && cls.ContainerError}`}
-                        type="text"
-                        name="last_name"
-                        value={this.state.customer.last_name.value}
-                        onChange={(event) => this.inputChangedHandler(event, 'last_name')}/>
-                        {(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && (
-                          <div className={cls.Error}>{this.state.customer.last_name.errorText}</div>
-                        )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid container>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-                      <label htmlFor="email"><span>Correo</span></label>
-                      <input className={`${cls.Input} ${(!this.state.customer.email.valid && this.state.customer.email.touched) && cls.ContainerError}`}
-                        type="text"
-                        name="email"
-                        value={this.state.customer.email.value}
-                        onChange={(event) => this.inputChangedHandler(event, 'email')}/>
-                        {(!this.state.customer.email.valid && this.state.customer.email.touched) && (
-                          <div className={cls.Error}>{this.state.customer.email.errorText}</div>
-                        )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid container>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-                      <label htmlFor="cell_phone"><span>Telefono</span></label>
-                      <input className={`${cls.Input} ${(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && cls.ContainerError}`}
-                        type="text"
-                        name="cell_phone"
-                        value={this.state.customer.cell_phone.value}
-                        onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}/>
-                        {(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && (
-                          <div className={cls.Error}>{this.state.customer.cell_phone.errorText}</div>
-                        )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid container>
-                  <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
-                    <Grid container>
-                      <Link className={cls.Button} to="/cliente/perfil/info">
-                        Cancelar
-                      </Link>
-                      {this.state.formIsValid ? (
-                        <button onClick={this.updatedHandler} className={cls.ButtonSave}><span>Guardar</span></button>
-                      ) : (
-                        <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
-                      )}
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </div>
+              {form}
             </Grid>
           </Grid>
         </form>

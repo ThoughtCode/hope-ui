@@ -14,6 +14,7 @@ import RegisterClient from './components/Client/Register/Register';
 import LoginAgent from './containers/Agent/Login/Login';
 import ResetClient from './containers/Client/Reset/Reset';
 import ResetAgent from './containers/Agent/Reset/Reset';
+import Alert from 'react-s-alert';
 
 import * as actions from './store/actions';
 
@@ -27,6 +28,7 @@ class App extends Component {
     }
     return (
       <div className={cls.body}>
+        <Alert stack={{limit: 3}} />
         <Layout>
           <Switch>
             {routes}

@@ -31,7 +31,8 @@ class Profile extends Component {
                   user={this.props.user}
                   update={this.props.onUpdateUser}
                   updateAvatar={this.props.onUpdateAvatar}
-                  loading={this.props.loading}/>
+                  loading={this.props.loading}
+                  changePassword={this.props.onChangePassword}/>
               </Grid>
             </Grid>
           </Grid>
@@ -53,6 +54,7 @@ const mapDispatchToProps = dispatch => {
     onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
     onUpdateUser: (token, form) => dispatch(actions.updatedCurrentUser(token, form)),
     onUpdateAvatar: (token, file) => dispatch(actions.updatedCurrentUserAvatar(token, file)),
+    onChangePassword: (token, form) => dispatch(actions.changePassword(token, form)),
   }
 }
 

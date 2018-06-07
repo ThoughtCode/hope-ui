@@ -108,3 +108,40 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
       Alert.error(err.data.message);
     });
 };
+
+export const changePasswordStart = () => ({
+  type: actionTypes.CHANGE_PASSWORD_START,
+});
+
+export const changePasswordSuccess = () => ({
+  type: actionTypes.CHANGE_PASSWORD_SUCCESS,
+});
+
+export const changePasswordFail = error => ({
+  type: actionTypes.CHANGE_PASSWORD_FAIL,
+});
+
+export const changePassword = (token, form) => dispatch => {
+  dispatch(changePasswordStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/customers/change_password', form, headers)
+    .then((res) => {
+      console.log(res);
+      dispatch(changePasswordSuccess());
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(changePasswordFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};

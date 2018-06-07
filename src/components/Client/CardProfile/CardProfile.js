@@ -7,6 +7,7 @@ import {
 } from 'material-ui';
 import Info from './Info/Info';
 import Edit from './Info/Edit/Edit';
+import EditPassword from './EditPassword/EditPassword';
 
 // Css
 import cls from './CardProfile.css';
@@ -50,6 +51,7 @@ const cardProfile = props => {
                 update={props.update}
                 updateAvatar={props.updateAvatar}
                 loading={props.loading}/>}/>
+                <Route path="/cliente/perfil/contraseña" exact render={() => <EditPassword changePassword={props.changePassword} />}/>
             </div>
           </Grid>
         </Grid>

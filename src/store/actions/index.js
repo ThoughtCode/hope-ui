@@ -35,4 +35,5 @@ export {
   fetchCurrentUser,
   updatedCurrentUser,
   updatedCurrentUserAvatar,
+  changePassword,
 } from './current_user';

@@ -93,7 +93,7 @@ class MenuAppBar extends Component {
                 <AnchorLink className={cls.styleAnchor} href="/">Dashboard</AnchorLink>
               </MenuItem>
               <MenuItem>
-                <AnchorLink className={cls.styleAnchor} href="##">Mis Trabajos</AnchorLink>
+                <AnchorLink className={cls.styleAnchor} href="/agente/mistrabajos">Mis Trabajos</AnchorLink>
               </MenuItem>
               <MenuItem>
                 <AnchorLink className={cls.styleAnchor} href="##">Calendario</AnchorLink>

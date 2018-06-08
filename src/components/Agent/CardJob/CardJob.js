@@ -25,19 +25,19 @@ function CardJob(props) {
   return (
     <div className={cls.root}>
       <Grid container justify="center">
-        <Grid item xs={10}>
+        <Grid item xs={5}>
             <Grid container alignItems="center" className={cls.CardJob}>
                 
                 <Grid item xs={12}>
                     <Paper className={classes.paper} elevation={0}>
                         <Grid container alignItems="center">
-                            <Grid item xs={12} sm={9}>
+                            <Grid item xs={12} sm={6}>
                                 <Paper className={`${cls.TitleCard} ${classes.paper}`} elevation={0}>Limpieza de Casa</Paper>
                             </Grid>
-                            <Grid item xs={12} sm={1}>
+                            <Grid item xs={12} sm={2}>
                                 <Paper className={`${cls.StatuCard} ${classes.paper}`} elevation={0}>Mensual</Paper>
                             </Grid>
-                            <Grid item xs={12} sm={2}>
+                            <Grid item xs={12} sm={4}>
                                 <Paper className={classes.paper} elevation={0}>
                                     <div className={cls.ContainerAvatar}>
                                         <div className={cls.imgAvatar}>
@@ -73,20 +73,20 @@ function CardJob(props) {
                         <Grid container align="center">
                             <Grid item xs={12} sm={6}>
                                 <Paper className={classes.paper} elevation={0}>
-                                    <Typography variant="display1" gutterBottom className={cls.TypograFechaPrecio}>
+                                    <Typography variant="title" gutterBottom className={cls.TypograFechaPrecio}>
                                         {moment(props.date).format('MMMM D').replace(/\b\w/g, l => l.toUpperCase())}
                                     </Typography>
                                 </Paper>
                             </Grid>
                             <Grid item xs={12} sm={6} className={cls.BordeFecha}>
                                 <Paper className={classes.paper} elevation={0}>
-                                    <Typography variant="display1" gutterBottom className={cls.TypograFechaPrecio}>
+                                    <Typography variant="title" gutterBottom className={cls.TypograFechaPrecio}>
                                         {moment(props.date).format('h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())}
                                     </Typography>
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography variant="display4" gutterBottom className={cls.TypograFechaPrecio}>30$</Typography>
+                                <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>30$</Typography>
                             </Grid>
                         </Grid>
                     </Paper>

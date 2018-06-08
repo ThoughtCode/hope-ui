@@ -9,6 +9,7 @@ import Info from './Info/Info';
 import Edit from './Info/Edit/Edit';
 import EditPassword from './EditPassword/EditPassword';
 import CardProperties from './CardProperties/CardProperties';
+import NewProperty from './CardProperties/NewProperty/NewProperty';
 
 // Css
 import cls from './CardProfile.css';
@@ -54,6 +55,7 @@ const cardProfile = props => {
                 loading={props.loading}/>}/>
                 <Route path="/cliente/perfil/contraseña" exact render={() => <EditPassword changePassword={props.changePassword} />}/>
                 <Route path="/cliente/perfil/propiedades" exact render={() => <CardProperties />} />
+                <Route path="/cliente/perfil/propiedades/nuevo" exact render={() => <NewProperty />} />
             </div>
           </Grid>
         </Grid>

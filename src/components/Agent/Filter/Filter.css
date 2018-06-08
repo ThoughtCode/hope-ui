@@ -1,3 +1,11 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 120px;
+  align-items: center;
+  flex-grow: 1px;
+  background-color: #e3e3e3 !important;
+}
 .pageButtonActive {
   background-color: #0069a7 !important;
   border-radius: 5px !important;
@@ -9,14 +17,6 @@
   width: 10% !important;
   margin: 14px 20px !important;
   font-family: Arial !important;
-}
-.root {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 120px;
-  align-items: center;
-  flex-grow: 1px;
-  background-color: #e3e3e3 !important;
 }
 .IconStyle{
   font-size: 4em !important;

@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+import Alert from 'react-s-alert';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
@@ -115,6 +116,32 @@ export const createProperty = (token, formData) => (dispatch) => {
     });
 };
 
+export const createPropertyOnProfile = (token, formData) => (dispatch) => {
+  dispatch(createPropertyStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post('/customers/properties', formData, headers)
+    .then((res) => {
+      const property = res.data.property.data;
+      dispatch(createPropertySuccess(property));
+      dispatch(push('/cliente/perfil/propiedades'));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(createPropertyFail(err));
+      Alert.error(err.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
 export const updateProperty = (token, formData, id) => (dispatch) => {
   dispatch(updatePropertyStart());
   const headers = {
@@ -126,10 +153,18 @@ export const updateProperty = (token, formData, id) => (dispatch) => {
     .then((res) => {
       const property = res.data.property.data;
       dispatch(updatePropertySuccess(property));
-      dispatch(push('/cliente/dashboard/propiedades'));
+      dispatch(push('/cliente/perfil/propiedades'));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(updatePropertyFail(err));
+      Alert.error(err.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 
@@ -144,9 +179,17 @@ export const deleteProperty = (token, id) => (dispatch) => {
     .then((res) => {
       console.log(res);
       dispatch(deletePropertySuccess(id));
-      dispatch(push('/cliente/dashboard/propiedades'));
+      dispatch(push('/cliente/perfil/propiedades'));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(deletePropertyFail(err));
+      Alert.error(err.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };

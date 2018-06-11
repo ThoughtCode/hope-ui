@@ -13,6 +13,7 @@ export {
   createProperty,
   updateProperty,
   deleteProperty,
+  createPropertyOnProfile,
 } from './property';
 export {
   fetchServices,

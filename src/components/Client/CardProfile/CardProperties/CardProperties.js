@@ -17,24 +17,14 @@ const cardProperties = props => {
       <Grid item xs={12} sm={12} md={12} lg={12}>
         <div className={cls.Container}>
           <Grid container>
-            <p>
-              <strong>Working Up</strong>
-              <span className={cls.MarginLeft}>Gonzalo suarez con San Ignacio</span>
-              <Link className={cls.LinkEdit} to="/cliente/perfil/propiedades/nuevo">Editar</Link>
-              <Link className={cls.LinkDelete} to="/cliente/perfil/propiedades/nuevo">Borrar</Link>
-            </p>
-            <p>
-              <strong>Working Up</strong>
-              <span className={cls.MarginLeft}>Gonzalo suarez con San Ignacio</span>
-              <Link className={cls.LinkEdit} to="/cliente/perfil/propiedades/nuevo">Editar</Link>
-              <Link className={cls.LinkDelete} to="/cliente/perfil/propiedades/nuevo">Borrar</Link>
-            </p>
-            <p>
-              <strong>Working Up</strong>
-              <span className={cls.MarginLeft}>Gonzalo suarez con San Ignacio</span>
-              <Link className={cls.LinkEdit} to="/cliente/perfil/propiedades/nuevo">Editar</Link>
-              <Link className={cls.LinkDelete} to="/cliente/perfil/propiedades/nuevo">Borrar</Link>
-            </p>
+            {props.properties.map(property => (
+              <p key={property.id}>
+                <strong>Working Up</strong>
+                <span className={cls.MarginLeft}>{property.attributes.p_street} con {property.attributes.s_street}</span>
+                <Link className={cls.LinkEdit} to={`/cliente/perfil/propiedades/editar/${property.id}`}>Editar</Link>
+                <a className={cls.LinkDelete} onClick={() => props.deleteProperty(localStorage.getItem('token'), property.id)}>Borrar</a>
+              </p>
+            ))}
           </Grid>
         </div>
       </Grid>

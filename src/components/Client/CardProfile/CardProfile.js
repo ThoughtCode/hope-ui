@@ -26,17 +26,17 @@ const cardProfile = props => {
                     <NavLink className={cls.Link} to="/cliente/perfil/info">Perfil</NavLink>
                   </li>
                 )}/>
-                <Route path="/cliente/perfil/contraseña" exact children={({match}) => (
+                <Route path="/cliente/perfil/contraseña" children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
                     <NavLink className={cls.Link} to="/cliente/perfil/contraseña">Contraseña</NavLink>
                   </li>
                 )}/>
-                <Route path="/cliente/perfil/propiedades" exact children={({match}) => (
+                <Route path="/cliente/perfil/propiedades" children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
                     <NavLink className={cls.Link} to="/cliente/perfil/propiedades">Propiedades</NavLink>
                   </li>
                 )}/>
-                <Route path="/cliente/perfil/metodo-pago" exact children={({match}) => (
+                <Route path="/cliente/perfil/metodo-pago" children={({match}) => (
                   <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
                     <NavLink className={cls.Link} to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
                   </li>
@@ -54,8 +54,22 @@ const cardProfile = props => {
                 updateAvatar={props.updateAvatar}
                 loading={props.loading}/>}/>
                 <Route path="/cliente/perfil/contraseña" exact render={() => <EditPassword changePassword={props.changePassword} />}/>
-                <Route path="/cliente/perfil/propiedades" exact render={() => <CardProperties />} />
-                <Route path="/cliente/perfil/propiedades/nuevo" exact render={() => <NewProperty />} />
+                <Route path="/cliente/perfil/propiedades" exact render={() => <CardProperties properties={props.properties}
+                  deleteProperty={props.deleteProperty} />} />
+                <Route path="/cliente/perfil/propiedades/nuevo" exact render={() => 
+                  <NewProperty cities={props.cities}
+                    neightborhoods={props.neightborhoods}
+                    fetchNeightborhoods={props.fetchNeightborhoods}
+                    createProperty={props.createProperty}/>} 
+                />
+                <Route path="/cliente/perfil/propiedades/editar/:id" exact render={() => 
+                  <NewProperty cities={props.cities}
+                    neightborhoods={props.neightborhoods}
+                    fetchNeightborhoods={props.fetchNeightborhoods}
+                    updateProperty={props.updateProperty}
+                    fetchProperty={props.fetchProperty}
+                    property={props.property}/>} 
+                />
             </div>
           </Grid>
         </Grid>

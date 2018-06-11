@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import cls from './NewProperty.css';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +13,7 @@ import {
 class NewProperty extends Component {
   state = {
     formIsValid: true,
+    updated: false,
     property: {
       name: {
         value: '',
@@ -106,6 +108,96 @@ class NewProperty extends Component {
     },
   }
 
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      this.props.fetchProperty(localStorage.getItem('token'), this.props.match.params.id);
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.property && Object.keys(this.props.property).length > 0 && this.state.updated === false) {
+      const updateObject = {
+        ...this.state.property,
+        name: {
+          ...this.state.property["name"],
+          value: this.props.property.attributes.name,
+          valid: true,
+          errorText: null,
+          touched: false,
+        },
+        city: {
+          ...this.state.property["city"],
+          value: this.props.property.attributes.city_id,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        neightborhood_id: {
+          ...this.state.property["neightborhood_id"],
+          value: this.props.property.attributes.neightborhood_id,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        p_street: {
+          ...this.state.property["p_street"],
+          value: this.props.property.attributes.p_street,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        number: {
+          ...this.state.property["number"],
+          value: this.props.property.attributes.number,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        s_street: {
+          ...this.state.property["s_street"],
+          value: this.props.property.attributes.s_street,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        details: {
+          ...this.state.property["details"],
+          value: this.props.property.attributes.details,
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        additional_reference: {
+          ...this.state.property["additional_reference"],
+          value: this.props.property.attributes.additional_reference || "",
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        phone: {
+          ...this.state.property["phone"],
+          value: this.props.property.attributes.phone || "",
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+        cell_phone: {
+          ...this.props.property["cell_phone"],
+          value: this.props.property.attributes.cell_phone || "",
+          valid: true,
+          touched: false,
+          errorText: null,
+        },
+      }
+      this.setState({
+        ...this.state,
+        updated: true,
+        property: updateObject
+      });
+      this.props.fetchNeightborhoods(localStorage.getItem('token'), this.props.property.attributes.city_id);
+    }
+  }
+
   checkValidity(value, rules) {
     let isValid = true;
     let errorText = null;
@@ -164,6 +256,10 @@ class NewProperty extends Component {
       },
     };
 
+    if (controlName === 'city') {
+      this.props.fetchNeightborhoods(localStorage.getItem('token'), event.target.value);
+    };
+
     let formIsValid = true;
     for (const inputIdentifier in updatedControls) {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
@@ -184,13 +280,29 @@ class NewProperty extends Component {
     const property = {
       property: formData,
     };
-    // this.props.changePassword(localStorage.getItem('token'), property);
+    this.props.createProperty(localStorage.getItem('token'), property);
+  }
+
+  updateHandler = (event) => {
+    event.preventDefault();
+    const formData = {};
+    for (const formElementIdentifier in this.state.property) {
+      formData[formElementIdentifier] = this.state.property[formElementIdentifier].value;
+    }
+    const property = {
+      property: formData,
+    };
+    this.props.updateProperty(localStorage.getItem('token'), property, this.props.match.params.id);
   }
 
   render() {
     return (
       <div className={cls.Div}>
-        <h3 className={cls.CardTitle}><span>Nueva Propiedad</span></h3>
+        {this.props.match.params.id ? (
+          <h3 className={cls.CardTitle}><span>Editar Propiedad</span></h3>
+        ) : (
+          <h3 className={cls.CardTitle}><span>Nueva Propiedad</span></h3>
+        )}
         <form className={cls.Form}>
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -214,11 +326,15 @@ class NewProperty extends Component {
 									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
 										<Grid container>
 											<label htmlFor="city"><span>Ciudad</span></label>
-											<input className={`${cls.Input} ${(!this.state.property.city.valid && this.state.property.city.touched) && cls.ContainerError}`}
-												type="text"
+                      <select className={`${cls.Select} ${(!this.state.property.city.valid && this.state.property.city.touched) && cls.ContainerError}`}
+                        value={this.state.property.city.value}
 												name="city"
-												value={this.state.property.city.value}
-												onChange={(event) => this.inputChangedHandler(event, 'city')}/>
+												onChange={(event) => this.inputChangedHandler(event, 'city')}>
+                        <option value="">Seleccionar una ciudad</option>
+                        {this.props.cities.map(city => (
+                          <option key={city.id} value={city.id}>{city.attributes.name}</option>
+                        ))}
+                      </select>
 												{(!this.state.property.city.valid && this.state.property.city.touched) && (
 													<div className={cls.Error}>{this.state.property.city.errorText}</div>
 												)}
@@ -227,14 +343,27 @@ class NewProperty extends Component {
 									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
 										<Grid container>
 											<label htmlFor="neightborhood_id"><span>Barrio</span></label>
-											<input className={`${cls.Input} ${(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && cls.ContainerError}`}
-												type="text"
+                      {this.state.property.city.value === "" ? (
+                        <select disabled className={`${cls.Select} ${(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && cls.ContainerError}`}
+                        value={this.state.property.neightborhood_id.value}
 												name="neightborhood_id"
-												value={this.state.property.neightborhood_id.value}
-												onChange={(event) => this.inputChangedHandler(event, 'neightborhood_id')}/>
-												{(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && (
-													<div className={cls.Error}>{this.state.property.neightborhood_id.errorText}</div>
-												)}
+												onChange={(event) => this.inputChangedHandler(event, 'neightborhood_id')}>
+                        <option value="">Seleccionar un barrio</option>
+                      </select>  
+                      ) : (
+											<select className={`${cls.Select} ${(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && cls.ContainerError}`}
+                        name="neightborhood_id"
+                        value={this.state.property.neightborhood_id.value}
+												onChange={(event) => this.inputChangedHandler(event, 'neightborhood_id')}>
+                        <option value="">Seleccionar un barrio</option>
+                        {this.props.neightborhoods.map(neightborhood => (
+                          <option key={neightborhood.id} value={neightborhood.id}>{neightborhood.attributes.name}</option>
+                        ))}
+                      </select>
+                      )}
+                      {(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && (
+                        <div className={cls.Error}>{this.state.property.neightborhood_id.errorText}</div>
+                      )}
 										</Grid>
 									</Grid>
 								</Grid>
@@ -343,11 +472,18 @@ class NewProperty extends Component {
 											<Link className={cls.Button} to="/cliente/perfil/info">
 												Cancelar
 											</Link>
-											{this.state.formIsValid ? (
-												<button onClick={this.updatedHandler} className={cls.ButtonSave}><span>Guardar</span></button>
-											) : (
-												<button disabled className={cls.ButtonDisabled}><span>Cambiar</span></button>
-											)}
+                      {this.props.match.params.id ?
+                        this.state.formIsValid ? (
+                          <button onClick={this.updateHandler} className={cls.ButtonSave}><span>Editar</span></button>
+                        ) : (
+                          <button disabled className={cls.ButtonDisabled}><span>Editar</span></button>
+                        ) : (
+                        this.state.formIsValid ? (
+                          <button onClick={this.createdHandler} className={cls.ButtonSave}><span>Guardar</span></button>
+                        ) : (
+                          <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
+                        )
+                      )}
 										</Grid>
 									</Grid>
 								</Grid>
@@ -360,4 +496,4 @@ class NewProperty extends Component {
   };
 };
 
-export default NewProperty;
+export default withRouter(NewProperty);

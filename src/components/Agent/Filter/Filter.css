@@ -1,0 +1,29 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 120px;
+  align-items: center;
+  flex-grow: 1px;
+  background-color: #e3e3e3 !important;
+}
+.pageButtonActive {
+  background-color: #0069a7 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  font-size: 1em !important;
+  border: 1px solid #0069a7 !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  width: 10% !important;
+  margin: 14px 20px !important;
+  font-family: Arial !important;
+}
+.IconStyle{
+  font-size: 4em !important;
+}
+.textField {
+  flex-basis: 200px;
+  text-align: left;
+  width: 150px;
+  /* border: 1px solid #0069a7 !important; */
+}

@@ -9,6 +9,8 @@ import Layout from './containers/Layout/Layout';
 import Home from './containers/Home/Home';
 import Client from './containers/Client/Client';
 import Agent from './containers/Agent/Agent';
+import AgentDashboard from './containers/Agent/Dashboard/Dashboard';
+import AgentMisTrabajos from './containers/Agent/MisTrabajos/MisTrabajos';
 import LoginClient from './components/Client/Login/Login';
 import RegisterClient from './components/Client/Register/Register';
 import LoginAgent from './containers/Agent/Login/Login';
@@ -37,7 +39,8 @@ class App extends Component {
             <Route path="/cliente/login" component={LoginClient}/>
             <Route path="/agente/login" component={LoginAgent}/>
             <Route path="/cliente/registro" component={RegisterClient}/>
-            <Route path="/agente/dashboard" component={Agent}/>
+            <Route path="/agente/dashboard" component={AgentDashboard}/>
+            <Route path="/agente/mistrabajos" component={AgentMisTrabajos}/>
             <Route path="/agente" component={Agent}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>

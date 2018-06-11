@@ -15,6 +15,8 @@ import * as actions from '../../../store/actions';
 class Profile extends Component {
   componentDidMount() {
     this.props.onFetchUser(localStorage.getItem('token'));
+    this.props.onFetchProperties(localStorage.getItem('token'));
+    this.props.onFetchCities(localStorage.getItem('token'));
   }
 
   render() {
@@ -32,7 +34,16 @@ class Profile extends Component {
                   update={this.props.onUpdateUser}
                   updateAvatar={this.props.onUpdateAvatar}
                   loading={this.props.loading}
-                  changePassword={this.props.onChangePassword}/>
+                  changePassword={this.props.onChangePassword}
+                  properties={this.props.properties}
+                  cities={this.props.cities}
+                  neightborhoods={this.props.neightborhoods}
+                  fetchNeightborhoods={this.props.onFetchNeightborhoods}
+                  createProperty={this.props.onCreateProperty}
+                  updateProperty={this.props.onUpdateProperty}
+                  fetchProperty={this.props.onFetchProperty}
+                  deleteProperty={this.props.onDeleteProperty}
+                  property={this.props.property}/>
               </Grid>
             </Grid>
           </Grid>
@@ -45,7 +56,11 @@ class Profile extends Component {
 const mapStateToProps = state => {
   return {
     user: state.user.user,
-    loading: state.user.loading
+    loading: state.user.loading,
+    properties: state.property.properties,
+    cities: state.city.cities,
+    neightborhoods: state.neightborhood.neightborhoods,
+    property: state.property.property,
   }
 }
 
@@ -55,6 +70,13 @@ const mapDispatchToProps = dispatch => {
     onUpdateUser: (token, form) => dispatch(actions.updatedCurrentUser(token, form)),
     onUpdateAvatar: (token, file) => dispatch(actions.updatedCurrentUserAvatar(token, file)),
     onChangePassword: (token, form) => dispatch(actions.changePassword(token, form)),
+    onFetchProperties: (token) => dispatch(actions.fetchProperties(token)),
+    onFetchCities: (token) => dispatch(actions.fetchCities(token)),
+    onFetchNeightborhoods: (token, id) => dispatch(actions.fetchNeightborhoods(token, id)),
+    onCreateProperty: (token, formData) => dispatch(actions.createPropertyOnProfile(token, formData)),
+    onFetchProperty: (token, id) => dispatch(actions.fetchProperty(token, id)),
+    onUpdateProperty: (token, formData, id) => dispatch(actions.updateProperty(token, formData, id)),
+    onDeleteProperty: (token, id) => dispatch(actions.deleteProperty(token, id)),
   }
 }
 

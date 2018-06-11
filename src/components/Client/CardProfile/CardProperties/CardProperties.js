@@ -27,9 +27,7 @@ const cardProperties = props => {
                 </p>
             )) : (
               <h2><strong>No tienes propiedades creadas</strong></h2>
-            )
-            }
-            
+            )}     
           </Grid>
         </div>
       </Grid>

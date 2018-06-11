@@ -1,0 +1,11 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20vh;
+  align-items: center;
+  flex-grow: 1px;
+}
+.Typogra{
+  font-size: 1.8em !important;
+  text-transform: uppercase;
+}

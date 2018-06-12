@@ -229,7 +229,8 @@ class Register extends Component {
               <div className={cls.form}>{form}</div>
               <div className={cls.ButtonConten}>
                 <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
-                <Button className={cls.pageButtonLogin} component={Link} to="/login" >Volver al login</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/cliente/login" >Volver al login</Button>
+                <Button className={cls.pageButtonRegistroAgente} component={Link} to="/reset" >Olvido su contraseña</Button>
               </div>
             </Grid>
           </Grid>

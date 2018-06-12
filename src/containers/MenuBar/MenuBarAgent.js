@@ -99,7 +99,7 @@ class MenuAppBar extends Component {
                 <AnchorLink className={cls.styleAnchor} href="##">Calendario</AnchorLink>
               </MenuItem>
               <MenuItem>
-                <i class="material-icons">account_circle</i>
+                <i className="material-icons">account_circle</i>
                 <Button className={cls.styleAnchor} component={Link} to="##" >Full Name</Button>
               </MenuItem>
             </Toolbar>

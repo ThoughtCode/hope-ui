@@ -77,7 +77,7 @@ class Login extends Component {
             </Grid>
             <Grid item xs={12} sm={6}>
               <Paper elevation={0}>
-                <Button component={Link} to="/registro" >¿NO TIENES UNA CUENTA?</Button>
+                <Button component={Link} to="/cliente/registro" >¿NO TIENES UNA CUENTA?</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>

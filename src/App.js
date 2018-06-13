@@ -19,13 +19,15 @@ import Alert from 'react-s-alert';
 class App extends Component {
   render() {
     let routes = null;
-    if (this.props.auth) {
+    if (this.props.auth && localStorage.getItem('signInAs') === 'customer') {
       routes = (
-        <div>
-          <Route path="/agente" component={Agent}/>
-          <Route path="/cliente" component={Client}/>
-        </div>
+        <Route path="/cliente" component={Client}/>
       ) 
+    }
+    if (this.props.auth && localStorage.getItem('signInAs') === 'agent') {
+      routes = (
+        <Route path="/agente" component={Agent}/>
+      )
     }
     return (
       <div className={cls.body}>

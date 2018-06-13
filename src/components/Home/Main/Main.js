@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -27,6 +28,12 @@ class Main extends Component {
   };
 
   handleOpen = (modal) => {
+    if (localStorage.getItem('signInAs') === 'customer') {
+      this.props.history.push('/cliente')
+    }
+    if (localStorage.getItem('signInAs') === 'agent') {
+      this.props.history.push('/agente')
+    }
     if (modal === "register") {
       this.setState({ openLogin: false });
       this.setState({ openRegister: true });
@@ -97,6 +104,4 @@ class Main extends Component {
   }
 }
 
-const RegistroWa = withStyles(styles)(Main);
-
-export default RegistroWa;
+export default withRouter(withStyles(styles)(Main));

@@ -55,7 +55,7 @@ class Aside extends Component {
                     open={this.state.open}
                     onClose={this.handleClose}
                   >
-                  <Registro />
+                  <Registro close={this.handleClose}/>
                   </Modal>
                 </div>
               </Paper>

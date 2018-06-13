@@ -1,6 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { withStyles } from 'material-ui/styles';
 import {
@@ -42,6 +42,12 @@ class AppBarMenu extends Component {
   };
 
   handleOpen = (modal) => {
+    if (localStorage.getItem('signInAs') === 'customer') {
+      this.props.history.push('/cliente')
+    }
+    if (localStorage.getItem('signInAs') === 'agent') {
+      this.props.history.push('/agente')
+    }
     this.setState({ openLogin: true });
     this.setState({ open: true });
   };
@@ -154,4 +160,4 @@ class AppBarMenu extends Component {
 
 const MenuAppBar = withStyles(styles)(AppBarMenu);
 
-export default MenuAppBar;
+export default withRouter(MenuAppBar);

@@ -140,7 +140,7 @@ class AppBarMenu extends Component {
                   onClose={this.handleClose}
                 >
                   <div className={`${cls.Modal} ${classes.paper}`}>
-                    <Login />
+                    <Login close={this.handleClose} />
                   </div>
                 </Modal>
               </Grid>

@@ -208,7 +208,7 @@ class Register extends Component {
         <div className={cls.Register}>
           <Grid container className={cls.ModalHeader}>
             <Grid item xs={12} sm={12}>
-              <Button component={Link} to="/">
+              <Button onClick={this.props.close}>
                 <i className="material-icons">clear</i>
               </Button>
             </Grid>

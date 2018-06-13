@@ -62,10 +62,10 @@ class Main extends Component {
                 >
                   <div className={`${cls.Modal} ${classes.paper}`}>
                     { this.state.openRegister && 
-                      <Registro />
+                      <Registro close={this.handleClose} />
                     }
                     { this.state.openLogin && 
-                      <Login />
+                      <Login close={this.handleClose} />
                     }
                   </div>
                 </Modal>

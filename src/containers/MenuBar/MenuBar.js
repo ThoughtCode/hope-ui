@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
+import { withStyles } from 'material-ui/styles';
 import {
   MenuItem,
   AppBar,
@@ -11,29 +12,49 @@ import {
   IconButton,
   Menu,
   Avatar,
+  Modal,
+  Grid
 } from 'material-ui';
 
 // Component
 import cls from './MenuBar.css';
 import Logo from './img/logo.svg';
 import ImageDefault from '../../assets/avatar-default-300x300.jpg';
+import Login from '../../components/Client/Login/Login';
 
-class MenuAppBar extends Component {
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+  },
+});
+
+class AppBarMenu extends Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    openLogin: false,
+    open: false
   }
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  handleOpen = (modal) => {
+    this.setState({ openLogin: true });
+    this.setState({ open: true });
+  };
+
   handleClose = () => {
     this.setState({ anchorEl: null });
+    this.setState({ open: false });
   };
 
   render() {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
+    const { classes } = this.props;
     let menu = null;
     if (this.props.auth) {
       menu = (
@@ -99,7 +120,7 @@ class MenuAppBar extends Component {
                 <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
               </MenuItem>
               <MenuItem>
-                <Button className={cls.styleAnchor} component={Link} to="/cliente/login" >Iniciar Sesión</Button>
+                <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
               </MenuItem>
             </Toolbar>
           </AppBar>
@@ -108,9 +129,29 @@ class MenuAppBar extends Component {
     return (
       <div className={cls.root}>
         {menu}
+        <Grid container justify="center" className={cls.style}>
+          <Grid item xs={12} md={8} sm={12}>
+            <Grid container align="center">
+              <Grid item xs={12} sm={4} align="right">
+                <Modal
+                  aria-labelledby="simple-modal-title"
+                  aria-describedby="simple-modal-description"
+                  open={this.state.open}
+                  onClose={this.handleClose}
+                >
+                  <div className={`${cls.Modal} ${classes.paper}`}>
+                    <Login />
+                  </div>
+                </Modal>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
       </div>
     );
   }
 }
+
+const MenuAppBar = withStyles(styles)(AppBarMenu);
 
 export default MenuAppBar;

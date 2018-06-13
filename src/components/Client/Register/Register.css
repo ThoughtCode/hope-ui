@@ -2,7 +2,7 @@
   border-radius: 5px 5px 5px 5px !important;
   margin: 0px auto;
   text-align: center;
-  height: 90vh;
+  height: 95vh;
   width: 600px;
   background-color: #ffffff !important;
 }
@@ -87,7 +87,7 @@
   font-size: 0.6rem !important;
   margin: 4px 0 !important;
   justify-content: center;
-  width: 200px !important;
+  width: 160px !important;
 }
 .Typogra {
   color: #0069a7 !important;
@@ -100,8 +100,6 @@
   text-align: center;
 }
 
-.InputRegistre{
-}
 .InputText > div > input {
   display: inline-flex;
 }

@@ -32,7 +32,7 @@ export const registerClient = formData => (dispatch) => {
     })
     .catch((error) => {
       dispatch(registerClientFail(error));
-      Alert.error(error.data.message, {
+      Alert.error(error.response.data.message, {
         position: 'bottom',
         effect: 'genie',
       });

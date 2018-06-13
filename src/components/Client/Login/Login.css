@@ -55,6 +55,14 @@
   text-align: right;
 }
 
+.ModalAgent {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute !important;
+  background-color: white;
+}
+
 @media only screen and (max-width: 600px) {
   .Typogra {
     font-size: 1rem !important;

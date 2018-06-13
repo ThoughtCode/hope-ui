@@ -1,4 +1,5 @@
 import { push } from 'react-router-redux';
+import Alert from 'react-s-alert';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
@@ -24,8 +25,16 @@ export const registerClient = formData => (dispatch) => {
       localStorage.setItem('token', customer.attributes.access_token);
       dispatch(registerClientSuccess(customer.id, formData));
       dispatch(push('/cliente/dashboard'));
+      Alert.success(response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((error) => {
       dispatch(registerClientFail(error));
+      Alert.error(error.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };

@@ -41,8 +41,8 @@ function FullWidthGrid(props) {
             
             <Grid item xs={12} sm={6} md={5} lg={5}>
               <Paper className={cls.Paper} elevation={0}>
-                <Grid container xs={12} sm={6} md={12}>
-                  <Grid item xs={12}>
+                <Grid container>
+                  <Grid item xs={12} sm={6} md={12}>
                     <Paper className={cls.Paper} elevation={0}>
                       ¿Quieres contratar un servicio o quieres conversar con uno de nuestros asesores?
                     </Paper>

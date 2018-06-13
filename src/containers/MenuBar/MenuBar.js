@@ -61,9 +61,9 @@ class AppBarMenu extends Component {
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
-              <AnchorLink className={cls.styleAnchor} href="#main">
+              <Link to="/cliente">
                 <img src={Logo} className={cls.Applogo} alt="logo" />
-              </AnchorLink>
+              </Link>
             </Typography>
             <MenuItem>
               Mis Trabajos
@@ -93,7 +93,7 @@ class AppBarMenu extends Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem onClick={this.props.logout} component={Link} to="/cliente/login">
+                <MenuItem onClick={this.props.logout} component={Link} to="/">
                   Logout
                 </MenuItem>
               </Menu>
@@ -106,7 +106,7 @@ class AppBarMenu extends Component {
           <AppBar topfixed="true" className={cls.AppBar} elevation={2}>
             <Toolbar className={cls.Toolbar}>
               <Typography variant="title" color="secondary" className={cls.flex}>
-                <AnchorLink className={cls.styleAnchor} href="#main">
+                <AnchorLink href="#main">
                   <img src={Logo} className={cls.Applogo} alt="logo" />
                 </AnchorLink>
               </Typography>

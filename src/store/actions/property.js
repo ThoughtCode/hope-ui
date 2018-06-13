@@ -110,9 +110,17 @@ export const createProperty = (token, formData) => (dispatch) => {
     .then((res) => {
       const property = res.data.property.data;
       dispatch(createPropertySuccess(property));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(createPropertyFail(err));
+      Alert.error(err.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 

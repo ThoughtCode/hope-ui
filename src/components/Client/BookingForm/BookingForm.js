@@ -2,31 +2,24 @@ import React, { Component } from 'react';
 
 // Components
 import {
-  TextField,
   Grid,
-  Paper,
-  Typography,
-  Button,
-  FormControl,
-  FormGroup,
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControlLabel,
-  Checkbox,
 } from 'material-ui';
-import { DateTimePicker } from 'material-ui-pickers';
-import Input from '../../UI/Input/Input';
 import PropertyForm from '../PropertyForm/PropertyForm';
+import Datetime from 'react-datetime';
+import moment from 'moment';
 
 // Css
 import cls from './BookingForm.css';
 
 class BookingForm extends Component {
   state = {
+    showCreateProperty: false,
     has_properties: this.props.properties.length > 0,
     value: '',
     form: {
+      recurrent: {
+        value: '2',
+      },
       services_base: {
         id: 0,
         value: 0,
@@ -54,6 +47,7 @@ class BookingForm extends Component {
           value: '',
           active: false,
           id: service.id,
+          icon: service.icon,
         };   
       services_addons.push(input)
       } else {
@@ -64,7 +58,8 @@ class BookingForm extends Component {
           value: 1,
           active: false,
           time: service.time,
-          price: service.price
+          price: service.price,
+          icon: service.icon,
         };
         services_addons.push(checkbox);
       }
@@ -78,7 +73,17 @@ class BookingForm extends Component {
     })
   }
 
-  inputChangedHandler = (event, key, type) => {
+  componentDidUpdate() {
+    if (!this.state.has_properties) {
+      if (this.props.properties.length > 0) {
+        this.setState({
+          has_properties: true,
+        });
+      }
+    }
+  }
+
+  inputChangedHandler = (event, key) => {
     const updatedControls = {
       ...this.state.form,
       services_addons: {
@@ -95,14 +100,15 @@ class BookingForm extends Component {
     });
   }
 
-  changeCheckboxHandler = (event, checked, key, type) => {
+  changeCheckboxHandler = (event, key) => {
+    event.preventDefault();
     const updatedControls = {
       ...this.state.form,
       services_addons: {
         ...this.state.form.services_addons,
         [key]: {
           ...this.state.form.services_addons[key],
-          active: checked,
+          active: !this.state.form.services_addons[key].active,
         }
       }
     }
@@ -114,7 +120,7 @@ class BookingForm extends Component {
 
   handleServiceChange = (event) => {
     if (event.target.value !== "") {
-      const service = this.props.service_base.find(s => s.id === event.target.value);
+      const service = this.props.service_base.find(s => s.id === parseInt(event.target.value, 10));
       const updatedObject = {
         id: service.id,
         value: service.id,
@@ -183,173 +189,374 @@ class BookingForm extends Component {
   }
 
   changeDatetimeHandler = (dateTime) => {
-    console.log(dateTime.format('MMMM Do YYYY, h:mm:ss a'));
+    console.log(moment(dateTime).format());
     this.setState({
       ...this.state,
       form: {
         ...this.state.form,
-        started_at: dateTime.format(),
+        started_at: moment(dateTime),
       }
     })
   }
 
+  changeActiveHandler = (event) => {
+    event.preventDefault();
+    this.setState({
+      active: !this.state.active
+    });
+  }
+
+  handleRecurrentChange = (event) => {
+    const updatedControls = {
+      ...this.state.form,
+      recurrent: {
+        ...this.state.form.recurrent,
+        value: event.target.value,
+      },
+    };
+
+    this.setState({
+      form: updatedControls,
+    });
+  }
+
+  changeCreatePropertyHandler = () => {
+    this.setState({
+      showCreateProperty: !this.state.showCreateProperty,
+    });
+  }
+
+  
+  validDates = current => {
+    return current.isAfter(Datetime.moment().subtract(1, 'day'));
+  };
+
   render () {
     console.log(this.state);
-    const formElementBase = [];
     const formElementAddon = [];
-    for (let key in this.state.form.services_base) {
-      formElementBase.push({
-        id: key,
-        config: this.state.form.services_base[key]
-      });
-    }
     for (let key in this.state.form.services_addons) {
       formElementAddon.push({
         id: key,
         config: this.state.form.services_addons[key]
       });
     }
-    let properties = this.props.properties.length > 0 ? (
-      <Paper className={cls.Paper} elevation={2}>
-        <Typography variant="headline" component="h3">
-          Propiedad
-        </Typography>
-        <FormControl className={cls.Select}>
-          <InputLabel htmlFor="age-simple">Eliga una propiedad</InputLabel>
-          <Select
-            value={this.state.form.property}
-            onChange={this.handlePropertyChange}
-            inputProps={{
-              name: 'age',
-              id: 'age-simple',
-            }}
-          >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            {this.props.properties.map(property => (
-              <MenuItem
-                key={property.id}
-                value={property.attributes.id}>{property.attributes.name}</MenuItem>
-            ))}
-          </Select>
-        </FormControl>
-      </Paper>
-    ) : (
-      <Paper className={cls.Paper} elevation={2}>
-        <Typography variant="headline" component="h3">
-          No tienes propiedades
-        </Typography>
-        <PropertyForm 
-          cities={this.props.cities}
-          neightborhoods={this.props.neightborhoods}
-          fetchNeightborhoods={this.props.fetchNeightborhoods}
-          createProperty={this.props.createProperty}/>
-      </Paper>
-    );
-    let form = (
-      <div>
-        <Grid item xs={10}>
-          <Paper className={cls.Paper} elevation={2}>
-            <Grid container justify="center">
-              <Grid item xs={12}>
-                <Typography variant="headline" component="h3">
-                  Servicio Base
-                </Typography>
-              </Grid>
-              <TextField
-                id="select-service"
-                select
-                label="Eliga un Servicio"
-                className={cls.Select}
-                value={this.state.value}
-                onChange={this.handleServiceChange}
-                margin="normal">
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                {this.props.service_base.map(service => (
-                  <MenuItem
-                    key={service.id}
-                    value={service.id}>{service.name}</MenuItem>
-                ))}
-              </TextField>
-            </Grid>
-          </Paper>
+    let properties = null;
+    if (this.props.properties.length > 0 && !this.state.showCreateProperty) {
+      properties = (
+        <Grid container>
+          <div className={cls.Row}>
+            <div>
+              <h3 className={cls.SubHeaderText}>
+                <span className={cls.SubHeaderNumber}>4</span>
+                <span>Elige la propiedad donde se realizara el servicio</span>
+              </h3>
+              <button onClick={this.changeCreatePropertyHandler} className={cls.ButonProperty}>Agregar Nueva Propiedad</button>
+              <div className={cls.Service}>
+                <div className={cls.Property}>
+                  <select
+                    className={cls.Select}
+                    value={this.state.form.property}
+                    onChange={this.handlePropertyChange}>
+                    <option>Propiedad</option>
+                    {this.props.properties.map(property => (
+                      <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
         </Grid>
-        <Grid item xs={10}>
-          <Paper className={cls.Paper} elevation={2}>
-            <Grid container justify="center">
-              <Grid item xs={12}>
-                <Typography variant="headline" component="h3">
-                  Servicios Adicionales
-                </Typography>
-              </Grid>
-              {formElementAddon.map(formElement => (
-                <Grid key={formElement.id} item className={cls.Item} xs={12}>
-                  <Typography variant="subheading" component="p">
-                    {formElement.config.label}
-                  </Typography>
-                  <FormGroup row>
-                      <FormControlLabel
-                        control={
-                          <Checkbox
-                            checked={formElement.config.active}
-                            onChange={(event, checked) => this.changeCheckboxHandler(event, checked, formElement.id, 'addon')}
-                            value={`${formElement.config.value}`}
-                          />
-                        }
-                        label={formElement.config.label}
-                      />
-                    </FormGroup>
-                  {formElement.config.elementType === 'input' && (
-                    <Input
-                      elementType={formElement.config.elementType} 
-                      elementConfig={formElement.config.elementConfig}
-                      value={formElement.config.value}
-                      changed={event => this.inputChangedHandler(event, formElement.id, 'addon')}
-                    />
-                  )}
-                </Grid>
-              ))}
-            </Grid>
-          </Paper>
+      );
+    } else {
+      properties = (
+        <Grid container>
+          <div className={cls.Row}>
+            <div>
+              <h3 className={cls.SubHeaderText}>
+                <span className={cls.SubHeaderNumber}>4</span>
+                <span>No tienes propiedades debes crear una propiedad</span>
+              </h3>
+              <div className={cls.SubHeaderText}>
+                <PropertyForm 
+                  cities={this.props.cities}
+                  neightborhoods={this.props.neightborhoods}
+                  fetchNeightborhoods={this.props.fetchNeightborhoods}
+                  createProperty={this.props.createProperty}
+                  cancelDisabled={this.state.has_properties}/>
+              </div>
+            </div>
+          </div>
         </Grid>
-        <Grid item xs={10}>
-         {properties} 
+      );
+    };
+    if (this.state.showCreateProperty) {
+      properties = (
+        <Grid container>
+          <div className={cls.Row}>
+            <div>
+              <h3 className={cls.SubHeaderText}>
+                <span className={cls.SubHeaderNumber}>4</span>
+                <span>No tienes propiedades debes crear una propiedad</span>
+              </h3>
+              <div className={cls.SubHeaderText}>
+                <PropertyForm 
+                  cities={this.props.cities}
+                  neightborhoods={this.props.neightborhoods}
+                  fetchNeightborhoods={this.props.fetchNeightborhoods}
+                  createProperty={this.props.createProperty}
+                  cancel={this.changeCreatePropertyHandler}
+                  cancelDisabled={this.state.has_properties}/>
+              </div>
+            </div>
+          </div>
         </Grid>
-        <Grid item xs={10}>
-          <Paper className={cls.Paper} elevation={2}>
-            <Grid container justify="center">
-              <Grid item xs={12}>
-                <Typography variant="headline" component="h3">
-                  Seleccionar Fecha
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                  <DateTimePicker
-                    value={this.state.form.started_at}
-                    onChange={this.changeDatetimeHandler}/>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-        <Grid item xs={10}>
-          <Paper className={cls.Paper} elevation={2}>
-            <Button onClick={this.createJobHandler}>
-              Submit
-            </Button>
-          </Paper>
-        </Grid>
-      </div>
-    );
+      );
+    }
     return(
-      <div>
-        <form>
-          <Grid container justify="center" className={cls.BookingForm}>
-            {form}
-          </Grid>
-        </form>
+      <div className={cls.BookingForm}>
+        <Grid container>
+          <form className={cls.Form}>
+            <div className={cls.ContentWrapper}>
+              <div className={cls.ServiceSection}>
+                <Grid container>
+                  <div className={cls.Row}>
+                    <h2 className={cls.HeaderText}>Elige tu servicio de limpieza</h2>
+                  </div>
+                  <div className={cls.Row}>
+                    <div>
+                      <h3 className={cls.SubHeaderText}>
+                        <span className={cls.SubHeaderNumber}>1</span>
+                        <span>Elige tu frecuencia de limpieza</span>
+                      </h3>
+                      <h5 className={cls.Parragraph}>Elige entre mensual, bimensual o semanal!</h5>
+                      <div>
+                        <div className={cls.Selection}>
+                          <div className={cls.SelectionButtons}>
+                            <input className={cls.RadioInput}
+                              id="month"
+                              type="radio"
+                              value="1"
+                              checked={this.state.form.recurrent.value === '1'}
+                              onChange={this.handleRecurrentChange}/>
+                            <label className={cls.LabelInput} htmlFor="month">
+                              <div className={cls.BoxRadio}>
+                                <div className={cls.BoxPlanRadio}>
+                                  Mensual
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div className={cls.SelectionButtons}>
+                            <input className={cls.RadioInput}
+                              id="bimonth"
+                              type="radio"
+                              value="2"
+                              checked={this.state.form.recurrent.value === '2'}
+                              onChange={this.handleRecurrentChange}/>
+                            <label className={cls.LabelInput} htmlFor="bimonth">
+                              <div className={cls.BoxRadio}>
+                                <div className={cls.BoxPlanRadio}>
+                                  Bimestral
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                          <div className={cls.SelectionButtons}>
+                            <input className={cls.RadioInput}
+                              id="trimonth"
+                              type="radio"
+                              value="3"
+                              checked={this.state.form.recurrent.value === '3'}
+                              onChange={this.handleRecurrentChange}/>
+                            <label className={cls.LabelInput} htmlFor="trimonth">
+                              <div className={cls.BoxRadio}>
+                                <div className={cls.BoxPlanRadio}>
+                                  Trimestral
+                                </div>
+                              </div>
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cls.Row}>
+                    <div>
+                      <h3 className={cls.SubHeaderText}>
+                        <span className={cls.SubHeaderNumber}>2</span>
+                        <span>Elige el servicio de limpieza principal</span>
+                      </h3>
+                      <div className={cls.Service}>
+                          <select
+                            className={cls.Select}
+                            value={this.state.value}
+                            onChange={this.handleServiceChange}>
+                            <option>Servicio Principal</option>
+                            {this.props.service_base.map(service => (
+                              <option key={service.id} value={service.id}>{service.name}</option>
+                            ))}
+                          </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={cls.Row}>
+                    <div>
+                      <h3 className={cls.SubHeaderText}>
+                        <span className={cls.SubHeaderNumber}>3</span>
+                        <span>Eliga los servicios adicionales</span>
+                      </h3>
+                    </div>
+                  </div>
+                  <div className={cls.ExtraServices}>
+                    <div className={cls.BlockServices}>
+                      <Grid container>
+                        {formElementAddon.map((addon) => (
+                          <li key={addon.id} className={cls.Extras}>
+                            <label onClick={(event) => this.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
+                              <input id="extra1" type="checkbox" value="1"/>
+                              <div className={cls.ExtraSvg}>
+                                <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
+                                </div>
+                                <p>{addon.config.label}</p>
+                              </div>
+                            </label>
+                          </li>
+                        ))}
+                      </Grid>
+                    </div>
+                  </div>
+                </Grid>
+              </div>
+              <div className={cls.ServiceSection}>
+                {properties}
+              </div>
+              <div className={cls.ServiceSection}>
+                <div className={cls.Row}>
+                  <div>
+                    <h3 className={cls.SubHeaderText}>
+                      <span className={cls.SubHeaderNumber}>5</span>
+                      <span>Eliga la fecha del servicio</span>
+                    </h3>
+                    <Grid container>
+                      <div className={cls.Service}>
+                        <Grid container>
+                          <Grid item xs={6}>
+                            <Grid container>
+                              <div className={cls.Property}>
+                                <Datetime
+                                  isValidDate={this.validDates}
+                                  value={this.state.form.started_at}
+                                  dateFormat="MM/DD/YYYY"
+                                  timeFormat={false}
+                                  onChange={this.changeDatetimeHandler}
+                                  inputProps={{
+                                    className: `${cls.Input}`,
+                                  }} />
+                              </div>
+                            </Grid>
+                          </Grid>
+                          <Grid item xs={6}>
+                            <Grid container>
+                              <div className={cls.Property}>
+                                <Datetime
+                                  isValidDate={this.validDates}
+                                  value={moment(this.state.form.started_at)}
+                                  dateFormat={false}
+                                  onChange={this.changeDatetimeHandler}
+                                  inputProps={{
+                                    className: `${cls.InputTime}`,
+                                  }} />
+                              </div>
+                            </Grid>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </div>
+              </div>
+              <div className={cls.ServiceSection}>
+                <div className={cls.Row}>
+                  <div>
+                    <h3 className={cls.SubHeaderText}>
+                      <span>Metodo de Pago</span>
+                    </h3>
+                  </div>
+                </div>
+                <div className={cls.Row}>
+                  <div className={cls.MarginBottom}>
+                    <Grid container>
+                      <Grid item lg={6}>
+                        <Grid container>
+                          <div className={cls.Columns}>
+                            <label>Numero de Tarjeta de Credito</label>
+                            <div className={cls.Relative}>
+                              <div className={cls.CardNumber}>
+                                <input className={cls.Input} />
+                              </div>
+                            </div>
+                          </div>
+                        </Grid>
+                      </Grid>
+                      <Grid item lg={6}>
+                        <Grid container>
+                          <div className={cls.Columns}>
+                            <img 
+                              alt="Credit Cards" 
+                              className={cls.CreditCardIcon} 
+                              src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </div>
+                <div className={cls.Row}>
+                  <div className={cls.MarginBottom}>
+                    <Grid container>
+                      <Grid item lg={3}>
+                        <Grid container>
+                          <div className={cls.Columns}>
+                            <label>Expiracion</label>
+                            <div className={cls.Relative}>
+                              <div className={cls.CardNumber}>
+                                <input className={cls.InputSmall} />
+                              </div>
+                            </div>
+                          </div>
+                        </Grid>
+                      </Grid>
+                      <Grid item lg={3}>
+                        <Grid container>
+                          <div className={cls.Columns}>
+                            <label>CVC</label>
+                            <div className={cls.Relative}>
+                              <div className={cls.CardNumber}>
+                                <input className={cls.InputSmall} />
+                              </div>
+                            </div>
+                          </div>
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  </div>
+                </div>
+              </div>
+              <div className={cls.ServiceSection}>
+                <Grid container>
+                  <div className={cls.ButtonBooking}>
+                    <Grid container>
+                      <div className={cls.Row}>
+                        <button onClick={(event) => this.createJobHandler(event)} className={cls.ButtonBookingCore}>Crear trabajo</button>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+              </div>
+            </div>
+          </form>
+        </Grid>
       </div>
     );
   }

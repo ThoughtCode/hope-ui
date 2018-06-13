@@ -54,8 +54,10 @@ export const auth = (email, password) => (dispatch) => {
     })
     .catch((err) => {
       dispatch(authFail(err));
-      console.log(err.response.data.message);
-      Alert.error(err.response.data.message);
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 
@@ -77,7 +79,10 @@ export const facebookLogin = accessToken => (dispatch) => {
     })
     .catch((err) => {
       dispatch(authFail(err));
-      Alert.error(err.data);
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 

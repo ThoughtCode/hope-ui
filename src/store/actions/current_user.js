@@ -67,7 +67,10 @@ export const updatedCurrentUser = (token, form) => dispatch => {
     })
     .catch((err) => {
       dispatch(updatedCurrentUserFail(err));
-      Alert.error(err.data.message);
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 
@@ -105,7 +108,10 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
     })
     .catch((err) => {
       dispatch(updatedCurrentUserAvatarFail(err));
-      Alert.error(err.data.message);
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 };
 

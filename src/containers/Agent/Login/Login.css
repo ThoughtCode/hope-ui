@@ -1,15 +1,23 @@
 .Login{
-  height: 100vh;
   text-align: center;
+  width: 300px;
+}
+
+.ModalHeader{
+  background-color: #0069a7;
+  border-radius: 5px 5px 0px 0px;
+  text-align: right !important;
+  font-weight: 500;
+  padding: 10px;
+  color: #FFF !important;
 }
 
 .LoginContainer{
-  padding-top: 10vh;
   flex-grow: 1;
 }
 
 .Applogo {
-  height: 3.5rem;
+  height: 6em;
 }
 
 .pageButton {
@@ -29,11 +37,8 @@
 }
 
 .Typogra {
-  color: #0069a7 !important;
-  text-align: center !important;
-  font-size: 2rem !important;
-  padding-top: 2vh;
-  font-family: Fabada !important;
+  padding-top: 4vh;
+  font-weight: bold !important;
 }
 
 .pageButtonRegistroAgente{

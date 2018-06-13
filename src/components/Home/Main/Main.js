@@ -1,6 +1,10 @@
 // Dependencias
 import React, { Component } from 'react';
+<<<<<<< HEAD
 import { withRouter } from 'react-router-dom';
+=======
+import PropTypes from 'prop-types';
+>>>>>>> Fix modal Login Agent & Client
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -104,4 +108,14 @@ class Main extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default withRouter(withStyles(styles)(Main));
+=======
+const RegistroWa = withStyles(styles)(Main);
+
+RegistroWa.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default RegistroWa;
+>>>>>>> Fix modal Login Agent & Client

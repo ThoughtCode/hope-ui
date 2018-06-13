@@ -9,7 +9,7 @@ import FacebookLogin from 'react-facebook-login';
 import Button from 'material-ui/Button';
 import Auth from '../../../components/Agent/Auth/Auth';
 import cls from './Login.css';
-import Logo from '../../../assets/Logo.svg'
+import Logo from '../../../assets/Logo.svg';
 
 import * as actions from '../../../store/actions';
 
@@ -36,26 +36,24 @@ class Login extends Component {
     return (
       <div>
         <div className={cls.Login}>
-          <Grid container className={cls.ButtonClose}>
-            <Grid item xs={12} sm={12}>
-              <Paper className={cls.paper} elevation={0}>
-                <Button component={Link} to="/">
-                  <i className="material-icons">clear</i>
-                </Button>
-              </Paper>
+        <Grid container className={cls.ModalHeader}>
+            <Grid item xs={12}>
+              <Button component={Link} to="/">
+                <i className="material-icons">clear</i>
+              </Button>
             </Grid>
           </Grid>
           <Grid container justify="center" className={cls.LoginContainer}>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
                  <Button className={cls.pageButtonLogin} component={Link} to="/" >
                   <img src={Logo} className={cls.Applogo} alt="logo" />
                  </Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>AGENTE</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>ENTRA COMO AGENTE</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12}>
@@ -75,12 +73,12 @@ class Login extends Component {
                 <Button className={cls.pageButtonLogin} component={Link} to="/cliente/login" >Entra como cliente</Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={6}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/agente/registre" >¿NO TIENES UNA CUENTA?</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/agente/registro" >¿NO TIENES UNA CUENTA?</Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={2}>
+            <Grid item xs={6}>
               <Paper className={cls.paper} elevation={0}>
                 <Button className={cls.pageButtonLogin} component={Link} to="/agente/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
               </Paper>

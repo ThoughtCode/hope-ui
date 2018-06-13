@@ -13,7 +13,7 @@
 
 .styleAnchor {
   text-decoration: none;
-  color: #0069A7;
+  color: #0069A7 !important;
   font-family: Arial !important;
 }
 

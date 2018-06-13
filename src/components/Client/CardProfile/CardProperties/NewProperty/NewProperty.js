@@ -12,7 +12,7 @@ import {
 
 class NewProperty extends Component {
   state = {
-    formIsValid: true,
+    formIsValid: false,
     updated: false,
     property: {
       name: {
@@ -20,7 +20,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -29,7 +29,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -38,7 +38,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -47,7 +47,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -56,7 +56,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -65,7 +65,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -74,7 +74,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -83,7 +83,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -92,7 +92,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },
@@ -101,7 +101,7 @@ class NewProperty extends Component {
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
         touched: false,
         errorText: null,
       },

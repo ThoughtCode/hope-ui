@@ -19,8 +19,6 @@ import ResetClient from './containers/Client/Reset/Reset';
 import ResetAgent from './containers/Agent/Reset/Reset';
 import Alert from 'react-s-alert';
 
-import * as actions from './store/actions';
-
 class App extends Component {
   render() {
     let routes = null;
@@ -59,10 +57,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onLogin: (email, password) => dispatch(actions.auth(email, password))
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps)(App));

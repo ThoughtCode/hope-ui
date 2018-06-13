@@ -93,8 +93,8 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: accessToken => dispatch(actions
-    .facebookLogin(accessToken)),
+  onLogin: accessToken => dispatch(actions.facebookLogin(accessToken)),
+  onAuth: (email, password) => dispatch(actions.authAgent(email, password)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

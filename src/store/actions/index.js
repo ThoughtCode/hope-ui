@@ -2,7 +2,8 @@ export {
   registerClient
 } from './register';
 export {
-  auth,
+  authClient,
+  authAgent,
   facebookLogin,
   logout,
   authCheckState,

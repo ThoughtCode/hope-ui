@@ -29,7 +29,7 @@ export const logout = () => (dispatch) => {
   dispatch(push('/'));
 };
 
-export const auth = (email, password) => (dispatch) => {
+export const authClient = (email, password) => (dispatch) => {
   dispatch(authStart());
   const authData = {
     customer: {
@@ -47,6 +47,38 @@ export const auth = (email, password) => (dispatch) => {
       localStorage.setItem('profile', customer.attributes.avatar.url);
       dispatch(authSuccess(customer.attributes.access_token, customer.id, customer.attributes.avatar.url));
       dispatch(push('/cliente/dashboard'));
+      Alert.success(response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(authFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const authAgent = (email, password) => (dispatch) => {
+  dispatch(authStart());
+  const authData = {
+    agent: {
+      email,
+      password,
+    },
+  };
+  axios.post('/agents/signin', authData)
+    .then((response) => {
+      console.log(response);
+      const agent = response.data.agent.data;
+      localStorage.setItem('token', agent.attributes.access_token);
+      localStorage.setItem('userId', agent.id);
+      localStorage.setItem('signInAs', 'agent');
+      localStorage.setItem('profile', agent.attributes.avatar.url);
+      dispatch(authSuccess(agent.attributes.access_token, agent.id, agent.attributes.avatar.url));
+      dispatch(push('/agente/dashboard'));
       Alert.success(response.data.message, {
         position: 'bottom',
         effect: 'genie',

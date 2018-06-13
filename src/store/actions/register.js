@@ -32,9 +32,17 @@ export const registerClient = formData => (dispatch) => {
     })
     .catch((error) => {
       dispatch(registerClientFail(error));
-      Alert.error(error.response.data.message, {
-        position: 'bottom',
-        effect: 'genie',
-      });
+      if (typeof(error.response.data.message) === 'object') {
+        const message = error.response.data.message.email;
+        Alert.error(message, {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      } else {
+        Alert.error(error.response.data.message, {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      }
     });
 };

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
@@ -214,10 +215,18 @@ class Register extends Component {
           </Grid>
           <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >
               <div className={cls.ButtonFacebookContainer}>
-                <Button className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} component={Link} to="/agente/registro" >
-                  <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
-                  Registrate con Facebook
-                </Button>
+                <FacebookLogin
+                  appId="2057031764572769"
+                  autoLoad={false}
+                  fields="name,email"
+                  callback={this.responseFacebook}
+                  render={renderProps => (
+                    <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
+                      <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
+                      Registrate con Facebook
+                    </Button>      
+                  )}
+                />
               </div>
               <div className={cls.Divider}>
                 <i className="material-icons">circle</i>

@@ -8,9 +8,10 @@ import Dashboard from './Dashboard/Dashboard';
 import Service from './Service/Service';
 import Job from './Job/Job';
 import Profile from './Profile/Profile';
+import JobCliente from '../Client/Job/JobClient';
 
 // Css
-import cls from './Client.css'
+import cls from './Client.css';
 
 import * as actions from '../../store/actions'
 class Client extends Component {
@@ -23,6 +24,7 @@ class Client extends Component {
           <Route path={`${this.props.match.url}/servicio/:service_id`} exact component={Service}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} exact component={Job}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
+          <Route path={`${this.props.match.url}/trabajos`} component={JobCliente}/>
           <Redirect to={`${this.props.match.url}/dashboard`}/>
         </Switch>
       </div>

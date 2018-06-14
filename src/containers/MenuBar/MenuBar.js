@@ -74,7 +74,7 @@ class AppBarMenu extends Component {
             <MenuItem component={Link} to="/cliente">
               Dashboard
             </MenuItem>
-            <MenuItem>
+            <MenuItem component={Link} to="/cliente/trabajos">
               Mis Trabajos
             </MenuItem>
             <div>

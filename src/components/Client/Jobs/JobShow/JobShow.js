@@ -6,9 +6,9 @@ import 'moment/locale/es';
 import {
   Grid,
   Paper,
-  Divider,
   Typography,
   Avatar,
+  Button,
 } from 'material-ui';
 
 // Css
@@ -18,13 +18,7 @@ class JobShow extends Component {
   render() {
     console.log(this.props.job)
     let agent = (
-      <Grid className={cls.JobAgent} container justify="center">        
-        <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Typography variant="headline" align="center">
-            Aun no se ha asignado un agente
-          </Typography>
-        </Grid>
-      </Grid>
+      <Grid container></Grid>
     );
     let agents = null;
     let date = null;
@@ -34,8 +28,8 @@ class JobShow extends Component {
       date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`
       services = (
-        <Grid className={cls.Services} container justify="center">
-          <Grid className={cls.JobServices} item xs={12} sm={12} lg={12}>
+        <Grid className={cls.Services} container>
+          <Grid item xs={12}>
             <Typography variant="headline">
               Servicios contratados
             </Typography>
@@ -47,6 +41,8 @@ class JobShow extends Component {
                 return null;
               })}
             </Typography>
+          </Grid>
+          <Grid item xs={12}>
             <Typography variant="headline">
               Servicios Adicionales
             </Typography>
@@ -74,7 +70,7 @@ class JobShow extends Component {
       if (this.props.job.attributes.agent ) {
         agent = (
           <Grid className={cls.JobAgent} container justify="center">        
-            <Grid item xs={12} sm={12} md={12} lg={12}>
+            <Grid item xs={12} sm={12}>
               <Typography variant="headline" align="center">
                 Agente
               </Typography>
@@ -96,19 +92,11 @@ class JobShow extends Component {
         );
       }
       if (this.props.job.attributes.proposals.length === 0) {
-        agents = (
-          <Grid className={cls.OtherAgents} container justify="center">
-            <Grid item xs={12} sm={12} lg={12}>
-              <Typography variant="headline" align="center">
-                Aun no se han postulado agentes
-              </Typography>
-            </Grid>                  
-          </Grid>
-        );
+        agents = "SIN AGENTE ASIGNADO";
       } else {
         agents = (
           <Grid className={cls.OtherAgents} container justify="center">
-            <Grid item xs={12} sm={12} lg={12}>
+            <Grid item xs={12} sm={6}>
               <Typography variant="headline" align="center">
                 Asignar Agente
               </Typography>
@@ -136,32 +124,101 @@ class JobShow extends Component {
     }
 
     return (
-      <Grid className={cls.JobShow} justify="center" container>
-        <Grid item xs={11} sm={10} md={10} lg={10}>
-          <Grid container>
-            <Grid item xs={12} sm={12} md={12} lg={12}>
-              <Paper className={cls.Job} elevation={1}>
-                <Grid className={cls.ServiceDate} container justify="center">
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Typography variant="headline">
-                      {date}
-                    </Typography>
-                    <Typography variant="caption">
-                      {caption}
-                    </Typography>
-                  </Grid>
+      <div>
+        <Grid container justify="center">
+          <Grid item xs={8}>
+            <Paper>
+              <Grid container className={cls.JobShow}>
+                <Grid item xs={12}>
+                  <Paper className={cls.Title}>
+                    <Typography className={cls.TitleDetalles} variant="headline">DETALLLES DEL TRABAJO</Typography>
+                  </Paper>
                 </Grid>
-                <Divider/>
-                {agent}
-                <Divider />
-                {services}
-                <Divider/>
-                {agents}
-              </Paper>
-            </Grid>
+                <Grid item xs={6}>
+                  <Paper elevation={0}>
+                    <Grid container className={cls.ServiceDate}>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <Typography variant="headline" className={cls.TitleDate}>{date}</Typography>
+                        </Paper>
+                        <Paper elevation={0}><Typography variant="caption">{caption}</Typography></Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>{services}</Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+                <Grid item xs={6}>
+                  <Paper>
+                    <Grid container className={cls.ServiceDate}>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}><Typography variant="headline">Agentes Postulados</Typography></Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <div className={cls.AvatarAgent}>
+                            <Avatar className={cls.AvatarMargin}>
+                              JC
+                            </Avatar>
+                            <div className={cls.NameAgent}>
+                              <Typography className={cls.Name} variant="subheading">
+                                Jose Castellanos
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                estrellas
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                10 Reviews
+                              </Typography>
+                            </div>
+                          </div>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <div className={cls.AvatarAgent}>
+                            <Avatar className={cls.AvatarMargin}>
+                              RR
+                            </Avatar>
+                            <div className={cls.NameAgent}>
+                              <Typography className={cls.Name} variant="subheading">
+                                Rainiero Romero
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                estrellas
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                10 Reviews
+                              </Typography>
+                            </div>
+                          </div>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageAgents} elevation={0}>
+                          <Typography variant="headline" className={cls.TypograAgent}>{agents}</Typography>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageButtonJobCurrentCancelar} elevation={0}>
+                          <Button className={cls.ButtonCancelar}>CANCELAR TRABAJO</Button>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
-      </Grid>
+      </div>
     )
   }
 }

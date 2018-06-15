@@ -11,8 +11,8 @@ import cls from './HowWorks.css';
 
 const howWorks = props => {
   return (
-    <div>
-      <Grid container className={cls.HowWorks}>
+    <div className={cls.HowWorks}>
+      <Grid container>
         <Grid item xs={12}>
           <Typography variant="headline" component="h2">
             Como Funciona

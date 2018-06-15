@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import Alert from 'react-s-alert';
 import axios from '../../axios-instance';
 
 export const createJobSuccess = () => ({
@@ -23,9 +24,17 @@ export const createJob = (token, formData) => dispatch => {
   axios.post('/customers/jobs', formData, headers)
     .then((res) => {
       dispatch(createJobSuccess());
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(createJobFail());
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 }
 
@@ -57,9 +66,17 @@ export const fetchJobs = (token, current_page) => dispatch => {
       let jobs = [];
       jobs = res.data.job.data;
       dispatch(fetchJobsSuccess(jobs));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(fetchJobsFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     });
 }
 

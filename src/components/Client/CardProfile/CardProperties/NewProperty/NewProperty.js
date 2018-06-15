@@ -311,7 +311,7 @@ class NewProperty extends Component {
 									<Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
 										<Grid container>
 											<label htmlFor="name"><span>Nombre de la propiedad</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.name.valid && this.state.property.name.touched) && cls.ContainerError}`}
 												type="text"
 												name="name"
 												value={this.state.property.name.value}
@@ -371,7 +371,7 @@ class NewProperty extends Component {
 									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
 										<Grid container>
 											<label htmlFor="p_street"><span>Calle Principal</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.p_street.valid && this.state.property.p_street.touched) && cls.ContainerError}`}
 												type="text"
 												name="p_street"
 												value={this.state.property.p_street.value}
@@ -384,7 +384,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
 										<Grid container>
 											<label htmlFor="s_street"><span>Calle Secundaria</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.s_street.valid && this.state.property.s_street.touched) && cls.ContainerError}`}
 												type="text"
 												name="s_street"
 												value={this.state.property.s_street.value}
@@ -399,7 +399,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="number"><span>Numero</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.number.valid && this.state.property.number.touched) && cls.ContainerError}`}
 												type="text"
 												name="number"
 												value={this.state.property.number.value}
@@ -412,7 +412,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="details"><span>Detalles</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.details.valid && this.state.property.details.touched) && cls.ContainerError}`}
 												type="text"
 												name="details"
 												value={this.state.property.details.value}
@@ -427,7 +427,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="additional_reference"><span>Referencias adicionales</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && cls.ContainerError}`}
 												type="text"
 												name="additional_reference"
 												value={this.state.property.additional_reference.value}
@@ -442,7 +442,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="phone"><span>Telefono</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.phone.valid && this.state.property.phone.touched) && cls.ContainerError}`}
 												type="text"
 												name="phone"
 												value={this.state.property.phone.value}
@@ -455,7 +455,7 @@ class NewProperty extends Component {
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="cell_phone"><span>Celular</span></label>
-											<input className={`${cls.Input}`}
+											<input className={`${cls.Input} ${(!this.state.property.cell_phone.valid && this.state.property.cell_phone.touched) && cls.ContainerError}`}
 												type="text"
 												name="cell_phone"
 												value={this.state.property.cell_phone.value}
@@ -468,7 +468,7 @@ class NewProperty extends Component {
                 </Grid>
 								<Grid container>
 									<Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
-										<Grid container>
+                    <Grid container>
 											<Link className={cls.Button} to="/cliente/perfil/info">
 												Cancelar
 											</Link>

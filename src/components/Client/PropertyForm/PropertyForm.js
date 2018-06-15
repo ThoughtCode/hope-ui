@@ -3,20 +3,16 @@ import React, { Component } from 'react';
 // Components
 import { 
   Grid,
-  Button
 } from 'material-ui';
-import Input from '../../UI/Input/Input';
+
+// Css
+import cls from './PropertyForm.css';
 
 class PropertyForm extends Component {
   state = {
-    propertyForm: {
+    formIsValid: false,
+    property: {
       name: {
-        elementType: 'input',
-        label: 'Nombre',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Nombre',
-        },
         value: '',
         validation: {
           required: true,
@@ -26,40 +22,24 @@ class PropertyForm extends Component {
         errorText: null,
       },
       city: {
-        elementType: 'select',
-        label: 'Ciudad',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Ciudad',
-        },
         value: '',
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
+        touched: false,
         errorText: null,
       },
       neightborhood_id: {
-        elementType: 'select',
-        label: 'Barrio',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Barrio',
-        },
         value: '',
         validation: {
           required: true,
         },
-        valid: true,
+        valid: false,
+        touched: false,
         errorText: null,
       },
       p_street: {
-        elementType: 'input',
-        label: 'Calle principal',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Calle principal',
-        },
         value: '',
         validation: {
           required: true,
@@ -69,12 +49,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       number: {
-        elementType: 'input',
-        label: 'Numero',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Numero',
-        },
         value: '',
         validation: {
           required: true,
@@ -84,12 +58,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       s_street: {
-        elementType: 'input',
-        label: 'Calle Secundaria',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Calle Secundaria',
-        },
         value: '',
         validation: {
           required: true,
@@ -99,12 +67,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       details: {
-        elementType: 'input',
-        label: 'Detalles',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Detalles',
-        },
         value: '',
         validation: {
           required: true,
@@ -114,12 +76,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       additional_reference: {
-        elementType: 'input',
-        label: 'Referencias Adicionales',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Referencias Adicionales',
-        },
         value: '',
         validation: {
           required: true,
@@ -129,12 +85,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       phone: {
-        elementType: 'input',
-        label: 'Telefono',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Telefono',
-        },
         value: '',
         validation: {
           required: true,
@@ -144,12 +94,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       cell_phone: {
-        elementType: 'input',
-        label: 'Celular',
-        elementConfig: {
-          type: 'text',
-          placeholder: 'Celular',
-        },
         value: '',
         validation: {
           required: true,
@@ -159,7 +103,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
     },
-    formIsValid: false,
   }
 
   checkValidity(value, rules) {
@@ -204,17 +147,17 @@ class PropertyForm extends Component {
 
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
-      ...this.state.propertyForm,
+      ...this.state.property,
       [controlName]: {
-        ...this.state.propertyForm[controlName],
+        ...this.state.property[controlName],
         value: event.target.value,
         valid: this.checkValidity(
           event.target.value,
-          this.state.propertyForm[controlName].validation,
+          this.state.property[controlName].validation,
         ).isValid,
         errorText: this.checkValidity(
           event.target.value,
-          this.state.propertyForm[controlName].validation,
+          this.state.property[controlName].validation,
         ).errorText,
         touched: true,
       },
@@ -229,100 +172,217 @@ class PropertyForm extends Component {
       formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
     }
 
-    console.log(formIsValid);
-
     this.setState({
-      propertyForm: updatedControls,
+      property: updatedControls,
       formIsValid,
     });
   }
 
-  createPropertyHandler = (event) => {
+  createdHandler = (event) => {
     event.preventDefault();
     const formData = {};
-    for (const formElementIdentifier in this.state.propertyForm) {
-      formData[formElementIdentifier] = this.state.propertyForm[formElementIdentifier].value;
+    for (const formElementIdentifier in this.state.property) {
+      formData[formElementIdentifier] = this.state.property[formElementIdentifier].value;
     }
     const property = {
       property: formData,
     };
-    console.log(property);
     this.props.createProperty(localStorage.getItem('token'), property);
   }
 
+  cancelHandler = (event) => {
+    event.preventDefault();
+    this.props.cancel();
+  }
   render () {
-    const formElementsArray = [];
-      for (const key in this.state.propertyForm) {
-        formElementsArray.push({
-          id: key,
-          config: this.state.propertyForm[key],
-        });
-      }
-      const form = (
-        <div>
-          {formElementsArray.map(formElement => {
-            if (formElement.id === 'city') {
-              return (
-                <Input
-                  key={formElement.id}
-                  id={formElement.id}
-                  label={formElement.config.label}
-                  elementType={formElement.config.elementType}
-                  elementConfig={formElement.config.elementConfig}
-                  value={formElement.config.value}
-                  changed={event => this.inputChangedHandler(event, formElement.id)}
-                  invalid={!formElement.config.valid}
-                  shouldValidate={formElement.config.validation}
-                  touched={formElement.config.touched}
-                  errorText={formElement.config.errorText}
-                  options={this.props.cities}
-                />
-              )  
-            } else if (formElement.id === 'neightborhood_id') {
-              return (
-                <Input
-                  key={formElement.id}
-                  id={formElement.id}
-                  label={formElement.config.label}
-                  elementType={formElement.config.elementType}
-                  elementConfig={formElement.config.elementConfig}
-                  value={formElement.config.value}
-                  changed={event => this.inputChangedHandler(event, formElement.id)}
-                  invalid={!formElement.config.valid}
-                  shouldValidate={formElement.config.validation}
-                  touched={formElement.config.touched}
-                  errorText={formElement.config.errorText}
-                  options={this.props.neightborhoods}
-                />
-              )
-            } else {
-              return (
-                <Input
-                  key={formElement.id}
-                  id={formElement.id}
-                  label={formElement.config.label}
-                  elementType={formElement.config.elementType}
-                  elementConfig={formElement.config.elementConfig}
-                  value={formElement.config.value}
-                  changed={event => this.inputChangedHandler(event, formElement.id)}
-                  invalid={!formElement.config.valid}
-                  shouldValidate={formElement.config.validation}
-                  touched={formElement.config.touched}
-                  errorText={formElement.config.errorText}
-                />
-              )
-            }
-          })}
-          <Button type="submit" variant="raised" color="primary" onClick={this.createPropertyHandler} disabled={!this.state.formIsValid}>
-            Registrar
-          </Button>
-        </div>
-      );
     return (
-      <div>
-        <Grid item xs={12}>
-          {form}
-        </Grid>
+      <div className={cls.Div}>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={12}>
+							<div className={cls.Container}>
+								<Grid container>
+									<Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
+										<Grid container>
+											<label htmlFor="name"><span>Nombre de la propiedad</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.name.valid && this.state.property.name.touched) && cls.ContainerError}`}
+												type="text"
+												name="name"
+												value={this.state.property.name.value}
+												onChange={(event) => this.inputChangedHandler(event, 'name')}/>
+												{(!this.state.property.name.valid && this.state.property.name.touched) && (
+													<div className={cls.Error}>{this.state.property.name.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+								</Grid>
+								<Grid container>
+									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+										<Grid container>
+											<label htmlFor="city"><span>Ciudad</span></label>
+                      <select className={`${cls.Select} ${(!this.state.property.city.valid && this.state.property.city.touched) && cls.ContainerError}`}
+                        value={this.state.property.city.value}
+												name="city"
+												onChange={(event) => this.inputChangedHandler(event, 'city')}>
+                        <option value="">Seleccionar una ciudad</option>
+                        {this.props.cities.map(city => (
+                          <option key={city.id} value={city.id}>{city.attributes.name}</option>
+                        ))}
+                      </select>
+												{(!this.state.property.city.valid && this.state.property.city.touched) && (
+													<div className={cls.Error}>{this.state.property.city.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+										<Grid container>
+											<label htmlFor="neightborhood_id"><span>Barrio</span></label>
+                      {this.state.property.city.value === "" ? (
+                        <select disabled className={`${cls.Select} ${(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && cls.ContainerError}`}
+                        value={this.state.property.neightborhood_id.value}
+												name="neightborhood_id"
+												onChange={(event) => this.inputChangedHandler(event, 'neightborhood_id')}>
+                        <option value="">Seleccionar un barrio</option>
+                      </select>  
+                      ) : (
+											<select className={`${cls.Select} ${(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && cls.ContainerError}`}
+                        name="neightborhood_id"
+                        value={this.state.property.neightborhood_id.value}
+												onChange={(event) => this.inputChangedHandler(event, 'neightborhood_id')}>
+                        <option value="">Seleccionar un barrio</option>
+                        {this.props.neightborhoods.map(neightborhood => (
+                          <option key={neightborhood.id} value={neightborhood.id}>{neightborhood.attributes.name}</option>
+                        ))}
+                      </select>
+                      )}
+                      {(!this.state.property.neightborhood_id.valid && this.state.property.neightborhood_id.touched) && (
+                        <div className={cls.Error}>{this.state.property.neightborhood_id.errorText}</div>
+                      )}
+										</Grid>
+									</Grid>
+								</Grid>
+                <Grid container>
+									<Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+										<Grid container>
+											<label htmlFor="p_street"><span>Calle Principal</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.p_street.valid && this.state.property.p_street.touched) && cls.ContainerError}`}
+												type="text"
+												name="p_street"
+												value={this.state.property.p_street.value}
+												onChange={(event) => this.inputChangedHandler(event, 'p_street')}/>
+												{(!this.state.property.p_street.valid && this.state.property.p_street.touched) && (
+													<div className={cls.Error}>{this.state.property.p_street.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+										<Grid container>
+											<label htmlFor="s_street"><span>Calle Secundaria</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.s_street.valid && this.state.property.s_street.touched) && cls.ContainerError}`}
+												type="text"
+												name="s_street"
+												value={this.state.property.s_street.value}
+												onChange={(event) => this.inputChangedHandler(event, 's_street')}/>
+												{(!this.state.property.s_street.valid && this.state.property.s_street.touched) && (
+													<div className={cls.Error}>{this.state.property.s_street.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+								</Grid>
+                <Grid container>
+                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="number"><span>Numero</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.number.valid && this.state.property.number.touched) && cls.ContainerError}`}
+												type="text"
+												name="number"
+												value={this.state.property.number.value}
+												onChange={(event) => this.inputChangedHandler(event, 'number')}/>
+												{(!this.state.property.number.valid && this.state.property.number.touched) && (
+													<div className={cls.Error}>{this.state.property.number.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="details"><span>Detalles</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.details.valid && this.state.property.details.touched) && cls.ContainerError}`}
+												type="text"
+												name="details"
+												value={this.state.property.details.value}
+												onChange={(event) => this.inputChangedHandler(event, 'details')}/>
+												{(!this.state.property.details.valid && this.state.property.details.touched) && (
+													<div className={cls.Error}>{this.state.property.details.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="additional_reference"><span>Referencias adicionales</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && cls.ContainerError}`}
+												type="text"
+												name="additional_reference"
+												value={this.state.property.additional_reference.value}
+												onChange={(event) => this.inputChangedHandler(event, 'additional_reference')}/>
+												{(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && (
+													<div className={cls.Error}>{this.state.property.additional_reference.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="phone"><span>Telefono</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.phone.valid && this.state.property.phone.touched) && cls.ContainerError}`}
+												type="text"
+												name="phone"
+												value={this.state.property.phone.value}
+												onChange={(event) => this.inputChangedHandler(event, 'phone')}/>
+												{(!this.state.property.phone.valid && this.state.property.phone.touched) && (
+													<div className={cls.Error}>{this.state.property.phone.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="cell_phone"><span>Celular</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.cell_phone.valid && this.state.property.cell_phone.touched) && cls.ContainerError}`}
+												type="text"
+												name="cell_phone"
+												value={this.state.property.cell_phone.value}
+												onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}/>
+												{(!this.state.property.cell_phone.valid && this.state.property.cell_phone.touched) && (
+													<div className={cls.Error}>{this.state.property.cell_phone.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                </Grid>
+								<Grid container>
+									<Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
+										<Grid container>
+                      {this.props.cancelDisabled ? (
+                        <button onClick={(event) => this.cancelHandler(event)} className={cls.Button}>
+                          Cancelar
+                        </button>
+                      ) : (
+                        <button disabled className={cls.ButtonDisabledCancel}>
+                          Cancelar
+                        </button>
+                      )}
+                      {this.state.formIsValid ? (
+                          <button onClick={this.createdHandler} className={cls.ButtonSave}><span>Guardar</span></button>
+                        ) : (
+                          <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
+                        )
+                      }
+										</Grid>
+									</Grid>
+								</Grid>
+							</div>
+            </Grid>
+          </Grid>
       </div>
     );
   }

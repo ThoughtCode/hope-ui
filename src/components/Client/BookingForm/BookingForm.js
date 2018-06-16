@@ -38,21 +38,16 @@ class BookingForm extends Component {
     this.props.services_addons.forEach(service => {
       if (service.quantity) {
         let input = {
-          elementType: 'input',
           label: service.name,
-          elementConfig: {
-            type: 'number',
-            placeholder: service.name,
-          },
           value: '',
           active: false,
           id: service.id,
           icon: service.icon,
+          quantity: service.quantity,
         };   
       services_addons.push(input)
       } else {
         let checkbox = {
-          elementType: 'checkbox',
           id: service.id,
           label: service.name,
           value: 1,
@@ -232,7 +227,7 @@ class BookingForm extends Component {
   };
 
   render () {
-    console.log(this.state);
+    console.log(this.state.form);
     const formElementAddon = [];
     for (let key in this.state.form.services_addons) {
       formElementAddon.push({
@@ -414,13 +409,25 @@ class BookingForm extends Component {
                         {formElementAddon.map((addon) => (
                           <li key={addon.id} className={cls.Extras}>
                             <label onClick={(event) => this.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
-                              <input id="extra1" type="checkbox" value="1"/>
+                              <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
                               <div className={cls.ExtraSvg}>
+                                <p>{addon.config.label}</p>
                                 <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
                                 </div>
-                                <p>{addon.config.label}</p>
                               </div>
                             </label>
+                            {addon.config.quantity && addon.config.active ? (
+                              <div className={cls.CenterInput}>
+                                <p><span>Cantidad</span></p>
+                                <input
+                                  type="number"
+                                  value={addon.config.value}
+                                  onChange={(event) => this.inputChangedHandler(event, addon.id)}
+                                  className={cls.InputQuantity} />
+                              </div>
+                            ) : (
+                              null
+                            )}
                           </li>
                         ))}
                       </Grid>

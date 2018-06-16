@@ -192,13 +192,13 @@
   display: block;
   height: auto;
   float: left;
-  padding: 0 0.625rem 1.25rem;
+  padding: 0 0.5rem 1.25rem;
   clear: both;
   font-size: .9em;
   list-style: none;
 }
 
-.Extras input {
+.InputNone {
   display: none;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .ExtraSvg div svg {
-  margin: 15%;
+  margin: 20%;
 }
 
 .ExtraLabel {
@@ -226,7 +226,7 @@
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  font-size: 2.61em;
+  font-size: 2em;
   border-width: 0.055em;
   border-style: solid;
   fill: #0069a7;
@@ -242,7 +242,7 @@
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
   border-radius: 50%;
-  font-size: 2.61em;
+  font-size: 2em;
   border-width: 0.055em;
   border-style: solid;
   fill: white;
@@ -250,7 +250,7 @@
 }
 
 .ExtraImage svg {
-  margin: 15%;
+  margin: 20%;
 }
 
 .Property {
@@ -388,4 +388,28 @@
 .ButtonBookingCore:hover {
   background-color: #0988d3;
   border: 1px solid #0988d3;
+}
+
+.InputQuantity {
+  width: 50%;
+  padding: 0.625em 1em;
+  font-weight: normal;
+  border: 1px solid #B1B9C3;
+  font-size: 1em;
+  border-radius: 4px;
+  -webkit-transition-property: border-color, color, box-shadow;
+  transition-property: border-color, color, box-shadow;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  max-width: 100%;
+  outline: none;
+  line-height: 1.5;
+  margin: 0;
+  background-color: white;
+}
+
+.CenterInput {
+  margin: 0 auto;
+  width: 110px;
+  text-align: center;
 }

@@ -6,10 +6,11 @@ import 'moment/locale/es';
 import {
   Grid,
   Paper,
-  Divider,
   Typography,
   Avatar,
+  Button,
 } from 'material-ui';
+import PostulateAgent from '../PostulatedAgent/PostulateAgent';
 
 // Css
 import cls from './JobShow.css';
@@ -28,8 +29,8 @@ class JobShow extends Component {
       date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`
       services = (
-        <Grid className={cls.Services} container justify="center">
-          <Grid className={cls.JobServices} item xs={12} sm={6}>
+        <Grid className={cls.Services} container>
+          <Grid item xs={12}>
             <Typography variant="headline">
               Servicios contratados
             </Typography>
@@ -42,7 +43,7 @@ class JobShow extends Component {
               })}
             </Typography>
           </Grid>
-          <Grid className={cls.JobServices} item xs={12} sm={6}>
+          <Grid item xs={12}>
             <Typography variant="headline">
               Servicios Adicionales
             </Typography>
@@ -92,20 +93,7 @@ class JobShow extends Component {
         );
       }
       if (this.props.job.attributes.proposals.length === 0) {
-        agents = (
-          <Grid className={cls.OtherAgents} container justify="center">
-            <Grid item xs={12} sm={6}>
-              <Typography variant="headline" align="center">
-                Sin agente asignado.
-              </Typography>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Typography variant="headline" align="center">
-                Sin agentes postulado.
-              </Typography>
-            </Grid>                  
-          </Grid>
-        );
+        agents = "SIN AGENTE ASIGNADO";
       } else {
         agents = (
           <Grid className={cls.OtherAgents} container justify="center">
@@ -137,32 +125,96 @@ class JobShow extends Component {
     }
 
     return (
-      <Grid className={cls.JobShow} justify="center" container>
-        <Grid item xs={5}>
-          <Grid container>
-            <Grid item xs={12}>
-              <Paper className={cls.Job} elevation={1}>
-                <Grid className={cls.ServiceDate} container justify="center">
-                  <Grid item xs={12}>
-                    <Typography variant="headline">
-                      {date}
-                    </Typography>
-                    <Typography variant="caption">
-                      {caption}
-                    </Typography>
-                  </Grid>
+      <div>
+        <Grid container justify="center">
+          <Grid item xs={8}>
+            <Paper>
+              <Grid container className={cls.JobShow}>
+                <Grid item xs={6}>
+                  <Paper elevation={0}>
+                    <Grid container className={cls.ServiceDate}>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <Typography variant="headline" className={cls.TitleDate}>{date}</Typography>
+                        </Paper>
+                        <Paper elevation={0}><Typography variant="caption">{caption}</Typography></Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>{services}</Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
                 </Grid>
-                <Divider/>
-                {agent}
-                <Divider />
-                {services}
-                <Divider/>
-                {agents}
-              </Paper>
-            </Grid>
+                <Grid item xs={6}>
+                  <Paper>
+                    <Grid container className={cls.ServiceDate}>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}><Typography variant="headline">Agentes Postulados</Typography></Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <div className={cls.AvatarAgent}>
+                            <Avatar className={cls.AvatarMargin}>
+                              RR
+                            </Avatar>
+                            <div className={cls.NameAgent}>
+                              <Typography className={cls.Name} variant="subheading">
+                                Rainiero Romero
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                estrellas
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                10 Reviews
+                              </Typography>
+                            </div>
+                          </div>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
+                          <div className={cls.AvatarAgent}>
+                            <Avatar className={cls.AvatarMargin}>
+                              RR
+                            </Avatar>
+                            <div className={cls.NameAgent}>
+                              <Typography className={cls.Name} variant="subheading">
+                                Rainiero Romero
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                estrellas
+                              </Typography>
+                              <Typography className={cls.Name} variant="caption">
+                                10 Reviews
+                              </Typography>
+                            </div>
+                          </div>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageAgents} elevation={0}>
+                          <Typography variant="headline" className={cls.TypograAgent}>{agents}</Typography>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageButtonJobCurrentCancelar} elevation={0}>
+                          <Button className={cls.ButtonCancelar}>CANCELAR TRABAJO</Button>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Paper>
           </Grid>
         </Grid>
-      </Grid>
+      </div>
     )
   }
 }

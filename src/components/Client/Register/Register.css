@@ -2,7 +2,7 @@
   border-radius: 5px 5px 5px 5px !important;
   margin: 0px auto;
   text-align: center;
-  height: 95vh;
+  height: 74vh;
   width: 600px;
   background-color: #ffffff !important;
 }
@@ -77,11 +77,6 @@
   width: 100% !important;
   width: 100%;
 }
-.pageButtonLogin{
-  font-family: Arial !important;
-  width: 200px !important;
-  margin: 4px 0 !important;
-}
 .pageButtonRegistroAgente{
   font-family: Arial !important;
   font-size: 0.6rem !important;
@@ -96,12 +91,11 @@
   padding-top: 2vh;
   font-family: Arial !important;
 }
-.form{
-  text-align: center;
-}
 
-.InputText > div > input {
-  display: inline-flex;
+.InputRegistre{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .ButtonConten {

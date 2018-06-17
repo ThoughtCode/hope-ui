@@ -1,57 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {Paper, TextField, Grid, withStyles} from 'material-ui';
 
 import Input from '../../../components/UI/Input/Input';
+import Button from 'material-ui/Button';
 
 import * as actions from '../../../store/actions';
 import cls from './css/Auth.css'
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 0,
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-  bootstrapRoot: {
-    padding: 0,
-    'label + &': {
-      marginTop: theme.spacing.unit * 3,
-    },
-  },
-  bootstrapInput: {
-    borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
-    border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 12px',
-    width: 'calc(100% - 24px)',
-    margin: 10,
-    transition: theme.transitions.create(['border-color', 'box-shadow']),
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
-    '&:focus': {
-      borderColor: '#80bdff',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-    },
-  },
-  bootstrapFormLabel: {
-    fontSize: 18,
-  },
-});
 
 class Auth extends Component {
   state = {
@@ -157,7 +111,34 @@ class Auth extends Component {
   }
 
   render () {
-    const { classes } = this.props;
+    const formElementsArray = [];
+    for (let key in this.state.controls) {
+      formElementsArray.push({
+        id: key,
+        config: this.state.controls[key]
+      });
+    }
+
+    let form = (
+      <form onSubmit={this.submitHandler}>
+          {formElementsArray.map(formElement => (
+              <Input
+                  key={formElement.id}
+                  id={formElement.id}
+                  label={formElement.config.label}
+                  elementType={formElement.config.elementType}
+                  elementConfig={formElement.config.elementConfig}
+                  value={formElement.config.value}
+                  changed={(event) => this.inputChangedHandler(event, formElement.id)}
+                  invalid={!formElement.config.valid}
+                  shouldValidate={formElement.config.validation}
+                  touched={formElement.config.touched}
+                  errorText={formElement.config.errorText}
+              />
+          ))}
+          <Button type="submit" variant="raised" className={cls.pageButton} >Entrar</Button>
+      </form>
+    );
     return (
       <div className={cls.container}>
         <Grid container>
@@ -180,31 +161,31 @@ class Auth extends Component {
               />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                type={'password'}  
-                placeholder="Contraseña"
-                id="Contrasena"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-            </Paper>
-          </Grid> 
-          <Grid item xs={12}>
-            <button className={cls.pageButton} >Ingresar</button>
-          </Grid>
+            <Grid item xs={12}>
+                <Paper className={classes.paper} elevation={0}>
+                    <TextField
+                        type={'password'}  
+                        placeholder="Contraseña"
+                        id="Contrasena"
+                        InputProps={{
+                            disableUnderline: true,
+                        classes: {
+                            root: classes.bootstrapRoot,
+                            input: classes.bootstrapInput,
+                        },
+                        }}
+                        InputLabelProps={{
+                            shrink: true,
+                            className: classes.bootstrapFormLabel,
+                        }}
+                    />
+                </Paper>
+            </Grid> 
+            <Grid item xs={12}>
+                <button className={cls.pageButton} >Ingresar</button>
+            </Grid>
         </Grid>
-      </div>
+            </div>
     );
   }
 }
@@ -215,4 +196,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Auth));
+export default connect(null, mapDispatchToProps)(Auth);

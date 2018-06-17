@@ -72,7 +72,7 @@ class Main extends Component {
                       <Registro close={this.handleClose} />
                     }
                     { this.state.openLogin && 
-                      <Login close={this.handleClose} />
+                      <Login className={cls.Modal} close={this.handleClose} />
                     }
                   </div>
                 </Modal>

@@ -6,10 +6,25 @@
 .containerForm{
   font-family: Arial !important;
 }
-.Button{
+.pageButton {
   background-color: #0069a7 !important;
-  color: #fff !important;
+  border-radius: 4px !important;
+  border-color: #286090;
+  border: 1px solid #fff !important;
+  color: #eee !important;
+  cursor: pointer !important;
+  display: inline-block !important;
   font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin: 2px 0 !important;
+  margin-top: 20px !important;
+  height: 52px !important;
+  line-height: 48px !important;
+  position: relative !important;
+  padding: 0px 32px !important;
+  vertical-align: baseline !important;
+  width: 95% !important;
 }
 .ButtonLogin{
   color: #0069a7 !important;

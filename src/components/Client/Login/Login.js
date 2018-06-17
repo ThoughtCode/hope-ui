@@ -7,10 +7,11 @@ import {Grid, Modal,} from 'material-ui';
 
 import LoginAgent from '../../../containers/Agent/Login/Login';
 import Registro from '../../../components/Client/Register/Register';
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import Button from 'material-ui/Button';
 import Auth from '../Auth/Auth';
 import cls from './Login.css';
+import FacebookIcon from '../../../assets/facebookicon.svg';
 
 import * as actions from '../../../store/actions';
 
@@ -39,7 +40,7 @@ class Login extends Component {
     if (modal === "register") {
       this.setState({ openLogin: false });
       this.setState({ openRegister: true });
-    } else if(modal === "login") {
+    } else if(modal === "loginAgent") {
       this.setState({ openRegister: false });
       this.setState({ openLogin: true });
     }
@@ -75,37 +76,38 @@ class Login extends Component {
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>"Busca y contrata tu servicio."</Typography>
               </Paper>
             </Grid>
+            <Grid item xs={12} align="center">
+              <Paper elevation={0}>
+                <div className={cls.ButtonFacebookContainer}>
+                  <FacebookLogin
+                    appId="2057031764572769"
+                    autoLoad={false}
+                    fields="name,email"
+                    callback={this.responseFacebook}
+                    render={renderProps => (
+                      <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
+                        <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
+                        Inicia Sesión con Facebook
+                      </Button>      
+                    )}
+                  />
+                </div>
+                <div className={cls.Divider}>
+                  <i className="material-icons">circle</i>
+                  <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
+                  <i className="material-icons">circle</i>
+                </div>
+              </Paper>
+            </Grid>
             <Grid item xs={12}>
               <Paper elevation={0}>
                 <Auth />
               </Paper>
             </Grid>
-            <Grid item xs={12}>
-              <Paper elevation={0}>
-                <FacebookLogin
-                  appId="2057031764572769"
-                  autoLoad={false}
-                  fields="name,email"
-                  callback={this.responseFacebook} />
-              </Paper>
-            </Grid>
           </Grid>
-          <Grid container justify="center" className={cls.LoginContainer}>
-            <Grid item xs={12}>
-              <Paper elevation={0}>
-                <Button onClick={() => this.handleOpen("login")} >Entra como agente</Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper elevation={0}>
-                <Button onClick={() => this.handleOpen("register")} >¿NO TIENES UNA CUENTA?</Button>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper elevation={0}>
-                <Button component={Link} to="/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
-              </Paper>
-            </Grid>
+          <Grid container justify="center" className={cls.ContainerOpciones}>
+            <Button className={cls.PageButtonRegister} onClick={() => this.handleOpen("loginAgent")} >Entra como agente</Button>
+            <Button className={cls.PageButtonRegister} component={Link} to="/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
           </Grid>
           <Grid container justify="center">
             <Grid item xs={12}>

@@ -34,7 +34,7 @@ class JobShow extends Component {
             <Typography variant="headline">
               Servicios contratados
             </Typography>
-            <Typography variant="subheading" className={cls.subServicios}>
+            <Typography variant="subheading">
               {this.props.job.attributes.job_details.map(detail => {
                 if (detail.service.type_service === 'base') {
                   return detail.service.name
@@ -44,20 +44,20 @@ class JobShow extends Component {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="headline" className={cls.HeadService}>
+            <Typography variant="headline">
               Servicios Adicionales
             </Typography>
             {this.props.job.attributes.job_details.map(detail => {
               if (detail.service.type_service === 'addon') {
                 if (detail.service.quantity) {
                   return (
-                    <Typography key={detail.id} variant="subheading" className={cls.subServicios}>
+                    <Typography key={detail.id} variant="subheading">
                       {detail.service.name} x{detail.value}
                     </Typography>
                   );
                 } else {
                   return (
-                    <Typography key={detail.id} variant="subheading" className={cls.subServicios}>
+                    <Typography key={detail.id} variant="subheading">
                       {detail.service.name}
                     </Typography>
                   );
@@ -128,34 +128,31 @@ class JobShow extends Component {
       <div>
         <Grid container justify="center">
           <Grid item xs={8}>
-            <Paper elevation={0}>
+            <Paper>
               <Grid container className={cls.JobShow}>
-                <Grid item xs={5}>
+                <Grid item xs={6}>
                   <Paper elevation={0}>
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>
-                        <Paper>
+                        <Paper elevation={0}>
                           <Typography variant="headline" className={cls.TitleDate}>{date}</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>{caption}</Typography>
                         </Paper>
-                        <Paper>
-                        </Paper>
+                        <Paper elevation={0}><Typography variant="caption">{caption}</Typography></Paper>
                       </Grid>
                       <Grid item xs={12}>
-                        <Paper>{services}</Paper>
+                        <Paper elevation={0}>{services}</Paper>
                       </Grid>
-                      <Button className={cls.ButtonCancelar}>CANCELAR TRABAJO</Button>
                     </Grid>
                   </Paper>
                 </Grid>
-                <Grid item xs={7}>
-                  <Paper elevation={0}>
+                <Grid item xs={6}>
+                  <Paper>
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>
                         <Paper elevation={0}><Typography variant="headline">Agentes Postulados</Typography></Paper>
                       </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
                           <div className={cls.AvatarAgent}>
                             <Avatar className={cls.AvatarMargin}>
                               RR
@@ -171,29 +168,43 @@ class JobShow extends Component {
                                 10 Reviews
                               </Typography>
                             </div>
-                            <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
                           </div>
                         </Paper>
                       </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper>
+                      <Grid item xs={12}>
+                        <Paper elevation={0}>
                           <div className={cls.AvatarAgent}>
                             <Avatar className={cls.AvatarMargin}>
-                              JC
+                              RR
                             </Avatar>
                             <div className={cls.NameAgent}>
                               <Typography className={cls.Name} variant="subheading">
-                                Jose Castellanos
+                                Rainiero Romero
                               </Typography>
                               <Typography className={cls.Name} variant="caption">
                                 estrellas
                               </Typography>
                               <Typography className={cls.Name} variant="caption">
-                                20 Reviews
+                                10 Reviews
                               </Typography>
                             </div>
-                            <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
                           </div>
+                        </Paper>
+                      </Grid>
+                    </Grid>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper>
+                    <Grid container>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageAgents} elevation={0}>
+                          <Typography variant="headline" className={cls.TypograAgent}>{agents}</Typography>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={6}>
+                        <Paper className={cls.pageButtonJobCurrentCancelar} elevation={0}>
+                          <Button className={cls.ButtonCancelar}>CANCELAR TRABAJO</Button>
                         </Paper>
                       </Grid>
                     </Grid>

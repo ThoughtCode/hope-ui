@@ -1,26 +1,44 @@
 .JobShow {
-  margin-top: 77px;
+  margin-top: 22vh;
 }
 
-.Job {
-  margin-top: 20px;
+/* .Title{
+  background-color: #0069a7 !important;
+  border-radius: 5px 5px 0px 0px !important;
 }
+
+.TitleDetalles{
+  color: white !important;
+} */
 
 .ServiceDate {
-  padding: 20px;
-  text-align: center;
+  padding: 1.5rem;
 }
 
-.JobAgent {
-  padding: 20px;
+.TitleDate{
+  color: #0069a7 !important;
+  text-align: center !important;
+  padding: 0.5em !important;
+}
+
+.TitleCaption{
+  text-align: center !important;
+  padding-bottom: 1em !important;
+  font-weight: bold !important;
+  font-size: 1em !important;
 }
 
 .Services {
   padding: 20px;
 }
 
-.OtherAgents {
-  padding: 20px;
+.HeadService{
+  padding-top: 0.5em;
+}
+
+.subServicios{
+  color: #0069a7 !important;
+  font-style: italic;
 }
 
 .AvatarAgent {
@@ -47,6 +65,40 @@
   margin-right: 16px;
 }
 
-.JobServices {
-  text-align: center;
+/* .pageAgents{
+  border: 1px solid #0069a7 !important;
+  border-radius: 0px 0px 0px 5px !important;
+  height: 100% !important;
+}
+.TypograAgent{
+  color: #0069a7 !important;
+  font-size: 1.2em !important;
+  text-align: center !important;
+  margin-top: 1.3vh !important;
+} */
+
+.pageButtonJobCurrentCancelar {
+  border: 1px solid #0069a7 !important; 
+  border-radius: 0px 0px 5px 0px !important;
+  height: 100% !important;
+}
+
+.ButtonCancelar{
+  background-color: #0069a7 !important;
+  border-radius: 0px 0px 5px 5px !important;
+  color: white !important;
+  font-size: 1.2em !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.ButtonContratar{
+  border: 1px solid #0069a7 !important;
+  border-radius: 5px 5px 5px 5px !important;
+  color: #0069a7 !important;
+  font-weight: bold !important;
+}
+
+.AgentPostulate{
+  padding-top: 1em;
 }

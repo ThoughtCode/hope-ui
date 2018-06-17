@@ -1,6 +1,8 @@
 .Login{
+  border-radius: 5px 5px 5px 5px !important;  
   text-align: center;
-  width: 300px;
+  height: 79vh;
+  width: 600px;
 }
 
 .ModalHeader{
@@ -16,8 +18,64 @@
   flex-grow: 1;
 }
 
+.ContainerOpciones{
+  text-align: center !important;
+}
+
+.pageButtonLogin{
+  font-family: Arial !important;
+  font-size: 0.6rem !important;
+  margin: 4px 0 !important;
+  justify-content: center !important;
+  width: 160px !important;
+}
+
 .Applogo {
   height: 6em;
+}
+
+.ButtonFacebookContainer{
+  border-radius: 5px 5px 5px 5px !important;
+  padding: 20px 0;
+  width: 95%;
+}
+
+.ButtonFacebookText{
+  background-color: #337ab7 !important;
+  border-color: #2e6da4 !important;
+  color: #fff !important;
+  font-size: 1.2rem !important;
+  font-weight: bold !important;
+  font-family: Arial !important;
+  padding: 20px !important;
+}
+
+.IconFacebook{
+  width: 4vh;
+  margin: 0 3vh;
+}
+
+.Divider{
+  border: 0 !important;
+  height: 1px !important;
+  margin: 20px 0 !important;
+  background: #ddd !important;
+  text-align: center !important;
+  position: relative !important;
+  clear: both !important;
+  width: 90% !important;
+}
+
+.DividerIcon{
+  background: #fff !important;
+  color: #bbb !important;
+  line-height: 50px !important;
+  position: absolute !important;
+  width: 30px !important;
+  font-size: 1rem !important;
+  margin: 0 auto 0 -25px !important;
+  top: -25px !important;
+  left: 52% !important;
 }
 
 .pageButton {
@@ -29,11 +87,6 @@
   border-radius: 5px !important;
   border: 1px solid #fff !important;
   width: 200px !important;
-}
-
-.pageButtonFacebook{
-  font-family: Arial !important;
-  margin: 4px 0 !important;
 }
 
 .Typogra {

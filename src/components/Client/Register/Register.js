@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withStyles } from 'material-ui/styles';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -9,18 +11,19 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
 import cls from './Register.css';
-import FacebookIcon from '../../../assets/facebookicon.svg'
+import FacebookIcon from '../../../assets/facebookicon.svg';
+import FormRegister from '../FormRegister/FormRegister'
+const styles = theme => ({
+  input: {
+    margin: theme.spacing.unit,
+  },
+});
 
 class Register extends Component {
     state = {
       registerForm: {
         first_name: {
-          elementType: 'input',
           label: 'Nombre',
-          elementConfig: {
-            type: 'text',
-            placeholder: 'Nombre',
-          },
           value: '',
           validation: {
             required: true,
@@ -176,6 +179,7 @@ class Register extends Component {
     }
 
     render() {
+      const { classes } = this.props;
       const formElementsArray = [];
       for (const key in this.state.registerForm) {
         formElementsArray.push({
@@ -186,20 +190,21 @@ class Register extends Component {
       const form = (
         <form onSubmit={this.registerHandler} className={cls.InputRegistre}>
           {formElementsArray.map(formElement => (
-            <Input
-              classes={cls.InputText}
-              key={formElement.id}
-              id={formElement.id}
-              label={formElement.config.label}
-              elementType={formElement.config.elementType}
-              elementConfig={formElement.config.elementConfig}
-              value={formElement.config.value}
-              changed={event => this.inputChangedHandler(event, formElement.id)}
-              invalid={!formElement.config.valid}
-              shouldValidate={formElement.config.validation}
-              touched={formElement.config.touched}
-              errorText={formElement.config.errorText}
-            />
+            <div className={classes.input}>
+              <Input
+                key={formElement.id}
+                id={formElement.id}
+                label={formElement.config.label}
+                elementType={formElement.config.elementType}
+                elementConfig={formElement.config.elementConfig}
+                value={formElement.config.value}
+                changed={event => this.inputChangedHandler(event, formElement.id)}
+                invalid={!formElement.config.valid}
+                shouldValidate={formElement.config.validation}
+                touched={formElement.config.touched}
+                errorText={formElement.config.errorText}
+              />
+            </div>
             ))}
           <Button type="submit" variant="raised" disabled={!this.state.formIsValid} className={cls.pageButton} >Registrar</Button>
         </form>
@@ -233,12 +238,11 @@ class Register extends Component {
                 <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
                 <i className="material-icons">circle</i>
               </div>
-            <Grid item xs={12} sm={11}>
+            <Grid item xs={12} align="center" >
               <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
-              <div className={cls.form}>{form}</div>
+              <div><FormRegister /></div>
               <div className={cls.ButtonConten}>
                 <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
-                <Button className={cls.pageButtonLogin} component={Link} to="/cliente/login" >Volver al login</Button>
                 <Button className={cls.pageButtonRegistroAgente} component={Link} to="/reset" >Olvido su contraseña</Button>
               </div>
             </Grid>
@@ -252,4 +256,8 @@ const mapDispatchToProps = dispatch => ({
   onRegisterUser: formData => dispatch(action.registerClient(formData)),
 });
 
-export default connect(null, mapDispatchToProps)(Register);
+Register.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(withStyles(styles)(Register));

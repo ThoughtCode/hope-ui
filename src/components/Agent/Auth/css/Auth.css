@@ -1,19 +1,20 @@
 .pageButton {
-  background-color: #4c69ba !important;
-  /* background-color: #0069a7 !important; */
-  border: calc(.06887vw + .67769px) solid #4c69ba;
-  /* border: 1px solid #fff !important; */
+  background-color: #0069a7 !important;
+  border-radius: 4px !important;
+  border-color: #286090;
+  border: 1px solid #fff !important;
   color: #eee !important;
-  cursor: pointer !important;
-  display: inline-block !important;
-  font-family: Arial, Helvetica,sans-serif !important;
-  font-size: calc(.27548vw + 12.71074px) !important;
-  font-weight: 700 !important;
-  padding: calc(.34435vw + 13.38843px) calc(.34435vw + 18.38843px) !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500;
   margin: 4px 0 !important;
-  -webkit-font-smoothing: antialiased !important;
-  text-decoration: none;
-  text-transform: uppercase ;
-  transition: background-color .3s,border-color .3s !important;
-  width: 31vh !important;
+  margin-top: 20px;
+  height: 52px;
+  line-height: 48px;
+  position: relative;
+  padding: 0px 32px;
+  vertical-align: baseline;
+  width: 37% !important;
 }

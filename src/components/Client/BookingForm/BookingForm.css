@@ -167,7 +167,7 @@
   margin-bottom: 1em;
   padding-left: 0.9375em;
   padding-right: 0.9375em;
-  width: 50%;
+  width: 100%;
 }
 
 .ExtraServices {
@@ -412,4 +412,13 @@
   margin: 0 auto;
   width: 110px;
   text-align: center;
+}
+
+.HeightDef {
+  height: 30px;
+}
+
+.NoMargin {
+ margin-bottom: 0px;
+ margin-top: 0px; 
 }

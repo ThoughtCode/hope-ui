@@ -6,14 +6,14 @@ import * as actions from '../../../store/actions';
 import cls from './Auth.css'
 
 const styles = theme => ({
-    root: {
-        flexGrow: 1,
-      },
-      paper: {
-        padding: theme.spacing.unit * 0,
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-      },
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing.unit * 0,
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
   bootstrapRoot: {
     padding: 0,
     'label + &': {
@@ -52,165 +52,169 @@ const styles = theme => ({
 });
 
 class Auth extends Component {
-    state = {
-        controls: {
-            email: {
-                elementType: 'input',
-                label: 'Email',
-                elementConfig: {
-                    type: 'email',
-                    placeholder: 'example@example.com'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                    isEmail: true
-                },
-                valid: false,
-                touched: false
-            },
-            password: {
-                elementType: 'input',
-                label: 'Password',
-                elementConfig: {
-                    type: 'password',
-                    placeholder: 'Password'
-                },
-                value: '',
-                validation: {
-                    required: true,
-                },
-                valid: false,
-                touched: false
-            }
+  state = {
+    controls: {
+      email: {
+        elementType: 'input',
+        label: 'Email',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'example@example.com'
         },
-        formIsValid: false
+        value: '',
+        validation: {
+          required: true,
+          isEmail: true
+        },
+        valid: false,
+        touched: false
+      },
+      password: {
+        elementType: 'input',
+        label: 'Password',
+        elementConfig: {
+          type: 'password',
+          placeholder: 'Password'
+        },
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false
+      }
+    },
+    formIsValid: false
+  }
+
+  checkValidity(value, rules) {
+    let isValid = true;
+    let errorText = null;
+    if (!rules) {
+      return true;
+    }
+    
+    if (rules.required) {
+      isValid = value.trim() !== '' && isValid;
+      errorText = "Requerido."
     }
 
-    checkValidity(value, rules) {
-        let isValid = true;
-        let errorText = null;
-        if (!rules) {
-            return true;
-        }
-        
-        if (rules.required) {
-            isValid = value.trim() !== '' && isValid;
-            errorText = "Requerido."
-        }
-
-        if (rules.minLength) {
-            isValid = value.length >= rules.minLength && isValid
-            errorText = "Debe contener mas de " + rules.minLength + " caracteres."
-        }
-
-        if (rules.maxLength) {
-            isValid = value.length <= rules.maxLength && isValid
-            errorText = "Debe contener menos de " + rules.maxLength + " caracteres."
-        }
-
-        if (rules.isEmail) {
-            const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-            isValid = pattern.test(value) && isValid
-            errorText = "Debe ser un email valido."
-        }
-
-        if (rules.isNumeric) {
-            const pattern = /^\d+$/;
-            isValid = pattern.test(value) && isValid
-            errorText = "Debe ser solo numerico."
-        }
-
-        return {
-            isValid,
-            errorText
-        };
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid
+      errorText = "Debe contener mas de " + rules.minLength + " caracteres."
     }
 
-    submitHandler = (event) => {
-        event.preventDefault();
-        this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength && isValid
+      errorText = "Debe contener menos de " + rules.maxLength + " caracteres."
     }
 
-    inputChangedHandler = (event, controlName) => {
-        const updatedControls = {
-            ...this.state.controls,
-            [controlName]: {
-                ...this.state.controls[controlName],
-                value: event.target.value,
-                valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation).isValid,
-                errorText: this.checkValidity(event.target.value, this.state.controls[controlName].validation).errorText,
-                touched: true
-            }
-        };
-
-        let formIsValid = true;
-        for (let inputIdentifier in updatedControls) {
-            formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
-        }
-        this.setState({
-            controls: updatedControls,
-            formIsValid: formIsValid
-        });
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid
+      errorText = "Debe ser un email valido."
     }
 
-    render () {
-        const { classes } = this.props;
-        return (
-            <div className={cls.container}>
-                <Grid container>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper} elevation={0}>
-                            <TextField
-                                placeholder="Correo"
-                                id="name"
-                                InputProps={{
-                                    disableUnderline: true,
-                                    classes: {
-                                        root: classes.bootstrapRoot,
-                                        input: classes.bootstrapInput,
-                                    },
-                                }}
-                                InputLabelProps={{
-                                    shrink: true,
-                                    className: classes.bootstrapFormLabel,
-                                }}
-                            />
-                        </Paper>
-                    </Grid>
-                    <Grid item xs={12}>
-                        <Paper className={classes.paper} elevation={0}>
-                            <TextField
-                                type={'password'}  
-                                placeholder="Contraseña"
-                                id="Contrasena"
-                                InputProps={{
-                                    disableUnderline: true,
-                                classes: {
-                                    root: classes.bootstrapRoot,
-                                    input: classes.bootstrapInput,
-                                },
-                                }}
-                                InputLabelProps={{
-                                    shrink: true,
-                                    className: classes.bootstrapFormLabel,
-                                }}
-                            />
-                        </Paper>
-                    </Grid> 
-                    <Grid item xs={12}>
-                        <button className={cls.pageButton} >Ingresar</button>
-                    </Grid>
-                </Grid>
-            </div>
-        );
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid
+      errorText = "Debe ser solo numerico."
     }
+
+    return {
+      isValid,
+      errorText
+    };
+  }
+
+  submitHandler = (event) => {
+    event.preventDefault();
+    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+  }
+
+  inputChangedHandler = (event, controlName) => {
+    const updatedControls = {
+      ...this.state.controls,
+      [controlName]: {
+        ...this.state.controls[controlName],
+        value: event.target.value,
+        valid: this.checkValidity(event.target.value, this.state.controls[controlName].validation).isValid,
+        errorText: this.checkValidity(event.target.value, this.state.controls[controlName].validation).errorText,
+        touched: true
+      }
+    };
+
+    let formIsValid = true;
+    for (let inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+    this.setState({
+      controls: updatedControls,
+      formIsValid: formIsValid
+    });
+  }
+
+  render () {
+    const { classes } = this.props;
+    return (
+      <div className={cls.container}>
+        <Grid container>
+          <Grid item xs={12}>
+            <Paper className={classes.paper} elevation={0}>
+              <TextField
+                placeholder="Correo"
+                value={this.state.controls.email.value}
+                onChange={(event) => this.inputChangedHandler(event, 'email')}
+                id="name"
+                InputProps={{
+                  disableUnderline: true,
+                  classes: {
+                    root: classes.bootstrapRoot,
+                    input: classes.bootstrapInput,
+                  },
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                  className: classes.bootstrapFormLabel,
+                }}
+              />
+            </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <Paper className={classes.paper} elevation={0}>
+              <TextField
+                type={'password'}  
+                placeholder="Contraseña"
+                id="Contrasena"
+                value={this.state.controls.password.value}
+                onChange={(event) => this.inputChangedHandler(event, 'password')}
+                InputProps={{
+                  disableUnderline: true,
+                  classes: {
+                    root: classes.bootstrapRoot,
+                    input: classes.bootstrapInput,
+                  },
+                }}
+                InputLabelProps={{
+                  shrink: true,
+                  className: classes.bootstrapFormLabel,
+                }}
+              />
+            </Paper>
+          </Grid> 
+          <Grid item xs={12}>
+            <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button>
+          </Grid>
+        </Grid>
+      </div>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        onAuth: (email, password) => dispatch(actions.authClient(email, password))
-    };
+  return {
+    onAuth: (email, password) => dispatch(actions.authClient(email, password))
+  };
 };
 
 export default connect(null, mapDispatchToProps)(withStyles(styles)(Auth));

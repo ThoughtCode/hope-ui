@@ -175,7 +175,7 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
-                value={this.state.controls.password}
+                value={this.state.controls.password.value}
                 onChange={(event) => this.inputChangedHandler(event, 'password')}
                 type={'password'}  
                 placeholder="Contraseña"

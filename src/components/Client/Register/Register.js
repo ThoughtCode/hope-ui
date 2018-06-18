@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
@@ -12,7 +11,8 @@ import Input from '../../UI/Input/Input';
 import * as action from '../../../store/actions';
 import cls from './Register.css';
 import FacebookIcon from '../../../assets/facebookicon.svg';
-import FormRegister from '../FormRegister/FormRegister'
+import FormRegister from '../FormRegister/FormRegister';
+
 const styles = theme => ({
   input: {
     margin: theme.spacing.unit,
@@ -255,9 +255,5 @@ class Register extends Component {
 const mapDispatchToProps = dispatch => ({
   onRegisterUser: formData => dispatch(action.registerClient(formData)),
 });
-
-Register.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default connect(null, mapDispatchToProps)(withStyles(styles)(Register));

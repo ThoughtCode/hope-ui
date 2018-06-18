@@ -5,7 +5,7 @@ import {Paper, TextField, Grid, withStyles} from 'material-ui';
 import Input from '../../../components/UI/Input/Input';
 
 import * as actions from '../../../store/actions';
-import cls from './css/Auth.css'
+import cls from './Auth.css'
 
 const styles = theme => ({
   root: {
@@ -57,12 +57,7 @@ class Auth extends Component {
   state = {
     controls: {
       email: {
-        elementType: 'input',
         label: 'Email',
-        elementConfig: {
-          type: 'email',
-          placeholder: 'example@example.com'
-        },
         value: '',
         validation: {
           required: true,
@@ -72,12 +67,7 @@ class Auth extends Component {
         touched: false
       },
       password: {
-        elementType: 'input',
         label: 'Password',
-        elementConfig: {
-          type: 'password',
-          placeholder: 'Password'
-        },
         value: '',
         validation: {
           required: true,
@@ -164,6 +154,8 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                value={this.state.controls.email.value}
+                onChange={(event) => this.inputChangedHandler(event, 'email')}
                 placeholder="Correo"
                 id="name"
                 InputProps={{
@@ -183,6 +175,8 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                value={this.state.controls.password}
+                onChange={(event) => this.inputChangedHandler(event, 'password')}
                 type={'password'}  
                 placeholder="Contraseña"
                 id="Contrasena"
@@ -201,7 +195,7 @@ class Auth extends Component {
             </Paper>
           </Grid> 
           <Grid item xs={12}>
-            <button className={cls.pageButton} >Ingresar</button>
+            <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton} >Ingresar</button>
           </Grid>
         </Grid>
       </div>

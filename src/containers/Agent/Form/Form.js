@@ -1,5 +1,5 @@
-//Dependencias
-import React from 'react';
+// Dependencias
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {Grid,
   Button,
@@ -9,7 +9,7 @@ import {Grid,
   withStyles,
 } from 'material-ui';
 
-//Componentes
+// Componentes
 import cls from './Form.css';
 
 const styles = theme => ({
@@ -58,7 +58,7 @@ const styles = theme => ({
   },
 });
 
-class Form extends React.Component {
+class Form extends Component {
   render() {
     const { classes } = this.props;
     return (

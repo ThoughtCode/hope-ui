@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Paper, TextField, Grid, withStyles} from 'material-ui';
 
-import Input from '../../../components/UI/Input/Input';
-
 import * as actions from '../../../store/actions';
 import cls from './Auth.css'
 
@@ -175,7 +173,7 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
-                value={this.state.controls.password}
+                value={this.state.controls.password.value}
                 onChange={(event) => this.inputChangedHandler(event, 'password')}
                 type={'password'}  
                 placeholder="Contraseña"

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es';
+import {MenuItem} from 'material-ui';
 
 // Components
 import {
@@ -10,7 +12,6 @@ import {
   Avatar,
   Button,
 } from 'material-ui';
-import PostulateAgent from '../PostulatedAgent/PostulateAgent';
 
 // Css
 import cls from './JobShow.css';
@@ -18,10 +19,6 @@ import cls from './JobShow.css';
 class JobShow extends Component {
   render() {
     console.log(this.props.job)
-    let agent = (
-      <Grid container></Grid>
-    );
-    let agents = null;
     let date = null;
     let caption = null;
     let services = null;
@@ -68,60 +65,6 @@ class JobShow extends Component {
           </Grid>
         </Grid>
       );
-      if (this.props.job.attributes.agent ) {
-        agent = (
-          <Grid className={cls.JobAgent} container justify="center">        
-            <Grid item xs={12} sm={12}>
-              <Typography variant="headline" align="center">
-                Agente
-              </Typography>
-            </Grid>
-            <div className={cls.AvatarAgent}>
-              <Avatar className={cls.AvatarMargin}>
-                RR
-              </Avatar>
-              <div className={cls.NameAgent}>
-                <Typography className={cls.Name} variant="subheading">
-                  Rainiero Romero
-                </Typography>
-                <Typography className={cls.Name} variant="caption">
-                  estrellas
-                </Typography>
-              </div>
-            </div>
-          </Grid>        
-        );
-      }
-      if (this.props.job.attributes.proposals.length === 0) {
-        agents = "SIN AGENTE ASIGNADO";
-      } else {
-        agents = (
-          <Grid className={cls.OtherAgents} container justify="center">
-            <Grid item xs={12} sm={6}>
-              <Typography variant="headline" align="center">
-                Asignar Agente
-              </Typography>
-            </Grid>
-            {this.props.job.attributes.proposals.map(proposal => {
-              return (
-                <div key={proposal.id} className={cls.AvatarAgent}>
-                  <Avatar className={cls.AvatarMargin}>
-                    RR
-                  </Avatar>
-                  <div className={cls.NameAgent}>
-                    <Typography className={cls.Name} variant="subheading">
-                      {proposal.agent.first_name} {proposal.agent.last_name}
-                    </Typography>
-                    <Typography className={cls.Name} variant="caption">
-                      estrellas
-                    </Typography>
-                  </div>
-                </div>
-              );
-            })}                  
-          </Grid>
-        );
-      }
     }
 
     return (
@@ -162,7 +105,9 @@ class JobShow extends Component {
                             </Avatar>
                             <div className={cls.NameAgent}>
                               <Typography className={cls.Name} variant="subheading">
-                                Rainiero Romero
+                                <MenuItem component={Link} to="/trabajo/vistagente">
+                                  Rainiero Romero
+                                </MenuItem>
                               </Typography>
                               <Typography className={cls.Name} variant="caption">
                                 estrellas

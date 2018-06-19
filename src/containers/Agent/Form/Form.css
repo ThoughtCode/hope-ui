@@ -1,10 +1,8 @@
 .Form{
   background-color: #E8EBEF;
-  padding: 40px;
+  padding: 20px;
   border-radius: 5px;
-}
-.containerForm{
-  font-family: Arial !important;
+  text-align: center !important;
 }
 .pageButton {
   background-color: #0069a7 !important;

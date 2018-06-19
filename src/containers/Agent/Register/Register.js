@@ -1,7 +1,7 @@
 // DEPENDENCIAS
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Grid from 'material-ui/Grid';
+import {Grid, Paper} from 'material-ui';
 import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 
@@ -14,20 +14,36 @@ class Register extends Component {
   render () {
     return (
       <div className={cls.Registro}>
-        <Button component={Link} to="/" >
-          <img src={AppLogo} className={cls.logo} alt="logo" />
-        </Button>
-        <Grid container justify="center">
-          <Grid item xs={12} sm={12} md={10}>
-            <Grid container justify="center" align="center">
-              <Grid item xs={12} sm={6} md={6}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit.</Typography>
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <Paper className={cls.PaperStile} elevation={0}>
+              <Grid container>
+                <Grid item xs={12}>
+                  <Paper className={cls.PaperStile} elevation={0}>
+                    <Button component={Link} to="/" >
+                      <img src={AppLogo} className={cls.logo} alt="logo" />
+                    </Button>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper className={cls.PaperStile} elevation={0}>
+                    <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit.</Typography>
+                  </Paper>
+                </Grid>
               </Grid>
-              <Grid item xs={11} sm={4} md={4}>
-                <Form />
+            </Paper>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Paper className={cls.PaperStile} elevation={0}>
+              <Grid container justify="center">
+                <Grid item xs={11} sm={6}>
+                  <Paper className= {`${cls.Form} ${cls.PaperStile}`} elevation={0}>
+                    <Form />
+                  </Paper>
+                </Grid>
               </Grid>
-            </Grid>
-          </Grid>          
+            </Paper>
+          </Grid>
         </Grid>
       </div>
     );

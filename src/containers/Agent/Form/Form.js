@@ -62,9 +62,9 @@ class Form extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={cls.container}>
+      <div>
         <form className={cls.Form}>
-          <Grid container className={cls.containerForm} justify="center">
+          <Grid container>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <Typography variant="title" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>
@@ -216,12 +216,12 @@ class Form extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-                <Button className={cls.pageButton}>Registrar</Button>
+              <Button className={cls.pageButton}>Registrar</Button>
             </Grid>
           </Grid>
           <p className={cls.None}>Al registrarte aceptas los <small className={cls.small}>Terminos y politicas de privacidad.</small></p>
           <Grid container justify="center">
-            <Grid item >
+            <Grid item xs={12}>
               <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
             </Grid>
           </Grid>

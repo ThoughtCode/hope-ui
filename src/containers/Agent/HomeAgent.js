@@ -3,11 +3,11 @@ import React,{ Component } from 'react';
 
 // COMPONENTES
 import Registro from './Register/Register';
-import Work from './Work/Work';
-import Itworks from './Itworks/Itworks';
-import AsideAgente from './Aside/Aside';
-import IsTold from './IsTold/IsTold';
-import Contact from '../../components/Home/Contact/Contact';
+// import Work from './Work/Work';
+// import Itworks from './Itworks/Itworks';
+// import AsideAgente from './Aside/Aside';
+// import IsTold from './IsTold/IsTold';
+// import Contact from '../../components/Home/Contact/Contact';
 
 class Agent extends Component{
   render() {
@@ -16,11 +16,6 @@ class Agent extends Component{
         <div id="RegistreAgente">
           <Registro />
         </div>
-        <Work />
-        <Itworks />
-        <AsideAgente />
-        <IsTold />
-        <Contact />
       </div>
     );
   }

@@ -92,7 +92,7 @@ class AppBarMenu extends Component {
                 onClose={this.handleClose}
               >
                 <MenuItem onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem onClick={this.props.logout} component={Link} to="/agente/login">
+                <MenuItem onClick={this.props.logout} component={Link} to="/">
                   Logout
                 </MenuItem>
               </Menu>

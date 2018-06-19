@@ -13,7 +13,7 @@
   color: #fff !important;
   font-size: 3rem !important;
   margin-top: 35vh !important;
-  text-align: left !important;
+  text-align: center !important;
   font-family: Arial !important;
 }
 
@@ -22,11 +22,18 @@
   margin: 0.5rem;
 }
 
-.MuiFormControl-marginNormal-144{
-  margin-top: 10px !important;
+.PaperStile {
+  background-color: transparent !important;
+}
+
+.Form{
+  margin-top: 28px;
 }
 
 @media only screen and (max-width: 600px) {
+  .Form{
+    margin-top: 8px;
+  }
   .Registro{
     height: 130vh !important;
   }
@@ -38,9 +45,6 @@
   .logo {
     height: 2.5rem !important;
     margin: 0rem !important;
-  }
-  .MuiFormControl-marginDense-172{
-    margin: 0px !important;
   }
   .None{
     display: none !important;

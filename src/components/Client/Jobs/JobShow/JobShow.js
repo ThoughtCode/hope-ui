@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es';
+import {MenuItem} from 'material-ui';
 
 // Components
 import {
@@ -162,7 +164,9 @@ class JobShow extends Component {
                             </Avatar>
                             <div className={cls.NameAgent}>
                               <Typography className={cls.Name} variant="subheading">
-                                Rainiero Romero
+                                <MenuItem component={Link} to="/trabajo/vistagente">
+                                  Rainiero Romero
+                                </MenuItem>
                               </Typography>
                               <Typography className={cls.Name} variant="caption">
                                 estrellas

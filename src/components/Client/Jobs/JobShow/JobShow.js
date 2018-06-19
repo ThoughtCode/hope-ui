@@ -12,7 +12,6 @@ import {
   Avatar,
   Button,
 } from 'material-ui';
-import PostulateAgent from '../PostulatedAgent/PostulateAgent';
 
 // Css
 import cls from './JobShow.css';

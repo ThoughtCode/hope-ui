@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {Paper, TextField, Grid, withStyles} from 'material-ui';
 
-import Input from '../../../components/UI/Input/Input';
-
 import * as actions from '../../../store/actions';
 import cls from './Auth.css'
 

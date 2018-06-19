@@ -64,7 +64,7 @@ class Form extends Component {
     return (
       <div className={cls.container}>
         <form className={cls.Form}>
-          <Grid container container className={cls.containerForm} justify="center">
+          <Grid container className={cls.containerForm} justify="center">
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <Typography variant="title" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>

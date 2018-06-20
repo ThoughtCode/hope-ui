@@ -23,7 +23,7 @@ class AgentShow extends Component {
                   </Paper>
                 </Grid>
                 <Grid item xs={12}>
-                  <Paper elevation={0}>
+                  <Paper className={cls.CardAgentShow} elevation={0}>
                     <CardAgentShow />
                   </Paper>
                 </Grid>

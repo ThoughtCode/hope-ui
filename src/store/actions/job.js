@@ -1,6 +1,8 @@
-import * as actionTypes from './actionTypes';
 import Alert from 'react-s-alert';
+import { push } from 'react-router-redux';
+import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
+
 
 export const createJobSuccess = () => ({
   type: actionTypes.CREATE_JOB_SUCCESS,
@@ -24,6 +26,7 @@ export const createJob = (token, formData) => dispatch => {
   axios.post('/customers/jobs', formData, headers)
     .then((res) => {
       dispatch(createJobSuccess());
+      dispatch(push(`/cliente/trabajo/${res.data.job.data.id}`));
       Alert.success(res.data.message, {
         position: 'bottom',
         effect: 'genie',

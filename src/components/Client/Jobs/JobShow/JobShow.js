@@ -18,13 +18,60 @@ import cls from './JobShow.css';
 
 class JobShow extends Component {
   render() {
-    console.log(this.props.job)
+    console.log(this.props.job);
     let date = null;
     let caption = null;
     let services = null;
+    let frequency = null;
+    let agents = null;
     if (this.props.job.attributes) {
-      date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())
-      caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`
+      date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY').replace(/\b\w/g, l => l.toUpperCase());
+      caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`;
+      if (this.props.job.attributes.frequency === 'one_time') {
+        frequency = 'Una vez';
+      } else if (this.props.job.attributes.frequency === 'diary') {
+        frequency = 'Diario';
+      } else if (this.props.job.attributes.frequency === 'weekly') {
+        frequency = 'Semanal';
+      } else if (this.props.job.attributes.frequency === 'monthly') {
+        frequency = 'Mensual';
+      }
+      agents = this.props.job.attributes.proposals.length > 0 ?
+        this.props.job.attributes.proposals.map(p => (
+          <Grid item xs={12} className={cls.AgentPostulate}>
+            <Paper>
+              <div className={cls.AvatarAgent}>
+                {p.agent.avatar.url === null ? (
+                  <Avatar className={cls.AvatarMargin}>
+                    {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
+                  </Avatar>
+                ) : (
+                  <Avatar 
+                    className={cls.AvatarMargin}
+                    src={p.agent.avatar.url}>
+                  </Avatar>
+                )}
+                <div className={cls.NameAgent}>
+                  <Typography className={cls.Name} variant="subheading">
+                    {p.agent.first_name} {p.agent.last_name}
+                  </Typography>
+                  <Typography className={cls.Name} variant="caption">
+                    estrellas
+                  </Typography>
+                  <Typography className={cls.Name} variant="caption">
+                    20 Reviews
+                  </Typography>
+                </div>
+                <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
+              </div>
+            </Paper>
+          </Grid>
+        ))
+      : (
+        <div>
+          <p>No hay agentes asigandos</p>
+        </div>
+      );
       services = (
         <Grid className={cls.Services} container>
           <Grid item xs={12}>
@@ -80,6 +127,7 @@ class JobShow extends Component {
                         <Paper>
                           <Typography variant="headline" className={cls.TitleDate}>{date}</Typography>
                           <Typography variant="caption" className={cls.TitleCaption}>{caption}</Typography>
+                          <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
                         </Paper>
                         <Paper>
                         </Paper>
@@ -97,30 +145,8 @@ class JobShow extends Component {
                       <Grid item xs={12}>
                         <Paper elevation={0}><Typography variant="headline">Agentes Postulados</Typography></Paper>
                       </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper>
-                          <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              RR
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography className={cls.Name} variant="subheading">
-                                <MenuItem component={Link} to="/trabajo/vistagente">
-                                  Rainiero Romero
-                                </MenuItem>
-                              </Typography>
-                              <Typography className={cls.Name} variant="caption">
-                                estrellas
-                              </Typography>
-                              <Typography className={cls.Name} variant="caption">
-                                10 Reviews
-                              </Typography>
-                            </div>
-                            <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
-                          </div>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
+                      {agents}
+                      {/* <Grid item xs={12} className={cls.AgentPostulate}>
                         <Paper>
                           <div className={cls.AvatarAgent}>
                             <Avatar className={cls.AvatarMargin}>
@@ -140,7 +166,7 @@ class JobShow extends Component {
                             <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
                           </div>
                         </Paper>
-                      </Grid>
+                      </Grid> */}
                     </Grid>
                   </Paper>
                 </Grid>

@@ -26,4 +26,10 @@
   text-align: left;
   width: 150px;
   /* border: 1px solid #0069a7 !important; */
+  border: 0;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
 }

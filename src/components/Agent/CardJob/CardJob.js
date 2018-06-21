@@ -96,7 +96,7 @@ function CardJob(props) {
                     <Paper className={`${cls.pageButtonActive} ${classes.paper}`}>
                         <Grid container align="center">
                             <Grid item xs={12}>
-                                <Button variant="contained" className={cls.Button} fullWidth >APLICAR</Button>
+                                <Button className={cls.Button} fullWidth >APLICAR</Button>
                             </Grid>
                         </Grid>
                     </Paper>

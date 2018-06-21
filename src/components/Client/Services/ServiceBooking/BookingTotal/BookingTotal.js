@@ -13,12 +13,14 @@ const bookingTotal = (props) => {
   let price = 0;
   let base = 0;
   let time = 0;
-  props.form.services_addons.length > 0 ? props.form.services_addons.map(s => {
-    if (s.active) {
-      price = ((s.price * s.time)) + price;
-      time = s.time + time
-    }
-  }) : null;
+  if (props.form.services_addons.length > 0) {
+    props.form.services_addons.forEach(s => {
+      if (s.active) {
+        price = ((s.price * s.time)) + price;
+        time = s.time + time
+      }
+    })
+  }
   base = props.form.services_base.name !== '' ? (props.form.services_base.price * props.form.services_base.time) : 0;
   time = time + props.form.services_base.time;
   let iva = 0;

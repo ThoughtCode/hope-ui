@@ -186,3 +186,44 @@ export const fetchJob = (token, job_id) => dispatch => {
       dispatch(fetchJobFail(err));
     });
 }
+
+export const fetchJobsAgentStart = () => ({
+  type: actionTypes.FETCH_AGENT_JOBS_START,
+});
+
+export const fetchJobsAgentFail = (error) => ({
+  type: actionTypes.FETCH_AGENT_JOBS_FAIL,
+  error,
+});
+
+export const fetchJobsAgentSuccess = (jobs) => ({
+  type: actionTypes.FETCH_AGENT_JOBS_SUCCESS,
+  jobs,
+});
+
+export const fetchJobsAgent = (token, filter) => dispatch => {
+  dispatch(fetchJobsAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  var body = [];
+  if (filter !== null) {
+    body.push(`date_from=${filter.date_from}`);
+    body.push(`date_to=${filter.date_to}`);
+    body.push(`min_price=${filter.min_price}`);
+    body.push(`max_price=${filter.max_price}`);
+    body.push(`frequency=${filter.frequency}`);
+    body.push(`current_page=${filter.current_page}`)
+  }
+  axios.get(`/agents/jobs?${body.join('&')}`, headers)
+    .then((res) => {
+      let historyjobs = [];
+      historyjobs = res.data.job.data;
+      dispatch(fetchHistoryJobsSuccess(historyjobs));
+    })
+    .catch((err) => {
+      dispatch(fetchHistoryJobsFail(err));
+    });
+}

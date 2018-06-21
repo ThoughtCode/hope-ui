@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Datetime from 'react-datetime';
 import classNames from 'classnames';
+import moment from 'moment';
+
 import {Grid, Divider} from 'material-ui';
-import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import InputAdornment from 'material-ui/Input/InputAdornment';
 import TextField from 'material-ui/TextField';
@@ -20,18 +22,57 @@ const styles = theme => ({
   },
 });
 
-class Filter extends React.Component {
+class Filter extends Component {
   state = {
-    value: 'semanal',
+    filter: {
+      min_price: 0,
+      max_price: 0,
+      date_from: Date.now(),
+      date_to: Date.now(),
+      frequency: '0',
+    },
+  };
+
+  changeDatetimeHandler = (dateTime, key) => {
+    this.setState({
+      ...this.state,
+      filter: {
+        ...this.state.filter,
+        [key]: moment(dateTime),
+      }
+    })
   };
   
-  handleChange = event => {
-    this.setState({ value: event.target.value });
+  handleChange = (event, key) => {
+    this.setState({
+      ...this.state,
+      filter: {
+        ...this.state.filter,
+        [key]: event.target.value,
+      },
+    });
+  }
+
+  filterHandler = (event) => {
+    event.preventDefault();
+    const filter = this.state.filter;
+    this.props.filter(localStorage.getItem('token'), filter);
+  };
+
+  renderInput = (props) => {
+    return (
+      <div>
+        <TextField
+          InputLabelProps={{
+            shrink: true,
+          }}
+          {...props}/>
+      </div>
+    );
   };
 
   render() {
     const { classes } = this.props;
-
     return (
       <div className={cls.root}>
         <Grid container align="center" alignItems="center">
@@ -40,36 +81,58 @@ class Filter extends React.Component {
           <TextField
             label="Minimo"
             id="simple-start-adornment"
+            value={this.state.filter.min_price}
+            onChange={(event) => this.handleChange(event, 'min_price')}
             className={classNames(classes.margin, cls.textField)}
             InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
           />
           <TextField
             label="Maximo"
             id="simple-start-adornment"
+            value={this.state.filter.max_price}
+            onChange={(event) => this.handleChange(event, 'max32_price')}
             className={classNames(classes.margin, cls.textField)}
             InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
           />
-          <TextField
+          <Datetime
             label="Fecha"
             id="simple-start-adornment"
+            value={this.state.filter.date_from}
+            onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_from')}
+            dateFormat="MM/DD/YYYY"
+            renderInput={this.renderInput}
+            timeFormat={false}
             className={classNames(classes.margin, cls.textField)}
-            InputProps={{ startAdornment: <InputAdornment position="start">Inicio</InputAdornment>, }}
+            inputProps={{
+              className: classNames(classes.margin, cls.textField),
+              placeholder: 'Inicio',
+              label: 'Fecha',
+            }}
           />
-          <TextField
+          <Datetime
             label="Fecha"
             id="simple-start-adornment"
+            value={this.state.filter.date_to}
+            onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_to')}
+            dateFormat="MM/DD/YYYY"
+            renderInput={this.renderInput}
+            timeFormat={false}
             className={classNames(classes.margin, cls.textField)}
-            InputProps={{ startAdornment: <InputAdornment position="start">Fin</InputAdornment>, }}
+            inputProps={{
+              className: classNames(classes.margin, cls.textField),
+              placeholder: 'Fin',
+              label: 'Fecha',
+            }}
           />
           <FormControl component="fieldset" required error className={classes.formControl}>
             <RadioGroup
               aria-label="filter"
-              name="semanal"
+              name="una-vez"
               className={classes.group}
-              value={this.state.value}
-              onChange={this.handleChange}
+              value={this.state.filter.frequency}
+              onChange={(event) => this.handleChange(event, 'frequency')}
             >
-              <FormControlLabel value="semanal" control={<Radio color="primary" />} label="Semanal" />
+              <FormControlLabel value="0" control={<Radio color="primary" />} label="Una Vez" />
             </RadioGroup>
           </FormControl>
           <FormControl component="fieldset" required error className={classes.formControl}>
@@ -77,13 +140,35 @@ class Filter extends React.Component {
               aria-label="filter"
               name="una-vez"
               className={classes.group}
-              value={this.state.value}
-              onChange={this.handleChange}
+              value={this.state.filter.frequency}
+              onChange={(event) => this.handleChange(event, 'frequency')}
             >
-              <FormControlLabel value="male" control={<Radio color="primary" />} label="Una Vez" />
+              <FormControlLabel value="1" control={<Radio color="primary" />} label="Diario" />
             </RadioGroup>
           </FormControl>
-          <Button variant="contained" className={`${cls.pageButtonActive} ${classes.button}`}>FILTRAR</Button>
+          <FormControl component="fieldset" required error className={classes.formControl}>
+            <RadioGroup
+              aria-label="filter"
+              name="una-vez"
+              className={classes.group}
+              value={this.state.filter.frequency}
+              onChange={(event) => this.handleChange(event, 'frequency')}
+            >
+              <FormControlLabel value="2" control={<Radio color="primary" />} label="Semanal" />
+            </RadioGroup>
+          </FormControl>
+          <FormControl component="fieldset" required error className={classes.formControl}>
+            <RadioGroup
+              aria-label="filter"
+              name="semanal"
+              className={classes.group}
+              value={this.state.filter.frequency}
+              onChange={(event) => this.handleChange(event, 'frequency')}
+            >
+              <FormControlLabel value="3" control={<Radio color="primary" />} label="Mensual" />
+            </RadioGroup>
+          </FormControl>
+          <Button onClick={(event) => this.filterHandler(event)} className={`${cls.pageButtonActive} ${classes.button}`}>FILTRAR</Button>
         </Grid>
         </Grid>
         <Divider />
@@ -91,9 +176,5 @@ class Filter extends React.Component {
     );
   }
 }
-
-Filter.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(Filter);

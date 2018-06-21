@@ -11,7 +11,7 @@ import Job from '../Jobs/Job/Job';
 import cls from './PastJobs.css';
 
 const pastJobs = props => {
-  const jobs = props.jobs.map(job => (
+  const jobs = props.historyjobs.map(job => (
     <Job
       key={job.id}
       date={job.attributes.started_at}

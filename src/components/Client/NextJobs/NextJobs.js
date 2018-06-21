@@ -11,7 +11,7 @@ import Job from '../Jobs/Job/Job';
 import cls from './NextJobs.css'
 
 const nextJobs = props => {
-  const jobs = props.jobs.map(job => (
+  const jobs = props.nextjobs.map(job => (
     <Job
       key={job.id}
       id={job.id}

@@ -221,9 +221,9 @@ export const fetchJobsAgent = (token, filter) => dispatch => {
     .then((res) => {
       let historyjobs = [];
       historyjobs = res.data.job.data;
-      dispatch(fetchHistoryJobsSuccess(historyjobs));
+      dispatch(fetchJobsAgentSuccess(historyjobs));
     })
     .catch((err) => {
-      dispatch(fetchHistoryJobsFail(err));
+      dispatch(fetchJobsAgentFail(err));
     });
 }

@@ -30,14 +30,14 @@ class Dashboard extends Component {
       <div className={cls.Dashboard}>
         <Jumbotron />
         <Services clicked={this.showServiceClick} services={this.props.services} />
-        <NextJobs jobs={this.props.nextjobs} />
-        <PastJobs jobs={this.props.historyjobs} />
+        <NextJobs nextjobs={this.props.nextjobs} />
+        <PastJobs historyjobs={this.props.historyjobs} />
         <Download />
         <Contact />
       </div>
     );
-  }
-}
+  };
+};
 
 const mapStateToProps = state => {
   return {

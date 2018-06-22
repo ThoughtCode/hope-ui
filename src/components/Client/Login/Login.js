@@ -18,9 +18,6 @@ import * as actions from '../../../store/actions';
 class Login extends Component {
   state = {
     accessToken: null,
-    openRegister: false,
-    openLogin: false,
-    open: false
   }
 
   onLoginWithFacebook = () => {
@@ -34,21 +31,6 @@ class Login extends Component {
       },
       this.onLoginWithFacebook,
     );
-  }
-
-  handleOpen = (modal) => {
-    if (modal === "register") {
-      this.setState({ openLogin: false });
-      this.setState({ openRegister: true });
-    } else if(modal === "loginAgent") {
-      this.setState({ openRegister: false });
-      this.setState({ openLogin: true });
-    }
-    this.setState({ open: true });
-  };
-
-  handleClose = () => {
-    this.setState({ open: false });
   }
 
   render() {
@@ -106,31 +88,8 @@ class Login extends Component {
             </Grid>
           </Grid>
           <Grid container justify="center" className={cls.ContainerOpciones}>
-            <Button className={cls.PageButtonRegister} onClick={() => this.handleOpen("loginAgent")} >Entra como agente</Button>
+            <Button className={cls.PageButtonRegister} onClick={() => this.props.switchModal("loginAgent")} >Entra como agente</Button>
             <Button className={cls.PageButtonRegister} component={Link} to="/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
-          </Grid>
-          <Grid container justify="center">
-            <Grid item xs={12}>
-              <Grid container align="center">
-                <Grid item xs={12} align="right">
-                  <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                  >
-                    <div className={`${cls.ModalAgent} ${cls.paper}`}>
-                      { this.state.openRegister && 
-                        <Registro />
-                      }
-                      { this.state.openLogin && 
-                        <LoginAgent />
-                      }
-                    </div>
-                  </Modal>
-                </Grid>
-              </Grid>
-            </Grid>
           </Grid>
         </div>
       </div>

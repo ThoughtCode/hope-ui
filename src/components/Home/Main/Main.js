@@ -11,6 +11,7 @@ import Button from 'material-ui/Button';
 import cls from './Main.css';
 import Registro from '../../../components/Client/Register/Register';
 import Login from '../../../components/Client/Login/Login';
+import LoginAgent from '../../../containers/Agent/Login/Login';
 
 const styles = theme => ({
   paper: {
@@ -24,7 +25,7 @@ class Main extends Component {
   state = {
     openRegister: false,
     openLogin: false,
-    open: false
+    openAgentLogin: false,
   };
 
   handleOpen = (modal) => {
@@ -35,18 +36,33 @@ class Main extends Component {
       this.props.history.push('/agente')
     }
     if (modal === "register") {
-      this.setState({ openLogin: false });
-      this.setState({ openRegister: true });
-    } else if(modal === "login") {
-      this.setState({ openRegister: false });
-      this.setState({ openLogin: true });
+      this.setState({
+        openLogin: false,
+        openAgentLogin: false,
+        openRegister: true,
+      });
+    } else if (modal === "login") {
+      this.setState({
+        openLogin: true,
+        openAgentLogin: false,
+        openRegister: false,
+      });
+    } else if (modal === "loginAgent") {
+      this.setState({
+        openLogin: false,
+        openAgentLogin: true,
+        openRegister: false,
+      });
     }
-    this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({ open: false });
-  }
+    this.setState({
+      openLogin: false,
+      openAgentLogin: false,
+      openRegister: false,
+    });
+  };
 
   render() {
     const { classes } = this.props;
@@ -62,18 +78,27 @@ class Main extends Component {
               </Grid>
               <Grid item xs={12} sm={4} align="right">
                 <Modal
-                  aria-labelledby="simple-modal-title"
-                  aria-describedby="simple-modal-description"
-                  open={this.state.open}
+                  open={this.state.openRegister}
                   onClose={this.handleClose}
                 >
                   <div className={`${cls.Modal} ${classes.paper}`}>
-                    { this.state.openRegister && 
-                      <Registro close={this.handleClose} />
-                    }
-                    { this.state.openLogin && 
-                      <Login className={cls.Modal} close={this.handleClose} />
-                    }
+                    <Registro close={this.handleClose} />
+                  </div>
+                </Modal>
+                <Modal
+                  open={this.state.openLogin}
+                  onClose={this.handleClose}
+                >
+                  <div className={`${cls.Modal} ${classes.paper}`}>
+                    <Login className={cls.Modal} close={this.handleClose} switchModal={this.handleOpen}/>
+                  </div>
+                </Modal>
+                <Modal
+                  open={this.state.openAgentLogin}
+                  onClose={this.handleClose}
+                >
+                  <div className={`${cls.Modal} ${classes.paper}`}>
+                    <LoginAgent className={cls.Modal} close={this.handleClose} />
                   </div>
                 </Modal>
               </Grid>

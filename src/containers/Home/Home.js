@@ -30,7 +30,6 @@ const styles = myTheme => ({
 
 class Home extends Component {
   render() {
-
     return (
         <Grid container>
           <Grid item xs={12}>

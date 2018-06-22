@@ -30,17 +30,18 @@
   color: black !important;
 }
 .pageButtonActive {
-  background-color: #0069a7 !important;
+  background-color: white !important;
   border-radius: 0px 0px 5px 5px !important;
   width: auto !important;
 }
 .pageButtonJobCurrentDetalles {
-  background-color: #0069a7 !important;
+  background-color: white !important;
   border: 1px solid #0069a7 !important;
   border-radius: 0px 0px 0px 5px !important;
   width: auto !important;
 }
 .pageButtonJobCurrentCancelar {
+  background-color:#0069a7 !important;
   border: 1px solid #0069a7 !important; 
   border-radius: 0px 0px 5px 0px !important;
   width: auto !important;
@@ -50,11 +51,12 @@
   color: white !important;
 }
 .ButtonDetalles{
+  background-color: white !important;
+  color: #0069a7 !important;
   font-size: 1.2em !important;
-  color: white !important;
 }
 .ButtonCancelar{
-  background-color: white !important;
+  background-color:#0069a7 !important;
+  color: white !important;
   font-size: 1.2em !important;
-  color: #0069a7 !important;
 }

@@ -1,11 +1,6 @@
 .Card {
-  padding: 10px !important;
   max-width: 100%;
   border-radius: 5px !important;
-}
-
-.CardMarginTop {
-  padding-top: 30px !important; 
 }
 
 .CardDate {
@@ -18,8 +13,19 @@
   color: white !important;
 }
 
-.CardSubTitle {
-  padding: 5px 5px;
+.CardSubTitle{
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
+}
+
+.CardContent{
+  padding: 0 20px !important;
+}
+
+.CardBorder {
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  border: 1px solid #e9eced;
 }
 
 .Service {
@@ -27,8 +33,24 @@
   font-weight: 900 !important;
 }
 
+.list{
+  font-size: 12px;
+  padding: 0px 15px;
+  letter-spacing: 0.25px;
+  color: #676d73!important;
+  fill: #676d73!important;
+}
+
+.IconUbicacion{
+  margin-top: 10px;
+}
+
 .TotalContainer {
   border-top: 1px solid #e9eced !important;
+}
+
+.TotalMargin{
+  margin: 30% 0 !important;
 }
 
 .Total {
@@ -42,42 +64,32 @@
 }
 
 .Title {
-  font-size: 1.3rem !important;
+  font-size: 20px !important;
   font-weight: 700 !important;
+  letter-spacing: 0.25px !important;
 }
 
 .Date {
-  color: #0069a7 !important;
+  color: #676d73!important;
+  font-size: 12px !important;
   font-weight: 500 !important;
 }
 
 .Button {
   border: 2px solid #eee !important;
-  padding: 12px 26px !important;
   border-radius: 5px !important;
-  font-weight: bold !important;
-  letter-spacing: 0.25px !important;
   color: rgb(84, 90, 96) !important;
+  font-weight: bold !important;
+  font-size: 12px !important;
+  letter-spacing: 0.25px !important;
 }
 
 .Button:hover {
   border: 2px solid #eee !important;
-  padding: 12px 26px !important;
   border-radius: 5px !important;
   font-weight: bold !important;
   letter-spacing: 0.25px !important;
   color: rgb(84, 90, 96) !important;
-}
-
-.CardBorder {
-  border-radius: 5px !important;
-  box-shadow: none !important;
-  border: 1px solid #e9eced;
-}
-
-.TotalMargin {
-  margin-top: 10px;
-  margin-bottom: 10px;
 }
 
 @media (min-width: 600px) {
@@ -86,10 +98,5 @@
     border-top: none !important;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
-  }
-
-  .TotalMargin {
-    margin-top: 10%;
-    margin-bottom: 0px;
   }
 }

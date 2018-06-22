@@ -17,16 +17,14 @@ class MainDashboardAgent extends Component {
             <Typography variant="title" gutterBottom className={cls.Typogra}>Trabajos</Typography>
           </Paper>
         </Grid>
+          
         <Grid item xs={12} className={cls.PaginationTop}>
           <Paper elevation={0}>
             <CardJob />
           </Paper>
         </Grid>
-        <Grid item xs={12} className={cls.PaginationTop}>
-          <Paper elevation={0}>
-            <CardJob />
-          </Paper>
-        </Grid>
+
+<<<<<<< HEAD
         <Grid item xs={12} sm={5}>
           <Paper elevation={0}>
             <Grid container justify="flex-end" align="right" alignItems="center" className={cls.PaginationTop}>
@@ -38,16 +36,40 @@ class MainDashboardAgent extends Component {
               <Grid item xs={12} sm={1}>
                 <Paper elevation={0}>
                   <Typography variant="subheading">
-                    <i className="material-icons">keyboard_arrow_left</i>
+                    <i class="material-icons">keyboard_arrow_left</i>
                   </Typography>
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={1}>
                 <Paper elevation={0}>
                   <Typography variant="subheading">
-                    <i className="material-icons">keyboard_arrow_right</i>
+                    <i class="material-icons">keyboard_arrow_right</i>
                   </Typography>
                 </Paper>
+=======
+          <Grid item xs={12} sm={5}>
+            <Paper elevation={0}>
+              <Grid container justify="flex-end" align="right" alignItems="center" className={cls.PaginationTop}>
+                <Grid item xs={12} sm={4}>
+                  <Paper elevation={0}>
+                    <Typography variant="body1">1-2 de 15</Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={1}>
+                  <Paper elevation={0}>
+                    <Typography variant="subheading">
+                      <i className="material-icons">keyboard_arrow_left</i>
+                    </Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={1}>
+                  <Paper elevation={0}>
+                    <Typography variant="subheading">
+                      <i className="material-icons">keyboard_arrow_right</i>
+                    </Typography>
+                  </Paper>
+                </Grid>
+>>>>>>> Fix Warning
               </Grid>
             </Grid>
           </Paper>

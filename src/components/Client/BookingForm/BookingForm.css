@@ -422,3 +422,9 @@
  margin-bottom: 0px;
  margin-top: 0px; 
 }
+
+.ColumnsIcon {
+  padding-left: 0.9375em;
+  padding-right: 5em;
+  float: left;
+}

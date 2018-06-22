@@ -3,7 +3,6 @@ import React from 'react';
 // Components
 import {
   Grid,
-  Typography,
 } from 'material-ui';
 
 // Css
@@ -11,39 +10,55 @@ import cls from './HowWorks.css';
 
 const howWorks = props => {
   return (
-    <div className={cls.HowWorks}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Typography variant="headline" component="h2">
-            Como Funciona
-          </Typography>
-        </Grid>
-        <Grid className={cls.Steps} item xs={12}>
-          <Typography variant="subheading" component="h3">
-            1 Lorem ipsum dolor
-          </Typography>
-          <Typography component="p">
-            Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
-          </Typography>
-        </Grid>
-        <Grid className={cls.Steps} item xs={12}>
-          <Typography variant="subheading" component="h3">
-            2 Lorem ipsum dolor
-          </Typography>
-          <Typography component="p">
-            Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
-          </Typography>
-        </Grid>
-        <Grid className={cls.Steps} item xs={12}>
-          <Typography variant="subheading" component="h3">
-            3 Lorem ipsum dolor
-          </Typography>
-          <Typography component="p">
-            Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
-          </Typography>
-        </Grid>
-      </Grid>
-    </div>
+    <Grid container>
+      <div className={cls.HowWorks}>
+        <div>
+          <div className={cls.Question}>
+            <h3>
+              Como funciona?
+            </h3>
+          </div>
+          <ul>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige la frecuencia del servicio, si deseas que sea una sola vez o cada cierto tiempo determinado
+              </div>
+            </li>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige un servicio principal que desees
+              </div>
+            </li>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige los servicios adicionales, pueden ser por cantidad
+              </div>
+            </li>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige la propiedad a la que quieres socilidar el servicio
+              </div>
+            </li>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige la propiedad a la que quieres socilitar el servicio
+              </div>
+            </li>
+            <li className={cls.ListItem}>
+              <i className="fa fa-caret-right"></i>
+              <div className={cls.ListItemStep}>
+                &nbsp;&nbsp;Elige la fecha del servicio
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </Grid>
   );
 }
 

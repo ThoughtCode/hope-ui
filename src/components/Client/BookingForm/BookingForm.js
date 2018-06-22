@@ -374,7 +374,7 @@ class BookingForm extends Component {
                         </Grid>
                         <Grid item xs={12} sm={12} md={12} lg={6}>
                           <Grid container>
-                            <div className={cls.Columns}>
+                            <div className={cls.ColumnsIcon}>
                               <Grid container>
                                 <img 
                                   alt="Credit Cards" 

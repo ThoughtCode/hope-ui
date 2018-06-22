@@ -221,9 +221,15 @@ class ServiceBooking extends Component {
                     createJobHandler={this.createJobHandler}/>
                 </Grid>
               </Grid>
-              <Grid item xs={12} sm={11} md={5} lg={5}>
-                <BookingTotal form={this.state.form} />
-                <HowWorks />
+              <Grid item xs={12} sm={11} md={5} lg={3}>
+                <Grid container>
+                  <Grid item xs={6} lg={12}>
+                    <BookingTotal form={this.state.form} />
+                  </Grid>
+                  <Grid item xs={6} lg={12}>
+                    <HowWorks />
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

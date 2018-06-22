@@ -19,7 +19,6 @@ import {
 // Component
 import cls from './MenuBar.css';
 import Logo from './img/logo.svg';
-import ImageDefault from '../../assets/avatar-default-300x300.jpg';
 import Login from '../../components/Client/Login/Login';
 
 const styles = theme => ({
@@ -71,23 +70,33 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
             </Typography>
-            <MenuItem component={Link} to="/cliente">
+            <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
               Dashboard
             </MenuItem>
-            <MenuItem component={Link} to="/cliente/trabajos">
+            <MenuItem className={cls.MenuItem} component={Link} to="/cliente/trabajos">
               Mis Trabajos
             </MenuItem>
             <div>
               <IconButton
+                className={cls.Avatar}
                 aria-owns={open ? 'menu-appbar' : null}
                 aria-haspopup="true"
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              <Avatar
-                src={this.props.profile ? this.props.profile : ImageDefault}/>
+              {this.props.profile === null ? (
+                <Avatar>
+                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
+                </Avatar>
+                // <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
+              ) : (
+                <Avatar
+                  src={this.props.profile}/>
+                // <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
+              )}
               </IconButton>
               <Menu
+                className={cls.SubMenu}
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -101,9 +110,9 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem onClick={this.props.logout} component={Link} to="/">
-                  Logout
+                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
+                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
+                  Cerrar sesión
                 </MenuItem>
               </Menu>
             </div>

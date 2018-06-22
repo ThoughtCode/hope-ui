@@ -1,3 +1,9 @@
+.NextJobs{
+  background-color: rgb(249, 249, 249) !important;
+}
 .Title {
-  padding: 20px 0px;
+  font-weight: 700 !important;
+  font-size: 1.4rem !important;
+  padding: 20px 0 !important;
+  padding-top: 40px !important;
 }

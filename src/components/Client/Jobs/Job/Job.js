@@ -15,6 +15,7 @@ import {
   Avatar,
   Button,
 } from 'material-ui';
+import iconUbicacion from '../../../../assets/Ubicacion.svg'
 
 // Css
 import cls from './Job.css';
@@ -32,9 +33,9 @@ const job = props => {
     });
   }
   return (
-    <Grid item xs={12} sm={12} md={12} lg={6}>
+    <Grid item xs={12} sm={5}>
       <Card className={cls.CardBorder}>
-        <Grid container>
+        <Grid container alignItems="center">
           <Grid item xs={12} sm={8} md={8} lg={8}>
             <Grid container>
               <Grid item xs={12}>
@@ -47,20 +48,32 @@ const job = props => {
                           Rainiero Romero
                         </Typography>}
                   subheader={<Typography className={cls.Date}>
-                              {moment(props.date).format('MMMM D YYYY, h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())}
+                              {moment(props.date).format('MMMM D YYYY').replace(/\b\w/g, l => l.toUpperCase())} <br/>
+                              {moment(props.date).format('h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())}
                             </Typography>}  
                 />
               </Grid>
               <Grid item xs={12}>
-                <CardContent className={cls.CardMarginTop}>
-                  <Grid className={cls.CardSubTitle} item xs={12}>
+                <CardContent className={cls.CardContent}>
+                  <Grid item xs={12}>
                     <Typography className={cls.Service}>
                       {services}
                     </Typography>
                   </Grid>
                   <Grid className={cls.CardSubTitle} item xs={12}>
                     <Typography>
-                      Propiedad: {props.property.name}
+                      Servicios Adicionales
+                    </Typography>
+                    <div>
+                      <ul className={cls.list}>
+                        <li>Limpieza de Baños</li>
+                        <li>Limpieza de Hono</li>
+                        <li>Limpieza de Ventana</li>
+                      </ul>
+                    </div>  
+                    <Typography>
+                      <img className={cls.IconUbicacion} src={iconUbicacion} alt="IconUbucacion" />
+                      San Ignacio y Gonzales Suares
                     </Typography>
                   </Grid>
                 </CardContent>
@@ -69,7 +82,7 @@ const job = props => {
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={4} className={cls.TotalContainer}>
             <Grid container className={cls.TotalMargin}>
-              <Grid className={cls.CardSubTitle} item xs={12}>
+              <Grid item xs={12}>
                 <Typography className={cls.Total}>
                   {props.total}$
                 </Typography>

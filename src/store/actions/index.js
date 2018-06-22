@@ -39,4 +39,8 @@ export {
   updatedCurrentUser,
   updatedCurrentUserAvatar,
   changePassword,
+  fetchCurrentAgent,
+  updatedCurrentAgent,
+  updatedCurrentAgentAvatar,
+  changePasswordAgent,
 } from './current_user';

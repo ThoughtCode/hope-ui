@@ -34,6 +34,38 @@ export const fetchCurrentUser = token => (dispatch) => {
     });
 };
 
+export const fetchCurrentAgentStart = () => ({
+  type: actionTypes.FETCH_CURRENT_AGENT_START,
+});
+
+export const fetchCurrentAgentFail = error => ({
+  type: actionTypes.FETCH_CURRENT_AGENT_FAIL,
+  error,
+});
+
+export const fetchCurrentAgentSuccess = (agent) => ({
+  type: actionTypes.FETCH_CURRENT_AGENT_SUCCESS,
+  agent,
+});
+
+export const fetchCurrentAgent = token => (dispatch) => {
+  dispatch(fetchCurrentAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/agents/current', headers)
+    .then((res) => {
+      let user = {};
+      user = res.data.agent.data;
+      dispatch(fetchCurrentAgentSuccess(user));
+    })
+    .catch((err) => {
+      dispatch(fetchCurrentAgentFail(err));
+    });
+};
+
 export const updatedCurrentUserStart = () => ({
   type: actionTypes.UPDATED_CURRENT_USER_START,
 });
@@ -59,6 +91,8 @@ export const updatedCurrentUser = (token, form) => dispatch => {
       console.log(res);
       let user = {};
       user = res.data.customer.data;
+      localStorage.setItem('first_name', user.attributes.first_name);
+      localStorage.setItem('last_name', user.attributes.last_name);
       dispatch(updatedCurrentUserSuccess(user));
       Alert.success(res.data.message, {
         position: 'bottom',
@@ -67,6 +101,48 @@ export const updatedCurrentUser = (token, form) => dispatch => {
     })
     .catch((err) => {
       dispatch(updatedCurrentUserFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const updatedCurrentAgentStart = () => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_START,
+});
+
+export const updatedCurrentAgentSuccess = (agent) => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_SUCCESS,
+  agent,
+});
+
+export const updatedCurrentAgentFail = error => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_FAIL,
+});
+
+export const updatedCurrentAgent = (token, form) => dispatch => {
+  dispatch(updatedCurrentAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/agents/update', form, headers)
+    .then((res) => {
+      console.log(res);
+      let user = {};
+      user = res.data.agent.data;
+      localStorage.setItem('first_name', user.attributes.first_name);
+      localStorage.setItem('last_name', user.attributes.last_name);
+      dispatch(updatedCurrentAgentSuccess(user));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(updatedCurrentAgentFail(err));
       Alert.error(err.response.data.message, {
         position: 'bottom',
         effect: 'genie',
@@ -115,6 +191,47 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
     });
 };
 
+export const updatedCurrentAgentAvatarStart = () => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_START,
+});
+
+export const updatedCurrentAgentAvatarSuccess = (agent) => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_SUCCESS,
+  agent,
+});
+
+export const updatedCurrentAgentAvatarFail = error => ({
+  type: actionTypes.UPDATED_CURRENT_AGENT_FAIL,
+});
+
+export const updatedCurrentAgentAvatar = (token, file) => dispatch => {
+  dispatch(updatedCurrentAgentAvatarStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/agents/update', file, headers)
+    .then((res) => {
+      console.log(res);
+      let user = {};
+      user = res.data.agent.data;
+      localStorage.setItem('profile', user.attributes.avatar.url);
+      dispatch(updatedCurrentUserAvatarSuccess(user));
+      Alert.success('Avatar actualizado exitosamente.', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(updatedCurrentUserAvatarFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
 export const changePasswordStart = () => ({
   type: actionTypes.CHANGE_PASSWORD_START,
 });
@@ -145,6 +262,42 @@ export const changePassword = (token, form) => dispatch => {
     })
     .catch((err) => {
       dispatch(changePasswordFail(err));
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const changePasswordAgentStart = () => ({
+  type: actionTypes.CHANGE_PASSWORD_AGENT_START,
+});
+
+export const changePasswordAgentSuccess = () => ({
+  type: actionTypes.CHANGE_PASSWORD_AGENT_SUCCESS,
+});
+
+export const changePasswordAgentFail = error => ({
+  type: actionTypes.CHANGE_PASSWORD_AGENT_FAIL,
+});
+
+export const changePasswordAgent = (token, form) => dispatch => {
+  dispatch(changePasswordAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put('/agents/change_password', form, headers)
+    .then((res) => {
+      dispatch(changePasswordAgentSuccess());
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(changePasswordAgentFail(err));
       Alert.error(err.response.data.message, {
         position: 'bottom',
         effect: 'genie',

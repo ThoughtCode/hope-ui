@@ -16,7 +16,7 @@ class Edit extends Component {
   state = {
     updated: false,
     formIsValid: true,
-    customer: {
+    agent: {
       first_name: {
         value: '',
         validation: {
@@ -58,31 +58,31 @@ class Edit extends Component {
   }
 
   setStateWithUser = () => {
-    const updateCustomer = {
-      ...this.state.customer,
+    const updateagent = {
+      ...this.state.agent,
       "first_name": {
-        ...this.state.customer["first_name"],
+        ...this.state.agent["first_name"],
         value: this.props.user.attributes.first_name,
         valid: true,
         errorText: null,
         touched: false,
       },
       "last_name": {
-        ...this.state.customer["last_name"],
+        ...this.state.agent["last_name"],
         value: this.props.user.attributes.last_name,
         valid: true,
         errorText: null,
         touched: false,
       },
       "email": {
-        ...this.state.customer["email"],
+        ...this.state.agent["email"],
         value: this.props.user.attributes.email,
         valid: true,
         errorText: null,
         touched: false,
       },
       "cell_phone": {
-        ...this.state.customer["cell_phone"],
+        ...this.state.agent["cell_phone"],
         value: this.props.user.attributes.cell_phone,
         valid: true,
         errorText: null,
@@ -91,7 +91,7 @@ class Edit extends Component {
     }
     this.setState({
       ...this.state,
-      customer: updateCustomer,
+      agent: updateagent,
       updated: true,
     })
   }
@@ -150,17 +150,17 @@ class Edit extends Component {
 
   inputChangedHandler = (event, controlName) => {
     const updatedControls = {
-      ...this.state.customer,
+      ...this.state.agent,
       [controlName]: {
-        ...this.state.customer[controlName],
+        ...this.state.agent[controlName],
         value: event.target.value,
         valid: this.checkValidity(
           event.target.value,
-          this.state.customer[controlName].validation,
+          this.state.agent[controlName].validation,
         ).isValid,
         errorText: this.checkValidity(
           event.target.value,
-          this.state.customer[controlName].validation,
+          this.state.agent[controlName].validation,
         ).errorText,
         touched: true,
       },
@@ -172,7 +172,7 @@ class Edit extends Component {
     }
 
     this.setState({
-      customer: updatedControls,
+      agent: updatedControls,
       formIsValid,
     });
   }
@@ -180,20 +180,18 @@ class Edit extends Component {
   updatedHandler = (event) => {
     event.preventDefault();
     const formData = {};
-    for (const formElementIdentifier in this.state.customer) {
-      formData[formElementIdentifier] = this.state.customer[formElementIdentifier].value;
+    for (const formElementIdentifier in this.state.agent) {
+      formData[formElementIdentifier] = this.state.agent[formElementIdentifier].value;
     }
-    const customer = {
-      customer: formData,
+    const agent = {
+      agent: formData,
     };
-    this.props.update(localStorage.getItem('token'), customer);
+    this.props.update(localStorage.getItem('token'), agent);
   }
 
   inputFileHandler = event => {
     const fd = new FormData();
-    fd.append('customer[avatar]', event.target.files[0]);
-    console.log(fd);
-
+    fd.append('agent[avatar]', event.target.files[0]);
     this.props.updateAvatar(localStorage.getItem('token'), fd);
   }
 
@@ -252,26 +250,26 @@ class Edit extends Component {
             <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
               <Grid container>
                 <label htmlFor="first_name"><span>Nombre</span></label>
-                <input className={`${cls.Input} ${(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && cls.ContainerError}`}
+                <input className={`${cls.Input} ${(!this.state.agent.first_name.valid && this.state.agent.first_name.touched) && cls.ContainerError}`}
                   type="text"
                   name="first_name"
-                  value={this.state.customer.first_name.value}
+                  value={this.state.agent.first_name.value}
                   onChange={(event) => this.inputChangedHandler(event, 'first_name')}/>
-                  {(!this.state.customer.first_name.valid && this.state.customer.first_name.touched) && (
-                    <div className={cls.Error}>{this.state.customer.first_name.errorText}</div>
+                  {(!this.state.agent.first_name.valid && this.state.agent.first_name.touched) && (
+                    <div className={cls.Error}>{this.state.agent.first_name.errorText}</div>
                   )}
               </Grid>
             </Grid>
             <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
               <Grid container>
                 <label htmlFor="last_name"><span>Apellido</span></label>
-                <input className={`${cls.Input} ${(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && cls.ContainerError}`}
+                <input className={`${cls.Input} ${(!this.state.agent.last_name.valid && this.state.agent.last_name.touched) && cls.ContainerError}`}
                   type="text"
                   name="last_name"
-                  value={this.state.customer.last_name.value}
+                  value={this.state.agent.last_name.value}
                   onChange={(event) => this.inputChangedHandler(event, 'last_name')}/>
-                  {(!this.state.customer.last_name.valid && this.state.customer.last_name.touched) && (
-                    <div className={cls.Error}>{this.state.customer.last_name.errorText}</div>
+                  {(!this.state.agent.last_name.valid && this.state.agent.last_name.touched) && (
+                    <div className={cls.Error}>{this.state.agent.last_name.errorText}</div>
                   )}
               </Grid>
             </Grid>
@@ -280,13 +278,13 @@ class Edit extends Component {
             <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
               <Grid container>
                 <label htmlFor="email"><span>Correo</span></label>
-                <input className={`${cls.Input} ${(!this.state.customer.email.valid && this.state.customer.email.touched) && cls.ContainerError}`}
+                <input className={`${cls.Input} ${(!this.state.agent.email.valid && this.state.agent.email.touched) && cls.ContainerError}`}
                   type="text"
                   name="email"
-                  value={this.state.customer.email.value}
+                  value={this.state.agent.email.value}
                   onChange={(event) => this.inputChangedHandler(event, 'email')}/>
-                  {(!this.state.customer.email.valid && this.state.customer.email.touched) && (
-                    <div className={cls.Error}>{this.state.customer.email.errorText}</div>
+                  {(!this.state.agent.email.valid && this.state.agent.email.touched) && (
+                    <div className={cls.Error}>{this.state.agent.email.errorText}</div>
                   )}
               </Grid>
             </Grid>
@@ -295,13 +293,13 @@ class Edit extends Component {
             <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
               <Grid container>
                 <label htmlFor="cell_phone"><span>Telefono</span></label>
-                <input className={`${cls.Input} ${(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && cls.ContainerError}`}
+                <input className={`${cls.Input} ${(!this.state.agent.cell_phone.valid && this.state.agent.cell_phone.touched) && cls.ContainerError}`}
                   type="text"
                   name="cell_phone"
-                  value={this.state.customer.cell_phone.value}
+                  value={this.state.agent.cell_phone.value}
                   onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}/>
-                  {(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && (
-                    <div className={cls.Error}>{this.state.customer.cell_phone.errorText}</div>
+                  {(!this.state.agent.cell_phone.valid && this.state.agent.cell_phone.touched) && (
+                    <div className={cls.Error}>{this.state.agent.cell_phone.errorText}</div>
                   )}
               </Grid>
             </Grid>

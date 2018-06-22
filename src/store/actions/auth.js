@@ -45,6 +45,8 @@ export const authClient = (email, password) => (dispatch) => {
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');
       localStorage.setItem('profile', customer.attributes.avatar.url);
+      localStorage.setItem('first_name', customer.attributes.first_name);
+      localStorage.setItem('last_name', customer.attributes.last_name);
       dispatch(authSuccess(customer.attributes.access_token, customer.id, customer.attributes.avatar.url));
       dispatch(push('/cliente/dashboard'));
       Alert.success(response.data.message, {
@@ -77,6 +79,8 @@ export const authAgent = (email, password) => (dispatch) => {
       localStorage.setItem('userId', agent.id);
       localStorage.setItem('signInAs', 'agent');
       localStorage.setItem('profile', agent.attributes.avatar.url);
+      localStorage.setItem('first_name', agent.attributes.first_name);
+      localStorage.setItem('last_name', agent.attributes.last_name);
       dispatch(authSuccess(agent.attributes.access_token, agent.id, agent.attributes.avatar.url));
       dispatch(push('/agente/dashboard'));
       Alert.success(response.data.message, {

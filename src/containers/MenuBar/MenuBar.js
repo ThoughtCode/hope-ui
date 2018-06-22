@@ -88,12 +88,11 @@ class AppBarMenu extends Component {
                 <Avatar>
                   {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
                 </Avatar>
-                // <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               ) : (
                 <Avatar
                   src={this.props.profile}/>
-                // <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
-              )}
+                )}
+                <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu
                 className={cls.SubMenu}

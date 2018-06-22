@@ -19,7 +19,7 @@ const services = props => {
       image={service.attributes.image.url}/>
   ));
   return (
-    <Grid container justify="center">
+    <Grid container justify="center" className={cls.Services}>
       <Grid item xs={11}>
         <Grid container>
           <Grid item xs={12} className={cls.Item}>

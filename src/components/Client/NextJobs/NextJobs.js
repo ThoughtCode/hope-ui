@@ -21,7 +21,7 @@ const nextJobs = props => {
       property={job.attributes.property}/>
   ));
   return (
-    <Grid container justify="center">
+    <Grid container justify="center" className={cls.NextJobs}>
       <Grid item xs={11}>
         <Grid container>
           <Grid item xs={12}>
@@ -30,7 +30,7 @@ const nextJobs = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={16}>
+        <Grid container justify="center" spacing={40}>
           {jobs}
         </Grid>
       </Grid>

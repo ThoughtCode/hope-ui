@@ -11,14 +11,22 @@ import Job from '../Jobs/Job/Job';
 import cls from './PastJobs.css';
 
 const pastJobs = props => {
-  const jobs = props.historyjobs.map(job => (
-    <Job
-      key={job.id}
-      date={job.attributes.started_at}
-      total={job.attributes.total}
-      job_details={job.attributes.job_details}
-      property={job.attributes.property}/>
-  ));
+  let jobs = (
+    <Typography className={cls.Title} variant="headline">
+      No hay trabajos pasados
+    </Typography>
+  );
+  if (props.historyjobs.length > 0) {
+    jobs = props.historyjobs.map(job => (
+      <Job
+        key={job.id}
+        id={job.id}
+        date={job.attributes.started_at}
+        total={job.attributes.total}
+        job_details={job.attributes.job_details}
+        property={job.attributes.property}/>
+    ));
+  };
   return (
     <Grid className={cls.PastJobs} container justify="center">
       <Grid item xs={11}>
@@ -29,7 +37,7 @@ const pastJobs = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={16}>
+        <Grid container justify="center" spacing={16}>
           {jobs}
         </Grid>
       </Grid>

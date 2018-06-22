@@ -26,7 +26,7 @@ const styles = theme => ({
     border: '1px solid #ced4da',
     fontSize: 16,
     padding: '10px 12px',
-    width: 'calc(100% - 24px)',
+    width: 520,
     margin: 10,
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     fontFamily: [
@@ -180,7 +180,7 @@ class Auth extends Component {
               />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={cls.InputLogin}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
                 type={'password'}  

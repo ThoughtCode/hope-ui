@@ -24,11 +24,6 @@ class MainDashboardAgent extends Component {
               <CardJob />
             </Paper>
           </Grid>
-          <Grid item xs={12} className={cls.PaginationTop}>
-            <Paper elevation={0}>
-              <CardJob />
-            </Paper>
-          </Grid>
 
           <Grid item xs={12} sm={5}>
             <Paper elevation={0}>

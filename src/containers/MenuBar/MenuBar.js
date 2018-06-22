@@ -19,7 +19,6 @@ import {
 // Component
 import cls from './MenuBar.css';
 import Logo from './img/logo.svg';
-import ImageDefault from '../../assets/avatar-default-300x300.jpg';
 import Login from '../../components/Client/Login/Login';
 
 const styles = theme => ({
@@ -84,8 +83,14 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              <Avatar
-                src={this.props.profile ? this.props.profile : ImageDefault}/>
+              {this.props.profile === null ? (
+                <Avatar>
+                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
+                </Avatar>
+              ) : (
+                <Avatar
+                  src={this.props.profile}/>
+              )}
               </IconButton>
               <Menu
                 id="menu-appbar"

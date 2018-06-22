@@ -55,7 +55,7 @@ const info = props => {
   };
   return (
     <div className={cls.Div}>
-      <Link className={cls.ButtonEdit} to="/cliente/perfil/info/editar"><span>Editar</span></Link>
+      <Link className={cls.ButtonEdit} to="/agente/perfil/info/editar"><span>Editar</span></Link>
       <h3 className={cls.CardTitle}><span>Perfil</span></h3>
       {profile}  
     </div>

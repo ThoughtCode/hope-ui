@@ -19,7 +19,7 @@ import iconUbicacion from '../../../../assets/Ubicacion.svg'
 
 // Css
 import cls from './Job.css';
-import Profile from './img/0.jpeg';
+import Profile from '../../../../assets/AvatarProfile.svg';
 
 moment.locale('es');
 const job = props => {
@@ -32,6 +32,8 @@ const job = props => {
       return null;
     });
   }
+  let avatar = props.agent ? props.agent.avatar : Profile;
+  let name = props.agent ? props.agent.first_name + " " + props.agent.last_name : "Sin agente asignado";
   return (
     <Grid item xs={12} sm={5}>
       <Card className={cls.CardBorder}>
@@ -40,12 +42,9 @@ const job = props => {
             <Grid container>
               <Grid item xs={12}>
                 <CardHeader
-                  avatar={
-                    <Avatar aria-label="Recipe" src={Profile}>
-                    </Avatar>
-                  }
+                  avatar = {<Avatar aria-label="Recipe" src={avatar}></Avatar>}
                   title={<Typography className={cls.Title}>
-                          Rainiero Romero
+                          {name}
                         </Typography>}
                   subheader={<Typography className={cls.Date}>
                               {moment(props.date).format('MMMM D YYYY').replace(/\b\w/g, l => l.toUpperCase())} <br/>

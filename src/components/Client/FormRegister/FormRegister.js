@@ -21,25 +21,23 @@ const styles = theme => ({
   },
   bootstrapInput: {
     borderRadius: 4,
-    backgroundColor: theme.palette.common.white,
     border: '1px solid #ced4da',
     fontSize: 16,
     padding: '10px 12px',
-    width: 'calc(100% - 24px)',
     margin: 10,
     transition: theme.transitions.create(['border-color', 'box-shadow']),
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+  bootstrapInputError: {
+    borderRadius: 4,
+    border: '1px solid #b80808',
+    fontSize: 16,
+    padding: '10px 12px',
+    margin: 10,
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
     '&:focus': {
       borderColor: '#80bdff',
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
@@ -211,6 +209,9 @@ class FormRegister extends Component {
   }
 
   render() {
+    console.log(this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched);
+    console.log(this.state.registerForm.first_name.valid);
+    console.log(this.state.registerForm.first_name.touched);
     const { classes } = this.props;
     return (
       <div className={cls.container}>
@@ -224,17 +225,24 @@ class FormRegister extends Component {
                 placeholder="Nombre"
                 id="name"
                 InputProps={{
-                disableUnderline: true,
-                classes: {
-                  root: classes.bootstrapRoot,
-                  input: classes.bootstrapInput,
-                },
+                  disableUnderline: true,
+                  classes: {
+                    root: classes.bootstrapRoot,
+                    input: !this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
+                  },
                 }}
                 InputLabelProps={{
-                shrink: true,
-                className: classes.bootstrapFormLabel,
+                  shrink: true,
+                  className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.registerForm.first_name.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -249,7 +257,9 @@ class FormRegister extends Component {
                   disableUnderline: true,
                   classes: {
                     root: classes.bootstrapRoot,
-                    input: classes.bootstrapInput,
+                    input: !this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
                   },
                 }}
                 InputLabelProps={{
@@ -257,6 +267,11 @@ class FormRegister extends Component {
                   className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.registerForm.last_name.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -270,8 +285,10 @@ class FormRegister extends Component {
                 InputProps={{
                   disableUnderline: true,
                   classes: {
-                      root: classes.bootstrapRoot,
-                      input: classes.bootstrapInput,
+                    root: classes.bootstrapRoot,
+                    input: !this.state.registerForm.email.valid && this.state.registerForm.email.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
                   },
                 }}
                 InputLabelProps={{
@@ -279,6 +296,11 @@ class FormRegister extends Component {
                   className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.registerForm.email.valid && this.state.registerForm.email.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.registerForm.email.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -288,20 +310,27 @@ class FormRegister extends Component {
                 onChange={(event) => this.inputChangedHandler(event, 'password')}
                 type={'password'}  
                 fullWidth
-                  placeholder="Contraseña"
-                  id="Contrasena"
-                  InputProps={{
+                placeholder="Contraseña"
+                id="Contrasena"
+                InputProps={{
                   disableUnderline: true,
                   classes: {
-                      root: classes.bootstrapRoot,
-                      input: classes.bootstrapInput,
+                    root: classes.bootstrapRoot,
+                    input: !this.state.registerForm.password.valid && this.state.registerForm.password.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
                   },
-                  }}
-                  InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                  }}
+                }}
+                InputLabelProps={{
+                shrink: true,
+                className: classes.bootstrapFormLabel,
+                }}
               />
+              {!this.state.registerForm.password.valid && this.state.registerForm.password.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.registerForm.password.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -317,7 +346,9 @@ class FormRegister extends Component {
                 disableUnderline: true,
                 classes: {
                   root: classes.bootstrapRoot,
-                  input: classes.bootstrapInput,
+                  input: !this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? 
+                    classes.bootstrapInputError : 
+                    classes.bootstrapInput,
                   },
                 }}
                 InputLabelProps={{
@@ -325,10 +356,19 @@ class FormRegister extends Component {
                   className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.registerForm.password_confirmation.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12}>
-            <button onClick={(event) => this.registerHandler(event, this.registerHandler)} className={cls.pageButton} >Registrar</button>
+            {this.state.formIsValid ? (
+              <button onClick={(event) => this.registerHandler(event, this.registerHandler)} className={cls.pageButton} >Registrar</button>
+            ): (
+              <button disabled className={cls.pageButtonInvalid} >Registrar</button>
+            )}
           </Grid>
         </Grid>
       </div>
@@ -340,4 +380,4 @@ const mapDispatchToProps = dispatch => ({
   onRegisterUser: formData => dispatch(action.registerClient(formData)),
 });
 
-export default connect(null, mapDispatchToProps) (withStyles(styles)(FormRegister));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(FormRegister));

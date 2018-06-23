@@ -1,26 +1,53 @@
-.container{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 96% !important;
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 96% !important;
 }
+
 .pageButton {
-    background-color: #0069a7 !important;
-    border-radius: 4px !important;
-    border-color: #286090;
-    border: 1px solid #fff !important;
-    color: #eee !important;
-    cursor: pointer;
-    display: inline-block;
-    font-family: Arial !important;
-    font-size: 1rem !important;
-    font-weight: 500;
-    margin: 4px 0 !important;
-    margin-top: 20px;
-    height: 52px;
-    line-height: 48px;
-    position: relative;
-    padding: 0px 32px;
-    vertical-align: baseline;
-    width: 97% !important;
+  background-color: #0069a7 !important;
+  border-radius: 4px !important;
+  border-color: #286090;
+  border: 1px solid #fff !important;
+  color: #eee !important;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+  margin: 4px 0 !important;
+  margin-top: 20px;
+  height: 52px;
+  line-height: 48px;
+  position: relative;
+  padding: 0px 32px;
+  vertical-align: baseline;
+  width: 97% !important;
+}
+
+.pageButtonInvalid {
+  background-color: #0984cd !important;
+  border-radius: 4px !important;
+  border-color: #0984cd;
+  border: 1px solid #fff !important;
+  color: #eee !important;
+  cursor: not-allowed;
+  display: inline-block;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+  margin: 4px 0 !important;
+  margin-top: 20px;
+  height: 52px;
+  line-height: 48px;
+  position: relative;
+  padding: 0px 32px;
+  vertical-align: baseline;
+  width: 97% !important;
+}
+
+.ErrorText {
+  color: #b80808;
+  font-size: 0.9em;
 }

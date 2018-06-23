@@ -3,10 +3,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
-import {Grid, Modal,} from 'material-ui';
+import { Grid } from 'material-ui';
 
-import LoginAgent from '../../../containers/Agent/Login/Login';
-import Registro from '../../../components/Client/Register/Register';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import Button from 'material-ui/Button';
 import Auth from '../Auth/Auth';

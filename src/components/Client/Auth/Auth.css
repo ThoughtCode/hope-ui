@@ -21,3 +21,29 @@
 .Form > div > div{
   width: 31vh;
 }
+
+.ErrorText {
+  color: #b80808;
+  font-size: 0.9em;
+}
+
+.pageButtonInvalid {
+  background-color: #0984cd !important;
+  border-radius: 4px !important;
+  border-color: #0984cd;
+  border: 1px solid #fff !important;
+  color: #eee !important;
+  cursor: pointer;
+  cursor: not-allowed;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500;
+  margin: 4px 0 !important;
+  margin-top: 20px;
+  height: 52px;
+  line-height: 48px;
+  position: relative;
+  padding: 0px 32px;
+  vertical-align: baseline;
+  width: 92% !important;
+}

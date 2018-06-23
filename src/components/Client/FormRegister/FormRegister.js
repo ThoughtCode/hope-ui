@@ -209,9 +209,6 @@ class FormRegister extends Component {
   }
 
   render() {
-    console.log(this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched);
-    console.log(this.state.registerForm.first_name.valid);
-    console.log(this.state.registerForm.first_name.touched);
     const { classes } = this.props;
     return (
       <div className={cls.container}>

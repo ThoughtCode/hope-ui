@@ -48,7 +48,7 @@ class Aside extends Component {
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <div className={cls.LandingButton}>
-                  <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Registrate</Button>
+                  <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Contrátalo</Button>
                   <Modal
                     aria-labelledby="simple-modal-title"
                     aria-describedby="simple-modal-description"

@@ -6,7 +6,7 @@
 .Typogra {
   text-align: center;
   font-size: 2.25em !important;
-  color: #434343 !important;
+  color: #0069a7 !important;
   font-family: Arial !important;
 }
 
@@ -17,10 +17,15 @@
 
 .SubTypogra{
   font-family: Arial !important;
+  color: #0069a7 !important;
 }
 
 .SubSubTypogra{
   font-family: Arial !important;
+}
+
+.congratulation{
+  color: #0069a7 !important;
 }
 
 @media only screen and (max-width: 600px) {

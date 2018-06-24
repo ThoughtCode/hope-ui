@@ -13,15 +13,26 @@
 .Typogra {
   font-size: 2.25em !important;
   font-family: Arial !important;
-  color: #434343 !important;
+  color: #0069a7 !important;
 }
 .SubTypogra{
-  font-size: 1.375em !important;
+  color: rgba(0, 0, 0, 0.54) !important;
+  font-size: 1em !important;
+  font-weight: 300 !important;
+  line-height: 1.2em !important;
+  font-family: "Arial", "Helvetica", sans-serif !important;
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+  
+}
+.SubTitle{
+  color: #0069a7 !important;
+  font-size: 1.5em !important;
   font-weight: 300 !important;
   line-height: 1.25em !important;
   font-family: "Arial", "Helvetica", sans-serif !important;
-  text-align: left;
-  max-width: 17em;
+  margin-bottom: 20px !important;
 }
 
 @media only screen and (max-width: 600px) {

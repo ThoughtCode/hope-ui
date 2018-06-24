@@ -73,7 +73,7 @@ class Main extends Component {
             <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>
-                  Registrate y agenda los servicios que te ofrece Noc Noc.
+                  Registrate y agenda los servicios que Noc Noc tiene para ti.
                 </Typography>
               </Grid>
               <Grid item xs={12} sm={4} align="right">
@@ -106,11 +106,6 @@ class Main extends Component {
           </Grid>
           <Grid item xs={12} md={8} sm={12}>
             <Grid container align="center">
-              <Grid item xs={12} sm={12}>
-                <Typography variant="subheading" gutterBottom className={cls.SubTypogra}>
-                  Es hora que alguien lo haga por ti, descarga la aplicación y reserva fácilmente tu servicio en el lugar que lo desees. Olvídate del efectivo, paga de forma segura con tu tarjeta a través de la aplicación.
-                </Typography>
-              </Grid>
               <div className={cls.LandingButton}>
                 <Grid container>
                   <Grid item xs={12} sm={12}>

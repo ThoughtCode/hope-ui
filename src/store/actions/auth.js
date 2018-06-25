@@ -39,7 +39,6 @@ export const authClient = (email, password) => (dispatch) => {
   };
   axios.post('/customers/signin', authData)
     .then((response) => {
-      console.log(response);
       const customer = response.data.customer.data;
       localStorage.setItem('token', customer.attributes.access_token);
       localStorage.setItem('userId', customer.id);
@@ -73,7 +72,6 @@ export const authAgent = (email, password) => (dispatch) => {
   };
   axios.post('/agents/signin', authData)
     .then((response) => {
-      console.log(response);
       const agent = response.data.agent.data;
       localStorage.setItem('token', agent.attributes.access_token);
       localStorage.setItem('userId', agent.id);

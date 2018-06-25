@@ -24,10 +24,37 @@
   vertical-align: baseline !important;
   width: 95% !important;
 }
+
+.pageButtonInvalid {
+  background-color: #0072b5b8 !important;
+  border-radius: 4px !important;
+  border-color: #0072b5b8;
+  border: 1px solid #fff !important;
+  color: #eee !important;
+  cursor: not-allowed !important;
+  display: inline-block !important;
+  font-family: Arial !important;
+  font-size: 1rem !important;
+  font-weight: 500 !important;
+  margin: 2px 0 !important;
+  margin-top: 20px !important;
+  height: 52px !important;
+  line-height: 48px !important;
+  position: relative !important;
+  padding: 0px 32px !important;
+  vertical-align: baseline !important;
+  width: 95% !important;
+}
+.ErrorText {
+  color: #b80808;
+  font-size: 0.9em;
+}
+
 .ButtonLogin{
   color: #0069a7 !important;
   font-family: Arial !important;
 }
+
 .small{
   color: #0069a7;
 }

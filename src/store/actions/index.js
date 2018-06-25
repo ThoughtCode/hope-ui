@@ -1,5 +1,6 @@
 export {
-  registerClient
+  registerClient,
+  registerAgent,
 } from './register';
 export {
   authClient,

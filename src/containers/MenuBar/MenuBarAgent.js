@@ -50,7 +50,7 @@ class AppBarMenu extends Component {
   };
 
   render() {
-    console.log(this.props.profile != null);
+    console.log(this.props.profile === null);
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;
@@ -75,7 +75,7 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              {this.props.profile === null ? (
+              {this.props.profile === 'null' ? (
                 <Avatar>
                   {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
                 </Avatar>

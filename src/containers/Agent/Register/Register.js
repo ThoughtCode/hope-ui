@@ -27,7 +27,7 @@ class Register extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.PaperStile} elevation={0}>
-                    <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit.</Typography>
+                    <Typography variant="headline" gutterBottom className={cls.Typogra}>Lorem ipsum dolor sit amet.</Typography>
                   </Paper>
                 </Grid>
               </Grid>

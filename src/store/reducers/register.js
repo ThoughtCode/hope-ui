@@ -6,25 +6,29 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.REGISTER_CLIENT_START:
-      return {
-        ...state,
-      };
+    case actionTypes.REGISTER_CLIENT_START: return state;
     case actionTypes.REGISTER_CLIENT_SUCCESS:
-      const newUser = {
+      const newCustomer = {
         ...action.formData,
         id: action.clientId,
       };
       return {
         ...state,
-        users: state.users.concat(newUser),
+        users: state.users.concat(newCustomer),
       };
-    case actionTypes.REGISTER_CLIENT_FAIL:
+    case actionTypes.REGISTER_CLIENT_FAIL: return state;
+    case actionTypes.REGISTER_AGENT_START: return state;
+    case actionTypes.REGISTER_AGENT_SUCCESS:
+      const newAgent = {
+        ...action.formData,
+        id: action.agentId,
+      };
       return {
         ...state,
+        users: state.users.concat(newAgent),
       };
-    default:
-      return state;
+    case actionTypes.REGISTER_AGENT_FAIL: return state;
+    default: return state;
   }
 };
 

@@ -15,6 +15,7 @@ import RegisterClient from './components/Client/Register/Register';
 import LoginAgent from './containers/Agent/Login/Login';
 import ResetClient from './containers/Client/Reset/Reset';
 import ResetAgent from './containers/Agent/Reset/Reset';
+import Policies from './components/Home/Policies/Policies'
 import Alert from 'react-s-alert';
 
 class App extends Component {
@@ -42,6 +43,7 @@ class App extends Component {
             <Route path="/agente/login" component={LoginAgent}/>
             <Route path="/agente/registro" component={HomeAgent}/>
             <Route path="/cliente/registro" component={RegisterClient}/>
+            <Route path="/politicas" component={Policies}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>

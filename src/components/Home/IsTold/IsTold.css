@@ -4,7 +4,7 @@
   background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/testimonial-2a18446823cb4d64b677b07b7b24572d.jpeg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 50vh;
+  height: 380px;
   flex-grow: 1;
 }
 .Modal {

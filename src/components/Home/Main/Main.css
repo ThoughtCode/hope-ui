@@ -5,7 +5,7 @@
   background: url('../../../assets/BackgrounMain.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 70vh;
+  height: 500px !important;
 }
 
 .Modal {
@@ -65,11 +65,12 @@
 
 .Typogra {
   color: #0069a7 !important;
-  font-size: 1.625em !important;
+  font-size: 1.425em !important;
   line-height: 1.5em;
-  max-width: 15.125em;
+  max-width: 18.125em;
   text-align: center;
   font-family: Arial !important;
+  font-weight: 700 !important;
 }
 
 .SubTypogra {
@@ -84,11 +85,10 @@
   .Main {
     background-attachment: fixed;
     background-size: auto;
-    height: 100vh;
   }
   .style {
     padding: 30px;
-    padding-top: 18vh !important;
+    padding-top: 150px !important;
     font-size: 0.5rem !important;
   }
   .Typogra {
@@ -122,6 +122,6 @@
 
 @media only screen and (min-width: 600px) {
   .style{
-    padding-top: 20vh !important;
+    padding-top: 170px !important;
   }
 }

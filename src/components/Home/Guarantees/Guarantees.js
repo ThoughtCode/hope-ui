@@ -7,10 +7,10 @@ import Grid from 'material-ui/Grid';
 import Typography from 'material-ui/Typography';
 
 // Component
-import cls from './Guarantees.css'
-import Profesionales from '../../../assets/GuaranteesProfecional.png'
-import GuaranteesAlDia from '../../../assets/GuaranteesAlDia.png'
-import Guarante from '../../../assets/Guarante.png'
+import cls from './Guarantees.css';
+import Profesionales from '../../../assets/Icono-07.svg';
+import GuaranteesAlDia from '../../../assets/Icono-02.svg';
+import Guarante from '../../../assets/Icono-04.svg'
 
 const styles = theme => ({
   paper: {
@@ -32,28 +32,28 @@ function FullWidthGrid(props) {
             <Grid container align="center" justify="center" className={cls.TopSeccion}>
               <Grid item xs={12} sm={4} md={4}>
                 <Paper className={classes.paper} elevation={0}>
-                  <img src={Profesionales} alt="Profesionales" />
+                  <img className={cls.icon} src={Profesionales} alt="Profesionales" />
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profesionales con experiencias</Typography>
                   <Grid item xs={12} className={cls.Text}>
-                    Los profesionales que usan la plataforma NocNoc tienen experiencia, son amables y están en proceso de verificación de antecedentes.
+                    Personas que tienen como principal objetivo <br/> <small className={cls.small}>Tu satisfacción</small>
                   </Grid>
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={4} md={4}>
                 <Paper className={classes.paper} elevation={0}>
-                  <img src={GuaranteesAlDia} alt="Garantias Al Dia"/>
+                  <img className={cls.icon} src={GuaranteesAlDia} alt="Garantias Al Dia"/>
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Disponibilidad al día</Typography>
                   <Grid item xs={12} className={cls.Text}>
-                    Reserve en línea en 60 segundos y programe su servicio hogareño para mañana.
+                    Reserve en línea el servicio para el dia que necesites nuestra visita.
                   </Grid>
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={4} md={4}>
                 <Paper className={classes.paper} elevation={0}>
-                  <img src={Guarante} alt="Garantias" />
+                  <img className={cls.icon} src={Guarante} alt="Garantias" />
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Garantía de felicidad con NocNoc</Typography>
                   <Grid item xs={12} className={cls.Text}>
-                    Tú felicidad es nuestra meta. Si no está contento, trabajaremos para hacerlo bien.
+                    Noc Noc garantiza el servicio con nuestro seguro de protección.
                   </Grid>
                 </Paper>
               </Grid>

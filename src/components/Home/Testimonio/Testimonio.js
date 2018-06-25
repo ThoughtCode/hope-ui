@@ -24,9 +24,9 @@ function FullWidthGrid(props) {
       <Grid container className={cls.Testimonio} align="left" alignItems="center">
         <Grid item xs={12}>
           <Paper className={classes.paper} elevation={0}>
-            <Typography variant="headline" gutterBottom className={cls.Typogra} >Amado por los clientes</Typography>
+            <Typography variant="headline" gutterBottom className={cls.SubTitle} >Nuestros Clientes</Typography>
             <Typography variant="headline" gutterBottom className={cls.SubTypogra}>
-              NocNoc es el proveedor líder de servicios para el hogar. Los clientes de Handy Professionals son calificados y revisados ​​por clientes como usted. Elija el profesional con el que desea trabajar agregándolo a su equipo profesional.
+              En Noc Noc buscamos siempre la excelencia por eso te compartimos algunos comentarios de nuestros clientes.
             </Typography>
           </Paper>
         </Grid>

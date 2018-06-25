@@ -42,6 +42,7 @@
 .congratulation{
   color: #0069a7 !important;
   font-weight: 700 !important;
+  margin-top: 20px !important;
 }
 
 @media only screen and (max-width: 600px) {
@@ -71,6 +72,9 @@
     font-size: 1rem !important;
     text-align: center;
     color: #0069a7 !important;
+  }
+  .IconDownload{
+    height: 2em;
   }
 }
 

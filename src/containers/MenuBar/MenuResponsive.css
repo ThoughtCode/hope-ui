@@ -3,3 +3,8 @@
   margin: 0.5rem;
   margin-left: 2rem;
 }
+.styleAnchor {
+  text-decoration: none;
+  color: #0069A7 !important;
+  font-family: Arial !important;
+}

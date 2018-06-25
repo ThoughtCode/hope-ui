@@ -4,10 +4,9 @@
   background-color: #fafafa;
 }
 .Typogra {
-  text-align: center;
   font-size: 2.25em !important;
-  color: #0069a7 !important;
   font-family: Arial !important;
+  color: #0069a7 !important;
 }
 .SubTytle{
   position: absolute;
@@ -40,6 +39,19 @@
   font-style: italic;
 }
 
+.pageButtonActive {
+  background-color: #0069a7 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  font-size: 1em !important;
+  border: 1px solid #0069a7 !important;
+  text-decoration: none !important;
+  padding: .95em 0 !important;
+  width: 66% !important;
+  margin: 4px 15px !important;
+  font-family: Arial !important;
+}
+
 @media only screen and (max-width: 600px) {
   .Services{
   	padding: auto;
@@ -56,7 +68,7 @@
   .SubTytle{
     font-size: 1.3em !important;
     font-weight: bold !important;
-    margin-top: 28vh !important;
+    margin-top: 23vh !important;
     margin-left: 3vh !important;
   }
   .imageServices{
@@ -70,6 +82,10 @@
   .MainTestimonials{
     display: none;
     text-align: center;
+  }
+  .pageButtonActive {
+    width: 100% !important;
+    margin: 0px !important;
   }
 }
 

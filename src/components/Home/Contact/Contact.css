@@ -115,6 +115,28 @@
     font-size: 0.6rem !important;
     padding-top: 0.5rem;
   }
+  .SubTitle{
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+  }
+  .SubSubTitle{
+    font-size: 1.7em !important;
+  }
+  .iconSocial{
+    height: 3.25em;
+  }
+  .Styleicon {
+    height: 3em !important;
+  }
+  .UlContact{
+    text-align: center;
+  }
+  .Link {
+    font-size: 1.7em !important;
+  }
+  .Border{
+    border: none
+  }
 }
 
 @media only screen and (max-width: 960px) {

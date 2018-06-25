@@ -24,6 +24,7 @@ import Profile from '../../../../assets/AvatarProfile.svg';
 moment.locale('es');
 const job = props => {
   let services = null;
+  let addon = null;
   if (props.job_details) {
     services = props.job_details.map(detail => {
       if (detail.service.type_service === 'base') {
@@ -31,6 +32,13 @@ const job = props => {
       }
       return null;
     });
+    addon = props.job_details.map(detail => {
+      if (detail.service.type_service === 'addon') {
+        return (
+          <li>{detail.service.name}</li>
+        );
+      }
+    })
   }
   let avatar = props.agent ? props.agent.avatar : Profile;
   let name = props.agent ? props.agent.first_name + " " + props.agent.last_name : "Sin agente asignado";
@@ -48,7 +56,7 @@ const job = props => {
                         </Typography>}
                   subheader={<Typography className={cls.Date}>
                               {moment(props.date).format('MMMM D YYYY').replace(/\b\w/g, l => l.toUpperCase())} <br/>
-                              {moment(props.date).format('h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())}
+                              {moment(props.date).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                             </Typography>}  
                 />
               </Grid>
@@ -65,14 +73,12 @@ const job = props => {
                     </Typography>
                     <div>
                       <ul className={cls.list}>
-                        <li>Limpieza de Baños</li>
-                        <li>Limpieza de Hono</li>
-                        <li>Limpieza de Ventana</li>
+                        {addon}
                       </ul>
                     </div>  
                     <Typography>
                       <img className={cls.IconUbicacion} src={iconUbicacion} alt="IconUbucacion" />
-                      San Ignacio y Gonzales Suares
+                      {props.property.name}, {props.property.p_street} y {props.property.s_street}
                     </Typography>
                   </Grid>
                 </CardContent>

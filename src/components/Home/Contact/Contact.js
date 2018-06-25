@@ -46,13 +46,13 @@ function FullWidthGrid(props) {
                 <Paper className={`${cls.Border} ${cls.Paper}`} elevation={0}>
                   <ul className={cls.UlContact}>
                     <li className={cls.ListContact}>
-                      <NavLink className={cls.Link} to="##">Quiénes Somos?</NavLink>
+                      <NavLink className={cls.Link} to="/">Quiénes Somos?</NavLink>
                     </li>
                     <li className={cls.ListContact}>
-                      <NavLink className={cls.Link} to="##">Principios y Valores</NavLink>
+                      <NavLink className={cls.Link} to="/">Principios y Valores</NavLink>
                     </li>
                     <li className={cls.ListContact}>
-                      <NavLink className={cls.Link} to="##">Politicas de Calidad</NavLink>
+                      <NavLink className={cls.Link} to="/politicas">Politicas de Calidad</NavLink>
                     </li>
                   </ul>
                 </Paper>

@@ -1,0 +1,21 @@
+.PoliciesContent {
+    padding-top: 150px !important;
+    padding-bottom: 50px !important;
+    text-align: center;
+}
+.Policies{
+    background-color: #eee;
+}
+.Services {
+    padding-top: 10vh !important;
+}
+.Title{
+    margin-top: 3em;
+    text-align: center !important;
+}
+.Content{
+    margin-bottom: 5em;
+}
+.SubContent{
+    margin-top: 1.5em !important;
+}

@@ -11,6 +11,8 @@ import IconUno from '../../../assets/Icono-03.svg';
 import IconDos from '../../../assets/Icono-05.svg';
 import IconCuatro from '../../../assets/Icono-06.svg';
 import IconTres from '../../../assets/Icono-07.svg';
+import GooglePlay from '../../../assets/AppPlayStore.svg';
+import AppStore from '../../../assets/AppStore.svg';
 import cls from './Funtion.css'
 
 const styles = theme => ({
@@ -20,7 +22,7 @@ const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 1,
     textAlign: 'flex-end',
-    backgroundColor: '#ffffff'
+    backgroundColor: 'transparent'
   },
 });
 
@@ -29,50 +31,52 @@ function FullWidthGrid(props) {
 
   return (
     <div className={`${classes.root} ${cls.stylesFuntion}`}>
-      <Grid container>
+      <Grid container align="center">
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Typography variant="headline" gutterBottom className={cls.Typogra} align="center" >¿Cómo Funciona?</Typography>
+          <Paper className={classes.paper} elevation={0}>
+            <Typography variant="headline" gutterBottom className={cls.Typogra} >¿Cómo Funciona?</Typography>
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={0}>
+            <Grid container justify="center">
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <img src={IconUno} alt="AppLogo" className={cls.Styleicon} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
                   <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Descarga y Registro</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                     Descarga Noc Noc en la tienda de tu Smartphone y Registrate
                   </Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={5}>
+                <Paper elevation={0}>
+                  <img src={GooglePlay} className={cls.IconDownload} alt="GoolglePlay" />
+                </Paper>
+              </Grid>
+              <Grid item xs={5}>
+                <Paper elevation={0}>
+                  <img src={AppStore} className={cls.IconDownload} alt="App Store" />
                 </Paper>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={0}>
+            <Grid container justify="center">
+              <Grid item xs={8}>
+                <Paper className={classes.paper} elevation={0}>
                   <img src={IconDos} alt="AppLogo" className={cls.Styleicon} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
                   <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Ingresa tu información y agenda un servicio</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                     Coloca tu dirección, fecha y selecciona qué necesitas realizar en tu hogar.
                   </Typography>
@@ -82,20 +86,16 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={0}>
+            <Grid container justify="center">
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <img src={IconTres} alt="AppLogo" className={cls.Styleicon} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
                   <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Selecciona un Asesor.</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                     Revisa el perfil que más te guste y ¡elígelo!
                   </Typography>
@@ -105,30 +105,31 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-          <Paper className={classes.paper}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={0}>
+            <Grid container justify="center">
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <img src={IconCuatro} alt="AppLogo" className={cls.Styleicon} />
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
                   <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Realiza tu Pago</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>
+              <Grid item xs={10}>
+                <Paper className={classes.paper} elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                     Puedes pagar con cualquier tarjeta de crédito o débito.
                   </Typography>
+                </Paper>
+              </Grid>
+              <Grid item xs={12}>
+                <Paper elevation={0}>
+                 <img src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png" alt="Card" />
                 </Paper>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
         <Grid item xs={12}>
-          <Paper className={classes.paper}>
+          <Paper className={classes.paper} elevation={0}>
             <Typography variant="headline" gutterBottom className={cls.congratulation}>
               Listo..!! Prepárate para sentir una experiencia inolvidable en tu hogar.
             </Typography>

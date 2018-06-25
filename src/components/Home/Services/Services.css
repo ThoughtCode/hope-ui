@@ -4,9 +4,10 @@
   background-color: #fafafa;
 }
 .Typogra {
+  text-align: center;
   font-size: 2.25em !important;
+  color: #0069a7 !important;
   font-family: Arial !important;
-  color: #434343 !important;
 }
 .SubTytle{
   position: absolute;

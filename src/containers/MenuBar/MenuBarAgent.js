@@ -64,11 +64,12 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <MenuItem className={cls.styleAnchor} component={Link} to="/agente">Dashboard</MenuItem>
-            <MenuItem className={cls.styleAnchor} component={Link} to="/agente/mistrabajos">Mis Trabajos</MenuItem>
-            <MenuItem className={cls.styleAnchor} component={Link} to="/agente/calendario">Calendario</MenuItem>
+            <MenuItem className={cls.MenuItem} component={Link} to="/agente">Dashboard</MenuItem>
+            <MenuItem className={cls.MenuItem} component={Link} to="/agente/mistrabajos">Mis Trabajos</MenuItem>
+            <MenuItem className={cls.MenuItem} component={Link} to="/agente/calendario">Calendario</MenuItem>
             <div>
               <IconButton
+                className={cls.Avatar}
                 aria-owns={open ? 'menu-appbar' : null}
                 aria-haspopup="true"
                 onClick={this.handleMenu}
@@ -85,6 +86,7 @@ class AppBarMenu extends Component {
               <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu
+                className={cls.SubMenu}
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -98,8 +100,8 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem onClick={this.props.logout} component={Link} to="/">
+                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
+                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
                   Logout
                 </MenuItem>
               </Menu>

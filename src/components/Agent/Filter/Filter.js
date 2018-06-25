@@ -27,8 +27,8 @@ class Filter extends Component {
     filter: {
       min_price: 0,
       max_price: 0,
-      date_from: Date.now(),
-      date_to: Date.now(),
+      date_from: moment(Date.now()).format(),
+      date_to: moment(Date.now()).add(1, 'days').format(),
       frequency: '0',
     },
   };
@@ -38,7 +38,7 @@ class Filter extends Component {
       ...this.state,
       filter: {
         ...this.state.filter,
-        [key]: moment(dateTime),
+        [key]: moment(dateTime).format(),
       }
     })
   };
@@ -55,8 +55,29 @@ class Filter extends Component {
 
   filterHandler = (event) => {
     event.preventDefault();
-    const filter = this.state.filter;
+    let filter = {};
+    filter.min_price = '';
+    filter.max_price = '';
+    if (this.state.filter.min_price !== 0) {
+      filter.min_price = this.state.filter.min_price;
+    }
+
+    if (this.state.filter.max_price !== 0) {
+      filter.max_price = this.state.filter.max_price;
+    }
+    filter.date_from = this.state.filter.date_from;
+    filter.date_to = moment(this.state.filter.date_to).format();
+    filter.frequency = moment(this.state.filter.frequency).format();
+
     this.props.filter(localStorage.getItem('token'), filter);
+  };
+
+  validDates = current => {
+    return current.isAfter(Datetime.moment().subtract(1, 'days'));
+  };
+
+  validDatesTo = current => {
+    return current.isAfter(moment(this.state.filter.date_from));
   };
 
   renderInput = (props) => {
@@ -90,14 +111,15 @@ class Filter extends Component {
             label="Maximo"
             id="simple-start-adornment"
             value={this.state.filter.max_price}
-            onChange={(event) => this.handleChange(event, 'max32_price')}
+            onChange={(event) => this.handleChange(event, 'max_price')}
             className={classNames(classes.margin, cls.textField)}
             InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
           />
           <Datetime
+            isValidDate={this.validDates}
             label="Fecha"
             id="simple-start-adornment"
-            value={this.state.filter.date_from}
+            value={moment(this.state.filter.date_from)}
             onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_from')}
             dateFormat="MM/DD/YYYY"
             renderInput={this.renderInput}
@@ -110,9 +132,10 @@ class Filter extends Component {
             }}
           />
           <Datetime
+            isValidDate={this.validDatesTo}
             label="Fecha"
             id="simple-start-adornment"
-            value={this.state.filter.date_to}
+            value={moment(this.state.filter.date_to)}
             onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_to')}
             dateFormat="MM/DD/YYYY"
             renderInput={this.renderInput}

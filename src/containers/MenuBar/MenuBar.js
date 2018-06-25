@@ -35,6 +35,8 @@ class AppBarMenu extends Component {
   state = {
     anchorEl: null,
     openLogin: false,
+    openRegister: false,
+    openAgentLogin: false,
     open: false
   }
 

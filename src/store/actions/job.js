@@ -226,4 +226,36 @@ export const fetchJobsAgent = (token, filter) => dispatch => {
     .catch((err) => {
       dispatch(fetchJobsAgentFail(err));
     });
+};
+
+export const acceptedJobStart = () => ({
+  type: actionTypes.ACCEPTED_JOB_START,
+});
+
+export const acceptedJobSuccess = (job) => ({
+  type: actionTypes.ACCEPTED_JOB_SUCCESS,
+  job,
+});
+
+export const acceptedJobFail = () => ({
+  type: actionTypes.ACCEPTED_JOB_FAIL,
+});
+
+export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
+  dispatch(acceptedJobStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/customers/jobs/${job_id}/accepted/${proposal_id}`, headers)
+    .then((res) => {
+      let job = [];
+      job = res.data.job.data;
+      dispatch(acceptedJobSuccess(job));
+    })
+    .catch((err) => {
+      console.log(err);
+      dispatch(acceptedJobFail());
+    })
 }

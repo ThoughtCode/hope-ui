@@ -22,36 +22,80 @@ class JobShow extends Component {
     let services = null;
     let frequency = null;
     let agents = null;
+    let agentTitle = null;
     if (this.props.job.attributes) {
       date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY').replace(/\b\w/g, l => l.toUpperCase());
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`;
       if (this.props.job.attributes.frequency === 'one_time') {
         frequency = 'Una vez';
       } else if (this.props.job.attributes.frequency === 'diary') {
-        frequency = 'Diario';
+        frequency = 'Quincenal';
       } else if (this.props.job.attributes.frequency === 'weekly') {
         frequency = 'Semanal';
       } else if (this.props.job.attributes.frequency === 'monthly') {
         frequency = 'Mensual';
       }
-      agents = this.props.job.attributes.proposals.length > 0 ?
-        this.props.job.attributes.proposals.map(p => (
+      if (this.props.job.attributes.agent === null) {
+        agentTitle = 'Agentes Postulados';
+        agents = this.props.job.attributes.proposals.length > 0 ?
+          this.props.job.attributes.proposals.map(p => (
+            <Grid item xs={12} className={cls.AgentPostulate}>
+              <Paper>
+                <div className={cls.AvatarAgent}>
+                  {p.agent.avatar.url === null ? (
+                    <Avatar className={cls.AvatarMargin}>
+                      {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
+                    </Avatar>
+                  ) : (
+                    <Avatar 
+                      className={cls.AvatarMargin}
+                      src={p.agent.avatar.url}>
+                    </Avatar>
+                  )}
+                  <div className={cls.NameAgent}>
+                    <Typography className={cls.Name} variant="subheading">
+                      {p.agent.first_name} {p.agent.last_name}
+                    </Typography>
+                    <Typography className={cls.Name} variant="caption">
+                      estrellas
+                    </Typography>
+                    <Typography className={cls.Name} variant="caption">
+                      20 Reviews
+                    </Typography>
+                  </div>
+                  <Button
+                    onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
+                    className={cls.ButtonContratar}>
+                      CONTRATAR AGENTE
+                    </Button>
+                </div>
+              </Paper>
+            </Grid>
+          ))
+        : (
+          <div>
+            <p>No hay agentes asigandos</p>
+          </div>
+        );
+      } else {
+        agentTitle = 'Agente Contratado';
+        agents = (
           <Grid item xs={12} className={cls.AgentPostulate}>
             <Paper>
               <div className={cls.AvatarAgent}>
-                {p.agent.avatar.url === null ? (
+                {this.props.job.attributes.agent.avatar.url === null ? (
                   <Avatar className={cls.AvatarMargin}>
-                    {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
+                    {this.props.job.attributes.agent.first_name.charAt(0)}{this.props.job.attributes.agent.last_name.charAt(0)}
                   </Avatar>
                 ) : (
                   <Avatar 
                     className={cls.AvatarMargin}
-                    src={p.agent.avatar.url}>
+                    src={this.props.job.attributes.agent.avatar.url}>
                   </Avatar>
                 )}
                 <div className={cls.NameAgent}>
                   <Typography className={cls.Name} variant="subheading">
-                    {p.agent.first_name} {p.agent.last_name}
+                    {this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
                     estrellas
@@ -60,16 +104,15 @@ class JobShow extends Component {
                     20 Reviews
                   </Typography>
                 </div>
-                <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
+                <Button
+                  className={cls.ButtonContratar}>
+                    VER PERFIL
+                  </Button>
               </div>
             </Paper>
           </Grid>
-        ))
-      : (
-        <div>
-          <p>No hay agentes asigandos</p>
-        </div>
-      );
+        );
+      }
       services = (
         <Grid className={cls.Services} container>
           <Grid item xs={12}>
@@ -141,30 +184,13 @@ class JobShow extends Component {
                   <Paper elevation={0}>
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>
-                        <Paper elevation={0}><Typography variant="headline">Agentes Postulados</Typography></Paper>
+                        <Paper elevation={0}>
+                          <Typography variant="headline">
+                            {agentTitle}
+                          </Typography>
+                        </Paper>
                       </Grid>
                       {agents}
-                      {/* <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper>
-                          <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              JC
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography className={cls.Name} variant="subheading">
-                                Jose Castellanos
-                              </Typography>
-                              <Typography className={cls.Name} variant="caption">
-                                estrellas
-                              </Typography>
-                              <Typography className={cls.Name} variant="caption">
-                                20 Reviews
-                              </Typography>
-                            </div>
-                            <Button className={cls.ButtonContratar}>CONTRATAR AGENTE</Button>
-                          </div>
-                        </Paper>
-                      </Grid> */}
                     </Grid>
                   </Paper>
                 </Grid>

@@ -34,6 +34,7 @@ export {
   fetchHistoryJobs,
   fetchNextJobs,
   fetchJobsAgent,
+  acceptedJob,
 } from './job';
 export {
   fetchCurrentUser,

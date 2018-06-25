@@ -29,18 +29,19 @@ const styles = theme => ({
     width: 520,
     margin: 10,
     transition: theme.transitions.create(['border-color', 'box-shadow']),
-    fontFamily: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      'sans-serif',
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(','),
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+  bootstrapInputError: {
+    borderRadius: 4,
+    border: '1px solid #b80808',
+    fontSize: 16,
+    padding: '10px 12px',
+    margin: 10,
+    width: 520,
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
     '&:focus': {
       borderColor: '#80bdff',
       boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
@@ -160,7 +161,9 @@ class Auth extends Component {
                   disableUnderline: true,
                   classes: {
                     root: classes.bootstrapRoot,
-                    input: classes.bootstrapInput,
+                    input: !this.state.controls.email.valid && this.state.controls.email.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
                   },
                 }}
                 InputLabelProps={{
@@ -168,6 +171,11 @@ class Auth extends Component {
                   className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.controls.email.valid && this.state.controls.email.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.controls.email.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid>
           <Grid item xs={12}>
@@ -182,7 +190,9 @@ class Auth extends Component {
                   disableUnderline: true,
                   classes: {
                     root: classes.bootstrapRoot,
-                    input: classes.bootstrapInput,
+                    input: !this.state.controls.password.valid && this.state.controls.password.touched ? 
+                      classes.bootstrapInputError : 
+                      classes.bootstrapInput,
                   },
                 }}
                 InputLabelProps={{
@@ -190,10 +200,19 @@ class Auth extends Component {
                   className: classes.bootstrapFormLabel,
                 }}
               />
+              {!this.state.controls.password.valid && this.state.controls.password.touched ? (
+                <div className={cls.ErrorText}>
+                  {this.state.controls.password.errorText}
+                </div>
+              ) : null}
             </Paper>
           </Grid> 
           <Grid item xs={12}>
-            <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton} >Ingresar</button>
+            {this.state.formIsValid ? (
+              <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button>
+            ): (
+              <button className={cls.pageButtonInvalid}>Ingresar</button>
+            )}
           </Grid>
         </Grid>
       </div>

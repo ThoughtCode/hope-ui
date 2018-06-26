@@ -327,6 +327,7 @@ class Form extends Component {
                   value={this.state.registerForm.password.value}
                   onChange={(event) => this.inputChangedHandler(event, 'password')}
                   fullWidth
+                  type="password"
                   placeholder="Contraseña"
                   id="password"
                   InputProps={{
@@ -356,6 +357,7 @@ class Form extends Component {
                   value={this.state.registerForm.password_confirmation.value}
                   onChange={(event) => this.inputChangedHandler(event, 'password_confirmation')}
                   fullWidth
+                  type="password"
                   placeholder="Confirme Contraseña"
                   id="password-confirmation"
                   InputProps={{

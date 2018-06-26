@@ -142,7 +142,7 @@ class AppBarMenu extends Component {
       )
     } else {
       menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={2}>
+        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
               <NavLink to="/">

@@ -21,14 +21,17 @@ function FullWidthGrid(props) {
 
   return (
     <div className={`${cls.TopSeccion} ${classes.root}`} align="center">
-      <Grid container className={cls.Testimonio} align="left" alignItems="center">
-        <Grid item xs={12}>
+      <Grid container alignItems="center" justify="center">
+        <Grid item xs={12} sm={5}>
           <Paper className={classes.paper} elevation={0}>
             <Typography variant="headline" gutterBottom className={cls.SubTitle} >Nuestros Clientes</Typography>
             <Typography variant="headline" gutterBottom className={cls.SubTypogra}>
               En Noc Noc buscamos siempre la excelencia por eso te compartimos algunos comentarios de nuestros clientes.
             </Typography>
           </Paper>
+        </Grid>
+        <Grid item xs={12} sm={5}>
+          <Paper className={`${classes.paper} ${cls.Testimonio}`} elevation={0}></Paper>
         </Grid>
       </Grid>
     </div>

@@ -35,6 +35,8 @@ class AppBarMenu extends Component {
   state = {
     anchorEl: null,
     openLogin: false,
+    openRegister: false,
+    openAgentLogin: false,
     open: false
   }
 
@@ -75,10 +77,13 @@ class AppBarMenu extends Component {
       openLogin: false,
       openAgentLogin: false,
       openRegister: false,
+      anchorEl: null,
+      open: false
     });
   };
 
   render() {
+    console.log(this.props.profile === 'null');
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;
@@ -106,9 +111,9 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              {this.props.profile === null ? (
+              {this.props.profile === 'null' ? (
                 <Avatar>
-                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
+                  {(localStorage.getItem('first_name').charAt(0)).toUpperCase()}{(localStorage.getItem('last_name').charAt(0)).toUpperCase()}
                 </Avatar>
               ) : (
                 <Avatar
@@ -138,11 +143,11 @@ class AppBarMenu extends Component {
               </Menu>
             </div>
           </Toolbar>
-        </AppBar>        
+        </AppBar>
       )
     } else {
       menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={2}>
+        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
               <AnchorLink href="#main">

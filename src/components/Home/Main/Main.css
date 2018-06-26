@@ -118,6 +118,12 @@
     width: 100% !important;
     margin: 4px 0px !important;
   }
+  .Modal {
+    top: 14%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+    border-radius: 5px 5px 5px 5px !important;
+  }
 }
 
 @media only screen and (min-width: 600px) {

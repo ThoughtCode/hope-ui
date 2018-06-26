@@ -32,7 +32,7 @@ class AppBarMenu extends Component {
   state = {
     anchorEl: null,
     openLogin: false,
-    open: false
+    open: false,
   }
 
   handleMenu = event => {
@@ -82,8 +82,8 @@ class AppBarMenu extends Component {
               ) : (
                 <Avatar
                   src={this.props.profile}/>
-              )}
-              <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
+                )}
+                <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu
                 className={cls.SubMenu}

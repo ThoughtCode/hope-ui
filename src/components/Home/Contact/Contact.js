@@ -52,7 +52,7 @@ function FullWidthGrid(props) {
                       <NavLink className={cls.Link} to="/">Principios y Valores</NavLink>
                     </li>
                     <li className={cls.ListContact}>
-                      <NavLink className={cls.Link} to="/politicas">Politicas de Calidad</NavLink>
+                      <NavLink className={cls.Link} to="/politicas">Terminos y Condiciones</NavLink>
                     </li>
                   </ul>
                 </Paper>

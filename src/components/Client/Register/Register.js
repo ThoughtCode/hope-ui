@@ -195,13 +195,9 @@ class Register extends Component {
           </Grid>
         </Grid>
         <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >          
-          <Grid item xs={12} align="center" >
+          <Grid item xs={12} sm={12} align="center" >
             <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
             <div><FormRegister /></div>
-            <div className={cls.ButtonConten}>
-              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
-              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/reset" >Olvido su contraseña</Button>
-            </div>
           </Grid>
           <div className={cls.Divider}>
             <i className="material-icons">circle</i>
@@ -221,6 +217,10 @@ class Register extends Component {
                 </Button>      
               )}
             />
+          </div>
+          <div className={cls.ButtonConten}>
+            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
+            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/reset" >Olvido su contraseña</Button>
           </div>
         </Grid>
       </div>

@@ -178,7 +178,7 @@ class BookingForm extends Component {
                                 <label className={cls.LabelInput} htmlFor="diary">
                                   <div className={cls.BoxRadio}>
                                     <div className={cls.BoxPlanRadio}>
-                                      Diario
+                                      Semanal
                                     </div>
                                   </div>
                                 </label>
@@ -195,7 +195,7 @@ class BookingForm extends Component {
                                 <label className={cls.LabelInput} htmlFor="weekly">
                                   <div className={cls.BoxRadio}>
                                     <div className={cls.BoxPlanRadio}>
-                                      Semanal
+                                      Quincenal
                                     </div>
                                   </div>
                                 </label>

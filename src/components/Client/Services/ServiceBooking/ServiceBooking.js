@@ -177,6 +177,7 @@ class ServiceBooking extends Component {
     const formData = {};
     formData["property_id"] = this.state.form.property;
     formData["started_at"] = this.state.form.started_at;
+    formData["frequency"] = this.state.form.recurrent;
     formData["job_details_attributes"] = [{
       service_id: this.state.form.services_base.id,
       value: 1

@@ -50,8 +50,8 @@ const mapDispatchToProps = dispatch => {
     onFetchNeightborhoods: (token, id) => dispatch(actions.fetchNeightborhoods(token, id)),
     onCreateProperty: (token, formData) => dispatch(actions.createProperty(token, formData)),
     onCreateJob: (token, formData) => dispatch(actions.createJob(token, formData)),
-  }
-}
+  };
+};
 
 const mapStateToProps = state => {
   return {
@@ -60,7 +60,7 @@ const mapStateToProps = state => {
     properties: state.property.properties,
     cities: state.city.cities,
     neightborhoods: state.neightborhood.neightborhoods,
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Service);

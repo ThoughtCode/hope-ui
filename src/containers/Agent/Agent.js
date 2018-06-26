@@ -24,7 +24,7 @@ class Agent extends Component {
           <Route path={`${this.props.match.url}/mistrabajos`} exact component={MisTrabajos}/>
           <Route path={`${this.props.match.url}/calendario`} exact component={Calendario}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
-          <Route path={`${this.props.match.url}/dashboard/detalles`} component={DetailsJob}/>
+          <Route path={`${this.props.match.url}/trabajo/:job_id`} component={DetailsJob}/>
           <Redirect to={`${this.props.match.url}/dashboard`}/>
         </Switch>
       </div>

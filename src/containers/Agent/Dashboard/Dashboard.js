@@ -21,7 +21,7 @@ class DashboardAgent extends Component {
       <div className={cls.Dashboard}>
         <MenuBar />
         <Filter filter={this.props.onFetchJobs}/>
-        <MainDashboardAgent />
+        <MainDashboardAgent jobs={this.props.jobs} />
       </div>
     );
   };

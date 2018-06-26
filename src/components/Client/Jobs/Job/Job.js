@@ -38,6 +38,7 @@ const job = props => {
           <li>{detail.service.name}</li>
         );
       }
+      return null;
     })
   }
   let avatar = props.agent ? props.agent.avatar : Profile;

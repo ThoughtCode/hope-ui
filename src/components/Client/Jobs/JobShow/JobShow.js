@@ -16,7 +16,6 @@ import cls from './JobShow.css';
 
 class JobShow extends Component {
   render() {
-    console.log(this.props.job);
     let date = null;
     let caption = null;
     let services = null;
@@ -154,7 +153,6 @@ class JobShow extends Component {
         </Grid>
       );
     }
-
     return (
       <div>
         <Grid container justify="center">
@@ -176,7 +174,11 @@ class JobShow extends Component {
                       <Grid item xs={12}>
                         <Paper>{services}</Paper>
                       </Grid>
-                      <Button className={cls.ButtonCancelar}>CANCELAR TRABAJO</Button>
+                      <Button
+                        className={cls.ButtonCancelar}
+                        onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
+                        CANCELAR TRABAJO
+                      </Button>
                     </Grid>
                   </Paper>
                 </Grid>

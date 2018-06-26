@@ -14,7 +14,8 @@ class Job extends Component {
     return (
       <JobShow
         job={this.props.job}
-        accepted={this.props.onAcceptedJob}/>
+        accepted={this.props.onAcceptedJob}
+        cancelled={this.props.onCancelledJob}/>
     );
   }
 }
@@ -22,14 +23,15 @@ class Job extends Component {
 const mapStateToProps = state => {
   return {
     job: state.job.job,
-  }
+  };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
-  }
-}
+    onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Job);

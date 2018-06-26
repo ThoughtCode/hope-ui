@@ -258,4 +258,41 @@ export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
       console.log(err);
       dispatch(acceptedJobFail());
     })
-}
+};
+
+export const cancelledJobStart = () => ({
+  type: actionTypes.CANCELLED_JOB_START,
+});
+
+export const cancelledJobSuccess = () => ({
+  type: actionTypes.CANCELLED_JOB_SUCCESS,
+});
+
+export const cancelledJobFail = () => ({
+  type: actionTypes.CANCELLED_JOB_FAIL,
+});
+
+export const cancelledJob = (token, job_id) => dispatch => {
+  dispatch(cancelledJobStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/customers/jobs/${job_id}/cancelled`, headers)
+    .then((res) => {
+      dispatch(cancelledJobSuccess());
+      dispatch(push('/cliente/dashboard'));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(cancelledJobFail());
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+};

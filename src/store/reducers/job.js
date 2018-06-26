@@ -45,6 +45,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ACCEPTED_JOB_START: return state;
     case actionTypes.ACCEPTED_JOB_SUCCESS: return acceptedJobSuccess(state, action);
     case actionTypes.ACCEPTED_JOB_FAIL: return state;
+    case actionTypes.CANCELLED_JOB_START: return state;
+    case actionTypes.CANCELLED_JOB_SUCCESS: return state;
+    case actionTypes.CANCELLED_JOB_FAIL: return state;
     default: return state;
   }
 };

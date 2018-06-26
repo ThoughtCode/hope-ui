@@ -35,6 +35,7 @@ export {
   fetchNextJobs,
   fetchJobsAgent,
   acceptedJob,
+  cancelledJob,
 } from './job';
 export {
   fetchCurrentUser,

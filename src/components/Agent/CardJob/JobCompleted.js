@@ -10,7 +10,6 @@ import Typography from 'material-ui/Typography';
 // Css
 import cls from './CardJob.css';
 import Profile from './img/0.jpeg';
-import CheckBox from './CheckBox';
 
 const styles = theme => ({
     paper: {
@@ -60,7 +59,6 @@ function CardJob(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <Paper className={classes.paper} elevation={0}>
-                                    <CheckBox />
                                 </Paper>
                             </Grid>
                         </Grid>

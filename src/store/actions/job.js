@@ -219,9 +219,9 @@ export const fetchJobsAgent = (token, filter) => dispatch => {
   }
   axios.get(`/agents/jobs?${body.join('&')}`, headers)
     .then((res) => {
-      let historyjobs = [];
-      historyjobs = res.data.job.data;
-      dispatch(fetchJobsAgentSuccess(historyjobs));
+      let jobs = [];
+      jobs = res.data.job.data;
+      dispatch(fetchJobsAgentSuccess(jobs));
     })
     .catch((err) => {
       dispatch(fetchJobsAgentFail(err));

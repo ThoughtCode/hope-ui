@@ -28,6 +28,10 @@ const acceptedJobSuccess = (state, action) => updateObject(state, {
   job: action.job,
 });
 
+const fetchAgentJobsSuccess = (state, action) => updateObject(state, {
+  jobs: action.jobs,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -45,6 +49,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.ACCEPTED_JOB_START: return state;
     case actionTypes.ACCEPTED_JOB_SUCCESS: return acceptedJobSuccess(state, action);
     case actionTypes.ACCEPTED_JOB_FAIL: return state;
+    case actionTypes.FETCH_AGENT_JOBS_START: return state;
+    case actionTypes.FETCH_AGENT_JOBS_SUCCESS: return fetchAgentJobsSuccess(state, action);
+    case actionTypes.FETCH_AGENT_JOBS_FAIL: return state;
     default: return state;
   }
 };

@@ -56,19 +56,11 @@ class Filter extends Component {
   filterHandler = (event) => {
     event.preventDefault();
     let filter = {};
-    filter.min_price = '';
-    filter.max_price = '';
-    if (this.state.filter.min_price !== 0) {
-      filter.min_price = this.state.filter.min_price;
-    }
-
-    if (this.state.filter.max_price !== 0) {
-      filter.max_price = this.state.filter.max_price;
-    }
-    filter.date_from = this.state.filter.date_from;
+    filter.min_price = this.state.filter.min_price;
+    filter.max_price = this.state.filter.max_price;
+    filter.date_from = moment(this.state.filter.date_from).format();
     filter.date_to = moment(this.state.filter.date_to).format();
-    filter.frequency = moment(this.state.filter.frequency).format();
-
+    filter.frequency = this.state.filter.frequency;
     this.props.filter(localStorage.getItem('token'), filter);
   };
 

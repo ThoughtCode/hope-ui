@@ -10,17 +10,25 @@ import cls from './MainDashboardAgent.css'
 
 class MainDashboardAgent extends Component {
   render() {
+    let jobs = (
+      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>No trabajos</Typography>
+    );
+    if (this.props.jobs.length > 0) {
+      jobs = this.props.jobs.map(job => (
+        <CardJob
+          job={job}/>
+      ));
+    }
     return (
       <Grid container justify="center" className={cls.MainDashboardAgent}>
         <Grid item xs={12} sm={5}>
           <Paper elevation={0}>
             <Typography variant="title" gutterBottom className={cls.Typogra}>Trabajos</Typography>
           </Paper>
-        </Grid>
-          
+        </Grid>  
         <Grid item xs={12} className={cls.PaginationTop}>
           <Paper elevation={0}>
-            <CardJob />
+            {jobs}
           </Paper>
         </Grid>
         <Grid item xs={12} sm={5}>

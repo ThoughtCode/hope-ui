@@ -21,7 +21,7 @@ class Agent extends Component {
         <MenuBar auth={this.props.auth} logout={this.props.onLogout} profile={this.props.profile}/>
         <Switch>
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
-          <Route path={`${this.props.match.url}/mistrabajos`} exact component={MisTrabajos}/>
+          <Route path={`${this.props.match.url}/trabajos`} exact component={MisTrabajos}/>
           <Route path={`${this.props.match.url}/calendario`} exact component={Calendario}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} component={DetailsJob}/>

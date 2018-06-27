@@ -15,8 +15,10 @@ class MainDashboardAgent extends Component {
     );
     if (this.props.jobs.length > 0) {
       jobs = this.props.jobs.map(job => (
-        <CardJob
-          job={job}/>
+        <Paper key={job.id} className={cls.CardJob} elevation={0}>
+          <CardJob
+            job={job}/>
+        </Paper>
       ));
     }
     return (
@@ -27,35 +29,35 @@ class MainDashboardAgent extends Component {
           </Paper>
         </Grid>  
         <Grid item xs={12} className={cls.PaginationTop}>
-          <Paper elevation={0}>
-            {jobs}
-          </Paper>
+          {jobs}
         </Grid>
-        <Grid item xs={12} sm={5}>
-          <Paper elevation={0}>
-            <Grid container justify="flex-end" align="right" alignItems="center" className={cls.PaginationTop}>
-              <Grid item xs={12} sm={4}>
-                <Paper elevation={0}>
-                  <Typography variant="body1">1-2 de 15</Typography>
-                </Paper>
+        {this.props.total_pages > 0 ? (
+          <Grid item xs={12} sm={5}>
+            <Paper elevation={0}>
+              <Grid container justify="flex-end" align="right" alignItems="center" className={cls.PaginationTop}>
+                <Grid item xs={12} sm={4}>
+                  <Paper elevation={0}>
+                    <Typography variant="body1">{this.props.current_page} de {this.props.total_pages}</Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={1}>
+                  <Paper elevation={0}>
+                    <Typography variant="subheading">
+                      <i onClick={this.props.goBack} className="material-icons">keyboard_arrow_left</i>
+                    </Typography>
+                  </Paper>
+                </Grid>
+                <Grid item xs={12} sm={1}>
+                  <Paper elevation={0}>
+                    <Typography variant="subheading">
+                      <i onClick={this.props.goNext} className="material-icons">keyboard_arrow_right</i>
+                    </Typography>
+                  </Paper>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sm={1}>
-                <Paper elevation={0}>
-                  <Typography variant="subheading">
-                    <i className="material-icons">keyboard_arrow_left</i>
-                  </Typography>
-                </Paper>
-              </Grid>
-              <Grid item xs={12} sm={1}>
-                <Paper elevation={0}>
-                  <Typography variant="subheading">
-                    <i className="material-icons">keyboard_arrow_right</i>
-                  </Typography>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
+            </Paper>
+          </Grid>
+        ) : null}
       </Grid>
     );
   }

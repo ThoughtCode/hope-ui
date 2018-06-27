@@ -47,3 +47,9 @@
   vertical-align: baseline;
   width: 92% !important;
 }
+
+@media only screen and (max-width: 600px){
+  .bootstrapInput{
+    width: 100% !important;
+  }
+}

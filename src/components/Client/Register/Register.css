@@ -114,4 +114,23 @@
   .RegisterContainer{
     padding-top: 0 !important;
   }
+  .IconFacebook{
+    width: 30px;
+    margin: 0 8px;
+  }
+  .ButtonFacebookText{
+    font-size: 0.8rem !important;
+  }
+  .ModalHeader{
+    padding: 0px;
+  }
+  .pageButtonRegistroAgente{
+    width: 130px !important;
+  }
+  .ButtonFacebookText{
+    padding: 10px !important;
+  }
+  .ButtonFacebookContainer{
+    padding: 2px 10px;
+  }
 }

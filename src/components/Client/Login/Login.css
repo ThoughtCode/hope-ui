@@ -120,16 +120,38 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .Typogra {
-    font-size: 1rem !important;
+  .Login{
+    height: 480px;
+    width: 300px;
   }
-  .form{
-    padding: 0 3vh !important;
+  .Title{
+    font-size: 1em !important;
+    padding: 8px 15px !important;
+  }
+  .Typogra {
+    font-size: 0.8em !important;
   }
   .ButtonConten {
     text-align: center;
   }
+  .ButtonFacebookText{
+    font-size: 0.8rem !important;
+    padding: 10px !important;
+  }
+  .ButtonFacebookContainer{
+    padding: 2px 10px;
+  }
+  .PageButtonRegister{
+    width: 130px !important;
+  }
   .LoginContainer{
     padding-top: 0vh !important;
+  }
+  .ModalHeader{
+    padding: 0px;
+  }
+  .IconFacebook{
+    width: 30px;
+    margin: 0 8px;
   }
 }

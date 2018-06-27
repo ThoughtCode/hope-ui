@@ -107,6 +107,35 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .Login{
+    height: 412px;
+    width: 300px;
+  }
+  .ModalHeader{
+    padding: 0px;
+  }
+  .Applogo {
+    height: 4em;
+  }
+  .pageButtonLogin{
+    margin: 0 !important;
+    width: 0 !important;
+  }
+  .ButtonFacebookText{
+    font-size: 0.8rem !important;
+    padding: 10px !important;
+  }
+  .ButtonFacebookContainer{
+    padding: 2px 10px;
+  }
+  .IconFacebook{
+    width: 30px;
+    margin: 0 8px;
+  }
+  .pageButtonLogin{
+    width: 130px !important;
+    padding: 8px 4px !important;
+  }
   .Typogra {
     font-size: 1rem !important;
   }

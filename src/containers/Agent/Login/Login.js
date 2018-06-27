@@ -45,14 +45,14 @@ class Login extends Component {
             </Grid>
           </Grid>
           <Grid container justify="center" className={cls.LoginContainer}>
-            <Grid item xs={12}>
+            <Grid item xs={2} sm={12}>
               <Paper className={cls.paper} elevation={0}>
                  <Button className={cls.pageButtonLogin} component={Link} to="/" >
                   <img src={Logo} className={cls.Applogo} alt="logo" />
                  </Button>
               </Paper>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={10} sm={12}>
               <Paper className={cls.paper} elevation={0}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>ENTRA COMO AGENTE</Typography>
               </Paper>

@@ -36,16 +36,14 @@ class Login extends Component {
       <div>
         <div className={cls.Login}>
           <Grid container className={cls.ModalHeader}>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Button onClick={this.props.close}>
                 <i className="material-icons">clear</i>
               </Button>
             </Grid>
           </Grid>
           <Grid container justify="center" className={cls.LoginContainer}>
-            <Grid item xs={12} sm={12}>
-            </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper elevation={0}>
                 <Typography variant="headline" gutterBottom className={cls.Title}>Entra a la plataforma de tus sueños en servicios</Typography>
               </Paper>

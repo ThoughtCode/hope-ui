@@ -213,7 +213,7 @@ class FormRegister extends Component {
     return (
       <div className={cls.container}>
         <Grid container>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
                 value={this.state.registerForm.first_name.value}
@@ -242,7 +242,7 @@ class FormRegister extends Component {
               ) : null}
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
                 value={this.state.registerForm.last_name.value}
@@ -300,7 +300,7 @@ class FormRegister extends Component {
               ) : null}
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
                 value={this.state.registerForm.password.value}
@@ -330,7 +330,7 @@ class FormRegister extends Component {
               ) : null}
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6} sm={6}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
                 type={'password'}

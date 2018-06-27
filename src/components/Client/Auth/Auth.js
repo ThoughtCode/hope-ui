@@ -148,11 +148,12 @@ class Auth extends Component {
   render () {
     const { classes } = this.props;
     return (
-      <div className={cls.container}>
+      <div>
         <Grid container>
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                className={cls.bootstrapInput}
                 placeholder="Correo"
                 value={this.state.controls.email.value}
                 onChange={(event) => this.inputChangedHandler(event, 'email')}
@@ -181,6 +182,7 @@ class Auth extends Component {
           <Grid item xs={12} className={cls.InputLogin}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                className={cls.bootstrapInput}
                 type={'password'}  
                 placeholder="Contraseña"
                 id="Contrasena"

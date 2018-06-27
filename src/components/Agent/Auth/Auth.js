@@ -153,6 +153,7 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                className={cls.bootstrapInput}
                 value={this.state.controls.email.value}
                 onChange={(event) => this.inputChangedHandler(event, 'email')}
                 placeholder="Correo"
@@ -181,6 +182,7 @@ class Auth extends Component {
           <Grid item xs={12}>
             <Paper className={classes.paper} elevation={0}>
               <TextField
+                className={cls.bootstrapInput}
                 value={this.state.controls.password.value}
                 onChange={(event) => this.inputChangedHandler(event, 'password')}
                 type={'password'}  

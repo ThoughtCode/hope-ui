@@ -2,10 +2,8 @@
   background-image: url(https://cache.hbfiles.com/assets/home/bee_line-5390828ee24500c636ca98f9682b99ac.svg);
   background-position: 40% 55%;
   background-repeat: no-repeat;
-  /* padding-top: 5.75em; */
   padding-top: 15vh;
   padding-bottom: 30px;
-  /* padding-bottom: 3.875em; */
 }
 
 .Typogra {
@@ -47,15 +45,11 @@
 
 @media only screen and (max-width: 600px) {
   .stylesFuntion {
-    padding: 2rem;
-    padding-top: 5rem;
+    background-image: none;
   }
   .Typogra {
     font-size: 1.4rem !important;
     font-weight: bold !important;
-  }
-  .Styleicon {
-    display: none;
   }
   .SubTypogra {
     font-size: 1rem !important;
@@ -65,7 +59,7 @@
     width: 1.5rem;
   }
   .SubSubTypogra{
-    text-align: justify;
+    text-align: center;
     font-family: Arial !important;
   }
   .congratulation{
@@ -75,6 +69,9 @@
   }
   .IconDownload{
     height: 2em;
+  }
+  .Separator {
+    padding: 40px 0 !important;
   }
 }
 

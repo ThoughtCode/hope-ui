@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
+import { Grid, Paper} from 'material-ui';
 import Typography from 'material-ui/Typography';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
@@ -76,15 +76,17 @@ class Main extends Component {
                   Registrate y agenda los servicios que Noc Noc tiene para ti.
                 </Typography>
               </Grid>
-              <Grid item xs={12} sm={4} align="right">
-                <Modal
-                  open={this.state.openRegister}
-                  onClose={this.handleClose}
-                >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
-                    <Registro close={this.handleClose} />
-                  </div>
-                </Modal>
+              <Grid item xs={6} sm={12} align="right">
+                <Paper className={classes.paper}>
+                  <Modal
+                    open={this.state.openRegister}
+                    onClose={this.handleClose}
+                  >
+                    <div className={`${cls.Modal} ${classes.paper}`}>
+                      <Registro close={this.handleClose} />
+                    </div>
+                  </Modal>
+                </Paper>
                 <Modal
                   open={this.state.openLogin}
                   onClose={this.handleClose}

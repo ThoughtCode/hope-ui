@@ -77,6 +77,8 @@ class AppBarMenu extends Component {
       openLogin: false,
       openAgentLogin: false,
       openRegister: false,
+      anchorEl: null,
+      open: false
     });
   };
 
@@ -141,11 +143,11 @@ class AppBarMenu extends Component {
               </Menu>
             </div>
           </Toolbar>
-        </AppBar>        
+        </AppBar>
       )
     } else {
       menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={2}>
+        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
               <AnchorLink href="#main">

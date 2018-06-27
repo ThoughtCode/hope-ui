@@ -18,7 +18,7 @@
 }
 .ButtonFacebookContainer{
   border-radius: 5px 5px 5px 5px !important;
-  padding: 20px;
+  padding: 2px 22px;
   width: 100%;
 }
 .ButtonFacebookText{
@@ -32,7 +32,7 @@
 }
 .IconFacebook{
   width: 4vh;
-  margin: 0 3vh;
+  margin: 0 30px;
 }
 .Divider{
   border: 0;
@@ -102,6 +102,9 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .Register{
+    width: 300px;
+  }
   .Typogra {
     font-size: 1rem !important;
   }

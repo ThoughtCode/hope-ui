@@ -15,7 +15,40 @@
 }
 .Content{
     margin-bottom: 5em;
+    color: #0069a7 !important;
+    font-weight: 700 !important;
 }
 .SubContent{
     margin-top: 1.5em !important;
+    color: #0069a7 !important;
+    font-weight: 700 !important;
+}
+.Text{
+    font-size: 1em !important;
+}
+.SmallText{
+    background-color: yellow;
+    font-size: 1em !important;
+}
+
+@media only screen and (max-width: 600px){
+    .PoliciesContent {
+        padding-top: 50px !important;
+        padding-bottom: 0 !important;
+    }
+    .Title{
+        margin-top: 2em;
+    }
+    .TitlePrincipal{
+        font-size: 1.5em !important;
+    }
+    .Content{
+        font-size: 1.3em !important;
+    }
+    .SubContent{
+        font-size: 1.3em !important;
+    }
+    .Text{
+        font-size: 0.8em !important;
+    }
 }

@@ -27,7 +27,7 @@ class JobShow extends Component {
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`;
       if (this.props.job.attributes.frequency === 'one_time') {
         frequency = 'Una vez';
-      } else if (this.props.job.attributes.frequency === 'diary') {
+      } else if (this.props.job.attributes.frequency === 'fortnightly') {
         frequency = 'Quincenal';
       } else if (this.props.job.attributes.frequency === 'weekly') {
         frequency = 'Semanal';

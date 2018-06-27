@@ -155,8 +155,8 @@ class BookingForm extends Component {
                                 <input className={cls.RadioInput}
                                   id="one_time"
                                   type="radio"
-                                  value="1"
-                                  checked={this.props.form.recurrent.value === '1'}
+                                  value="0"
+                                  checked={this.props.form.recurrent.value === '0'}
                                   onChange={this.props.handleRecurrentChange}/>
                                 <label className={cls.LabelInput} htmlFor="one_time">
                                   <div className={cls.BoxRadio}>
@@ -172,8 +172,8 @@ class BookingForm extends Component {
                                 <input className={cls.RadioInput}
                                   id="diary"
                                   type="radio"
-                                  value="2"
-                                  checked={this.props.form.recurrent.value === '2'}
+                                  value="1"
+                                  checked={this.props.form.recurrent.value === '1'}
                                   onChange={this.props.handleRecurrentChange}/>
                                 <label className={cls.LabelInput} htmlFor="diary">
                                   <div className={cls.BoxRadio}>
@@ -189,8 +189,8 @@ class BookingForm extends Component {
                                 <input className={cls.RadioInput}
                                   id="weekly"
                                   type="radio"
-                                  value="3"
-                                  checked={this.props.form.recurrent.value === '3'}
+                                  value="2"
+                                  checked={this.props.form.recurrent.value === '2'}
                                   onChange={this.props.handleRecurrentChange}/>
                                 <label className={cls.LabelInput} htmlFor="weekly">
                                   <div className={cls.BoxRadio}>
@@ -206,8 +206,8 @@ class BookingForm extends Component {
                                 <input className={cls.RadioInput}
                                   id="monthly"
                                   type="radio"
-                                  value="4"
-                                  checked={this.props.form.recurrent.value === '4'}
+                                  value="3"
+                                  checked={this.props.form.recurrent.value === '3'}
                                   onChange={this.props.handleRecurrentChange}/>
                                 <label className={cls.LabelInput} htmlFor="monthly">
                                   <div className={cls.BoxRadio}>

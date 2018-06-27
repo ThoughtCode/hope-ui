@@ -17,7 +17,7 @@ class ServiceBooking extends Component {
     value: '',
     form: {
       recurrent: {
-        value: '2',
+        value: '0',
       },
       services_base: {
         id: 0,
@@ -177,7 +177,7 @@ class ServiceBooking extends Component {
     const formData = {};
     formData["property_id"] = this.state.form.property;
     formData["started_at"] = this.state.form.started_at;
-    formData["frequency"] = this.state.form.recurrent;
+    formData["frequency"] = parseInt(this.state.form.recurrent.value, 10);
     formData["job_details_attributes"] = [{
       service_id: this.state.form.services_base.id,
       value: 1

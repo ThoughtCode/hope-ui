@@ -58,8 +58,20 @@ function Download(props) {
                       <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
                       Recibe notificaciones
                     </Typography>
-                    <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
-                    <img src={AppStore} className={cls.iconSocial} alt="App Store" />
+                  </Paper>
+                  <Paper elevation={0}>
+                    <Grid container>
+                      <Grid item xs={6} sm={6}>
+                        <Paper className={cls.Paper} elevation={0}>
+                          <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={6} sm={6}>
+                        <Paper className={cls.Paper} elevation={0}>
+                          <img src={AppStore} className={cls.iconSocial} alt="App Store" />
+                        </Paper>
+                      </Grid>
+                    </Grid>
                   </Paper>
                 </Grid>
               </Paper>

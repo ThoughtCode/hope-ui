@@ -1,7 +1,7 @@
 .Login{
   border-radius: 5px 5px 5px 5px !important;  
   text-align: center;
-  height: 79vh;
+  height: 570px;
   width: 600px;
 }
 
@@ -36,7 +36,7 @@
 
 .ButtonFacebookContainer{
   border-radius: 5px 5px 5px 5px !important;
-  padding: 20px 0;
+  padding: 6px 0;
   width: 95%;
 }
 

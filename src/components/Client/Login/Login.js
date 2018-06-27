@@ -56,8 +56,18 @@ class Login extends Component {
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>"Busca y contrata tu servicio."</Typography>
               </Paper>
             </Grid>
+            <Grid item xs={12}>
+              <Paper elevation={0}>
+                <Auth />
+              </Paper>
+            </Grid>
             <Grid item xs={12} align="center">
               <Paper elevation={0}>
+                <div className={cls.Divider}>
+                  <i className="material-icons">circle</i>
+                  <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
+                  <i className="material-icons">circle</i>
+                </div>
                 <div className={cls.ButtonFacebookContainer}>
                   <FacebookLogin
                     appId="2057031764572769"
@@ -72,16 +82,6 @@ class Login extends Component {
                     )}
                   />
                 </div>
-                <div className={cls.Divider}>
-                  <i className="material-icons">circle</i>
-                  <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
-                  <i className="material-icons">circle</i>
-                </div>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper elevation={0}>
-                <Auth />
               </Paper>
             </Grid>
           </Grid>

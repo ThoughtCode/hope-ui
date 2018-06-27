@@ -80,7 +80,9 @@ class Home extends Component {
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paper} id="contact">
               <Contact />
-              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>Powerare by Thoughtcode</Typography>
+              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>
+                <a component="a" href="http://thoughtcode.co/" style={{textDecoration: 'none', color: 'white' }}>Diseñado por Thoughtcode</a>
+              </Typography>
             </Paper>
           </Grid>
         </Grid>

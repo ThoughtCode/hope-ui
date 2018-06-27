@@ -38,7 +38,7 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <Paper className={classes.paper} elevation={0}>
+          <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper className={classes.paper} elevation={0}>
@@ -67,7 +67,7 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <Paper className={classes.paper} elevation={0}>
+          <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12} sm={8}>
                 <Paper className={classes.paper} elevation={0}>
@@ -86,7 +86,7 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={3}>
-          <Paper className={classes.paper} elevation={0}>
+          <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12} sm={10}>
                 <Paper className={classes.paper} elevation={0}>

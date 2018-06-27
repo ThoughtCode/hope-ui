@@ -1,3 +1,8 @@
+.Applogo {
+  height: 100px;
+  margin: 0.5rem;
+}
+
 .App-name{
   font-size: 1rem;
   margin: 0.5rem;
@@ -5,16 +10,21 @@
   float: right;
 }
 
-.Applogo {
-  height: 65px;
-  margin: 0.5rem;
-  margin-left: 2rem;
+.styleAnchor {
+  color: #676d73 !important;
+  text-decoration: none;
+  text-transform: capitalize !important;
+  font-family: Arial !important;
+  font-size: 20px !important;
 }
 
-.styleAnchor {
-  text-decoration: none;
+.styleAnchor:hover{
+  background-color: transparent !important;
   color: #0069A7 !important;
-  font-family: Arial !important;
+}
+
+.stykeItem:hover{
+  background-color: transparent !important;
 }
 
 .MenuItem{
@@ -27,8 +37,8 @@
 }
 
 .SubMenu{
-  top: 70px !important;
-  left: 20px !important;
+  top: 90px !important;
+  left: 40px !important;
 }
 
 .SubMenuItem{
@@ -52,9 +62,14 @@
   color: #0069A7 !important;
 }
 
+.Avatar{
+  margin: 0 20px !important;
+}
+
 .Avatar:hover{
   background-color: transparent !important;
 }
+
 .AppBar {
   background-color: transparent;
   border-bottom: 1px solid #e9eced;

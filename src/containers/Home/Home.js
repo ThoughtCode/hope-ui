@@ -31,7 +31,7 @@ const styles = myTheme => ({
 class Home extends Component {
   render() {
     return (
-        <Grid container>
+        <Grid container justify="center">
           <Grid item xs={12}>
             <Paper elevation={0} className={`${classes.paper} ${classes.MenuBar}`}>
               <MenuBar />
@@ -72,7 +72,7 @@ class Home extends Component {
               <Testimonio />
             </Paper>
           </Grid>
-          <Grid item xs={12} id="Download" className={cls.Download}>
+          <Grid item xs={12} md={8} id="Download" className={cls.Download}>
             <Paper elevation={0} className={classes.paper}>
               <Download />
             </Paper>

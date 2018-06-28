@@ -35,7 +35,7 @@
   border: 1px solid #0069a7 !important;
   text-decoration: none !important;
   padding: .95em 0 !important;
-  width: 35% !important;
+  width: 100% !important;
   margin: 4px 15px !important;
   font-family: Arial !important;
 }
@@ -47,8 +47,11 @@
     background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),url(//cache.hbfiles.com/assets/home/mobile_testimonial-16d4a5142f734b10e113bb3f55d2d6e5.jpeg);
     background-repeat: no-repeat;
     background-position: center;
-    padding: 0 1rem;
+    background-size: cover !important;
     height: 300px;
+  }
+  .Typogra{
+    font-size: 1em !important;
   }
   .TopSeccion{
     margin: 0.5em 0 !important;
@@ -57,10 +60,6 @@
     margin-top: 0 !important;
   }
   .pageButtonActive {
-    font-size: 1em !important;
-    border-radius: 5px !important;
-    padding: .85em 0 !important;
-    width: 100% !important;
-    margin: 4px 0px !important;
+    font-size: 0.8em !important;
   }
 }

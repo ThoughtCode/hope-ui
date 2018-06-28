@@ -37,7 +37,7 @@ function FullWidthGrid(props) {
             <Typography variant="headline" gutterBottom className={cls.Typogra} >¿Cómo Funciona?</Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12}>
@@ -53,12 +53,12 @@ function FullWidthGrid(props) {
                   </Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={6} sm={5}>
+              <Grid item xs={5} sm={6}>
                 <Paper elevation={0}>
                   <img src={GooglePlay} className={cls.IconDownload} alt="GoolglePlay" />
                 </Paper>
               </Grid>
-              <Grid item xs={6} sm={5}>
+              <Grid item xs={5} sm={6}>
                 <Paper elevation={0}>
                   <img src={AppStore} className={cls.IconDownload} alt="App Store" />
                 </Paper>
@@ -66,7 +66,7 @@ function FullWidthGrid(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12} sm={8}>
@@ -85,7 +85,7 @@ function FullWidthGrid(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={`${cls.Separator} ${classes.paper}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12} sm={10}>
@@ -104,7 +104,7 @@ function FullWidthGrid(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={classes.paper} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12} sm={10}>

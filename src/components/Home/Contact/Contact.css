@@ -146,6 +146,15 @@
   .Paper{
     padding: 0.5rem 0;
   }
+  .Border{
+    border: none
+  }
+  .UlContact{
+    text-align: center;
+  }
+  .ContentSocial{
+    justify-content: space-around !important;
+  }
 }
 
 @media only screen and (min-width: 1280px) {

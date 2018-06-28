@@ -17,7 +17,8 @@ class MainDashboardAgent extends Component {
       jobs = this.props.jobs.map(job => (
         <Paper key={job.id} className={cls.CardJob} elevation={0}>
           <CardJob
-            job={job}/>
+            job={job}
+            apply={this.props.applyProposal}/>
         </Paper>
       ));
     }

@@ -129,7 +129,7 @@ const cardJob = (props) => {
               <Paper className={`${cls.pageButtonJobCurrentCancelar} ${classes.paper}`}>
                 <Grid container align="center">
                   <Grid item xs={12}>
-                    <Button className={cls.ButtonCancelar} fullWidth >APLICAR</Button>
+                    <Button className={cls.ButtonCancelar} onClick={() => props.apply(localStorage.getItem('token'), props.job.id)} fullWidth >APLICAR</Button>
                   </Grid>
                 </Grid>
               </Paper>

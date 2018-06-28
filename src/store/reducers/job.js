@@ -57,6 +57,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_AGENT_JOBS_START: return state;
     case actionTypes.FETCH_AGENT_JOBS_SUCCESS: return fetchAgentJobsSuccess(state, action);
     case actionTypes.FETCH_AGENT_JOBS_FAIL: return state;
+    case actionTypes.APPLY_PROPOSAL_START: return state;
+    case actionTypes.APPLY_PROPOSAL_SUCCESS: return fetchAgentJobsSuccess(state, action);
+    case actionTypes.APPLY_PROPOSAL_FAIL: return state;
     default: return state;
   }
 };

@@ -303,3 +303,39 @@ export const cancelledJob = (token, job_id) => dispatch => {
       });
     })
 };
+
+export const applyProposalStart = () => ({
+  type: actionTypes.APPLY_PROPOSAL_START,
+});
+
+export const applyProposalSuccess = () => ({
+  type: actionTypes.APPLY_PROPOSAL_SUCCESS,
+});
+
+export const applyProposalFail = () => ({
+  type: actionTypes.APPLY_PROPOSAL_FAIL,
+});
+
+export const applyProposal = (token, job_id) => dispatch => {
+  dispatch(applyProposalStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post(`/agents/jobs/${job_id}/proposals`, headers)
+    .then((res) => {
+      dispatch(applyProposalSuccess());
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(applyProposalFail());
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};

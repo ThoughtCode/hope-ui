@@ -18,6 +18,7 @@ const styles = theme => ({
 });
 
 const cardJob = (props) => {
+  console.log(props.job);
   const { classes } = props;
   let service_base = null;
   let frequency = null;

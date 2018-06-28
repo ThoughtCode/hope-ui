@@ -323,7 +323,7 @@ export const applyProposal = (token, job_id) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.post(`/agents/jobs/${job_id}/proposals`, headers)
+  axios.post(`/agents/jobs/${job_id}/proposals`, null, headers)
     .then((res) => {
       dispatch(applyProposalSuccess());
       Alert.success(res.data.message, {

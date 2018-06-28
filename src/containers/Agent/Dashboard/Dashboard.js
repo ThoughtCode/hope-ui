@@ -155,7 +155,8 @@ class DashboardAgent extends Component {
           total_pages={this.props.total_pages}
           current_page={this.state.filter.current_page}
           goNext={this.goNext}
-          goBack={this.goBack} />
+          goBack={this.goBack} 
+          applyProposal={this.props.onApplyProposal} />
       </div>
     );
   };
@@ -163,6 +164,7 @@ class DashboardAgent extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onFetchJobs: (token, filter) => dispatch(actions.fetchJobsAgent(token, filter)),
+  onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
 });
 
 const mapStateToProps = state => ({

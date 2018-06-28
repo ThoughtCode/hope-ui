@@ -26,12 +26,39 @@ function FullWidthGrid(props) {
 
   return (
     <div className={classes.root}>
+      <Grid container className={cls.Services} spacing={24}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Typography variant="headline" gutterBottom className={cls.Typogra}>Servicios</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>
+            <Grid container spacing={24} justify="center">
+              <Grid item xs={12} sm={6}>
+                <Paper className={classes.paper}>
+                  <img className={cls.ImageResponsive} src={Service1} alt="pinture" />
+                  <Grid container spacing={24}>
+                    <Grid item xs={12} sm={6}>
+                      <Paper className={classes.paper}>xs=12 sm=6</Paper>
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <Paper className={classes.paper}>xs=12 sm=6</Paper>
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Paper>
+        </Grid>
+      </Grid>
+
+
       <Grid container className={cls.Services} justify="center">
         <Grid item xs={12} sm={8}>
           <Grid container>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Servicios</Typography>
               </Paper>
             </Grid>
             
@@ -39,7 +66,6 @@ function FullWidthGrid(props) {
               <Grid item xs={12} sm={6} md={8} className={cls.TestimonialsContainer}>
                 <Paper className={classes.paper} elevation={0}>
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Limpieza de hogar</Typography>
-                  <img className={cls.ImageResponsive} src={Service1} alt="pinture" />
                 </Paper>
               </Grid>
               <Grid item xs={12}>

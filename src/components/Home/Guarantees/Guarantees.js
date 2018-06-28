@@ -30,7 +30,7 @@ function FullWidthGrid(props) {
           <Grid container>
             
             <Grid container align="center" justify="center" className={cls.TopSeccion}>
-              <Grid item xs={12} sm={4} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Paper className={classes.paper} elevation={0}>
                   <img className={cls.icon} src={Profesionales} alt="Profesionales" />
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profesionales con experiencias</Typography>
@@ -39,7 +39,7 @@ function FullWidthGrid(props) {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={4} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Paper className={classes.paper} elevation={0}>
                   <img className={cls.icon} src={GuaranteesAlDia} alt="Garantias Al Dia"/>
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Disponibilidad al día</Typography>
@@ -48,7 +48,7 @@ function FullWidthGrid(props) {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={4} md={4}>
+              <Grid item xs={12} sm={6} md={4}>
                 <Paper className={classes.paper} elevation={0}>
                   <img className={cls.icon} src={Guarante} alt="Garantias" />
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Garantía de felicidad con NocNoc</Typography>

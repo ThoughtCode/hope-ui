@@ -36,30 +36,30 @@ class Aside extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-      <Grid container className={cls.IsTold} justify="center">
+      <Grid container className={cls.IsTold} justify="center" alignItems="center">
         <Grid item xs={12} md={8} sm={12}>
-          <Grid container align="center"  className={cls.TopSeccion}>
+          <Grid container align="center" justify="center" className={cls.TopSeccion}>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>Es hora de que alguien lo haga por ti.</Typography>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>"Busca y contrata tu servicio."</Typography>
               </Paper>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
               <Paper className={classes.paper} elevation={0}>
-                <div className={cls.LandingButton}>
-                  <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Contrátalo</Button>
-                  <Modal
-                    aria-labelledby="simple-modal-title"
-                    aria-describedby="simple-modal-description"
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                  >
-                  <Registro close={this.handleClose}/>
-                  </Modal>
-                </div>
+                <Button className={cls.pageButtonActive} onClick={this.handleOpen} >Contrátalo</Button>
               </Paper>
             </Grid>
+            <div className={cls.LandingButton}>
+              <Modal
+                aria-labelledby="simple-modal-title"
+                aria-describedby="simple-modal-description"
+                open={this.state.open}
+                onClose={this.handleClose}
+              >
+              <Registro close={this.handleClose}/>
+              </Modal>
+            </div>
           </Grid>
         </Grid>
       </Grid>

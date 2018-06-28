@@ -3,12 +3,16 @@
   background-size: cover;
   flex-grow: 1;
   padding-top: 60px;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
   background-color: #fafafa;
 }
-.Typogra {
-  font-size: 2rem !important;
-  font-family: Arial !important;
+.SubTitle{
+  color: #0069a7 !important;
+  font-size: 2.25em !important;
+  font-weight: 300 !important;
+  line-height: 1.25em !important;
+  font-family: "Arial", "Helvetica", sans-serif !important;
+  margin-bottom: 20px !important;
 }
 .SubheadingTypogra{
   color: rgba(0, 0, 0, 0.54) !important;
@@ -19,19 +23,20 @@
   max-width: 30em;
   margin-left: auto;
   margin-right: auto;
+  display: flex !important;
 }
 .IconosDownload{
   color: #85c544 !important;
-  padding: .3em .3em;
+  padding: .0em;
+  padding-right: .3em !important;
   font-weight: bold;
 }
-.img{
-  max-width: 100%;
-  position: center !important;
+.Text{
+  display: inline-block;
+  margin: 0px 0px !important;
 }
-.iconSocial{
-  height: 3.25em;
-  margin: 1em;
+.IconDownload{
+  height: 3em;
 }
 
 @media only screen and (max-width: 600px) {
@@ -39,40 +44,63 @@
     padding: 0.5rem;
     padding-top: 0;
   }
-  .Typogra {
+  .SubTitle{
     font-size: 1.4rem !important;
     font-weight: bold !important;
+    text-align: center !important;
   }
-  .img{
+  .SubheadingTypogra{
+    font-size: 0.8em !important;
+    line-height: 0em !important;
+    max-width: 30em;
+    display: flex !important;
+  }
+  .IconosDownload{
+    padding: .0em .3em;
+    font-weight: bold;
+  }
+  .Text{
+    display: inline-block;
+    margin: 10px 0px !important;
+  }
+  .ContentDownload{
+    text-align: center;
+  }
+  .IconDownload{
+    height: 2em !important;
+  }
+  .Img{
     display: none;
-  }
-  .iconSocial{
-    width: 100px;
   }
 }
 
 @media only screen and (max-width: 960px) {
-  .stylesDownload {
-    padding: 0.5rem;
-  }
-  .Typogra {
-    font-size: 1rem !important;
+  .SubTitle{
+    font-size: 1.4rem !important;
     font-weight: bold !important;
+    text-align: center !important;
   }
-  .img{
+  .stylesDownload {
+    padding: 0px;
+  }
+  .Img{
     display: none;
   }
 }
 
 @media only screen and (max-width: 1280px) {
-  
-}
-
-@media only screen and (min-width: 1920px) {
-  .img{
-    padding-top: 3rem !important;
-    width: 70% !important;
-    position: left !important;
+  .SubTitle{
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    text-align: center !important;
+  }
+  .ContentDownload{
+    text-align: center;
+  }
+  .IconDownload{
+    height: 2.3em;
+  }
+  .Img{
+    max-width: 90%;
   }
 }
-

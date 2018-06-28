@@ -55,7 +55,7 @@
 @media only screen and (max-width: 600px) {
   .Services{
   	padding: auto;
-  	padding-top: 5rem;
+  	padding-top: 2rem;
   }
   .Typogra {
     font-size: 1.4rem !important;
@@ -90,7 +90,7 @@
 }
 
 @media only screen and (max-width: 960px) {
-  .Services{
+  /* .Services{
     padding-top: 5rem;
-  }
+  } */
 }

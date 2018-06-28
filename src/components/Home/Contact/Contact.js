@@ -29,14 +29,14 @@ function FullWidthGrid(props) {
   return (
     <div className={cls.Contact}>
       <Grid container align="center">
-        <Grid item xs={6} sm={3}>
+        <Grid item xs={6} sm={6} md={3}>
           <Paper className={cls.Paper} elevation={0}>
             <Typography variant="title">
               <img src={LogoNocNoc} height="100px" alt="Logo" className={cls.LogoNocNoc}></img>
             </Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={cls.Paper} elevation={0}>
             <Grid container>
               <Grid item xs={12}>
@@ -60,7 +60,7 @@ function FullWidthGrid(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={cls.Paper} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12}>
@@ -75,7 +75,7 @@ function FullWidthGrid(props) {
             </Grid>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12} sm={6} md={3}>
           <Paper className={cls.Paper} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12}>
@@ -105,7 +105,7 @@ function FullWidthGrid(props) {
         </Grid>
         <Grid item xs={12}>
           <Paper className={cls.Paper} elevation={0}>
-            <Grid container justify="flex-end" align="center">
+            <Grid container className={cls.ContentSocial} justify="flex-end" align="center">
               <Grid item xs={4} sm={1}>
                 <Paper className={cls.Paper} elevation={0}>
                   <img src={Facebook} alt="AppLogo" className={cls.Styleicon} />

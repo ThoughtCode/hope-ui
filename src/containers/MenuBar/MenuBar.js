@@ -154,16 +154,16 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <MenuItem>
+            <MenuItem className={cls.MenuItem}>
               <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
             </MenuItem>
-            <MenuItem>
+            <MenuItem className={cls.MenuItem}>
               <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
             </MenuItem>
-            <MenuItem>
+            <MenuItem className={cls.MenuItem}>
               <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
             </MenuItem>
-            <MenuItem>
+            <MenuItem className={cls.MenuItem}>
               <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
             </MenuItem>
           </Toolbar>

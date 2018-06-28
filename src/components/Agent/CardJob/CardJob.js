@@ -30,7 +30,7 @@ const cardJob = (props) => {
   services_addon = props.job.attributes.job_details.map(j => {
     if (j.service.type_service === 'addon') {
       return (
-        <li>{j.service.name}</li>
+        <li key={j.id}>{j.service.name}</li>
       );
     };
     return null;
@@ -99,14 +99,14 @@ const cardJob = (props) => {
                   <Grid item xs={12} sm={6}>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="title" gutterBottom className={cls.TypograFechaPrecio}>
-                        {moment(props.date).format('MMMM D').replace(/\b\w/g, l => l.toUpperCase())}
+                        {moment(props.job.attributes.started_at).format('MMMM D').replace(/\b\w/g, l => l.toUpperCase())}
                       </Typography>
                     </Paper>
                   </Grid>
                   <Grid item xs={12} sm={6} className={cls.BordeFecha}>
                     <Paper className={classes.paper} elevation={0}>
                       <Typography variant="title" gutterBottom className={cls.TypograFechaPrecio}>
-                        {moment(props.date).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
+                        {moment(props.job.attributes.started_at).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                       </Typography>
                     </Paper>
                   </Grid>

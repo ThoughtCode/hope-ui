@@ -50,7 +50,6 @@ class AppBarMenu extends Component {
   };
 
   render() {
-    console.log(this.props.profile === null);
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;
@@ -65,7 +64,7 @@ class AppBarMenu extends Component {
               </AnchorLink>
             </Typography>
             <MenuItem className={cls.MenuItem} component={Link} to="/agente">Dashboard</MenuItem>
-            <MenuItem className={cls.MenuItem} component={Link} to="/agente/mistrabajos">Mis Trabajos</MenuItem>
+            <MenuItem className={cls.MenuItem} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
             <MenuItem className={cls.MenuItem} component={Link} to="/agente/calendario">Calendario</MenuItem>
             <div>
               <IconButton

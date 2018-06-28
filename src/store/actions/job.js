@@ -196,9 +196,10 @@ export const fetchJobsAgentFail = (error) => ({
   error,
 });
 
-export const fetchJobsAgentSuccess = (jobs) => ({
+export const fetchJobsAgentSuccess = (jobs, total_pages) => ({
   type: actionTypes.FETCH_AGENT_JOBS_SUCCESS,
   jobs,
+  total_pages,
 });
 
 export const fetchJobsAgent = (token, filter) => dispatch => {
@@ -220,8 +221,14 @@ export const fetchJobsAgent = (token, filter) => dispatch => {
   axios.get(`/agents/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let jobs = [];
-      jobs = res.data.job.data;
-      dispatch(fetchJobsAgentSuccess(jobs));
+      if (res.data.job) {
+        jobs = res.data.job.data;
+      } else {
+        jobs = res.data.data;
+      }
+      let total_pages = 0;
+      total_pages = res.headers['x-total-pages'];
+      dispatch(fetchJobsAgentSuccess(jobs, total_pages));
     })
     .catch((err) => {
       dispatch(fetchJobsAgentFail(err));

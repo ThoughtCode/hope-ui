@@ -6,6 +6,7 @@ const initialState = {
   job: [],
   nextjobs: [],
   historyjobs: [],
+  total_pages: 0,
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -30,6 +31,7 @@ const acceptedJobSuccess = (state, action) => updateObject(state, {
 
 const fetchAgentJobsSuccess = (state, action) => updateObject(state, {
   jobs: action.jobs,
+  total_pages: action.total_pages,
 });
 
 const reducer = (state = initialState, action) => {

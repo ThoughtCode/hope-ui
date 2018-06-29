@@ -5,6 +5,7 @@ const initialState = {
   jobs: [],
   job: [],
   acceptedjobs:[],
+  completedjobs:[],
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
@@ -39,6 +40,10 @@ const fetchJobAgentCurrent = (state, action) => updateObject(state, {
   acceptedjobs: action.acceptedjobs,
 });
 
+const fetchJobAgenteCompleted = (state, action) => updateObject(state, {
+  completedjobs: action.completedjobs,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -68,6 +73,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_AGENT_CURRENT_START: return state;
     case actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS: return fetchJobAgentCurrent(state, action);
     case actionTypes.FETCH_JOB_AGENT_CURRENT_FAIL: return state;
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_START: return state;
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgenteCompleted(state, action);
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_FAIL: return state;
     default: return state;
   }
 };

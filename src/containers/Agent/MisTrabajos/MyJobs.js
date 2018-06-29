@@ -15,39 +15,43 @@ import * as actions from '../../../store/actions';
 class MisTrabajos extends Component {
   componentDidMount() {
     this.props.onFetchJobAgentCurrent(localStorage.getItem('token'));
+    this.props.onFetchJobAgenteCompleted(localStorage.getItem('token'));
   };
   render() {
     return (
-        <div>
-            <MenuBar />
-            <Grid container justify="center" className={cls.root}>
-                <Grid item xs={12} sm={10}>
-                    <Paper elevation={0}>
-                        <Grid container justify="center">
-                            <Grid item xs={12}>
-                                <Paper elevation={0}>
-                                    <Typography variant="title" gutterBottom className={cls.Typogra}>Mis Trabajos</Typography>
-                                </Paper>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Paper elevation={0}>
-                                    <MiJobsMain
-                                      jobs={this.props.acceptedjobs} />
-                                </Paper>
-                            </Grid>
-                        </Grid>
-                    </Paper>
+      <div>
+        <MenuBar />
+        <Grid container justify="center" className={cls.root}>
+          <Grid item xs={12} sm={10}>
+            <Paper elevation={0}>
+              <Grid container justify="center">
+                <Grid item xs={12}>
+                  <Paper elevation={0}>
+                    <Typography variant="title" gutterBottom className={cls.Typogra}>Mis Trabajos</Typography>
+                  </Paper>
                 </Grid>
-            </Grid>
-        </div>
+                <Grid item xs={12}>
+                  <Paper elevation={0}>
+                    <MiJobsMain
+                      jobs={this.props.acceptedjobs}
+                      jobsCompleted={this.props.completedjobs} />
+                  </Paper>
+                </Grid>
+              </Grid>
+            </Paper>
+          </Grid>
+        </Grid>
+      </div>
     );
   }
 }
 const mapDispatchToProps = dispatch => ({
     onFetchJobAgentCurrent: (token) => dispatch(actions.fetchJobAgentCurrent(token)),
+    onFetchJobAgenteCompleted: (token) => dispatch(actions.fetchJobAgenteCompleted(token)),
 });
 const mapStateToProps = state => ({
   acceptedjobs: state.job.acceptedjobs,
+  completedjobs: state.job.completedjobs,
   total_pages: state.job.total_pages,
 });
 

@@ -44,9 +44,35 @@ class MiJobsMain extends React.Component {
   };
   render() {
     const { classes, theme } = this.props;
+    let jobs = (
+      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>
+        <p>No tienes trabajos actuales</p><br/><p>Aplica trabajos y aumenta tus ingresos</p>
+      </Typography>
+    );
+    if (this.props.jobs.length > 0) {
+      jobs = this.props.jobs.map(job => (
+        <TabContainer key={job.id} dir={theme.direction}>
+          <JobCurrent
+            job={job} />
+        </TabContainer>
+      ));
+    }
+    let jobsCompleted = (
+      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>
+        <p>No tienes trabajos completados</p><br/><p>Aplica trabajos y aumenta tus ingresos</p>
+      </Typography>
+    );
+    if (this.props.jobsCompleted.length > 0) {
+      jobsCompleted = this.props.jobsCompleted.map(job => (
+        <TabContainer key={job.id} dir={theme.direction}>
+          <JobCompleted
+            job={job} />
+        </TabContainer>
+      ));
+    }
     return (
       <div className={classes.root}>
-      {/* {console.log(this.props.jobs)} */}
+      {console.log(this.props.jobsCompleted)}
         <AppBar position="static" className={cls.AppBar} elevation={0}>
           <Tabs
             value={this.state.value}
@@ -65,11 +91,10 @@ class MiJobsMain extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <JobCurrent
-              jobCurrent={this.props.jobs}/>
+            {jobs} 
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <JobCompleted />
+            {jobsCompleted}
           </TabContainer>
         </SwipeableViews>
       </div>

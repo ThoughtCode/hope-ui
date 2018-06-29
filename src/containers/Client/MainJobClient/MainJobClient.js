@@ -1,32 +1,16 @@
 // Dependencias
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+
+// Componentes
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
-import Typography from 'material-ui/Typography';
-
-// Componentes
 import cls from './MainJobClient.css';
 import JobFutures from '../CardJobClient/JobFuturesClient';
 import JobPast from '../CardJobClient/JobPastClient';
-
-function TabContainer(props) {
-  const { children, dir } = props;
-
-  return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
-      {children}
-    </Typography>
-  );
-}
-
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
-};
+import TabContainer from '../../../components/Client/TabContainer/TabContainer';
 
 const styles = theme => ({
   root: {
@@ -36,7 +20,7 @@ const styles = theme => ({
   },
 });
 
-class FloatingActionButtonZoom extends React.Component {
+class MainJobClient extends Component {
   state = {
     value: 0,
   };
@@ -82,10 +66,4 @@ class FloatingActionButtonZoom extends React.Component {
     );
   }
 }
-
-FloatingActionButtonZoom.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles, { withTheme: true })(FloatingActionButtonZoom);
+export default withStyles(styles, { withTheme: true })(MainJobClient);

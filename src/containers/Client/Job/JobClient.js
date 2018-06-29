@@ -1,12 +1,14 @@
 // Dependencias
 import React, { Component } from 'react';
+
+// Componentes
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-
-// Componentes
-import cls from './JobClient.css';
 import MainJobClient from '../MainJobClient/MainJobClient'
+
+// Css
+import cls from './JobClient.css';
 
 class JobClient extends Component {
   render() {

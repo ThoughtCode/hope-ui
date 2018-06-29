@@ -333,9 +333,16 @@ export const applyProposal = (token, job_id) => dispatch => {
     })
     .catch((err) => {
       dispatch(applyProposalFail());
-      Alert.error(err.response.data.message, {
-        position: 'bottom',
-        effect: 'genie',
-      });
+      if (err.response.data.message.base) {
+        Alert.error(err.response.data.message.base[0], {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      } else if (err.response.data.message) {
+        Alert.error(err.response.data.message, {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      }
     });
 };

@@ -9,12 +9,30 @@ import {
   Typography,
   Avatar,
   Button,
+  Modal,
 } from 'material-ui';
+import CancelBookingModal from '../CancelBookingModal/CancelBookingModal';
 
 // Css
 import cls from './JobShow.css';
 
 class JobShow extends Component {
+  state = {
+    openCancell: false,
+  }
+
+  handleClose = () => {
+    this.setState({
+      openCancell: false,
+    });
+  };
+
+  handleOpen = () => {
+    this.setState({
+      openCancell: true,
+    });
+  }
+
   render() {
     let date = null;
     let caption = null;
@@ -22,7 +40,25 @@ class JobShow extends Component {
     let frequency = null;
     let agents = null;
     let agentTitle = null;
+    let button = null;
     if (this.props.job.attributes) {
+      if (this.props.job.attributes.can_cancel) {
+        button = (
+          <Button
+            className={cls.ButtonCancelar}
+            onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
+            CANCELAR TRABAJO
+          </Button>
+        )
+      } else {
+        button = (
+          <Button
+            className={cls.ButtonCancelar}
+            onClick={this.handleOpen}>
+            CANCELAR TRABAJO
+          </Button>
+        )
+      }
       date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY').replace(/\b\w/g, l => l.toUpperCase());
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`;
       if (this.props.job.attributes.frequency === 'one_time') {
@@ -174,11 +210,7 @@ class JobShow extends Component {
                       <Grid item xs={12}>
                         <Paper>{services}</Paper>
                       </Grid>
-                      <Button
-                        className={cls.ButtonCancelar}
-                        onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
-                        CANCELAR TRABAJO
-                      </Button>
+                      {button}
                     </Grid>
                   </Paper>
                 </Grid>
@@ -200,6 +232,17 @@ class JobShow extends Component {
             </Paper>
           </Grid>
         </Grid>
+        <Modal
+          open={this.state.openCancell}
+          onClose={this.handleClose}
+        >
+          <div className={cls.Modal}>
+            <CancelBookingModal
+              close={this.handleClose}
+              cancelled={this.props.cancelled}
+              job_id={this.props.job.id} />
+          </div>
+        </Modal>
       </div>
     )
   }

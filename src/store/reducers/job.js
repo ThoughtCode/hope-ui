@@ -4,6 +4,7 @@ import { updateObject } from '../utility';
 const initialState = {
   jobs: [],
   job: [],
+  acceptedjobs:[],
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
@@ -34,6 +35,10 @@ const fetchAgentJobsSuccess = (state, action) => updateObject(state, {
   total_pages: action.total_pages,
 });
 
+const fetchJobAgentCurrent = (state, action) => updateObject(state, {
+  acceptedjobs: action.acceptedjobs,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -60,6 +65,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.APPLY_PROPOSAL_START: return state;
     case actionTypes.APPLY_PROPOSAL_SUCCESS: return state;
     case actionTypes.APPLY_PROPOSAL_FAIL: return state;
+    case actionTypes.FETCH_JOB_AGENT_CURRENT_START: return state;
+    case actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS: return fetchJobAgentCurrent(state, action);
+    case actionTypes.FETCH_JOB_AGENT_CURRENT_FAIL: return state;
     default: return state;
   }
 };

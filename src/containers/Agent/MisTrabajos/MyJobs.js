@@ -1,17 +1,22 @@
 // Dependencias
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+// Componentes
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-
-// Componentes
 import cls from './MisTrabajos.css';
 import MenuBar from '../../MenuBar/MenuBarAgent';
-import MainMisTrabajos from '../../../components/Agent/MainMisTrabajos/MainMisTrabajos'
+import MiJobsMain from '../../../components/Agent/MiJobsMain/MiJobsMain';
+
+import * as actions from '../../../store/actions';
 
 class MisTrabajos extends Component {
+  componentDidMount() {
+    this.props.onFetchJobAgentCurrent(localStorage.getItem('token'));
+  };
   render() {
-
     return (
         <div>
             <MenuBar />
@@ -26,7 +31,8 @@ class MisTrabajos extends Component {
                             </Grid>
                             <Grid item xs={12}>
                                 <Paper elevation={0}>
-                                    <MainMisTrabajos />
+                                    <MiJobsMain
+                                      jobs={this.props.acceptedjobs} />
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -37,5 +43,12 @@ class MisTrabajos extends Component {
     );
   }
 }
+const mapDispatchToProps = dispatch => ({
+    onFetchJobAgentCurrent: (token) => dispatch(actions.fetchJobAgentCurrent(token)),
+});
+const mapStateToProps = state => ({
+  acceptedjobs: state.job.acceptedjobs,
+  total_pages: state.job.total_pages,
+});
 
-export default MisTrabajos;
+export default connect(mapStateToProps, mapDispatchToProps)(MisTrabajos);

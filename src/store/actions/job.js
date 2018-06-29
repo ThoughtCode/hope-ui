@@ -339,3 +339,36 @@ export const applyProposal = (token, job_id) => dispatch => {
       });
     });
 };
+
+export const fetchJobAgentCurrentStart = () => ({
+  type: actionTypes.FETCH_JOB_AGENT_CURRENT_START,
+});
+
+export const fetchJobAgentCurrentFail = error => ({
+  type: actionTypes.FETCH_JOB_AGENT_CURRENT_FAIL,
+  error,
+});
+
+export const fetchJobAgentCurrentSuccess = acceptedjobs => ({
+  type: actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS,
+  acceptedjobs,
+});
+
+export const fetchJobAgentCurrent = (token) => dispatch => {
+  
+  dispatch(fetchJobAgentCurrentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get(`/agents/jobs/accepted`, headers)
+  .then((res) => {
+      let jobs = [];
+      jobs = res.data.job.data;
+      dispatch(fetchJobAgentCurrentSuccess(jobs));
+    })
+    .catch((err) => {
+      dispatch(fetchJobAgentCurrentFail(err));
+    });
+}

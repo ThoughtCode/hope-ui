@@ -2,7 +2,6 @@ import React from 'react';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
-import PropTypes from 'prop-types';
 import moment from 'moment';
 import {Avatar} from 'material-ui';
 import Button from 'material-ui/Button';
@@ -18,11 +17,37 @@ const styles = theme => ({
     },
 });
 
-function CardJob(props) {
-  const { classes } = props;
 
+const CardJob = ( props ) => {
+  const { classes } = props;
+  // let service_base = null;
+  let frequency = null;
+  // let services_addon = null;
+  // props.jobCurrent.attributes.job_details.forEach(j => {
+  //   if (j.service.type_service === 'base') {
+  //     service_base = j.service.name;
+  //   };
+  // });
+  // services_addon = props.jobCurrent.attributes.job_details.map(j => {
+  //   if (j.service.type_service === 'addon') {
+  //     return (
+  //       <li key={j.id}>{j.service.name}</li>
+  //     );
+  //   };
+  //   return null;
+  // });
+  // if (props.jobCurrent.attributes.frequency === 'one_time') {
+  //   frequency = 'Una vez';
+  // } else if (props.jobCurrent.attributes.frequency === 'weekly') {
+  //   frequency = 'Semanal';
+  // } else if (props.jobCurrent.attributes.frequency === 'fortnightly') {
+  //   frequency = 'Quincenal';
+  // } else if (props.jobCurrent.attributes.frequency === 'monthly') {
+  //   frequency = 'Mensual';
+  // };
   return (
     <div className={cls.root}>
+    {console.log(props.jobCurrent)}
       <Grid container justify="center">
         <Grid item xs={6}>
             <Grid container alignItems="center" className={cls.CardJob}>
@@ -31,10 +56,10 @@ function CardJob(props) {
                     <Paper className={classes.paper} elevation={0}>
                         <Grid container alignItems="center">
                             <Grid item xs={12} sm={6}>
-                                <Paper className={`${cls.TitleCard} ${classes.paper}`} elevation={0}>Limpieza de Casa Current</Paper>
+                                <Paper className={`${cls.TitleCard} ${classes.paper}`} elevation={0}>service_base</Paper>
                             </Grid>
                             <Grid item xs={12} sm={2}>
-                                <Paper className={`${cls.StatuCard} ${classes.paper}`} elevation={0}>Mensual</Paper>
+                                <Paper className={`${cls.StatuCard} ${classes.paper}`} elevation={0}>{frequency}</Paper>
                             </Grid>
                             <Grid item xs={12} sm={4}>
                                 <Paper className={classes.paper} elevation={0}>
@@ -60,6 +85,7 @@ function CardJob(props) {
                             </Grid>
                             <Grid item xs={12}>
                                 <Paper className={classes.paper} elevation={0}>
+                                  <ul>Servicio 1</ul>
                                 </Paper>
                             </Grid>
                         </Grid>
@@ -84,7 +110,7 @@ function CardJob(props) {
                                 </Paper>
                             </Grid>
                             <Grid item xs={12}>
-                                <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>30$</Typography>
+                                <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>30$s</Typography>
                             </Grid>
                         </Grid>
                     </Paper>
@@ -94,7 +120,7 @@ function CardJob(props) {
                     <Paper className={`${cls.pageButtonJobCurrentDetalles} ${classes.paper}`}>
                         <Grid container align="center">
                             <Grid item xs={12}>
-                                <Button variant="contained" className={cls.ButtonDetalles} fullWidth >VER DETALLES</Button>
+                                <Button className={cls.ButtonDetalles} fullWidth >VER DETALLES</Button>
                             </Grid>
                         </Grid>
                     </Paper>
@@ -104,7 +130,7 @@ function CardJob(props) {
                     <Paper className={`${cls.pageButtonJobCurrentCancelar} ${classes.paper}`}>
                         <Grid container align="center">
                             <Grid item xs={12}>
-                                <Button variant="contained" className={cls.ButtonCancelar} fullWidth >CANCELAR</Button>
+                                <Button className={cls.ButtonCancelar} fullWidth >CANCELAR</Button>
                             </Grid>
                         </Grid>
                     </Paper>
@@ -116,9 +142,5 @@ function CardJob(props) {
     </div>
   );
 }
-
-CardJob.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles) (CardJob);

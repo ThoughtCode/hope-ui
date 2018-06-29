@@ -5,7 +5,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // Components
 import MenuBar from '../MenuBar/MenuBarAgent';
 import Dashboard from './Dashboard/Dashboard';
-import MisTrabajos from './MisTrabajos/MisTrabajos';
+import MyJobs from './MisTrabajos/MyJobs';
 import Calendario from './Calendario/Calendario';
 import Profile from './Profile/Profile';
 import DetailsJob from './DetailsJob/DetailsJob';
@@ -21,7 +21,7 @@ class Agent extends Component {
         <MenuBar auth={this.props.auth} logout={this.props.onLogout} profile={this.props.profile}/>
         <Switch>
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
-          <Route path={`${this.props.match.url}/trabajos`} exact component={MisTrabajos}/>
+          <Route path={`${this.props.match.url}/trabajos`} exact component={MyJobs}/>
           <Route path={`${this.props.match.url}/calendario`} exact component={Calendario}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} component={DetailsJob}/>

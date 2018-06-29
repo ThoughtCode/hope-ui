@@ -34,6 +34,7 @@ export {
   fetchHistoryJobs,
   fetchNextJobs,
   fetchJobsAgent,
+  fetchJobAgentCurrent,
   acceptedJob,
   cancelledJob,
   applyProposal,

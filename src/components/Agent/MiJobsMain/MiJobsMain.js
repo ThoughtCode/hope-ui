@@ -1,6 +1,5 @@
 // Dependencias
 import React from 'react';
-import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
@@ -23,11 +22,6 @@ function TabContainer(props) {
   );
 }
 
-TabContainer.propTypes = {
-  children: PropTypes.node.isRequired,
-  dir: PropTypes.string.isRequired,
-};
-
 const styles = theme => ({
   root: {
     width: 'auto',
@@ -36,7 +30,7 @@ const styles = theme => ({
   },
 });
 
-class FloatingActionButtonZoom extends React.Component {
+class MiJobsMain extends React.Component {
   state = {
     value: 0,
   };
@@ -48,12 +42,11 @@ class FloatingActionButtonZoom extends React.Component {
   handleChangeIndex = index => {
     this.setState({ value: index });
   };
-
   render() {
     const { classes, theme } = this.props;
-
     return (
       <div className={classes.root}>
+      {/* {console.log(this.props.jobs)} */}
         <AppBar position="static" className={cls.AppBar} elevation={0}>
           <Tabs
             value={this.state.value}
@@ -72,7 +65,8 @@ class FloatingActionButtonZoom extends React.Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <JobCurrent />
+            <JobCurrent
+              jobCurrent={this.props.jobs}/>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <JobCompleted />
@@ -83,9 +77,4 @@ class FloatingActionButtonZoom extends React.Component {
   }
 }
 
-FloatingActionButtonZoom.propTypes = {
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles, { withTheme: true })(FloatingActionButtonZoom);
+export default withStyles(styles, { withTheme: true })(MiJobsMain);

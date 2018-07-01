@@ -11,6 +11,7 @@ import Typography from 'material-ui/Typography';
 import cls from './MainMisTrabajos.css';
 import JobCurrent from '../CardJob/JobCurrent';
 import JobCompleted from '../CardJob/JobCompleted';
+import JobPostulated from '../CardJob/JobPostulated';
 
 function TabContainer(props) {
   const { children, dir } = props;
@@ -83,6 +84,7 @@ class MiJobsMain extends React.Component {
           >
             <Tab label="Actuales" />
             <Tab label="Completados" />
+            <Tab label="Postulados" />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -95,6 +97,9 @@ class MiJobsMain extends React.Component {
           </TabContainer>
           <TabContainer dir={theme.direction}>
             {jobsCompleted}
+          </TabContainer>
+          <TabContainer dir={theme.direction}>
+            <JobPostulated />
           </TabContainer>
         </SwipeableViews>
       </div>

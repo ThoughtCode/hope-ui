@@ -83,7 +83,6 @@ class AppBarMenu extends Component {
   };
 
   render() {
-    console.log(this.props.profile === 'null');
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     const { classes } = this.props;

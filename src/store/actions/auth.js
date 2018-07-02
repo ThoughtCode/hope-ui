@@ -96,7 +96,6 @@ export const authAgent = (email, password) => (dispatch) => {
 };
 
 export const facebookLogin = accessToken => (dispatch) => {
-  console.log(accessToken);
   dispatch(authStart());
   const facebookData = {
     customer: {

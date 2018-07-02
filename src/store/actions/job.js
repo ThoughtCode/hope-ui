@@ -326,6 +326,7 @@ export const applyProposal = (token, job_id) => dispatch => {
   axios.post(`/agents/jobs/${job_id}/proposals`, null, headers)
     .then((res) => {
       dispatch(applyProposalSuccess());
+      dispatch(push(`/agente/trabajos`));
       Alert.success(res.data.message, {
         position: 'bottom',
         effect: 'genie',

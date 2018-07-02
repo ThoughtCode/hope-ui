@@ -10,7 +10,6 @@ import Typography from 'material-ui/Typography';
 
 // Css
 import cls from './CardJobClient.css';
-import Profile from './img/0.jpeg';
 
 const styles = theme => ({
     paper: {
@@ -39,7 +38,7 @@ function CardJob(props) {
   } else if (props.frequency === 'monthly') {
     frequency = 'Mensual';
   };
-  console.log(props.total)
+  // console.log(props.total)
   return (
     <div className={cls.root}>
         

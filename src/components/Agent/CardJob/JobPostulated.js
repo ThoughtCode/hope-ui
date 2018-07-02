@@ -3,8 +3,6 @@ import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import {Avatar} from 'material-ui';
 import Typography from 'material-ui/Typography';
 
 // Css

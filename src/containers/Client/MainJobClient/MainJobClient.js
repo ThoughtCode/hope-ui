@@ -36,6 +36,7 @@ class MainJobClient extends Component {
   render() {
     const { classes, theme } = this.props;
 
+  console.log(this.props.jobsPast)
     return (
       <div className={classes.root}>
         <AppBar position="static" className={cls.AppBar} elevation={0}>
@@ -56,16 +57,22 @@ class MainJobClient extends Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-          <Grid container >
-            <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
-                <JobFutures futureJob={this.props.futureJobsMain} />
-              </Paper>
+            <Grid container >
+              <Grid item xs={12}>
+                <Paper className={classes.paper} elevation={0}>
+                  <JobFutures futureJob={this.props.futureJobsMain} />
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <JobPast />
+            <Grid container >
+              <Grid item xs={12}>
+                <Paper className={classes.paper} elevation={0}>
+                  <JobPast jobPast={this.props.jobsPast} />
+                </Paper>
+              </Grid>
+            </Grid>
           </TabContainer>
         </SwipeableViews>
       </div>

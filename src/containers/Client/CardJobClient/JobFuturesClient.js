@@ -1,14 +1,14 @@
 // Dependencias
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import {Grid, Paper, Typography} from 'material-ui';
+import {Grid, Typography} from 'material-ui';
 import PropTypes from 'prop-types';
 
 // Css
 import cls from './CardJobClient.css';
 
 // Component
-import CardJobFutures from './CardJobFutures';
+import CardJobFutures from '../../../components/Client/Jobs/Job/Job';
 
 const styles = theme => ({
     paper: {
@@ -17,8 +17,7 @@ const styles = theme => ({
 });
 
 function CardJob(props) {
-  const { classes } = props;
-
+  
   let jobs = (
     <Typography className={cls.Title} variant="headline">
       No hay trabajos futuros
@@ -41,14 +40,14 @@ function CardJob(props) {
       />
     ));
   };
-  console.log(props.futureJob)
+  // console.log(props.futureJob)
   return (
     <div className={cls.root}>
       <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper} elevation={0}>
-            <div className={cls.Card}>{jobs}</div>
-          </Paper>
+        <Grid item xs={11}>
+          <Grid container justify="center" spacing={40}>
+            {jobs}
+          </Grid>
         </Grid>
       </Grid>
     </div>

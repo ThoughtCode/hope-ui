@@ -133,7 +133,7 @@ export const fetchHistoryJobsSuccess = historyjobs => ({
   historyjobs,
 });
 
-export const fetchHistoryJobs = (token) => dispatch => {
+export const fetchHistoryJobs = (token, limit = 4) => dispatch => {
   dispatch(fetchHistoryJobsStart());
   const headers = {
     headers: {
@@ -143,7 +143,7 @@ export const fetchHistoryJobs = (token) => dispatch => {
   var body = [];
   body.push(`status=history`);
   body.push(`current_page=${1}`);
-  body.push(`limit=${4}`);
+  body.push(`limit=${limit}`);
   axios.get(`/customers/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let historyjobs = [];

@@ -28,7 +28,7 @@ class Dashboard extends Component {
   render () {
     return (
       <div className={cls.Dashboard}>
-      {console.log(this.props.nextjobs)}
+      {/* {console.log(this.props.nextjobs)} */}
         <Jumbotron />
         <Services clicked={this.showServiceClick} services={this.props.services} />
         <NextJobs nextjobs={this.props.nextjobs} />

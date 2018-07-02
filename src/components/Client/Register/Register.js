@@ -7,7 +7,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
-import * as action from '../../../store/actions';
+import * as actions from '../../../store/actions';
 import cls from './Register.css';
 import FacebookIcon from '../../../assets/facebookicon.svg';
 import FormRegister from '../FormRegister/FormRegister';
@@ -177,6 +177,10 @@ class Register extends Component {
     });
   }
 
+  responseFacebook = (response) => {
+    this.props.onRegisterFacebook(response.accessToken);
+  }
+
   render() {
     const formElementsArray = [];
     for (const key in this.state.registerForm) {
@@ -229,7 +233,8 @@ class Register extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onRegisterUser: formData => dispatch(action.registerClient(formData)),
+  onRegisterUser: formData => dispatch(actions.registerClient(formData)),
+  onRegisterFacebook: accessToken => dispatch(actions.facebookLogin(accessToken)),
 });
 
 export default connect(null, mapDispatchToProps)(withStyles(styles)(Register));

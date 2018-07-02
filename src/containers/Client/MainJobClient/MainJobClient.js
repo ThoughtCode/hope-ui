@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 // Componentes
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
+import {AppBar, Grid, Paper} from 'material-ui';
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import cls from './MainJobClient.css';
@@ -56,7 +56,13 @@ class MainJobClient extends Component {
           onChangeIndex={this.handleChangeIndex}
         >
           <TabContainer dir={theme.direction}>
-            <JobFutures />
+          <Grid container >
+            <Grid item xs={12}>
+              <Paper className={classes.paper} elevation={0}>
+                <JobFutures futureJob={this.props.futureJobsMain} />
+              </Paper>
+            </Grid>
+          </Grid>
           </TabContainer>
           <TabContainer dir={theme.direction}>
             <JobPast />

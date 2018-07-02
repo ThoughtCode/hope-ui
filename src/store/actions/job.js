@@ -97,7 +97,7 @@ export const fetchNextJobsSuccess = nextjobs => ({
   nextjobs,
 });
 
-export const fetchNextJobs = (token) => dispatch => {
+export const fetchNextJobs = (token, limit = 4) => dispatch => {
   dispatch(fetchNextJobsStart());
   const headers = {
     headers: {
@@ -107,7 +107,7 @@ export const fetchNextJobs = (token) => dispatch => {
   var body = [];
   body.push(`status=nextjobs`);
   body.push(`current_page=${1}`);
-  body.push(`limit=${4}`);
+  body.push(`limit=${limit}`);
   axios.get(`/customers/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let nextjobs = [];

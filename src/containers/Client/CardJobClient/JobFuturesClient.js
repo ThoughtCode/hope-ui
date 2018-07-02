@@ -1,15 +1,14 @@
 // Dependencias
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
-import Grid from 'material-ui/Grid';
-import Paper from 'material-ui/Paper';
+import {Grid, Typography} from 'material-ui';
 import PropTypes from 'prop-types';
 
 // Css
 import cls from './CardJobClient.css';
 
 // Component
-import CardJobFutures from './CardJobFutures';
+import CardJobFutures from '../../../components/Client/Jobs/Job/Job';
 
 const styles = theme => ({
     paper: {
@@ -18,22 +17,37 @@ const styles = theme => ({
 });
 
 function CardJob(props) {
-  const { classes } = props;
-
+  
+  let jobs = (
+    <Typography className={cls.Title} variant="headline">
+      No hay trabajos futuros
+    </Typography>
+  );
+  if (props.futureJob.length > 0) {
+    jobs = props.futureJob.map(job => (
+      <CardJobFutures
+        key={job.id}
+        id={job.id}
+        date={job.attributes.started_at}
+        total={job.attributes.total}
+        job_details={job.attributes.job_details}
+        property={job.attributes.property}
+        agent={job.attributes.agent}
+        frequency={job.attributes.frequency}
+        avatar={job.attributes.customer.avatar.url}
+        first_name={job.attributes.customer.first_name}
+        last_name={job.attributes.customer.last_name}
+      />
+    ));
+  };
+  // console.log(props.futureJob)
   return (
     <div className={cls.root}>
       <Grid container>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper} elevation={0}><CardJobFutures /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper} elevation={0}><CardJobFutures /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper} elevation={0}><CardJobFutures /></Paper>
-        </Grid>
-        <Grid item xs={12} sm={6} md={3}>
-          <Paper className={classes.paper} elevation={0}><CardJobFutures /></Paper>
+        <Grid item xs={11}>
+          <Grid container justify="center" spacing={40}>
+            {jobs}
+          </Grid>
         </Grid>
       </Grid>
     </div>

@@ -19,7 +19,6 @@ class Login extends Component {
   }
 
   responseFacebook = (response) => {
-    console.log(response);
     this.props.onLogin(response.accessToken);
   }
 

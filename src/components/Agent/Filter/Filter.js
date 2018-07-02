@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import moment from 'moment';
 
 // Components
-import {Grid, Divider} from 'material-ui';
+import { Grid, Divider } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import InputAdornment from 'material-ui/Input/InputAdornment';
 import TextField from 'material-ui/TextField';
@@ -118,7 +118,7 @@ class Filter extends Component {
                 value={this.props.filter.frequency}
                 onChange={(event) => this.props.handleChange(event, 'frequency')}
               >
-                <FormControlLabel value="1" control={<Radio color="primary" />} label="Diario" />
+                <FormControlLabel value="1" control={<Radio color="primary" />} label="Semanal" />
               </RadioGroup>
             </FormControl>
             <FormControl component="fieldset" required error className={classes.formControl}>
@@ -129,7 +129,7 @@ class Filter extends Component {
                 value={this.props.filter.frequency}
                 onChange={(event) => this.props.handleChange(event, 'frequency')}
               >
-                <FormControlLabel value="2" control={<Radio color="primary" />} label="Semanal" />
+                <FormControlLabel value="2" control={<Radio color="primary" />} label="Quincenal" />
               </RadioGroup>
             </FormControl>
             <FormControl component="fieldset" required error className={classes.formControl}>

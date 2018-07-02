@@ -18,8 +18,8 @@ class DashboardAgent extends Component {
     filter: {
       min_price: 0,
       max_price: 0,
-      date_from: moment(Date.now()).format(),
-      date_to: moment(Date.now()).add(1, 'days').format(),
+      date_from: null,
+      date_to: null,
       frequency: '0',
       current_page: 1,
       active: false,
@@ -49,8 +49,16 @@ class DashboardAgent extends Component {
     let filter = {};
     filter.min_price = this.state.filter.min_price;
     filter.max_price = this.state.filter.max_price;
-    filter.date_from = moment(this.state.filter.date_from).format();
-    filter.date_to = moment(this.state.filter.date_to).format();
+    if (this.state.filter.date_from !== null) {
+      filter.date_from = moment(this.state.filter.date_from).format();
+    } else {
+      filter.date_from = null;
+    }
+    if (this.state.filter.date_to !== null) {
+      filter.date_to = moment(this.state.filter.date_to).format();
+    } else {
+      filter.date_to = null;
+    }
     filter.frequency = this.state.filter.frequency;
     filter.current_page = this.state.filter.current_page;
     this.props.onFetchJobs(localStorage.getItem('token'), filter);

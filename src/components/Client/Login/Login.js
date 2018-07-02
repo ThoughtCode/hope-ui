@@ -18,17 +18,8 @@ class Login extends Component {
     accessToken: null,
   }
 
-  onLoginWithFacebook = () => {
-    this.props.onLogin(this.state.accessToken);
-  }
-
   responseFacebook = (response) => {
-    const { accessToken } = response.accessToken;
-    this.setState({
-        accessToken,
-      },
-      this.onLoginWithFacebook,
-    );
+    this.props.onLogin(response.accessToken);
   }
 
   render() {
@@ -94,8 +85,7 @@ class Login extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: accessToken => dispatch(actions
-    .facebookLogin(accessToken)),
+  onLogin: accessToken => dispatch(actions.facebookLogin(accessToken)),
 });
 
 export default connect(null, mapDispatchToProps)(Login);

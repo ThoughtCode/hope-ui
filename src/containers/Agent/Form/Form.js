@@ -120,6 +120,7 @@ class Form extends Component {
         value: '',
         validation: {
           required: true,
+          maxLength: 10,
         },
         valid: false,
         touched: false,
@@ -383,11 +384,12 @@ class Form extends Component {
             </Grid>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <TextField
+              <TextField
                   value={this.state.registerForm.national_id.value}
                   onChange={(event) => this.inputChangedHandler(event, 'national_id')}
                   fullWidth
-                  placeholder="Cédula"
+                  type="number"
+                  placeholder="Cedula"
                   id="cedula"
                   InputProps={{
                     disableUnderline: true,

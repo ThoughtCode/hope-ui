@@ -22,6 +22,7 @@ import cls from './Job.css';
 import Profile from '../../../../assets/AvatarProfile.svg';
 
 moment.locale('es');
+
 const job = props => {
   let services = null;
   let addon = null;

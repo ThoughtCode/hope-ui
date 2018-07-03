@@ -15,7 +15,7 @@ import cls from './Dashboard.css'
 import * as actions from '../../../store/actions';
 
 class Dashboard extends Component {
-  componentDidMount () {
+  componentDidMount() {
     this.props.onFetchServices(this.props.token);
     this.props.onFetchNextJobs(this.props.token);
     this.props.onFetchHistoryJobs(this.props.token);
@@ -28,7 +28,6 @@ class Dashboard extends Component {
   render () {
     return (
       <div className={cls.Dashboard}>
-      {/* {console.log(this.props.nextjobs)} */}
         <Jumbotron />
         <Services clicked={this.showServiceClick} services={this.props.services} />
         <NextJobs nextjobs={this.props.nextjobs} />

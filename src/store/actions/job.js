@@ -111,7 +111,11 @@ export const fetchNextJobs = (token, limit = 4) => dispatch => {
   axios.get(`/customers/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let nextjobs = [];
-      nextjobs = res.data.job.data;
+      if (res.data.job) {
+        nextjobs = res.data.job.data;
+      } else {
+        nextjobs = res.data.data;
+      }
       dispatch(fetchNextJobsSuccess(nextjobs));
     })
     .catch((err) => {
@@ -147,7 +151,11 @@ export const fetchHistoryJobs = (token, limit = 4) => dispatch => {
   axios.get(`/customers/jobs?${body.join('&')}`, headers)
     .then((res) => {
       let historyjobs = [];
-      historyjobs = res.data.job.data;
+      if (res.data.job) {
+        historyjobs = res.data.job.data;
+      } else {
+        historyjobs = res.data.data;
+      }
       dispatch(fetchHistoryJobsSuccess(historyjobs));
     })
     .catch((err) => {
@@ -179,7 +187,11 @@ export const fetchJob = (token, job_id) => dispatch => {
   axios.get(`/customers/jobs/${job_id}`, headers)
     .then((res) => {
       let job = [];
-      job = res.data.job.data;
+      if (res.data.job) {
+        job = res.data.job.data;
+      } else {
+        job = res.data.data;
+      }
       dispatch(fetchJobSuccess(job));
     })
     .catch((err) => {

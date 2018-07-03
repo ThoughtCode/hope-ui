@@ -51,7 +51,13 @@ const job = props => {
             <Grid container>
               <Grid item xs={12}>
                 <CardHeader
-                  avatar = {<Avatar aria-label="Recipe" src={ props.agent ? props.agent.avatar.url : Profile }></Avatar>}
+                  avatar = {
+                    props.agent.avatar.url === null ? (
+                      <Avatar aria-label="Recipe">RR</Avatar>
+                    ) : (
+                      <Avatar aria-label="Recipe" src={ props.agent ? props.agent.avatar.url : Profile }></Avatar>
+                    )
+                  }
                   title={<Typography className={cls.Title}>
                           {name}
                         </Typography>}

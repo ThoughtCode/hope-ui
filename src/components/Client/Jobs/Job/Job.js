@@ -36,14 +36,13 @@ const job = props => {
     addon = props.job_details.map(detail => {
       if (detail.service.type_service === 'addon') {
         return (
-          <div><li>{detail.service.name}</li></div>
+          <div key={detail.id}><li>{detail.service.name}</li></div>
         );
       }
       return null;
     })
   }
   let name = props.agent ? props.agent.first_name + " " + props.agent.last_name : "Sin agente asignado";
-  console.log(props.agent);
   return (
     <Grid item xs={12} sm={5}>
       <Card className={cls.CardBorder}>
@@ -53,7 +52,7 @@ const job = props => {
               <Grid item xs={12}>
                 <CardHeader
                   avatar = {
-                    props.agent === null ? (
+                    props.agent == null ? (
                       <Avatar aria-label="Recipe" src={Profile}></Avatar>
                     ) : (
                       props.agent.avatar.url === null ? (

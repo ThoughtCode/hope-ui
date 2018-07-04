@@ -54,7 +54,7 @@ class BookingForm extends Component {
               <div>
                 <Grid container>
                   <h3 className={cls.SubHeaderText}>
-                    <span className={cls.SubHeaderNumber}>4</span>
+                    <span className={cls.SubHeaderNumber}>5</span>
                     <span>Elige la propiedad donde se realizara el servicio</span>
                   </h3>
                   <Grid item xs={12} sm={12} md={12} lg={6}>
@@ -91,7 +91,7 @@ class BookingForm extends Component {
           <div className={cls.Row}>
             <div>
               <h3 className={cls.SubHeaderText}>
-                <span className={cls.SubHeaderNumber}>4</span>
+                <span className={cls.SubHeaderNumber}>5</span>
                 <span>No tienes propiedades debes crear una propiedad</span>
               </h3>
               <div className={cls.SubHeaderText}>
@@ -113,7 +113,7 @@ class BookingForm extends Component {
           <div className={cls.Row}>
             <div>
               <h3 className={cls.SubHeaderText}>
-                <span className={cls.SubHeaderNumber}>4</span>
+                <span className={cls.SubHeaderNumber}>5</span>
                 <span>No tienes propiedades debes crear una propiedad</span>
               </h3>
               <div className={cls.SubHeaderText}>
@@ -224,11 +224,54 @@ class BookingForm extends Component {
                     </div>
                   </div>
                   <div className={cls.Row}>
+                    <div>
+                      <h3 className={cls.SubHeaderText}>
+                        <span className={cls.SubHeaderNumber}>2</span>
+                        <span>Eliga la fecha del servicio</span>
+                      </h3>
+                        <Grid container>
+                          <div className={cls.Service}>
+                            <Grid container>
+                              <Grid item xs={6} sm={4} md={4} lg={3}>
+                                <Grid container>
+                                  <div className={cls.Property}>
+                                    <Datetime
+                                      isValidDate={this.validDates}
+                                      value={this.props.form.started_at}
+                                      dateFormat="MM/DD/YYYY"
+                                      timeFormat={false}
+                                      onChange={this.props.changeDatetimeHandler}
+                                      inputProps={{
+                                        className: `${cls.Input}`,
+                                      }} />
+                                  </div>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={3} sm={4} md={4} lg={3}>
+                                  <Grid container>
+                                    <div className={cls.Property}>
+                                      <Datetime
+                                        isValidDate={this.validDates}
+                                        value={moment(this.props.form.started_at)}
+                                        dateFormat={false}
+                                        onChange={this.props.changeDatetimeHandler}
+                                        inputProps={{
+                                          className: `${cls.InputTime}`,
+                                        }} />
+                                    </div>
+                                  </Grid>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        </Grid>
+                    </div>
+                  </div>
+                  <div className={cls.Row}>
                     <Grid container>
                       <div>
                         <Grid container>
                           <h3 className={cls.SubHeaderText}>
-                            <span className={cls.SubHeaderNumber}>2</span>
+                            <span className={cls.SubHeaderNumber}>3</span>
                             <span>Elige el servicio de limpieza principal</span>
                           </h3>
                           <div className={cls.Service}>
@@ -253,7 +296,7 @@ class BookingForm extends Component {
                   <div className={cls.Row}>
                     <div>
                       <h3 className={cls.SubHeaderText}>
-                        <span className={cls.SubHeaderNumber}>3</span>
+                        <span className={cls.SubHeaderNumber}>4</span>
                         <span>Eliga los servicios adicionales</span>
                       </h3>
                     </div>
@@ -295,53 +338,6 @@ class BookingForm extends Component {
               <div className={cls.ServiceSection}>
                 <Grid container>
                   {properties}
-                </Grid>
-              </div>
-              <div className={cls.ServiceSection}>
-                <Grid container>
-                  <div className={cls.Row}>
-                    <div>
-                      <h3 className={cls.SubHeaderText}>
-                        <span className={cls.SubHeaderNumber}>5</span>
-                        <span>Eliga la fecha del servicio</span>
-                      </h3>
-                        <Grid container>
-                          <div className={cls.Service}>
-                            <Grid container>
-                              <Grid item xs={6} sm={4} md={4} lg={3}>
-                                <Grid container>
-                                  <div className={cls.Property}>
-                                    <Datetime
-                                      isValidDate={this.validDates}
-                                      value={this.props.form.started_at}
-                                      dateFormat="MM/DD/YYYY"
-                                      timeFormat={false}
-                                      onChange={this.props.changeDatetimeHandler}
-                                      inputProps={{
-                                        className: `${cls.Input}`,
-                                      }} />
-                                  </div>
-                                </Grid>
-                              </Grid>
-                              <Grid item xs={3} sm={4} md={4} lg={3}>
-                                  <Grid container>
-                                    <div className={cls.Property}>
-                                      <Datetime
-                                        isValidDate={this.validDates}
-                                        value={moment(this.props.form.started_at)}
-                                        dateFormat={false}
-                                        onChange={this.props.changeDatetimeHandler}
-                                        inputProps={{
-                                          className: `${cls.InputTime}`,
-                                        }} />
-                                    </div>
-                                  </Grid>
-                              </Grid>
-                            </Grid>
-                          </div>
-                        </Grid>
-                    </div>
-                  </div>
                 </Grid>
               </div>
               <div className={cls.ServiceSection}>

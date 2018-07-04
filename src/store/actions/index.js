@@ -50,3 +50,6 @@ export {
   updatedCurrentAgentAvatar,
   changePasswordAgent,
 } from './current_user';
+export {
+  showReviews,
+} from './reviews';

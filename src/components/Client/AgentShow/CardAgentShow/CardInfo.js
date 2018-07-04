@@ -7,7 +7,6 @@ import {
   Paper,
   Avatar,
   Typography,
-  Button,
 } from 'material-ui';
 
 // Css
@@ -16,7 +15,7 @@ import Image from '../../../../assets/avatar-default-300x300.jpg';
 
 const info = props => {
   let profile = null;
-  if (props.user.attributes) {
+  if (props.jobCardInfo.id)  {
     profile = (
       <Grid container>
         <Grid item xs={12}>
@@ -29,7 +28,7 @@ const info = props => {
                       <Paper elevation={0}>
                         <Avatar
                           className={cls.Avatar}
-                          src={props.user.attributes.avatar.url || Image}
+                          src={props.jobCardInfo.attributes.agent.avatar.url ? props.jobCardInfo.attributes.agent.avatar.url : Image}
                         />
                       </Paper>
                     </Grid>
@@ -42,7 +41,7 @@ const info = props => {
                     <Grid item xs={12}>
                       <Paper elevation={0}>
                         <Typography variant="headline" gutterBottom>
-                          {props.user.attributes.first_name} {props.user.attributes.last_name}
+                          {props.jobCardInfo.attributes.agent.first_name} {props.jobCardInfo.attributes.agent.last_name}
                         </Typography>
                       </Paper>
                     </Grid>
@@ -53,11 +52,11 @@ const info = props => {
                             <Grid container>
                               <Grid item xs={4}>
                                 <Paper elevation={0}>
-                                  <i class="material-icons">star</i>
-                                  <i class="material-icons">star</i>
-                                  <i class="material-icons">star</i>
-                                  <i class="material-icons">star_half</i>
-                                  <i class="material-icons">star_border</i>
+                                  <i className="material-icons">star</i>
+                                  <i className="material-icons">star</i>
+                                  <i className="material-icons">star</i>
+                                  <i className="material-icons">star_half</i>
+                                  <i className="material-icons">star_border</i>
                                 </Paper>
                               </Grid>
                               <Grid item xs={4}>
@@ -74,7 +73,7 @@ const info = props => {
                       <Paper elevation={0}>
                         <Typography variant="subheading" gutterBottom>
                           <i className="fas fa-envelope"></i>
-                          <span>{props.user.attributes.email}</span>
+                          <span>{props.jobCardInfo.attributes.agent.email}</span>
                         </Typography>
                       </Paper>
                     </Grid>
@@ -82,19 +81,19 @@ const info = props => {
                       <Paper elevation={0}>
                         <Typography variant="subheading" gutterBottom>
                           <i className="fas fa-id-card"></i>
-                          <span>{props.user.attributes.national_id}</span>
+                          <span>{props.jobCardInfo.attributes.agent.national_id}</span>
                         </Typography>
                       </Paper>
                     </Grid>
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid xs={12} sm={4}>
+              <Grid item xs={12} sm={4}>
                 <Paper elevation={0}>
                   <Grid container justify="center">
-                    <Grid xs={12} sm={4}>
+                    <Grid item xs={12} sm={4}>
                       <Paper elevation={0}>
-                        <Button className={cls.ButtonContratar}>CONTRATAR</Button>
+                        {/* <Button className={cls.ButtonContratar}>CONTRATAR</Button> */}
                       </Paper>
                     </Grid>
                   </Grid>
@@ -106,6 +105,7 @@ const info = props => {
       </Grid>
     );
   };
+  console.log(props.jobCardInfo)
   return (
     <div>
       {profile}  

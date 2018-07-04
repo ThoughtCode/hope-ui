@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {
+  Link,
+} from 'react-router-dom';
 import moment from 'moment';
 import 'moment/locale/es';
 
@@ -98,11 +101,18 @@ class JobShow extends Component {
                       20 Reviews
                     </Typography>
                   </div>
+                  {/* <Button
+                    className={cls.ButtonContratar}
+                    component={Link}
+                    to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                    >
+                    VER PERFIL
+                  </Button> */}
                   <Button
                     onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
                     className={cls.ButtonContratar}>
-                      CONTRATAR AGENTE
-                    </Button>
+                      CONTRATAR
+                  </Button>
                 </div>
               </Paper>
             </Grid>
@@ -140,9 +150,12 @@ class JobShow extends Component {
                   </Typography>
                 </div>
                 <Button
-                  className={cls.ButtonContratar}>
-                    VER PERFIL
-                  </Button>
+                  className={cls.ButtonContratar}
+                  component={Link}
+                  to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                  >
+                  VER PERFIL
+                </Button>
               </div>
             </Paper>
           </Grid>
@@ -189,6 +202,7 @@ class JobShow extends Component {
         </Grid>
       );
     }
+    // console.log(this.props.job)
     return (
       <div>
         <Grid container justify="center">

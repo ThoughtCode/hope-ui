@@ -73,7 +73,6 @@ class MiJobsMain extends React.Component {
     }
     return (
       <div className={classes.root}>
-      {console.log(this.props.jobsCompleted)}
         <AppBar position="static" className={cls.AppBar} elevation={0}>
           <Tabs
             value={this.state.value}

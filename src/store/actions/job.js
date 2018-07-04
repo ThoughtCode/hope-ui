@@ -382,7 +382,7 @@ export const fetchJobAgentCurrent = (token) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`/agents/jobs/accepted`, headers)
+  axios.get(`/agents/jobs/accepted?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
   .then((res) => {
       let jobs = [];
       jobs = res.data.job.data;
@@ -402,9 +402,9 @@ export const fetchJobAgenteCompletedFail = error => ({
   error,
 });
 
-export const fetchJobAgenteCompletedSuccess = acceptedjobs => ({
+export const fetchJobAgenteCompletedSuccess = completedjobs => ({
   type: actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS,
-  acceptedjobs,
+  completedjobs,
 });
 
 export const fetchJobAgenteCompleted = (token) => dispatch => {

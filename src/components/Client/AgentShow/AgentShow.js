@@ -16,8 +16,10 @@ import * as actions from '../../../store/actions';
 class AgentShow extends Component {
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onShowReviews(this.props.token, this.props.id);
   }
   render() {
+    // console.log(this.props.token)
     // console.log(this.props.job)
     return (
       <div>
@@ -41,7 +43,8 @@ class AgentShow extends Component {
                   <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
                       <Reviews
-                        // jobCardInfo={this.props.jobCard}
+                        token={this.props.token}
+                        job={this.props.job}
                       />
                     </Grid>
                   </Grid>
@@ -56,6 +59,7 @@ class AgentShow extends Component {
 }
 const mapStateToProps = state => {
   return {
+    token: state.auth.token || localStorage.getItem('token'),
     job: state.job.job,
   };
 };
@@ -65,6 +69,7 @@ const mapDispatchToProps = dispatch => {
     onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
     onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
+    onShowReviews: (token, id) => dispatch(actions.showReviews(token, id)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AgentShow);

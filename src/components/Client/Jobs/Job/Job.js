@@ -55,8 +55,8 @@ const job = props => {
                     props.agent == null ? (
                       <Avatar aria-label="Recipe" src={Profile}></Avatar>
                     ) : (
-                      props.agent.avatar.url === null ? (
-                        <Avatar aria-label="Recipe">{props.agent.first_name.chartAt(0).toUpperCase()}{props.agent.last_name.chartAt(0).toUpperCase()}</Avatar>
+                      props.agent.avatar.url == null ? (
+                        <Avatar aria-label="Recipe">{props.agent.first_name.toUpperCase().charAt(0)}{props.agent.last_name.toUpperCase().charAt(0)}</Avatar>
                       ) : (
                         <Avatar aria-label="Recipe" src={props.agent.avatar.url}></Avatar>
                       )

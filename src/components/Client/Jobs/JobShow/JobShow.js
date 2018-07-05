@@ -202,7 +202,7 @@ class JobShow extends Component {
         </Grid>
       );
     }
-    // console.log(this.props.job)
+    console.log(this.props.job)
     return (
       <div>
         <Grid container justify="center">

@@ -63,7 +63,7 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <MenuItem className={cls.MenuItem} component={Link} to="/agente">Dashboard</MenuItem>
+            <MenuItem className={cls.MenuItem} component={Link} to="/agente">Inicio</MenuItem>
             <MenuItem className={cls.MenuItem} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
             <MenuItem className={cls.MenuItem} component={Link} to="/agente/calendario">Calendario</MenuItem>
             <div>

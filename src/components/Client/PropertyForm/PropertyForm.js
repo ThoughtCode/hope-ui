@@ -65,16 +65,7 @@ class PropertyForm extends Component {
         valid: false,
         touched: false,
         errorText: null,
-      },
-      details: {
-        value: '',
-        validation: {
-          required: true,
-        },
-        valid: false,
-        touched: false,
-        errorText: null,
-      },
+      },\
       additional_reference: {
         value: '',
         validation: {
@@ -85,15 +76,6 @@ class PropertyForm extends Component {
         errorText: null,
       },
       phone: {
-        value: '',
-        validation: {
-          required: true,
-        },
-        valid: false,
-        touched: false,
-        errorText: null,
-      },
-      cell_phone: {
         value: '',
         validation: {
           required: true,
@@ -302,21 +284,6 @@ class PropertyForm extends Component {
 												)}
 										</Grid>
 									</Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
-                    <Grid container>
-											<label htmlFor="additional_reference"><span>Referencias adicionales</span></label>
-											<input className={`${cls.Input} ${(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && cls.ContainerError}`}
-												type="text"
-												name="additional_reference"
-												value={this.state.property.additional_reference.value}
-												onChange={(event) => this.inputChangedHandler(event, 'additional_reference')}/>
-												{(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && (
-													<div className={cls.Error}>{this.state.property.additional_reference.errorText}</div>
-												)}
-										</Grid>
-									</Grid>
-                </Grid>
-                <Grid container>
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="phone"><span>Telefono</span></label>
@@ -327,6 +294,21 @@ class PropertyForm extends Component {
 												onChange={(event) => this.inputChangedHandler(event, 'phone')}/>
 												{(!this.state.property.phone.valid && this.state.property.phone.touched) && (
 													<div className={cls.Error}>{this.state.property.phone.errorText}</div>
+												)}
+										</Grid>
+									</Grid>
+                </Grid>
+                <Grid container>
+                  <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
+                    <Grid container>
+											<label htmlFor="additional_reference"><span>Referencias adicionales</span></label>
+											<input className={`${cls.Input} ${(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && cls.ContainerError}`}
+												type="text"
+												name="additional_reference"
+												value={this.state.property.additional_reference.value}
+												onChange={(event) => this.inputChangedHandler(event, 'additional_reference')}/>
+												{(!this.state.property.additional_reference.valid && this.state.property.additional_reference.touched) && (
+													<div className={cls.Error}>{this.state.property.additional_reference.errorText}</div>
 												)}
 										</Grid>
 									</Grid>

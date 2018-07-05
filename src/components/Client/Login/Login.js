@@ -19,6 +19,7 @@ class Login extends Component {
   }
 
   responseFacebook = (response) => {
+    console.log(response);
     this.props.onLogin(response.accessToken);
   }
 
@@ -62,6 +63,7 @@ class Login extends Component {
                     appId="2057031764572769"
                     autoLoad={false}
                     fields="name,email,picture"
+                    scope="public_profile"
                     callback={this.responseFacebook}
                     render={renderProps => (
                       <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >

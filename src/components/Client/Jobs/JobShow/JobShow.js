@@ -15,6 +15,7 @@ import {
   Modal,
 } from 'material-ui';
 import CancelBookingModal from '../CancelBookingModal/CancelBookingModal';
+import Stars from './Stars'
 
 // Css
 import cls from './JobShow.css';
@@ -95,7 +96,7 @@ class JobShow extends Component {
                       {p.agent.first_name} {p.agent.last_name}
                     </Typography>
                     <Typography className={cls.Name} variant="caption">
-                      estrellas
+                      <Stars />
                     </Typography>
                     <Typography className={cls.Name} variant="caption">
                       20 Reviews
@@ -143,10 +144,12 @@ class JobShow extends Component {
                     {this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
-                    estrellas
+                    <Stars 
+                      agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
+                    />
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
-                    20 Reviews
+                    {this.props.job.attributes.agent_rewiews_count} Reviews
                   </Typography>
                 </div>
                 <Button
@@ -202,7 +205,7 @@ class JobShow extends Component {
         </Grid>
       );
     }
-    console.log(this.props.job)
+    // console.log(this.props.job)
     return (
       <div>
         <Grid container justify="center">

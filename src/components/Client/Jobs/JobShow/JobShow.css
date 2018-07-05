@@ -1,5 +1,5 @@
 .JobShow {
-  margin-top: 22vh;
+  margin-top: 150px;
 }
 
 /* .Title{
@@ -115,4 +115,8 @@
 
 .Modal:focus {
   outline: none;
+}
+
+.Stars{
+  width: 1.2em;
 }

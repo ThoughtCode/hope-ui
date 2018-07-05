@@ -61,7 +61,7 @@ class Login extends Component {
                   <FacebookLogin
                     appId="2057031764572769"
                     autoLoad={false}
-                    fields="name,email"
+                    fields="name,email,picture"
                     callback={this.responseFacebook}
                     render={renderProps => (
                       <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >

@@ -40,6 +40,7 @@ export const authClient = (email, password) => (dispatch) => {
   axios.post('/customers/signin', authData)
     .then((response) => {
       const customer = response.data.customer.data;
+      localStorage.clear();
       localStorage.setItem('token', customer.attributes.access_token);
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');
@@ -111,6 +112,9 @@ export const facebookLogin = accessToken => (dispatch) => {
       localStorage.setItem('token', customer.attributes.access_token);
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');
+      localStorage.setItem('profile', customer.attributes.avatar.url);
+      localStorage.setItem('first_name', customer.attributes.first_name);
+      localStorage.setItem('last_name', customer.attributes.last_name);
       dispatch(authSuccess(customer.attributes.access_token, customer.id));
       dispatch(push('/cliente/dashboard'));
     })

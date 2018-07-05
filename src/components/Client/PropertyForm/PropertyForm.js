@@ -302,21 +302,6 @@ class PropertyForm extends Component {
 												)}
 										</Grid>
 									</Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-											<label htmlFor="details"><span>Detalles</span></label>
-											<input className={`${cls.Input} ${(!this.state.property.details.valid && this.state.property.details.touched) && cls.ContainerError}`}
-												type="text"
-												name="details"
-												value={this.state.property.details.value}
-												onChange={(event) => this.inputChangedHandler(event, 'details')}/>
-												{(!this.state.property.details.valid && this.state.property.details.touched) && (
-													<div className={cls.Error}>{this.state.property.details.errorText}</div>
-												)}
-										</Grid>
-									</Grid>
-                </Grid>
-                <Grid container>
                   <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
                     <Grid container>
 											<label htmlFor="additional_reference"><span>Referencias adicionales</span></label>
@@ -342,19 +327,6 @@ class PropertyForm extends Component {
 												onChange={(event) => this.inputChangedHandler(event, 'phone')}/>
 												{(!this.state.property.phone.valid && this.state.property.phone.touched) && (
 													<div className={cls.Error}>{this.state.property.phone.errorText}</div>
-												)}
-										</Grid>
-									</Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
-                    <Grid container>
-											<label htmlFor="cell_phone"><span>Celular</span></label>
-											<input className={`${cls.Input} ${(!this.state.property.cell_phone.valid && this.state.property.cell_phone.touched) && cls.ContainerError}`}
-												type="text"
-												name="cell_phone"
-												value={this.state.property.cell_phone.value}
-												onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}/>
-												{(!this.state.property.cell_phone.valid && this.state.property.cell_phone.touched) && (
-													<div className={cls.Error}>{this.state.property.cell_phone.errorText}</div>
 												)}
 										</Grid>
 									</Grid>

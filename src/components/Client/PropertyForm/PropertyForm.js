@@ -65,7 +65,7 @@ class PropertyForm extends Component {
         valid: false,
         touched: false,
         errorText: null,
-      },\
+      },
       additional_reference: {
         value: '',
         validation: {

@@ -54,10 +54,10 @@ class BookingForm extends Component {
               <div>
                 <Grid container>
                   <h3 className={cls.SubHeaderText}>
-                    <span className={cls.SubHeaderNumber}>5</span>
-                    <span>Elige la propiedad donde se realizara el servicio</span>
+                    <span className={cls.SubHeaderNumber}>4</span>
+                    <span>Registra tu dirrecion</span>
                   </h3>
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                  <Grid item xs={12} sm={12} md={12} lg={7}>
                     <Grid container>
                       <div className={cls.Service}>
                         <div className={cls.Property}>
@@ -74,7 +74,7 @@ class BookingForm extends Component {
                       </div>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                  <Grid item xs={12} sm={12} md={12} lg={5}>
                     <Grid container justify="center">
                       <button onClick={this.changeCreatePropertyHandler} className={cls.ButonProperty}>Agregar Nueva Propiedad</button>
                     </Grid>
@@ -92,7 +92,7 @@ class BookingForm extends Component {
             <div>
               <h3 className={cls.SubHeaderText}>
                 <span className={cls.SubHeaderNumber}>5</span>
-                <span>No tienes propiedades debes crear una propiedad</span>
+                <span>Registra tu direccion</span>
               </h3>
               <div className={cls.SubHeaderText}>
                 <PropertyForm 
@@ -114,7 +114,7 @@ class BookingForm extends Component {
             <div>
               <h3 className={cls.SubHeaderText}>
                 <span className={cls.SubHeaderNumber}>5</span>
-                <span>No tienes propiedades debes crear una propiedad</span>
+                <span>Registra tu direccion</span>
               </h3>
               <div className={cls.SubHeaderText}>
                 <PropertyForm 
@@ -138,15 +138,41 @@ class BookingForm extends Component {
               <div className={cls.ServiceSection}>
                 <Grid container>
                   <div className={cls.Row}>
-                    <h2 className={cls.HeaderText}>Elige tu servicio de limpieza</h2>
+                    <h2 className={cls.HeaderText}>Sigue estos pasos para contratar nuestros servicios</h2>
+                  </div>
+                  <div className={cls.Row}>
+                    <Grid container>
+                      <div>
+                        <Grid container>
+                          <h3 className={cls.SubHeaderText}>
+                            <span className={cls.SubHeaderNumber}>1</span>
+                            <span>Elige el tipo de servicio que necesitas</span>
+                          </h3>
+                          <div className={cls.Service}>
+                            <Grid item xs={12} sm={12} md={12} lg={6}>
+                              <Grid container>
+                                <select
+                                  className={cls.Select}
+                                  value={this.props.value}
+                                  onChange={this.props.handleServiceChange}>
+                                  <option value="">Servicio Principal</option>
+                                  {this.props.service_base.map(service => (
+                                    <option key={service.id} value={service.id}>{service.name}</option>
+                                  ))}
+                                </select>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        </Grid>
+                      </div>
+                    </Grid>
                   </div>
                   <div className={cls.Row}>
                     <div>
                       <h3 className={cls.SubHeaderText}>
-                        <span className={cls.SubHeaderNumber}>1</span>
-                        <span>Elige tu frecuencia de limpieza</span>
+                        <span className={cls.SubHeaderNumber}>2</span>
+                        <span>Elige la frecuencia, dia y hora de nuestra visita</span>
                       </h3>
-                      <h5 className={cls.Parragraph}>Elige entre una vez, diario, semanal o mensual!</h5>
                       <div>
                         <div className={cls.Selection}>
                           <Grid container>
@@ -221,82 +247,47 @@ class BookingForm extends Component {
                           </Grid>
                         </div>
                       </div>
-                    </div>
-                  </div>
-                  <div className={cls.Row}>
-                    <div>
-                      <h3 className={cls.SubHeaderText}>
-                        <span className={cls.SubHeaderNumber}>2</span>
-                        <span>Eliga la fecha del servicio</span>
-                      </h3>
-                        <Grid container>
-                          <div className={cls.Service}>
-                            <Grid container>
-                              <Grid item xs={6} sm={4} md={4} lg={3}>
+                      <Grid container justify="center">
+                        <div className={cls.ServiceDate}>
+                          <Grid container justify="center">
+                            <Grid item xs={6} sm={4} md={4} lg={3}>
+                              <Grid container>
+                                <div className={cls.Property}>
+                                  <Datetime
+                                    isValidDate={this.validDates}
+                                    value={this.props.form.started_at}
+                                    dateFormat="MM/DD/YYYY"
+                                    timeFormat={false}
+                                    onChange={this.props.changeDatetimeHandler}
+                                    inputProps={{
+                                      className: `${cls.Input}`,
+                                    }} />
+                                </div>
+                              </Grid>
+                            </Grid>
+                            <Grid item xs={3} sm={4} md={4} lg={3}>
                                 <Grid container>
                                   <div className={cls.Property}>
                                     <Datetime
                                       isValidDate={this.validDates}
-                                      value={this.props.form.started_at}
-                                      dateFormat="MM/DD/YYYY"
-                                      timeFormat={false}
+                                      value={moment(this.props.form.started_at)}
+                                      dateFormat={false}
                                       onChange={this.props.changeDatetimeHandler}
                                       inputProps={{
-                                        className: `${cls.Input}`,
+                                        className: `${cls.InputTime}`,
                                       }} />
                                   </div>
                                 </Grid>
-                              </Grid>
-                              <Grid item xs={3} sm={4} md={4} lg={3}>
-                                  <Grid container>
-                                    <div className={cls.Property}>
-                                      <Datetime
-                                        isValidDate={this.validDates}
-                                        value={moment(this.props.form.started_at)}
-                                        dateFormat={false}
-                                        onChange={this.props.changeDatetimeHandler}
-                                        inputProps={{
-                                          className: `${cls.InputTime}`,
-                                        }} />
-                                    </div>
-                                  </Grid>
-                              </Grid>
                             </Grid>
-                          </div>
-                        </Grid>
+                          </Grid>
+                        </div>
+                      </Grid>
                     </div>
-                  </div>
-                  <div className={cls.Row}>
-                    <Grid container>
-                      <div>
-                        <Grid container>
-                          <h3 className={cls.SubHeaderText}>
-                            <span className={cls.SubHeaderNumber}>3</span>
-                            <span>Elige el servicio de limpieza principal</span>
-                          </h3>
-                          <div className={cls.Service}>
-                            <Grid item xs={12} sm={12} md={12} lg={6}>
-                              <Grid container>
-                                <select
-                                  className={cls.Select}
-                                  value={this.props.value}
-                                  onChange={this.props.handleServiceChange}>
-                                  <option value="">Servicio Principal</option>
-                                  {this.props.service_base.map(service => (
-                                    <option key={service.id} value={service.id}>{service.name}</option>
-                                  ))}
-                                </select>
-                              </Grid>
-                            </Grid>
-                          </div>
-                        </Grid>
-                      </div>
-                    </Grid>
                   </div>
                   <div className={cls.Row}>
                     <div>
                       <h3 className={cls.SubHeaderText}>
-                        <span className={cls.SubHeaderNumber}>4</span>
+                        <span className={cls.SubHeaderNumber}>3</span>
                         <span>Eliga los servicios adicionales</span>
                       </h3>
                     </div>
@@ -340,7 +331,7 @@ class BookingForm extends Component {
                   {properties}
                 </Grid>
               </div>
-              <div className={cls.ServiceSection}>
+              {/* <div className={cls.ServiceSection}>
                 <div className={cls.Row}>
                   <div>
                     <h3 className={cls.SubHeaderText}>
@@ -432,13 +423,13 @@ class BookingForm extends Component {
                     </Grid>
                   </div>
                 </div>
-              </div>
+              </div> */}
               <div className={cls.ServiceSection}>
                 <Grid container>
                   <div className={cls.ButtonBooking}>
                     <Grid container>
                       <div className={cls.Row}>
-                        <button onClick={(event) => this.props.createJobHandler(event)} className={cls.ButtonBookingCore}>Crear trabajo</button>
+                        <button onClick={(event) => this.props.createJobHandler(event)} className={cls.ButtonBookingCore}>Solicitar Servicio</button>
                       </div>
                     </Grid>
                   </div>

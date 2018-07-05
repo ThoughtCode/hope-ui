@@ -162,6 +162,14 @@
   background-color: white;
 }
 
+.ServiceDate {
+  float: left;
+  margin-bottom: 1em;
+  padding-left: 0.9375em;
+  padding-right: 5em;
+  width: 100%;
+}
+
 .Service {
   float: left;
   margin-bottom: 1em;

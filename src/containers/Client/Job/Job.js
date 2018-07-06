@@ -7,10 +7,12 @@ import JobShow from '../../../components/Client/Jobs/JobShow/JobShow';
 import * as actions from '../../../store/actions';
 
 class Job extends Component {
+  
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
   }
   render() {
+    // console.log(this.props.job);
     return (
       <JobShow
         job={this.props.job}

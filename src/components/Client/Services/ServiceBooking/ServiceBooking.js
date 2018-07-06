@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import Alert from 'react-s-alert';
 
 // Components
 import {
@@ -8,6 +9,9 @@ import {
 import BookingForm from '../../BookingForm/BookingForm';
 import HowWorks from '../../HowWorks/HowWorks';
 import BookingTotal from './BookingTotal/BookingTotal';
+import Checking from './Checking/Checking';
+import Payment from './Payment/Payment';
+import Thanks from './Thanks/Thanks';
 
 // Css
 import cls from './ServiceBooking.css';
@@ -24,13 +28,21 @@ class ServiceBooking extends Component {
         value: 0,
         name: '',
         time: 0,
-        price: 0 
+        price: 0,
+        errorText: 'Debe elegir un servicio principal',
       },
       services_addons: [],
-      property: '',
+      property: {
+        value: '',
+        errorText: 'Debe elegir una propiedad'
+      },
       started_at: new Date(),
     },
-  }
+    service: true,
+    checking: false,
+    payment: false,
+    thanks: false,
+  };
 
   componentDidMount () {
     let services_addons = [];
@@ -76,18 +88,24 @@ class ServiceBooking extends Component {
         ...this.state,
         form: {
           ...this.state.form,
-          property: event.target.value
-        }
+          property: {
+            ...this.state.form.property,
+            value: event.target.value,
+          },
+        },
       });
     } else {
       this.setState({
         ...this.state,
         form: {
           ...this.state.form,
-          property: event.target.value
-        }
+          property: {
+            ...this.state.form.property,
+            value: '',
+          },
+        },
       });
-    }
+    };
   };
 
   handleRecurrentChange = (event) => {
@@ -129,7 +147,8 @@ class ServiceBooking extends Component {
         value: 0,
         name: '',
         time: 0,
-        price: 0
+        price: 0,
+        errorText: 'Debe elegir un servicio principal',
       }
       this.setState({
         ...this.state,
@@ -196,48 +215,148 @@ class ServiceBooking extends Component {
     this.props.createJob(localStorage.getItem('token'), job);
   };
 
+  nextPage = (event, actual_page) => {
+    event.preventDefault();
+    if (actual_page === 'Service') {
+      if (this.state.form.services_base.id === 0) {
+        Alert.error(this.state.form.services_base.errorText, {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      } else if (this.state.form.property.value === '' || this.state.form.property.value === 'Propiedad') {
+        Alert.error(this.state.form.property.errorText, {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      } else if (this.state.form.started_at < Date.now()) {
+        Alert.error('La fecha no puede ser menor a hoy', {
+          position: 'bottom',
+          effect: 'genie',
+        });
+      } else {
+        this.setState({
+          service: false,
+          checking: true,
+          payment: false,
+          thanks: false
+        });
+      }
+    } else if (actual_page === 'Checking') {
+      this.setState({
+        service: false,
+        checking: false,
+        payment: true,
+        thanks: false,
+      });
+    }
+  }
+
+  backPage = (event, actual_page) => {
+    event.preventDefault();
+    if (actual_page === 'Checking') {
+      this.setState({
+        service: true,
+        checking: false,
+        payment: false,
+        thanks: false
+      });
+    } else if (actual_page === 'Payment') {
+      this.setState({
+        service: false,
+        checking: true,
+        payment: false,
+        thanks: false,
+      });
+    }
+  }
   render() {
     return (
       <div className={cls.ServiceBooking}>
         <Grid container justify="center">
-          <Grid item xs={12} sm={11} md={10} lg={10}>
+          <Grid item xs={12} sm={11} md={11} lg={10}>
             <Grid container justify="center">
-              <Grid item xs={12} sm={11} md={7} lg={7}>
-                <Grid container>
-                  <BookingForm
-                    value={this.state.value}
-                    form={this.state.form}
-                    service_base={this.props.service_base}
-                    properties={this.props.properties}
-                    cities={this.props.cities}
-                    neightborhoods={this.props.neightborhoods}
-                    fetchNeightborhoods={this.props.fetchNeightborhoods}
-                    createProperty={this.props.createProperty}
-                    handlePropertyChange={this.handlePropertyChange}
-                    handleRecurrentChange={this.handleRecurrentChange}
-                    handleServiceChange={this.handleServiceChange}
-                    changeCheckboxHandler={this.changeCheckboxHandler}
-                    inputChangedHandler={this.inputChangedHandler}
-                    changeDatetimeHandler={this.changeDatetimeHandler}
-                    createJobHandler={this.createJobHandler}/>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} sm={11} md={5} lg={3}>
-                <Grid container>
-                  <Grid item xs={6} lg={12}>
-                    <BookingTotal form={this.state.form} />
+              {this.state.service ? (
+                <Grid container justify="center">
+                  <Grid item xs={12} sm={11} md={12} lg={7}>
+                    <Grid container>
+                      <BookingForm
+                        nextPage={this.nextPage}
+                        value={this.state.value}
+                        form={this.state.form}
+                        service_base={this.props.service_base}
+                        properties={this.props.properties}
+                        cities={this.props.cities}
+                        neightborhoods={this.props.neightborhoods}
+                        fetchNeightborhoods={this.props.fetchNeightborhoods}
+                        createProperty={this.props.createProperty}
+                        handlePropertyChange={this.handlePropertyChange}
+                        handleRecurrentChange={this.handleRecurrentChange}
+                        handleServiceChange={this.handleServiceChange}
+                        changeCheckboxHandler={this.changeCheckboxHandler}
+                        inputChangedHandler={this.inputChangedHandler}
+                        changeDatetimeHandler={this.changeDatetimeHandler}
+                        createJobHandler={this.createJobHandler}/>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={6} lg={12}>
-                    <HowWorks />
+                  <Grid item xs={12} sm={11} md={12} lg={5}>
+                    <Grid container>
+                      <Grid item xs={6} md={12} lg={12}>
+                        <BookingTotal form={this.state.form} />
+                      </Grid>
+                      <Grid item xs={6} md={12} lg={12}>
+                        <HowWorks />
+                      </Grid>
+                    </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
+              ) : null}
+              {this.state.checking ? (
+                <Grid container justify="center">
+                  <Grid item xs={12} sm={11} md={5} lg={4}>
+                    <Grid container>
+                      <Grid item xs={6} lg={12}>
+                        <Checking
+                          backPage={this.backPage}
+                          nextPage={this.nextPage}
+                          form={this.state.form} />
+                      </Grid>
+                      <Grid item xs={6} lg={12}>
+                        <HowWorks />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>                
+              ) : null}
+              {this.state.payment ? (
+                <Grid container justify="center">
+                  <Grid item xs={12} sm={11} md={5} lg={6}>
+                    <Grid container>
+                      <Grid item xs={12} lg={12}>
+                        <Payment
+                          backPage={this.backPage}
+                          nextPage={this.nextPage} />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>                
+              ) : null}
+              {this.state.thanks ? (
+                <Grid container justify="center">
+                  <Grid item xs={12} sm={11} md={5} lg={6}>
+                    <Grid container>
+                      <Grid item xs={12} lg={12}>
+                        <Thanks />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>                
+              ) : null}
             </Grid>
           </Grid>
         </Grid>
       </div>
     );
-  }
-}
+  };
+};
 
 export default ServiceBooking;

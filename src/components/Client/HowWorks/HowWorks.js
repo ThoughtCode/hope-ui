@@ -22,31 +22,31 @@ const howWorks = props => {
             <li className={cls.ListItem}>
               <i className="fa fa-caret-right"></i>
               <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige la frecuencia del servicio, si deseas que sea una sola vez o cada cierto tiempo determinado
+                &nbsp;&nbsp;Elige el tipo de servicio que necesitas
               </div>
             </li>
             <li className={cls.ListItem}>
               <i className="fa fa-caret-right"></i>
               <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige un servicio principal que desees
+                &nbsp;&nbsp;Elige la frecuencia, dia y hora de nuestra visita
               </div>
             </li>
             <li className={cls.ListItem}>
               <i className="fa fa-caret-right"></i>
               <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige los servicios adicionales, pueden ser por cantidad
+                &nbsp;&nbsp;Elige servicios adicionales
               </div>
             </li>
             <li className={cls.ListItem}>
               <i className="fa fa-caret-right"></i>
               <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige la propiedad a la que quieres socilidar el servicio
+                &nbsp;&nbsp;Elige o registra tu direccion
               </div>
             </li>
             <li className={cls.ListItem}>
               <i className="fa fa-caret-right"></i>
               <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige la propiedad a la que quieres socilitar el servicio
+                &nbsp;&nbsp;Paga tu servicio con una tarjeta de credito o debito
               </div>
             </li>
             <li className={cls.ListItem}>

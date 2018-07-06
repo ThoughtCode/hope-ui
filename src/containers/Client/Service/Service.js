@@ -7,7 +7,6 @@ import ServiceBooking from '../../../components/Client/Services/ServiceBooking/S
 
 import * as actions from '../../../store/actions';
 
-
 class Service extends Component {
   componentDidMount () {
     this.props.onFetchService(this.props.match.params.service_id, this.props.token);

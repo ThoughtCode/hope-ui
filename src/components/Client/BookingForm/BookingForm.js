@@ -63,7 +63,7 @@ class BookingForm extends Component {
                         <div className={cls.Property}>
                           <select
                             className={cls.Select}
-                            value={this.props.form.property}
+                            value={this.props.form.property.value}
                             onChange={this.props.handlePropertyChange}>
                             <option>Propiedad</option>
                             {this.props.properties.map(property => (
@@ -297,28 +297,28 @@ class BookingForm extends Component {
                       <div className={cls.BlockServices}>
                         <Grid container>
                           {formElementAddon.map((addon) => (
-                              <li key={addon.id} className={cls.Extras}>
-                                <label onClick={(event) => this.props.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
-                                  <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
-                                  <div className={cls.ExtraSvg}>
-                                    <p className={cls.HeightDef}>{addon.config.label}</p>
-                                    <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
-                                    </div>
+                            <li key={addon.id} className={cls.Extras}>
+                              <label onClick={(event) => this.props.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
+                                <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
+                                <div className={cls.ExtraSvg}>
+                                  <p className={cls.HeightDef}>{addon.config.label}</p>
+                                  <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
                                   </div>
-                                </label>
-                                {addon.config.quantity && addon.config.active ? (
-                                  <div className={cls.CenterInput}>
-                                    <p className={cls.NoMargin}><span>Cantidad</span></p>
-                                    <input
-                                      type="number"
-                                      value={addon.config.value}
-                                      onChange={(event) => this.props.inputChangedHandler(event, addon.id)}
-                                      className={cls.InputQuantity} />
-                                  </div>
-                                ) : (
-                                  null
-                                )}
-                              </li>
+                                </div>
+                              </label>
+                              {addon.config.quantity && addon.config.active ? (
+                                <div className={cls.CenterInput}>
+                                  <p className={cls.NoMargin}><span>Cantidad</span></p>
+                                  <input
+                                    type="number"
+                                    value={addon.config.value}
+                                    onChange={(event) => this.props.inputChangedHandler(event, addon.id)}
+                                    className={cls.InputQuantity} />
+                                </div>
+                              ) : (
+                                null
+                              )}
+                            </li>
                           ))}
                         </Grid>
                       </div>
@@ -331,105 +331,12 @@ class BookingForm extends Component {
                   {properties}
                 </Grid>
               </div>
-              {/* <div className={cls.ServiceSection}>
-                <div className={cls.Row}>
-                  <div>
-                    <h3 className={cls.SubHeaderText}>
-                      <span>Metodo de Pago</span>
-                    </h3>
-                  </div>
-                </div>
-                <div className={cls.Row}>
-                  <Grid container>
-                    <div className={cls.MarginBottom}>
-                      <Grid container>
-                        <Grid item xs={12} sm={12} md={12} lg={6}>
-                          <Grid container>
-                            <div className={cls.Columns}>
-                              <Grid container>
-                                <Grid item xs={12} sm={12} md={12} lg={12}>
-                                  <label>Numero de Tarjeta de Credito</label>
-                                  <div className={cls.Relative}>
-                                    <div className={cls.CardNumber}>
-                                      <input className={cls.Input} />
-                                    </div>
-                                  </div>
-                                </Grid>
-                              </Grid>
-                            </div>
-                          </Grid>
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={12} lg={6}>
-                          <Grid container>
-                            <div className={cls.ColumnsIcon}>
-                              <Grid container>
-                                <img 
-                                  alt="Credit Cards" 
-                                  className={cls.CreditCardIcon} 
-                                  src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
-                              </Grid>
-                            </div>
-                          </Grid>
-                        </Grid>
-                      </Grid>
-                    </div>
-                  </Grid>
-                </div>
-                <div className={cls.Row}>
-                  <div className={cls.MarginBottom}>
-                    <Grid container>
-                      <Grid item xs={12} sm={12} md={12} lg={6}>
-                        <Grid container>
-                          <div className={cls.Columns}>
-                            <label>Nombre de la tarjeta de credito</label>
-                            <div className={cls.Relative}>
-                              <div className={cls.CardNumber}>
-                                <input className={cls.Input} />
-                              </div>
-                            </div>
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </div>
-                </div>
-                <div className={cls.Row}>
-                  <div className={cls.MarginBottom}>
-                    <Grid container>
-                      <Grid item xs={6} sm={6} md={6} lg={3}>
-                        <Grid container>
-                          <div className={cls.Columns}>
-                            <label>Expiracion</label>
-                            <div className={cls.Relative}>
-                              <div className={cls.CardNumber}>
-                                <input className={cls.InputSmall} />
-                              </div>
-                            </div>
-                          </div>
-                        </Grid>
-                      </Grid>
-                      <Grid item xs={6} sm={6} md={6} lg={3}>
-                        <Grid container>
-                          <div>
-                            <label>CVC</label>
-                            <div className={cls.Relative}>
-                              <div className={cls.CardNumber}>
-                                <input className={cls.InputSmall} />
-                              </div>
-                            </div>
-                          </div>
-                        </Grid>
-                      </Grid>
-                    </Grid>
-                  </div>
-                </div>
-              </div> */}
               <div className={cls.ServiceSection}>
                 <Grid container>
                   <div className={cls.ButtonBooking}>
                     <Grid container>
                       <div className={cls.Row}>
-                        <button onClick={(event) => this.props.createJobHandler(event)} className={cls.ButtonBookingCore}>Solicitar Servicio</button>
+                        <button onClick={(event) => this.props.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar Servicio</button>
                       </div>
                     </Grid>
                   </div>

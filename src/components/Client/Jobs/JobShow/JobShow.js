@@ -78,44 +78,51 @@ class JobShow extends Component {
         agentTitle = 'Agentes Postulados';
         agents = this.props.job.attributes.proposals.length > 0 ?
           this.props.job.attributes.proposals.map(p => (
-            <Grid item xs={12} className={cls.AgentPostulate}>
-              <Paper>
-                <div className={cls.AvatarAgent}>
-                  {p.agent.avatar.url === null ? (
-                    <Avatar className={cls.AvatarMargin}>
-                      {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
-                    </Avatar>
-                  ) : (
-                    <Avatar 
-                      className={cls.AvatarMargin}
-                      src={p.agent.avatar.url}>
-                    </Avatar>
-                  )}
-                  <div className={cls.NameAgent}>
-                    <Typography className={cls.Name} variant="subheading">
-                      {p.agent.first_name} {p.agent.last_name}
-                    </Typography>
-                    <Typography className={cls.Name} variant="caption">
-                      <Stars />
-                    </Typography>
-                    <Typography className={cls.Name} variant="caption">
-                      20 Reviews
-                    </Typography>
+            <Grid container className={cls.AgentPostulate}>
+              <Grid item xs={12}>
+                <Paper>
+                  <div className={cls.AvatarAgent}>
+                  {console.log(p.agent.id)}
+                    <Link component={Link}
+                      idAgent={p.agent.id}
+                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado`}>
+                      {p.agent.avatar.url === null ? (
+                        <Avatar className={cls.AvatarMargin}>
+                          {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
+                        </Avatar>
+                      ) : (
+                        <Avatar 
+                        className={cls.AvatarMargin}
+                        src={p.agent.avatar.url}>
+                        </Avatar>
+                      )}
+                    </Link>
+                    <div className={cls.NameAgent}>
+                      <Typography className={cls.Name} variant="subheading">
+                        {p.agent.first_name} {p.agent.last_name}
+                      </Typography>
+                      <Typography className={cls.Name} variant="caption">
+                        <Stars />
+                      </Typography>
+                      <Typography className={cls.Name} variant="caption">
+                        {this.props.job.attributes.agent_rewiews_count} Opiniones
+                      </Typography>
+                    </div>
+                    {/* <Button
+                      className={cls.ButtonContratar}
+                      component={Link}
+                      to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                      >
+                      VER PERFIL
+                    </Button> */}
+                    <Button
+                      onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
+                      className={cls.ButtonContratar}>
+                        CONTRATAR
+                    </Button>
                   </div>
-                  {/* <Button
-                    className={cls.ButtonContratar}
-                    component={Link}
-                    to={`/cliente/trabajo/${this.props.job.id}/agente`}
-                    >
-                    VER PERFIL
-                  </Button> */}
-                  <Button
-                    onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
-                    className={cls.ButtonContratar}>
-                      CONTRATAR
-                  </Button>
-                </div>
-              </Paper>
+                </Paper>
+              </Grid>
             </Grid>
           ))
         : (
@@ -149,13 +156,13 @@ class JobShow extends Component {
                     />
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
-                    {this.props.job.attributes.agent_rewiews_count} Reviews
+                    {this.props.job.attributes.agent_rewiews_count} Opiniones
                   </Typography>
                 </div>
                 <Button
                   className={cls.ButtonContratar}
                   component={Link}
-                  to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
                   >
                   VER PERFIL
                 </Button>

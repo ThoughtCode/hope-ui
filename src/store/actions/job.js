@@ -26,7 +26,7 @@ export const createJob = (token, formData) => dispatch => {
   axios.post('/customers/jobs', formData, headers)
     .then((res) => {
       dispatch(createJobSuccess());
-      dispatch(push(`/cliente/trabajo/${res.data.job.data.id}`));
+      // dispatch(push(`/cliente/trabajo/${res.data.job.data.id}`));
       Alert.success(res.data.message, {
         position: 'bottom',
         effect: 'genie',

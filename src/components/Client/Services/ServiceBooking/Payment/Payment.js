@@ -110,7 +110,7 @@ const payment = (props) => {
                 <div className={cls.ButtonBooking}>
                   <Grid container>
                     <div className={cls.Row}>
-                      <button onClick={(event) => this.props.nextPage(event, 'Payment')} className={cls.ButtonBookingCore}>Pagar</button>
+                      <button onClick={(event) => props.nextPage(event, 'Payment')} className={cls.ButtonBookingCore}>Pagar</button>
                     </div>
                   </Grid>
                 </div>

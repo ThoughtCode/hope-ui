@@ -194,7 +194,7 @@ class ServiceBooking extends Component {
   createJobHandler = (event) => {
     event.preventDefault();
     const formData = {};
-    formData["property_id"] = this.state.form.property;
+    formData["property_id"] = this.state.form.property.value;
     formData["started_at"] = this.state.form.started_at;
     formData["frequency"] = parseInt(this.state.form.recurrent.value, 10);
     formData["job_details_attributes"] = [{
@@ -248,6 +248,14 @@ class ServiceBooking extends Component {
         payment: true,
         thanks: false,
       });
+    } else if (actual_page === 'Payment') {
+      this.createJobHandler(event);
+      this.setState({
+        service: false,
+        checking: false,
+        payment: false,
+        thanks: true,
+      });
     }
   }
 
@@ -294,8 +302,7 @@ class ServiceBooking extends Component {
                         handleServiceChange={this.handleServiceChange}
                         changeCheckboxHandler={this.changeCheckboxHandler}
                         inputChangedHandler={this.inputChangedHandler}
-                        changeDatetimeHandler={this.changeDatetimeHandler}
-                        createJobHandler={this.createJobHandler}/>
+                        changeDatetimeHandler={this.changeDatetimeHandler}/>
                     </Grid>
                   </Grid>
                   <Grid item xs={12} sm={11} md={12} lg={5}>

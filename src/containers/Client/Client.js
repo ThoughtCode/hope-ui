@@ -25,7 +25,7 @@ class Client extends Component {
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
           <Route path={`${this.props.match.url}/servicio/:service_id`} exact component={Service}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} exact component={Job}/>
-          <Route path={`${this.props.match.url}/trabajo/:job_id/agente/postulado`} exact component={AgentShowPostulate}/>
+          <Route path={`${this.props.match.url}/trabajo/:job_id/agente/postulado/:proposal_id`} exact component={AgentShowPostulate}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id/agente/contratado`} exact component={AgentShowAccepted}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
           <Route path={`${this.props.match.url}/trabajos`} component={JobCliente}/>

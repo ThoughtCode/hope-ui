@@ -30,14 +30,15 @@ class JobShow extends Component {
       openCancell: false,
     });
   };
-
+  
   handleOpen = () => {
     this.setState({
       openCancell: true,
     });
   }
-
+  
   render() {
+    console.log(this.props.hashedId)
     let date = null;
     let caption = null;
     let services = null;
@@ -45,20 +46,21 @@ class JobShow extends Component {
     let agents = null;
     let agentTitle = null;
     let button = null;
+    let hashedId = null;
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (
           <Button
-            className={cls.ButtonCancelar}
-            onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
+          className={cls.ButtonCancelar}
+          onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
             CANCELAR TRABAJO
           </Button>
         )
       } else {
         button = (
           <Button
-            className={cls.ButtonCancelar}
-            onClick={this.handleOpen}>
+          className={cls.ButtonCancelar}
+          onClick={this.handleOpen}>
             CANCELAR TRABAJO
           </Button>
         )
@@ -82,10 +84,10 @@ class JobShow extends Component {
               <Grid item xs={12}>
                 <Paper>
                   <div className={cls.AvatarAgent}>
-                  {console.log(p.agent.id)}
+                  {/* {console.log(p.agent.id)} */}
                     <Link component={Link}
                       idAgent={p.agent.id}
-                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado`}>
+                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.hashed_id}`}>
                       {p.agent.avatar.url === null ? (
                         <Avatar className={cls.AvatarMargin}>
                           {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}

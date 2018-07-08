@@ -10,17 +10,15 @@ import cls from './AgentShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';
 import Reviews from '../../../components/Agent/Reviews/Reviews';
 
-
 import * as actions from '../../../store/actions';
 
 class AgentShow extends Component {
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
-    this.props.onShowReviews(this.props.token, this.props.id);
+    this.props.onShowReviews(this.props.token, this.props.match.params.job_id);
   }
   render() {
-    // console.log(this.props.token)
-    // console.log(this.props.job)
+    console.log(this.props)
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
@@ -38,18 +36,6 @@ class AgentShow extends Component {
                   </Paper>
                 </Grid>
               </Grid>
-              <Grid container justify="center">
-                <Grid item xs={12} sm={8}>
-                  <Grid container>
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                      <Reviews
-                        token={this.props.token}
-                        job={this.props.job}
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
             </Paper>
           </Grid>
         </Grid>
@@ -61,6 +47,7 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     job: state.job.job,
+    // review: state.review.review,
   };
 };
 
@@ -69,7 +56,7 @@ const mapDispatchToProps = dispatch => {
     onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
     onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
-    onShowReviews: (token, id) => dispatch(actions.showReviews(token, id)),
+    onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(AgentShow);

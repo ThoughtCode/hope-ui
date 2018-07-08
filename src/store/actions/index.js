@@ -53,3 +53,6 @@ export {
 export {
   showReviews,
 } from './reviews';
+export {
+  proposalPostulate,
+} from './proposal';

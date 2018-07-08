@@ -19,6 +19,8 @@ import clientCityReducer from './store/reducers/city';
 import clientNeightborhoodReducer from './store/reducers/neightborhood';
 import clientJobReducer from './store/reducers/job';
 import clientUserReducer from './store/reducers/current_user';
+import clientProposalReducer from './store/reducers/proposal';
+import clientReviews from './store/reducers/reviews';
 
 const history = createHistory();
 
@@ -36,6 +38,8 @@ const rootReducer = combineReducers({
   neightborhood: clientNeightborhoodReducer,
   job: clientJobReducer,
   user: clientUserReducer,
+  proposal: clientProposalReducer,
+  reviews: clientReviews,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

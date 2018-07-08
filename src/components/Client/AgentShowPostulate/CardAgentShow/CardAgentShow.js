@@ -4,21 +4,23 @@ import React, { Component } from 'react';
 import {
   Grid,
 } from 'material-ui';
-import CardProfile from './CardInfo';
+import CardInfo from './CardInfo';
 
 // Css
 import cls from './CardAgentShow.css';
 
-class Profile extends Component {
+class Info extends Component {
   render() {
-    // console.log(this.props.jobCard)
+    // console.log(this.props.postulate.agent)
     return (
       <div>
-        <Grid container justify="center" className={cls.Profile}>
+        <Grid container justify="center" className={cls.Info}>
           <Grid item xs={12} sm={8}>
             <Grid container>
               <Grid item xs={12} sm={12} md={12} lg={12}>
-                <CardProfile jobCardInfo={this.props.jobCard} />
+                <CardInfo
+                  postulateCard={this.props.postulate.agent}
+                  />
               </Grid>
             </Grid>
           </Grid>
@@ -28,4 +30,4 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+export default Info;

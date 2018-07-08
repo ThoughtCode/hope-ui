@@ -15,20 +15,23 @@ export const showReviewsSuccess = reviews => ({
   reviews,
 });
 
-export const showReviews = (token, id) => (dispatch) => {
+export const showReviews = (token, hashed_id) => (dispatch) => {
+  // console.log(hashed_id)
   dispatch(showReviewsStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`/agents/reviews/${id}`, headers)
-    .then((res) => {
-        let reviews = [];
-        reviews = res.data.reviews.data;
-        dispatch(showReviewsSuccess(reviews));
+  axios.get(`/agents/reviews/${hashed_id}`, headers)
+  .then((res) => {
+    console.log(res)
+    let reviews = [];
+      reviews = res.data.reviews.data;
+      dispatch(showReviewsSuccess(reviews));
     })
     .catch((err) => {
+      // console.log(err)
       dispatch(showReviewsFail(err));
     });
 };

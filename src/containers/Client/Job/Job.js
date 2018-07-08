@@ -12,9 +12,13 @@ class Job extends Component {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
   }
   render() {
-    // console.log(this.props.job);
+    let hashedId = null
+    if(this.props.job.attributes){
+      hashedId = this.props.job.attributes.property.hashed_id
+    }
     return (
       <JobShow
+        hashedId={hashedId}
         job={this.props.job}
         accepted={this.props.onAcceptedJob}
         cancelled={this.props.onCancelledJob}/>

@@ -1,48 +1,35 @@
 import React from 'react';
-import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
+import {
+  Typography,
+} from 'material-ui';
 
 import cls from './Review.css';
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing.unit * 2,
-    textAlign: 'left',
-    color: theme.palette.text.secondary,
-  },
-});
+import CardReview from './CardReview';
 
 function ReviewsAgent(props) {
-  const { classes } = props;
-  console.log(props.job)
+  // console.log(props.reviews)
+  // console.log(props.customer)
+  let reviews = (
+    <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
+  );
+  if (props.reviews.length > 0) {
+      reviews = props.reviews.map( review => (
+        // review.comment
+        <CardReview
+          lastName={props.customer.last_name}
+          firstName={props.customer.first_name}
+          avatar={props.customer.avatar.url}
+          reviews={review.comment} />
+        // console.log(review.comment)
+    ));
+  }
+  if(props.reviews){
+  }
   return (
-    <div className={`${cls.Review} ${classes.root}`}>
-      <Grid container spacing={24}>
-        <Grid item xs={12}>
-          <Paper className={classes.paper}>
-            <Grid container spacing={24}>
-              <Grid item xs={6} sm={2}>
-                <Paper className={classes.paper}>Avatar</Paper>
-              </Grid>
-              <Grid item xs={6} sm={7}>
-                <Paper className={classes.paper}>Nombre Apellido</Paper>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <Paper className={classes.paper}>Estrellas</Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper}>Mensaje</Paper>
-              </Grid>
-            </Grid>
-          </Paper>
-        </Grid>
-      </Grid>
+    <div>
+      {reviews}
     </div>
   );
 }
 
-export default withStyles(styles)(ReviewsAgent);
+export default ReviewsAgent;

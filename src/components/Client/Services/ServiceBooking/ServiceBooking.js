@@ -38,9 +38,9 @@ class ServiceBooking extends Component {
       },
       started_at: new Date(),
     },
-    service: false,
+    service: true,
     checking: false,
-    payment: true,
+    payment: false,
     thanks: false,
   };
 

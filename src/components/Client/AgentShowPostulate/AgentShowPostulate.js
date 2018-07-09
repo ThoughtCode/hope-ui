@@ -15,10 +15,18 @@ import * as actions from '../../../store/actions';
 
 class AgentShow extends Component {
   componentDidMount() {
-    this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
+    this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onShowReviews(this.props.token, this.props.match.params.job_id);
+    // this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id);
   }
   render() {
-    console.log(this.props.postulate)
+    console.log(this.props)
+    let postulate = 0
+    let agentRewiew
+    if (this.props.job.attributes){
+      agentRewiew=this.props.job.attributes
+      postulate=this.props.job.attributes.proposals
+    }
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
@@ -33,7 +41,8 @@ class AgentShow extends Component {
                 <Grid item xs={12}>
                   <Paper className={cls.CardAgentShow} elevation={0}>
                     <CardAgentShow
-                      postulate={this.props.postulate}
+                      agentRewiew={agentRewiew}
+                      postulate={postulate}
                       />
                   </Paper>
                 </Grid>
@@ -42,9 +51,9 @@ class AgentShow extends Component {
                 <Grid item xs={12} sm={8}>
                   <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                      <Reviews
+                      Reviews{/* <Reviews
                         job={this.props.job}
-                      />
+                      /> */}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -56,17 +65,24 @@ class AgentShow extends Component {
     );
   }
 }
+
 const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
-    postulate: state.proposal.postulate,
+    job: state.job.job,
+    // proposalPostulate: state.proposalPostulate,
+    // review: state.review.review,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onProposalPostulate: (token, job_id, hashed_id) => dispatch(actions.proposalPostulate(token, job_id, hashed_id)),
-    onShowReviews: (token, id) => dispatch(actions.showReviews(token, id)),
+    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
+    onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
+    onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
+    onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),
+    // onProposalPostulate: (token, hashed_id) => dispatch(actions.proposalPostulate(token, hashed_id))
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(AgentShow);

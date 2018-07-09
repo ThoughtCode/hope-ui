@@ -38,7 +38,7 @@ class JobShow extends Component {
   }
   
   render() {
-    console.log(this.props.hashedId)
+    // console.log(this.props.job.attributes)
     let date = null;
     let caption = null;
     let services = null;

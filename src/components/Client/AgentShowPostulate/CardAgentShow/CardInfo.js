@@ -17,18 +17,16 @@ import Stars from '../../Jobs/JobShow/Stars';
 
 class Info extends Component {
   render() {
-    // console.log(this.props.postulateCard)
-    let firstName = null
-    let lastName = null
-    let email = null
-    let nationalId = null
-    let avatar = null
-    if (this.props.postulateCard) {
-      avatar = this.props.postulateCard.avatar.url;
-      firstName= this.props.postulateCard.first_name;
-      lastName=  this.props.postulateCard.last_name;
-      email = this.props.postulateCard.email;
-      nationalId = this.props.postulateCard.national_id
+    // console.log(this.props.agentRewiews)
+    let avatar
+    let agentRewiewsAverage
+    let agentRewiewsCount
+    if (this.props.postulatCard) {
+      avatar = this.props.postulatCard.avatar.url;
+    }
+    if (this.props.agentRewiews) {
+      agentRewiewsAverage = this.props.agentRewiews.agent_rewiews_average
+      agentRewiewsCount = this.props.agentRewiews.agent_rewiews_count
     }
     return (
       <div>
@@ -63,7 +61,7 @@ class Info extends Component {
                       <Grid item xs={12}>
                         <Paper elevation={0}>
                           <Typography variant="headline" gutterBottom>
-                            {firstName} {lastName}
+                            {this.props.postulatCard.first_name} {this.props.postulatCard.last_name}
                           </Typography>
                         </Paper>
                       </Grid>
@@ -74,12 +72,14 @@ class Info extends Component {
                               <Grid container>
                                 <Grid item xs={4}>
                                   <Paper elevation={0}>
-                                    <Stars />
+                                    <Stars
+                                      agentRewiewsAverage={agentRewiewsAverage}
+                                    />
                                   </Paper>
                                 </Grid>
                                 <Grid item xs={4}>
                                   <Paper className={cls.CantReviews} elevation={0}>
-                                    {/* {props.jobCardInfo.attributes.agent_rewiews_count} */}
+                                    {agentRewiewsCount}
                                     Opiniones
                                   </Paper>
                                 </Grid>
@@ -92,7 +92,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-envelope"></i>
-                              {email}
+                              {this.props.postulatCard.email}
                           </Typography>
                         </Paper>
                       </Grid>
@@ -100,7 +100,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-id-card"></i>
-                              {nationalId}
+                              {this.props.postulatCard.national_id}
                           </Typography>
                         </Paper>
                       </Grid>

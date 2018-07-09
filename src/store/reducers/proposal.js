@@ -2,11 +2,11 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 
 const initialState = {
-  postulate: [],
+  proposalPostulate: [],
 };
 
 const proposalPostulateSuccess = (state, action) => updateObject(state, {
-  postulate: action.proposalPostulate,
+  proposalPostulate: action.proposalPostulate,
 });
 
 const reducer = (state = initialState, action) => {

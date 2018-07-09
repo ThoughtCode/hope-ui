@@ -11,7 +11,17 @@ import cls from './CardAgentShow.css';
 
 class Info extends Component {
   render() {
-    // console.log(this.props.postulate.agent)
+    // console.log(this.props.agentRewiew)
+    // console.log(this.props.postulate)
+    // let postulateCard = null
+    let postulates = null
+    let postulate = 0
+    if (this.props.postulate.length > 0) {
+      postulates = this.props.postulate.map( p => (
+        postulate = p.agent
+      ));
+    };
+    // console.log(postulate)
     return (
       <div>
         <Grid container justify="center" className={cls.Info}>
@@ -19,7 +29,8 @@ class Info extends Component {
             <Grid container>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CardInfo
-                  postulateCard={this.props.postulate.agent}
+                  agentRewiews={this.props.agentRewiew}
+                  postulatCard={postulate}
                   />
               </Grid>
             </Grid>

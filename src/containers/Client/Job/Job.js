@@ -7,12 +7,18 @@ import JobShow from '../../../components/Client/Jobs/JobShow/JobShow';
 import * as actions from '../../../store/actions';
 
 class Job extends Component {
+  
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
   }
   render() {
+    let hashedId = null
+    if(this.props.job.attributes){
+      hashedId = this.props.job.attributes.property.hashed_id
+    }
     return (
       <JobShow
+        hashedId={hashedId}
         job={this.props.job}
         accepted={this.props.onAcceptedJob}
         cancelled={this.props.onCancelledJob}/>

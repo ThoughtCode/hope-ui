@@ -15,6 +15,10 @@
     csstype "^2.0.0"
     indefinite-observable "^1.0.1"
 
+"@types/lodash@^4.14.105":
+  version "4.14.110"
+  resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.110.tgz#fb07498f84152947f30ea09d89207ca07123461e"
+
 "@types/react-transition-group@^2.0.8":
   version "2.0.9"
   resolved "https://registry.yarnpkg.com/@types/react-transition-group/-/react-transition-group-2.0.9.tgz#ed6a71fb711e524345844defec2a861c1a222a03"
@@ -24,6 +28,12 @@
 "@types/react@*":
   version "16.3.13"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.3.13.tgz#47d466462b774556c1174ea0eda22c0578643362"
+  dependencies:
+    csstype "^2.2.0"
+
+"@types/react@^16.0.40":
+  version "16.4.6"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
   dependencies:
     csstype "^2.2.0"
 
@@ -7807,6 +7817,13 @@ react-popper@^0.10.0:
   dependencies:
     popper.js "^1.14.1"
     prop-types "^15.6.1"
+
+react-rating@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/react-rating/-/react-rating-1.2.1.tgz#5ed1df19e1b1bd7bcb39892f7300c1d249e1460a"
+  dependencies:
+    "@types/lodash" "^4.14.105"
+    "@types/react" "^16.0.40"
 
 react-redux@^5.0.7:
   version "5.0.7"

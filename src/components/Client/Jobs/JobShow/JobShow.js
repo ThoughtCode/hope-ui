@@ -15,6 +15,7 @@ import {
   Modal,
 } from 'material-ui';
 import CancelBookingModal from '../CancelBookingModal/CancelBookingModal';
+import Stars from './Stars'
 
 // Css
 import cls from './JobShow.css';
@@ -29,14 +30,15 @@ class JobShow extends Component {
       openCancell: false,
     });
   };
-
+  
   handleOpen = () => {
     this.setState({
       openCancell: true,
     });
   }
-
+  
   render() {
+    // console.log(this.props.job.attributes)
     let date = null;
     let caption = null;
     let services = null;
@@ -44,20 +46,21 @@ class JobShow extends Component {
     let agents = null;
     let agentTitle = null;
     let button = null;
+    let hashedId = null;
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (
           <Button
-            className={cls.ButtonCancelar}
-            onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
+          className={cls.ButtonCancelar}
+          onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
             CANCELAR TRABAJO
           </Button>
         )
       } else {
         button = (
           <Button
-            className={cls.ButtonCancelar}
-            onClick={this.handleOpen}>
+          className={cls.ButtonCancelar}
+          onClick={this.handleOpen}>
             CANCELAR TRABAJO
           </Button>
         )
@@ -77,44 +80,51 @@ class JobShow extends Component {
         agentTitle = 'Agentes Postulados';
         agents = this.props.job.attributes.proposals.length > 0 ?
           this.props.job.attributes.proposals.map(p => (
-            <Grid item xs={12} className={cls.AgentPostulate}>
-              <Paper>
-                <div className={cls.AvatarAgent}>
-                  {p.agent.avatar.url === null ? (
-                    <Avatar className={cls.AvatarMargin}>
-                      {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
-                    </Avatar>
-                  ) : (
-                    <Avatar 
-                      className={cls.AvatarMargin}
-                      src={p.agent.avatar.url}>
-                    </Avatar>
-                  )}
-                  <div className={cls.NameAgent}>
-                    <Typography className={cls.Name} variant="subheading">
-                      {p.agent.first_name} {p.agent.last_name}
-                    </Typography>
-                    <Typography className={cls.Name} variant="caption">
-                      estrellas
-                    </Typography>
-                    <Typography className={cls.Name} variant="caption">
-                      20 Reviews
-                    </Typography>
+            <Grid container className={cls.AgentPostulate}>
+              <Grid item xs={12}>
+                <Paper>
+                  <div className={cls.AvatarAgent}>
+                  {/* {console.log(p.agent.id)} */}
+                    <Link component={Link}
+                      idAgent={p.agent.id}
+                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.hashed_id}`}>
+                      {p.agent.avatar.url === null ? (
+                        <Avatar className={cls.AvatarMargin}>
+                          {p.agent.first_name.charAt(0)}{p.agent.last_name.charAt(0)}
+                        </Avatar>
+                      ) : (
+                        <Avatar 
+                        className={cls.AvatarMargin}
+                        src={p.agent.avatar.url}>
+                        </Avatar>
+                      )}
+                    </Link>
+                    <div className={cls.NameAgent}>
+                      <Typography className={cls.Name} variant="subheading">
+                        {p.agent.first_name} {p.agent.last_name}
+                      </Typography>
+                      <Typography className={cls.Name} variant="caption">
+                        <Stars />
+                      </Typography>
+                      <Typography className={cls.Name} variant="caption">
+                        {this.props.job.attributes.agent_rewiews_count} Opiniones
+                      </Typography>
+                    </div>
+                    {/* <Button
+                      className={cls.ButtonContratar}
+                      component={Link}
+                      to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                      >
+                      VER PERFIL
+                    </Button> */}
+                    <Button
+                      onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
+                      className={cls.ButtonContratar}>
+                        CONTRATAR
+                    </Button>
                   </div>
-                  {/* <Button
-                    className={cls.ButtonContratar}
-                    component={Link}
-                    to={`/cliente/trabajo/${this.props.job.id}/agente`}
-                    >
-                    VER PERFIL
-                  </Button> */}
-                  <Button
-                    onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
-                    className={cls.ButtonContratar}>
-                      CONTRATAR
-                  </Button>
-                </div>
-              </Paper>
+                </Paper>
+              </Grid>
             </Grid>
           ))
         : (
@@ -143,16 +153,18 @@ class JobShow extends Component {
                     {this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
-                    estrellas
+                    <Stars 
+                      agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
+                    />
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
-                    20 Reviews
+                    {this.props.job.attributes.agent_rewiews_count} Opiniones
                   </Typography>
                 </div>
                 <Button
                   className={cls.ButtonContratar}
                   component={Link}
-                  to={`/cliente/trabajo/${this.props.job.id}/agente`}
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
                   >
                   VER PERFIL
                 </Button>

@@ -26,12 +26,19 @@ class Dashboard extends Component {
   }
 
   render () {
+    let pastJobs = null;
+    if (this.props.historyjobs) {
+      console.log(this.props.historyjobs)
+      if (this.props.historyjobs.length > 0) {
+        pastJobs = <PastJobs historyjobs={this.props.historyjobs} />
+      }
+    }
     return (
       <div className={cls.Dashboard}>
         <Jumbotron />
         <Services clicked={this.showServiceClick} services={this.props.services} />
         <NextJobs nextjobs={this.props.nextjobs} />
-        <PastJobs historyjobs={this.props.historyjobs} />
+        {pastJobs}
         <Download />
         <Contact />
       </div>

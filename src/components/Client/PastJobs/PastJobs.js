@@ -24,7 +24,8 @@ const pastJobs = props => {
         date={job.attributes.started_at}
         total={job.attributes.total}
         job_details={job.attributes.job_details}
-        property={job.attributes.property}/>
+        property={job.attributes.property}
+        agent={job.attributes.agent}/>
     ));
   };
   return (

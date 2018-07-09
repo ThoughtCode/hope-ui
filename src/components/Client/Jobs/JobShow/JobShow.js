@@ -109,7 +109,7 @@ class JobShow extends Component {
                       </Typography>
                     </div>
                     <Button
-                      onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.hashed_id)}
+                      onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.id)}
                       className={cls.ButtonContratar}>
                         CONTRATAR
                     </Button>

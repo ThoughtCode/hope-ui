@@ -89,7 +89,7 @@ const job = props => {
                     </div>  
                     <Typography>
                       <img className={cls.IconUbicacion} src={iconUbicacion} alt="IconUbucacion" />
-                      {props.property.name}, {props.property.p_street} y {props.property.s_street}
+                      {props.property.data.attributes.name}, {props.property.data.attributes.p_street} y {props.property.data.attributes.s_street}
                     </Typography>
                   </Grid>
                 </CardContent>

@@ -64,6 +64,10 @@ class JobShow extends Component {
           </Button>
         )
       }
+
+      if (this.props.job.attributes.status === 'completed') {
+        button = null;
+      }
       date = moment(this.props.job.attributes.started_at).format('MMMM D, YYYY').replace(/\b\w/g, l => l.toUpperCase());
       caption = `${moment(this.props.job.attributes.started_at).format('h:mm a')} - ${moment(this.props.job.attributes.finished_at).format('h:mm a')}`;
       if (this.props.job.attributes.frequency === 'one_time') {

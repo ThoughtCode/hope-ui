@@ -281,11 +281,11 @@ class ServiceBooking extends Component {
     return (
       <div className={cls.ServiceBooking}>
         <Grid container justify="center">
-          <Grid item xs={12} sm={11} md={11} lg={10}>
+          <Grid item xs={12} sm={11} md={12} lg={10}>
             <Grid container justify="center">
               {this.state.service ? (
                 <Grid container justify="center">
-                  <Grid item xs={12} sm={11} md={12} lg={7}>
+                  <Grid item xs={12} sm={12} md={7} lg={7}>
                     <Grid container>
                       <BookingForm
                         nextPage={this.nextPage}
@@ -305,7 +305,7 @@ class ServiceBooking extends Component {
                         changeDatetimeHandler={this.changeDatetimeHandler}/>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={11} md={12} lg={5}>
+                  <Grid item xs={12} sm={11} md={5} lg={5}>
                     <Grid container>
                       <Grid item xs={6} md={12} lg={12}>
                         <BookingTotal form={this.state.form} />

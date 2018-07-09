@@ -16,16 +16,16 @@ import * as actions from '../../../store/actions';
 class AgentShow extends Component {
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
-    this.props.onShowReviews(this.props.token, this.props.match.params.job_id);
-    // this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onShowReviews(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
   }
   render() {
-    console.log(this.props)
     let postulate = 0
     let agentRewiew
     if (this.props.job.attributes){
       agentRewiew=this.props.job.attributes
-      postulate=this.props.job.attributes.proposals
+      postulate=this.props.job.attributes.proposals.data
+      // console.log(postulate)
     }
     return (
       <div>
@@ -51,9 +51,9 @@ class AgentShow extends Component {
                 <Grid item xs={12} sm={8}>
                   <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                      Reviews{/* <Reviews
-                        job={this.props.job}
-                      /> */}
+                      <Reviews
+                        postulate={postulate}
+                      />
                     </Grid>
                   </Grid>
                 </Grid>
@@ -81,7 +81,7 @@ const mapDispatchToProps = dispatch => {
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
     onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
     onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),
-    // onProposalPostulate: (token, hashed_id) => dispatch(actions.proposalPostulate(token, hashed_id))
+    onProposalPostulate: (token, job_id, hashed_id) => dispatch(actions.proposalPostulate(token, job_id, hashed_id))
   };
 };
 

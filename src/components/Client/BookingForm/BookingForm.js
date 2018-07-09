@@ -51,35 +51,39 @@ class BookingForm extends Component {
         <Grid container>
           <div className={cls.Row}>
             <Grid container>
-              <div>
-                <Grid container>
-                  <h3 className={cls.SubHeaderText}>
-                    <span className={cls.SubHeaderNumber}>4</span>
-                    <span>Registra tu dirrecion</span>
-                  </h3>
-                  <Grid item xs={12} sm={12} md={12} lg={7}>
-                    <Grid container>
-                      <div className={cls.Service}>
-                        <div className={cls.Property}>
-                          <select
-                            className={cls.Select}
-                            value={this.props.form.property.value}
-                            onChange={this.props.handlePropertyChange}>
-                            <option>Propiedad</option>
-                            {this.props.properties.map(property => (
-                              <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>
-                            ))}
-                          </select>
+              <div className={cls.Row}>
+                <h3 className={cls.SubHeaderText}>
+                  <span className={cls.SubHeaderNumber}>4</span>
+                  <span>Registra tu dirrecion</span>
+                </h3>
+              </div>
+              <div className={cls.Row}>
+                <div className={cls.BorderPadding}>
+                  <Grid container>
+                    <Grid item xs={12} sm={12} md={12} lg={7}>
+                      <Grid container>
+                        <div className={cls.Service}>
+                          <div className={cls.Property}>
+                            <select
+                              className={cls.Select}
+                              value={this.props.form.property.value}
+                              onChange={this.props.handlePropertyChange}>
+                              <option>Propiedad</option>
+                              {this.props.properties.map(property => (
+                                <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>
+                              ))}
+                            </select>
+                          </div>
                         </div>
-                      </div>
+                      </Grid>
+                    </Grid>
+                    <Grid item xs={12} sm={12} md={12} lg={5}>
+                      <Grid container justify="center">
+                        <button onClick={this.changeCreatePropertyHandler} className={cls.ButonProperty}>Agregar Nueva Propiedad</button>
+                      </Grid>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={12} md={12} lg={5}>
-                    <Grid container justify="center">
-                      <button onClick={this.changeCreatePropertyHandler} className={cls.ButonProperty}>Agregar Nueva Propiedad</button>
-                    </Grid>
-                  </Grid>
-                </Grid>
+                </div>
               </div>
             </Grid>
           </div>
@@ -150,17 +154,19 @@ class BookingForm extends Component {
                           </h3>
                           <div className={cls.Service}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>
-                              <Grid container>
-                                <select
-                                  className={cls.Select}
-                                  value={this.props.value}
-                                  onChange={this.props.handleServiceChange}>
-                                  <option value="">Servicio Principal</option>
-                                  {this.props.service_base.map(service => (
-                                    <option key={service.id} value={service.id}>{service.name}</option>
-                                  ))}
-                                </select>
-                              </Grid>
+                              <div className={cls.BorderPadding}>
+                                <Grid container>
+                                  <select
+                                    className={cls.Select}
+                                    value={this.props.value}
+                                    onChange={this.props.handleServiceChange}>
+                                    <option value="">Servicio Principal</option>
+                                    {this.props.service_base.map(service => (
+                                      <option key={service.id} value={service.id}>{service.name}</option>
+                                    ))}
+                                  </select>
+                                </Grid>
+                              </div>
                             </Grid>
                           </div>
                         </Grid>
@@ -173,7 +179,7 @@ class BookingForm extends Component {
                         <span className={cls.SubHeaderNumber}>2</span>
                         <span>Elige la frecuencia, dia y hora de nuestra visita</span>
                       </h3>
-                      <div>
+                      <div className={cls.BorderPadding}>
                         <div className={cls.Selection}>
                           <Grid container>
                             <Grid item xs={12} sm={6} md={6} lg={6}>
@@ -295,32 +301,34 @@ class BookingForm extends Component {
                   <div className={cls.Row}>
                     <Grid container>
                       <div className={cls.BlockServices}>
-                        <Grid container>
-                          {formElementAddon.map((addon) => (
-                            <li key={addon.id} className={cls.Extras}>
-                              <label onClick={(event) => this.props.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
-                                <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
-                                <div className={cls.ExtraSvg}>
-                                  <p className={cls.HeightDef}>{addon.config.label}</p>
-                                  <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
+                        <div className={cls.BorderPadding}>
+                          <Grid container>
+                            {formElementAddon.map((addon) => (
+                              <li key={addon.id} className={cls.Extras}>
+                                <label onClick={(event) => this.props.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
+                                  <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
+                                  <div className={cls.ExtraSvg}>
+                                    <p className={cls.HeightDef}>{addon.config.label}</p>
+                                    <div dangerouslySetInnerHTML={{__html: addon.config.icon}} className={addon.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
+                                    </div>
                                   </div>
-                                </div>
-                              </label>
-                              {addon.config.quantity && addon.config.active ? (
-                                <div className={cls.CenterInput}>
-                                  <p className={cls.NoMargin}><span>Cantidad</span></p>
-                                  <input
-                                    type="number"
-                                    value={addon.config.value}
-                                    onChange={(event) => this.props.inputChangedHandler(event, addon.id)}
-                                    className={cls.InputQuantity} />
-                                </div>
-                              ) : (
-                                null
-                              )}
-                            </li>
-                          ))}
-                        </Grid>
+                                </label>
+                                {addon.config.quantity && addon.config.active ? (
+                                  <div className={cls.CenterInput}>
+                                    <p className={cls.NoMargin}><span>Cantidad</span></p>
+                                    <input
+                                      type="number"
+                                      value={addon.config.value}
+                                      onChange={(event) => this.props.inputChangedHandler(event, addon.id)}
+                                      className={cls.InputQuantity} />
+                                  </div>
+                                ) : (
+                                  null
+                                )}
+                              </li>
+                            ))}
+                          </Grid>
+                        </div>
                       </div>
                     </Grid>
                   </div>

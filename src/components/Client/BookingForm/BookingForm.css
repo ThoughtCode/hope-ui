@@ -436,3 +436,8 @@
   padding-right: 5em;
   float: left;
 }
+
+.BorderPadding {
+  padding-left: 2em;
+  padding-right: 2em;
+}

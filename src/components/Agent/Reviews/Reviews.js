@@ -7,27 +7,28 @@ import cls from './Review.css';
 import CardReview from './CardReview';
 
 function ReviewsAgent(props) {
-  // console.log(props.reviews)
+  console.log(props.postulate)
   // console.log(props.customer)
-  let reviews = (
+  let postulate = (
     <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
   );
-  if (props.reviews.length > 0) {
-      reviews = props.reviews.map( review => (
+  if (props.postulate.length > 0) {
+      postulate = props.postulate.map( review => (
         // review.comment
         <CardReview
-          lastName={props.customer.last_name}
-          firstName={props.customer.first_name}
-          avatar={props.customer.avatar.url}
-          reviews={review.comment} />
+          // lastName={props.customer.last_name}
+          // firstName={props.customer.first_name}
+          // avatar={props.customer.avatar.url}
+          // postulate={review.comment}
+          />
         // console.log(review.comment)
     ));
   }
-  if(props.reviews){
+  if(props.postulate){
   }
   return (
     <div>
-      {reviews}
+      {postulate}
     </div>
   );
 }

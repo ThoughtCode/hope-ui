@@ -85,7 +85,7 @@ class JobShow extends Component {
                   <div className={cls.AvatarAgent}>
                     <Link component={Link}
                       idAgent={p.attributes.agent.id}
-                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.hashed_id}`}>
+                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
                       {p.attributes.agent.data.attributes.avatar.url === null ? (
                         <Avatar className={cls.AvatarMargin}>
                           {p.attributes.agent.first_name.charAt(0)}{p.attributes.agent.last_name.charAt(0)}
@@ -102,7 +102,9 @@ class JobShow extends Component {
                         {p.attributes.agent.data.attributes.first_name} {p.attributes.agent.data.attributes.last_name}
                       </Typography>
                       <Typography className={cls.Name} variant="caption">
-                        <Stars />
+                        <Stars
+                          agentRewiewsAverage={p.attributes.agent_rewiews_average}
+                        />
                       </Typography>
                       <Typography className={cls.Name} variant="caption">
                         {p.attributes.agent_rewiews_count} Opiniones

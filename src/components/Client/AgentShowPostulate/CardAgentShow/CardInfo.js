@@ -17,16 +17,22 @@ import Stars from '../../Jobs/JobShow/Stars';
 
 class Info extends Component {
   render() {
-    // console.log(this.props.agentRewiews)
     let avatar
-    let agentRewiewsAverage
-    let agentRewiewsCount
-    if (this.props.postulatCard) {
-      avatar = this.props.postulatCard.avatar.url;
-    }
-    if (this.props.agentRewiews) {
-      agentRewiewsAverage = this.props.agentRewiews.agent_rewiews_average
-      agentRewiewsCount = this.props.agentRewiews.agent_rewiews_count
+    let firstName
+    let lastName
+    let email
+    let nationalId
+    let rewiewsAverage
+    let rewiewsCount
+    if (this.props.postulatCard.agent) {
+      // console.log(this.props.postulatCard.agent.data.attributes)
+      avatar = this.props.postulatCard.agent.data.attributes.avatar.url;
+      firstName = this.props.postulatCard.agent.data.attributes.first_name;
+      lastName = this.props.postulatCard.agent.data.attributes.last_name;
+      email = this.props.postulatCard.agent.data.attributes.email;
+      nationalId = this.props.postulatCard.agent.data.attributes.national_id;
+      rewiewsAverage = this.props.postulatCard.agent.data.attributes.rewiews_average;
+      rewiewsCount = this.props.postulatCard.agent.data.attributes.rewiews_count;      
     }
     return (
       <div>
@@ -61,7 +67,7 @@ class Info extends Component {
                       <Grid item xs={12}>
                         <Paper elevation={0}>
                           <Typography variant="headline" gutterBottom>
-                            {this.props.postulatCard.first_name} {this.props.postulatCard.last_name}
+                            {firstName} {lastName} 
                           </Typography>
                         </Paper>
                       </Grid>
@@ -73,14 +79,13 @@ class Info extends Component {
                                 <Grid item xs={4}>
                                   <Paper elevation={0}>
                                     <Stars
-                                      agentRewiewsAverage={agentRewiewsAverage}
+                                      agentRewiewsAverage={rewiewsAverage}
                                     />
                                   </Paper>
                                 </Grid>
                                 <Grid item xs={4}>
                                   <Paper className={cls.CantReviews} elevation={0}>
-                                    {agentRewiewsCount}
-                                    Opiniones
+                                    {rewiewsCount} Opiniones
                                   </Paper>
                                 </Grid>
                               </Grid>
@@ -92,7 +97,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-envelope"></i>
-                              {this.props.postulatCard.email}
+                              {email}
                           </Typography>
                         </Paper>
                       </Grid>
@@ -100,7 +105,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-id-card"></i>
-                              {this.props.postulatCard.national_id}
+                              {nationalId}
                           </Typography>
                         </Paper>
                       </Grid>

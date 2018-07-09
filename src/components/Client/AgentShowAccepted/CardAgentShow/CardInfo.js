@@ -61,7 +61,9 @@ const info = props => {
                             <Grid container>
                               <Grid item xs={4}>
                                 <Paper elevation={0}>
-                                  <Stars />
+                                  <Stars
+                                    agentRewiewsAverage={props.jobCardInfo.attributes.agent_rewiews_average}
+                                  />
                                 </Paper>
                               </Grid>
                               <Grid item xs={4}>

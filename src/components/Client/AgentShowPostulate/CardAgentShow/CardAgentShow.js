@@ -18,10 +18,11 @@ class Info extends Component {
     let postulate = 0
     if (this.props.postulate.length > 0) {
       postulates = this.props.postulate.map( p => (
-        postulate = p.agent
+        postulate = p.attributes
+        // console.log(postulate)
       ));
     };
-    // console.log(postulate)
+    // console.log(this.props.postulate)
     return (
       <div>
         <Grid container justify="center" className={cls.Info}>

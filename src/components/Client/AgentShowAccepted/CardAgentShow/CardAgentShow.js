@@ -15,9 +15,15 @@ class Profile extends Component {
     // console.log(this.props.jobCard);
     let reviews = 0;
     let customer = 0;
-    if(this.props.jobCard.attributes){
-      reviews = this.props.jobCard.attributes.agent_rewiews
-      customer = this.props.jobCard.attributes.customer
+    console.log(this.props.jobCard);
+    if (this.props.jobCard.attributes) {
+      if (this.props.jobCard.attributes.agent_rewiews.length > 0) {
+        reviews = this.props.jobCard.attributes.agent_rewiews.map( rr => (
+          <Reviews review={rr} />
+        ));
+    }
+      // reviews = this.props.jobCard.attributes.agent_rewiews
+      // customer = this.props.jobCard.attributes.customer
     }
     return (
       <div>
@@ -33,10 +39,7 @@ class Profile extends Component {
               <Grid item xs={12} sm={8}>
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} lg={12}>
-                    <Reviews
-                      reviews={reviews}
-                      customer={customer}
-                    />
+                    {reviews}
                   </Grid>
                 </Grid>
               </Grid>

@@ -22,7 +22,7 @@ const styles = theme => ({
 
 function CardReview(props) {
   const { classes } = props;
-  // console.log(props.reviews)
+  console.log(props.cardReview)
   return (
     <div className={`${cls.Review} ${classes.root}`}>
       <Grid container spacing={24}>
@@ -42,7 +42,7 @@ function CardReview(props) {
                 <Paper className={classes.paper}>{props.firstName} {props.lastName}</Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={classes.paper}>{props.reviews}</Paper>
+                <Paper className={classes.paper}>{props.commentCard}</Paper>
               </Grid>
             </Grid>
           </Paper>

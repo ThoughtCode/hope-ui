@@ -88,7 +88,7 @@ class JobShow extends Component {
                       to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
                       {p.attributes.agent.data.attributes.avatar.url === null ? (
                         <Avatar className={cls.AvatarMargin}>
-                          {p.attributes.agent.first_name.charAt(0)}{p.attributes.agent.last_name.charAt(0)}
+                          {p.attributes.agent.data.attributes.first_name.charAt(0)}{p.attributes.data.attributes.agent.last_name.charAt(0)}
                         </Avatar>
                       ) : (
                         <Avatar 

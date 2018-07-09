@@ -62,11 +62,11 @@ class Checking extends Component {
     }
     return (
       <Grid container>
-        <Grid item sm={12} md={12} lg={12}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <div className={cls.BookingTotal}>
             <Grid container>
               <div className={cls.BookingTotalWrapper}>
-                <Grid item sm={12} lg={12}>
+                <Grid item xs={12} sm={12} lg={12}>
                   <Grid container>
                     <div className={cls.BookingSection}>
                       <Grid container>
@@ -90,28 +90,28 @@ class Checking extends Component {
                     </div>
                   </Grid>
                 </Grid>
-                <Grid item sm={12} lg={12}>
+                <Grid item xs={12} lg={12}>
                   <div className={cls.BookingSection}>
                     <Grid container>
                       <div className={cls.Row}>
-                        <Grid item lg={12}>
+                        <Grid item xs={12} lg={12}>
                           <Grid container>
                             <div className={cls.SummaryRow}>
                               {this.props.form.services_base.name !== '' ? (
                                 <Grid container>
-                                  <Grid item lg={6}>
+                                  <Grid item xs={6} lg={6}>
                                     <div className={cls.SummaryTitle}>{this.props.form.services_base.name}</div>
                                   </Grid>
-                                  <Grid item lg={6}>
+                                  <Grid item xs={6} lg={6}>
                                     <div className={cls.SummaryAmount}>${base.toFixed(2)}</div>
                                   </Grid>
                                 </Grid>
                               ) : (
                                 <Grid container>
-                                  <Grid item lg={6}>
+                                  <Grid item xs={6} lg={6}>
                                     <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
                                   </Grid>
-                                  <Grid item lg={6}>
+                                  <Grid item xs={6} lg={6}>
                                     <div className={cls.SummaryAmount}></div>
                                   </Grid>
                                 </Grid>
@@ -121,10 +121,10 @@ class Checking extends Component {
                                   if (addon.active) {
                                     return (
                                       <Grid key={addon.id} container>
-                                        <Grid item lg={6}>
+                                        <Grid item xs={6} lg={6}>
                                           <div className={cls.SummaryTitle}>{addon.label}</div>
                                         </Grid>
-                                        <Grid item lg={6}>
+                                        <Grid item xs={6} lg={6}>
                                           <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
                                         </Grid>
                                       </Grid>
@@ -135,15 +135,15 @@ class Checking extends Component {
                                 })
                               : null}
                               <Grid container>
-                                <Grid item lg={6}>
+                                <Grid item xs={6} lg={6}>
                                   <div className={cls.SummaryTitle}>IVA <small>12%</small></div>
                                 </Grid>
-                                <Grid item lg={6}>
+                                <Grid item xs={6} lg={6}>
                                   <div className={cls.SummaryAmount}>${iva.toFixed(2)}</div>
                                 </Grid>
                               </Grid>
                               <Grid container>
-                                <Grid item lg={8}>
+                                <Grid item xs={8} lg={8}>
                                   <div className={cls.SummaryTime}><small>Total horas de limpieza <span className={cls.Hour}>{time}h</span></small></div>
                                 </Grid>
                               </Grid>
@@ -154,17 +154,17 @@ class Checking extends Component {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item lg={12}>
+                <Grid item xs={12} lg={12}>
                   <div className={cls.BookingSectionNoBorder}>
                     <Grid container>
                       <div className={cls.RowTotal}>
                         <Grid container>
-                          <Grid item lg={6}>
+                          <Grid item xs={6} lg={6}>
                             <div className={cls.TotalText}>
                               <span>Total</span>
                             </div>
                           </Grid>
-                          <Grid item lg={6}>
+                          <Grid item xs={6} lg={6}>
                             <div className={cls.Total}>
                               $
                               <span>
@@ -177,12 +177,12 @@ class Checking extends Component {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item lg={12}>
+                <Grid item xs={12} lg={12}>
                   <div className={cls.BookingSectionNoBorderTerm}>
                     <Grid container>
                       <div className={cls.RowTotalTerm}>
                         <Grid container>
-                          <Grid item lg={12}>
+                          <Grid item xs={12} lg={12}>
                             <div className={cls.Term}>
                               <input onChange={this.handleCheckbox} checked={this.state.check} type="checkbox"/>
                               <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto terminos y condiciones</a></span>
@@ -193,12 +193,12 @@ class Checking extends Component {
                     </Grid>
                   </div>
                 </Grid>
-                <Grid item lg={12}>
+                <Grid item xs={12} lg={12}>
                   <div className={cls.BookingSectionNoBorderTerm}>
                     <Grid container>
                       <div className={cls.RowTotalTerm}>
                         <Grid container>
-                          <Grid item lg={12}>
+                          <Grid item xs={12} lg={12}>
                             <button onClick={(event) => this.changePageValidator(event)} className={cls.ButtonBookingCore}>Pagar</button>
                           </Grid>
                         </Grid>

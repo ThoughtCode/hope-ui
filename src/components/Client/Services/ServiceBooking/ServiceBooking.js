@@ -38,9 +38,9 @@ class ServiceBooking extends Component {
       },
       started_at: new Date(),
     },
-    service: true,
+    service: false,
     checking: false,
-    payment: false,
+    payment: true,
     thanks: false,
   };
 
@@ -305,12 +305,12 @@ class ServiceBooking extends Component {
                         changeDatetimeHandler={this.changeDatetimeHandler}/>
                     </Grid>
                   </Grid>
-                  <Grid item xs={12} sm={11} md={5} lg={5}>
+                  <Grid item xs={12} sm={12} md={5} lg={5}>
                     <Grid container>
-                      <Grid item xs={6} md={12} lg={12}>
+                      <Grid item xs={6} sm={6} md={12} lg={12}>
                         <BookingTotal form={this.state.form} />
                       </Grid>
-                      <Grid item xs={6} md={12} lg={12}>
+                      <Grid item xs={6} sm={6} md={12} lg={12}>
                         <HowWorks />
                       </Grid>
                     </Grid>
@@ -319,15 +319,15 @@ class ServiceBooking extends Component {
               ) : null}
               {this.state.checking ? (
                 <Grid container justify="center">
-                  <Grid item xs={12} sm={11} md={5} lg={4}>
+                  <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container>
-                      <Grid item xs={6} lg={12}>
+                      <Grid item xs={12} md={12} lg={12}>
                         <Checking
                           backPage={this.backPage}
                           nextPage={this.nextPage}
                           form={this.state.form} />
                       </Grid>
-                      <Grid item xs={6} lg={12}>
+                      <Grid item xs={12} md={12} lg={12}>
                         <HowWorks />
                       </Grid>
                     </Grid>
@@ -336,7 +336,7 @@ class ServiceBooking extends Component {
               ) : null}
               {this.state.payment ? (
                 <Grid container justify="center">
-                  <Grid item xs={12} sm={11} md={5} lg={6}>
+                  <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container>
                       <Grid item xs={12} lg={12}>
                         <Payment
@@ -349,7 +349,7 @@ class ServiceBooking extends Component {
               ) : null}
               {this.state.thanks ? (
                 <Grid container justify="center">
-                  <Grid item xs={12} sm={11} md={5} lg={6}>
+                  <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container>
                       <Grid item xs={12} lg={12}>
                         <Thanks />

@@ -83,7 +83,9 @@ class JobShow extends Component {
               <Grid item xs={12}>
                 <Paper>
                   <div className={cls.AvatarAgent}>
-                    <Link component={Link}
+                    <Link 
+                      component={Link}
+                      className={cls.Link}
                       idAgent={p.attributes.agent.id}
                       to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
                       {p.attributes.agent.data.attributes.avatar.url === null ? (

@@ -97,7 +97,7 @@ class AppBarMenu extends Component {
               </Link>
             </Typography>
             <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
-              Dashboard
+              Inicio
             </MenuItem>
             <MenuItem className={cls.MenuItem} component={Link} to="/cliente/trabajos">
               Mis Trabajos

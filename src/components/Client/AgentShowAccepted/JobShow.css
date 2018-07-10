@@ -1,0 +1,39 @@
+.root {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-top: 10% !important;
+  align-items: center !important;
+  flex-grow: 1px !important;
+}
+.Typogra{
+  font-size: 1.8em !important;
+  text-transform: uppercase;
+}
+.SubTypogra{
+  font-size: 1em !important;
+  color: rgba(0, 0, 0, 0.5) !important;
+}
+.CardAgentShow{
+  margin-top: 5vh;
+}
+.Stars{
+  width: 1.2em;
+}
+.ButtonContratar{
+  border: 1px solid #0069a7 !important;
+  border-radius: 5px 5px 5px 5px !important;
+  color: #0069a7 !important;
+  font-weight: bold !important;
+}
+@media only screen and (max-width: 600px){
+  .root {
+    margin-top: 45% !important;
+  }
+  .Typogra{
+    font-size: 1em !important;
+    text-transform: uppercase;
+  }
+  .Boot{
+    margin-top: 10% !important;
+  }
+}

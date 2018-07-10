@@ -73,7 +73,7 @@ class Main extends Component {
             <Grid container align="center">
               <Grid item xs={12} sm={12}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>
-                  Registrate y agenda los servicios que Noc Noc tiene para ti.
+                  Regístrate y agenda los servicios que Noc Noc tiene para ti.
                 </Typography>
               </Grid>
               <Grid item xs={6} sm={12} align="right">
@@ -111,7 +111,7 @@ class Main extends Component {
               <div className={cls.LandingButton}>
                 <Grid container>
                   <Grid item xs={12} sm={12}>
-                    <Button className={cls.pageButtonActive} onClick={() => this.handleOpen("register")}>Registrate</Button>
+                    <Button className={cls.pageButtonActive} onClick={() => this.handleOpen("register")}>Regístrate</Button>
                     <Button className={cls.pageButton} onClick={() => this.handleOpen("login")} >Iniciar Sesion</Button>
                   </Grid>
                   <Grid item xs={12} sm={6}>

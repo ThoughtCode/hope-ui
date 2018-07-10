@@ -49,7 +49,7 @@ function FullWidthGrid(props) {
               <Grid item xs={12} sm={10}>
                 <Paper className={classes.paper} elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
-                    Descarga Noc Noc en la tienda de tu Smartphone y Registrate
+                    Descarga Noc Noc en la tienda de tu Smartphone y Regístrate
                   </Typography>
                 </Paper>
               </Grid>

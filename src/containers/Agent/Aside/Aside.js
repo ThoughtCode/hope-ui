@@ -25,11 +25,11 @@ class Aside extends Component {
                 <Grid container>
                   <Grid item xs={12} sm={4}>
                     <i className={`${cls.iconAside} ${"material-icons"}`}>computer</i>
-                    <Typography variant="caption" gutterBottom className={cls.TextIconContent}>Registrate en linea</Typography>
+                    <Typography variant="caption" gutterBottom className={cls.TextIconContent}>Regístrate en linea</Typography>
                   </Grid>
                   <Grid item xs={12} sm={4}>
                     <Button className={cls.styleButton} >
-                      <AnchorLink className={cls.styleLink} href="#RegistreAgente">REGISTRATE AHORA</AnchorLink>
+                      <AnchorLink className={cls.styleLink} href="#RegistreAgente">Regístrate AHORA</AnchorLink>
                     </Button>
                   </Grid>
                   <Grid item xs={12} sm={4}>

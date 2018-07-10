@@ -217,13 +217,13 @@ class Register extends Component {
               render={renderProps => (
                 <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
                   <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
-                  Registrate con Facebook
+                  Regístrate con Facebook
                 </Button>      
               )}
             />
           </div>
           <div className={cls.ButtonConten}>
-            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Registrate como Agente</Button>
+            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Regístrate como Agente</Button>
             <Button className={cls.pageButtonRegistroAgente} component={Link} to="/reset" >Olvido su contraseña</Button>
           </div>
         </Grid>

@@ -150,7 +150,7 @@ class AppBarMenu extends Component {
               </NavLink>
             </Typography>
             <MenuItem>
-              <NavLink className={cls.styleAnchor} to="/">Registrate</NavLink>
+              <NavLink className={cls.styleAnchor} to="/">Regístrate</NavLink>
             </MenuItem>
             <MenuItem>
               <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>

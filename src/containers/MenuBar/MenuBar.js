@@ -160,7 +160,7 @@ class AppBarMenu extends Component {
               <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
             </MenuItem>
             <MenuItem className={cls.MenuItem}>
-              <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
+              <AnchorLink className={cls.styleAnchor} href="#Download">Únete a Noc Noc</AnchorLink>
             </MenuItem>
             <MenuItem className={cls.MenuItem}>
               <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>

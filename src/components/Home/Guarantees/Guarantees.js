@@ -33,7 +33,7 @@ function FullWidthGrid(props) {
               <Grid item xs={12} sm={6} md={4}>
                 <Paper className={classes.paper} elevation={0}>
                   <img className={cls.icon} src={Profesionales} alt="Profesionales" />
-                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profesionales con experiencias</Typography>
+                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Profesionales con experiencia</Typography>
                   <Grid item xs={12} className={cls.Text}>
                     Personas que tienen como principal objetivo <br/> <small className={cls.small}>Tu satisfacción</small>
                   </Grid>

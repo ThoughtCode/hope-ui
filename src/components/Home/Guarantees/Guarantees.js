@@ -44,7 +44,7 @@ function FullWidthGrid(props) {
                   <img className={cls.icon} src={GuaranteesAlDia} alt="Garantias Al Dia"/>
                   <Typography variant="headline" gutterBottom className={cls.SubTytle}>Disponibilidad al día</Typography>
                   <Grid item xs={12} className={cls.Text}>
-                    Reserve en línea el servicio para el dia que necesites nuestra visita.
+                    Tú eliges el día que necesitas nuestra visita
                   </Grid>
                 </Paper>
               </Grid>

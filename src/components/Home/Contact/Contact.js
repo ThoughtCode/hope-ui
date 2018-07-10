@@ -3,9 +3,12 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
+import {
+  Paper,
+  Grid,
+  Typography,
+  Button,
+} from 'material-ui';
 
 
 // Component
@@ -37,16 +40,19 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={cls.Paper} elevation={0}>
+          <Paper className= {`${cls.Paper} ${cls.Border}`} elevation={0}>
             <Grid container>
               <Grid item xs={12}>
                 <Paper className={`${cls.SubTitle} ${cls.Paper}`} elevation={0}>Conócenos</Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={`${cls.Border} ${cls.Paper}`} elevation={0}>
+                <Paper className={cls.Paper} elevation={0}>
                   <ul className={cls.UlContact}>
                     <li className={cls.ListContact}>
                       <NavLink className={cls.Link} to="/">Quiénes Somos?</NavLink>
+                    </li>
+                    <li className={cls.ListContact}>
+                      <NavLink className={cls.Link} to="/agente/registro">Quiero ser agente?</NavLink>
                     </li>
                     <li className={cls.ListContact}>
                       <NavLink className={cls.Link} to="/">Principios y Valores</NavLink>
@@ -61,7 +67,7 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={3}>
-          <Paper className={cls.Paper} elevation={0}>
+          <Paper className={`${cls.Paper} ${cls.Border}`} elevation={0}>
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper className={`${cls.SubTitle} ${cls.Paper}`} elevation={0}>Contactos</Paper>
@@ -70,7 +76,20 @@ function FullWidthGrid(props) {
                 <Paper className={`${cls.SubSubTitle} ${cls.Paper}`} elevation={0}>Déjanos tus datos y nos contactaremos contigo.</Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper className={cls.Paper} elevation={0}>Formulario</Paper>
+                <Paper className={cls.Paper} elevation={0}>
+                  <form>
+                    <p>
+                      <input type="text" name="username" placeholder="Nombre" />
+                    </p>
+                    <p>
+                      <input type="text" name="celular" placeholder="Telefono" />
+                    </p>
+                    <p>
+                      <input type="text" name="correo" placeholder="Correo" />
+                    </p>
+                    <Button className={cls.ButtonContratar} >Enviar</Button>
+                  </form>
+                </Paper>
               </Grid>
             </Grid>
           </Paper>
@@ -105,19 +124,15 @@ function FullWidthGrid(props) {
         </Grid>
         <Grid item xs={12}>
           <Paper className={cls.Paper} elevation={0}>
-            <Grid container className={cls.ContentSocial} justify="flex-end" align="center">
-              <Grid item xs={4} sm={1}>
-                <Paper className={cls.Paper} elevation={0}>
+            <Grid container className={cls.ContentSocial} justify="flex-end" align="right">
+              <Grid item xs={8}>
+                <Paper className={cls.PaperSocial} elevation={0}>
                   <img src={Facebook} alt="AppLogo" className={cls.Styleicon} />
                 </Paper>
-              </Grid>
-              <Grid item xs={4} sm={1}>
-                <Paper className={cls.Paper} elevation={0}>
+                <Paper className={cls.PaperSocial} elevation={0}>
                   <img src={Twitter} alt="AppLogo" className={cls.Styleicon} />
                 </Paper>
-              </Grid>
-              <Grid item xs={4} sm={1}>
-                <Paper className={cls.Paper} elevation={0}>
+                <Paper className={cls.PaperSocial} elevation={0}>
                   <img src={Instagram} alt="AppLogo" className={cls.Styleicon} />
                 </Paper>
               </Grid>

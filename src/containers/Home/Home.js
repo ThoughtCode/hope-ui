@@ -11,7 +11,6 @@ import MenuBar from '../../containers/MenuBar/MenuBar';
 import MenuResponsive from '../../containers/MenuBar/MenuResponsive';
 import Main from '../../components/Home/Main/Main';
 import Guarantees from '../../components/Home/Guarantees/Guarantees';
-import IsTold from '../../components/Home/IsTold/IsTold';
 import Funtion from '../../components/Home/Funtion/Funtion';
 import Services from '../../components/Home/Services/Services';
 import Testimonio from '../../components/Home/Testimonio/Testimonio';
@@ -50,11 +49,6 @@ class Home extends Component {
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paper} id="##">
               <Guarantees />
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper} id="##">
-              <IsTold />
             </Paper>
           </Grid>
           <Grid item xs={12}>

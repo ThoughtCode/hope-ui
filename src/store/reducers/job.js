@@ -9,7 +9,7 @@ const initialState = {
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
-  fetchJobDetails,
+  fetchJobDetails: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {

@@ -45,7 +45,6 @@ class JobShow extends Component {
     let agents = null;
     let agentTitle = null;
     let button = null;
-    let hashedId = null;
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (

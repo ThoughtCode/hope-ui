@@ -46,16 +46,8 @@ class MenuAppBar extends React.Component {
   state = {
     anchorEl: null,
     openLogin: false,
-    open: false
-  }
-  constructor(props){
-    super(props);
-    this.state = {
-      auth: true,
-      anchorEl: null,
-      bgColor: '#fff'
-    };
-    this.handleScroll = this.handleScroll.bind(this);
+    openRegister: false,
+    openAgentLogin: false,
   }
 
   handleChange = (event, checked) => {
@@ -103,7 +95,7 @@ class MenuAppBar extends React.Component {
     });
   };
 
-  handleScroll() {
+  handleScroll = () => {
     const html = document.documentElement;
     if (html.scrollTop >= 100) {
       this.setState({ bgColor: '#fff' });
@@ -192,7 +184,6 @@ class MenuAppBar extends React.Component {
                   aria-owns={open ? 'menu-appbar' : null}
                   aria-haspopup="true"
                   onClick={this.handleMenu}
-                  color="#000"
                 >
                   <MenuIcon />
                 </IconButton>

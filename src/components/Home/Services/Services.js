@@ -33,7 +33,7 @@ function FullWidthGrid(props) {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={`${cls.ContentServices} ${classes.paper}`} alignItems="center" align="center" elevation={0}>
+          <Paper className={`${cls.ContentServices} ${classes.paper}`} align="center" elevation={0}>
             <img className={cls.ImageResponsive} src={Service1} alt="pinture" />
             <div className={cls.footerServicios}>
               <Typography variant="headline" gutterBottom className={cls.SubTytle} >Limpieza de hogar</Typography>

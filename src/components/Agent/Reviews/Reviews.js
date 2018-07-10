@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  Typography,
-} from 'material-ui';
 
-import cls from './Review.css';
 import CardReview from './CardReview';
 
 function ReviewsAgent(props) {

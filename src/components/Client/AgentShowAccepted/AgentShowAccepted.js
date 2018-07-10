@@ -8,7 +8,6 @@ import Grid from 'material-ui/Grid';
 // Componentes
 import cls from './AgentShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';
-import Reviews from '../../../components/Agent/Reviews/Reviews';
 
 import * as actions from '../../../store/actions';
 
@@ -47,7 +46,6 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     job: state.job.job,
-    // review: state.review.review,
   };
 };
 

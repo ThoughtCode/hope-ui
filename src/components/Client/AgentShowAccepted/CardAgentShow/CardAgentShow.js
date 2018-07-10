@@ -14,7 +14,6 @@ import Reviews from '../../../Agent/Reviews/Reviews';
 class Profile extends Component {
   render() {
     let reviews = null;
-    let customer = 0;
     if (this.props.jobCard.attributes) {
       if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
         reviews = this.props.jobCard.attributes.agent_rewiews.data.map( rr => (

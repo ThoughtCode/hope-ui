@@ -272,10 +272,22 @@ export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
       let job = [];
       job = res.data.job.data;
       dispatch(acceptedJobSuccess(job));
+      Alert.success(res.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
-      console.log(err);
-      dispatch(acceptedJobFail());
+      if (err.response.data.job) {
+        let job = err.response.data.job.data;
+        dispatch(acceptedJobSuccess(job));
+      } else {
+        dispatch(acceptedJobFail());
+      }
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
     })
 };
 
@@ -407,8 +419,7 @@ export const fetchJobAgenteCompletedSuccess = completedjobs => ({
   completedjobs,
 });
 
-export const fetchJobAgenteCompleted = (token) => dispatch => {
-  
+export const fetchJobAgenteCompleted = (token) => dispatch => {  
   dispatch(fetchJobAgenteCompletedStart());
   const headers = {
     headers: {
@@ -441,7 +452,6 @@ export const fetchJobDetailsFail = () => ({
 
 export const fetchJobDetails = (token, job_id) => dispatch => {
   dispatch(fetchJobDetailsStart());
-  // console.log(job_id)
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
@@ -449,13 +459,11 @@ export const fetchJobDetails = (token, job_id) => dispatch => {
   }
   axios.get(`/agents/jobs/${job_id}`, headers)
     .then((res) => {
-      // console.log(res.data.job_for_agents.data)
       let details = [];
       details = res.data.job_for_agents.data;
       dispatch(fetchJobDetailsSuccess(details));
     })
     .catch((err) => {
-      // console.log(err);
       dispatch(fetchJobDetailsFail(err));
     })
 };

@@ -7,10 +7,15 @@ import JobShow from '../../../components/Client/Jobs/JobShow/JobShow';
 import * as actions from '../../../store/actions';
 
 class Job extends Component {
-  
   componentDidMount() {
     this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
   }
+
+  acceptedProposal = (event, token, job_id, proposal_id) => {
+    event.preventDefault();
+    this.props.onAcceptedJob(token, job_id, proposal_id);
+  }
+
   render() {
     let hashedId = null
     if(this.props.job.attributes){
@@ -20,7 +25,7 @@ class Job extends Component {
       <JobShow
         hashedId={hashedId}
         job={this.props.job}
-        accepted={this.props.onAcceptedJob}
+        accepted={this.acceptedProposal}
         cancelled={this.props.onCancelledJob}/>
     );
   }

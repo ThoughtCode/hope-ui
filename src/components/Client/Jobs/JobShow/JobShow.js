@@ -116,7 +116,7 @@ class JobShow extends Component {
                       </Typography>
                     </div>
                     <Button
-                      onClick={() => this.props.accepted(localStorage.getItem('token'), this.props.job.id, p.id)}
+                      onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
                       className={cls.ButtonContratar}>
                         CONTRATAR
                     </Button>

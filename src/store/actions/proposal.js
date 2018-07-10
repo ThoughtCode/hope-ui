@@ -16,7 +16,6 @@ export const proposalPostulateSuccess = proposalPostulate => ({
 });
 
 export const proposalPostulate = (token, job_id, hashed_id) => dispatch => {
-  // console.log(hashed_id);
   dispatch(proposalPostulateStart());
   const headers = {
     headers: {
@@ -25,13 +24,11 @@ export const proposalPostulate = (token, job_id, hashed_id) => dispatch => {
   };
   axios.get(`/customers/jobs/${job_id}/proposals/${hashed_id}`, headers)
   .then((res) => {
-    // console.log(res)
     let proposalPostulate = [];
     proposalPostulate = res.data.proposal.data.attributes;
     dispatch(proposalPostulateSuccess(proposalPostulate));
   })
   .catch((err) => {
-    // console.log(err);
     dispatch(proposalPostulateFail(err));
   });
 }

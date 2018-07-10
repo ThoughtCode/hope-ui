@@ -8,6 +8,7 @@ import Typography from 'material-ui/Typography';
 
 // Component
 import cls from './Testimonio.css'
+import IconUser from '../../../assets/Icono-07.svg'
 
 const styles = theme => ({
   paper: {
@@ -24,6 +25,8 @@ function FullWidthGrid(props) {
       <Grid container alignItems="center" justify="center">
         <Grid item xs={12} sm={5}>
           <Paper className={classes.paper} elevation={0}>
+            <img src={IconUser} alt="IconUser" className={cls.StyleIcon} />
+            <img src={IconUser} alt="IconUser" className={cls.StyleIcon} />
             <Typography variant="headline" gutterBottom className={cls.SubTitle} >Nuestros Clientes</Typography>
             <Typography variant="headline" gutterBottom className={cls.SubTypogra}>
               En Noc Noc buscamos siempre la excelencia por eso te compartimos algunos comentarios de nuestros clientes.

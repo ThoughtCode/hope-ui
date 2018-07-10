@@ -34,43 +34,7 @@ function Download(props) {
               </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper} elevation={0}>
-                  <Grid container>
-                    <Grid item xs={12}>
-                      <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
-                        <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                        <p className={cls.Text}>Contrata y agenda servicios</p>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
-                        <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                        <p className={cls.Text}>Elige el perfil de tu agente</p>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
-                        <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                        <p className={cls.Text}>Paga con tus tarjetas preferidas</p>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
-                        <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                        <p className={cls.Text}>Recibe notificaciones</p>
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <Typography className={cls.SubheadingTypogra} variant="subheading" gutterBottom align="left">
-                        <i className={`${"material-icons"} ${cls.IconosDownload}`}>check</i>
-                        <p className={cls.Text}>Recibe notificaciones</p>
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </Paper>
-              </Grid>
-              <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={0}>
-                  <Grid container className={cls.ContentDownload}>
+                  <Grid container className={cls.ContentDownload} align="center">
                     <Grid item xs={6} sm={4} md={6}>
                       <img className={cls.IconDownload} src={GooglePlay} alt="GoolglePlay" />
                     </Grid>

@@ -28,6 +28,9 @@
   max-width: 600px !important;
   flex-grow: 1px,
 }
+.StyleIcon {
+  height: 3rem !important;
+}
 
 @media only screen and (max-width: 600px) {
   .SubTitle{

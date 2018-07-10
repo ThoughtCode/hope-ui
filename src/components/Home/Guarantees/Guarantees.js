@@ -51,7 +51,7 @@ function FullWidthGrid(props) {
               <Grid item xs={12} sm={6} md={4}>
                 <Paper className={classes.paper} elevation={0}>
                   <img className={cls.icon} src={Guarante} alt="Garantias" />
-                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Garantía de felicidad con NocNoc</Typography>
+                  <Typography variant="headline" gutterBottom className={cls.SubTytle}>Seguro de Protección</Typography>
                   <Grid item xs={12} className={cls.Text}>
                     Noc Noc garantiza el servicio con nuestro seguro de protección.
                   </Grid>

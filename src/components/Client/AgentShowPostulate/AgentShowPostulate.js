@@ -29,7 +29,8 @@ class AgentShow extends Component {
     if (this.props.proposalPostulate.agent) {
       if (this.props.proposalPostulate.agent.data.attributes.rewiews.data.length > 0) {
         reviews = this.props.proposalPostulate.agent.data.attributes.rewiews.data.map( rr => (
-           <Reviews review={rr} />
+          console.log(rr),
+          <Reviews review={rr} />
         ))
       }
     }

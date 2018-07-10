@@ -19,9 +19,9 @@ function ReviewsAgent(props) {
   );
   console.log(props.review);
   if (props.review) {
-    firstName = props.review.attributes.customer.data.attributes.first_name;
-    lastName = props.review.attributes.customer.data.attributes.last_name;
-    avatar = props.review.attributes.customer.data.attributes.avatar.url;
+    firstName = props.review.attributes.owner.data.attributes.first_name;
+    lastName = props.review.attributes.owner.data.attributes.last_name;
+    avatar = props.review.attributes.owner.data.attributes.avatar.url;
     comment = props.review.attributes.comment;
     postulateReviews = (
       <CardReview

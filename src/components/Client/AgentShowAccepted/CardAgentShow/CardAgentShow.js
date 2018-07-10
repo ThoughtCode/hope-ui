@@ -12,18 +12,14 @@ import Reviews from '../../../Agent/Reviews/Reviews';
 
 class Profile extends Component {
   render() {
-    // console.log(this.props.jobCard);
     let reviews = 0;
     let customer = 0;
-    console.log(this.props.jobCard);
     if (this.props.jobCard.attributes) {
-      if (this.props.jobCard.attributes.agent_rewiews.length > 0) {
-        reviews = this.props.jobCard.attributes.agent_rewiews.map( rr => (
+      if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
+        reviews = this.props.jobCard.attributes.agent_rewiews.data.map( rr => (
           <Reviews review={rr} />
         ));
-    }
-      // reviews = this.props.jobCard.attributes.agent_rewiews
-      // customer = this.props.jobCard.attributes.customer
+      }
     }
     return (
       <div>

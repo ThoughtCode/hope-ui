@@ -7,28 +7,48 @@ import cls from './Review.css';
 import CardReview from './CardReview';
 
 function ReviewsAgent(props) {
-  console.log(props.postulate)
   // console.log(props.customer)
-  let postulate = (
+  // console.log(props.review)
+  let r;
+  let lastName = null;
+  let firstName = null;
+  let avatar = null;
+  let comment = null;
+  let postulateReviews = (
     <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
   );
-  if (props.postulate.length > 0) {
-      postulate = props.postulate.map( review => (
-        // review.comment
-        <CardReview
-          // lastName={props.customer.last_name}
-          // firstName={props.customer.first_name}
-          // avatar={props.customer.avatar.url}
-          // postulate={review.comment}
-          />
-        // console.log(review.comment)
-    ));
+  console.log(props.review);
+  if (props.review) {
+    firstName = props.review.attributes.owner.data.attributes.first_name;
+    lastName = props.review.attributes.owner.data.attributes.last_name;
+    avatar = props.review.attributes.owner.data.attributes.avatar.url;
+    comment = props.review.attributes.comment;
+    postulateReviews = (
+      <CardReview
+        lastName={firstName}
+        firstName={lastName}
+        avatar={avatar}
+        commentCard={comment}
+      />
+    )
   }
-  if(props.postulate){
-  }
+  // if (props.review.attributes) {
+  //   firstName = props.review.first_name
+  //   lastName = props.review.last_name
+  //   avatar = props.review.avatar.attributes.url
+  //   // console.log(props.review.rewiews)
+  //   if (props.review.rewiews.length > 0) {
+  //     comments = props.review.rewiews.map( comment => (
+  //       // console.log(comment.comment),
+  //       r = comment.comment
+  //     ))
+  //   }
+    
+  // }
+  
   return (
     <div>
-      {postulate}
+      {postulateReviews}
     </div>
   );
 }

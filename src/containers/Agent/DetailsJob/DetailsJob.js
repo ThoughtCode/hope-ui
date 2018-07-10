@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import 'moment/locale/es';
 import moment from 'moment';
 import {
@@ -15,8 +16,14 @@ import CheckBox from './CheckBox';
 // Css
 import cls from './DetailsJob.css';
 
+import * as actions from '../../../store/actions';
+
 class DetailsJob extends Component {
+  componentDidMount() {
+    this.props.onFetchJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
+  };
   render() {
+    console.log(this.props)
     return (
       <div>
         <Grid container justify="center">
@@ -139,4 +146,13 @@ class DetailsJob extends Component {
   }
 }
 
-export default DetailsJob;
+const mapDispatchToProps = dispatch => ({
+  onFetchJobDetails: (token, job_id) => dispatch(actions.fetchJobDetails(token, job_id)),
+  onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
+});
+
+const mapStateToProps = state => ({
+  fetchJobDetails: state.job.fetchJobDetails,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps) (DetailsJob);

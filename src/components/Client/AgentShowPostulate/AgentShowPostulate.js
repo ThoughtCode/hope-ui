@@ -20,8 +20,20 @@ class AgentShow extends Component {
     this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
   }
   render() {
-    let postulate = 0
-    let agentRewiew
+    // console.log(this.props.proposalPostulate.agent)
+    let postulate = 0;
+    let agentRewiew;
+    let postulateReviews;
+    let r;
+    let reviews = null;
+    if (this.props.proposalPostulate.agent) {
+      if (this.props.proposalPostulate.agent.data.attributes.rewiews.data.length > 0) {
+        reviews = this.props.proposalPostulate.agent.data.attributes.rewiews.data.map( rr => (
+          console.log(rr),
+          <Reviews review={rr} />
+        ))
+      }
+    }
     if (this.props.job.attributes){
       agentRewiew=this.props.job.attributes
       postulate=this.props.job.attributes.proposals.data
@@ -51,9 +63,7 @@ class AgentShow extends Component {
                 <Grid item xs={12} sm={8}>
                   <Grid container>
                     <Grid item xs={12} sm={12} md={12} lg={12}>
-                      <Reviews
-                        postulate={postulate}
-                      />
+                      {reviews}
                     </Grid>
                   </Grid>
                 </Grid>
@@ -70,7 +80,7 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     job: state.job.job,
-    // proposalPostulate: state.proposalPostulate,
+    proposalPostulate: state.proposal.proposalPostulate,
     // review: state.review.review,
   };
 };

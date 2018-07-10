@@ -227,12 +227,7 @@ class Form extends Component {
           <Grid container>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
-                <Typography variant="title" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>
-              </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
-                <Typography variant="subheading" gutterBottom className={cls.None}>LOREM IPSUM.</Typography>
+                <Typography variant="title" gutterBottom className={cls.None}>Déjanos tus datos y nos contactaremos contigo lo antes posible</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12}>
@@ -449,7 +444,7 @@ class Form extends Component {
               )}
             </Grid>
           </Grid>
-          <p className={cls.None}>Al registrarte aceptas los <small className={cls.small}>Terminos y politicas de privacidad.</small></p>
+          <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Terminos y politicas de privacidad.</a></span></p>
           <Grid container justify="center">
             <Grid item xs={12}>
               <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>

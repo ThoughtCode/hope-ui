@@ -4,7 +4,7 @@
   background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)),url(../../../assets/BackgrounAgent.png);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   flex-grow: 1;
   font-family: Arial !important;
 }
@@ -12,13 +12,14 @@
 .Typogra{
   color: #fff !important;
   font-size: 3rem !important;
-  margin-top: 35vh !important;
+  margin-top: 30% !important;
   text-align: center !important;
   font-family: Arial !important;
+  font-weight: 500 !important;
 }
 
 .logo {
-  height: 3.5rem;
+  height: 5rem;
   margin: 0.5rem;
 }
 

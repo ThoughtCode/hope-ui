@@ -59,20 +59,29 @@
   color: #0069a7;
 }
 
+.None {
+  color: #0069a7 !important;
+  font-weight: 500 !important;
+}
+
+.Link {
+  text-decoration: none;
+  cursor: pointer;
+  color: #0069a7;
+}
+
+.Link:hover {
+  text-decoration: underline;
+}
+
 @media only screen and (max-width: 600px) {
   .Form{
     padding: 10px !important;
-  }
-  .None{
-    display: none !important;
   }
 }
 
 @media only screen and (max-width: 960px) {
   .Form{
     padding: 10px !important;
-  }
-  .None{
-    display: none !important;
   }
 }

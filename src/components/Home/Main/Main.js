@@ -17,7 +17,6 @@ const styles = theme => ({
   paper: {
     position: 'absolute',
     backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
   },
 });
 

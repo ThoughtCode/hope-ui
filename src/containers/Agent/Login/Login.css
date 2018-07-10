@@ -1,7 +1,7 @@
 .Login{
   border-radius: 5px 5px 5px 5px !important;  
   text-align: center;
-  height: 570px;
+  height: 600px;
   width: 600px;
 }
 
@@ -96,7 +96,7 @@
 
 .pageButtonRegistroAgente{
   font-family: Arial !important;
-  font-size: 0.6rem !important;
+  font-size: 0.8rem !important;
   margin: 4px 0 !important;
   justify-content: center;
   width: 200px !important;

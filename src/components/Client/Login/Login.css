@@ -2,7 +2,7 @@
   border-radius: 5px 5px 5px 5px !important;
   margin: 0px auto;
   text-align: center;
-  height: 550px;
+  height: 600px;
   width: 600px;
   background-color: #ffffff !important;
 }
@@ -26,7 +26,7 @@
 
 .PageButtonRegister{
   font-family: Arial !important;
-  font-size: 0.6rem !important;
+  font-size: 0.8rem !important;
   margin: 4px 0 !important;
   justify-content: center;
   width: 160px !important;

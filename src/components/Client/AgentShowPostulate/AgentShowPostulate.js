@@ -32,6 +32,8 @@ class AgentShow extends Component {
           console.log(rr),
           <Reviews review={rr} />
         ))
+      }else{
+        reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
       }
     }
     if (this.props.job.attributes){

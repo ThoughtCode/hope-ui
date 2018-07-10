@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // Components
 import {
   Grid,
+  Typography,
 } from 'material-ui';
 import CardProfile from './CardInfo';
 
@@ -12,13 +13,15 @@ import Reviews from '../../../Agent/Reviews/Reviews';
 
 class Profile extends Component {
   render() {
-    let reviews = 0;
+    let reviews = null;
     let customer = 0;
     if (this.props.jobCard.attributes) {
       if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
         reviews = this.props.jobCard.attributes.agent_rewiews.data.map( rr => (
           <Reviews review={rr} />
         ));
+      }else{
+        reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
       }
     }
     return (

@@ -22,7 +22,7 @@ const styles = theme => ({
 
 function CardReview(props) {
   const { classes } = props;
-  console.log(props.cardReview)
+  // console.log(props.cardReview)
   return (
     <div className={`${cls.Review} ${classes.root}`}>
       <Grid container spacing={24}>

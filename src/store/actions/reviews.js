@@ -38,9 +38,8 @@ export const showReviews = (token, hashed_id) => (dispatch) => {
     });
 };
 
-export const qualifySuccess = (token, formData) => ({
+export const qualifySuccess = formData => ({
   type: actionTypes.QUALIFY_SUCCESS,
-  clientId: token,
   formData,
 });
 
@@ -53,30 +52,19 @@ export const qualifyStart = () => ({
   type: qualifyStart,
 });
 
-export const qualify = (token, job_id, comment, qualification) => (dispatch) => {
+export const qualify = (token, job_id, review) => (dispatch) => {
+  console.log(job_id);
   dispatch(qualifyStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  const qualifyData = {
-    qualify: {
-      job_id,
-      comment,
-      qualification
-    },
-  };
-  axios.post(`/customers/jobs/${job_id}/review`, qualifyData, headers)
-  // console.log("paso")
+  axios.post(`/customers/jobs/${job_id}/review`, review, headers)
   .then((response) => {
-    const qualifyJ = response.data.customers.data;
-    localStorage.clear();
-    localStorage.setItem('token', token);
-    localStorage.setItem('id', job_id);
-    localStorage.setItem('comment', comment);
-    localStorage.setItem('qualification', qualification)
-    dispatch(qualifySuccess(token, job_id));
+    let reviewJob = [];
+    reviewJob = response.data.review.data.attributes;
+    dispatch(qualifySuccess(reviewJob));
     dispatch(push(`/cliente/trabajo/${job_id}/agente/contratado`));
     Alert.success(response.data.message, {
       position: 'bottom',

@@ -102,10 +102,10 @@ const info = props => {
                     <Grid item xs={12} sm={4}>
                       <Paper elevation={0}>
                         <Button
-                          className={cls.ButtonContratar}
-                          component={Link}
-                          to={`/cliente/trabajo/${props.jobCardInfo.id}/agente/calificar`}
-                          >
+                        className={cls.ButtonContratar}
+                        component={Link}
+                        to={`/cliente/trabajo/${props.jobCardInfo.id}/agente/calificar`}
+                        >
                           CALIFICAR
                         </Button>
                       </Paper>

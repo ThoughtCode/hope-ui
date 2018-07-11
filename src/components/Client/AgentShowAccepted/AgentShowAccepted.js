@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
 // Componentes
-import cls from './AgentShow.css';
+import cls from './JobShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';
 
 import * as actions from '../../../store/actions';

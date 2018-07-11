@@ -53,6 +53,7 @@ export {
 } from './current_user';
 export {
   showReviews,
+  qualify,
 } from './reviews';
 export {
   proposalPostulate,

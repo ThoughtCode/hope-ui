@@ -16,6 +16,7 @@ import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 const info = props => {
+  console.log(props.jobCardInfo.id)
   let profile = null;
   if (props.jobCardInfo.id)  {
     profile = (
@@ -100,7 +101,13 @@ const info = props => {
                   <Grid container justify="center">
                     <Grid item xs={12} sm={4}>
                       <Paper elevation={0}>
-                        <Button className={cls.ButtonContratar}>CALIFICAR</Button>
+                        <Button
+                        className={cls.ButtonContratar}
+                        component={Link}
+                        to={`/cliente/trabajo/${props.jobCardInfo.id}/agente/calificar`}
+                        >
+                          CALIFICAR
+                        </Button>
                       </Paper>
                     </Grid>
                   </Grid>

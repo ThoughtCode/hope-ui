@@ -462,7 +462,7 @@ export const jobDetails = (token, job_id) => dispatch => {
       let details = [];
       details = res.data.job_for_agents.data;
       dispatch(jobDetailsSuccess(details));
-      console.log(details)
+      // console.log(details)
     })
     .catch((err) => {
       dispatch(jobDetailsFail(err));

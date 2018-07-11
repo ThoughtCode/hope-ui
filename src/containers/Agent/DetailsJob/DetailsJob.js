@@ -10,9 +10,6 @@ import {
     Button,
 } from 'material-ui';
 
-// Components
-import CheckBox from './CheckBox';
-
 // Css
 import cls from './DetailsJob.css';
 
@@ -23,7 +20,34 @@ class DetailsJob extends Component {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
-    console.log(this.props.jobDetails);
+    let total = null;
+    let detail = null;
+    let details = null;
+    let service_base = null;
+    let frequency = null;
+    let services_addon = null;
+    let finishedAt = null;
+    console.log(this.props)
+    if(this.props.jobDetails.attributes){
+      total = this.props.jobDetails.attributes.total;
+      finishedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      if(this.props.jobDetails.attributes.job_details.length > 0 ){
+        this.props.jobDetails.attributes.job_details.map( detail => {
+          if (detail.service.type_service === 'base') {
+            service_base = detail.service.name;
+          }
+          return null;
+        })
+        services_addon = this.props.jobDetails.attributes.job_details.map( detail => {
+          if (detail.service.type_service === 'addon') {
+            return (
+              <ul>{detail.service.name}</ul>
+            );
+          }
+          return null;
+        })
+      }
+    }
     return (
       <div>
         <Grid container justify="center">
@@ -35,25 +59,32 @@ class DetailsJob extends Component {
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>
                         <Paper>
-                          <Typography variant="headline" className={cls.TitleDate}>Limpieza de Casa</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>Mensual</Typography>
+                          <Typography variant="headline" className={cls.TitleDate}>{service_base}</Typography>
+                          <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
                           <Typography variant="caption" className={cls.TitleCaption}>
-                            {moment().format('MMMM D YYYY, h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())}
+                            {/* {moment().format('MMMM D YYYY, h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())} */}
+                            {finishedAt}
                           </Typography>
                         </Paper>
                       </Grid>
                       <Grid item xs={12}>
                         <Paper className={cls.ServiceDate}>
-                            <Typography variant="headline">Servicios Adicionales</Typography>
-                            <CheckBox/>
+                          <Typography variant="headline">Servicios Adicionales</Typography>
+                          <Grid container className={cls.ServiceDate}>
+                            <Grid item xs={12}>
+                              <Paper elevation={0}>
+                                {services_addon}
+                              </Paper>
+                            </Grid>
+                          </Grid>
                         </Paper>
                       </Grid>
                       <Grid item xs={12}>
                         <Paper className={cls.ServiceDate}>
-                            <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>30$</Typography>
+                            <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>{total}$</Typography>
                         </Paper>
                       </Grid>
-                      <Button className={cls.ButtonCancelar}>APLICAR</Button>
+                      <Button className={cls.ButtonCancelar} onClick={() => this.props.onApplyProposal(localStorage.getItem('token'), this.props.match.params.job_id)}>APLICAR</Button>
                     </Grid>
                   </Paper>
                 </Grid>

@@ -20,6 +20,7 @@ class DetailsJob extends Component {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
+    // console.log(this.props)
     let total = null;
     let detail = null;
     let details = null;
@@ -27,7 +28,6 @@ class DetailsJob extends Component {
     let frequency = null;
     let services_addon = null;
     let finishedAt = null;
-    console.log(this.props)
     if(this.props.jobDetails.attributes){
       total = this.props.jobDetails.attributes.total;
       finishedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());

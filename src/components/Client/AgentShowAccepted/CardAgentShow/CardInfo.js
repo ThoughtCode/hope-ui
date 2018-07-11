@@ -16,7 +16,7 @@ import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 const info = props => {
-  console.log(props.jobCardInfo.id)
+  // console.log(props.jobCardInfo.id)
   let profile = null;
   if (props.jobCardInfo.id)  {
     profile = (

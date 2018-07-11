@@ -20,10 +20,10 @@ import * as actions from '../../../store/actions';
 
 class DetailsJob extends Component {
   componentDidMount() {
-    this.props.onFetchJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
-    console.log(this.props)
+    console.log(this.props.jobDetails);
     return (
       <div>
         <Grid container justify="center">
@@ -147,12 +147,12 @@ class DetailsJob extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onFetchJobDetails: (token, job_id) => dispatch(actions.fetchJobDetails(token, job_id)),
+  onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
 });
 
 const mapStateToProps = state => ({
-  fetchJobDetails: state.job.fetchJobDetails,
+  jobDetails: state.job.jobDetails,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps) (DetailsJob);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailsJob);

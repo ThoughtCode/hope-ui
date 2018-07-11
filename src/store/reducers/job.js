@@ -9,7 +9,7 @@ const initialState = {
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
-  fetchJobDetails: [],
+  jobDetails: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -45,8 +45,8 @@ const fetchJobAgenteCompleted = (state, action) => updateObject(state, {
   completedjobs: action.completedjobs,
 });
 
-const fetchJobDetails = (state, action) => updateObject(state, {
-  fetchJobDetails: action.fetchJobDetails,
+const jobDetails = (state, action) => updateObject(state, {
+  jobDetails: action.jobDetails,
 });
 
 const reducer = (state = initialState, action) => {
@@ -81,9 +81,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_START: return state;
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgenteCompleted(state, action);
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_FAIL: return state;
-    case actionTypes.FETCH_JOB_DETAILS_START: return state;
-    case actionTypes.FETCH_JOB_DETAILS_SUCCESS: return fetchJobDetails(state, action);
-    case actionTypes.FETCH_JOB_DETAILS_FAIL: return state;
+    case actionTypes.JOB_DETAILS_START: return state;
+    case actionTypes.JOB_DETAILS_SUCCESS: return jobDetails(state, action);
+    case actionTypes.JOB_DETAILS_FAIL: return state;
     default: return state;
   }
 };

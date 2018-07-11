@@ -437,33 +437,34 @@ export const fetchJobAgenteCompleted = (token) => dispatch => {
     });
 }
 
-export const fetchJobDetailsStart = () => ({
-  type: actionTypes.FETCH_JOB_DETAILS_START,
+export const jobDetailsStart = () => ({
+  type: actionTypes.JOB_DETAILS_START,
 });
 
-export const fetchJobDetailsSuccess = (details) => ({
-  type: actionTypes.FETCH_JOB_DETAILS_SUCCESS,
-  details,
+export const jobDetailsSuccess = details => ({
+  type: actionTypes.JOB_DETAILS_SUCCESS,
+  jobDetails: details,
 });
 
-export const fetchJobDetailsFail = () => ({
-  type: actionTypes.FETCH_JOB_DETAILS_FAIL,
+export const jobDetailsFail = () => ({
+  type: actionTypes.JOB_DETAILS_FAIL,
 });
 
-export const fetchJobDetails = (token, job_id) => dispatch => {
-  dispatch(fetchJobDetailsStart());
+export const jobDetails = (token, job_id) => dispatch => {
+  dispatch(jobDetailsStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     }
   }
   axios.get(`/agents/jobs/${job_id}`, headers)
-    .then((res) => {
+  .then((res) => {
       let details = [];
       details = res.data.job_for_agents.data;
-      dispatch(fetchJobDetailsSuccess(details));
+      dispatch(jobDetailsSuccess(details));
+      console.log(details)
     })
     .catch((err) => {
-      dispatch(fetchJobDetailsFail(err));
+      dispatch(jobDetailsFail(err));
     })
 };

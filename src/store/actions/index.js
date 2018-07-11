@@ -36,7 +36,7 @@ export {
   fetchJobsAgent,
   fetchJobAgentCurrent,
   fetchJobAgenteCompleted,
-  fetchJobDetails,
+  jobDetails,
   acceptedJob,
   cancelledJob,
   applyProposal,

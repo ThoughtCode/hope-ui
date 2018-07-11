@@ -28,7 +28,6 @@ class Dashboard extends Component {
   render () {
     let pastJobs = null;
     if (this.props.historyjobs) {
-      console.log(this.props.historyjobs)
       if (this.props.historyjobs.length > 0) {
         pastJobs = <PastJobs historyjobs={this.props.historyjobs} />
       }

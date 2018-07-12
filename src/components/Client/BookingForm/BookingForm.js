@@ -341,6 +341,36 @@ class BookingForm extends Component {
               </div>
               <div className={cls.ServiceSection}>
                 <Grid container>
+                  <div className={cls.Row}>
+                    <Grid container>
+                      <div>
+                        <Grid container>
+                          <h3 className={cls.SubHeaderText}>
+                            <span>¿Algo mas que quieras contarnos?</span>
+                          </h3>
+                          <div className={cls.Service}>
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
+                              <div className={cls.BorderPadding}>
+                                <Grid container>
+                                  <textarea
+                                    placeholder="Informacion adicional acerca del trabajo"
+                                    rows="8"
+                                    className={cls.Textarea}
+                                    value={this.props.form.details}
+                                    onChange={(event) => this.props.handleTextChange(event)}>
+                                  </textarea>
+                                </Grid>
+                              </div>
+                            </Grid>
+                          </div>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+              </div>
+              <div className={cls.ServiceSection}>
+                <Grid container>
                   <div className={cls.ButtonBooking}>
                     <Grid container>
                       <div className={cls.Row}>

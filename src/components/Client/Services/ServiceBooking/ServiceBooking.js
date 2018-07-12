@@ -36,6 +36,7 @@ class ServiceBooking extends Component {
         value: '',
         errorText: 'Debe elegir una propiedad'
       },
+      details: '',
       started_at: new Date(),
     },
     service: true,
@@ -122,6 +123,17 @@ class ServiceBooking extends Component {
     });
   };
 
+  handleTextChange = (event) => {
+    const updatedControls = {
+      ...this.state.form,
+      details: event.target.value,
+    };
+
+    this.setState({
+      form: updatedControls,
+    });
+  };
+
   handleServiceChange = (event) => {
     if (event.target.value !== "") {
       const service = this.props.service_base.find(s => s.id === parseInt(event.target.value, 10));
@@ -196,6 +208,7 @@ class ServiceBooking extends Component {
     const formData = {};
     formData["property_id"] = this.state.form.property.value;
     formData["started_at"] = this.state.form.started_at;
+    formData["details"] = this.state.form.details;
     formData["frequency"] = parseInt(this.state.form.recurrent.value, 10);
     formData["job_details_attributes"] = [{
       service_id: this.state.form.services_base.id,
@@ -302,7 +315,8 @@ class ServiceBooking extends Component {
                         handleServiceChange={this.handleServiceChange}
                         changeCheckboxHandler={this.changeCheckboxHandler}
                         inputChangedHandler={this.inputChangedHandler}
-                        changeDatetimeHandler={this.changeDatetimeHandler}/>
+                        changeDatetimeHandler={this.changeDatetimeHandler}
+                        handleTextChange={this.handleTextChange}/>
                     </Grid>
                   </Grid>
                   <Grid item xs={12} sm={12} md={5} lg={5}>

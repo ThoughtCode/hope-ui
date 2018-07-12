@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Components
 import {
@@ -11,8 +12,14 @@ import CardProfile from './CardInfo';
 import cls from './CardAgentShow.css';
 import Reviews from '../../../Agent/Reviews/Reviews';
 
+import * as actions from '../../../../store/actions';
+
 class Profile extends Component {
+  componentDidMount() {
+    this.props.onDisableButton(localStorage.getItem('token'), this.props.job_id);
+  }
   render() {
+    let canReview = null;
     let reviews = null;
     if (this.props.jobCard.attributes) {
       if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
@@ -30,7 +37,9 @@ class Profile extends Component {
             <Grid container>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CardProfile
-                  jobCardInfo={this.props.jobCard} />
+                  jobCardInfo={this.props.jobCard}
+                  canReviewJob={this.props.disableButtonjob.can_review}
+                />
               </Grid>
             </Grid>
             <Grid container justify="center">
@@ -48,5 +57,15 @@ class Profile extends Component {
     );
   }
 }
-
-export default Profile;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token || localStorage.getItem('token'),
+    disableButtonjob: state.disableButton.disableButton,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    onDisableButton: (token, job_id) => dispatch(actions.disableButton(token, job_id)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps) (Profile);

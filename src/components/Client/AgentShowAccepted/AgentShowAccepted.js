@@ -17,7 +17,7 @@ class AgentShow extends Component {
     this.props.onShowReviews(this.props.token, this.props.match.params.job_id);
   }
   render() {
-    // console.log(this.props)
+    // console.log(this.props.match.params.job_id)
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
@@ -31,7 +31,9 @@ class AgentShow extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.CardAgentShow} elevation={0}>
-                    <CardAgentShow jobCard={this.props.job} />
+                    <CardAgentShow
+                      jobCard={this.props.job}
+                      job_id={this.props.match.params.job_id} />
                   </Paper>
                 </Grid>
               </Grid>

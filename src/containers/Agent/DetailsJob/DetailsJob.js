@@ -9,28 +9,58 @@ import {
     Avatar,
     Button,
 } from 'material-ui';
+import Rating from 'react-rating';
 
 // Css
 import cls from './DetailsJob.css';
 
 import * as actions from '../../../store/actions';
-
 class DetailsJob extends Component {
   componentDidMount() {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
-    // console.log(this.props)
     let total = null;
-    let detail = null;
-    let details = null;
     let service_base = null;
     let frequency = null;
     let services_addon = null;
     let finishedAt = null;
+    let firstNameCustomer = null;
+    let lastNameCustomer = null;
+    let avatar = null;
+    let commentCard = null;
+    let rewiewsAverage = null;
     if(this.props.jobDetails.attributes){
+      rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
+      firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
+      lastNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.last_name;
       total = this.props.jobDetails.attributes.total;
       finishedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
+      if(this.props.jobDetails.attributes.customer){
+        avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
+      }
+      if(this.props.jobDetails.attributes.customer_rewiews.data){
+        if(this.props.jobDetails.attributes.customer_rewiews.data.length > 0 ){
+          commentCard = this.props.jobDetails.attributes.customer_rewiews.data.map( cr => {
+            return (
+              <div className={cls.AvatarAgent} key={cr.attributes.id}>
+                <Avatar className={cls.AvatarMargin} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
+                <div className={cls.NameAgent}>
+                  <Typography variant="subheading">
+                    {cr.attributes.owner.data.attributes.first_name} {cr.attributes.owner.data.attributes.last_name}
+                  </Typography>
+                  <Typography variant="caption">
+                    {cr.attributes.comment}
+                  </Typography>
+                </div>
+              </div>
+            );
+          })
+        }else{
+          commentCard = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
+        }
+      }
       if(this.props.jobDetails.attributes.job_details.length > 0 ){
         this.props.jobDetails.attributes.job_details.map( detail => {
           if (detail.service.type_service === 'base') {
@@ -45,6 +75,10 @@ class DetailsJob extends Component {
             );
           }
           return null;
+        })
+      }
+      if (this.props.jobDetails.attributes.customer.length > 0 ){
+        this.props.jobDetails.attributes.customer.map( customer => {
         })
       }
     }
@@ -97,16 +131,19 @@ class DetailsJob extends Component {
                       <Grid item xs={12} className={cls.AgentPostulate}>
                         <Paper elevation={0}>
                           <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              RR
+                            <Avatar src={avatar} className={cls.AvatarMargin}>
                             </Avatar>
                             <div className={cls.NameAgent}>
                               <Typography className={cls.Name} variant="subheading">
-                                  Rainiero Romero
+                                {firstNameCustomer} {lastNameCustomer}
                               </Typography>
                             </div>
                             <Typography className={cls.Name} variant="caption">
-                                estrellas
+                              <Rating initialRating={rewiewsAverage}
+                                readonly
+                                emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
+                                fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
+                              />
                             </Typography>
                           </div>
                         </Paper>
@@ -116,53 +153,7 @@ class DetailsJob extends Component {
                       </Grid>
                       <Grid item xs={12} className={cls.AgentPostulate}>
                         <Paper elevation={0}>
-                          <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              RR
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography variant="subheading">
-                                  Rainiero Romero
-                              </Typography>
-                              <Typography variant="caption">
-                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
-                              </Typography>
-                            </div>
-                          </div>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper elevation={0}>
-                          <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              RR
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography variant="subheading">
-                                  Rainiero Romero
-                              </Typography>
-                              <Typography variant="caption">
-                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
-                              </Typography>
-                            </div>
-                          </div>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper elevation={0}>
-                          <div className={cls.AvatarAgent}>
-                            <Avatar className={cls.AvatarMargin}>
-                              RR
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography variant="subheading">
-                                  Rainiero Romero
-                              </Typography>
-                              <Typography variant="caption">
-                                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo tempora adipisci ipsam temporibus sapiente in quidem dolores modi numquam hic odit maiores nemo fugit voluptates."
-                              </Typography>
-                            </div>
-                          </div>
+                          {commentCard}
                         </Paper>
                       </Grid>
                     </Grid>

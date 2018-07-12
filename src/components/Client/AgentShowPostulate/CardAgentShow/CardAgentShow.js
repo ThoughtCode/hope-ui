@@ -11,18 +11,13 @@ import cls from './CardAgentShow.css';
 
 class Info extends Component {
   render() {
-    // console.log(this.props.agentRewiew)
-    // console.log(this.props.postulate)
-    // let postulateCard = null
-    let postulates = null
-    let postulate = 0
+    let postulates = null;
+    let postulate = 0;
     if (this.props.postulate.length > 0) {
       postulates = this.props.postulate.map( p => (
         postulate = p.attributes
-        // console.log(postulate)
       ));
     };
-    // console.log(this.props.postulate)
     return (
       <div>
         <Grid container justify="center" className={cls.Info}>

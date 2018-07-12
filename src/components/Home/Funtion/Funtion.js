@@ -137,7 +137,7 @@ function FullWidthGrid(props) {
                   <Typography variant="headline" gutterBottom className={cls.SubTypogra}>Realiza tu Pago</Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={10}>
+              <Grid item xs={12} sm={10} id="Services">
                 <Paper elevation={0}>
                   <Typography variant="subheading" gutterBottom className={cls.SubSubTypogra}>
                     Puedes pagar con cualquier tarjeta de crédito o débito.

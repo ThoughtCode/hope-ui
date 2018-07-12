@@ -1,3 +1,6 @@
+.root{
+  flex-grow: 1px;
+}
 .Services{
   padding-top: 60px;
   padding-bottom: 0px;
@@ -50,6 +53,10 @@
 
 @media only screen and (max-width: 600px) {
   .Services{
+    background-image: url('../../../assets/Service1.jpeg');
+    background-repeat: no-repeat !important;
+    background-size: auto !important;
+    background-position: center !important;
     padding-top: 20px !important;
     padding-bottom: 0px !important;
   }
@@ -60,7 +67,7 @@
   }
   .ContentServices{
     text-align: center !important;
-    padding: 0px !important;
+    padding-top: 40px !important;
   }
   .SubTytle{
     color: black !important;
@@ -70,11 +77,12 @@
     margin-left: 3vh !important;
   }
   .ImageResponsive{
-    border-radius: 5px !important;
+    /* border-radius: 5px !important;
     height: auto !important;
     max-width: 90% !important;
     padding: 0;
-    position: inherit !important;
+    position: absolute !important; */
+    display: none !important;
   }
   .footerServicios{
     display: block !important;

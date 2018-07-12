@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {
+  Grid,
+  Paper,
+} from 'material-ui';
 
 // Components
 import Jumbotron from '../../../components/Client/Jumbotron/Jumbotron';
@@ -38,7 +42,13 @@ class Dashboard extends Component {
         <Services clicked={this.showServiceClick} services={this.props.services} />
         <NextJobs nextjobs={this.props.nextjobs} />
         {pastJobs}
-        <Download />
+        <Grid container justify="center">
+          <Grid item xs={12} md={8} className={cls.Download}>
+            <Paper elevation={0}>
+              <Download />
+            </Paper>
+          </Grid>
+        </Grid>
         <Contact />
       </div>
     );

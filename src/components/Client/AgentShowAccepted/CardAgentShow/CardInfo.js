@@ -16,7 +16,6 @@ import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 const info = props => {
-  // console.log(props.jobCardInfo.id)
   let profile = null;
   if (props.jobCardInfo.id)  {
     profile = (
@@ -31,13 +30,13 @@ const info = props => {
                       <Paper elevation={0}>
                         {props.jobCardInfo.attributes.agent === null ? (
                           <Avatar
-                            className={cls.Avatar}
-                            src={Image}
+                          className={cls.Avatar}
+                          src={Image}
                           />
                         ) : (
                           <Avatar
-                            className={cls.Avatar}
-                            src={props.jobCardInfo.attributes.agent.avatar.url}
+                          className={cls.Avatar}
+                          src={props.jobCardInfo.attributes.agent.avatar.url}
                           />
                         )}
                       </Paper>
@@ -101,13 +100,18 @@ const info = props => {
                   <Grid container justify="center">
                     <Grid item xs={12} sm={4}>
                       <Paper elevation={0}>
-                        <Button
-                        className={cls.ButtonContratar}
-                        component={Link}
-                        to={`/cliente/trabajo/${props.jobCardInfo.id}/agente/calificar`}
-                        >
-                          CALIFICAR
-                        </Button>
+                        {props.canReviewJob === true ? (
+                          <Button
+                          className={cls.ButtonContratar}
+                          component={Link}
+                          to={`/cliente/trabajo/${props.jobCardInfo.id}/agente/calificar`}
+                          >
+                            CALIFICAR
+                          </Button>
+                          ) : (
+                            <p></p>
+                          )
+                        }
                       </Paper>
                     </Grid>
                   </Grid>
@@ -119,7 +123,6 @@ const info = props => {
       </Grid>
     );
   };
-  // console.log(props.jobCardInfo)
   return (
     <div>
       {profile}  

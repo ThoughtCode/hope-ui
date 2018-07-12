@@ -6,18 +6,22 @@ import { connect } from 'react-redux';
 import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import cls from './MisTrabajos.css';
 import MenuBar from '../../MenuBar/MenuBarAgent';
-import MiJobsMain from '../../../components/Agent/MiJobsMain/MiJobsMain';
+import MyJobsMain from '../../../components/Agent/MyJobsMain/MyJobsMain';
+
+// Css
+import cls from './MyJobs.css';
 
 import * as actions from '../../../store/actions';
 
-class MisTrabajos extends Component {
+class MyJobs extends Component {
   componentDidMount() {
     this.props.onFetchJobAgentCurrent(localStorage.getItem('token'));
-    this.props.onFetchJobAgenteCompleted(localStorage.getItem('token'));
+    this.props.onFetchJobAgentCompleted(localStorage.getItem('token'));
+    this.props.onFetchJobAgentPostulated(localStorage.getItem('token'));
   };
   render() {
+    console.log(this.props.postulatedjobs);
     return (
       <div>
         <MenuBar />
@@ -32,9 +36,10 @@ class MisTrabajos extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper elevation={0}>
-                    <MiJobsMain
+                    <MyJobsMain
                       jobs={this.props.acceptedjobs}
-                      jobsCompleted={this.props.completedjobs} />
+                      jobsCompleted={this.props.completedjobs}
+                      jobsPostulated={this.props.postulatedjobs} />
                   </Paper>
                 </Grid>
               </Grid>
@@ -45,14 +50,18 @@ class MisTrabajos extends Component {
     );
   }
 }
+
 const mapDispatchToProps = dispatch => ({
-    onFetchJobAgentCurrent: (token) => dispatch(actions.fetchJobAgentCurrent(token)),
-    onFetchJobAgenteCompleted: (token) => dispatch(actions.fetchJobAgenteCompleted(token)),
+  onFetchJobAgentCurrent: (token) => dispatch(actions.fetchJobAgentCurrent(token)),
+  onFetchJobAgentCompleted: (token) => dispatch(actions.fetchJobAgentCompleted(token)),
+  onFetchJobAgentPostulated: (token) => dispatch(actions.fetchJobAgentPostulated(token)),
 });
+
 const mapStateToProps = state => ({
   acceptedjobs: state.job.acceptedjobs,
   completedjobs: state.job.completedjobs,
+  postulatedjobs: state.job.postulatedjobs,
   total_pages: state.job.total_pages,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(MisTrabajos);
+export default connect(mapStateToProps, mapDispatchToProps)(MyJobs);

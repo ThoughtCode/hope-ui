@@ -15,7 +15,6 @@ import JobPostulated from '../CardJob/JobPostulated';
 
 function TabContainer(props) {
   const { children, dir } = props;
-
   return (
     <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
       {children}
@@ -31,7 +30,7 @@ const styles = theme => ({
   },
 });
 
-class MiJobsMain extends React.Component {
+class MyJobsMain extends React.Component {
   state = {
     value: 0,
   };
@@ -71,6 +70,19 @@ class MiJobsMain extends React.Component {
         </TabContainer>
       ));
     }
+    let jobsPostulated = (
+      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>
+        <p>No te has postulado a ningun trabajo</p><br/><p>Aplica trabajos y aumenta tus ingresos</p>
+      </Typography>
+    );
+    if (this.props.jobsPostulated.length > 0) {
+      jobsPostulated = this.props.jobsPostulated.map(job => (
+        <TabContainer key={job.id} dir={theme.direction}>
+          <JobPostulated
+            job={job} />
+        </TabContainer>
+      ));
+    }
     return (
       <div className={classes.root}>
         <AppBar position="static" className={cls.AppBar} elevation={0}>
@@ -98,7 +110,7 @@ class MiJobsMain extends React.Component {
             {jobsCompleted}
           </TabContainer>
           <TabContainer dir={theme.direction}>
-            <JobPostulated />
+            {jobsPostulated}
           </TabContainer>
         </SwipeableViews>
       </div>
@@ -106,4 +118,4 @@ class MiJobsMain extends React.Component {
   }
 }
 
-export default withStyles(styles, { withTheme: true })(MiJobsMain);
+export default withStyles(styles, { withTheme: true })(MyJobsMain);

@@ -405,22 +405,22 @@ export const fetchJobAgentCurrent = (token) => dispatch => {
     });
 }
 
-export const fetchJobAgenteCompletedStart = () => ({
+export const fetchJobAgentCompletedStart = () => ({
   type: actionTypes.FETCH_JOB_AGENT_COMPLETED_START,
 });
 
-export const fetchJobAgenteCompletedFail = error => ({
+export const fetchJobAgentCompletedFail = error => ({
   type: actionTypes.FETCH_JOB_AGENT_COMPLETED_FAIL,
   error,
 });
 
-export const fetchJobAgenteCompletedSuccess = completedjobs => ({
+export const fetchJobAgentCompletedSuccess = completedjobs => ({
   type: actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS,
   completedjobs,
 });
 
-export const fetchJobAgenteCompleted = (token) => dispatch => {  
-  dispatch(fetchJobAgenteCompletedStart());
+export const fetchJobAgentCompleted = (token) => dispatch => {  
+  dispatch(fetchJobAgentCompletedStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
@@ -430,10 +430,42 @@ export const fetchJobAgenteCompleted = (token) => dispatch => {
   .then((res) => {
       let jobs = [];
       jobs = res.data.job.data;
-      dispatch(fetchJobAgenteCompletedSuccess(jobs));
+      dispatch(fetchJobAgentCompletedSuccess(jobs));
     })
     .catch((err) => {
-      dispatch(fetchJobAgenteCompletedFail(err));
+      dispatch(fetchJobAgentCompletedFail(err));
+    });
+}
+
+export const fetchJobAgentPostulatedStart = () => ({
+  type: actionTypes.FETCH_JOB_AGENT_POSTULATED_START,
+});
+
+export const fetchJobAgentPostulatedFail = error => ({
+  type: actionTypes.FETCH_JOB_AGENT_POSTULATED_FAIL,
+  error,
+});
+
+export const fetchJobAgentPostulatedSuccess = postulatedJobs => ({
+  type: actionTypes.FETCH_JOB_AGENT_POSTULATED_SUCCESS,
+  postulatedJobs,
+});
+
+export const fetchJobAgentPostulated = (token) => dispatch => {  
+  dispatch(fetchJobAgentPostulatedStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get(`agents/jobs/postulated?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
+  .then((res) => {
+      let jobs = [];
+      jobs = res.data.job.data;
+      dispatch(fetchJobAgentPostulatedSuccess(jobs));
+    })
+    .catch((err) => {
+      dispatch(fetchJobAgentPostulatedFail(err));
     });
 }
 

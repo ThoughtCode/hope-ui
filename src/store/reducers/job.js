@@ -4,8 +4,9 @@ import { updateObject } from '../utility';
 const initialState = {
   jobs: [],
   job: [],
-  acceptedjobs:[],
-  completedjobs:[],
+  acceptedjobs: [],
+  completedjobs: [],
+  postulatedjobs: [],
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
@@ -41,8 +42,12 @@ const fetchJobAgentCurrent = (state, action) => updateObject(state, {
   acceptedjobs: action.acceptedjobs,
 });
 
-const fetchJobAgenteCompleted = (state, action) => updateObject(state, {
+const fetchJobAgentCompleted = (state, action) => updateObject(state, {
   completedjobs: action.completedjobs,
+});
+
+const fetchJobAgentPostulated = (state, action) => updateObject(state, {
+  postulatedjobs: action.postulatedJobs,
 });
 
 const jobDetails = (state, action) => updateObject(state, {
@@ -79,8 +84,11 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS: return fetchJobAgentCurrent(state, action);
     case actionTypes.FETCH_JOB_AGENT_CURRENT_FAIL: return state;
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_START: return state;
-    case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgenteCompleted(state, action);
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgentCompleted(state, action);
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_FAIL: return state;
+    case actionTypes.FETCH_JOB_AGENT_POSTULATED_START: return state;
+    case actionTypes.FETCH_JOB_AGENT_POSTULATED_SUCCESS: return fetchJobAgentPostulated(state, action);
+    case actionTypes.FETCH_JOB_AGENT_POSTULATED_FAIL: return state;
     case actionTypes.JOB_DETAILS_START: return state;
     case actionTypes.JOB_DETAILS_SUCCESS: return jobDetails(state, action);
     case actionTypes.JOB_DETAILS_FAIL: return state;

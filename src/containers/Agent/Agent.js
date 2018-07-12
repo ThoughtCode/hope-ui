@@ -5,15 +5,16 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 // Components
 import MenuBar from '../MenuBar/MenuBarAgent';
 import Dashboard from './Dashboard/Dashboard';
-import MyJobs from './MisTrabajos/MyJobs';
+import MyJobs from './MyJobs/MyJobs';
 import Calendario from './Calendario/Calendario';
 import Profile from './Profile/Profile';
 import DetailsJob from './DetailsJob/DetailsJob';
 
 // Css
-import cls from './Agent.css'
+import cls from './Agent.css';
 
-import * as actions from '../../store/actions'
+import * as actions from '../../store/actions';
+
 class Agent extends Component {
   render () {
     return (

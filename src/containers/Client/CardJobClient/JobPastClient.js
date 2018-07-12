@@ -25,7 +25,7 @@ function CardJob(props) {
     </Typography>
   );
   if (props.jobPast.length > 0) {
-    jobs = props.futureJob.map(job => (
+    jobs = props.jobPast.map(job => (
       <CardJobFutures
         key={job.id}
         id={job.id}
@@ -41,7 +41,6 @@ function CardJob(props) {
       />
     ));
   };
-  // console.log(props.futureJob)
   return (
     <div className={cls.root}>
       <Grid container>

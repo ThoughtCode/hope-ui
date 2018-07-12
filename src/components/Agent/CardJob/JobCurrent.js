@@ -46,7 +46,6 @@ const CardJob = ( props ) => {
   };
   return (
     <div className={cls.root}>
-    {/* {console.log(props.job)} */}
       <Grid container justify="center">
         <Grid item xs={6}>
             <Grid container alignItems="center" className={cls.CardJob}>

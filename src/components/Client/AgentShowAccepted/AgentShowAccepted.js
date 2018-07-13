@@ -58,4 +58,5 @@ const mapDispatchToProps = dispatch => {
     onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(AgentShow);

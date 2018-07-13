@@ -16,7 +16,8 @@ import AgentShowPostulate from '../../components/Client/AgentShowPostulate/Agent
 // Css
 import cls from './Client.css';
 
-import * as actions from '../../store/actions'
+import * as actions from '../../store/actions';
+
 class Client extends Component {
   render () {
     return (

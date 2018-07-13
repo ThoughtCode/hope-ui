@@ -19,7 +19,6 @@ class Profile extends Component {
     this.props.onDisableButton(localStorage.getItem('token'), this.props.job_id);
   }
   render() {
-    let canReview = null;
     let reviews = null;
     if (this.props.jobCard.attributes) {
       if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {

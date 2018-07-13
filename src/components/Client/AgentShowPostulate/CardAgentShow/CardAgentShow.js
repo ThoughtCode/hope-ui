@@ -11,10 +11,9 @@ import cls from './CardAgentShow.css';
 
 class Info extends Component {
   render() {
-    let postulates = null;
     let postulate = 0;
     if (this.props.postulate.length > 0) {
-      postulates = this.props.postulate.map( p => (
+      this.props.postulate.map( p => (
         postulate = p.attributes
       ));
     };

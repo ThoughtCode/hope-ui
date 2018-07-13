@@ -6,7 +6,6 @@ import {
   Grid,
   TextField,
   Typography,
-  Button,
   } from 'material-ui';
 
 // Componentes

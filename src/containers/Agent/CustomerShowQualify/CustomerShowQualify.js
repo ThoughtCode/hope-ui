@@ -147,7 +147,6 @@ class CustomerShowQualify extends Component {
   }
 
   render() {
-    // console.log(this.props)
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
@@ -178,7 +177,6 @@ class CustomerShowQualify extends Component {
                                   label="Comenta tu calificación"
                                   multiline
                                   rows="4"
-                                  // className={classes.textField}
                                   margin="normal"
                                   onChange={(event) => this.inputChangedHandler(event, 'comment')}
                                 />

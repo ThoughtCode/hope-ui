@@ -1,5 +1,6 @@
 // Dependencies
 import React from 'react';
+import {Link} from 'react-router-dom';
 import moment from 'moment';
 
 // Components
@@ -122,7 +123,7 @@ const jobPostulated = ( props ) => {
               <Paper className={`${cls.pageButtonJobCurrentDetalles} ${classes.paper}`}>
                 <Grid container align="center">
                   <Grid item xs={12}>
-                    <Button className={cls.ButtonDetalles} fullWidth >VER DETALLES</Button>
+                    <Button className={cls.ButtonDetalles} fullWidth component={Link} to={`/agente/trabajo/${props.job.id}`} >VER DETALLES</Button>
                   </Grid>
                 </Grid>
               </Paper>

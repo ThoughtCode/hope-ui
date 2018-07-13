@@ -30,6 +30,7 @@ class DetailsJob extends Component {
     let avatar = null;
     let commentCard = null;
     let rewiewsAverage = null;
+    let details = null;
     if(this.props.jobDetails.attributes){
       rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
       firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
@@ -82,6 +83,9 @@ class DetailsJob extends Component {
         })
       }
     }
+    if (this.props.jobDetails.attributes){
+      details = this.props.jobDetails.attributes.details
+    }
     return (
       <div>
         <Grid container justify="center">
@@ -108,6 +112,18 @@ class DetailsJob extends Component {
                             <Grid item xs={12}>
                               <Paper elevation={0}>
                                 {services_addon}
+                              </Paper>
+                            </Grid>
+                          </Grid>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <Paper className={cls.ServiceDate}>
+                          <Typography variant="headline">Detalles a considerar</Typography>
+                          <Grid container className={cls.ServiceDate}>
+                            <Grid item xs={12}>
+                              <Paper elevation={0}>
+                                {details}
                               </Paper>
                             </Grid>
                           </Grid>

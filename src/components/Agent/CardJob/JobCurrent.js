@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import Grid from 'material-ui/Grid';
 import Paper from 'material-ui/Paper';
@@ -122,7 +123,7 @@ const CardJob = ( props ) => {
                     <Paper className={`${cls.pageButtonJobCurrentDetalles} ${classes.paper}`}>
                         <Grid container align="center">
                             <Grid item xs={12}>
-                                <Button className={cls.ButtonDetalles} fullWidth >VER DETALLES</Button>
+                                <Button className={cls.ButtonDetalles} fullWidth component={Link} to={`/agente/trabajo/${props.job.id}`} >VER DETALLES</Button>
                             </Grid>
                         </Grid>
                     </Paper>

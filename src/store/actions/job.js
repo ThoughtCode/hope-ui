@@ -526,7 +526,6 @@ export const disableButton = (token, job_id) => dispatch => {
     let canReview = [];
     canReview = res.data;
     dispatch(disableButtonSuccess(canReview));
-    // console.log(canReview)
   })
   .catch((err) => {
       dispatch(disableButtonFail(err));

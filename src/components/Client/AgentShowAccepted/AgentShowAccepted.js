@@ -17,7 +17,6 @@ class AgentShow extends Component {
     this.props.onShowReviews(this.props.token, this.props.match.params.job_id);
   }
   render() {
-    // console.log(this.props.match.params.job_id)
     return (
       <div>
         <Grid container justify="center" className={cls.root}>

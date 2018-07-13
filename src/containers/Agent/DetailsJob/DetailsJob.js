@@ -19,6 +19,7 @@ import * as actions from '../../../store/actions';
 class DetailsJob extends Component {
   componentDidMount() {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onDisableButtonCustomer(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
     let total = null;
@@ -73,14 +74,10 @@ class DetailsJob extends Component {
         services_addon = this.props.jobDetails.attributes.job_details.map( detail => {
           if (detail.service.type_service === 'addon') {
             return (
-              <ul>{detail.service.name}</ul>
+              <ul key={detail.id}>{detail.service.name}</ul>
             );
           }
           return null;
-        })
-      }
-      if (this.props.jobDetails.attributes.customer.length > 0 ){
-        this.props.jobDetails.attributes.customer.map( customer => {
         })
       }
     }
@@ -176,6 +173,7 @@ class DetailsJob extends Component {
                               </Grid>
                               <Grid item xs={12}>
                                 <Paper className={cls.TextRight} elevation={0}>
+                                {this.props.disableButtonCustomer.can_review === true ? (
                                   <Button
                                   className={cls.ButtonContratar}
                                   component={Link}
@@ -183,11 +181,10 @@ class DetailsJob extends Component {
                                   >
                                     CALIFICAR
                                   </Button>
-                                {/* {props.canReviewJob === true ? (
                                   ) : (
                                     <p></p>
                                   )
-                                } */}
+                                }
                                 </Paper>
                               </Grid>
                             </Grid>
@@ -217,10 +214,12 @@ class DetailsJob extends Component {
 const mapDispatchToProps = dispatch => ({
   onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
+  onDisableButtonCustomer: (token, job_id) => dispatch(actions.disableButtonCustomer(token, job_id)),
 });
 
 const mapStateToProps = state => ({
   jobDetails: state.job.jobDetails,
+  disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsJob);

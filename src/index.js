@@ -22,6 +22,7 @@ import clientUserReducer from './store/reducers/current_user';
 import clientProposalReducer from './store/reducers/proposal';
 import clientReviews from './store/reducers/reviews';
 import disableButtonQualify from './store/reducers/job';
+import disableButtonCustomer from './store/reducers/job';
 
 const history = createHistory();
 
@@ -42,6 +43,7 @@ const rootReducer = combineReducers({
   proposal: clientProposalReducer,
   reviews: clientReviews,
   disableButton: disableButtonQualify,
+  disableButtonCustomer: disableButtonCustomer,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

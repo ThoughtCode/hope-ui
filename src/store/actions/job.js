@@ -526,9 +526,40 @@ export const disableButton = (token, job_id) => dispatch => {
     let canReview = [];
     canReview = res.data;
     dispatch(disableButtonSuccess(canReview));
-    // console.log(canReview)
   })
   .catch((err) => {
       dispatch(disableButtonFail(err));
+    })
+};
+
+export const disableButtonCustomerStart = () => ({
+  type: actionTypes.DISABLE_BUTTON_CUSTOMER_START,
+});
+
+export const disableButtonCustomerSuccess = disableButtonCustomer => ({
+  type: actionTypes.DISABLE_BUTTON_CUSTOMER_SUCCESS,
+  disableButtonCustomer: disableButtonCustomer,
+});
+
+export const disableButtonCustomerFail = () => ({
+  type: actionTypes.DISABLE_BUTTON_CUSTOMER_FAIL,
+});
+
+export const disableButtonCustomer = (token, job_id) => dispatch => {
+  dispatch(disableButtonCustomerStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/agents/jobs/${job_id}/can_review`, headers)
+  .then((res) => {
+    // console.log(res)
+    let canReview = [];
+    canReview = res.data;
+    dispatch(disableButtonCustomerSuccess(canReview));
+  })
+  .catch((err) => {
+      dispatch(disableButtonCustomerFail(err));
     })
 };

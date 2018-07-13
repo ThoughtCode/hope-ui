@@ -12,6 +12,7 @@ const initialState = {
   total_pages: 0,
   jobDetails: [],
   disableButton: [],
+  disableButtonCustomer: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -59,6 +60,10 @@ const disableButtonSuccess = (state, action) => updateObject(state, {
   disableButton: action.disableButton,
 });
 
+const disableButtonCustomerSuccess = (state, action) => updateObject(state, {
+  disableButtonCustomer: action.disableButtonCustomer,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -100,6 +105,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.DISABLE_BUTTON_START: return state;
     case actionTypes.DISABLE_BUTTON_SUCCESS: return disableButtonSuccess(state, action);
     case actionTypes.DISABLE_BUTTON_FAIL: return state;
+    case actionTypes.DISABLE_BUTTON_CUSTOMER_START: return state;
+    case actionTypes.DISABLE_BUTTON_CUSTOMER_SUCCESS: return disableButtonCustomerSuccess(state, action);
+    case actionTypes.DISABLE_BUTTON_CUSTOMER_FAIL: return state;
     default: return state;
   }
 };

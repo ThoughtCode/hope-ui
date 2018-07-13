@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
 import {
@@ -147,20 +148,50 @@ class DetailsJob extends Component {
                       <Grid item xs={12} className={cls.AgentPostulate}>
                         <Paper elevation={0}>
                           <div className={cls.AvatarAgent}>
-                            <Avatar src={avatar} className={cls.AvatarMargin}>
-                            </Avatar>
-                            <div className={cls.NameAgent}>
-                              <Typography className={cls.Name} variant="subheading">
-                                {firstNameCustomer} {lastNameCustomer}
-                              </Typography>
-                            </div>
-                            <Typography className={cls.Name} variant="caption">
-                              <Rating initialRating={rewiewsAverage}
-                                readonly
-                                emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
-                                fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
-                              />
-                            </Typography>
+                            <Grid container spacing={24}>
+                              <Grid item xs={12} sm={1}>
+                                <Paper elevation={0}>
+                                  <Avatar src={avatar} className={cls.AvatarMargin}>
+                                  </Avatar>
+                                </Paper>
+                              </Grid>
+                              <Grid item xs={12} sm={7}>
+                                <Paper elevation={0}>
+                                  <div className={cls.NameAgent}>
+                                    <Typography className={cls.Name} variant="subheading">
+                                      {firstNameCustomer} {lastNameCustomer}
+                                    </Typography>
+                                  </div>
+                                </Paper>
+                              </Grid>
+                              <Grid item xs={12} sm={4}>
+                                <Paper className={cls.TextRight} elevation={0}>
+                                  <Typography className={cls.Name} variant="subheading">
+                                    <Rating initialRating={rewiewsAverage}
+                                      readonly
+                                      emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
+                                      fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
+                                    />
+                                  </Typography>
+                                </Paper>
+                              </Grid>
+                              <Grid item xs={12}>
+                                <Paper className={cls.TextRight} elevation={0}>
+                                  <Button
+                                  className={cls.ButtonContratar}
+                                  component={Link}
+                                  to={`/agente/${this.props.match.params.job_id}/calificar`}
+                                  >
+                                    CALIFICAR
+                                  </Button>
+                                {/* {props.canReviewJob === true ? (
+                                  ) : (
+                                    <p></p>
+                                  )
+                                } */}
+                                </Paper>
+                              </Grid>
+                            </Grid>
                           </div>
                         </Paper>
                       </Grid>

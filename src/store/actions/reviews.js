@@ -53,7 +53,6 @@ export const qualifyStart = () => ({
 });
 
 export const qualify = (token, job_id, review) => (dispatch) => {
-  console.log(job_id);
   dispatch(qualifyStart());
   const headers = {
     headers: {
@@ -73,6 +72,48 @@ export const qualify = (token, job_id, review) => (dispatch) => {
   })
   .catch((err) => {
     dispatch(qualifyFail(err));
+    Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const qualifyCustomerSuccess = formData => ({
+  type: actionTypes.QUALIFY_CUSTOMER_SUCCESS,
+  formData,
+});
+
+export const qualifyCustomerFail = error => ({
+  type: actionTypes.QUALIFY_CUSTOMER_FAIL,
+  error,
+});
+
+export const qualifyCustomerStart = () => ({
+  type: qualifyCustomerStart,
+});
+
+export const qualifyCustomer = (token, job_id, review) => (dispatch) => {
+  dispatch(qualifyCustomerStart());
+  console.log(token)
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post(`/agents/jobs/${job_id}/review`, review, headers)
+  .then((response) => {
+    let reviewJob = [];
+    reviewJob = response.data.review.data.attributes;
+    dispatch(qualifyCustomerSuccess(reviewJob));
+    dispatch(push(`/agente/trabajos`));
+    Alert.success(response.data.message, {
+      position: 'bottom',
+      effect: 'genie',
+    });
+  })
+  .catch((err) => {
+    dispatch(qualifyCustomerFail(err));
     Alert.error(err.response.data.message, {
         position: 'bottom',
         effect: 'genie',

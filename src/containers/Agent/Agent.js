@@ -9,6 +9,7 @@ import MyJobs from './MyJobs/MyJobs';
 import Calendario from './Calendario/Calendario';
 import Profile from './Profile/Profile';
 import DetailsJob from './DetailsJob/DetailsJob';
+import CustomerShowQualify from './CustomerShowQualify/CustomerShowQualify';
 
 // Css
 import cls from './Agent.css';
@@ -26,6 +27,7 @@ class Agent extends Component {
           <Route path={`${this.props.match.url}/calendario`} exact component={Calendario}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} component={DetailsJob}/>
+          <Route path={`${this.props.match.url}/:job_id/calificar`} exact component={CustomerShowQualify}/>
           <Redirect to={`${this.props.match.url}/dashboard`}/>
         </Switch>
       </div>

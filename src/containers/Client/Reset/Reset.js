@@ -13,9 +13,9 @@ class Reset extends Component {
   render() {
     return (
       <div>
-        <div className={cls.Reset} style={{ textAlign: 'center' }}>
+        <div className={cls.Reset}>
           <Grid container className={cls.ButtonClose}>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
                 <Button component={Link} to="/">
                   <i className="material-icons">clear</i>
@@ -24,14 +24,14 @@ class Reset extends Component {
             </Grid>
           </Grid>
           <Grid container className={cls.ResetContainer} justify="center">
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
                  <Button className={cls.pageButtonLogin} component={Link} to="/" >
                   <img src={Logo} className={cls.Applogo} alt="logo" />
                  </Button>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={12}>
+            <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
                 <Typography variant="headline" gutterBottom className={cls.Typogra}>Recuperar Contraseña Cliente</Typography>
               </Paper>
@@ -41,14 +41,14 @@ class Reset extends Component {
                 <ResetPassword />
               </Paper>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={2}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/" >REGRESAR</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/registro" >¿NO TIENES UNA CUENTA?</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={2}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/registro" >¿NO TIENES UNA CUENTA?</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/" >REGRESAR</Button>
               </Paper>
             </Grid>
           </Grid>

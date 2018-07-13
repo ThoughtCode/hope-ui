@@ -41,14 +41,14 @@ class Reset extends Component {
                 <ResetPassword />
               </Paper>
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={2}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/" >REGRESAR</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/agente/registre" >¿NO TIENES UNA CUENTA?</Button>
               </Paper>
             </Grid>
             <Grid item xs={12} sm={2}>
               <Paper className={cls.paper} elevation={0}>
-                <Button className={cls.pageButtonLogin} component={Link} to="/agente/registre" >¿NO TIENES UNA CUENTA?</Button>
+                <Button className={cls.pageButtonLogin} component={Link} to="/" >REGRESAR</Button>
               </Paper>
             </Grid>
           </Grid>

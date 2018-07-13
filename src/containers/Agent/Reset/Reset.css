@@ -9,7 +9,7 @@
 }
 
 .Applogo {
-  height: 3.5rem;
+  height: 10em;
 }
 
 .pageButton {
@@ -29,11 +29,10 @@
 }
 
 .Typogra {
-  color: #0069a7 !important;
   text-align: center !important;
   font-size: 2rem !important;
   padding-top: 2vh;
-  font-family: Fabada !important;
+  font-family: Arial, Helvetica, sans-serif !important;
 }
 
 .pageButtonRegistroAgente{
@@ -49,8 +48,14 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .ResetContainer{
+    padding-top: 8vh;
+  }
   .Typogra {
     font-size: 1rem !important;
+  }
+  .Applogo {
+    height: 5em;
   }
   .form{
     padding: 0 3vh !important;

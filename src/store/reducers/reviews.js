@@ -4,6 +4,7 @@ import { updateObject } from '../utility';
 const initialState = {
   showReviews: [],
   qualify: [],
+  qualifyCustomer: [],
 };
 
 const showReviews = (state, action) => updateObject(state, {
@@ -14,6 +15,10 @@ const qualify = (state, action) => updateObject(state, {
   qualify: action.qualify,
 });
 
+const qualifyCustomer = (state, action) => updateObject(state, {
+  qualifyCustomer: action.qualifyCustomer,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SHOW_REVIEWS_START: return state;
@@ -22,6 +27,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.QUALIFY_START: return state;
     case actionTypes.QUALIFY_SUCCESS: return qualify(state, action);
     case actionTypes.QUALIFY_FAIL: return state;
+    case actionTypes.QUALIFY_CUSTOMER_START: return state;
+    case actionTypes.QUALIFY_CUSTOMER_SUCCESS: return qualifyCustomer(state, action);
+    case actionTypes.QUALIFY_CUSTOMER_FAIL: return state;
     default: return state;
   }
 };

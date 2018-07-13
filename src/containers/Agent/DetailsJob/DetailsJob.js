@@ -101,7 +101,6 @@ class DetailsJob extends Component {
                           <Typography variant="headline" className={cls.TitleDate}>{service_base}</Typography>
                           <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
                           <Typography variant="caption" className={cls.TitleCaption}>
-                            {/* {moment().format('MMMM D YYYY, h:mm:ss a').replace(/\b\w/g, l => l.toUpperCase())} */}
                             {finishedAt}
                           </Typography>
                         </Paper>

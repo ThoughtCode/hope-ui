@@ -18,7 +18,6 @@ export const showReviewsSuccess = reviews => ({
 });
 
 export const showReviews = (token, hashed_id) => (dispatch) => {
-  // console.log(hashed_id)
   dispatch(showReviewsStart());
   const headers = {
     headers: {
@@ -27,13 +26,11 @@ export const showReviews = (token, hashed_id) => (dispatch) => {
   };
   axios.get(`/agents/reviews/${hashed_id}`, headers)
   .then((res) => {
-    console.log(res)
     let reviews = [];
       reviews = res.data.reviews.data;
       dispatch(showReviewsSuccess(reviews));
     })
     .catch((err) => {
-      // console.log(err)
       dispatch(showReviewsFail(err));
     });
 };
@@ -95,7 +92,6 @@ export const qualifyCustomerStart = () => ({
 
 export const qualifyCustomer = (token, job_id, review) => (dispatch) => {
   dispatch(qualifyCustomerStart());
-  console.log(token)
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,

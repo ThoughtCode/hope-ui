@@ -489,7 +489,7 @@ export const jobDetails = (token, job_id) => dispatch => {
       Authorization: `Token token=${token}`,
     }
   }
-  axios.get(`/agents/jobs/${job_id}/can_review`, headers)
+  axios.get(`/agents/jobs/${job_id}`, headers)
   .then((res) => {
       let details = [];
       details = res.data.job_for_agents.data;

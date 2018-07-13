@@ -63,7 +63,7 @@ class JobShow extends Component {
           </Button>
         )
       }
-
+      
       if (this.props.job.attributes.status === 'completed') {
         button = null;
       }
@@ -81,8 +81,8 @@ class JobShow extends Component {
       if (this.props.job.attributes.agent === null) {
         agentTitle = 'Agentes Postulados';
         agents = this.props.job.attributes.proposals.data.length > 0 ?
-          this.props.job.attributes.proposals.data.map(p => (
-            <Grid container className={cls.AgentPostulate}>
+        this.props.job.attributes.proposals.data.map(p => (
+          <Grid container className={cls.AgentPostulate}>
               <Grid item xs={12}>
                 <Paper>
                   <div className={cls.AvatarAgent}>
@@ -109,7 +109,7 @@ class JobShow extends Component {
                       <Typography className={cls.Name} variant="caption">
                         <Stars
                           agentRewiewsAverage={p.attributes.agent_rewiews_average}
-                        />
+                          />
                       </Typography>
                       <Typography className={cls.Name} variant="caption">
                         {p.attributes.agent_rewiews_count} Opiniones
@@ -125,7 +125,7 @@ class JobShow extends Component {
               </Grid>
             </Grid>
           ))
-        : (
+          : (
           <div>
             <p>No hay agentes asigandos</p>
           </div>
@@ -142,8 +142,8 @@ class JobShow extends Component {
                   </Avatar>
                 ) : (
                   <Avatar 
-                    className={cls.AvatarMargin}
-                    src={this.props.job.attributes.agent.avatar.url}>
+                  className={cls.AvatarMargin}
+                  src={this.props.job.attributes.agent.avatar.url}>
                   </Avatar>
                 )}
                 <div className={cls.NameAgent}>
@@ -153,7 +153,7 @@ class JobShow extends Component {
                   <Typography className={cls.Name} variant="caption">
                     <Stars 
                       agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
-                    />
+                      />
                   </Typography>
                   <Typography className={cls.Name} variant="caption">
                     {this.props.job.attributes.agent_rewiews_count} Opiniones
@@ -208,6 +208,12 @@ class JobShow extends Component {
               }
               return null;
             })}
+            <Typography variant="headline" className={cls.HeadService}>
+              Detalles a considerar
+            </Typography>
+            <Typography variant="subheading" className={cls.subServicios}>
+              {this.props.job.attributes.details}
+            </Typography>
           </Grid>
         </Grid>
       );

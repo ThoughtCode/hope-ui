@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 // Components
@@ -10,12 +11,21 @@ import {
   Button,
 } from 'material-ui';
 
+import * as actions from '../../../../store/actions';
+
 // Css
 import cls from './CardAgentShow.css'
 import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 class Info extends Component {
+  componentDidMount() {
+    this.props.onFetchJob(localStorage.getItem('token'), this.props.job.id);
+  }
+  acceptedProposal = (event, token, job_id, proposal_id) => {
+    event.preventDefault();
+    this.props.onAcceptedJob(token, job_id, proposal_id);
+  }
   render() {
     let avatar
     let firstName
@@ -24,8 +34,8 @@ class Info extends Component {
     let nationalId
     let rewiewsAverage
     let rewiewsCount
+    let buttonContratar
     if (this.props.postulatCard.agent) {
-      // console.log(this.props.postulatCard.agent.data.attributes)
       avatar = this.props.postulatCard.agent.data.attributes.avatar.url;
       firstName = this.props.postulatCard.agent.data.attributes.first_name;
       lastName = this.props.postulatCard.agent.data.attributes.last_name;
@@ -34,6 +44,18 @@ class Info extends Component {
       rewiewsAverage = this.props.postulatCard.agent.data.attributes.rewiews_average;
       rewiewsCount = this.props.postulatCard.agent.data.attributes.rewiews_count;      
     }
+    if (this.props.job.attributes) {
+      if ( this.props.job.attributes.proposals.data.length > 0 ) {
+        buttonContratar = this.props.job.attributes.proposals.data.map( p => (
+          <Button
+          onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), this.props.job.id, p.id)}
+          className={cls.ButtonContratar}>
+              CONTRATAR
+          </Button>
+        ))
+      }
+    }
+    console.log(this.props)
     return (
       <div>
         <Grid container>
@@ -117,7 +139,7 @@ class Info extends Component {
                     <Grid container justify="center">
                       <Grid item xs={12} sm={4}>
                         <Paper elevation={0}>
-                          <Button className={cls.ButtonContratar}>CONTRATAR</Button>
+                          {buttonContratar}
                         </Paper>
                       </Grid>
                     </Grid>
@@ -132,4 +154,17 @@ class Info extends Component {
   }
 }
 
-export default Info;
+const mapStateToProps = state => {
+  return {
+    job: state.job.job,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
+    onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Info);

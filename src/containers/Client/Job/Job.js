@@ -15,7 +15,7 @@ class Job extends Component {
     event.preventDefault();
     this.props.onAcceptedJob(token, job_id, proposal_id);
   }
-
+  
   render() {
     let hashedId = null
     if(this.props.job.attributes){

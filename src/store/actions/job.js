@@ -1,4 +1,5 @@
 import Alert from 'react-s-alert';
+import moment from 'moment';
 import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
@@ -590,8 +591,8 @@ export const jobCalendar = token => dispatch => {
     let calendar = [];
     calendar = jobs.map(c => ({
         title: c.attributes.title,
-        start: c.attributes.start,
-        end: c.attributes.end,
+        start: moment(c.attributes.start),
+        end: moment(c.attributes.end),
         url: c.attributes.url,
       })
     );

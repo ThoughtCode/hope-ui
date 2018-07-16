@@ -119,20 +119,11 @@ const jobPostulated = ( props ) => {
                 </Grid>
               </Paper>
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={`${cls.pageButtonJobCurrentDetalles} ${classes.paper}`}>
+            <Grid item xs={12} sm={12}>
+              <Paper className={`${cls.pageButtonJobCurrentDetallesActual} ${classes.paper}`}>
                 <Grid container align="center">
                   <Grid item xs={12}>
                     <Button className={cls.ButtonDetalles} fullWidth component={Link} to={`/agente/trabajo/${props.job.id}`} >VER DETALLES</Button>
-                  </Grid>
-                </Grid>
-              </Paper>
-            </Grid>
-            <Grid item xs={12} sm={6}>
-              <Paper className={`${cls.pageButtonJobCurrentCancelar} ${classes.paper}`}>
-                <Grid container align="center">
-                  <Grid item xs={12}>
-                    <Button className={cls.ButtonCancelar} fullWidth >CANCELAR</Button>
                   </Grid>
                 </Grid>
               </Paper>

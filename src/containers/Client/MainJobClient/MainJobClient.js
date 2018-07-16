@@ -35,8 +35,6 @@ class MainJobClient extends Component {
 
   render() {
     const { classes, theme } = this.props;
-
-  console.log(this.props.jobsPast)
     return (
       <div className={classes.root}>
         <AppBar position="static" className={cls.AppBar} elevation={0}>

@@ -1,17 +1,26 @@
 // Dependencias
-import React from 'react';
-import Paper from 'material-ui/Paper';
-import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Componentes
+import {
+  Paper,
+  Grid,
+  Typography,
+} from 'material-ui';
 import MenuBar from '../../MenuBar/MenuBarAgent';
-import CalendarioComponent from '../../../components/Agent/Calendario/CalendarioComponent'
+import CalendarioComponent from '../../../components/Agent/Calendario/CalendarioComponent';
 
 // Css
 import cls from './Calendario.css';
 
-class Calendario extends React.Component {    
+import * as actions from '../../../store/actions';
+
+class Calendario extends Component {
+  componentDidMount() {
+    this.props.onFetchCalendar(localStorage.getItem('token'));
+  }
+
   render() {
     return (
       <div>
@@ -27,7 +36,7 @@ class Calendario extends React.Component {
                 </Grid>
                 <Grid item xs={12} sm={8}>
                   <Paper elevation={0}>
-                    <CalendarioComponent />
+                    <CalendarioComponent events={this.props.calendar} />
                   </Paper>
                 </Grid>
               </Grid>
@@ -39,4 +48,12 @@ class Calendario extends React.Component {
   };
 }
 
-export default Calendario;
+const mapStateToProps = (state) => ({
+  calendar: state.job.calendar,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onFetchCalendar: (token) => dispatch(actions.jobCalendar(token)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendario);

@@ -554,12 +554,51 @@ export const disableButtonCustomer = (token, job_id) => dispatch => {
   }
   axios.get(`/agents/jobs/${job_id}/can_review`, headers)
   .then((res) => {
-    // console.log(res)
     let canReview = [];
     canReview = res.data;
     dispatch(disableButtonCustomerSuccess(canReview));
   })
   .catch((err) => {
-      dispatch(disableButtonCustomerFail(err));
-    })
+    dispatch(disableButtonCustomerFail(err));
+  })
 };
+
+export const jobCalendarStart = () => ({
+  type: actionTypes.JOB_CALENDAR_START,
+});
+
+export const jobCalendarSuccess = jobs => ({
+  type: actionTypes.JOB_CALENDAR_SUCCESS,
+  jobs,
+});
+
+export const jobCalendarFail = () => ({
+  type: actionTypes.JOB_CALENDAR_FAIL,
+});
+
+export const jobCalendar = token => dispatch => {
+  dispatch(jobCalendarStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get('/agents/jobs/calendar', headers)
+  .then((res) => {
+    let jobs = [];
+    jobs = res.data.job_calendar.data;
+    let calendar = [];
+    calendar = jobs.map(c => ({
+        title: c.attributes.title,
+        start: c.attributes.start,
+        end: c.attributes.end,
+        url: c.attributes.url,
+      })
+    );
+    console.log(calendar);
+    dispatch(jobCalendarSuccess(calendar));
+  })
+  .catch((err) => {
+    dispatch(jobCalendarFail(err));
+  })
+}

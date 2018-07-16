@@ -21,7 +21,6 @@ class MyJobs extends Component {
     this.props.onFetchJobAgentPostulated(localStorage.getItem('token'));
   };
   render() {
-    console.log(this.props.postulatedjobs);
     return (
       <div>
         <MenuBar />

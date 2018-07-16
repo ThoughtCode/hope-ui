@@ -40,6 +40,12 @@
   border-radius: 0px 0px 0px 5px !important;
   width: auto !important;
 }
+.pageButtonJobCurrentDetallesActual {
+  background-color: white !important;
+  border: 1px solid #0069a7 !important;
+  border-radius: 0px 0px 5px 5px !important;
+  width: auto !important;
+}
 .pageButtonJobCurrentCancelar {
   background-color:#0069a7 !important;
   border: 1px solid #0069a7 !important; 

@@ -14,6 +14,7 @@ const initialState = {
   disableButton: [],
   disableButtonCustomer: [],
   calendar: [],
+  canApply: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -69,6 +70,10 @@ const jobCalendarSuccess = (state, action) => updateObject(state, {
   calendar: action.jobs,
 });
 
+const canApplySuccess = (state, action) => updateObject(state, {
+  canApply: action.canApply,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -116,6 +121,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.JOB_CALENDAR_START: return state;
     case actionTypes.JOB_CALENDAR_SUCCESS: return jobCalendarSuccess(state, action);
     case actionTypes.JOB_CALENDAR_FAIL: return state;
+    case actionTypes.CAN_APPLY_START: return state;
+    case actionTypes.CAN_APPLY_SUCCESS: return canApplySuccess(state, action);
+    case actionTypes.CAN_APPLY_FAIL: return state;
     default: return state;
   }
 };

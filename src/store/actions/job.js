@@ -603,3 +603,34 @@ export const jobCalendar = token => dispatch => {
     dispatch(jobCalendarFail(err));
   })
 }
+
+export const canApplyStart = () => ({
+  type: actionTypes.CAN_APPLY_START,
+});
+
+export const canApplySuccess = canApply => ({
+  type: actionTypes.CAN_APPLY_SUCCESS,
+  canApply: canApply,
+});
+
+export const canApplyFail = () => ({
+  type: actionTypes.CAN_APPLY_FAIL,
+});
+
+export const canApply = (token, job_id) => dispatch => {
+  dispatch(canApplyStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/agents/jobs/${job_id}/can_apply`, headers)
+  .then((res) => {
+    let canApply = [];
+    canApply = res.data;
+    dispatch(canApplySuccess(canApply));
+  })
+  .catch((err) => {
+    dispatch(canApplyFail(err));
+  })
+};

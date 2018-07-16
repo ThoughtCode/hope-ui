@@ -20,6 +20,7 @@ class DetailsJob extends Component {
   componentDidMount() {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onDisableButtonCustomer(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onCanApply(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   render() {
     let total = null;
@@ -131,7 +132,12 @@ class DetailsJob extends Component {
                             <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>{total}$</Typography>
                         </Paper>
                       </Grid>
-                      <Button className={cls.ButtonCancelar} onClick={() => this.props.onApplyProposal(localStorage.getItem('token'), this.props.match.params.job_id)}>APLICAR</Button>
+                      {this.props.canApply.can_apply === true ? (
+                        <Button className={cls.ButtonCancelar} onClick={() => this.props.onApplyProposal(localStorage.getItem('token'), this.props.match.params.job_id)}>APLICAR</Button>
+                      ) : (
+                        <p></p>
+                        )
+                      }
                     </Grid>
                   </Paper>
                 </Grid>
@@ -215,11 +221,13 @@ const mapDispatchToProps = dispatch => ({
   onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
   onDisableButtonCustomer: (token, job_id) => dispatch(actions.disableButtonCustomer(token, job_id)),
+  onCanApply: (token, job_id) => dispatch(actions.canApply(token, job_id)),
 });
 
 const mapStateToProps = state => ({
   jobDetails: state.job.jobDetails,
   disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,
+  canApply: state.job.canApply,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsJob);

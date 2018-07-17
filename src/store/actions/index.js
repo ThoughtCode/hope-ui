@@ -64,3 +64,6 @@ export {
 export {
   proposalPostulate,
 } from './proposal';
+export {
+  formContact,
+} from './contact'

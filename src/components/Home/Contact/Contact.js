@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import {
@@ -7,8 +8,11 @@ import {
   Grid,
   Typography,
   Button,
+  TextField,
 } from 'material-ui';
+import purple from 'material-ui/colors/purple';
 
+import * as action from '../../../store/actions';
 
 // Component
 import LogoNocNoc from '../../../assets/LogoBlanco.svg';
@@ -25,13 +29,209 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  margin: {
+    margin: theme.spacing.unit,
+  },
+  cssLabel: {
+    '&$cssFocused': {
+      color: purple[500],
+    },
+  },
+  cssFocused: {},
+  cssUnderline: {
+    '&:after': {
+      borderBottomColor: purple[500],
+    },
+  },
+  bootstrapRoot: {
+    padding: 0,
+    'label + &': {
+      marginTop: theme.spacing.unit * 3,
+    },
+  },
+  bootstrapInput: {
+    borderRadius: 4,
+    backgroundColor: theme.palette.common.white,
+    border: '1px solid #ced4da',
+    fontSize: 16,
+    padding: '10px 12px',
+    width: 'calc(100% - 24px)',
+    transition: theme.transitions.create(['border-color', 'box-shadow']),
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+    '&:focus': {
+      borderColor: '#80bdff',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+    },
+  },
+  bootstrapFormLabel: {
+    fontSize: 18,
+  },
 });
 
-class FullWidthGrid extends Component {
-  contactUs() {
-    // TODO: Send the email here
+class Contact extends Component {
+  state = {
+    formData: {
+      name: {
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+        errorText: null,
+      },
+      celular: {
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: false,
+        touched: false,
+        errorText: null,
+      },
+      email: {
+        elementType: 'input',
+        label: 'Correo',
+        elementConfig: {
+          type: 'email',
+          placeholder: 'ejemplo@ejemplo.com',
+        },
+        value: '',
+        validation: {
+          required: true,
+          isEmail: true,
+        },
+        valid: false,
+        touched: false,
+        errorText: null,
+      },
+    },
+    formIsValid: false,
+  }
+
+  formContact = (event) => {
+    event.preventDefault();
+    const formData = {};
+    for (const formElementIdentifier in this.state.formData) {
+      formData[formElementIdentifier] = this.state.formData[formElementIdentifier].value;
+    }
+    const contact = {
+      contact: formData,
+    };
+    this.props.onFormContact(contact);
+  }
+
+  inputChangedHandler = (event, controlName) => {
+    console.log("k-paso")
+    const updatedControls = {
+      ...this.state.formData,
+      [controlName]: {
+        ...this.state.formData[controlName],
+        value: event.target.value,
+        valid: this.checkValidity(
+          event.target.value,
+          this.state.formData[controlName].validation,
+        ).isValid,
+        errorText: this.checkValidity(
+          event.target.value,
+          this.state.formData[controlName].validation,
+        ).errorText,
+        touched: true,
+      },
+    };
+
+    let formIsValid = true;
+    for (const inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({
+      formData: updatedControls,
+      formIsValid,
+    });
+  }
+
+  rateChangedHandler = (value, controlName) => {
+    const updatedControls = {
+      ...this.state.formData,
+      [controlName]: {
+        ...this.state.formData[controlName],
+        value: value,
+        valid: this.checkRateValidity(
+          value,
+          this.state.formData[controlName].validation,
+        ).isValid,
+        errorText: this.checkRateValidity(
+          value,
+          this.state.formData[controlName].validation,
+        ).errorText,
+        touched: true,
+      },
+    };
+
+    let formIsValid = true;
+    for (const inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({
+      formData: updatedControls,
+      formIsValid,
+    });
+  }
+
+  checkValidity(value, rules) {
+    let isValid = true;
+    let errorText = null;
+    if (!rules) {
+      return true;
+    }
+
+    if (rules.required) {
+      isValid = value.trim() !== '' && isValid;
+      errorText = 'Requerido.';
+    }
+
+    return {
+      isValid,
+      errorText,
+    };
+  }
+
+  checkRateValidity(value, rules) {
+    let isValid = true;
+    let errorText = null;
+    if (!rules) {
+      return true;
+    }
+
+    if (rules.required) {
+      isValid = value > 0 && isValid;
+      errorText = 'Requerido.';
+    }
+
+    return {
+      isValid,
+      errorText,
+    };
   }
   render (){
+    const { classes } = this.props;
     return (
       <div className={cls.Contact}>
         <Grid container align="center">
@@ -80,18 +280,79 @@ class FullWidthGrid extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.Paper} elevation={0}>
-                    <form action="mailto:info@nocnoc.com.ec" method="post" enctype="text/plain">
-                      <p>
-                        <input type="text" name="username" placeholder="Nombre" />
-                      </p>
-                      <p>
-                        <input type="text" name="celular" placeholder="Telefono" />
-                      </p>
-                      <p>
-                        <input type="email" name="correo" placeholder="Correo" />
-                      </p>
-                      <Button className={cls.ButtonContratar} type="submit" value="Send" >Enviar</Button>
-                    </form>
+                    <TextField
+                      placeholder="Nombre"
+                      id="name"
+                      multiline
+                      margin="normal"
+                      onChange={(event) => this.inputChangedHandler(event, 'name')}
+                      InputProps={{
+                        disableUnderline: true,
+                        classes: {
+                          root: classes.bootstrapRoot,
+                          input: classes.bootstrapInput,
+                        },
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                        className: classes.bootstrapFormLabel,
+                      }}
+                    />
+                    {!this.state.formData.name.valid && this.state.formData.name.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.name.errorText}
+                      </div>
+                    ) : null}
+                    <TextField
+                      placeholder="Celular"
+                      id="multiline-static"
+                      multiline
+                      margin="normal"
+                      onChange={(event) => this.inputChangedHandler(event, 'celular')}
+                      InputProps={{
+                        disableUnderline: true,
+                        classes: {
+                          root: classes.bootstrapRoot,
+                          input: classes.bootstrapInput,
+                        },
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                        className: classes.bootstrapFormLabel,
+                      }}
+                    />
+                    {!this.state.formData.celular.valid && this.state.formData.celular.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.celular.errorText}
+                      </div>
+                    ) : null}
+                    <TextField
+                      placeholder="Correo"
+                      id="multiline-static"
+                      multiline
+                      margin="normal"
+                      onChange={(event) => this.inputChangedHandler(event, 'email')}
+                      InputProps={{
+                        disableUnderline: true,
+                        classes: {
+                          root: classes.bootstrapRoot,
+                          input: classes.bootstrapInput,
+                        },
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                        className: classes.bootstrapFormLabel,
+                      }}
+                    />
+                    {!this.state.formData.email.valid && this.state.formData.email.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.email.errorText}
+                      </div>
+                    ) : null}
+                    <Button
+                      onClick={(event) => this.formContact(event, this.formContact)}
+                      className={cls.ButtonContratar}
+                    >Enviar</Button>
                   </Paper>
                 </Grid>
               </Grid>
@@ -148,4 +409,8 @@ class FullWidthGrid extends Component {
   }
 }
 
-export default withStyles(styles)(FullWidthGrid);
+const mapDispatchToProps = dispatch => ({
+  onFormContact: formData => dispatch(action.formContact(formData)),
+});
+
+export default connect(null, mapDispatchToProps) (withStyles(styles)(Contact));

@@ -21,6 +21,9 @@
   max-width: 100% !important;
   position: absolute !important;
 }
+.PintureResponsive{
+  display: none;
+}
 .footerServicios{
   display: flex;
   padding-top: 206px !important;
@@ -51,14 +54,19 @@
   font-family: Arial !important;
 }
 
+.Paper{
+  text-align: center !important;
+}
+
 @media only screen and (max-width: 600px) {
   .Services{
-    background-image: url('../../../assets/Service1.jpeg');
+    background-image: url('../../../assets/image.jpg');
     background-repeat: no-repeat !important;
-    background-size: auto !important;
+    background-size: 17em !important;
     background-position: center !important;
-    padding-top: 20px !important;
+    padding-top: 20p x !important;
     padding-bottom: 0px !important;
+    height: 25em !important;
   }
   .Typogra {
     font-size: 1.4rem !important;
@@ -70,7 +78,7 @@
     padding-top: 40px !important;
   }
   .SubTytle{
-    color: black !important;
+    color: #0069a7 !important;
     font-size: 1.3em !important;
     font-weight: bold !important;
     margin-top: 1vh !important;
@@ -91,8 +99,9 @@
     padding-right: 12px !important;
   }
   .pageButtonActive {
-    width: 100% !important;
-    margin: 0px !important;
+    width: 220px !important;
+    margin: 0px 0px !important;
+    margin-top: 200px !important;
   }
 }
 
@@ -102,9 +111,8 @@
     padding-bottom: 0px !important;
   }
   .SubTytle{
-    font-size: 1em !important;
-    font-weight: 700 !important;
     color: black !important;
+    font-weight: 700 !important;
     margin-left: 0 !important;
   }
   .ImageResponsive{
@@ -115,10 +123,10 @@
     text-align: center !important;
     padding-top: 0px !important;
   }
-  .pageButtonActive {
+  /* .pageButtonActive {
     width: 70% !important;
     margin: 0px 12px !important;
-  }
+  } */
   /*
   .ContentServices{
     padding: 5px 0px !important;

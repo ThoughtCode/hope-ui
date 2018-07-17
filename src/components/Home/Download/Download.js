@@ -26,12 +26,8 @@ function Download(props) {
       <Grid container alignItems="center">
         <Grid item xs={12} sm={12} md={6}>
           <Paper className={classes.paper} elevation={0}>
+            <Typography className={cls.SubTitle} variant="headline" gutterBottom>Seleccciona la tienda de tu smarthphone y accede a todos los servicios que NOC NOC te puede dar</Typography>
             <Grid container>
-              <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={0}>
-                  <Typography className={cls.SubTitle} variant="headline" gutterBottom>¡Descarga nuestra App y contrata nuestros servicios, es muy fácil!</Typography>
-                </Paper>
-              </Grid>
               <Grid item xs={12}>
                 <Paper className={classes.paper} elevation={0}>
                   <Grid container className={cls.ContentDownload} align="center">

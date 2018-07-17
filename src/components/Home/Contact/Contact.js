@@ -80,7 +80,7 @@ class FullWidthGrid extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.Paper} elevation={0}>
-                    <form>
+                    <form action="mailto:info@nocnoc.com.ec" method="post" enctype="text/plain">
                       <p>
                         <input type="text" name="username" placeholder="Nombre" />
                       </p>
@@ -90,7 +90,7 @@ class FullWidthGrid extends Component {
                       <p>
                         <input type="email" name="correo" placeholder="Correo" />
                       </p>
-                      <Button className={cls.ButtonContratar} onClick={this.contactUs.bind(this)} >Enviar</Button>
+                      <Button className={cls.ButtonContratar} type="submit" value="Send" >Enviar</Button>
                     </form>
                   </Paper>
                 </Grid>

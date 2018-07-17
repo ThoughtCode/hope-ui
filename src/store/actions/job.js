@@ -29,7 +29,7 @@ export const createJob = (token, formData) => dispatch => {
       dispatch(createJobSuccess());
       // dispatch(push(`/cliente/trabajo/${res.data.job.data.id}`));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })

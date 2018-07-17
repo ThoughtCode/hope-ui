@@ -321,10 +321,10 @@ class ServiceBooking extends Component {
                   </Grid>
                   <Grid item xs={12} sm={12} md={5} lg={5}>
                     <Grid container>
-                      <Grid item xs={6} sm={6} md={12} lg={12}>
+                      <Grid item xs={12} sm={6} md={12} lg={12}>
                         <BookingTotal form={this.state.form} />
                       </Grid>
-                      <Grid item xs={6} sm={6} md={12} lg={12}>
+                      <Grid item xs={12} sm={6} md={12} lg={12}>
                         <HowWorks />
                       </Grid>
                     </Grid>
@@ -335,13 +335,13 @@ class ServiceBooking extends Component {
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container>
-                      <Grid item xs={12} md={12} lg={12}>
+                      <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Checking
                           backPage={this.backPage}
                           nextPage={this.nextPage}
                           form={this.state.form} />
                       </Grid>
-                      <Grid item xs={12} md={12} lg={12}>
+                      <Grid item xs={12} sm={12} md={12} lg={12}>
                         <HowWorks />
                       </Grid>
                     </Grid>

@@ -38,11 +38,11 @@ const bookingTotal = (props) => {
   const total = (base + price + iva);
   return (
     <Grid container>
-      <Grid item sm={12} md={12} lg={12}>
+      <Grid item xs={12} sm={12} md={12} lg={12}>
         <div className={cls.BookingTotal}>
           <Grid container>
             <div className={cls.BookingTotalWrapper}>
-              <Grid item sm={12} md={12} lg={12}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
                 <Grid container>
                   <div className={cls.BookingSection}>
                     <div className={cls.RowInfo}>
@@ -63,11 +63,11 @@ const bookingTotal = (props) => {
                   </div>
                 </Grid>
               </Grid>
-              <Grid item sm={12} md={12} lg={12}>
+              <Grid item xs={12} sm={12} md={12} lg={12}>
                 <div className={cls.BookingSection}>
                   <Grid container>
                     <div className={cls.Row}>
-                      <Grid item md={12} lg={12}>
+                      <Grid item xs={12} md={12} lg={12}>
                         <Grid container>
                           <div className={cls.SummaryRow}>
                             {props.form.services_base.name !== '' ? (
@@ -81,10 +81,10 @@ const bookingTotal = (props) => {
                               </Grid>
                             ) : (
                               <Grid container>
-                                <Grid item md={12} lg={6}>
+                                <Grid item xs={12} md={12} lg={6}>
                                   <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
                                 </Grid>
-                                <Grid item md={12} lg={6}>
+                                <Grid item xs={12} md={12} lg={6}>
                                   <div className={cls.SummaryAmount}></div>
                                 </Grid>
                               </Grid>
@@ -94,10 +94,10 @@ const bookingTotal = (props) => {
                                 if (addon.active) {
                                   return (
                                     <Grid key={addon.id} container>
-                                      <Grid item md={6} lg={6}>
+                                      <Grid item xs={12} md={6} lg={6}>
                                         <div className={cls.SummaryTitle}>{addon.label}</div>
                                       </Grid>
-                                      <Grid item md={6} lg={6}>
+                                      <Grid item xs={12} md={6} lg={6}>
                                         <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
                                       </Grid>
                                     </Grid>
@@ -127,17 +127,17 @@ const bookingTotal = (props) => {
                   </Grid>
                 </div>
               </Grid>
-              <Grid item md={12} lg={12}>
+              <Grid item xs={12} md={12} lg={12}>
                 <div className={cls.BookingSectionNoBorder}>
                   <Grid container>
                     <div className={cls.RowTotal}>
                       <Grid container>
-                        <Grid item md={6} lg={6}>
+                        <Grid item xs={6} md={6} lg={6}>
                           <div className={cls.TotalText}>
                             <span>Total</span>
                           </div>
                         </Grid>
-                        <Grid item md={6} lg={6}>
+                        <Grid item xs={6} md={6} lg={6}>
                           <div className={cls.Total}>
                             $
                             <span>

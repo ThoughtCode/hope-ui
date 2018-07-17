@@ -65,6 +65,7 @@ class Login extends Component {
                     fields="name,email,picture"
                     scope="public_profile"
                     callback={this.responseFacebook}
+                    isMobile={false}
                     render={renderProps => (
                       <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
                         <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />

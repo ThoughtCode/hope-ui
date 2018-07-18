@@ -63,14 +63,14 @@ export const qualify = (token, job_id, review) => (dispatch) => {
     dispatch(qualifySuccess(reviewJob));
     dispatch(push(`/cliente/trabajo/${job_id}/agente/contratado`));
     Alert.success(response.data.message, {
-      position: 'bottom',
+      position: 'top',
       effect: 'genie',
     });
   })
   .catch((err) => {
     dispatch(qualifyFail(err));
     Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -104,14 +104,14 @@ export const qualifyCustomer = (token, job_id, review) => (dispatch) => {
     dispatch(qualifyCustomerSuccess(reviewJob));
     dispatch(push(`/agente/trabajos`));
     Alert.success(response.data.message, {
-      position: 'bottom',
+      position: 'top',
       effect: 'genie',
     });
   })
   .catch((err) => {
     dispatch(qualifyCustomerFail(err));
     Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });

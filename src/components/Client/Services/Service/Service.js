@@ -14,7 +14,7 @@ import cls from './Service.css';
 
 const service = props => {
   return (
-    <Grid onClick={() => props.clicked(props.id)} item xs={12} sm={6} md={4} lg={4}>
+    <Grid className={cls.Item} onClick={() => props.clicked(props.id)} item xs={11} sm={6} md={4} lg={4}>
       <Card className={cls.Card}>
         <CardMedia
           className={cls.Media}

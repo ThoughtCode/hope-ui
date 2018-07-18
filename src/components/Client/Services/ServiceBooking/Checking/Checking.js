@@ -27,7 +27,7 @@ class Checking extends Component {
       this.props.nextPage(event, 'Checking')
     } else {
       Alert.error('Debes aceptar los terminios y condiciones para avanzar', {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     }

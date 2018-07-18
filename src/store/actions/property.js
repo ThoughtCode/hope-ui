@@ -111,14 +111,14 @@ export const createProperty = (token, formData) => (dispatch) => {
       const property = res.data.property.data;
       dispatch(createPropertySuccess(property));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(createPropertyFail(err));
       Alert.error(err.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -137,14 +137,14 @@ export const createPropertyOnProfile = (token, formData) => (dispatch) => {
       dispatch(createPropertySuccess(property));
       dispatch(push('/cliente/perfil/propiedades'));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(createPropertyFail(err));
       Alert.error(err.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -163,14 +163,14 @@ export const updateProperty = (token, formData, id) => (dispatch) => {
       dispatch(updatePropertySuccess(property));
       dispatch(push('/cliente/perfil/propiedades'));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(updatePropertyFail(err));
       Alert.error(err.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -189,14 +189,14 @@ export const deleteProperty = (token, id) => (dispatch) => {
       dispatch(deletePropertySuccess(id));
       dispatch(push('/cliente/perfil/propiedades'));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(deletePropertyFail(err));
       Alert.error(err.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });

@@ -31,7 +31,7 @@ export const registerClient = formData => (dispatch) => {
       dispatch(registerClientSuccess(customer.id, formData));
       dispatch(push('/cliente/dashboard'));
       Alert.success(response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -40,12 +40,12 @@ export const registerClient = formData => (dispatch) => {
       if (typeof(error.response.data.message) === 'object') {
         const message = error.response.data.message.email;
         Alert.error(message, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else {
         Alert.error(error.response.data.message, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       }
@@ -80,7 +80,7 @@ export const registerAgent = formData => (dispatch) => {
       dispatch(registerClientSuccess(agent.id, formData));
       dispatch(push('/agente/dashboard'));
       Alert.success(response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -89,12 +89,12 @@ export const registerAgent = formData => (dispatch) => {
       if (typeof(error.response.data.message) === 'object') {
         const message = error.response.data.message.email;
         Alert.error(message, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else {
         Alert.error(error.response.data.message, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       }

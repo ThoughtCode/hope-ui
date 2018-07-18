@@ -28,7 +28,7 @@ const services = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container spacing={40}>
+        <Grid className={cls.Items} container>
           {services}
         </Grid>
       </Grid>

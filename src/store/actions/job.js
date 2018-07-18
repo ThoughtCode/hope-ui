@@ -36,7 +36,7 @@ export const createJob = (token, formData) => dispatch => {
     .catch((err) => {
       dispatch(createJobFail());
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -71,14 +71,14 @@ export const fetchJobs = (token, current_page) => dispatch => {
       jobs = res.data.job.data;
       dispatch(fetchJobsSuccess(jobs));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(fetchJobsFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -274,7 +274,7 @@ export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
       job = res.data.job.data;
       dispatch(acceptedJobSuccess(job));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -286,7 +286,7 @@ export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
         dispatch(acceptedJobFail());
       }
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -316,14 +316,14 @@ export const cancelledJob = (token, job_id) => dispatch => {
       dispatch(cancelledJobSuccess());
       dispatch(push('/cliente/dashboard'));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(cancelledJobFail());
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -353,7 +353,7 @@ export const applyProposal = (token, job_id) => dispatch => {
       dispatch(applyProposalSuccess());
       dispatch(push(`/agente/trabajos`));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
@@ -361,12 +361,12 @@ export const applyProposal = (token, job_id) => dispatch => {
       dispatch(applyProposalFail());
       if (err.response.data.message.base) {
         Alert.error(err.response.data.message.base[0], {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else if (err.response.data.message) {
         Alert.error(err.response.data.message, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       }

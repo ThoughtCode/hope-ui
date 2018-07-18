@@ -233,17 +233,17 @@ class ServiceBooking extends Component {
     if (actual_page === 'Service') {
       if (this.state.form.services_base.id === 0) {
         Alert.error(this.state.form.services_base.errorText, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else if (this.state.form.property.value === '' || this.state.form.property.value === 'Propiedad') {
         Alert.error(this.state.form.property.errorText, {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else if (this.state.form.started_at < Date.now()) {
         Alert.error('La fecha no puede ser menor a hoy', {
-          position: 'bottom',
+          position: 'top',
           effect: 'genie',
         });
       } else {

@@ -50,14 +50,14 @@ export const authClient = (email, password) => (dispatch) => {
       dispatch(authSuccess(customer.attributes.access_token, customer.id, customer.attributes.avatar.url));
       dispatch(push('/cliente/dashboard'));
       Alert.success(response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -84,14 +84,14 @@ export const authAgent = (email, password) => (dispatch) => {
       dispatch(authSuccess(agent.attributes.access_token, agent.id, agent.attributes.avatar.url));
       dispatch(push('/agente/dashboard'));
       Alert.success(response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -121,7 +121,7 @@ export const facebookLogin = accessToken => (dispatch) => {
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });

@@ -95,14 +95,14 @@ export const updatedCurrentUser = (token, form) => dispatch => {
       localStorage.setItem('last_name', user.attributes.last_name);
       dispatch(updatedCurrentUserSuccess(user));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(updatedCurrentUserFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -137,14 +137,14 @@ export const updatedCurrentAgent = (token, form) => dispatch => {
       localStorage.setItem('last_name', user.attributes.last_name);
       dispatch(updatedCurrentAgentSuccess(user));
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(updatedCurrentAgentFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -178,14 +178,14 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
       localStorage.setItem('profile', user.attributes.avatar.url);
       dispatch(updatedCurrentUserAvatarSuccess(user));
       Alert.success('Avatar actualizado exitosamente.', {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(updatedCurrentUserAvatarFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -219,14 +219,14 @@ export const updatedCurrentAgentAvatar = (token, file) => dispatch => {
       localStorage.setItem('profile', user.attributes.avatar.url);
       dispatch(updatedCurrentUserAvatarSuccess(user));
       Alert.success('Avatar actualizado exitosamente.', {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(updatedCurrentUserAvatarFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -256,14 +256,14 @@ export const changePassword = (token, form) => dispatch => {
       console.log(res);
       dispatch(changePasswordSuccess());
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(changePasswordFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });
@@ -292,14 +292,14 @@ export const changePasswordAgent = (token, form) => dispatch => {
     .then((res) => {
       dispatch(changePasswordAgentSuccess());
       Alert.success(res.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       dispatch(changePasswordAgentFail(err));
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     });

@@ -1,6 +1,13 @@
 .Applogo {
-  height: 100px;
+  height: 70px;
   margin: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+  .Applogo {
+    height: 100px;
+    margin: 0.5rem;
+  }
 }
 
 .App-name{

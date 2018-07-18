@@ -49,7 +49,14 @@ class DetailsJob extends Component {
           commentCard = this.props.jobDetails.attributes.customer_rewiews.data.map( cr => {
             return (
               <div className={cls.AvatarAgent} key={cr.attributes.id}>
-                <Avatar className={cls.AvatarMargin} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
+                { avatar === null ? (
+                  <Avatar>
+                    {cr.attributes.owner.data.attributes.first_name.charAt(0).toUpperCase()}
+                    {cr.attributes.owner.data.attributes.last_name.charAt(0).toUpperCase()}
+                  </Avatar>
+                ) : (
+                  <Avatar className={cls.AvatarMargin} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
+                )}
                 <div className={cls.NameAgent}>
                   <Typography variant="subheading">
                     {cr.attributes.owner.data.attributes.first_name} {cr.attributes.owner.data.attributes.last_name}
@@ -153,8 +160,15 @@ class DetailsJob extends Component {
                             <Grid container spacing={24}>
                               <Grid item xs={12} sm={1}>
                                 <Paper elevation={0}>
-                                  <Avatar src={avatar} className={cls.AvatarMargin}>
-                                  </Avatar>
+                                  {avatar === null ? (
+                                    <Avatar>
+                                      {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0).toUpperCase())}
+                                      {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0).toUpperCase())}
+                                    </Avatar>
+                                  ) : (
+                                    <Avatar src={avatar} className={cls.AvatarMargin}>
+                                    </Avatar>
+                                  )}
                                 </Paper>
                               </Grid>
                               <Grid item xs={12} sm={7}>

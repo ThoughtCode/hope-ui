@@ -153,8 +153,15 @@ class DetailsJob extends Component {
                             <Grid container spacing={24}>
                               <Grid item xs={12} sm={1}>
                                 <Paper elevation={0}>
-                                  <Avatar src={avatar} className={cls.AvatarMargin}>
-                                  </Avatar>
+                                  {avatar === null ? (
+                                    <Avatar>
+                                      {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0))}
+                                      {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0))}
+                                    </Avatar>
+                                  ) : (
+                                    <Avatar src={avatar} className={cls.AvatarMargin}>
+                                    </Avatar>
+                                  )}
                                 </Paper>
                               </Grid>
                               <Grid item xs={12} sm={7}>

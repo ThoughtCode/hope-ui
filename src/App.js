@@ -33,7 +33,7 @@ class App extends Component {
     }
     return (
       <div className={cls.body}>
-        <Alert stack={{limit: 3}} />
+        <Alert stack={{limit: 1}} />
         <Layout>
           <Switch>
             {routes}

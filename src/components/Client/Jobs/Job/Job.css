@@ -45,12 +45,16 @@
   margin-top: 10px;
 }
 
-.TotalContainer {
-  border-top: 1px solid #e9eced !important;
-}
+
 
 .TotalMargin{
-  margin: 30% 0 !important;
+  margin: 10% 0 !important;
+}
+
+@media (min-width: 375px) {
+  .TotalMargin{
+    margin: 5% 0 !important;
+  }
 }
 
 .Total {
@@ -92,11 +96,22 @@
   color: rgb(84, 90, 96) !important;
 }
 
+.TotalContainer {
+  border-top: 1px solid #e9eced !important;
+}
+
+.Border {
+  border-right: none !important;
+}
+
 @media (min-width: 600px) {
   .TotalContainer {
-    border-left: 1px solid #e9eced !important;
     border-top: none !important;
     margin-top: 10px !important;
     margin-bottom: 10px !important;
+  }
+
+  .Border {
+    border-right: 1px solid #e9eced !important;
   }
 }

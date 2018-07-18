@@ -112,7 +112,6 @@
 }
 
 .s-alert-bottom-right {
-  /*default*/
   top: auto;
   right: 30px;
   bottom: 30px;
@@ -131,10 +130,16 @@
 .s-alert-top {
   width: 100%;
   max-width: 100%;
-  top: 0;
+  top: 93px;
   left: 0;
   right: 0;
   bottom: auto;
+}
+
+@media (min-width: 1024px) {
+  .s-alert-top {
+    top: 123px;
+  }
 }
 
 /* conditions */

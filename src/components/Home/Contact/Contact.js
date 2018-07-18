@@ -25,7 +25,7 @@ import cls from './Contact.css';
 
 const styles = theme => ({
   paper: {
-    padding: theme.spacing.unit * 2,
+    padding: theme.spacing.unit * 1,
     textAlign: 'center',
     color: theme.palette.text.secondary,
   },
@@ -50,16 +50,16 @@ const styles = theme => ({
   bootstrapRoot: {
     padding: 0,
     'label + &': {
-      marginTop: theme.spacing.unit * 3,
+      marginTop: theme.spacing.unit * 1,
     },
   },
   bootstrapInput: {
     borderRadius: 4,
     backgroundColor: theme.palette.common.white,
     border: '1px solid #ced4da',
-    fontSize: 16,
-    padding: '10px 12px',
-    width: 'calc(100% - 24px)',
+    fontSize: 14,
+    padding: '10px 0',
+    textAlign: 'center',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     fontFamily: [
       '-apple-system',
@@ -81,6 +81,9 @@ const styles = theme => ({
   bootstrapFormLabel: {
     fontSize: 18,
   },
+  fiels: {
+    marginTop: 0,
+  }
 });
 
 class Contact extends Component {
@@ -137,7 +140,6 @@ class Contact extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    console.log("k-paso")
     const updatedControls = {
       ...this.state.formData,
       [controlName]: {
@@ -255,7 +257,7 @@ class Contact extends Component {
                         <NavLink className={cls.Link} to="/">Quiénes Somos?</NavLink>
                       </li>
                       <li className={cls.ListContact}>
-                        <NavLink className={cls.Link} to="/agente/registro">Quiero ser agente?</NavLink>
+                        <NavLink className={cls.Link} to="/agente/registro">Quiero ser agente</NavLink>
                       </li>
                       <li className={cls.ListContact}>
                         <NavLink className={cls.Link} to="/">Principios y Valores</NavLink>
@@ -275,12 +277,13 @@ class Contact extends Component {
                 <Grid item xs={12}>
                   <Paper className={`${cls.SubTitle} ${cls.Paper}`} elevation={0}>Contactos</Paper>
                 </Grid>
-                <Grid item xs={12} sm={10}>
+                <Grid item xs={12}>
                   <Paper className={`${cls.SubSubTitle} ${cls.Paper}`} elevation={0}>Déjanos tus datos y nos contactaremos contigo.</Paper>
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.Paper} elevation={0}>
-                    <TextField
+                    <input
+                      className={cls.Field}
                       placeholder="Nombre"
                       id="name"
                       multiline
@@ -303,7 +306,11 @@ class Contact extends Component {
                         {this.state.formData.name.errorText}
                       </div>
                     ) : null}
-                    <TextField
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper className={cls.Paper} elevation={0}>
+                    <input
                       placeholder="Celular"
                       id="multiline-static"
                       multiline
@@ -326,7 +333,11 @@ class Contact extends Component {
                         {this.state.formData.celular.errorText}
                       </div>
                     ) : null}
-                    <TextField
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper className={cls.Paper} elevation={0}>
+                    <input
                       placeholder="Correo"
                       id="multiline-static"
                       multiline
@@ -349,10 +360,19 @@ class Contact extends Component {
                         {this.state.formData.email.errorText}
                       </div>
                     ) : null}
-                    <Button
+                  </Paper>
+                </Grid>
+                <Grid item xs={12}>
+                  <Paper className={cls.Paper} elevation={0}>
+                    {this.state.formIsValid ? (
+                      <Button
                       onClick={(event) => this.formContact(event, this.formContact)}
                       className={cls.ButtonContratar}
-                    >Enviar</Button>
+                      >Enviar</Button>
+                    ): (
+                      <Button className={cls.pageButtonInvalid}>Enviar</Button>
+                    )}
+                    {/* <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button> */}
                   </Paper>
                 </Grid>
               </Grid>
@@ -364,7 +384,7 @@ class Contact extends Component {
                 <Grid item xs={12}>
                   <Paper className={`${cls.SubTitle} ${cls.Paper}`} elevation={0}>Descarga</Paper>
                 </Grid>
-                <Grid item xs={12} sm={10}>
+                <Grid item xs={12}>
                   <Paper className={`${cls.SubSubTitle} ${cls.Paper}`} elevation={0}>Descarga Noc Noc desde la tienda de tu Smatphone</Paper>
                 </Grid>
                 <Grid item xs={12}>

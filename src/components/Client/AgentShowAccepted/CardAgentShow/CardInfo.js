@@ -27,17 +27,18 @@ const info = props => {
                   <Grid container className={cls.CardInfo} align="center">
                     <Grid item xs={12}>
                       <Paper elevation={0}>
-                        {props.jobCardInfo.attributes.agent === null ? (
+                        {props.jobCardInfo.attributes.agent.avatar.url === null ? (
                           <Avatar className={cls.Avatar}>
                             {props.jobCardInfo.attributes.agent.first_name.charAt(0).toUpperCase()}
                             {props.jobCardInfo.attributes.agent.last_name.charAt(0).toUpperCase()}
                           </Avatar>
-                        ) : (
+                          ) : (
                           <Avatar
-                          className={cls.Avatar}
-                          src={props.jobCardInfo.attributes.agent.avatar.url}
+                            className={cls.Avatar}
+                            src={props.jobCardInfo.attributes.agent.avatar.url}
                           />
-                        )}
+                          )
+                        }
                       </Paper>
                     </Grid>
                   </Grid>

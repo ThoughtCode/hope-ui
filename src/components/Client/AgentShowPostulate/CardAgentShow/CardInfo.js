@@ -35,6 +35,7 @@ class Info extends Component {
     let rewiewsAverage
     let rewiewsCount
     let buttonContratar
+    let pId
     if (this.props.postulatCard.agent) {
       avatar = this.props.postulatCard.agent.data.attributes.avatar.url;
       firstName = this.props.postulatCard.agent.data.attributes.first_name;
@@ -47,11 +48,7 @@ class Info extends Component {
     if (this.props.job.attributes) {
       if ( this.props.job.attributes.proposals.data.length > 0 ) {
         buttonContratar = this.props.job.attributes.proposals.data.map( p => (
-          <Button
-          onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), this.props.job.id, p.id)}
-          className={cls.ButtonContratar}>
-              CONTRATAR
-          </Button>
+          pId = p.id
         ))
       }
     }
@@ -139,7 +136,11 @@ class Info extends Component {
                     <Grid container justify="center">
                       <Grid item xs={12} sm={4}>
                         <Paper elevation={0}>
-                          {buttonContratar}
+                          <Button
+                          onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), this.props.job.id, pId)}
+                          className={cls.ButtonContratar}>
+                              CONTRATAR
+                          </Button>
                         </Paper>
                       </Grid>
                     </Grid>

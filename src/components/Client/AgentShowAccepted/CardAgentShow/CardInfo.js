@@ -12,7 +12,6 @@ import {
 
 // Css
 import cls from './CardAgentShow.css'
-import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 const info = props => {
@@ -29,10 +28,10 @@ const info = props => {
                     <Grid item xs={12}>
                       <Paper elevation={0}>
                         {props.jobCardInfo.attributes.agent === null ? (
-                          <Avatar
-                          className={cls.Avatar}
-                          src={Image}
-                          />
+                          <Avatar className={cls.Avatar}>
+                            {props.jobCardInfo.attributes.agent.first_name.charAt(0).toUpperCase()}
+                            {props.jobCardInfo.attributes.agent.last_name.charAt(0).toUpperCase()}
+                          </Avatar>
                         ) : (
                           <Avatar
                           className={cls.Avatar}

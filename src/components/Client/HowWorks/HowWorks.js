@@ -23,39 +23,27 @@ const howWorks = props => {
           <ul>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
               &nbsp;&nbsp;Elige el tipo de servicio que necesitas
-              </div>
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige la frecuencia, dia y hora de nuestra visita
-              </div>
+              &nbsp;&nbsp;Elige la frecuencia, dia y hora de nuestra visita
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige servicios adicionales
-              </div>
+              &nbsp;&nbsp;Elige servicios adicionales
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige o registra tu direccion
-              </div>
+              &nbsp;&nbsp;Elige o registra tu direccion
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Paga tu servicio con una tarjeta de credito o debito
-              </div>
+              &nbsp;&nbsp;Paga tu servicio con una tarjeta de credito o debito
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              <div className={cls.ListItemStep}>
-                &nbsp;&nbsp;Elige la fecha del servicio
-              </div>
+              &nbsp;&nbsp;Elige la fecha del servicio
             </li>
           </ul>
         </div>

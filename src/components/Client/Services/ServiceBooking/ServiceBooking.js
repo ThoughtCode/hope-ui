@@ -39,8 +39,8 @@ class ServiceBooking extends Component {
       details: '',
       started_at: new Date(),
     },
-    service: true,
-    checking: false,
+    service: false,
+    checking: true,
     payment: false,
     thanks: false,
   };
@@ -334,14 +334,14 @@ class ServiceBooking extends Component {
               {this.state.checking ? (
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
-                    <Grid container>
+                    <Grid container justify="center">
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Checking
                           backPage={this.backPage}
                           nextPage={this.nextPage}
                           form={this.state.form} />
                       </Grid>
-                      <Grid item xs={12} sm={12} md={12} lg={12}>
+                      <Grid item xs={12} sm={8} md={7} lg={6}>
                         <HowWorks />
                       </Grid>
                     </Grid>

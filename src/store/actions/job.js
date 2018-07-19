@@ -596,7 +596,6 @@ export const jobCalendar = token => dispatch => {
         url: c.attributes.url,
       })
     );
-    console.log(calendar);
     dispatch(jobCalendarSuccess(calendar));
   })
   .catch((err) => {

@@ -44,8 +44,8 @@ function CardJob(props) {
   return (
     <div className={cls.root}>
       <Grid container>
-        <Grid item xs={11}>
-          <Grid container justify="center" spacing={40}>
+        <Grid item xs={12}>
+          <Grid container justify="center" spacing={16}>
             {jobs}
           </Grid>
         </Grid>

@@ -11,8 +11,6 @@
   vertical-align: baseline;
 }
 
-
-
 .ButtonEdit:hover {
   color: white;
   border: 1px solid #0069A7;
@@ -57,9 +55,14 @@
   font-size: 100%;
   font-family: inherit;
   vertical-align: baseline;
-  border-left: 1px solid #DCE0E6;
   padding: 1em;
   width: 100%;
+}
+
+@media (min-width: 425px) {
+  .CardPrincipal {
+    border-left: 1px solid #DCE0E6;
+  }
 }
 
 .ColPrincipal {

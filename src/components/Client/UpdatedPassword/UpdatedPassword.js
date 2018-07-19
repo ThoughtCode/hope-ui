@@ -9,7 +9,7 @@ import {
 } from 'material-ui';
 
 import * as actions from '../../../store/actions';
-import cls from './Reset.css'
+import cls from './UpdatedPassword.css'
 
 const styles = theme => ({
   root: {
@@ -58,14 +58,14 @@ const styles = theme => ({
   },
 });
 
-class Reset extends Component {
+class UpdatePassword extends Component {
   state = {
     controls: {
-      email: {
+      password: {
         elementType: 'input',
-        label: 'Email',
+        label: 'Nueva Clave',
         elementConfig: {
-          type: 'email',
+          type: 'password',
           placeholder: 'example@example.com'
         },
         value: '',
@@ -75,7 +75,22 @@ class Reset extends Component {
         },
         valid: false,
         touched: false
-      }
+      },
+      password_confirmation: {
+        elementType: 'input',
+        label: 'Repetir Nueva Clave',
+        elementConfig: {
+          type: 'password',
+          placeholder: 'example@example.com'
+        },
+        value: '',
+        validation: {
+          required: true,
+          isEmail: true
+        },
+        valid: false,
+        touched: false
+      },
     },
     formIsValid: false
   }
@@ -162,24 +177,28 @@ class Reset extends Component {
           <Grid item xs={12}>
             <Paper elevation={0} className={cls.InputText}>
               {formElementsArray.map(formElement => (
-                <TextField 
-                  key={formElement.id}
-                  value={formElement.config.value}
-                  onChange={(event) => this.inputChangedHandler(event, formElement.id)}
-                  InputProps={{
-                    disableUnderline: true,
-                    classes: {
-                      root: classes.bootstrapRoot,
-                      input: !this.state.controls.email.valid && this.state.controls.email.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                    },
-                  }}
-                  InputLabelProps={{
-                    shrink: true,
-                    className: classes.bootstrapFormLabel,
-                  }}
-                />
+                <Grid item xs={12}>
+                  <Grid container justify="center">
+                    <TextField 
+                      key={formElement.id}
+                      value={formElement.config.value}
+                      onChange={(event) => this.inputChangedHandler(event, formElement.id)}
+                      InputProps={{
+                        disableUnderline: true,
+                        classes: {
+                          root: classes.bootstrapRoot,
+                          input: !this.state.controls[`${formElement.id}`].valid && this.state.controls[`${formElement.id}`].touched ? 
+                          classes.bootstrapInputError : 
+                          classes.bootstrapInput,
+                        },
+                      }}
+                      InputLabelProps={{
+                        shrink: true,
+                        className: classes.bootstrapFormLabel,
+                      }}
+                    />
+                  </Grid>
+                </Grid>
               ))}
             </Paper>
           </Grid>
@@ -205,4 +224,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Reset));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(UpdatePassword));

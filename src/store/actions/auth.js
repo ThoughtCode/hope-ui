@@ -63,6 +63,43 @@ export const authClient = (email, password) => (dispatch) => {
     });
 };
 
+export const resetPassword = (email) => (dispatch) => {
+  const resetData = {
+    customer: {
+      email,
+    },
+  };
+  axios.post('/customers/forgot_password', resetData)
+    .then((response) => {
+      Alert.success('El email se ha enviado a su correo', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const updatePassword = (formData) => (dispatch) => {
+  axios.post('/customers/update_password', formData)
+    .then((response) => {
+      Alert.success('El email se ha enviado a su correo', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
 export const authAgent = (email, password) => (dispatch) => {
   dispatch(authStart());
   const authData = {

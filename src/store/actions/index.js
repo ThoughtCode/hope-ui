@@ -8,6 +8,7 @@ export {
   facebookLogin,
   logout,
   authCheckState,
+  resetPassword,
 } from './auth';
 export {
   fetchProperties,

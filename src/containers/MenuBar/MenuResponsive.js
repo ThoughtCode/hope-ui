@@ -44,16 +44,11 @@ const styles = {
 
 class MenuAppBar extends React.Component {
   state = {
-    auth: true,
     anchorEl: null,
     openLogin: false,
     openRegister: false,
     openAgentLogin: false,
   }
-
-  handleChange = (event, checked) => {
-    this.setState({ auth: checked });
-  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -179,43 +174,41 @@ class MenuAppBar extends React.Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            {auth && (
-              <div>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                >
-                  <MenuIcon />
-                </IconButton>
-                <Menu
-                  className={cls.SubMenu}
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                    <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
-                  </MenuItem>
-                  <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                    <AnchorLink className={cls.styleAnchor} href="#ServiceRes">Servicios</AnchorLink>
-                  </MenuItem>
-                  <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                    <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
-                  </MenuItem>
-                  <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
-                </Menu>
-              </div>
-            )}
+            <div>
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : null}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                className={cls.SubMenu}
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open}
+                onClose={this.handleClose}
+              >
+                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                  <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
+                </MenuItem>
+                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                  <AnchorLink className={cls.styleAnchor} href="#ServiceRes">Servicios</AnchorLink>
+                </MenuItem>
+                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                  <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
+                </MenuItem>
+                <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
+              </Menu>
+            </div>
           </Toolbar>
         </AppBar>
       );

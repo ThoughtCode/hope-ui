@@ -9,6 +9,9 @@ export {
   logout,
   authCheckState,
   resetPassword,
+  updatePassword,
+  resetPasswordAgent,
+  updatePasswordAgent,
 } from './auth';
 export {
   fetchProperties,

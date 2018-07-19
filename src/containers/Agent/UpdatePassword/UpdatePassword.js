@@ -7,8 +7,8 @@ import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 
 import cls from './UpdatePassword.css';
-import Logo from '../../../assets/Logo.svg'
-import UpdatedPassword from '../../../components/Client/UpdatedPassword/UpdatedPassword'
+import Logo from '../../../assets/Logo.svg';
+import UpdatedPassword from '../../../components/Agent/UpdatedPassword/UpdatedPassword';
 import * as actions from '../../../store/actions';
 
 class UpdatePassword extends Component {
@@ -161,7 +161,7 @@ class UpdatePassword extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onUpdate: (formData) => dispatch(actions.updatePassword(formData))
+    onUpdate: (formData) => dispatch(actions.updatePasswordAgent(formData))
   };
 };
 

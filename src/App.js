@@ -15,6 +15,7 @@ import RegisterClient from './components/Client/Register/Register';
 import LoginAgent from './containers/Agent/Login/Login';
 import ResetClient from './containers/Client/Reset/Reset';
 import UpdatePasswordClient from './containers/Client/UpdatePassword/UpdatePassword';
+import UpdatePasswordAgent from './containers/Agent/UpdatePassword/UpdatePassword';
 import ResetAgent from './containers/Agent/Reset/Reset';
 import Policies from './components/Home/Policies/Policies'
 import Alert from 'react-s-alert';
@@ -39,8 +40,9 @@ class App extends Component {
           <Switch>
             {routes}
             <Route path="/resetear" exact component={ResetClient}/>
-            <Route path="/resetear/:reset_token" component={UpdatePasswordClient}/>
-            <Route path="/agente/resetear" component={ResetAgent}/>
+            <Route path="/resetear/:reset_token" exact component={UpdatePasswordClient}/>
+            <Route path="/agente/resetear" exact component={ResetAgent}/>
+            <Route path="/agente/resetear/:reset_token" exact component={UpdatePasswordAgent}/>
             <Route path="/cliente/login" component={LoginClient}/>
             <Route path="/agente/login" component={LoginAgent}/>
             <Route path="/agente/registro" component={HomeAgent}/>

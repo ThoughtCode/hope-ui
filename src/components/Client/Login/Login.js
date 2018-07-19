@@ -79,7 +79,7 @@ class Login extends Component {
           </Grid>
           <Grid container justify="center" className={cls.ContainerOpciones}>
             <Button className={cls.PageButtonRegister} onClick={() => this.props.switchModal("loginAgent")} >Entra como agente</Button>
-            <Button className={cls.PageButtonRegister} component={Link} to="/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
+            <Button className={cls.PageButtonRegister} component={Link} to="/resetear" >¿OLVIDÓ SU CONTRASEÑA?</Button>
           </Grid>
         </div>
       </div>

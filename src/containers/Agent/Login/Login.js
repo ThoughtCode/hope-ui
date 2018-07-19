@@ -87,7 +87,7 @@ class Login extends Component {
             </Grid>
             <Grid container justify="center" className={cls.ContainerOpciones}>
               <Button className={cls.pageButtonLogin} component={Link} to="/agente/registro" >¿NO TIENES UNA CUENTA?</Button>
-              <Button className={cls.pageButtonLogin} component={Link} to="/agente/reset" >¿OLVIDÓ SU CONTRASEÑA?</Button>
+              <Button className={cls.pageButtonLogin} component={Link} to="/agente/resetear" >¿OLVIDÓ SU CONTRASEÑA?</Button>
             </Grid>
           </Grid>
         </div>

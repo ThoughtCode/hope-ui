@@ -87,6 +87,28 @@ export const resetPassword = (email) => (dispatch) => {
 export const updatePassword = (formData) => (dispatch) => {
   axios.post('/customers/update_password', formData)
     .then((response) => {
+      dispatch(push('/'));
+      Alert.success('Se ha actualizado su contraseña', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      Alert.error('Contraseñas invalidas, verifique que sean iguales.', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const resetPasswordAgent = (email) => (dispatch) => {
+  const resetData = {
+    agent: {
+      email,
+    },
+  };
+  axios.post('/agents/forgot_password', resetData)
+    .then((response) => {
       Alert.success('El email se ha enviado a su correo', {
         position: 'bottom',
         effect: 'genie',
@@ -94,6 +116,23 @@ export const updatePassword = (formData) => (dispatch) => {
     })
     .catch((err) => {
       Alert.error(err.response.data.message, {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    });
+};
+
+export const updatePasswordAgent = (formData) => (dispatch) => {
+  axios.post('/agents/update_password', formData)
+    .then((response) => {
+      dispatch(push('/'));
+      Alert.success('Se ha actualizado su contraseña', {
+        position: 'bottom',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      Alert.error('Contraseñas invalidas, verifique que sean iguales.', {
         position: 'bottom',
         effect: 'genie',
       });

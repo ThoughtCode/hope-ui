@@ -6,8 +6,8 @@ import Grid from 'material-ui/Grid';
 import Button from 'material-ui/Button';
 
 import cls from './Reset.css';
-import Logo from '../../../assets/Logo.svg'
-import ResetPassword from '../../../components/Client/Reset/Reset'
+import Logo from '../../../assets/Logo.svg';
+import ResetPassword from '../../../components/Agent/ResetPassword/ResetPassword';
 
 class Reset extends Component {
   render() {

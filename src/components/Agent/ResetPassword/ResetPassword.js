@@ -9,7 +9,7 @@ import {
 } from 'material-ui';
 
 import * as actions from '../../../store/actions';
-import cls from './Reset.css'
+import cls from './ResetPassword.css'
 
 const styles = theme => ({
   root: {
@@ -58,7 +58,7 @@ const styles = theme => ({
   },
 });
 
-class Reset extends Component {
+class ResetPassword extends Component {
   state = {
     controls: {
       email: {
@@ -202,8 +202,8 @@ class Reset extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onReset: (email) => dispatch(actions.resetPassword(email))
+    onReset: (email) => dispatch(actions.resetPasswordAgent(email))
   };
 };
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Reset));
+export default connect(null, mapDispatchToProps)(withStyles(styles)(ResetPassword));

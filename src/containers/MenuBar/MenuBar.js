@@ -96,10 +96,10 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
             </Typography>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente">
               Inicio
             </MenuItem>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente/trabajos">
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente/trabajos">
               Mis Trabajos
             </MenuItem>
             <div>
@@ -135,6 +135,8 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/cliente">Inicio</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/cliente/trabajos">Mis Trabajos</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
                   Cerrar sesión

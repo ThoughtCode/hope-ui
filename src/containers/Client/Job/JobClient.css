@@ -1,11 +1,16 @@
 .root {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    margin-top: 10% !important;
-    align-items: center !important;
-    flex-grow: 1px !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  margin-top: 10% !important;
+  align-items: center !important;
+  flex-grow: 1px !important;
 }
 .Typogra{
-    font-size: 1.8em !important;
-    text-transform: uppercase;
+  font-size: 1.8em !important;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 600px){
+  .root {
+    margin-top: 18% !important;
+  }
 }

@@ -3,11 +3,8 @@
   margin: 0.5rem;
 }
 
-@media (min-width: 1024px) {
-  .Applogo {
-    height: 100px;
-    margin: 0.5rem;
-  }
+.Display{
+  display: none !important;
 }
 
 .App-name{
@@ -98,4 +95,26 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+@media only screen and (max-width: 600px) {
+  .Avatar{
+    margin: 0 34px !important;
+  }
+  .Display{
+    display: inline-block !important;
+  }
+  .DisplayMenuItem{
+    display: none !important;
+  }
+  .SubMenuItem{
+    padding: 0px 15px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Applogo {
+    height: 100px;
+    margin: 0.5rem;
+  }
 }

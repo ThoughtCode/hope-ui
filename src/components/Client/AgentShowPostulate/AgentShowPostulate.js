@@ -15,7 +15,7 @@ import * as actions from '../../../store/actions';
 
 class AgentShow extends Component {
   componentDidMount() {
-    this.props.onShowReviews(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
   }
   render() {
@@ -25,7 +25,7 @@ class AgentShow extends Component {
     if (this.props.proposalPostulate.agent) {
       if (this.props.proposalPostulate.agent.data.attributes.rewiews.data.length > 0) {
         reviews = this.props.proposalPostulate.agent.data.attributes.rewiews.data.map( rr => (
-          <Reviews review={rr} />
+          <Reviews key={rr.id} review={rr} />
         ))
       }else{
         reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
@@ -74,7 +74,6 @@ class AgentShow extends Component {
 
 const mapStateToProps = state => {
   return {
-    token: state.auth.token || localStorage.getItem('token'),
     job: state.job.job,
     proposalPostulate: state.proposal.proposalPostulate,
   };
@@ -82,9 +81,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
-    onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
-    onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),
+    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onProposalPostulate: (token, job_id, hashed_id) => dispatch(actions.proposalPostulate(token, job_id, hashed_id))
   };
 };

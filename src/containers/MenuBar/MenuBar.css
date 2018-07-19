@@ -110,6 +110,9 @@
   .SubMenuItem{
     padding: 0px 15px !important;
   }
+  .SubMenu{
+    top: 65px !important;
+  }
 }
 
 @media (min-width: 1024px) {

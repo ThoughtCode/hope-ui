@@ -4,15 +4,12 @@ import classNames from 'classnames';
 import moment from 'moment';
 
 // Components
-import { Grid, Divider } from 'material-ui';
+import { Grid, Divider, TextField, Radio, Button } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import InputAdornment from 'material-ui/Input/InputAdornment';
-import TextField from 'material-ui/TextField';
-import Radio from 'material-ui/Radio';
 import RadioGroup from 'material-ui/Radio/RadioGroup';
 import FormControl from 'material-ui/Form/FormControl';
 import FormControlLabel from 'material-ui/Form/FormControlLabel';
-import Button from 'material-ui/Button';
 
 // Css
 import cls from './Filter.css'
@@ -48,9 +45,11 @@ class Filter extends Component {
     const { classes } = this.props;
     return (
       <div className={cls.root}>
-        <Grid container align="center" alignItems="center">
-          <Grid item xs={12}>
+        <Grid container align="center" justify="center" alignItems="center">
+          <Grid item xs={12} sm={0} md={1}>
             <i className={`${cls.IconStyle} ${"material-icons"}`}>date_range</i>
+          </Grid>
+          <Grid item xs={6} sm={3} md={2}>
             <TextField
               label="Minimo"
               id="simple-start-adornment"
@@ -59,6 +58,8 @@ class Filter extends Component {
               className={classNames(classes.margin, cls.textField)}
               InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
             />
+          </Grid>
+          <Grid item xs={6} sm={3} md={2}>
             <TextField
               label="Maximo"
               id="simple-start-adornment"
@@ -67,6 +68,8 @@ class Filter extends Component {
               className={classNames(classes.margin, cls.textField)}
               InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
             />
+          </Grid>
+          <Grid item xs={6} sm={3} md={2}>
             <Datetime
               isValidDate={this.validDates}
               label="Fecha"
@@ -83,6 +86,8 @@ class Filter extends Component {
                 label: 'Fecha',
               }}
             />
+          </Grid>
+          <Grid item xs={6} sm={3} md={2}>
             <Datetime
               isValidDate={this.validDatesTo}
               label="Fecha"
@@ -99,52 +104,70 @@ class Filter extends Component {
                 label: 'Fecha',
               }}
             />
-            <FormControl component="fieldset" required error className={classes.formControl}>
-              <RadioGroup
-                aria-label="filter"
-                name="una-vez"
-                className={classes.group}
-                value={this.props.filter.frequency}
-                onChange={(event) => this.props.handleChange(event, 'frequency')}
-              >
-                <FormControlLabel value="0" control={<Radio color="primary" />} label="Una Vez" />
-              </RadioGroup>
-            </FormControl>
-            <FormControl component="fieldset" required error className={classes.formControl}>
-              <RadioGroup
-                aria-label="filter"
-                name="una-vez"
-                className={classes.group}
-                value={this.props.filter.frequency}
-                onChange={(event) => this.props.handleChange(event, 'frequency')}
-              >
-                <FormControlLabel value="1" control={<Radio color="primary" />} label="Semanal" />
-              </RadioGroup>
-            </FormControl>
-            <FormControl component="fieldset" required error className={classes.formControl}>
-              <RadioGroup
-                aria-label="filter"
-                name="una-vez"
-                className={classes.group}
-                value={this.props.filter.frequency}
-                onChange={(event) => this.props.handleChange(event, 'frequency')}
-              >
-                <FormControlLabel value="2" control={<Radio color="primary" />} label="Quincenal" />
-              </RadioGroup>
-            </FormControl>
-            <FormControl component="fieldset" required error className={classes.formControl}>
-              <RadioGroup
-                aria-label="filter"
-                name="semanal"
-                className={classes.group}
-                value={this.props.filter.frequency}
-                onChange={(event) => this.props.handleChange(event, 'frequency')}
-              >
-                <FormControlLabel value="3" control={<Radio color="primary" />} label="Mensual" />
-              </RadioGroup>
-            </FormControl>
-            <Button onClick={(event) => this.props.filterHandler(event)} className={`${cls.pageButtonActive} ${classes.button}`}>FILTRAR</Button>
-            <Button onClick={() => window.location.reload() } className={`${cls.pageButtonActive} ${classes.button}`}>Ver Todos</Button>
+          </Grid>
+          <Grid item xs={12}>
+            <div className={cls.Radio_Group}>
+              <Grid container justify="center" >
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl component="fieldset" required error className={classes.formControl}>
+                    <RadioGroup
+                      aria-label="filter"
+                      name="una-vez"
+                      className={classes.group}
+                      value={this.props.filter.frequency}
+                      onChange={(event) => this.props.handleChange(event, 'frequency')}
+                    >
+                      <FormControlLabel value="0" control={<Radio color="primary" />} label="Una Vez" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl component="fieldset" required error className={classes.formControl}>
+                    <RadioGroup
+                      aria-label="filter"
+                      name="una-vez"
+                      className={classes.group}
+                      value={this.props.filter.frequency}
+                      onChange={(event) => this.props.handleChange(event, 'frequency')}
+                    >
+                      <FormControlLabel value="1" control={<Radio color="primary" />} label="Semanal" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl component="fieldset" required error className={classes.formControl}>
+                    <RadioGroup
+                      aria-label="filter"
+                      name="una-vez"
+                      className={classes.group}
+                      value={this.props.filter.frequency}
+                      onChange={(event) => this.props.handleChange(event, 'frequency')}
+                    >
+                      <FormControlLabel value="2" control={<Radio color="primary" />} label="Quincenal" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6} sm={3} md={2} lg={1}>
+                  <FormControl component="fieldset" required error className={classes.formControl}>
+                    <RadioGroup
+                      aria-label="filter"
+                      name="semanal"
+                      className={classes.group}
+                      value={this.props.filter.frequency}
+                      onChange={(event) => this.props.handleChange(event, 'frequency')}
+                      >
+                      <FormControlLabel value="3" control={<Radio color="primary" />} label="Mensual" />
+                    </RadioGroup>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={6} sm={4} md={2}>
+                  <Button onClick={(event) => this.props.filterHandler(event)} className={`${cls.pageButtonActive} ${classes.button}`}>FILTRAR</Button>
+                </Grid>
+                <Grid item xs={6} sm={4} md={2}>
+                  <Button onClick={() => window.location.reload() } className={`${cls.pageButtonActive} ${classes.button}`}>TODOS</Button>
+                </Grid>
+              </Grid>
+            </div>
           </Grid>
         </Grid>
         <Divider />

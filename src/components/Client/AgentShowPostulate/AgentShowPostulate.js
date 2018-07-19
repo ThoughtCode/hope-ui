@@ -15,7 +15,6 @@ import * as actions from '../../../store/actions';
 
 class AgentShow extends Component {
   componentDidMount() {
-    this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onShowReviews(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
   }
@@ -83,7 +82,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
     onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
     onShowReviews: (token, hashed_id) => dispatch(actions.showReviews(token, hashed_id)),

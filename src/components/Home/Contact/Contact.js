@@ -8,7 +8,6 @@ import {
   Grid,
   Typography,
   Button,
-  TextField,
 } from 'material-ui';
 import purple from 'material-ui/colors/purple';
 
@@ -372,7 +371,6 @@ class Contact extends Component {
                     ): (
                       <Button className={cls.pageButtonInvalid}>Enviar</Button>
                     )}
-                    {/* <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button> */}
                   </Paper>
                 </Grid>
               </Grid>

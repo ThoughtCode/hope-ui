@@ -145,7 +145,7 @@ function FullWidthGrid(props) {
                 </Paper>
               </Grid>
               <Grid item xs={12}>
-                <Paper elevation={0}>
+                <Paper elevation={0} id="ServiceRes">
                  <img src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png" alt="Card" />
                 </Paper>
               </Grid>

@@ -44,6 +44,7 @@ const styles = {
 
 class MenuAppBar extends React.Component {
   state = {
+    auth: true,
     anchorEl: null,
     openLogin: false,
     openRegister: false,
@@ -203,10 +204,10 @@ class MenuAppBar extends React.Component {
                   onClose={this.handleClose}
                 >
                   <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                    <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
+                    <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
                   </MenuItem>
                   <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                    <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
+                    <AnchorLink className={cls.styleAnchor} href="#ServiceRes">Servicios</AnchorLink>
                   </MenuItem>
                   <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                     <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>

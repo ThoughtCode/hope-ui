@@ -11,3 +11,10 @@
 .CardJob {
   padding-bottom: 20px;
 }
+
+@media only screen and (max-width: 600px) {
+  .Typogra{
+    font-size: 1.2em !important;
+    margin: 0 24px !important;
+  }
+}

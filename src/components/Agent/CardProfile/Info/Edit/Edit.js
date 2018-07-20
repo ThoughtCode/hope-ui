@@ -200,13 +200,17 @@ class Edit extends Component {
     let avatar = (
       <div className={cls.Container}>
         <Grid container justify="center">
-          <div className={cls.AvatarContainer}>
-            <img className={cls.Image} src={Image} alt="profile" />
-            <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
-          </div>  
-          <label htmlFor="avatar">
-            <span>Subir nueva foto</span>
-          </label>
+          <Grid item xs={12}>
+            <div className={cls.AvatarContainer}>
+              <img className={cls.Image} src={Image} alt="profile" />
+              <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
+            </div>  
+          </Grid>
+          <Grid item xs={12}>
+            <label htmlFor="avatar">
+              <span>Subir nueva foto</span>
+            </label>
+          </Grid>
         </Grid>
       </div>
     );
@@ -231,13 +235,21 @@ class Edit extends Component {
       avatar = (
         <div className={cls.Container}>
           <Grid container justify="center">
-            <div className={cls.AvatarContainer}>
-              <img className={cls.Image} src={this.props.user.attributes.avatar.url || Image} alt="profile" />
-              <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
-            </div>  
-            <label htmlFor="avatar">
-              <span>Subir nueva foto</span>
-            </label>
+            <Grid item xs={12}>
+              <Grid container justify="center">
+                <div className={cls.AvatarContainer}>
+                  <img className={cls.Image} src={this.props.user.attributes.avatar.url || Image} alt="profile" />
+                  <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
+                </div>
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container justify="center">
+                <label htmlFor="avatar">
+                  <span>Subir nueva foto</span>
+                </label>
+              </Grid>
+            </Grid>
           </Grid>
         </div>
       );
@@ -305,17 +317,15 @@ class Edit extends Component {
             </Grid>
           </Grid>
           <Grid container>
-            <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
-              <Grid container>
-                <Link className={cls.Button} to="/cliente/perfil/info">
-                  Cancelar
-                </Link>
-                {this.state.formIsValid ? (
-                  <button onClick={this.updatedHandler} className={cls.ButtonSave}><span>Guardar</span></button>
-                ) : (
-                  <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
-                )}
-              </Grid>
+            <Grid item xs={12} className={cls.FormItem}>
+              <Link className={cls.Button} to="/cliente/perfil/info">
+                Cancelar
+              </Link>
+              {this.state.formIsValid ? (
+                <button onClick={this.updatedHandler} className={cls.ButtonSave}><span>Guardar</span></button>
+              ) : (
+                <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
+              )}
             </Grid>
           </Grid>
         </div>

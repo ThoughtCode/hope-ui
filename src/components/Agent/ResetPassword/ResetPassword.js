@@ -122,7 +122,7 @@ class ResetPassword extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onReset(this.state.controls.email.value);
+    this.props.onReset(this.state.controls.email.value.toLowerCase());
   }
 
   inputChangedHandler = (event, controlName) => {

@@ -120,7 +120,7 @@ class Auth extends Component {
 
   submitHandler = (event) => {
     event.preventDefault();
-    this.props.onAuth(this.state.controls.email.value, this.state.controls.password.value)
+    this.props.onAuth(this.state.controls.email.value.toLowerCase(), this.state.controls.password.value)
   }
 
   inputChangedHandler = (event, controlName) => {

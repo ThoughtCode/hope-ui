@@ -202,13 +202,21 @@ class Edit extends Component {
     let avatar = (
       <div className={cls.Container}>
         <Grid container justify="center">
-          <div className={cls.AvatarContainer}>
-            <img className={cls.Image} src={Image} alt="profile" />
-            <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
-          </div>  
-          <label htmlFor="avatar">
-            <span>Subir nueva foto</span>
-          </label>
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <div className={cls.AvatarContainer}>
+                <img className={cls.Image} src={Image} alt="profile" />
+                <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
+              </div>  
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Grid container justify="center">
+              <label htmlFor="avatar">
+                <span>Subir nueva foto</span>
+              </label>
+            </Grid>
+          </Grid>
         </Grid>
       </div>
     );
@@ -233,13 +241,21 @@ class Edit extends Component {
       avatar = (
         <div className={cls.Container}>
           <Grid container justify="center">
-            <div className={cls.AvatarContainer}>
-              <img className={cls.Image} src={this.props.user.attributes.avatar.url || Image} alt="profile" />
-              <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
-            </div>  
-            <label htmlFor="avatar">
-              <span>Subir nueva foto</span>
-            </label>
+            <Grid xs={12}>
+              <Grid container justify="center">
+                <div className={cls.AvatarContainer}>
+                  <img className={cls.Image} src={this.props.user.attributes.avatar.url || Image} alt="profile" />
+                  <input id="avatar" type="file" className={cls.AvatarFile} name="avatar" onChange={this.inputFileHandler}/>
+                </div>  
+              </Grid>
+            </Grid>
+            <Grid xs={12}>
+              <Grid container justify="center">
+                <label htmlFor="avatar">
+                  <span>Subir nueva foto</span>
+                </label>
+              </Grid>
+            </Grid>
           </Grid>
         </div>
       );

@@ -16,7 +16,7 @@ import JobPostulated from '../CardJob/JobPostulated';
 function TabContainer(props) {
   const { children, dir } = props;
   return (
-    <Typography component="div" dir={dir} style={{ padding: 8 * 3 }}>
+    <Typography component="div" dir={dir} style={{ padding: 8 }}>
       {children}
     </Typography>
   );

@@ -44,7 +44,7 @@ const info = props => {
                   <span>{props.user.attributes.national_id}</span>
                 </li>
                 <li>
-                  <Link className={cls.ButtonLogout} to="#"><span>Cerrar Sesion</span></Link>
+                  <Link className={cls.ButtonLogout} onClick={props.logout} to="#"><span>Cerrar Sesion</span></Link>
                 </li>
               </ul>
             </Grid>

@@ -24,7 +24,7 @@ class MainDashboardAgent extends Component {
     }
     return (
       <Grid container justify="center" className={cls.MainDashboardAgent}>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={10} md={8} lg={6}>
           <Paper elevation={0}>
             <Typography variant="title" gutterBottom className={cls.Typogra}>Trabajos</Typography>
           </Paper>

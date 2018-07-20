@@ -19,35 +19,35 @@ const cardProfile = props => {
     <div className={cls.CardProfile}>
       <Grid container>
         <Grid item xs={12} sm={4} md={3} lg={3}>
-            <div className={cls.Div}>
-              <ul className={cls.SideNav}>
-                <Route path="/cliente/perfil/info" children={({match}) => (
-                  <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink className={cls.Link} to="/cliente/perfil/info">Perfil</NavLink>
-                  </li>
-                )}/>
-                <Route path="/cliente/perfil/contraseña" children={({match}) => (
-                  <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink className={cls.Link} to="/cliente/perfil/contraseña">Contraseña</NavLink>
-                  </li>
-                )}/>
-                <Route path="/cliente/perfil/propiedades" children={({match}) => (
-                  <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink className={cls.Link} to="/cliente/perfil/propiedades">Propiedades</NavLink>
-                  </li>
-                )}/>
-                <Route path="/cliente/perfil/metodo-pago" children={({match}) => (
-                  <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                    <NavLink className={cls.Link} to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
-                  </li>
-                )}/>
-              </ul>
-            </div>
+          <div className={cls.Div}>
+            <ul className={cls.SideNav}>
+              <Route path="/cliente/perfil/info" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/info">Perfil</NavLink>
+                </li>
+              )}/>
+              <Route path="/cliente/perfil/contraseña" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/contraseña">Contraseña</NavLink>
+                </li>
+              )}/>
+              <Route path="/cliente/perfil/propiedades" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/propiedades">Propiedades</NavLink>
+                </li>
+              )}/>
+              <Route path="/cliente/perfil/metodo-pago" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
+                </li>
+              )}/>
+            </ul>
+          </div>
         </Grid>
         <Grid item xs={12} sm={8} md={9} lg={9}>
           <Grid container className={cls.CardContainer}>
             <div className={cls.CardPrincipal}>
-              <Route path="/cliente/perfil/info" exact render={() => <Info user={props.user}/>}/>
+              <Route path="/cliente/perfil/info" exact render={() => <Info logout={props.logout} user={props.user}/>}/>
               <Route path="/cliente/perfil/info/editar" exact render={() => <Edit
                 user={props.user}
                 update={props.update}

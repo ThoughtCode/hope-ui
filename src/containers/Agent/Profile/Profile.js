@@ -28,6 +28,7 @@ class Profile extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CardProfile
+                  logout={this.props.onLogout}
                   user={this.props.user}
                   update={this.props.onUpdateUser}
                   updateAvatar={this.props.onUpdateAvatar}
@@ -59,6 +60,7 @@ const mapDispatchToProps = dispatch => {
     onUpdateUser: (token, form) => dispatch(actions.updatedCurrentAgent(token, form)),
     onUpdateAvatar: (token, file) => dispatch(actions.updatedCurrentAgentAvatar(token, file)),
     onChangePassword: (token, form) => dispatch(actions.changePasswordAgent(token, form)),
+    onLogout: () => dispatch(actions.logout()),
   }
 }
 

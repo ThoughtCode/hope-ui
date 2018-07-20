@@ -25,7 +25,7 @@ class MyJobs extends Component {
       <div>
         <MenuBar />
         <Grid container justify="center" className={cls.root}>
-          <Grid item xs={12} sm={10}>
+          <Grid item xs={12} sm={10} md={8} lg={6}>
             <Paper elevation={0}>
               <Grid container justify="center">
                 <Grid item xs={12}>

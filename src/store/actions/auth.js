@@ -27,6 +27,10 @@ export const logout = () => (dispatch) => {
   localStorage.clear();
   dispatch(authLogout());
   dispatch(push('/'));
+  Alert.success('Te has deslogueado con exito', {
+    position: 'top',
+    effect: 'genie',
+  });
 };
 
 export const authClient = (email, password) => (dispatch) => {

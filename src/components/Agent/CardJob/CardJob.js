@@ -47,7 +47,7 @@ const cardJob = (props) => {
   return (
     <div className={cls.root}>
       <Grid container justify="center">
-        <Grid item xs={10} sm={10} md={5}>
+        <Grid item xs={10} sm={10} md={8} lg={6}>
           <Grid container alignItems="center" className={cls.CardJob}>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>

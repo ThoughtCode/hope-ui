@@ -67,4 +67,4 @@ const mapDispatchToProps = dispatch => {
     onDisableButton: (token, job_id) => dispatch(actions.disableButton(token, job_id)),
   };
 };
-export default connect(mapStateToProps, mapDispatchToProps) (Profile);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);

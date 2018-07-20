@@ -22,7 +22,7 @@ const info = props => {
         <Grid item xs={12}>
           <Paper>
             <Grid container alignItems="center">
-              <Grid item xs={12} sm={3} md={2}>
+              <Grid item xs={12} sm={3} md={3}>
                 <Paper elevation={0}>
                   <Grid container className={cls.CardInfo} align="center">
                     <Grid item xs={12}>
@@ -44,13 +44,13 @@ const info = props => {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={9}>
+              <Grid item xs={12} sm={5} md={6}>
                 <Paper elevation={0}>
                   <Grid container className={cls.MidCard}>
                     <Grid item xs={12}>
                       <Paper elevation={0}>
-                        <Typography variant="headline" gutterBottom>
                           {props.jobCardInfo.attributes.agent.first_name} {props.jobCardInfo.attributes.agent.last_name}
+                        <Typography variant="headline" gutterBottom>
                         </Typography>
                       </Paper>
                     </Grid>
@@ -59,14 +59,14 @@ const info = props => {
                         <Link to="#">
                           <Typography variant="subheading" gutterBottom>
                             <Grid container>
-                              <Grid item xs={5} sm={3} md={2}>
+                              <Grid item xs={5} sm={5} md={4}>
                                 <Paper elevation={0}>
                                   <Stars
                                     agentRewiewsAverage={props.jobCardInfo.attributes.agent_rewiews_average}
                                   />
                                 </Paper>
                               </Grid>
-                              <Grid item xs={5} sm={9} md={10}>
+                              <Grid item xs={5} sm={5} md={8}>
                                 <Paper className={cls.CantReviews} elevation={0}>
                                   {props.jobCardInfo.attributes.agent_rewiews_count} Opiniones
                                 </Paper>
@@ -95,10 +95,10 @@ const info = props => {
                   </Grid>
                 </Paper>
               </Grid>
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={3} md={2}>
                 <Paper elevation={0}>
-                  <Grid container justify="center">
-                    <Grid item xs={12} sm={4}>
+                  <Grid container className={cls.MidCard} justify="center">
+                    <Grid item xs={5} sm={4}>
                       <Paper elevation={0}>
                         {props.canReviewJob === true ? (
                           <Button

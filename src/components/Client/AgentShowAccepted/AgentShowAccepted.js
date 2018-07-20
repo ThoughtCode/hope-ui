@@ -20,7 +20,7 @@ class AgentShow extends Component {
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
-          <Grid item xs={12} sm={10} md={8} lg={6}>
+          <Grid item xs={12} sm={10} md={8} lg={6} xl={4}>
             <Paper elevation={0}>
               <Grid container justify="center">
                 <Grid item xs={11} sm={12} md={12}>

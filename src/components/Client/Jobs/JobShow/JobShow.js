@@ -82,14 +82,12 @@ class JobShow extends Component {
         agentTitle = 'Agentes Postulados';
         agents = this.props.job.attributes.proposals.data.length > 0 ?
         this.props.job.attributes.proposals.data.map(p => (
-          <Grid container className={cls.AgentPostulate}>
+          <Grid key={p.id} container className={cls.AgentPostulate}>
               <Grid item xs={12}>
                 <Paper>
                   <div className={cls.AvatarAgent}>
                     <Link 
-                      component={Link}
                       className={cls.Link}
-                      idAgent={p.attributes.agent.id}
                       to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
                       {p.attributes.agent.data.attributes.avatar.url === null ? (
                         <Avatar className={cls.AvatarMargin}>

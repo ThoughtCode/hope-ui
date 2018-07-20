@@ -34,7 +34,6 @@ class Info extends Component {
     let nationalId
     let rewiewsAverage
     let rewiewsCount
-    let buttonContratar
     let pId
     if (this.props.postulatCard.agent) {
       avatar = this.props.postulatCard.agent.data.attributes.avatar.url;
@@ -47,12 +46,11 @@ class Info extends Component {
     }
     if (this.props.job.attributes) {
       if ( this.props.job.attributes.proposals.data.length > 0 ) {
-        buttonContratar = this.props.job.attributes.proposals.data.map( p => (
+        this.props.job.attributes.proposals.data.map( p => (
           pId = p.id
         ))
       }
     }
-    console.log(this.props)
     return (
       <div>
         <Grid container>
@@ -82,7 +80,7 @@ class Info extends Component {
                 </Grid>
                 <Grid item xs={12} sm={5}>
                   <Paper elevation={0}>
-                    <Grid container>
+                    <Grid className={cls.MidCard} container>
                       <Grid item xs={12}>
                         <Paper elevation={0}>
                           <Typography variant="headline" gutterBottom>
@@ -95,14 +93,14 @@ class Info extends Component {
                           <Link to="#">
                             <Typography variant="subheading" gutterBottom>
                               <Grid container>
-                                <Grid item xs={4}>
+                                <Grid item xs={5} sm={5}>
                                   <Paper elevation={0}>
                                     <Stars
                                       agentRewiewsAverage={rewiewsAverage}
                                     />
                                   </Paper>
                                 </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={6} sm={7}>
                                   <Paper className={cls.CantReviews} elevation={0}>
                                     {rewiewsCount} Opiniones
                                   </Paper>
@@ -116,7 +114,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-envelope"></i>
-                              {email}
+                              {' ' + email}
                           </Typography>
                         </Paper>
                       </Grid>
@@ -124,7 +122,7 @@ class Info extends Component {
                         <Paper elevation={0}>
                           <Typography variant="subheading" gutterBottom>
                             <i className="fas fa-id-card"></i>
-                              {nationalId}
+                              {' ' + nationalId}
                           </Typography>
                         </Paper>
                       </Grid>
@@ -133,8 +131,8 @@ class Info extends Component {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <Paper elevation={0}>
-                    <Grid container justify="center">
-                      <Grid item xs={12} sm={4}>
+                    <Grid container className={cls.MidCard} justify="center">
+                      <Grid item xs={5} sm={4}>
                         <Paper elevation={0}>
                           <Button
                           onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), this.props.job.id, pId)}

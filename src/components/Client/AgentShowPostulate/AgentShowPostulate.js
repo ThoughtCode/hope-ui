@@ -38,10 +38,10 @@ class AgentShow extends Component {
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
-          <Grid item xs={12} sm={10}>
+          <Grid item xs={11} md={10} lg={6}>
             <Paper elevation={0}>
               <Grid container justify="center">
-                <Grid item xs={12}>
+                <Grid item xs={11} sm={12} md={12}>
                   <Paper elevation={0}>
                     <Typography variant="title" gutterBottom className={cls.Typogra}>Agente Postulado</Typography>
                   </Paper>
@@ -56,9 +56,9 @@ class AgentShow extends Component {
                 </Grid>
               </Grid>
               <Grid container justify="center">
-                <Grid item xs={12} sm={8}>
+                <Grid item xs={12}>
                   <Grid container>
-                    <Grid item xs={12} sm={12} md={12} lg={12}>
+                    <Grid item xs={12}>
                       {reviews}
                     </Grid>
                   </Grid>

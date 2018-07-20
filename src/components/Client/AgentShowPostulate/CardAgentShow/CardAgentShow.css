@@ -1,19 +1,24 @@
-.CardInfo{
-    margin: 25px 0 !important;
-}
-.Avatar{
-    width: 120px !important;
-    height: 120px !important;
+.CardInfo {
+  margin: 25px 0 !important;
 }
 
-.CantReviews{
-    font-style: italic;
-    font-size: 0.8em;
+.Avatar {
+  width: 120px !important;
+  height: 120px !important;
 }
 
-.ButtonContratar{
-    border: 1px solid #0069a7 !important;
-    border-radius: 5px 5px 5px 5px !important;
-    color: #0069a7 !important;
-    font-weight: bold !important;
+.CantReviews {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.ButtonContratar {
+  border: 1px solid #0069a7 !important;
+  border-radius: 5px 5px 5px 5px !important;
+  color: #0069a7 !important;
+  font-weight: bold !important;
+}
+
+.MidCard {
+  padding: 10px;
 }

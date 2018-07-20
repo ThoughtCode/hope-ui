@@ -20,9 +20,9 @@ class Info extends Component {
     return (
       <div>
         <Grid container justify="center" className={cls.Info}>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} sm={12}>
             <Grid container>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={12}>
                 <CardInfo
                   agentRewiews={this.props.agentRewiew}
                   postulatCard={postulate}

@@ -23,7 +23,7 @@ class Profile extends Component {
     if (this.props.jobCard.attributes) {
       if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
         reviews = this.props.jobCard.attributes.agent_rewiews.data.map( rr => (
-          <Reviews review={rr} />
+          <Reviews key={rr.id} review={rr} />
         ));
       }else{
         reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
@@ -34,7 +34,7 @@ class Profile extends Component {
         <Grid container justify="center" className={cls.Profile}>
           <Grid item xs={11} sm={12}>
             <Grid container>
-              <Grid item xs={12} sm={12} md={12} lg={12}>
+              <Grid item xs={12}>
                 <CardProfile
                   jobCardInfo={this.props.jobCard}
                   canReviewJob={this.props.disableButtonjob.can_review}
@@ -42,9 +42,9 @@ class Profile extends Component {
               </Grid>
             </Grid>
             <Grid container justify="center">
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={12}>
                 <Grid container>
-                  <Grid item xs={12} sm={12} md={12} lg={12}>
+                  <Grid item xs={12}>
                     {reviews}
                   </Grid>
                 </Grid>

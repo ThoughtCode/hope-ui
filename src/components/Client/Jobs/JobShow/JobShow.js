@@ -221,10 +221,10 @@ class JobShow extends Component {
     return (
       <div>
         <Grid container justify="center">
-          <Grid item xs={8}>
+          <Grid item xs={12} md={12} lg={10}>
             <Paper elevation={0}>
               <Grid container className={cls.JobShow}>
-                <Grid item xs={5}>
+                <Grid item xs={12} md={6}>
                   <Paper elevation={0}>
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>
@@ -243,7 +243,7 @@ class JobShow extends Component {
                     </Grid>
                   </Paper>
                 </Grid>
-                <Grid item xs={7}>
+                <Grid item xs={12} md={6}>
                   <Paper elevation={0}>
                     <Grid container className={cls.ServiceDate}>
                       <Grid item xs={12}>

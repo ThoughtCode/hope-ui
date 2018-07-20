@@ -11,12 +11,6 @@ import cls from './CardAgentShow.css';
 
 class Info extends Component {
   render() {
-    let postulate = 0;
-    if (this.props.postulate.length > 0) {
-      this.props.postulate.map( p => (
-        postulate = p.attributes
-      ));
-    };
     return (
       <div>
         <Grid container justify="center" className={cls.Info}>
@@ -24,8 +18,7 @@ class Info extends Component {
             <Grid container>
               <Grid item xs={12}>
                 <CardInfo
-                  agentRewiews={this.props.agentRewiew}
-                  postulatCard={postulate}
+                  postulatCard={this.props.postulate}
                   />
               </Grid>
             </Grid>

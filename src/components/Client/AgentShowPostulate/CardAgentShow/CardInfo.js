@@ -19,23 +19,22 @@ import Image from '../../../../assets/avatar-default-300x300.jpg';
 import Stars from '../../Jobs/JobShow/Stars';
 
 class Info extends Component {
-  componentDidMount() {
-    this.props.onFetchJob(localStorage.getItem('token'), this.props.job.id);
-  }
   acceptedProposal = (event, token, job_id, proposal_id) => {
     event.preventDefault();
     this.props.onAcceptedJob(token, job_id, proposal_id);
   }
   render() {
-    let avatar
-    let firstName
-    let lastName
-    let email
-    let nationalId
-    let rewiewsAverage
-    let rewiewsCount
-    let pId
-    if (this.props.postulatCard.agent) {
+    let avatar = null;
+    let firstName = null;
+    let lastName = null;
+    let email = null;
+    let nationalId = null;
+    let rewiewsAverage = null;
+    let rewiewsCount = null;
+    let proposal_id = null;
+    let job_id = null;
+    console.log(this.props.postulatCard);
+    if (this.props.postulatCard) {
       avatar = this.props.postulatCard.agent.data.attributes.avatar.url;
       firstName = this.props.postulatCard.agent.data.attributes.first_name;
       lastName = this.props.postulatCard.agent.data.attributes.last_name;
@@ -43,13 +42,8 @@ class Info extends Component {
       nationalId = this.props.postulatCard.agent.data.attributes.national_id;
       rewiewsAverage = this.props.postulatCard.agent.data.attributes.rewiews_average;
       rewiewsCount = this.props.postulatCard.agent.data.attributes.rewiews_count;      
-    }
-    if (this.props.job.attributes) {
-      if ( this.props.job.attributes.proposals.data.length > 0 ) {
-        this.props.job.attributes.proposals.data.map( p => (
-          pId = p.id
-        ))
-      }
+      proposal_id = this.props.postulatCard.hashed_id;
+      job_id = this.props.postulatCard.job.hashed_id;
     }
     return (
       <div>
@@ -135,8 +129,8 @@ class Info extends Component {
                       <Grid item xs={5} sm={4}>
                         <Paper elevation={0}>
                           <Button
-                          onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), this.props.job.id, pId)}
-                          className={cls.ButtonContratar}>
+                            onClick={(event) => this.acceptedProposal(event,localStorage.getItem('token'), job_id, proposal_id)}
+                            className={cls.ButtonContratar}>
                               CONTRATAR
                           </Button>
                         </Paper>
@@ -153,17 +147,10 @@ class Info extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    job: state.job.job,
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Info);
+export default connect(null, mapDispatchToProps)(Info);

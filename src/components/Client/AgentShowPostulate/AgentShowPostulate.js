@@ -15,25 +15,20 @@ import * as actions from '../../../store/actions';
 
 class AgentShow extends Component {
   componentDidMount() {
-    this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onProposalPostulate(localStorage.getItem('token'), this.props.match.params.job_id, this.props.match.params.proposal_id);
   }
   render() {
-    let postulate = 0;
-    let agentRewiew;
+    let postulate = null;
     let reviews = null;
     if (this.props.proposalPostulate.agent) {
       if (this.props.proposalPostulate.agent.data.attributes.rewiews.data.length > 0) {
         reviews = this.props.proposalPostulate.agent.data.attributes.rewiews.data.map( rr => (
           <Reviews key={rr.id} review={rr} />
         ))
-      }else{
+      } else {
         reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
       }
-    }
-    if (this.props.job.attributes){
-      agentRewiew=this.props.job.attributes
-      postulate=this.props.job.attributes.proposals.data
+      postulate = this.props.proposalPostulate;
     }
     return (
       <div>
@@ -49,7 +44,6 @@ class AgentShow extends Component {
                 <Grid item xs={12}>
                   <Paper className={cls.CardAgentShow} elevation={0}>
                     <CardAgentShow
-                      agentRewiew={agentRewiew}
                       postulate={postulate}
                       />
                   </Paper>
@@ -74,14 +68,12 @@ class AgentShow extends Component {
 
 const mapStateToProps = state => {
   return {
-    job: state.job.job,
     proposalPostulate: state.proposal.proposalPostulate,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
     onProposalPostulate: (token, job_id, hashed_id) => dispatch(actions.proposalPostulate(token, job_id, hashed_id))
   };
 };

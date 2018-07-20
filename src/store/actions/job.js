@@ -281,6 +281,7 @@ export const acceptedJob = (token, job_id, proposal_id) => dispatch => {
     .catch((err) => {
       if (err.response.data.job) {
         let job = err.response.data.job.data;
+        dispatch(push(`/cliente/trabajo/${job_id}`));
         dispatch(acceptedJobSuccess(job));
       } else {
         dispatch(acceptedJobFail());

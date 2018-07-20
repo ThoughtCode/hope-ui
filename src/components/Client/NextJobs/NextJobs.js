@@ -38,7 +38,7 @@ const nextJobs = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container justify="center" spacing={40}>
+        <Grid container justify="center">
           {jobs}
         </Grid>
       </Grid>

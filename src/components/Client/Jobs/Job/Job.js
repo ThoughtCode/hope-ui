@@ -44,7 +44,7 @@ const job = props => {
   }
   let name = props.agent ? props.agent.first_name + " " + props.agent.last_name : "Sin agente asignado";
   return (
-    <Grid item xs={12} sm={12} md={6}>
+    <Grid className={cls.Item} item xs={12} sm={12} md={6}>
       <Card className={cls.CardBorder}>
         <Grid container alignItems="center">
           <Grid item xs={12} sm={8} md={8} lg={8}>

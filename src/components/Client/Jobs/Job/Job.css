@@ -3,6 +3,16 @@
   border-radius: 5px !important;
 }
 
+.Item {
+  padding: 10px 0;
+}
+
+@media (min-width: 768px) {
+  .Item {
+    padding: 10px 10px;
+  }
+}
+
 .CardDate {
   padding: 5px 5px;
   background-color: #0069a7;

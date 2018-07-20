@@ -17,3 +17,17 @@
   top: 61px !important;
   left: 20px !important;
 }
+
+.Modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.root {
+  flex-grow: 1;
+}
+
+.flex {
+  flex: 1;
+}

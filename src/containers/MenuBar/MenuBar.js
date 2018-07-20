@@ -178,7 +178,7 @@ class AppBarMenu extends Component {
           <Grid item xs={12} md={8} sm={12}>
             <Grid container align="center">
               <Grid item xs={12} sm={4} align="right">
-              <Modal
+                <Modal
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >

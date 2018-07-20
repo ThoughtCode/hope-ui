@@ -28,18 +28,16 @@ const styleAnchor = {
   color: '#0069A7'
 };
 
-const styles = {
-  root: {
-    flexGrow: 1,
-  },
+const styles = theme => ({
   flex: {
     flex: 1,
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+  paper: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
   },
-};
+});
 
 class MenuAppBar extends React.Component {
   state = {
@@ -219,7 +217,7 @@ class MenuAppBar extends React.Component {
           <Grid item xs={12} md={8} sm={12}>
             <Grid container align="center">
               <Grid item xs={12} sm={4} align="right">
-              <Modal
+                <Modal
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >

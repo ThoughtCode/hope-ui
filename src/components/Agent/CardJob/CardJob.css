@@ -12,8 +12,15 @@
 .SubTitleCard{
   font-size: 1em !important;
 }
+.Title{
+  font-size: 1.2em !important;
+}
 .StatuCard{
   color: #0069a7 !important;
+}
+.subServicios{
+  color: #0069a7 !important;
+  font-style: italic;
 }
 .ContainerAvatar{
   display: flex;
@@ -65,4 +72,27 @@
   background-color:#0069a7 !important;
   color: white !important;
   font-size: 1.2em !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .Title{
+    font-size: 0.7em !important;
+  }
+  .Name{
+    font-size: 0.8em !important;
+  }
+  .subServicios{
+    font-size: 0.8em !important;
+  }
+  .ButtonDetalles{
+    font-size: 0.9em !important;
+    padding: 0 !important;
+  }
+  .ButtonCancelar{
+    font-size: 0.9em !important;
+    padding: 0 !important;
+  }
+  .TipograTotal {
+    font-size: 2em !important;
+  }
 }

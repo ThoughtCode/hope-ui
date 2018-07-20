@@ -33,22 +33,22 @@ class MainDashboardAgent extends Component {
           {jobs}
         </Grid>
         {this.props.total_pages > 0 ? (
-          <Grid item xs={12} sm={5}>
+          <Grid item xs={10} sm={5}>
             <Paper elevation={0}>
               <Grid container justify="flex-end" align="right" alignItems="center" className={cls.PaginationTop}>
-                <Grid item xs={12} sm={4}>
+                <Grid item xs={4} sm={4}>
                   <Paper elevation={0}>
                     <Typography variant="body1">{this.props.current_page} de {this.props.total_pages}</Typography>
                   </Paper>
                 </Grid>
-                <Grid item xs={12} sm={1}>
+                <Grid item xs={2} sm={1}>
                   <Paper elevation={0}>
                     <Typography variant="subheading">
                       <i onClick={this.props.goBack} className="material-icons">keyboard_arrow_left</i>
                     </Typography>
                   </Paper>
                 </Grid>
-                <Grid item xs={12} sm={1}>
+                <Grid item xs={2} sm={1}>
                   <Paper elevation={0}>
                     <Typography variant="subheading">
                       <i onClick={this.props.goNext} className="material-icons">keyboard_arrow_right</i>

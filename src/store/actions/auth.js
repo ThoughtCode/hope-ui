@@ -61,7 +61,7 @@ export const authClient = (email, password) => (dispatch) => {
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'top',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -76,13 +76,13 @@ export const resetPassword = (email) => (dispatch) => {
   axios.post('/customers/forgot_password', resetData)
     .then((response) => {
       Alert.success('El email se ha enviado a su correo', {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     })
     .catch((err) => {
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -93,13 +93,13 @@ export const updatePassword = (formData) => (dispatch) => {
     .then((response) => {
       dispatch(push('/'));
       Alert.success('Se ha actualizado su contraseña', {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     })
     .catch((err) => {
       Alert.error('Contraseñas invalidas, verifique que sean iguales.', {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -114,13 +114,13 @@ export const resetPasswordAgent = (email) => (dispatch) => {
   axios.post('/agents/forgot_password', resetData)
     .then((response) => {
       Alert.success('El email se ha enviado a su correo', {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     })
     .catch((err) => {
       Alert.error(err.response.data.message, {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -131,13 +131,13 @@ export const updatePasswordAgent = (formData) => (dispatch) => {
     .then((response) => {
       dispatch(push('/'));
       Alert.success('Se ha actualizado su contraseña', {
-        position: 'bottom',
+        position: 'top',
         effect: 'genie',
       });
     })
     .catch((err) => {
       Alert.error('Contraseñas invalidas, verifique que sean iguales.', {
-        position: 'bottom',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -171,7 +171,7 @@ export const authAgent = (email, password) => (dispatch) => {
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'top',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });
@@ -197,11 +197,15 @@ export const facebookLogin = accessToken => (dispatch) => {
       localStorage.setItem('last_name', customer.attributes.last_name);
       dispatch(authSuccess(customer.attributes.access_token, customer.id));
       dispatch(push('/cliente/dashboard'));
+      Alert.success(response.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
     })
     .catch((err) => {
       dispatch(authFail(err));
       Alert.error(err.response.data.message, {
-        position: 'top',
+        position: 'bottom-right',
         effect: 'genie',
       });
     });

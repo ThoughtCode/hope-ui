@@ -8,6 +8,8 @@ import Button from 'material-ui/Button';
 // COMPONENTES
 import AppLogo from '../../../assets/LogoBlanco.svg';
 import Form from '../Form/Form';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+
 import cls from './Register.css';
 
 class Register extends Component {

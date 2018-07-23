@@ -11,6 +11,7 @@ import {Grid,
   Paper,
   withStyles,
 } from 'material-ui';
+import Spinner from './Spinner/Spinner';
 
 // Css
 import cls from './Form.css';
@@ -224,6 +225,11 @@ class Form extends Component {
     return (
       <div>
         <form className={cls.Form}>
+          {this.props.loading ? (
+            <Grid className={cls.LoadingContainer} container>
+              <Spinner />
+            </Grid>
+          ) : (
           <Grid container>
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
@@ -443,21 +449,26 @@ class Form extends Component {
                 <Button disabled className={cls.pageButtonInvalid}>Registrar</Button>
               )}
             </Grid>
-          </Grid>
-          <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Terminos y politicas de privacidad.</a></span></p>
-          <Grid container justify="center">
-            <Grid item xs={12}>
-              <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
+            <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Terminos y politicas de privacidad.</a></span></p>
+            <Grid container justify="center">
+              <Grid item xs={12}>
+                <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
+              </Grid>
             </Grid>
           </Grid>
+          )}
         </form>
       </div>
     );
   }
 }
 
+const mapStateToProps = state => ({
+  loading: state.register.loading,
+});
+
 const mapDispatchToProps = dispatch => ({
   onRegisterUser: formData => dispatch(actions.registerAgent(formData)),
 });
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Form));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Form));

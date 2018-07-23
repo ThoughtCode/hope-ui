@@ -3,7 +3,12 @@
   padding: 20px;
   border-radius: 5px;
   text-align: center !important;
+  height: 689px;
 }
+.LoadingContainer {
+  margin-top: 50%;
+}
+
 .pageButton {
   background-color: #0069a7 !important;
   border-radius: 4px !important;

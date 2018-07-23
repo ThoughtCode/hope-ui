@@ -15,10 +15,11 @@ export const registerClientFail = error => ({
 });
 
 export const registerClientStart = () => ({
-  type: registerClientStart,
+  type: actionTypes.REGISTER_CLIENT_START,
 });
 
 export const registerClient = formData => (dispatch) => {
+  dispatch(registerClientStart());
   axios.post('/customers/signup/', formData)
     .then((response) => {
       const customer = response.data.customer.data;
@@ -64,10 +65,11 @@ export const registerAgentFail = error => ({
 });
 
 export const registerAgentStart = () => ({
-  type: registerAgentStart,
+  type: actionTypes.REGISTER_AGENT_START,
 });
 
 export const registerAgent = formData => (dispatch) => {
+  dispatch(registerAgentStart());
   axios.post('/agents/signup/', formData)
     .then((response) => {
       const agent = response.data.agent.data;
@@ -89,12 +91,12 @@ export const registerAgent = formData => (dispatch) => {
       if (typeof(error.response.data.message) === 'object') {
         const message = error.response.data.message.email;
         Alert.error(message, {
-          position: 'top',
+          position: 'bottom-right',
           effect: 'genie',
         });
       } else {
         Alert.error(error.response.data.message, {
-          position: 'top',
+          position: 'bottom-right',
           effect: 'genie',
         });
       }

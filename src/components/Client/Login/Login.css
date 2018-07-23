@@ -119,6 +119,10 @@
   left: 52% !important;
 }
 
+.LoadingContainer {
+  margin-top: 30%;
+}
+
 @media only screen and (max-width: 600px) {
   .Login{
     height: 480px;

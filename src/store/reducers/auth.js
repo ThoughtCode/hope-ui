@@ -6,19 +6,25 @@ const initialState = {
   userId: null,
   profile: null,
   error: null,
+  loading: false,
 };
 
-const authStart = (state, action) => updateObject(state, { error: null });
+const authStart = (state, action) => updateObject(state, {
+  error: null,
+  loading: true,
+});
 
 const authSuccess = (state, action) => updateObject(state, {
   token: action.token,
   userId: action.userId,
   profile: action.profile,
   error: null,
+  loading: false,
 });
 
 const authFail = (state, action) => updateObject(state, {
   error: null,
+  loading: false,
 });
 
 const authLogout = (state, action) => updateObject(state, { token: null, userId: null });

@@ -11,6 +11,7 @@ import * as actions from '../../../store/actions';
 import cls from './Register.css';
 import FacebookIcon from '../../../assets/facebookicon.svg';
 import FormRegister from '../FormRegister/FormRegister';
+import Spinner from '../../UI/Spinner/Spinner';
 
 const styles = theme => ({
   input: {
@@ -182,6 +183,7 @@ class Register extends Component {
   }
 
   render() {
+    console.log(this.props.loading);
     const formElementsArray = [];
     for (const key in this.state.registerForm) {
       formElementsArray.push({
@@ -198,43 +200,53 @@ class Register extends Component {
             </Button>
           </Grid>
         </Grid>
-        <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >          
-          <Grid item xs={12} sm={12} align="center" >
-            <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
-            <div><FormRegister /></div>
+        {this.props.loading ? (
+          <Grid container className={cls.LoadingContainer} style={this.props.formClass} justify="center" >
+            <Spinner />
           </Grid>
-          <div className={cls.Divider}>
-            <i className="material-icons">circle</i>
-            <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
-            <i className="material-icons">circle</i>
-          </div>
-          <div className={cls.ButtonFacebookContainer}>
-            <FacebookLogin
-              appId="2057031764572769"
-              autoLoad={false}
-              fields="name,email"
-              callback={this.responseFacebook}
-              render={renderProps => (
-                <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
-                  <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
-                  Regístrate con Facebook
-                </Button>      
-              )}
-            />
-          </div>
-          <div className={cls.ButtonConten}>
-            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Regístrate como Agente</Button>
-            <Button className={cls.pageButtonRegistroAgente} component={Link} to="/resetear" >Olvido su contraseña</Button>
-          </div>
-        </Grid>
+        ) : (
+          <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >
+            <Grid item xs={12} sm={12} align="center" >
+              <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
+              <div><FormRegister /></div>
+            </Grid>
+            <div className={cls.Divider}>
+              <i className="material-icons">circle</i>
+              <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
+              <i className="material-icons">circle</i>
+            </div>
+            <div className={cls.ButtonFacebookContainer}>
+              <FacebookLogin
+                appId="2057031764572769"
+                autoLoad={false}
+                fields="name,email"
+                callback={this.responseFacebook}
+                render={renderProps => (
+                  <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
+                    <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
+                    Regístrate con Facebook
+                  </Button>      
+                )}
+              />
+            </div>
+            <div className={cls.ButtonConten}>
+              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Regístrate como Agente</Button>
+              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/resetear" >Olvido su contraseña</Button>
+            </div>
+          </Grid>
+        )}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  loading: state.register.loading,
+});
 
 const mapDispatchToProps = dispatch => ({
   onRegisterUser: formData => dispatch(actions.registerClient(formData)),
   onRegisterFacebook: accessToken => dispatch(actions.facebookLogin(accessToken)),
 });
 
-export default connect(null, mapDispatchToProps)(withStyles(styles)(Register));
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(styles)(Register));

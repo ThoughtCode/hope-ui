@@ -18,6 +18,10 @@
   flex-grow: 1;
 }
 
+.LoadingContainer {
+  margin-top: 30%;
+}
+
 .ContainerOpciones{
   text-align: center !important;
 }

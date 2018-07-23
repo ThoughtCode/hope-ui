@@ -15,14 +15,24 @@ const initialState = {
   disableButtonCustomer: [],
   calendar: [],
   canApply: [],
+  loading: false,
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
   jobs: action.jobs,
 });
 
+const fetchNextJobsStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
 const fetchNextJobsSuccess = (state, action) => updateObject(state, {
   nextjobs: action.nextjobs,
+  loading: false,
+});
+
+const fetchNextJobsFail = (state, action) => updateObject(state, {
+  loading: false,
 });
 
 const fetchHistoryJobsSuccess = (state, action) => updateObject(state, {
@@ -82,9 +92,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_START: return state;
     case actionTypes.FETCH_JOB_SUCCESS: return fetchJobSuccess(state, action);
     case actionTypes.FETCH_JOB_FAIL: return state;
-    case actionTypes.FETCH_NEXTJOBS_START: return state;
+    case actionTypes.FETCH_NEXTJOBS_START: return fetchNextJobsStart(state,action);
+    case actionTypes.FETCH_NEXTJOBS_FAIL: return fetchNextJobsFail(state, action);
     case actionTypes.FETCH_NEXTJOBS_SUCCESS: return fetchNextJobsSuccess(state, action);
-    case actionTypes.FETCH_NEXTJOBS_FAIL: return state;
     case actionTypes.FETCH_HISTORYJOBS_START: return state;
     case actionTypes.FETCH_HISTORYJOBS_SUCCESS: return fetchHistoryJobsSuccess(state, action);
     case actionTypes.FETCH_HISTORYJOBS_FAIL: return state;

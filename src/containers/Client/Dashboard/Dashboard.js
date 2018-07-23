@@ -12,6 +12,7 @@ import NextJobs from '../../../components/Client/NextJobs/NextJobs';
 import PastJobs from '../../../components/Client/PastJobs/PastJobs';
 import Download from '../../../components/Home/Download/Download';
 import Contact from '../../../components/Home/Contact/Contact';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
 import cls from './Dashboard.css'
@@ -39,16 +40,24 @@ class Dashboard extends Component {
     return (
       <div className={cls.Dashboard}>
         <Jumbotron />
-        <Services clicked={this.showServiceClick} services={this.props.services} />
-        <NextJobs nextjobs={this.props.nextjobs} />
-        {pastJobs}
-        <Grid container justify="center">
-          <Grid item xs={12} md={8} className={cls.Download}>
-            <Paper elevation={0}>
-              <Download />
-            </Paper>
+        {this.props.loading ? (
+          <Grid container className={cls.LoaderContainer}>
+            <Spinner />
           </Grid>
-        </Grid>
+        ) : (
+          <Grid container>
+            <Services clicked={this.showServiceClick} services={this.props.services} />
+            <NextJobs nextjobs={this.props.nextjobs} />
+            {pastJobs}
+            <Grid container justify="center">
+              <Grid item xs={12} md={8} className={cls.Download}>
+                <Paper elevation={0}>
+                  <Download />
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+        )}
         <Contact />
       </div>
     );
@@ -61,6 +70,7 @@ const mapStateToProps = state => {
     services: state.service.services,
     nextjobs: state.job.nextjobs,
     historyjobs: state.job.historyjobs,
+    loading: state.service.loading || state.job.loading,
   }
 }
 

@@ -6,6 +6,7 @@ import {
   Grid,
   Avatar,
 } from 'material-ui';
+import Spinner from '../../../UI/Spinner/Spinner';
 
 // Css
 import cls from './Info.css';
@@ -57,7 +58,13 @@ const info = props => {
     <div className={cls.Div}>
       <Link className={cls.ButtonEdit} to="/cliente/perfil/info/editar"><span>Editar</span></Link>
       <h3 className={cls.CardTitle}><span>Perfil</span></h3>
-      {profile}  
+      {props.loading ? (
+        <Spinner />
+      ) : (
+        <div>
+          {profile}  
+        </div>
+      )}
     </div>
   );
 }

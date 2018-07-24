@@ -2,7 +2,7 @@
   margin-top: 40%;
 }
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 425px) {
   .LoaderContainer {
     margin-top: 20%;
   } 

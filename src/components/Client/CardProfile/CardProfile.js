@@ -47,7 +47,7 @@ const cardProfile = props => {
         <Grid item xs={12} sm={8} md={9} lg={9}>
           <Grid container className={cls.CardContainer}>
             <div className={cls.CardPrincipal}>
-              <Route path="/cliente/perfil/info" exact render={() => <Info logout={props.logout} user={props.user}/>}/>
+              <Route path="/cliente/perfil/info" exact render={() => <Info loading={props.loading} logout={props.logout} user={props.user}/>}/>
               <Route path="/cliente/perfil/info/editar" exact render={() => <Edit
                 user={props.user}
                 update={props.update}

@@ -1,7 +1,7 @@
 .root {
   display: flex !important;
   flex-wrap: wrap !important;
-  margin-top: 10% !important;
+  margin-top: 150px !important;
   align-items: center !important;
   flex-grow: 1px !important;
 }
@@ -11,6 +11,6 @@
 }
 @media only screen and (max-width: 600px){
   .root {
-    margin-top: 18% !important;
+    margin-top: 150px !important;
   }
 }

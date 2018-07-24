@@ -170,6 +170,7 @@ class PropertyForm extends Component {
       property: formData,
     };
     this.props.createProperty(localStorage.getItem('token'), property);
+    this.props.cancel();
   }
 
   cancelHandler = (event) => {

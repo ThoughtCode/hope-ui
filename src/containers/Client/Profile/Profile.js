@@ -30,6 +30,7 @@ class Profile extends Component {
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={12}>
                 <CardProfile
+                  loading={this.props.loading}
                   logout={this.props.onLogout}
                   user={this.props.user}
                   update={this.props.onUpdateUser}
@@ -56,6 +57,7 @@ class Profile extends Component {
 
 const mapStateToProps = state => {
   return {
+    loading: state.user.loading,
     user: state.user.user,
     loading: state.user.loading,
     properties: state.property.properties,

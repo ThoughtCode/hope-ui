@@ -24,6 +24,7 @@ const fetchJobsSuccess = (state, action) => updateObject(state, {
 
 const fetchNextJobsStart = (state, action) => updateObject(state, {
   loading: true,
+  nextjobs: [],
 });
 
 const fetchNextJobsSuccess = (state, action) => updateObject(state, {
@@ -39,8 +40,18 @@ const fetchHistoryJobsSuccess = (state, action) => updateObject(state, {
   historyjobs: action.historyjobs,
 });
 
+const fetchJobStart = (state, action) => updateObject(state, {
+  job: [],
+  loading: true,
+});
+
 const fetchJobSuccess = (state, action) => updateObject(state, {
   job: action.job,
+  loading: false,
+});
+
+const fetchJobFail = (state, action) => updateObject(state, {
+  loading: false,
 });
 
 const acceptedJobSuccess = (state, action) => updateObject(state, {
@@ -89,9 +100,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOBS_START: return state;
     case actionTypes.FETCH_JOBS_SUCCESS: return fetchJobsSuccess(state, action);
     case actionTypes.FETCH_JOBS_FAIL: return state;
-    case actionTypes.FETCH_JOB_START: return state;
+    case actionTypes.FETCH_JOB_START: return fetchJobStart(state, action);
     case actionTypes.FETCH_JOB_SUCCESS: return fetchJobSuccess(state, action);
-    case actionTypes.FETCH_JOB_FAIL: return state;
+    case actionTypes.FETCH_JOB_FAIL: return fetchJobFail(state, action);
     case actionTypes.FETCH_NEXTJOBS_START: return fetchNextJobsStart(state,action);
     case actionTypes.FETCH_NEXTJOBS_FAIL: return fetchNextJobsFail(state, action);
     case actionTypes.FETCH_NEXTJOBS_SUCCESS: return fetchNextJobsSuccess(state, action);

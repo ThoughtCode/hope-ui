@@ -4,6 +4,10 @@ import { connect } from 'react-redux';
 // Components
 import ServiceImage from '../../../components/Client/Services/ServiceImage/ServiceImage';
 import ServiceBooking from '../../../components/Client/Services/ServiceBooking/ServiceBooking';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+
+// Css
+import cls from './Service.css';
 
 import * as actions from '../../../store/actions';
 
@@ -34,8 +38,16 @@ class Service extends Component {
     }
     return (
       <div>
-        {serviceImage}
-        {serviceBooking}
+        {this.props.loading ? (
+          <div className={cls.LoaderContainer}>
+            <Spinner/>
+          </div>
+        ) : (
+          <div>
+            {serviceImage}
+            {serviceBooking}
+          </div>
+        )}
       </div>
     );
   }
@@ -59,6 +71,7 @@ const mapStateToProps = state => {
     properties: state.property.properties,
     cities: state.city.cities,
     neightborhoods: state.neightborhood.neightborhoods,
+    loading: state.service.loading,
   };
 };
 

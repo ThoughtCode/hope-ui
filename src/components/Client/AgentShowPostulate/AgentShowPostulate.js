@@ -9,6 +9,7 @@ import Grid from 'material-ui/Grid';
 import cls from './AgentShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';
 import Reviews from '../../../components/Agent/Reviews/Reviews';
+import Spinner from '../../UI/Spinner/Spinner';
 
 
 import * as actions from '../../../store/actions';
@@ -34,31 +35,35 @@ class AgentShow extends Component {
       <div>
         <Grid container justify="center" className={cls.root}>
           <Grid item xs={11} md={10} lg={6}>
-            <Paper elevation={0}>
-              <Grid container justify="center">
-                <Grid item xs={11} sm={12} md={12}>
-                  <Paper elevation={0}>
-                    <Typography variant="title" gutterBottom className={cls.Typogra}>Agente Postulado</Typography>
-                  </Paper>
+            {this.props.loading ? (
+              <Spinner />
+            ) : (  
+              <Paper elevation={0}>
+                <Grid container justify="center">
+                  <Grid item xs={11} sm={12} md={12}>
+                    <Paper elevation={0}>
+                      <Typography variant="title" gutterBottom className={cls.Typogra}>Agente Postulado</Typography>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Paper className={cls.CardAgentShow} elevation={0}>
+                      <CardAgentShow
+                        postulate={postulate}
+                        />
+                    </Paper>
+                  </Grid>
                 </Grid>
-                <Grid item xs={12}>
-                  <Paper className={cls.CardAgentShow} elevation={0}>
-                    <CardAgentShow
-                      postulate={postulate}
-                      />
-                  </Paper>
-                </Grid>
-              </Grid>
-              <Grid container justify="center">
-                <Grid item xs={12}>
-                  <Grid container>
-                    <Grid item xs={12}>
-                      {reviews}
+                <Grid container justify="center">
+                  <Grid item xs={12}>
+                    <Grid container>
+                      <Grid item xs={12}>
+                        {reviews}
+                      </Grid>
                     </Grid>
                   </Grid>
                 </Grid>
-              </Grid>
-            </Paper>
+              </Paper>
+            )}
           </Grid>
         </Grid>
       </div>
@@ -69,6 +74,7 @@ class AgentShow extends Component {
 const mapStateToProps = state => {
   return {
     proposalPostulate: state.proposal.proposalPostulate,
+    loading: state.proposal.loading,
   };
 };
 

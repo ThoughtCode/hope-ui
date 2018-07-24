@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 
 // Components
 import JobShow from '../../../components/Client/Jobs/JobShow/JobShow';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+
+// Css
+import cls from './Job.css';
 
 import * as actions from '../../../store/actions';
 
@@ -22,11 +26,22 @@ class Job extends Component {
       hashedId = this.props.job.attributes.property.hashed_id
     }
     return (
-      <JobShow
-        hashedId={hashedId}
-        job={this.props.job}
-        accepted={this.acceptedProposal}
-        cancelled={this.props.onCancelledJob}/>
+      <div>
+        {this.props.loading ? (
+          <div className={cls.LoaderContainer}>
+            <Spinner />
+          </div>
+
+        ) : (
+          <div>
+            <JobShow
+              hashedId={hashedId}
+              job={this.props.job}
+              accepted={this.acceptedProposal}
+              cancelled={this.props.onCancelledJob}/>
+          </div>
+        )}
+      </div>
     );
   }
 }
@@ -34,6 +49,7 @@ class Job extends Component {
 const mapStateToProps = state => {
   return {
     job: state.job.job,
+    loading: state.job.loading,
   };
 };
 

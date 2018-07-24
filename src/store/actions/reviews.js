@@ -147,3 +147,34 @@ export const reviews = (token, id) => dispatch => {
       dispatch(reviewsFail(err));
   })
 };
+
+export const reviewsAgentStart = () => ({
+  type: actionTypes.REVIEWS_AGENT_START,
+});
+
+export const reviewsAgentSuccess = reviewsAgent => ({
+  type: actionTypes.REVIEWS_AGENT_SUCCESS,
+  reviewsAgent: reviewsAgent,
+});
+
+export const reviewsAgentFail = () => ({
+  type: actionTypes.REVIEWS_AGENT_FAIL,
+});
+
+export const reviewsAgent = (token, id) => dispatch => {
+  dispatch(reviewsAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/customers/agent/${id}/reviews`, headers)
+  .then((res) => {
+    let reviews = [];
+    reviews = res.data.review.data;
+    dispatch(reviewsAgentSuccess(reviews));
+  })
+  .catch((err) => {
+      dispatch(reviewsAgentFail(err));
+  })
+};

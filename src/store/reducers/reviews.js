@@ -5,6 +5,7 @@ const initialState = {
   showReviews: [],
   qualify: [],
   qualifyCustomer: [],
+  reviews: [],
 };
 
 const showReviews = (state, action) => updateObject(state, {
@@ -19,6 +20,10 @@ const qualifyCustomer = (state, action) => updateObject(state, {
   qualifyCustomer: action.qualifyCustomer,
 });
 
+const reviews = (state, action) => updateObject(state, {
+  reviews: action.reviews,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.SHOW_REVIEWS_START: return state;
@@ -30,6 +35,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.QUALIFY_CUSTOMER_START: return state;
     case actionTypes.QUALIFY_CUSTOMER_SUCCESS: return qualifyCustomer(state, action);
     case actionTypes.QUALIFY_CUSTOMER_FAIL: return state;
+    case actionTypes.REVIEWS_START: return state;
+    case actionTypes.REVIEWS_SUCCESS: return reviews(state, action);
+    case actionTypes.REVIEWS_FAIL: return state;
     default: return state;
   }
 };

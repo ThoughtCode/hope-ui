@@ -22,6 +22,11 @@ class DetailsJob extends Component {
     this.props.onDisableButtonCustomer(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onCanApply(localStorage.getItem('token'), this.props.match.params.job_id);
   };
+  componentDidUpdate() {
+    if (this.props.jobDetails.attributes && this.props.reviews.length === 0) {
+      this.props.onReviews(localStorage.getItem('token'), this.props.jobDetails.attributes.customer.data.attributes.hashed_id);
+    }
+  };
   render() {
     let total = null;
     let service_base = null;
@@ -44,9 +49,9 @@ class DetailsJob extends Component {
       if(this.props.jobDetails.attributes.customer){
         avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       }
-      if(this.props.jobDetails.attributes.customer_rewiews.data){
-        if(this.props.jobDetails.attributes.customer_rewiews.data.length > 0 ){
-          commentCard = this.props.jobDetails.attributes.customer_rewiews.data.map( cr => {
+      if(this.props.reviews){
+        if(this.props.reviews.length > 0 ){
+          commentCard = this.props.reviews.map( cr => {
             return (
               <div className={cls.AvatarAgent} key={cr.attributes.id}>
                 { avatar === null ? (
@@ -233,6 +238,7 @@ class DetailsJob extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
+  onReviews: (token, id) => dispatch(actions.reviews(token, id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
   onDisableButtonCustomer: (token, job_id) => dispatch(actions.disableButtonCustomer(token, job_id)),
   onCanApply: (token, job_id) => dispatch(actions.canApply(token, job_id)),
@@ -240,6 +246,7 @@ const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   jobDetails: state.job.jobDetails,
+  reviews: state.reviews.reviews,
   disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,
   canApply: state.job.canApply,
 });

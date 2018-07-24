@@ -389,7 +389,6 @@ export const fetchJobAgentCurrentSuccess = acceptedjobs => ({
 });
 
 export const fetchJobAgentCurrent = (token) => dispatch => {
-  
   dispatch(fetchJobAgentCurrentStart());
   const headers = {
     headers: {

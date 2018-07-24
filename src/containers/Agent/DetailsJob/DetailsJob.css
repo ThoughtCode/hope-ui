@@ -1,6 +1,11 @@
 .DetailsJob {
   margin-top: 22vh;
-}    
+}
+
+.LoaderContainer {
+  margin-top: 150px;
+}
+
 .ServiceDate {
   text-align: center;
   padding: 1rem;

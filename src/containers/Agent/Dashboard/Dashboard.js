@@ -7,6 +7,7 @@ import moment from 'moment';
 import MenuBar from '../../MenuBar/MenuBarAgent';
 import Filter from '../../../components/Agent/Filter/Filter';
 import MainDashboardAgent from '../../../components/Agent/MainDashboardAgent/MainDashboardAgent';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
 import cls from './Dashboard.css';
@@ -153,18 +154,26 @@ class DashboardAgent extends Component {
     return (
       <div className={cls.Dashboard}>
         <MenuBar />
-        <Filter 
-          filter={this.state.filter}
-          filterHandler={this.filterHandler}
-          handleChange={this.handleChange}
-          changeDatetimeHandler={this.changeDatetimeHandler} />
-        <MainDashboardAgent 
-          jobs={this.props.jobs}
-          total_pages={this.props.total_pages}
-          current_page={this.state.filter.current_page}
-          goNext={this.goNext}
-          goBack={this.goBack} 
-          applyProposal={this.props.onApplyProposal} />
+        {this.props.loading ? (
+          <div className={cls.LoaderContainer}>
+            <Spinner/>
+          </div>
+        ) : (
+          <div>
+            <Filter 
+              filter={this.state.filter}
+              filterHandler={this.filterHandler}
+              handleChange={this.handleChange}
+              changeDatetimeHandler={this.changeDatetimeHandler} />
+            <MainDashboardAgent 
+              jobs={this.props.jobs}
+              total_pages={this.props.total_pages}
+              current_page={this.state.filter.current_page}
+              goNext={this.goNext}
+              goBack={this.goBack} 
+              applyProposal={this.props.onApplyProposal} />
+          </div>
+        )}
       </div>
     );
   };
@@ -178,6 +187,7 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   jobs: state.job.jobs,
   total_pages: state.job.total_pages,
+  loading: state.job.loading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DashboardAgent);

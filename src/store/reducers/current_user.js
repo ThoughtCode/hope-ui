@@ -59,6 +59,7 @@ const reducer = (state = initialState, action) => {
     case actionTypes.UPDATED_CURRENT_USER_START: return updatedCurrentUserStart(state, action);
     case actionTypes.FETCH_CURRENT_AGENT_SUCCESS: return fetchCurrentAgentSuccess(state, action);
     case actionTypes.FETCH_CURRENT_AGENT_START: return fetchCurrentAgentStart(state, action);
+    case actionTypes.FETCH_CURRENT_AGENT_FAIL: return fetchCurrentAgentFail(state, action);
     case actionTypes.UPDATED_CURRENT_AGENT_SUCCESS: return updatedCurrentAgentSuccess(state, action);
     case actionTypes.UPDATED_CURRENT_AGENT_START: return updatedCurrentAgentStart(state, action);
     default: return state;

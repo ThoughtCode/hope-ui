@@ -11,6 +11,7 @@ import {
     Button,
 } from 'material-ui';
 import Rating from 'react-rating';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
 import cls from './DetailsJob.css';
@@ -97,132 +98,138 @@ class DetailsJob extends Component {
         <Grid container justify="center">
           <Grid item xs={8}>
             <Paper elevation={0}>
-              <Grid container className={cls.DetailsJob}>
-                <Grid item xs={5}>
-                  <Paper elevation={0}>
-                    <Grid container className={cls.ServiceDate}>
-                      <Grid item xs={12}>
-                        <Paper>
-                          <Typography variant="headline" className={cls.TitleDate}>{service_base}</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>
-                            {finishedAt}
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper className={cls.ServiceDate}>
-                          <Typography variant="headline">Servicios Adicionales</Typography>
-                          <Grid container className={cls.ServiceDate}>
-                            <Grid item xs={12}>
-                              <Paper elevation={0}>
-                                {services_addon}
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper className={cls.ServiceDate}>
-                          <Typography variant="headline">Detalles a considerar</Typography>
-                          <Grid container className={cls.ServiceDate}>
-                            <Grid item xs={12}>
-                              <Paper elevation={0}>
-                                {details}
-                              </Paper>
-                            </Grid>
-                          </Grid>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper className={cls.ServiceDate}>
-                            <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>{total}$</Typography>
-                        </Paper>
-                      </Grid>
-                      {this.props.canApply.can_apply === true ? (
-                        <Button className={cls.ButtonCancelar} onClick={() => this.props.onApplyProposal(localStorage.getItem('token'), this.props.match.params.job_id)}>APLICAR</Button>
-                      ) : (
-                        <p></p>
-                        )
-                      }
-                    </Grid>
-                  </Paper>
-                </Grid>
-                <Grid item xs={7}>
-                  <Paper elevation={0}>
-                    <Grid container className={cls.ContenUserCliente}>
-                      <Grid item xs={12}>
-                        <Paper elevation={0}><Typography variant="headline">Cliente</Typography></Paper>
-                      </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper elevation={0}>
-                          <div className={cls.AvatarAgent}>
-                            <Grid container spacing={24}>
-                              <Grid item xs={12} sm={1}>
-                                <Paper elevation={0}>
-                                  {avatar === null ? (
-                                    <Avatar>
-                                      {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0).toUpperCase())}
-                                      {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0).toUpperCase())}
-                                    </Avatar>
-                                  ) : (
-                                    <Avatar src={avatar} className={cls.AvatarMargin}>
-                                    </Avatar>
-                                  )}
-                                </Paper>
-                              </Grid>
-                              <Grid item xs={12} sm={7}>
-                                <Paper elevation={0}>
-                                  <div className={cls.NameAgent}>
-                                    <Typography className={cls.Name} variant="subheading">
-                                      {firstNameCustomer} {lastNameCustomer}
-                                    </Typography>
-                                  </div>
-                                </Paper>
-                              </Grid>
-                              <Grid item xs={12} sm={4}>
-                                <Paper className={cls.TextRight} elevation={0}>
-                                  <Typography className={cls.Name} variant="subheading">
-                                    <Rating initialRating={rewiewsAverage}
-                                      readonly
-                                      emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
-                                      fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
-                                    />
-                                  </Typography>
-                                </Paper>
-                              </Grid>
+              {this.props.loading ? (
+                <div className={cls.LoaderContainer}>
+                  <Spinner />
+                </div>
+              ) : (
+                <Grid container className={cls.DetailsJob}>
+                  <Grid item xs={5}>
+                    <Paper elevation={0}>
+                      <Grid container className={cls.ServiceDate}>
+                        <Grid item xs={12}>
+                          <Paper>
+                            <Typography variant="headline" className={cls.TitleDate}>{service_base}</Typography>
+                            <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
+                            <Typography variant="caption" className={cls.TitleCaption}>
+                              {finishedAt}
+                            </Typography>
+                          </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Paper className={cls.ServiceDate}>
+                            <Typography variant="headline">Servicios Adicionales</Typography>
+                            <Grid container className={cls.ServiceDate}>
                               <Grid item xs={12}>
-                                <Paper className={cls.TextRight} elevation={0}>
-                                {this.props.disableButtonCustomer.can_review === true ? (
-                                  <Button
-                                  className={cls.ButtonContratar}
-                                  component={Link}
-                                  to={`/agente/${this.props.match.params.job_id}/calificar`}
-                                  >
-                                    CALIFICAR
-                                  </Button>
-                                  ) : (
-                                    <p></p>
-                                  )
-                                }
+                                <Paper elevation={0}>
+                                  {services_addon}
                                 </Paper>
                               </Grid>
                             </Grid>
-                          </div>
-                        </Paper>
+                          </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Paper className={cls.ServiceDate}>
+                            <Typography variant="headline">Detalles a considerar</Typography>
+                            <Grid container className={cls.ServiceDate}>
+                              <Grid item xs={12}>
+                                <Paper elevation={0}>
+                                  {details}
+                                </Paper>
+                              </Grid>
+                            </Grid>
+                          </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Paper className={cls.ServiceDate}>
+                              <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>{total}$</Typography>
+                          </Paper>
+                        </Grid>
+                        {this.props.canApply.can_apply === true ? (
+                          <Button className={cls.ButtonCancelar} onClick={() => this.props.onApplyProposal(localStorage.getItem('token'), this.props.match.params.job_id)}>APLICAR</Button>
+                        ) : (
+                          <p></p>
+                          )
+                        }
                       </Grid>
-                      <Grid item xs={12}>
-                        <Paper elevation={0}><Typography variant="headline">Opiniones</Typography></Paper>
+                    </Paper>
+                  </Grid>
+                  <Grid item xs={7}>
+                    <Paper elevation={0}>
+                      <Grid container className={cls.ContenUserCliente}>
+                        <Grid item xs={12}>
+                          <Paper elevation={0}><Typography variant="headline">Cliente</Typography></Paper>
+                        </Grid>
+                        <Grid item xs={12} className={cls.AgentPostulate}>
+                          <Paper elevation={0}>
+                            <div className={cls.AvatarAgent}>
+                              <Grid container spacing={24}>
+                                <Grid item xs={12} sm={1}>
+                                  <Paper elevation={0}>
+                                    {avatar === null ? (
+                                      <Avatar>
+                                        {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0).toUpperCase())}
+                                        {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0).toUpperCase())}
+                                      </Avatar>
+                                    ) : (
+                                      <Avatar src={avatar} className={cls.AvatarMargin}>
+                                      </Avatar>
+                                    )}
+                                  </Paper>
+                                </Grid>
+                                <Grid item xs={12} sm={7}>
+                                  <Paper elevation={0}>
+                                    <div className={cls.NameAgent}>
+                                      <Typography className={cls.Name} variant="subheading">
+                                        {firstNameCustomer} {lastNameCustomer}
+                                      </Typography>
+                                    </div>
+                                  </Paper>
+                                </Grid>
+                                <Grid item xs={12} sm={4}>
+                                  <Paper className={cls.TextRight} elevation={0}>
+                                    <Typography className={cls.Name} variant="subheading">
+                                      <Rating initialRating={rewiewsAverage}
+                                        readonly
+                                        emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
+                                        fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
+                                      />
+                                    </Typography>
+                                  </Paper>
+                                </Grid>
+                                <Grid item xs={12}>
+                                  <Paper className={cls.TextRight} elevation={0}>
+                                  {this.props.disableButtonCustomer.can_review === true ? (
+                                    <Button
+                                    className={cls.ButtonContratar}
+                                    component={Link}
+                                    to={`/agente/${this.props.match.params.job_id}/calificar`}
+                                    >
+                                      CALIFICAR
+                                    </Button>
+                                    ) : (
+                                      <p></p>
+                                    )
+                                  }
+                                  </Paper>
+                                </Grid>
+                              </Grid>
+                            </div>
+                          </Paper>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <Paper elevation={0}><Typography variant="headline">Opiniones</Typography></Paper>
+                        </Grid>
+                        <Grid item xs={12} className={cls.AgentPostulate}>
+                          <Paper elevation={0}>
+                            {commentCard}
+                          </Paper>
+                        </Grid>
                       </Grid>
-                      <Grid item xs={12} className={cls.AgentPostulate}>
-                        <Paper elevation={0}>
-                          {commentCard}
-                        </Paper>
-                      </Grid>
-                    </Grid>
-                  </Paper>
+                    </Paper>
+                  </Grid>
                 </Grid>
-              </Grid>
+              )}
             </Paper>
           </Grid>
         </Grid>
@@ -242,6 +249,7 @@ const mapStateToProps = state => ({
   jobDetails: state.job.jobDetails,
   disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,
   canApply: state.job.canApply,
+  loading: state.job.loading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailsJob);

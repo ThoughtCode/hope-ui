@@ -10,6 +10,7 @@ import {
 } from 'material-ui';
 import MenuBar from '../../MenuBar/MenuBarAgent';
 import CalendarioComponent from '../../../components/Agent/Calendario/CalendarioComponent';
+import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
 import cls from './Calendario.css';
@@ -22,6 +23,7 @@ class Calendario extends Component {
   }
 
   render() {
+    console.log(this.props.loading);
     return (
       <div>
         <MenuBar />
@@ -50,6 +52,7 @@ class Calendario extends Component {
 
 const mapStateToProps = (state) => ({
   calendar: state.job.calendar,
+  loading: state.job.loading,
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -18,16 +18,19 @@ class Profile extends Component {
   componentDidMount() {
     this.props.onDisableButton(localStorage.getItem('token'), this.props.job_id);
   }
+  componentDidUpdate() {
+    if (this.props.jobCard.attributes && this.props.reviews.length === 0) {
+      this.props.onReviewsAgent(localStorage.getItem('token'), this.props.jobCard.attributes.agent.hashed_id)
+    }
+  };
   render() {
     let reviews = null;
-    if (this.props.jobCard.attributes) {
-      if (this.props.jobCard.attributes.agent_rewiews.data.length > 0) {
-        reviews = this.props.jobCard.attributes.agent_rewiews.data.map( rr => (
-          <Reviews key={rr.id} review={rr} />
-        ));
-      }else{
-        reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
-      }
+    if (this.props.reviews.length > 0) {
+      reviews = this.props.reviews.map( rr => (
+        <Reviews key={rr.id} review={rr} />
+      ))
+    }else{
+      reviews = <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>Sin comentarios</Typography>
     }
     return (
       <div>
@@ -60,11 +63,13 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     disableButtonjob: state.disableButton.disableButton,
+    reviews: state.reviews.reviewsAgent,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
     onDisableButton: (token, job_id) => dispatch(actions.disableButton(token, job_id)),
+    onReviewsAgent: (token, id) => dispatch(actions.reviewsAgent(token, id)),
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

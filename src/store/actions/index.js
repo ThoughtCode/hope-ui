@@ -65,6 +65,7 @@ export {
   qualify,
   qualifyCustomer,
   reviews,
+  reviewsAgent,
 } from './reviews';
 export {
   proposalPostulate,

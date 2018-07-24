@@ -116,3 +116,34 @@ export const qualifyCustomer = (token, job_id, review) => (dispatch) => {
       });
     });
 };
+
+export const reviewsStart = () => ({
+  type: actionTypes.REVIEWS_START,
+});
+
+export const reviewsSuccess = reviews => ({
+  type: actionTypes.REVIEWS_SUCCESS,
+  reviews: reviews,
+});
+
+export const reviewsFail = () => ({
+  type: actionTypes.REVIEWS_FAIL,
+});
+
+export const reviews = (token, id) => dispatch => {
+  dispatch(reviewsStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    }
+  }
+  axios.get(`/agents/customer/${id}/reviews`, headers)
+  .then((res) => {
+    let review = [];
+    review = res.data.review.data;
+    dispatch(reviewsSuccess(review));
+  })
+  .catch((err) => {
+      dispatch(reviewsFail(err));
+  })
+};

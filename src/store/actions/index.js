@@ -64,6 +64,7 @@ export {
   showReviews,
   qualify,
   qualifyCustomer,
+  reviews,
 } from './reviews';
 export {
   proposalPostulate,

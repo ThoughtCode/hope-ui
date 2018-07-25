@@ -40,12 +40,11 @@ function CardJob(props) {
       />
     ));
   };
-  // console.log(props.futureJob)
   return (
     <div className={cls.root}>
       <Grid container>
         <Grid item xs={11}>
-          <Grid container justify="center" spacing={40}>
+          <Grid container spacing={16} justify="center">
             {jobs}
           </Grid>
         </Grid>

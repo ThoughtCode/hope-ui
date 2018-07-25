@@ -6,8 +6,10 @@
   flex-grow: 1px !important;
 }
 .Typogra{
+  background-color: #f9f9f9 !important;
   font-size: 1.8em !important;
   text-transform: uppercase;
+  margin-bottom: 0 !important;
 }
 @media only screen and (max-width: 600px){
   .root {

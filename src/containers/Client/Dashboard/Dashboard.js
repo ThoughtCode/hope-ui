@@ -45,15 +45,17 @@ class Dashboard extends Component {
             <Spinner />
           </Grid>
         ) : (
-          <Grid container>
-            <Services clicked={this.showServiceClick} services={this.props.services} />
-            <NextJobs nextjobs={this.props.nextjobs} />
-            {pastJobs}
-            <Grid container justify="center">
-              <Grid item xs={12} md={8} className={cls.Download}>
-                <Paper elevation={0}>
-                  <Download />
-                </Paper>
+          <Grid container justify="center">
+            <Grid item xs={12} md={9}>
+              <Services clicked={this.showServiceClick} services={this.props.services} />
+              <NextJobs nextjobs={this.props.nextjobs} />
+              {pastJobs}
+              <Grid container justify="center">
+                <Grid item xs={12} className={cls.Download}>
+                  <Paper elevation={0}>
+                    <Download />
+                  </Paper>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

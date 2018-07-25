@@ -7,19 +7,11 @@ import cls from './Jumbotron.css';
 
 const jumbotron = () => {
   return (
-    <Grid className={cls.Jumbotron} justify="center" align="center" container>
-      <Grid item xs={12} sm={8} md={8} lg={8}>
-        <Grid justify="center" container>
-          <Grid item xs={12}>
-            <Grid container>
-              <Grid item xs={12}>
-                <Typography className={cls.Title} variant="headline">
-                  Encuentra a los mejores profesionales disponibles en tu ciudad
-                </Typography>
-              </Grid>
-            </Grid>
-          </Grid>
-        </Grid>
+    <Grid container className={cls.Jumbotron} justify="center" align="center">
+      <Grid item xs={12} sm={9} className={cls.findBest}>
+        <Typography className={cls.Title}>
+          Encuentra a los mejores profesionales disponibles en tu ciudad
+        </Typography>
       </Grid>
     </Grid>
   );

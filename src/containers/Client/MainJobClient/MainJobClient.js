@@ -17,6 +17,7 @@ const styles = theme => ({
     width: 'auto',
     position: 'relative',
     minHeight: 200,
+    backgroundColor: '#f9f9f9',
   },
 });
 

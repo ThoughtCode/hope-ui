@@ -38,7 +38,7 @@ const pastJobs = props => {
             </Typography>
           </Grid>
         </Grid>
-        <Grid container justify="center">
+        <Grid container spacing={16} justify="center">
           {jobs}
         </Grid>
       </Grid>

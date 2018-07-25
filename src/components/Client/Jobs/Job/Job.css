@@ -9,7 +9,7 @@
 
 @media (min-width: 768px) {
   .Item {
-    padding: 10px 10px;
+    padding: 0;
   }
 }
 
@@ -45,7 +45,7 @@
 
 .list{
   font-size: 12px;
-  padding: 0px 15px;
+  padding: 10px 0px;
   letter-spacing: 0.25px;
   color: #676d73!important;
   fill: #676d73!important;
@@ -54,8 +54,6 @@
 .IconUbicacion{
   margin-top: 10px;
 }
-
-
 
 .TotalMargin{
   margin: 10% 0 !important;
@@ -81,29 +79,25 @@
   font-size: 20px !important;
   font-weight: 700 !important;
   letter-spacing: 0.25px !important;
-}
-
-.Date {
-  color: #676d73!important;
-  font-size: 12px !important;
-  font-weight: 500 !important;
+  line-height: 20px;
 }
 
 .Button {
-  border: 2px solid #eee !important;
+  background-color: #fff !important;
+  color: #676d73 !important;
+  border: 1px solid #676d73 !important;
+  padding: 10px 20px !important;
   border-radius: 5px !important;
-  color: rgb(84, 90, 96) !important;
-  font-weight: bold !important;
-  font-size: 12px !important;
-  letter-spacing: 0.25px !important;
+  text-transform: initial !important;
 }
 
 .Button:hover {
-  border: 2px solid #eee !important;
+  background-color: #fff !important;
+  color: #676d73 !important;
+  border: 1px solid #676d73 !important;
+  padding: 10px 20px !important;
   border-radius: 5px !important;
   font-weight: bold !important;
-  letter-spacing: 0.25px !important;
-  color: rgb(84, 90, 96) !important;
 }
 
 .TotalContainer {
@@ -112,6 +106,22 @@
 
 .Border {
   border-right: none !important;
+}
+
+.jobExtraServices{
+  margin: 0 8px 0 0 !important;
+  padding: 4px 30px !important;
+  border: 1px solid #e9eced !important;
+  border-radius: 4px;
+  display: inline-block !important;
+}
+
+.jobDetails{
+  display: inline-block;
+}
+
+.jobAddress {
+  font-size: 15px;
 }
 
 @media (min-width: 600px) {

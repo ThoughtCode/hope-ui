@@ -96,11 +96,11 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
             </Typography>
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente">
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem} ${cls.MenuItemFix}`} component={Link} to="/cliente">
               Inicio
             </MenuItem>
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente/trabajos">
-              Mis Trabajos
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem} ${cls.MenuItemFix}`} component={Link} to="/cliente/trabajos">
+              Trabajos
             </MenuItem>
             <div>
               <IconButton
@@ -110,14 +110,7 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              {this.props.profile === 'null' ? (
-                <Avatar>
-                  {(localStorage.getItem('first_name').charAt(0)).toUpperCase()}{(localStorage.getItem('last_name').charAt(0)).toUpperCase()}
-                </Avatar>
-              ) : (
-                <Avatar
-                  src={this.props.profile}/>
-                )}
+                <a className={`${cls.MenuItem} ${cls.Perfil}`}><i className={`${cls.IconUser} ${"fa fa-user"}`}></i>Mi perfil <span class="caret"></span></a>
                 <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu
@@ -135,12 +128,10 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/cliente">Inicio</MenuItem>
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/cliente/trabajos">Mis Trabajos</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
-                  Cerrar sesión
-                </MenuItem>
+                <a className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente">Inicio</a>
+                <a className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente/trabajos">Trabajos</a>
+                <a className={cls.SubMenuItem} onClick={this.handleClose} component={Link} href="/cliente/perfil/info">Mi Perfil</a>
+                <a className={cls.SubMenuItem} onClick={this.props.logout} component={Link} href="/">Cerrar sesión</a>
               </Menu>
             </div>
           </Toolbar>

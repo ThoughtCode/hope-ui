@@ -8,7 +8,7 @@ import cls from './Jumbotron.css';
 const jumbotron = () => {
   return (
     <Grid container className={cls.Jumbotron} justify="center" align="center">
-      <Grid item xs={12} sm={9} className={cls.findBest}>
+      <Grid item xs={12} sm={10} md={9} className={cls.findBest}>
         <Typography className={cls.Title}>
           Encuentra a los mejores profesionales disponibles en tu ciudad
         </Typography>

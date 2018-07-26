@@ -4,34 +4,62 @@
   padding: 0;
 }
 
-.Title {
-  font-weight: 400 !important;
-  font-size: 36px !important;
-  text-align: center !important;
-  color: white !important;
-}
-
 .Button {
   font-family: 'Arial' !important;
   background-color: #0069a7 !important;
   color: #fff !important;
 }
 
-.findBest{
-  background-color: #0069a7 !important;
-  margin-top: 10px !important;
-  margin-bottom: 10px !important;
-  padding: 30px 40px !important;
-  border-radius: 8px !important;
-}
-
 @media only screen and (max-width: 600px) {
   .Jumbotron {
     margin-top: 70px;
-    padding: 30px 0;
+    padding: 0;
   }
   .Title {
+    color: white !important;
     font-weight: 700 !important;
-    font-size: 1rem !important;
+    font-size: 0.8em !important;
+  }
+  .findBest{
+    background-color: #0069a7 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding: 6px 6px !important;
+    border-radius: 8px !important;
+    max-width: 1140px !important;
+  }
+}
+
+@media (min-width: 601px){
+  .Title {
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+    color: white !important;
+  }
+  .findBest{
+    background-color: #0069a7 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding: 14px 6px !important;
+    border-radius: 8px !important;
+    min-width: 550px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  .Title {
+    font-weight: 400 !important;
+    font-size: 24px !important;
+    text-align: center !important;
+    color: white !important;
+  }
+  .findBest{
+    background-color: #0069a7 !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding: 28px 6px !important;
+    border-radius: 8px !important;
+    max-width: 1140px !important;
   }
 }

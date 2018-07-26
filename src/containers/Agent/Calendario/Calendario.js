@@ -10,7 +10,6 @@ import {
 } from 'material-ui';
 import MenuBar from '../../MenuBar/MenuBarAgent';
 import CalendarioComponent from '../../../components/Agent/Calendario/CalendarioComponent';
-import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
 import cls from './Calendario.css';

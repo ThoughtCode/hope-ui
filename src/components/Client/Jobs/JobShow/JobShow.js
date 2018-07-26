@@ -48,19 +48,19 @@ class JobShow extends Component {
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (
-          <Button
-          className={cls.ButtonCancelar}
-          onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
-            CANCELAR TRABAJO
-          </Button>
+          <div 
+            className={cls.ButtonCancelJob}
+            onClick={() => this.props.cancelled(localStorage.getItem('token'), this.props.job.id)}>
+            Cancelar
+          </div>
         )
       } else {
         button = (
-          <Button
-          className={cls.ButtonCancelar}
-          onClick={this.handleOpen}>
-            CANCELAR TRABAJO
-          </Button>
+          <div 
+            className={cls.ButtonCancelJob}
+            onClick={this.handleOpen}>
+            Cancelar
+          </div>
         )
       }
       
@@ -82,48 +82,58 @@ class JobShow extends Component {
         agentTitle = 'Agentes Postulados';
         agents = this.props.job.attributes.proposals.data.length > 0 ?
         this.props.job.attributes.proposals.data.map(p => (
-          <Grid key={p.id} container className={cls.AgentPostulate}>
-              <Grid item xs={12}>
-                <Paper>
-                  <div className={cls.AvatarAgent}>
-                    <Link 
-                      className={cls.Link}
-                      to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
-                      {p.attributes.agent.data.attributes.avatar.url === null ? (
-                        <Avatar className={cls.AvatarMargin}>
-                          {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
-                        </Avatar>
-                      ) : (
-                        <Avatar 
-                        className={cls.AvatarMargin}
-                        src={p.attributes.agent.data.attributes.avatar.url}>
-                        </Avatar>
-                      )}
-                    </Link>
-                    <div className={cls.NameAgent}>
-                      <Typography className={cls.Name} variant="subheading">
-                        {p.attributes.agent.data.attributes.first_name} {p.attributes.agent.data.attributes.last_name}
-                      </Typography>
-                      <Typography className={cls.Name} variant="caption">
+          <div className={cls.QouteWrapper}>
+            <div className={cls.Qoute}>
+              <div className={cls.QouteHeader}>
+                <Link 
+                  className={cls.Link}
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
+                  {p.attributes.agent.data.attributes.avatar.url === null ? (
+                    <div className={cls.QouteAvatar}>
+                      {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
+                    </div>
+                  ) : (
+                    <div className={cls.QouteAvatar}>
+                      <img className="_175su2RPLmOSS6BdHUHQtB lazyloaded" src={p.attributes.agent.data.attributes.avatar.url}/>
+                    </div>
+                  )}
+                </Link>
+                <div className={cls.QouteName}>
+                  <p>{p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()} {p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}</p>
+                </div>
+              </div>
+              <div className={cls.QouteDetails}>
+                <Grid container className={cls.Container}>
+                  <Grid item className={cls.Items} xs={6}>
+                    <Grid container justify="center">
+                      <div className={cls.StarsWrapper}>
                         <Stars
                           agentRewiewsAverage={p.attributes.agent_rewiews_average}
-                          />
-                      </Typography>
-                      <Typography className={cls.Name} variant="caption">
-                        {p.attributes.agent_rewiews_count} Opiniones
-                      </Typography>
-                    </div>
-                    <Button
-                      onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
-                      className={cls.ButtonContratar}>
-                        CONTRATAR
-                    </Button>
-                  </div>
-                </Paper>
-              </Grid>
-            </Grid>
-          ))
-          : (
+                        />
+                      </div>
+                      <div className={cls.QouteDetailStats}>0 opiniones</div>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={6} className={cls.Items}>
+                    <Grid className={cls.QuoteNumberHires} container justify="center">
+                      <div>
+                        <div className={cls.TpBody}>1</div>
+                        <div className={cls.QouteDetailStats}>Veces Contratado
+                        </div>
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Grid>                      
+              </div>
+            </div>
+            <div
+              onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
+              className={cls.JobHire}>
+              Contratar
+            </div>
+          </div>
+        )) : 
+        (
           <div>
             <p>No hay agentes asigandos</p>
           </div>
@@ -131,132 +141,147 @@ class JobShow extends Component {
       } else {
         agentTitle = 'Agente Contratado';
         agents = (
-          <Grid item xs={12} className={cls.AgentPostulate}>
-            <Paper>
-              <div className={cls.AvatarAgent}>
+          <div className={cls.QouteWrapper}>
+            <div className={cls.Qoute}>
+              <div className={cls.QouteHeader}>
                 {this.props.job.attributes.agent.avatar.url === null ? (
-                  <Avatar className={cls.AvatarMargin}>
-                    {this.props.job.attributes.agent.first_name.charAt(0)}{this.props.job.attributes.agent.last_name.charAt(0)}
-                  </Avatar>
+                  <div className={cls.QouteAvatar}>
+                    {this.props.job.attributes.agent.first_name.charAt(0).toUpperCase()}{this.props.job.attributes.agent.last_name.charAt(0).toUpperCase()}
+                  </div>
                 ) : (
-                  <Avatar 
-                  className={cls.AvatarMargin}
-                  src={this.props.job.attributes.agent.avatar.url}>
-                  </Avatar>
+                  <div className={cls.QouteAvatar}>
+                    <img className="_175su2RPLmOSS6BdHUHQtB lazyloaded" src={this.props.job.attributes.agent.avatar.url}/>
+                  </div>
                 )}
-                <div className={cls.NameAgent}>
-                  <Typography className={cls.Name} variant="subheading">
-                    {this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}
-                  </Typography>
-                  <Typography className={cls.Name} variant="caption">
-                    <Stars 
-                      agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
-                      />
-                  </Typography>
-                  <Typography className={cls.Name} variant="caption">
-                    {this.props.job.attributes.agent_rewiews_count} Opiniones
-                  </Typography>
+                <div className={cls.QouteName}>
+                  <p>{this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}</p>
                 </div>
-                <Button
-                  className={cls.ButtonContratar}
-                  component={Link}
-                  to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
-                  >
-                  VER PERFIL
-                </Button>
               </div>
-            </Paper>
-          </Grid>
+              <div className={cls.QouteDetails}>
+                <Grid container className={cls.Container}>
+                  <Grid item className={cls.Items} xs={6}>
+                    <Grid container justify="center">
+                      <div className={cls.StarsWrapper}>
+                        <Stars
+                          agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
+                        />
+                      </div>
+                      <div className={cls.QouteDetailStats}>0 opiniones</div>
+                    </Grid>
+                  </Grid>
+                  <Grid item xs={6} className={cls.Items}>
+                    <Grid className={cls.QuoteNumberHires} container justify="center">
+                      <div>
+                        <div className={cls.TpBody}>1</div>
+                        <div className={cls.QouteDetailStats}>Veces Contratado
+                        </div>
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Grid>                      
+              </div>
+            </div>
+            <Link
+              to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
+              className={cls.JobHire}>
+              VER PERFIL
+            </Link>
+          </div>
+          
         );
       }
       services = (
-        <Grid className={cls.Services} container>
-          <Grid item xs={12}>
-            <Typography variant="headline">
-              Servicios contratados
-            </Typography>
-            <Typography variant="subheading" className={cls.subServicios}>
+        <Grid container className={cls.Background} justify="center">
+          <div className={cls.JobDetailHeader}>
+          </div>
+          <div className={cls.JobDetailsCard}>
+            <div className={cls.JobDetailsAvatar}>
+              <div className={cls.Avatar}>
+                <div className={cls.AvatarCircle}>
+                {this.props.job.attributes.customer.avatar.url === 'null' ? (
+                  <div className={cls.AvatarInitials}>
+                    {this.props.job.attributes.customer.first_name.charAt(0).toUpperCase()}{this.props.job.attributes.customer.last_name.charAt(0).toUpperCase()}
+                  </div>
+                ) : (
+                  <div className={cls.AvatarInitials} style={{backgroundImage: `url(${this.props.job.attributes.customer.avatar.url})`}}>
+                  </div>
+                )}
+                </div>
+              </div>
+            </div>
+            <p className={cls.JobDetailsCustomerName}>
+              {this.props.job.attributes.customer.first_name.replace(/\b\w/g, l => l.toUpperCase())} {this.props.job.attributes.customer.last_name.replace(/\b\w/g, l => l.toUpperCase())}
+            </p>
+            <p className={cls.JobDetailsCustomerAddress}>
+              {this.props.job.attributes.property.data.attributes.p_street} {this.props.job.attributes.property.data.attributes.number} y {this.props.job.attributes.property.data.attributes.s_street}
+            </p>
+            <p className={cls.JobDetailsCustomerAddress}>
+              {date} - {caption}
+            </p>
+          </div>
+          <div className={cls.JobDetailsServices}>
+            <dl>
+              <dt className={cls.TpWeightBold}>Servicios contratados</dt>
+              <dd>
               {this.props.job.attributes.job_details.map(detail => {
                 if (detail.service.type_service === 'base') {
                   return detail.service.name
                 }
                 return null;
               })}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography variant="headline" className={cls.HeadService}>
-              Servicios Adicionales
-            </Typography>
-            {this.props.job.attributes.job_details.map(detail => {
-              if (detail.service.type_service === 'addon') {
-                if (detail.service.quantity) {
-                  return (
-                    <Typography key={detail.id} variant="subheading" className={cls.subServicios}>
-                      {detail.service.name} x{detail.value}
-                    </Typography>
-                  );
-                } else {
-                  return (
-                    <Typography key={detail.id} variant="subheading" className={cls.subServicios}>
-                      {detail.service.name}
-                    </Typography>
-                  );
-                }
-              }
-              return null;
-            })}
-            <Typography variant="headline" className={cls.HeadService}>
-              Detalles a considerar
-            </Typography>
-            <Typography variant="subheading" className={cls.subServicios}>
-              {this.props.job.attributes.details}
-            </Typography>
-          </Grid>
+              </dd>
+              <dt className={cls.TpWeightBold}>Precio</dt>
+              <dd>$ {this.props.job.attributes.total}</dd>
+              <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
+              <dd>
+                <ul className={cls.Ul}>
+                  {this.props.job.attributes.job_details.map(detail => {
+                    if (detail.service.type_service === 'addon') {
+                      if (detail.service.quantity) {
+                        return (
+                          <li className={cls.Li}>
+                            {detail.service.name} x{detail.value}
+                          </li>
+                        );
+                      } else {
+                        return (
+                          <li className={cls.Li}>{detail.service.name}</li>
+                        );
+                      }
+                    }
+                    return null;
+                  })}
+                </ul>
+              </dd>
+              <dt className={cls.TpWeightBold}>Número</dt>
+              <dd>{this.props.job.attributes.customer.cell_phone}</dd>
+              <dt className={cls.TpWeightBold}>Frecuencia</dt>
+              <dd>{frequency}</dd> 
+              <dt className={cls.TpWeightBold}>Detalles Adicionales</dt>
+              <dd>
+                {this.props.job.attributes.details === '' ? 'Sin detalles adicionales' : this.props.job.attributes.details}
+              </dd>
+              {button}
+            </dl>
+          </div>
         </Grid>
       );
     }
     return (
       <div>
-        <Grid container justify="center">
-          <Grid item xs={12} md={12} lg={10}>
-            <Paper elevation={0}>
-              <Grid container className={cls.JobShow}>
-                <Grid item xs={12} md={6}>
-                  <Paper elevation={0}>
-                    <Grid container className={cls.ServiceDate}>
-                      <Grid item xs={12}>
-                        <Paper>
-                          <Typography variant="headline" className={cls.TitleDate}>{date}</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>{caption}</Typography>
-                          <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
-                        </Paper>
-                        <Paper>
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={12}>
-                        <Paper>{services}</Paper>
-                      </Grid>
-                      {button}
-                    </Grid>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <Paper elevation={0}>
-                    <Grid container className={cls.ServiceDate}>
-                      <Grid item xs={12}>
-                        <Paper elevation={0}>
-                          <Typography variant="headline">
-                            {agentTitle}
-                          </Typography>
-                        </Paper>
-                      </Grid>
-                      {agents}
-                    </Grid>
-                  </Paper>
-                </Grid>
-              </Grid>
-            </Paper>
+        <Grid container className={cls.JobShow}>
+          <Grid item xs={12} md={4}>
+            {services}
+          </Grid>
+          <Grid item xs={12} md={8}>
+            <Grid container className={cls.JobAgents}>
+              <div className={cls.JobAgentsHeader}>
+                <h2 className={cls.Title}>{agentTitle}</h2>
+              </div>
+              <div className={cls.JobAgentWrapper}>
+                {agents}
+              </div>
+            </Grid> 
           </Grid>
         </Grid>
         <Modal

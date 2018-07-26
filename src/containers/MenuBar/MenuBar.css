@@ -1,8 +1,3 @@
-.Applogo {
-  height: 70px;
-  margin: 0.5rem;
-}
-
 .Display{
   display: none !important;
 }
@@ -32,7 +27,14 @@
 }
 
 .MenuItem{
-  color: #676d73 !important;
+  color: rgb(84,90,96) !important;
+  font-size: 20px !important;
+}
+
+.MenuItemFix{
+  padding-left: 17px !important;
+  padding-right: 17px !important;
+  padding-top: 24px !important;
 }
 
 .MenuItem:hover{
@@ -41,16 +43,20 @@
 }
 
 .SubMenu{
-  top: 90px !important;
-  left: 40px !important;
+  top: 55px !important;
+  left: 0px !important;
 }
 
 .SubMenuItem{
+  background-color: #303641 !important;
+  border-bottom: 1px solid #fff !important;
   font-size: 14px !important;
-  padding: 10px !important;
-  width: 200px !important;
+  padding: 10px 15px !important;
+  width: 120px !important;
   align-items: center;
-  color: #676d73 !important;
+  color: white !important;
+  text-decoration: none;
+  display: block;
 }
 
 .SubMenuItem:hover{
@@ -67,7 +73,8 @@
 }
 
 .Avatar{
-  margin: 0 20px !important;
+  color: rgb(84,90,96) !important;
+  font-size: 20px !important;
 }
 
 .Avatar:hover{
@@ -81,6 +88,7 @@
 .Toolbar {
   background-color: #fff;
   width: 98% !important;
+  padding-left: 16px !important;
 }
 
 .flex {
@@ -98,26 +106,83 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .Avatar{
+  /* .Avatar{
     margin: 0 34px !important;
+  } */
+  .Applogo {
+    margin-top: 6px;
+    width: 50px;
+  }
+  .Avatar {
+    width: 130px !important;
+    height: 1 !important;
+    padding-top: 10px !important;
   }
   .Display{
     display: inline-block !important;
   }
+  .IconUser {
+    margin: 0px 4px;
+  }
+  .Perfil{
+    font-weight: 400 !important;
+  }
   .DisplayMenuItem{
     display: none !important;
   }
-  .SubMenuItem{
-    padding: 0px 15px !important;
+  .Toolbar {
+    padding-left: 6px !important;
   }
   .SubMenu{
-    top: 65px !important;
+    top: 40px !important;
+  }
+  ul {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    width: 150px;
+  }
+}
+
+@media (min-width: 601px){
+  .Applogo {
+    width: 100px;
+    margin-top: 16px;
+  }
+  .Avatar {
+    width: 130px !important;
+    height: 1 !important;
+    padding-top: 10px !important;
+  }
+  .IconUser {
+    margin: 0px 4px;
+  }
+  .Perfil{
+    font-weight: 400 !important;
+  }
+  ul {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
 
 @media (min-width: 1024px) {
   .Applogo {
-    height: 100px;
-    margin: 0.5rem;
+    width: 100px;
+    margin-top: 16px;
+  }
+  .Avatar {
+    width: 130px !important;
+    height: 1 !important;
+    padding-top: 10px !important;
+  }
+  .IconUser {
+    margin: 0px 4px;
+  }
+  .Perfil{
+    font-weight: 400 !important;
+  }
+  ul {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
   }
 }

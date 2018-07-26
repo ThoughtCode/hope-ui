@@ -256,7 +256,7 @@ class JobShow extends Component {
                 </ul>
               </dd>
               <dt className={cls.TpWeightBold}>Número</dt>
-              <dd>{this.props.job.attributes.customer.cell_phone}</dd>
+              <dd>{this.props.job.attributes.property.data.attributes.phone}</dd>
               <dt className={cls.TpWeightBold}>Frecuencia</dt>
               <dd>{frequency}</dd> 
               <dt className={cls.TpWeightBold}>Detalles Adicionales</dt>

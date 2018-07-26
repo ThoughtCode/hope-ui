@@ -80,79 +80,82 @@ class JobShow extends Component {
       }
       if (this.props.job.attributes.agent === null) {
         agentTitle = 'Agentes Postulados';
+        agentTitle = this.props.job.attributes.proposals.data.length === 0 && 'No hay Agentes Postulados';
         agents = this.props.job.attributes.proposals.data.length > 0 ?
-        this.props.job.attributes.proposals.data.map(p => (
-          <div className={cls.QouteWrapper}>
-            <div className={cls.Qoute}>
-              <div className={cls.QouteHeader}>
-                <Link 
-                  className={cls.Link}
-                  to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
-                  {p.attributes.agent.data.attributes.avatar.url === null ? (
-                    <div className={cls.QouteAvatar}>
-                      {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
+          this.props.job.attributes.proposals.data.map(p => (
+            <div className={cls.QouteWrapper}>
+              <div className={cls.Qoute}>
+                <div className={cls.QouteHeader}>
+                  <Link 
+                    className={cls.Link}
+                    to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
+                      <div className={cls.Avatar}>
+                        <div className={cls.AgentAvatarCircle}>
+                          {p.attributes.agent.data.attributes.avatar.url === null ? (
+                            <div className={cls.AvatarInitials}>
+                              {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
+                            </div>
+                          ) : (
+                            <div className={cls.AvatarInitials} style={{backgroundImage: `url(${p.attributes.agent.data.attributes.avatar.url})`}}>
+                            </div>
+                          )}
+                      </div>
                     </div>
-                  ) : (
-                    <div className={cls.QouteAvatar}>
-                      <img className="_175su2RPLmOSS6BdHUHQtB lazyloaded" src={p.attributes.agent.data.attributes.avatar.url}/>
-                    </div>
-                  )}
-                </Link>
-                <div className={cls.QouteName}>
-                  <p>{p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()} {p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}</p>
+                  </Link>
+                  <div className={cls.QouteName}>
+                    <p>{p.attributes.agent.data.attributes.first_name} {p.attributes.agent.data.attributes.last_name}</p>
+                  </div>
+                </div>
+                <div className={cls.QouteDetails}>
+                  <Grid container className={cls.Container}>
+                    <Grid item className={cls.Items} xs={6}>
+                      <Grid container justify="center">
+                        <div className={cls.StarsWrapper}>
+                          <Stars
+                            agentRewiewsAverage={p.attributes.agent_rewiews_average}
+                          />
+                        </div>
+                        <div className={cls.QouteDetailStats}>{p.attributes.agent_rewiews_count} opiniones</div>
+                      </Grid>
+                    </Grid>
+                    <Grid item xs={6} className={cls.Items}>
+                      <Grid className={cls.QuoteNumberHires} container justify="center">
+                        <div>
+                          <div className={cls.TpBody}>1</div>
+                          <div className={cls.QouteDetailStats}>Veces Contratado
+                          </div>
+                        </div>
+                      </Grid>
+                    </Grid>
+                  </Grid>                      
                 </div>
               </div>
-              <div className={cls.QouteDetails}>
-                <Grid container className={cls.Container}>
-                  <Grid item className={cls.Items} xs={6}>
-                    <Grid container justify="center">
-                      <div className={cls.StarsWrapper}>
-                        <Stars
-                          agentRewiewsAverage={p.attributes.agent_rewiews_average}
-                        />
-                      </div>
-                      <div className={cls.QouteDetailStats}>0 opiniones</div>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={6} className={cls.Items}>
-                    <Grid className={cls.QuoteNumberHires} container justify="center">
-                      <div>
-                        <div className={cls.TpBody}>1</div>
-                        <div className={cls.QouteDetailStats}>Veces Contratado
-                        </div>
-                      </div>
-                    </Grid>
-                  </Grid>
-                </Grid>                      
+              <div
+                onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
+                className={cls.JobHire}>
+                Contratar
               </div>
             </div>
-            <div
-              onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
-              className={cls.JobHire}>
-              Contratar
-            </div>
-          </div>
-        )) : 
-        (
-          <div>
-            <p>No hay agentes asigandos</p>
-          </div>
-        );
+          )) : 
+          null
       } else {
         agentTitle = 'Agente Contratado';
         agents = (
           <div className={cls.QouteWrapper}>
             <div className={cls.Qoute}>
               <div className={cls.QouteHeader}>
-                {this.props.job.attributes.agent.avatar.url === null ? (
-                  <div className={cls.QouteAvatar}>
-                    {this.props.job.attributes.agent.first_name.charAt(0).toUpperCase()}{this.props.job.attributes.agent.last_name.charAt(0).toUpperCase()}
+                <div className={cls.Avatar}>
+                  <div className={cls.AgentAvatarCircle}>
+                  {this.props.job.attributes.agent.avatar.url === null ? (
+                      <div className={cls.AvatarInitials}>
+                        {this.props.job.attributes.agent.first_name.charAt(0).toUpperCase()}{this.props.job.attributes.agent.last_name.charAt(0).toUpperCase()}
+                      </div>
+                    ) : (
+                      <div className={cls.AvatarInitials} style={{backgroundImage: `url(${this.props.job.attributes.agent.avatar.url})`}}>
+                      </div>
+                    )}
                   </div>
-                ) : (
-                  <div className={cls.QouteAvatar}>
-                    <img className="_175su2RPLmOSS6BdHUHQtB lazyloaded" src={this.props.job.attributes.agent.avatar.url}/>
-                  </div>
-                )}
+                </div>
                 <div className={cls.QouteName}>
                   <p>{this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}</p>
                 </div>
@@ -166,7 +169,7 @@ class JobShow extends Component {
                           agentRewiewsAverage={this.props.job.attributes.agent_rewiews_average}
                         />
                       </div>
-                      <div className={cls.QouteDetailStats}>0 opiniones</div>
+                      <div className={cls.QouteDetailStats}>{this.props.job.attributes.agent_rewiews_count} opiniones</div>
                     </Grid>
                   </Grid>
                   <Grid item xs={6} className={cls.Items}>
@@ -187,12 +190,11 @@ class JobShow extends Component {
               VER PERFIL
             </Link>
           </div>
-          
         );
       }
       services = (
         <Grid container className={cls.Background} justify="center">
-          <div className={cls.JobDetailHeader}>
+          <div className={cls.JobDetailHeader} style={{backgroundImage: `url(${this.props.job.attributes.service_type_image.url})`}}>
           </div>
           <div className={cls.JobDetailsCard}>
             <div className={cls.JobDetailsAvatar}>

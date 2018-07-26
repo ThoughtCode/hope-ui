@@ -1,5 +1,4 @@
 .JobDetailHeader {
-  background-image: url(https://noc-noc.s3.amazonaws.com/uploads/service_type/image/2/apartment-blinds-cabinets-349749.jpg);
   height: 200px;
   width: 100%;
   display: block;
@@ -32,6 +31,16 @@
 .AvatarCircle {
   width: 64px;
   height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.AgentAvatarCircle {
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   overflow: hidden;
   background-position: 50%;
@@ -205,6 +214,11 @@ padding-top: 24px;
   font-weight: 700;
   display: block;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.JobHire:hover {
+  background-color: #dfdfdf;
 }
 
 .QouteAvatar {
@@ -280,7 +294,6 @@ padding-top: 24px;
 }
 
 .ButtonCancelJob:hover {
-  color: red;
   background-color: #dfdfdf;
 }
 

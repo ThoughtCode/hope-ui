@@ -57,8 +57,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
-    onAcceptedJob: (token, job_id, proposal_id) => dispatch(actions.acceptedJob(token, job_id, proposal_id)),
-    onCancelledJob: (token, job_id) => dispatch(actions.cancelledJob(token, job_id)),
   };
 };
 

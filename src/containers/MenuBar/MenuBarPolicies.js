@@ -88,7 +88,7 @@ class AppBarMenu extends Component {
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
-              <Link to="/cliente">
+              <Link to="/">
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
             </Typography>

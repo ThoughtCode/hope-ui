@@ -110,7 +110,7 @@ class MenuAppBar extends React.Component {
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <Typography variant="title" color="secondary" className={cls.flex}>
-              <Link to="/cliente">
+              <Link to="/">
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
             </Typography>
@@ -167,7 +167,7 @@ class MenuAppBar extends React.Component {
         <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
             <Typography variant="title" color="inherit" className={classes.flex}>
-              <AnchorLink style={ styleAnchor } href='#main'>
+              <AnchorLink style={ styleAnchor } href='/'>
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>

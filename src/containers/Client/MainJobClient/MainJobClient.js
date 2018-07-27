@@ -19,6 +19,9 @@ const styles = theme => ({
     minHeight: 200,
     backgroundColor: '#f9f9f9',
   },
+  indicator: {
+    backgroundColor: '#0069a7',
+  },
 });
 
 class MainJobClient extends Component {
@@ -42,12 +45,25 @@ class MainJobClient extends Component {
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            classes={{
+              indicator: classes.indicator
+            }}
             fullWidth
           >
-            <Tab label="Futuros" />
-            <Tab label="Pasados" />
+            <Tab label={<span style={{
+                                      backgroundColor: 'transparent',
+                                      color: '#0069a7',
+                                      fontWeight: '700',
+                                      fontSize: '16px',
+                                      textTransform: 'initial',
+                                    }}>Actuales</span>} />
+            <Tab label={<span style={{
+                                      backgroundColor: 'transparent',
+                                      color: '#0069a7',
+                                      fontWeight: '700',
+                                      fontSize: '16px',
+                                      textTransform: 'initial',
+                                    }}>Completados</span>} />
           </Tabs>
         </AppBar>
         <SwipeableViews

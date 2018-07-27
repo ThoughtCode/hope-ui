@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import cls from './CardJobClient.css';
 
 // Component
-import CardJobFutures from '../../../components/Client/Jobs/Job/Job';
+import CardJobFutures from '../../../components/Client/Jobs/Job/JobFutures';
 
 const styles = theme => ({
     paper: {
@@ -43,7 +43,7 @@ function CardJob(props) {
   return (
     <div className={cls.root}>
       <Grid container>
-        <Grid item xs={11}>
+        <Grid item xs={12}>
           <Grid container spacing={16} justify="center">
             {jobs}
           </Grid>

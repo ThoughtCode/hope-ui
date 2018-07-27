@@ -110,7 +110,16 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-                <a className={`${cls.MenuItem} ${cls.Perfil}`}><i className={`${cls.IconUser} ${"fa fa-user"}`}></i>Mi perfil <span class="caret"></span></a>
+              {this.props.profile === 'null' ? (
+                <Avatar className={cls.IconUser}>
+                  {(localStorage.getItem('first_name').charAt(0)).toUpperCase()}{(localStorage.getItem('last_name').charAt(0)).toUpperCase()}
+                </Avatar>
+              ) : (
+                <Avatar
+                  className={cls.IconUser}
+                  src={this.props.profile}/>
+              )}
+                <a className={`${cls.MenuItem} ${cls.Perfil} ${cls.DisplayNo}`}>Mi perfil <span class="caret"></span></a>
                 <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu

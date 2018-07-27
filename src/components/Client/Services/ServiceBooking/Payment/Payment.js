@@ -33,7 +33,7 @@ const payment = (props) => {
                               <div className={cls.Columns}>
                                 <Grid container>
                                   <Grid item xs={12} sm={12} md={12} lg={12}>
-                                    <label>Numero de Tarjeta de Credito</label>
+                                    <label>Número de Tarjeta de Credito</label>
                                     <div className={cls.Relative}>
                                       <div className={cls.CardNumber}>
                                         <input className={cls.Input} />

@@ -71,10 +71,10 @@ class PropertyCreate extends Component {
       },
       number: {
         elementType: 'input',
-        label: 'Numero',
+        label: 'Numeración',
         elementConfig: {
           type: 'text',
-          placeholder: 'Numero',
+          placeholder: 'Numeración',
         },
         value: '',
         validation: {

@@ -310,7 +310,7 @@ class Edit extends Component {
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
               <Grid container>
-                <label htmlFor="cell_phone"><span>Telefono</span></label>
+                <label htmlFor="cell_phone"><span>Teléfono</span></label>
                 <input className={`${cls.Input} ${(!this.state.customer.cell_phone.valid && this.state.customer.cell_phone.touched) && cls.ContainerError}`}
                   type="text"
                   name="cell_phone"

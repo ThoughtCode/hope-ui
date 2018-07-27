@@ -67,10 +67,10 @@ class PropertyUpdate extends Component {
       },
       number: {
         elementType: 'input',
-        label: 'Numero',
+        label: 'Numeración',
         elementConfig: {
           type: 'text',
-          placeholder: 'Numero',
+          placeholder: 'Numeración',
         },
         value: this.props.property.attributes.number,
         validation: {

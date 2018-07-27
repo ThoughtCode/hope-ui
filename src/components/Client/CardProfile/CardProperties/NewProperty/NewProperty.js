@@ -278,7 +278,7 @@ class NewProperty extends Component {
 								<Grid container>
 									<Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
 										<Grid container>
-											<label htmlFor="name"><span>Nombre de la propiedad</span></label>
+											<label htmlFor="name"><span>Nombre</span></label>
 											<input className={`${cls.Input} ${(!this.state.property.name.valid && this.state.property.name.touched) && cls.ContainerError}`}
 												type="text"
 												name="name"
@@ -366,7 +366,7 @@ class NewProperty extends Component {
                 <Grid container>
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
-											<label htmlFor="number"><span>Numero</span></label>
+											<label htmlFor="number"><span>Numeración</span></label>
 											<input className={`${cls.Input} ${(!this.state.property.number.valid && this.state.property.number.touched) && cls.ContainerError}`}
 												type="text"
 												name="number"
@@ -379,7 +379,7 @@ class NewProperty extends Component {
 									</Grid>
                   <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
                     <Grid container>
-											<label htmlFor="phone"><span>Telefono</span></label>
+											<label htmlFor="phone"><span>Teléfono</span></label>
 											<input className={`${cls.Input} ${(!this.state.property.phone.valid && this.state.property.phone.touched) && cls.ContainerError}`}
 												type="text"
 												name="phone"

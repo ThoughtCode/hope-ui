@@ -96,7 +96,7 @@ class BookingForm extends Component {
             <div>
               <h3 className={cls.SubHeaderText}>
                 <span className={cls.SubHeaderNumber}>5</span>
-                <span>Registra tu direccion</span>
+                <span>Registra tu dirección</span>
               </h3>
               <div className={cls.SubHeaderText}>
                 <PropertyForm 
@@ -118,7 +118,7 @@ class BookingForm extends Component {
             <div>
               <h3 className={cls.SubHeaderText}>
                 <span className={cls.SubHeaderNumber}>5</span>
-                <span>Registra tu direccion</span>
+                <span>Registra tu dirección</span>
               </h3>
               <div className={cls.SubHeaderText}>
                 <PropertyForm 

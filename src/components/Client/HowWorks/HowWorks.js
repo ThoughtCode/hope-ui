@@ -35,7 +35,7 @@ const howWorks = props => {
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige o registra tu direccion
+              &nbsp;&nbsp;Elige o registra tu dirección
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>

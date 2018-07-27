@@ -9,17 +9,14 @@ import 'moment/locale/es';
 import {
   Grid,
   Card,
-  CardContent,
   CardHeader,
   Typography,
   Avatar,
   Button,
 } from 'material-ui';
-import iconUbicacion from '../../../../assets/Ubicacion.svg'
 
 // Css
 import cls from './Job.css';
-import Profile from '../../../../assets/AvatarProfile.svg';
 
 moment.locale('es');
 

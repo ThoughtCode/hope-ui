@@ -8,10 +8,6 @@ import 'moment/locale/es';
 // Components
 import {
   Grid,
-  Paper,
-  Typography,
-  Avatar,
-  Button,
   Modal,
 } from 'material-ui';
 import CancelBookingModal from '../CancelBookingModal/CancelBookingModal';
@@ -89,16 +85,16 @@ class JobShow extends Component {
                   <Link 
                     className={cls.Link}
                     to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}>
-                      <div className={cls.Avatar}>
-                        <div className={cls.AgentAvatarCircle}>
-                          {p.attributes.agent.data.attributes.avatar.url === null ? (
-                            <div className={cls.AvatarInitials}>
-                              {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
-                            </div>
-                          ) : (
-                            <div className={cls.AvatarInitials} style={{backgroundImage: `url(${p.attributes.agent.data.attributes.avatar.url})`}}>
-                            </div>
-                          )}
+                    <div className={cls.Avatar}>
+                      <div className={cls.AgentAvatarCircle}>
+                        {p.attributes.agent.data.attributes.avatar.url === null ? (
+                          <div className={cls.AvatarInitials}>
+                            {p.attributes.agent.data.attributes.first_name.charAt(0).toUpperCase()}{p.attributes.agent.data.attributes.last_name.charAt(0).toUpperCase()}
+                          </div>
+                        ) : (
+                          <div className={cls.AvatarInitials} style={{backgroundImage: `url(${p.attributes.agent.data.attributes.avatar.url})`}}>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </Link>
@@ -200,7 +196,7 @@ class JobShow extends Component {
             <div className={cls.JobDetailsAvatar}>
               <div className={cls.Avatar}>
                 <div className={cls.AvatarCircle}>
-                {this.props.job.attributes.customer.avatar.url === 'null' ? (
+                {this.props.job.attributes.customer.avatar.url === null ? (
                   <div className={cls.AvatarInitials}>
                     {this.props.job.attributes.customer.first_name.charAt(0).toUpperCase()}{this.props.job.attributes.customer.last_name.charAt(0).toUpperCase()}
                   </div>

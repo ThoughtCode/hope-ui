@@ -30,14 +30,10 @@ const nextJobs = props => {
   };
   return (
     <Grid container justify="center" className={cls.NextJobs}>
-      <Grid item xs={11}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography className={cls.Title} variant="headline">
-              Proximos Trabajos
-            </Typography>
-          </Grid>
-        </Grid>
+      <Grid item xs={12} sm={10} md={9}>
+        <Typography className={cls.Title} variant="headline">
+          Proximos Trabajos
+        </Typography>
         <Grid container spacing={16} justify="center">
           {jobs}
         </Grid>

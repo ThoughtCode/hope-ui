@@ -29,15 +29,11 @@ const pastJobs = props => {
     ));
   };
   return (
-    <Grid className={cls.PastJobs} container justify="center">
-      <Grid item xs={11}>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography className={cls.Title} variant="headline">
-              Historial de Trabajos
-            </Typography>
-          </Grid>
-        </Grid>
+    <Grid container className={cls.PastJobs} justify="center">
+      <Grid item xs={12} sm={10} md={9}>
+        <Typography className={cls.Title} variant="headline">
+          Historial de Trabajos
+        </Typography>
         <Grid container spacing={16} justify="center">
           {jobs}
         </Grid>

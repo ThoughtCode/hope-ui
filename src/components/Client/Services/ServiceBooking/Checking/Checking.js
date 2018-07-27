@@ -26,7 +26,7 @@ class Checking extends Component {
     if (this.state.check) {
       this.props.nextPage(event, 'Checking')
     } else {
-      Alert.error('Debes aceptar los terminios y condiciones para avanzar', {
+      Alert.error('Debes aceptar los terminos y condiciones para avanzar', {
         position: 'top',
         effect: 'genie',
       });
@@ -52,13 +52,13 @@ class Checking extends Component {
     iva = ((base + price) * 0.12);
     const total = (base + price + iva);
     if (this.props.form.recurrent.value === '0') {
-      frequency = 'Una vez';
+      frequency = 'una vez';
     } else if (this.props.form.recurrent.value === '1') {
-      frequency = 'Semanal';
+      frequency = 'semanal';
     } else if (this.props.form.recurrent.value === '2') {
-      frequency = 'Quincenal';
+      frequency = 'quincenal';
     } else if (this.props.form.recurrent.value === '3') {
-      frequency = 'Mensual';
+      frequency = 'mensual';
     }
     return (
       <Grid container>

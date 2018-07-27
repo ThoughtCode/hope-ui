@@ -19,15 +19,11 @@ const services = props => {
       image={service.attributes.image.url}/>
   ));
   return (
-    <Grid container justify="center" className={cls.Services}>
-      <Grid item xs={11}>
-        <Grid container>
-          <Grid item xs={12} className={cls.Item}>
-            <Typography className={cls.Title} variant="headline">
-              Servicios Recomendados
-            </Typography>
-          </Grid>
-        </Grid>
+    <Grid container className={cls.Services} justify="center">
+      <Grid item xs={12} sm={10} md={9}>
+        <Typography className={cls.Title} variant="headline">
+          Servicios Recomendados
+        </Typography>
         <Grid container spacing={16} className={cls.Items}>
           {services}
         </Grid>

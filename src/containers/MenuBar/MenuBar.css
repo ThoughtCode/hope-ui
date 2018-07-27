@@ -48,13 +48,13 @@
 }
 
 .SubMenuItem{
-  background-color: #303641 !important;
+  /* background-color: #303641 !important; */
   border-bottom: 1px solid #fff !important;
   font-size: 14px !important;
   padding: 10px 15px !important;
   width: 120px !important;
   align-items: center;
-  color: white !important;
+  color: #676d73 !important;
   text-decoration: none;
   display: block;
 }
@@ -114,12 +114,15 @@
     width: 50px;
   }
   .Avatar {
-    width: 130px !important;
+    width: 80px !important;
     height: 1 !important;
-    padding-top: 10px !important;
+    padding-top: 0px !important;
   }
   .Display{
     display: inline-block !important;
+  }
+  .DisplayNo{
+    display: none !important;
   }
   .IconUser {
     margin: 0px 4px;
@@ -149,7 +152,7 @@
     margin-top: 16px;
   }
   .Avatar {
-    width: 130px !important;
+    width: 170px !important;
     height: 1 !important;
     padding-top: 10px !important;
   }
@@ -171,7 +174,7 @@
     margin-top: 16px;
   }
   .Avatar {
-    width: 130px !important;
+    width: 160px !important;
     height: 1 !important;
     padding-top: 10px !important;
   }

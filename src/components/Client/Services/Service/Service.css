@@ -17,19 +17,19 @@
 
 .Media {
   height: -40px;
-  padding-top: 56.25%;
+  padding-top: 50%;
 }
 
 .CardContent {
   min-height: 30px;
   padding: 0 !important;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 0px;
 }
 
 .Typo {
   color: #0069a7 !important;
-  font-size: 1.2rem !important;
-  font-weight: 700 !important;
-  padding: 20px !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  padding: 10px !important;
 }

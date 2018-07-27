@@ -9,17 +9,14 @@ import 'moment/locale/es';
 import {
   Grid,
   Card,
-  CardContent,
   CardHeader,
   Typography,
   Avatar,
   Button,
 } from 'material-ui';
-import iconUbicacion from '../../../../assets/Ubicacion.svg'
 
 // Css
-import cls from './Job.css';
-import Profile from '../../../../assets/AvatarProfile.svg';
+import cls from './JobFutures.css';
 
 moment.locale('es');
 
@@ -47,39 +44,30 @@ const job = props => {
       <p className={cls.jobAgent}>Sin agente asignado</p>
     </div>;
   return (
-    <Grid className={cls.Item} item xs={11} sm={12} md={6}>
+    <Grid className={cls.Item} item xs={12} sm={12} md={12}>
       <Card className={cls.CardBorder}>
         <Grid container alignItems="center">
-          <Grid item xs={12}>
-            <CardHeader
-              className = {cls.sinPadding}
-              avatar = {
-                props.agent == null ? (
-                  <div className={cls.avatarHolder}>
-                    <div className={cls.noAgent}>?</div>
-                  </div>
-                ) : (
-                  props.agent.avatar.url == null ? (
-                    <div className={cls.avatarHolder}>
-                      <div className={cls.siAgent}>{props.agent.first_name.toUpperCase().charAt(0)}{props.agent.last_name.toUpperCase().charAt(0)}</div>
-                    </div>
-                  ) : (
-                    <div className={cls.avatarHolder}>
-                      <img className={cls.noAgent} src={props.agent.avatar.url}></img>
-                    </div>
-                  )
-                )
-              }
-              title={
-                <div className={cls.agentDetails}>
-                  <p className={cls.jobAgent}>{name}</p>
-                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.total}</span>
-                </div>
-              }
-            />
-          </Grid>
           <Grid item xs={12} sm={8} md={8} lg={8}>
-            <Grid container>
+            <Grid container className={cls.Border}>
+              <Grid item xs={12}>
+                <CardHeader
+                  className = {cls.sinPadding}
+                  avatar = {
+                    props.agent == null ? (
+                      <div className={cls.avatarHolder}>
+                        <div className={cls.noAgent}>?</div>
+                      </div>
+                    ) : (
+                      props.agent.avatar.url == null ? (
+                        <Avatar aria-label="Recipe">{props.agent.first_name.toUpperCase().charAt(0)}{props.agent.last_name.toUpperCase().charAt(0)}</Avatar>
+                      ) : (
+                        <Avatar aria-label="Recipe" src={props.agent.avatar.url}></Avatar>
+                      )
+                    )
+                  }
+                  title={<Typography className={cls.Title}>{name}</Typography>}
+                />
+              </Grid>
               <div className={cls.jobBodyWrapper}>
                 <div className={cls.jobServicesWrapper}>
                   <p className={cls.jobService}>{services}</p>
@@ -100,12 +88,14 @@ const job = props => {
             </Grid>
           </Grid>
           <Grid item xs={12} sm={4} md={4} lg={4} className={cls.TotalContainer}>
-            <Grid container className={cls.TotalMargin} justify="center">
-              <div className={cls.agentDetails}>
-                <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.total}</span>
-              </div>
+            <Grid container className={cls.TotalMargin}>
+              <Grid item xs={12}>
+                <Typography className={cls.Total}>
+                  {props.total}$
+                </Typography>
+              </Grid>
               <Grid container alignItems="flex-end">
-                <Grid className={`${cls.Border} ${cls.ViewDetails}`} item xs={12}>
+                <Grid className={cls.ViewDetails} item xs={12}>
                   <Button className={cls.Button} component={Link} to={`/cliente/trabajo/${props.id}`}>
                     Ver Detalles
                   </Button>

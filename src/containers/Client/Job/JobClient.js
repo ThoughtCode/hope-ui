@@ -23,7 +23,7 @@ class JobClient extends Component {
     return (
       <div>
         <Grid container justify="center" className={cls.root}>
-          <Grid item xs={12} sm={10}>
+          <Grid item xs={12} sm={10} md={8}>
             {this.props.loading ? (
               <div className={cls.LoaderContainer}>
                 <Spinner />
@@ -31,12 +31,12 @@ class JobClient extends Component {
             ) : (
               <Paper elevation={0}>
                 <Grid container justify="center">
-                  <Grid item xs={12}>
+                  <Grid item xs={11}>
                     <Paper elevation={0}>
-                      <Typography variant="title" gutterBottom className={cls.Typogra}>Trabajos</Typography>
+                      <Typography variant="title" gutterBottom className={cls.Typogra}>Mis trabajos</Typography>
                     </Paper>
                   </Grid>
-                  <Grid item xs={12}>
+                  <Grid item xs={11}>
                     <Paper elevation={0}>
                       <MainJobClient
                         futureJobsMain={this.props.futureJobs}

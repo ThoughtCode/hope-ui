@@ -10,7 +10,7 @@ const jumbotron = () => {
     <Grid container className={cls.Jumbotron} justify="center" align="center">
       <Grid item xs={12} sm={10} md={9} className={cls.findBest}>
         <Typography className={cls.Title}>
-          Encuentra a los mejores profesionales disponibles en tu ciudad
+          Encuentra los mejores servicios para ti
         </Typography>
       </Grid>
     </Grid>

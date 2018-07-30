@@ -33,7 +33,7 @@ class Reset extends Component {
             </Grid>
             <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>
-                <Typography variant="headline" gutterBottom className={cls.Typogra}>Recuperar Contraseña Cliente</Typography>
+                <Typography variant="headline" gutterBottom className={cls.Typogra}>Recuperar contraseña cliente</Typography>
               </Paper>
             </Grid>
             <Grid item xs={12}>

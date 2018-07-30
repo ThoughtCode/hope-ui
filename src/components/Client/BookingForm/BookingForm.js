@@ -55,7 +55,7 @@ class BookingForm extends Component {
               <div className={cls.Row}>
                 <h3 className={cls.SubHeaderText}>
                   <span className={cls.SubHeaderNumber}>4</span>
-                  <span>Registra tu dirrecion</span>
+                  <span>Registra tu dirección</span>
                 </h3>
               </div>
               <div className={cls.Row}>

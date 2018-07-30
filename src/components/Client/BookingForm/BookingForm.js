@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 // Components
 import {
   Grid,
 } from 'material-ui';
-import PropertyForm from '../PropertyForm/PropertyForm';
 import Datetime from 'react-datetime';
-import moment from 'moment';
+import { Tooltip, } from 'react-tippy';
+import PropertyForm from '../PropertyForm/PropertyForm';
 
 // Css
 import cls from './BookingForm.css';
@@ -183,72 +184,92 @@ class BookingForm extends Component {
                         <div className={cls.Selection}>
                           <Grid container>
                             <Grid item xs={12} sm={6} md={6} lg={6}>
-                              <div className={cls.SelectionButtons}>
-                                <input className={cls.RadioInput}
-                                  id="one_time"
-                                  type="radio"
-                                  value="0"
-                                  checked={this.props.form.recurrent.value === '0'}
-                                  onChange={this.props.handleRecurrentChange}/>
-                                <label className={cls.LabelInput} htmlFor="one_time">
-                                  <div className={cls.BoxRadio}>
-                                    <div className={cls.BoxPlanRadio}>
-                                      Una Vez
+                              <Tooltip
+                                title="Te visitaremos una sola vez en la fecha seleccionada"
+                                position="top"
+                              >
+                                <div className={cls.SelectionButtons}>
+                                  <input className={cls.RadioInput}
+                                    id="one_time"
+                                    type="radio"
+                                    value="0"
+                                    checked={this.props.form.recurrent.value === '0'}
+                                    onChange={this.props.handleRecurrentChange}/>
+                                  <label className={cls.LabelInput} htmlFor="one_time">
+                                    <div className={cls.BoxRadio}>
+                                      <div className={cls.BoxPlanRadio}>
+                                        Una Vez
+                                      </div>
                                     </div>
-                                  </div>
-                                </label>
-                              </div>
+                                  </label>
+                                </div>
+                              </Tooltip>
                             </Grid>
                             <Grid item xs={12} sm={6} md={6} lg={6}>
-                              <div className={cls.SelectionButtons}>
-                                <input className={cls.RadioInput}
-                                  id="diary"
-                                  type="radio"
-                                  value="1"
-                                  checked={this.props.form.recurrent.value === '1'}
-                                  onChange={this.props.handleRecurrentChange}/>
-                                <label className={cls.LabelInput} htmlFor="diary">
-                                  <div className={cls.BoxRadio}>
-                                    <div className={cls.BoxPlanRadio}>
-                                      Semanal
+                              <Tooltip
+                                title="Te visitemos semanalmente el día que tu elijas"
+                                position="top"
+                              >
+                                <div className={cls.SelectionButtons}>
+                                  <input className={cls.RadioInput}
+                                    id="diary"
+                                    type="radio"
+                                    value="1"
+                                    checked={this.props.form.recurrent.value === '1'}
+                                    onChange={this.props.handleRecurrentChange}/>
+                                  <label className={cls.LabelInput} htmlFor="diary">
+                                    <div className={cls.BoxRadio}>
+                                      <div className={cls.BoxPlanRadio}>
+                                        Semanal
+                                      </div>
                                     </div>
-                                  </div>
-                                </label>
-                              </div>
+                                  </label>
+                                </div>
+                              </Tooltip>
                             </Grid>
                             <Grid item xs={12} sm={6} md={6} lg={6}>
-                              <div className={cls.SelectionButtons}>
-                                <input className={cls.RadioInput}
-                                  id="weekly"
-                                  type="radio"
-                                  value="2"
-                                  checked={this.props.form.recurrent.value === '2'}
-                                  onChange={this.props.handleRecurrentChange}/>
-                                <label className={cls.LabelInput} htmlFor="weekly">
-                                  <div className={cls.BoxRadio}>
-                                    <div className={cls.BoxPlanRadio}>
-                                      Quincenal
+                              <Tooltip
+                                title="Te visitaremos cada 15 días el día que tu elijas"
+                                position="top"
+                              >
+                                <div className={cls.SelectionButtons}>
+                                  <input className={cls.RadioInput}
+                                    id="weekly"
+                                    type="radio"
+                                    value="2"
+                                    checked={this.props.form.recurrent.value === '2'}
+                                    onChange={this.props.handleRecurrentChange}/>
+                                  <label className={cls.LabelInput} htmlFor="weekly">
+                                    <div className={cls.BoxRadio}>
+                                      <div className={cls.BoxPlanRadio}>
+                                        Quincenal
+                                      </div>
                                     </div>
-                                  </div>
-                                </label>
-                              </div>
+                                  </label>
+                                </div>
+                              </Tooltip>
                             </Grid>
                             <Grid item xs={12} sm={6} md={6} lg={6}>
-                              <div className={cls.SelectionButtons}>
-                                <input className={cls.RadioInput}
-                                  id="monthly"
-                                  type="radio"
-                                  value="3"
-                                  checked={this.props.form.recurrent.value === '3'}
-                                  onChange={this.props.handleRecurrentChange}/>
-                                <label className={cls.LabelInput} htmlFor="monthly">
-                                  <div className={cls.BoxRadio}>
-                                    <div className={cls.BoxPlanRadio}>
-                                      Mensual
+                              <Tooltip
+                                title="Te visitaremos una vez al mes el día que tu elijas"
+                                position="top"
+                              >
+                                <div className={cls.SelectionButtons}>
+                                  <input className={cls.RadioInput}
+                                    id="monthly"
+                                    type="radio"
+                                    value="3"
+                                    checked={this.props.form.recurrent.value === '3'}
+                                    onChange={this.props.handleRecurrentChange}/>
+                                  <label className={cls.LabelInput} htmlFor="monthly">
+                                    <div className={cls.BoxRadio}>
+                                      <div className={cls.BoxPlanRadio}>
+                                        Mensual
+                                      </div>
                                     </div>
-                                  </div>
-                                </label>
-                              </div>
+                                  </label>
+                                </div>
+                              </Tooltip>
                             </Grid>
                           </Grid>
                         </div>
@@ -256,8 +277,8 @@ class BookingForm extends Component {
                       <Grid container justify="center">
                         <div className={cls.ServiceDate}>
                           <Grid container justify="center">
-                            <Grid item xs={6} sm={4} md={4} lg={3}>
-                              <Grid container>
+                            <Grid item xs={12} sm={6} md={5} lg={5}>
+                              <Grid container justify="center">
                                 <div className={cls.Property}>
                                   <Datetime
                                     isValidDate={this.validDates}
@@ -271,23 +292,58 @@ class BookingForm extends Component {
                                 </div>
                               </Grid>
                             </Grid>
-                            <Grid item xs={3} sm={4} md={4} lg={3}>
-                                <Grid container>
-                                  <div className={cls.Property}>
-                                    <Datetime
-                                      isValidDate={this.validDates}
-                                      value={moment(this.props.form.started_at)}
-                                      dateFormat={false}
-                                      onChange={this.props.changeDatetimeHandler}
-                                      inputProps={{
-                                        className: `${cls.InputTime}`,
-                                      }} />
-                                  </div>
-                                </Grid>
+                            <Grid item xs={12} sm={6} md={5} lg={5}>
+                              <Grid container justify="center">
+                                <div className={cls.Property}>
+                                  <Datetime
+                                    timeConstraints={{
+                                      minutes: {
+                                        step: 30,
+                                      }
+                                    }}
+                                    isValidDate={this.validDates}
+                                    value={moment(this.props.form.started_at)}
+                                    dateFormat={false}
+                                    onChange={this.props.changeDatetimeHandler}
+                                    inputProps={{
+                                      className: `${cls.InputTime}`,
+                                    }} />
+                                </div>
+                              </Grid>
                             </Grid>
                           </Grid>
                         </div>
                       </Grid>
+                      {this.props.form.recurrent.value !== '0' ? (
+                        <Grid container justify="center">
+                          <div className={cls.ServiceDate}>
+                            <Grid container justify="center">
+                              <Grid item xs={12} sm={12} md={12} lg={12}>
+                                <div>
+                                  <h3 className={cls.SubHeaderText}>
+                                    <span>Elija la fecha de finalización del servicio</span>
+                                  </h3>
+                                </div>
+                                <Grid container justify="center">
+                                  <div className={cls.Property}>
+                                    <Datetime
+                                      isValidDate={this.validDates}
+                                      value={this.props.form.finished_recurrency_at}
+                                      dateFormat="MM/DD/YYYY"
+                                      timeFormat={false}
+                                      onChange={this.props.changeDatetimeFinishedHandler}
+                                      inputProps={{
+                                        className: `${cls.Input}`,
+                                      }} />
+                                  </div>
+                                </Grid>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        </Grid>
+                      ) : (
+                        null
+                      )}
                     </div>
                   </div>
                   <div className={cls.Row}>

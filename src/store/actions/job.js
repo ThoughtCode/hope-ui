@@ -27,8 +27,21 @@ export const createJob = (token, formData) => dispatch => {
   axios.post('/customers/jobs', formData, headers)
     .then((res) => {
       dispatch(createJobSuccess());
-      // dispatch(push(`/cliente/trabajo/${res.data.job.data.id}`));
-      Alert.success(res.data.message, {
+      let frequency = null;
+      if (res.data.job.data.attributes.frequency === 'one_time') {
+        frequency = 'una vez';
+      } else if (res.data.job.data.attributes.frequency === 'weekly') {
+        frequency = 'semanal';
+      } else if (res.data.job.data.attributes.frequency === 'fortnightly') {
+        frequency = 'quincenal';
+      } else if (res.data.job.data.attributes.frequency === 'monthly') {
+        frequency = 'mensual';
+      }
+      let date = moment(res.data.job.data.attributes.started_at).format('MMMM D, YYYY');
+      let started_at = moment(res.data.job.data.attributes.started_at).format('h:mm a');
+      let finished_at = moment(res.data.job.data.attributes.finished_at).format('h:mm a');
+      let msg = `${localStorage.getItem('first_name')}, Gracias por tu pago, Recuerda que contrataste el servicio ${frequency} y comienza el dia ${date} desde las ${started_at} hasta las ${finished_at}`;
+      Alert.success(msg, {
         position: 'top',
         effect: 'genie',
       });

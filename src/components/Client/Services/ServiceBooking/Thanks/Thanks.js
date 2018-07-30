@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Components
 import {
@@ -31,6 +32,13 @@ const thanks = (props) => {
                     <h3 className={cls.SubHeaderText}>
                       <span>Gracias por tu pago</span>
                     </h3>
+                  </div>
+                </div>
+                <div className={cls.Row}>
+                  <div className={cls.LinkWrapper}>
+                    <Link to="/cliente/trabajos">
+                      Volver a los trabajos
+                    </Link>
                   </div>
                 </div>
               </Grid>

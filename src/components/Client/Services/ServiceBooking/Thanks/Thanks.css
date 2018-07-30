@@ -6,6 +6,10 @@
   margin-bottom: 1em;
 }
 
+.LinkWrapper {
+  text-align: center;
+}
+
 @media only screen and (min-width: 48.0625em) {
   .BookingForm {
     padding-left: 0.9375rem;

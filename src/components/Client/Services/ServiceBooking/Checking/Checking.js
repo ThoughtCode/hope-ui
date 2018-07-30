@@ -81,7 +81,7 @@ class Checking extends Component {
                               <div>
                                 <div className={cls.PadTop}>
                                   <div>
-                                    {moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
+                                    {moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').charAt(0).toUpperCase() + moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').slice(1)}
                                   </div>
                                 </div>
                               </div>

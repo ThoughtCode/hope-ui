@@ -39,7 +39,7 @@ const howWorks = props => {
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Paga tu servicio con una tarjeta de credito o debito
+              &nbsp;&nbsp;Paga tu servicio con una tarjeta de crédito o débito
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>

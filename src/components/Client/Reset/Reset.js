@@ -63,7 +63,7 @@ class Reset extends Component {
     controls: {
       email: {
         elementType: 'input',
-        label: 'Ingrese su correo electronico',
+        label: 'Ingrese su correo electrónico',
         elementConfig: {
           type: 'email',
           placeholder: 'example@example.com'

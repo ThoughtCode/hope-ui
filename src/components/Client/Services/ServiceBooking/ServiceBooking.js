@@ -17,11 +17,8 @@ import Thanks from './Thanks/Thanks';
 import cls from './ServiceBooking.css';
 
 const start = moment();
-const remainder = 30 - (start.minute() % 30);
- 
+const remainder = 30 - (start.minute() % 30); 
 const dateTime = moment(start).add(remainder, "minutes");
-
-console.log(dateTime);
 
 class ServiceBooking extends Component {
   state = {

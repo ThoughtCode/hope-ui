@@ -19,6 +19,7 @@ class Profile extends Component {
   }
 
   render() {
+    console.log(this.props.disableButtonjob);
     let name = null;
     let count = null;
     let avatar = null;
@@ -72,7 +73,7 @@ class Profile extends Component {
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <div className={cls.AgentHire}>
-                    {this.props.disableButtonjob === true ? (
+                    {this.props.disableButtonjob.can_review === true ? (
                       <Link
                         to={`/cliente/trabajo/${this.props.job_id}/agente/calificar`}>
                         <button>

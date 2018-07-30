@@ -31,12 +31,12 @@ class JobClient extends Component {
             ) : (
               <Paper elevation={0}>
                 <Grid container justify="center">
-                  <Grid item xs={11}>
+                  <Grid item xs={11} md={12}>
                     <Paper elevation={0}>
                       <Typography variant="title" gutterBottom className={cls.Typogra}>Mis trabajos</Typography>
                     </Paper>
                   </Grid>
-                  <Grid item xs={11}>
+                  <Grid item xs={11} md={12}>
                     <Paper elevation={0}>
                       <MainJobClient
                         futureJobsMain={this.props.futureJobs}

@@ -19,7 +19,7 @@ const styles = theme => ({
 function CardJob(props) {
   
   let jobs = (
-    <Typography className={cls.Title} variant="headline">
+    <Typography variant="headline" align="center">
       No hay trabajos futuros
     </Typography>
   );
@@ -42,12 +42,8 @@ function CardJob(props) {
   };
   return (
     <div className={cls.root}>
-      <Grid container>
-        <Grid item xs={12}>
-          <Grid container spacing={16} justify="center">
-            {jobs}
-          </Grid>
-        </Grid>
+      <Grid container spacing={8} justify="center">
+        {jobs}
       </Grid>
     </div>
   );

@@ -10,3 +10,6 @@
 .navTabs {
   border-bottom: 1px solid #ddd;
 }
+.TabContainerSpace{
+  padding: 6px 4px !important;
+}

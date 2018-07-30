@@ -71,24 +71,12 @@ class MainJobClient extends Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>
-            <Grid container >
-              <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={0}>
-                  <JobFutures futureJob={this.props.futureJobsMain} />
-                </Paper>
-              </Grid>
-            </Grid>
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
-            <Grid container >
-              <Grid item xs={12}>
-                <Paper className={classes.paper} elevation={0}>
-                  <JobPast jobPast={this.props.jobsPast} />
-                </Paper>
-              </Grid>
-            </Grid>
-          </TabContainer>
+          <div dir={theme.direction} className={cls.TabContainerSpace}>
+            <JobFutures futureJob={this.props.futureJobsMain} />
+          </div>
+          <div dir={theme.direction} className={cls.TabContainerSpace}>
+            <JobPast jobPast={this.props.jobsPast} />
+          </div>
         </SwipeableViews>
       </div>
     );

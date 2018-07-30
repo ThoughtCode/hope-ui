@@ -316,6 +316,8 @@ export const cancelledJob = (token, job_id) => dispatch => {
     .then((res) => {
       dispatch(cancelledJobSuccess());
       dispatch(push('/cliente/dashboard'));
+      fetchHistoryJobs(token);
+      fetchNextJobs(token);
       Alert.success(res.data.message, {
         position: 'top',
         effect: 'genie',

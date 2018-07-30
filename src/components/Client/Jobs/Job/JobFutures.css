@@ -243,3 +243,15 @@
     display: block !important;
   }
 }
+
+@media (min-width: 1024px) {
+  .Button {
+    padding: 7px 0px !important;
+  }  
+  .Button:hover {
+    padding: 0px 7px !important;
+  }
+  .jobPrice{
+    margin: 2% -10px auto auto !important;
+  }
+}

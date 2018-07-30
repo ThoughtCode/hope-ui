@@ -10,8 +10,6 @@ import {
   Grid,
   Card,
   CardHeader,
-  Typography,
-  Avatar,
   Button,
 } from 'material-ui';
 
@@ -62,7 +60,7 @@ const job = props => {
                     </div>
                   ) : (
                     <div className={cls.avatarHolder}>
-                      <img className={cls.noAgent} src={props.agent.avatar.url}></img>
+                      <img className={cls.noAgent} src={props.agent.avatar.url} alt="profile"></img>
                     </div>
                   )
                 )

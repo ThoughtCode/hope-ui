@@ -103,7 +103,7 @@
   min-height: 1px !important;
   padding-right: 15px !important;
   padding-left: 15px !important;
-  margin-top: 150px;
+  margin-top: 150px !important;
 }
 
 .AgentDetailsWrapper {

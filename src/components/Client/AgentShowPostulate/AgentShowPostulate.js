@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Componentes
-import Typography from 'material-ui/Typography';
 import Grid from 'material-ui/Grid';
 import cls from './AgentShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';

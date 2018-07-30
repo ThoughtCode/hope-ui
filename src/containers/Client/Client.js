@@ -12,6 +12,7 @@ import JobCliente from '../Client/Job/JobClient';
 import AgentShowAccepted from '../../components/Client/AgentShowAccepted/AgentShowAccepted';
 import AgentShowQualify from '../../components/Client/AgentShowAccepted/AgentShowQualify';
 import AgentShowPostulate from '../../components/Client/AgentShowPostulate/AgentShowPostulate';
+import JobCancel from './JobCancel/JobCancel';
 
 // Css
 import cls from './Client.css';
@@ -27,6 +28,7 @@ class Client extends Component {
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
           <Route path={`${this.props.match.url}/servicio/:service_id`} exact component={Service}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} exact component={Job}/>
+          <Route path={`${this.props.match.url}/trabajo/:job_id/cancelar`} exact component={JobCancel}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id/agente/postulado/:proposal_id`} exact component={AgentShowPostulate}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id/agente/contratado`} exact component={AgentShowAccepted}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id/agente/calificar`} exact component={AgentShowQualify}/>

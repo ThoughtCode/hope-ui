@@ -4,13 +4,12 @@ import React, { Component } from 'react';
 // Componentes
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
-import {AppBar, Grid, Paper} from 'material-ui';
+import { AppBar } from 'material-ui';
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import cls from './MainJobClient.css';
 import JobFutures from '../CardJobClient/JobFuturesClient';
 import JobPast from '../CardJobClient/JobPastClient';
-import TabContainer from '../../../components/Client/TabContainer/TabContainer';
 
 const styles = theme => ({
   root: {

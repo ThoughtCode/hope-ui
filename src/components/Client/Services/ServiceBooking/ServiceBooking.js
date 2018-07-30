@@ -16,6 +16,13 @@ import Thanks from './Thanks/Thanks';
 // Css
 import cls from './ServiceBooking.css';
 
+const start = moment();
+const remainder = 30 - (start.minute() % 30);
+ 
+const dateTime = moment(start).add(remainder, "minutes");
+
+console.log(dateTime);
+
 class ServiceBooking extends Component {
   state = {
     value: '',
@@ -37,7 +44,8 @@ class ServiceBooking extends Component {
         errorText: 'Debe elegir una propiedad'
       },
       details: '',
-      started_at: new Date(),
+      started_at: dateTime,
+      finished_recurrency_at: null,
     },
     service: true,
     checking: false,
@@ -193,6 +201,16 @@ class ServiceBooking extends Component {
     });
   };
 
+  changeDatetimeFinishedHandler = (dateTime) => {
+    this.setState({
+      ...this.state,
+      form: {
+        ...this.state.form,
+        finished_recurrency_at: moment(dateTime),
+      }
+    });
+  };
+
   changeDatetimeHandler = (dateTime) => {
     this.setState({
       ...this.state,
@@ -222,6 +240,9 @@ class ServiceBooking extends Component {
         })
       }
     }
+    if (this.state.form.recurrent.value !== '0' ) {
+      formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
+    }
     const job = {
       job: formData,
     };
@@ -243,6 +264,11 @@ class ServiceBooking extends Component {
         });
       } else if (this.state.form.started_at < Date.now()) {
         Alert.error('La fecha no puede ser menor a hoy', {
+          position: 'top',
+          effect: 'genie',
+        });
+      } else if (this.state.form.recurrent.value !== '0' && this.state.form.finished_recurrency_at < this.state.form.started_at) {
+        Alert.error('La fecha de finalizacion del trabajo no puede ser menor a la fecha de inicio', {
           position: 'top',
           effect: 'genie',
         });
@@ -316,6 +342,7 @@ class ServiceBooking extends Component {
                         changeCheckboxHandler={this.changeCheckboxHandler}
                         inputChangedHandler={this.inputChangedHandler}
                         changeDatetimeHandler={this.changeDatetimeHandler}
+                        changeDatetimeFinishedHandler={this.changeDatetimeFinishedHandler}
                         handleTextChange={this.handleTextChange}/>
                     </Grid>
                   </Grid>

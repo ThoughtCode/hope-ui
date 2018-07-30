@@ -56,6 +56,7 @@
     "react-router-redux": "^5.0.0-alpha.9",
     "react-s-alert": "^1.4.1",
     "react-swipeable-views": "^0.12.13",
+    "react-tippy": "^1.2.2",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "style-loader": "0.19.0",

@@ -50,7 +50,7 @@ class Dashboard extends Component {
             <NextJobs nextjobs={this.props.nextjobs} />
             {pastJobs}
             <Grid container justify="center">
-              <Grid item xs={12} md={10} className={cls.Download}>
+              <Grid item xs={12} md={9} className={cls.Download}>
                 <Paper elevation={0}>
                   <Download />
                 </Paper>

@@ -17,6 +17,9 @@
     padding-right: 0px !important;
     padding-left: 0px !important;
   }
+  .Download{
+    padding: 50px 0 !important;
+  }
 }
 
 @media (min-width: 601px){
@@ -30,5 +33,8 @@
   .Dashboard{
     padding-right: 0px !important;
     padding-left: 0px !important;
+  }
+  .Download{
+    padding-top: 0 50px !important;
   }
 }

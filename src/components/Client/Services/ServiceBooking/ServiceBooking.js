@@ -267,6 +267,11 @@ class ServiceBooking extends Component {
           position: 'top',
           effect: 'genie',
         });
+      } else if (this.state.form.recurrent.value !== '0' && this.state.form.finished_recurrency_at === null) {
+        Alert.error('Debe elejir una fecha de finalizacion', {
+          position: 'top',
+          effect: 'genie',
+        });
       } else if (this.state.form.recurrent.value !== '0' && this.state.form.finished_recurrency_at < this.state.form.started_at) {
         Alert.error('La fecha de finalizacion del trabajo no puede ser menor a la fecha de inicio', {
           position: 'top',

@@ -1,98 +1,278 @@
-.root{
-  flex-grow: 1px;
-}
-.CardJob {
-  border: 2px solid #e3e3e3;
-  border-radius: 5px;
-  color: black !important;
-}
-.TitleCard{
-  font-size: 1.5em !important;
-}
-.SubTitleCard{
-  font-size: 1em !important;
-}
-.Title{
-  font-size: 1.2em !important;
-}
-.StatuCard{
-  color: #0069a7 !important;
-}
-.subServicios{
-  color: #0069a7 !important;
-  font-style: italic;
-}
-.ContainerAvatar{
-  display: flex;
-}
-.imgAvatar{
-  flex: 0 0 auto !important;
-  margin-right: 16px;
-}
-.NameAvatar{
-  flex: 1 1 auto;
-  margin: 8px 0;
-}
-.TypograFechaPrecio{
-  color: black !important;
-}
-.pageButtonActive {
-  background-color: white !important;
-  border-radius: 0px 0px 5px 5px !important;
-  width: auto !important;
-}
-.pageButtonJobCurrentDetalles {
-  background-color: white !important;
-  border: 1px solid #0069a7 !important;
-  border-radius: 0px 0px 0px 5px !important;
-  width: auto !important;
-}
-.pageButtonJobCurrentDetallesActual {
-  background-color: white !important;
-  border: 1px solid #0069a7 !important;
-  border-radius: 0px 0px 5px 5px !important;
-  width: auto !important;
-}
-.pageButtonJobCurrentCancelar {
-  background-color:#0069a7 !important;
-  border: 1px solid #0069a7 !important; 
-  border-radius: 0px 0px 5px 0px !important;
-  width: auto !important;
-}
-.Button{
-  font-size: 1.2em !important;
-  color: white !important;
-}
-.ButtonDetalles{
-  background-color: white !important;
-  color: #0069a7 !important;
-  font-size: 1.2em !important;
-}
-.ButtonCancelar{
-  background-color:#0069a7 !important;
-  color: white !important;
-  font-size: 1.2em !important;
+.Card {
+  max-width: 100%;
+  border-radius: 5px !important;
 }
 
-@media only screen and (max-width: 600px) {
-  .Title{
-    font-size: 0.7em !important;
+.Item {
+  padding: 10px 0;
+}
+
+.avatarHolder{
+  display: inline-block;
+  vertical-align: bottom !important;
+}
+
+.AgentDetails {
+  display: inline-block;
+}
+
+.JobAgent {
+  font-size: 20px !important;
+  line-height: 20px;
+}
+
+.JobPrice {
+  float: right;
+  font-size: 35px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.JobHeader {
+  margin-bottom: 20px;
+}
+
+.JobFrecuency {
+  background-color: #0069a7;
+  color: white;
+  padding: 2px 5px;
+  border-radius: 5px;
+  float: right;
+  /* margin-top: 13px; */
+  margin-left: 20px;
+  font-size: 14px !important;
+}
+
+.noAgent {
+  background-color: #455fcf;
+  height: 32px;
+  width: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+}
+
+.siAgent {
+  background-color: #bdbdbd;
+  height: 32px;
+  width: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+}
+
+.agentDetails{
+  display: flex;
+}
+
+.jobPrice{
+  float: right;
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: 700;
+  margin: 2% 0px auto auto;
+}
+
+.PriceSi {
+  display: none;
+}
+
+.jobAgent {
+  font-size: 16px !important;
+  line-height: 20px;
+  margin: 2% 0;
+}
+
+.jobService{
+  font-weight: 700!important;
+  margin-bottom: 8px!important;
+  font-size: 18px;
+  color: #333;
+}
+
+.sinPadding{
+  padding-bottom: 0 !important;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+}
+
+.jobAddress {
+  font-size: 15px;
+  color: #333;
+}
+
+.jobServicesWrapper{
+  -webkit-box-flex: 1 !important;
+  -ms-flex: 1 1 100% !important;
+  flex: 1 1 100% !important;
+}
+
+.jobDetails {
+  margin-top: 10px;
+}
+
+.jobExtraServices {
+  color: #333;
+  margin: 0px 8px 8px 0px;
+  padding: 3px 25px;
+  border: 1px solid #e9eced;
+  border-radius: 4px;
+  display: inline-block;
+  font-size: 12px;
+}
+
+.jobBodyWrapper{
+  display: -webkit-box !important;
+  display: -ms-flexbox !important;
+  -ms-flex-direction: column !important;
+  flex-direction: column !important;
+  margin: 0 20px !important;
+}
+
+.MarginIcon{
+  margin: -7px 0px;
+  padding: 3px 3px 3px 0px;
+}
+@media (min-width: 768px) {
+  .Item {
+    padding: 0;
   }
-  .Name{
-    font-size: 0.8em !important;
+}
+
+.CardDate {
+  padding: 5px 5px;
+  background-color: #0069a7;
+  border-radius: 3px;
+}
+
+.CardDateTypo {
+  color: white !important;
+}
+
+.CardSubTitle{
+  margin-top: 5px !important;
+  margin-bottom: 20px !important;
+}
+
+.CardContent{
+  padding: 0 20px !important;
+}
+
+.CardBorder {
+  border-radius: 5px !important;
+  box-shadow: none !important;
+  border: 1px solid #e9eced;
+}
+
+.Service {
+  font-size: 1.3rem !important;
+  font-weight: 900 !important;
+}
+
+.list{
+  font-size: 12px;
+  padding: 10px 0px;
+  letter-spacing: 0.25px;
+  color: #676d73!important;
+  fill: #676d73!important;
+}
+
+.IconUbicacion{
+  margin-top: 10px;
+}
+
+.TotalMargin{
+  margin: 2% 0 !important;
+}
+
+@media (min-width: 375px) {
+  .TotalMargin{
+    margin: 5% 0 !important;
   }
-  .subServicios{
-    font-size: 0.8em !important;
+}
+
+.Total {
+  font-size: 2rem !important;
+  text-align: center !important;
+  font-weight: 900 !important;
+}
+
+.ViewDetails {
+  text-align: center !important;
+}
+
+.Title {
+  font-size: 20px !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.25px !important;
+  line-height: 20px;
+}
+
+.Button {
+  background-color: #fff !important;
+  color: #676d73 !important;
+  border: 1px solid #676d73 !important;
+  padding: 8px 10px !important;
+  border-radius: 5px !important;
+  text-transform: initial !important;
+  font-size: 14px !important;
+}
+
+@media only screen and (min-width: 768px) {
+  .Button {
+    margin-top: 10px !important;
+  } 
+}
+
+.Button:hover {
+  font-weight: bold !important;
+}
+
+.TotalContainer {
+  border-top: 1px solid #e9eced !important;
+}
+
+.Border {
+  border-right: none !important;
+}
+
+.jobAddress {
+  font-size: 12px;
+}
+
+@media (min-width: 600px) {
+  .TotalContainer {
+    border-top: none !important;
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    border-left: 1px solid #e9eced !important;
+    padding: 4% 0;
   }
-  .ButtonDetalles{
-    font-size: 0.9em !important;
-    padding: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .PriceNo {
+    display: none !important;
   }
-  .ButtonCancelar{
-    font-size: 0.9em !important;
-    padding: 0 !important;
-  }
-  .TipograTotal {
-    font-size: 2em !important;
+  .PriceSi {
+    display: block !important;
   }
 }

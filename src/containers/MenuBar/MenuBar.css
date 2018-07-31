@@ -82,12 +82,11 @@
 }
 
 .AppBar {
-  background-color: transparent;
+  background-color: #fff !important;
 }
 
 .Toolbar {
-  background-color: #fff;
-  width: 98% !important;
+  background-color: #fff !important;
   padding-left: 16px !important;
 }
 

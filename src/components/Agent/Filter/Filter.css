@@ -1,61 +1,52 @@
-.root {
-  display: flex;
-  flex-wrap: wrap;
-  margin-top: 120px;
-  align-items: center;
-  flex-grow: 1px;
-  background-color: #e3e3e3 !important;
-}
-.pageButtonActive {
-  background-color: #0069a7 !important;
-  border-radius: 5px !important;
-  color: #fff !important;
-  font-size: 1em !important;
-  border: 1px solid #0069a7 !important;
-  text-decoration: none !important;
-  text-transform: none !important;
-  min-width: 90% !important;
-  margin: 14px 20px !important;
-  font-family: Arial !important;
-}
-.IconStyle{
-  display: none;
-}
-.textField {
-  flex-basis: 200px;
-  text-align: left;
-  width: 150px;
-  border: 0;
-  display: inline-flex;
-  padding: 0;
-  position: relative;
-  min-width: 0;
-  flex-direction: column;
+.SearchFilter{
+  margin-top: 70px;
 }
 
-@media only screen and (max-width: 600px) {
-  .root{
-    margin-top: 90px !important;
-  }
-  .IconStyle{
-    display: none;
-  }
-  .textField {
-    top: 10px;
-    margin: 2px !important;
-    width: 140px;
-  }
-  .Radio_Group{
-    margin-top: 20px;
-  }
-  .pageButtonActive {
-    min-width: 70% !important;
-  }
+.Card {
+  max-width: 100%;
+  border-radius: 5px!important;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+  border: 1px solid #e9eced;
+  background-color: white !important;
 }
 
-@media only screen and (min-width: 960px) {
-  .IconStyle{
-    display: inline !important;
-    font-size: 4em !important;
+.CardJobsFilter {
+  padding: 10px 25px;
+}
+
+.Title {
+  font-size: 20px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+  -webkit-box-flex: 1 !important;
+  -ms-flex-positive: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.FilterBtnWrapper {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.FilterBtn {
+  border: 1px solid #0069a7!important;
+  border-radius: 5px;
+  color: #0069a7!important;
+  font-weight: 700!important;
+  background-color: #fff;
+  padding: 10px 25px;
+  margin-top: 10px;
+}
+
+@media only screen and (min-width: 374px) {
+  .FilterBtn {
+    margin: 5px 10px;
+  }
+  
+  .SearchFilter {
+    margin-top: 120px;
   }
 }

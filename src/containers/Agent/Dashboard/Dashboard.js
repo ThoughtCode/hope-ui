@@ -17,8 +17,8 @@ import * as actions from '../../../store/actions';
 class DashboardAgent extends Component {
   state = {
     filter: {
-      min_price: 0,
-      max_price: 0,
+      min_price: '',
+      max_price: '',
       date_from: null,
       date_to: null,
       frequency: '0',

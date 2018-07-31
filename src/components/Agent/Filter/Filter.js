@@ -1,24 +1,9 @@
 import React, { Component } from 'react';
 import Datetime from 'react-datetime';
-import classNames from 'classnames';
 import moment from 'moment';
-
-// Components
-import { Grid, Divider, TextField, Radio, Button } from 'material-ui';
-import { withStyles } from 'material-ui/styles';
-import InputAdornment from 'material-ui/Input/InputAdornment';
-import RadioGroup from 'material-ui/Radio/RadioGroup';
-import FormControl from 'material-ui/Form/FormControl';
-import FormControlLabel from 'material-ui/Form/FormControlLabel';
 
 // Css
 import cls from './Filter.css'
-
-const styles = theme => ({
-  margin: {
-    margin: theme.spacing.unit,
-  },
-});
 
 class Filter extends Component {
   validDates = current => {
@@ -29,151 +14,159 @@ class Filter extends Component {
     return current.isAfter(moment(this.props.filter.date_from));
   };
 
-  renderInput = (props) => {
-    return (
-      <div>
-        <TextField
-          InputLabelProps={{
-            shrink: true,
-          }}
-          {...props}/>
-      </div>
-    );
-  };
-
   render() {
-    const { classes } = this.props;
     return (
-      <div className={cls.root}>
-        <Grid container align="center" justify="center" alignItems="center">
-          <Grid item xs={12} sm={0} md={1}>
-            <i className={`${cls.IconStyle} ${"material-icons"}`}>date_range</i>
-          </Grid>
-          <Grid item xs={6} sm={3} md={2}>
-            <TextField
-              label="Minimo"
-              id="simple-start-adornment"
-              value={this.props.filter.min_price}
-              onChange={(event) => this.props.handleChange(event, 'min_price')}
-              className={classNames(classes.margin, cls.textField)}
-              InputProps={{startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
-            />
-          </Grid>
-          <Grid item xs={6} sm={3} md={2}>
-            <TextField
-              label="Maximo"
-              id="simple-start-adornment"
-              value={this.props.filter.max_price}
-              onChange={(event) => this.props.handleChange(event, 'max_price')}
-              className={classNames(classes.margin, cls.textField)}
-              InputProps={{ startAdornment: <InputAdornment position="start">$</InputAdornment>, }}
-            />
-          </Grid>
-          <Grid item xs={6} sm={3} md={2}>
-            <Datetime
-              isValidDate={this.validDates}
-              label="Fecha"
-              id="simple-start-adornment"
-              value={moment(this.props.filter.date_from)}
-              onChange={(dateTime) => this.props.changeDatetimeHandler(dateTime, 'date_from')}
-              dateFormat="MM/DD/YYYY"
-              renderInput={this.renderInput}
-              timeFormat={false}
-              className={classNames(classes.margin, cls.textField)}
-              inputProps={{
-                className: classNames(classes.margin, cls.textField),
-                placeholder: 'Inicio',
-                label: 'Fecha',
-              }}
-            />
-          </Grid>
-          <Grid item xs={6} sm={3} md={2}>
-            <Datetime
-              isValidDate={this.validDatesTo}
-              label="Fecha"
-              id="simple-start-adornment"
-              value={moment(this.props.filter.date_to)}
-              onChange={(dateTime) => this.props.changeDatetimeHandler(dateTime, 'date_to')}
-              dateFormat="MM/DD/YYYY"
-              renderInput={this.renderInput}
-              timeFormat={false}
-              className={classNames(classes.margin, cls.textField)}
-              inputProps={{
-                className: classNames(classes.margin, cls.textField),
-                placeholder: 'Fin',
-                label: 'Fecha',
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <div className={cls.Radio_Group}>
-              <Grid container justify="center" >
-                <Grid item xs={6} sm={3} md={2} lg={1}>
-                  <FormControl component="fieldset" required error className={classes.formControl}>
-                    <RadioGroup
-                      aria-label="filter"
-                      name="una-vez"
-                      className={classes.group}
-                      value={this.props.filter.frequency}
-                      onChange={(event) => this.props.handleChange(event, 'frequency')}
-                    >
-                      <FormControlLabel value="0" control={<Radio color="primary" />} label="Una Vez" />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6} sm={3} md={2} lg={1}>
-                  <FormControl component="fieldset" required error className={classes.formControl}>
-                    <RadioGroup
-                      aria-label="filter"
-                      name="una-vez"
-                      className={classes.group}
-                      value={this.props.filter.frequency}
-                      onChange={(event) => this.props.handleChange(event, 'frequency')}
-                    >
-                      <FormControlLabel value="1" control={<Radio color="primary" />} label="Semanal" />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6} sm={3} md={2} lg={1}>
-                  <FormControl component="fieldset" required error className={classes.formControl}>
-                    <RadioGroup
-                      aria-label="filter"
-                      name="una-vez"
-                      className={classes.group}
-                      value={this.props.filter.frequency}
-                      onChange={(event) => this.props.handleChange(event, 'frequency')}
-                    >
-                      <FormControlLabel value="2" control={<Radio color="primary" />} label="Quincenal" />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6} sm={3} md={2} lg={1}>
-                  <FormControl component="fieldset" required error className={classes.formControl}>
-                    <RadioGroup
-                      aria-label="filter"
-                      name="semanal"
-                      className={classes.group}
-                      value={this.props.filter.frequency}
-                      onChange={(event) => this.props.handleChange(event, 'frequency')}
-                      >
-                      <FormControlLabel value="3" control={<Radio color="primary" />} label="Mensual" />
-                    </RadioGroup>
-                  </FormControl>
-                </Grid>
-                <Grid item xs={6} sm={4} md={2}>
-                  <Button onClick={(event) => this.props.filterHandler(event)} className={`${cls.pageButtonActive} ${classes.button}`}>FILTRAR</Button>
-                </Grid>
-                <Grid item xs={6} sm={4} md={2}>
-                  <Button onClick={() => window.location.reload() } className={`${cls.pageButtonActive} ${classes.button}`}>TODOS</Button>
-                </Grid>
-              </Grid>
+      <div className="container">
+        <div className={cls.SearchFilter}>
+          <div className={cls.SearchWrapper}>
+            <div className={cls.Card}>
+              <div className={cls.CardJobsFilter}>
+                <div className="row">
+                  <div className="col-md-6">
+                    <article className="card-group-item">
+                      <header className="card-header">
+                        <h6 className={cls.Title}>Monto del trabajo</h6>
+                      </header>
+                      <div className="filter-content">
+                        <div className="form-group col-md-6">
+                          <label>Min</label>
+                          <input
+                            type="number"
+                            className="form-control"
+                            placeholder="$0"
+                            value={this.props.filter.min_price}
+                            onChange={(event) => this.props.handleChange(event, 'min_price')} />
+                        </div>
+                        <div className="form-group col-md-6">
+                          <label>Max</label>
+                          <input
+                            type="number"
+                            className="form-control"
+                            placeholder="$1,0000" 
+                            value={this.props.filter.max_price}
+                            onChange={(event) => this.props.handleChange(event, 'max_price')}/>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                  <div className="col-md-6">
+                    <article className="card-group-item">
+                      <header className="card-header">
+                        <h6 className={cls.Title}>Fecha del trabajo</h6>
+                      </header>
+                      <div className="filter-content">
+                        <div className="form-group col-md-6">
+                          <label>Desde</label>
+                          <Datetime
+                            isValidDate={this.validDates}
+                            value={moment(this.props.filter.date_from)}
+                            onChange={(dateTime) => this.props.changeDatetimeHandler(dateTime, 'date_from')}
+                            dateFormat="MM/DD/YYYY"
+                            timeFormat={false}
+                            inputProps={{
+                              className: 'form-control',
+                              placeholder: 'Inicio',
+                              label: 'Fecha',
+                            }}
+                          />
+                        </div>
+                        <div className="form-group col-md-6">
+                          <label>Hasta</label>
+                          <Datetime
+                            isValidDate={this.validDatesTo}
+                            label="Fecha"
+                            id="simple-start-adornment"
+                            value={moment(this.props.filter.date_to)}
+                            onChange={(dateTime) => this.props.changeDatetimeHandler(dateTime, 'date_to')}
+                            dateFormat="MM/DD/YYYY"
+                            timeFormat={false}
+                            inputProps={{
+                              className: 'form-control',
+                              placeholder: 'Fin',
+                              label: 'Fecha',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </article> 
+                  </div>
+                </div>
+                <article className="card-group-item">
+                  <header className="card-header">
+                    <h6 className={cls.Title}>Frecuencia</h6>
+                  </header>
+                  <div className="filter-content">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-xs-12 col-md-6">
+                          <div className="row text-center">
+                            <div className="col-xs-6 col-md-3">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="Check1" 
+                                  checked={this.props.filter.frequency === '0'}
+                                  value="0"
+                                  onChange={(event) => this.props.handleChange(event, 'frequency')} />
+                                <label className="custom-control-label" htmlFor="Check1" value="0">Una vez</label>
+                              </div>
+                            </div>
+                            <div className="col-xs-6 col-md-3">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="Check2"
+                                  checked={this.props.filter.frequency === '1'}
+                                  value="1"
+                                  onChange={(event) => this.props.handleChange(event, 'frequency')} />
+                                <label className="custom-control-label" htmlFor="Check2" value="1">Semanal</label>
+                              </div>
+                            </div>
+                            <div className="col-xs-6 col-md-3">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="Check3" 
+                                  checked={this.props.filter.frequency === '2'}
+                                  value="2"
+                                  onChange={(event) => this.props.handleChange(event, 'frequency')} />
+                                <label className="custom-control-label" for="Check3" value="2">Quincenal</label>
+                              </div>
+                            </div>
+                            <div className="col-xs-6 col-md-3">
+                              <div className="custom-control custom-checkbox">
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="Check4"
+                                  checked={this.props.filter.frequency === '3'}
+                                  value="3"
+                                  onChange={(event) => this.props.handleChange(event, 'frequency')} />
+                                <label className="custom-control-label" for="Check4" value="3">Mensual</label>
+                            </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="col-xs-12 col-md-6">
+                          <div className={cls.FilterBtnWrapper}>
+                            <button className={cls.FilterBtn}>Filtrar</button>
+                            <button className={cls.FilterBtn}>Mostrar Todos</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
             </div>
-          </Grid>
-        </Grid>
-        <Divider />
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Filter);
+export default Filter;

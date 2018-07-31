@@ -44,10 +44,10 @@ class ServiceBooking extends Component {
       started_at: dateTime,
       finished_recurrency_at: null,
     },
-    service: false,
+    service: true,
     checking: false,
     payment: false,
-    thanks: true,
+    thanks: false,
   };
 
   componentDidMount () {

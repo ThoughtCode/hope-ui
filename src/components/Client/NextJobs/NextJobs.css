@@ -1,5 +1,6 @@
 .NextJobs{
   background-color: rgb(249, 249, 249) !important;
+  margin-bottom: 3% !important;
 }
 .Title {
   font-size: 20px !important;
@@ -10,6 +11,9 @@
   -webkit-box-flex: 1 !important;
   -ms-flex-positive: 1 !important;
   flex-grow: 1 !important;
+}
+.contentCenter{
+  text-align: center !important;
 }
 
 @media only screen and (max-width: 600px) {

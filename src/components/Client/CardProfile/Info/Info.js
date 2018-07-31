@@ -57,7 +57,7 @@ const info = props => {
   return (
     <div className={cls.Div}>
       <Link className={cls.ButtonEdit} to="/cliente/perfil/info/editar"><span>Editar</span></Link>
-      <h3 className={cls.CardTitle}><span>Perfil</span></h3>
+      <h2 className={cls.CardTitle}><span>Perfil</span></h2>
       {props.loading ? (
         <Spinner />
       ) : (

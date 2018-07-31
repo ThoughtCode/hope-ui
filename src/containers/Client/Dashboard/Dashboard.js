@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
   Grid,
-  Paper,
 } from 'material-ui';
 
 // Components
@@ -10,7 +9,7 @@ import Jumbotron from '../../../components/Client/Jumbotron/Jumbotron';
 import Services from '../../../components/Client/Services/Services';
 import NextJobs from '../../../components/Client/NextJobs/NextJobs';
 import PastJobs from '../../../components/Client/PastJobs/PastJobs';
-import Download from '../../../components/Home/Download/Download';
+import Download from '../../../components/Home/Download/DownloadCurrent';
 import Contact from '../../../components/Home/Contact/Contact';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
@@ -49,13 +48,7 @@ class Dashboard extends Component {
             <Services clicked={this.showServiceClick} services={this.props.services} />
             <NextJobs nextjobs={this.props.nextjobs} />
             {pastJobs}
-            <Grid container justify="center">
-              <Grid item xs={12} md={9} className={cls.Download}>
-                <Paper elevation={0}>
-                  <Download />
-                </Paper>
-              </Grid>
-            </Grid>
+            <Download />
           </div>
         )}
         <Contact />

@@ -12,7 +12,7 @@ import cls from './NextJobs.css'
 
 const nextJobs = props => {
   let jobs = (
-    <Typography className={cls.Title} variant="headline">
+    <Typography className={`${cls.Title} ${cls.contentCenter}`} variant="headline">
       No hay trabajos futuros
     </Typography>
   );

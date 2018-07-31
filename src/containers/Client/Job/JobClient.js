@@ -31,7 +31,7 @@ class JobClient extends Component {
             ) : (
               <Paper elevation={0}>
                 <Grid container justify="center">
-                  <Grid item xs={11} md={12}>
+                  <Grid item xs={11} md={12} style={{backgroundColor: '#f9f9f9'}}>
                     <Paper elevation={0}>
                       <Typography variant="title" gutterBottom className={cls.Typogra}>Mis trabajos</Typography>
                     </Paper>

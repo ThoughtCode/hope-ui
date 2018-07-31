@@ -13,9 +13,9 @@ class MainDashboardAgent extends Component {
     );
     if (this.props.jobs.length > 0) {
       jobs = this.props.jobs.map(job => (
-          <CardJob
-            job={job}
-            apply={this.props.applyProposal}/>
+        <CardJob
+          job={job}
+          apply={this.props.applyProposal}/>
       ));
     }
     return (

@@ -449,7 +449,7 @@ class Form extends Component {
                 <Button disabled className={cls.pageButtonInvalid}>Registrar</Button>
               )}
             </Grid>
-            <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Terminos y politicas de privacidad.</a></span></p>
+            <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Términos y politicas de privacidad.</a></span></p>
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>

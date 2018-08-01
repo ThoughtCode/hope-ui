@@ -26,7 +26,7 @@ function FullWidthGrid(props) {
       <Grid container justify="center">
         <Grid item xs={12} sm={10}>
           <Paper className={`${cls.Title} ${classes.paper}`} elevation={0}>
-            <Typography className={cls.TitlePrincipal} variant="display1" gutterBottom>Terminos y Condiciones</Typography>
+            <Typography className={cls.TitlePrincipal} variant="display1" gutterBottom>Términos y Condiciones</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={10}>

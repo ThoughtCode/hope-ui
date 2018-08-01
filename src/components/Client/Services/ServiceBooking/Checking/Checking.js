@@ -26,7 +26,7 @@ class Checking extends Component {
     if (this.state.check) {
       this.props.nextPage(event, 'Checking')
     } else {
-      Alert.error('Debes aceptar los terminos y condiciones para avanzar', {
+      Alert.error('Debes aceptar los términos y condiciones para avanzar', {
         position: 'top',
         effect: 'genie',
       });
@@ -186,7 +186,7 @@ class Checking extends Component {
                             <Grid item xs={12} lg={12}>
                               <div className={cls.Term}>
                                 <input onChange={this.handleCheckbox} checked={this.state.check} type="checkbox"/>
-                                <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto terminos y condiciones</a></span>
+                                <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto términos y condiciones</a></span>
                               </div>
                             </Grid>
                           </Grid>

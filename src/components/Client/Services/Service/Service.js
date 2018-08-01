@@ -19,7 +19,7 @@ const service = props => {
         <CardMedia
           className={cls.Media}
           image={props.image}
-          title="Contemplative Reptile"
+          title="Elige el tipo de servicio que necesitas"
         />
         <CardContent className={cls.CardContent}>
           <Typography

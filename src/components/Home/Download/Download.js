@@ -27,7 +27,7 @@ function Download(props) {
         <Grid item xs={12} sm={12} md={6}>
           <Paper className={classes.paper} elevation={0}>
             <Typography className={cls.SubTitle} variant="headline" gutterBottom>
-              Descarga Noc Noc desde la tienda de tu smartphone
+              Descarga Noc Noc desde la tienda de tu Smartphone
             </Typography>
             <Grid container>
               <Grid item xs={12}>

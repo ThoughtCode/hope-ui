@@ -180,10 +180,10 @@ class BookingForm extends Component {
                         <span className={cls.SubHeaderNumber}>2</span>
                         <span>Elige la frecuencia, dia y hora de nuestra visita</span>
                       </h3>
-                      <div className={cls.BorderPadding}>
+                      <div className={cls.service}>
                         <div className={cls.Selection}>
                           <Grid container>
-                            <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <Grid item xs={12} className={cls.MaxWidthSelection}>
                               <Tooltip
                                 title="Te visitaremos una sola vez en la fecha seleccionada"
                                 position="top"
@@ -205,7 +205,7 @@ class BookingForm extends Component {
                                 </div>
                               </Tooltip>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <Grid item xs={12} className={cls.MaxWidthSelection}>
                               <Tooltip
                                 title="Te visitemos semanalmente el día que tu elijas"
                                 position="top"
@@ -227,7 +227,7 @@ class BookingForm extends Component {
                                 </div>
                               </Tooltip>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <Grid item xs={12} className={cls.MaxWidthSelection}>
                               <Tooltip
                                 title="Te visitaremos cada 15 días el día que tu elijas"
                                 position="top"
@@ -249,7 +249,7 @@ class BookingForm extends Component {
                                 </div>
                               </Tooltip>
                             </Grid>
-                            <Grid item xs={12} sm={6} md={6} lg={6}>
+                            <Grid item xs={12} className={cls.MaxWidthSelection}>
                               <Tooltip
                                 title="Te visitaremos una vez al mes el día que tu elijas"
                                 position="top"
@@ -274,7 +274,7 @@ class BookingForm extends Component {
                           </Grid>
                         </div>
                       </div>
-                      <Grid container justify="center">
+                      <Grid container justify="center" align="center">
                         <div className={cls.ServiceDate}>
                           <Grid container justify="center">
                             <Grid item xs={12} sm={6} md={5} lg={5}>
@@ -430,7 +430,7 @@ class BookingForm extends Component {
                   <div className={cls.ButtonBooking}>
                     <Grid container>
                       <div className={cls.Row}>
-                        <button onClick={(event) => this.props.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar Servicio</button>
+                        <button onClick={(event) => this.props.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar servicio</button>
                       </div>
                     </Grid>
                   </div>

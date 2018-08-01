@@ -40,3 +40,17 @@
     font-size: 3rem !important;
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .ServiceContainer {
+    padding-top: 96px;
+    padding-bottom: 214px;
+    height: 310px;
+  }
+  .ServiceTitle {
+    font-size: 25px !important;
+  }
+  .ServiceImage {
+    height: 180px;
+  }
+}

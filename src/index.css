@@ -1,6 +1,11 @@
 @font-face {
   font-family: Fabada, Arial;
-  src: url('./containers/Fonts/Fabada-regular.ttf', './containers/Fonts/arial.ttf');
+  src:  url('./assets/Font/Fabada-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+        url('./assets/Font/arial.ttf') format('truetype'); /* Safari, Android, iOS */
+}
+
+html {
+  font-size: 16px !important;
 }
 
 body {

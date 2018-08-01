@@ -1,4 +1,5 @@
 .BookingForm {
+  background-color: #f9f9f9;
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   width: 100%;
@@ -19,7 +20,7 @@
   margin-top: .2em;
   border-radius: 5px;
   position: relative;
-  background-color: white;
+  background-color: #f9f9f9;
   padding-top: .9375em;
 }
 
@@ -46,14 +47,13 @@
 }
 
 .HeaderText {
-  font-weight: 500;
-  font-size: 1.6em;
-  margin-bottom: 0.5em;
-  line-height: 1.3;
-  text-align: initial;
-  margin: 0 1rem;
-  padding-bottom: 1.5rem;
-  padding-top: 0.75rem;
+  background-color: #f9f9f9 !important;
+  font-size: 20px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
+  -webkit-box-flex: 1 !important;
+  -ms-flex-positive: 1 !important;
+  flex-grow: 1 !important;
 }
 
 .Form {
@@ -61,8 +61,21 @@
 }
 
 .SubHeaderText {
-  margin: 0 1rem;
-  padding-bottom: 1em !important;
+  /* margin: 0 1rem;
+  padding-bottom: 1em !important; */
+
+  background-color: #f9f9f9 !important;
+  font-size: 20px !important;
+  line-height: 28px !important;
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+  -webkit-box-flex: 1 !important;
+  -ms-flex-positive: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.MaxWidthSelection{
+  max-width: 25% !important;  
 }
 
 .SubHeaderNumber {
@@ -116,8 +129,7 @@
 }
 
 .BoxRadio {
-  padding: 1em 0;
-  margin-bottom: 1em;
+  padding: 10px 0;
   position: relative;
   max-height: 4em;
   display: flex;
@@ -211,7 +223,7 @@
   }
   
   .InputTime {
-    width: 80%;
+    width: 91%;
   }
 }
 
@@ -270,7 +282,7 @@
 
 .ExtraSvg {
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid #f9f9f9;
   text-align: center;
   line-height: 1.61em;
 }
@@ -445,8 +457,8 @@
 }
 
 .BorderPadding {
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .Textarea {
@@ -468,4 +480,21 @@
   background-color: white;
   resize: none;
   font-family: helvetica;
+}
+
+@media only screen and (max-width: 600px){
+  .MaxWidthSelection{
+    max-width: 50% !important;  
+  }
+  .ContentWrapper {
+    margin-top: 0 !important;
+  }
+  .ServiceSection {
+    padding-top: 0 !important;
+  }
+  .HeaderText {
+    font-size: 16px !important;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }

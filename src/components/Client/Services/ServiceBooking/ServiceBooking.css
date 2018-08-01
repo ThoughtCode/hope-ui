@@ -2,5 +2,11 @@
   padding-bottom: 2em;
   padding-top: 5em;
   color: #434343;
-  background-color: #fafafa;
+  background-color: #f9f9f9;
+}
+
+@media only screen and (max-width: 600px){
+  .ServiceBooking {
+    padding-top: 0em !important;
+  }
 }

@@ -69,12 +69,13 @@
   margin-bottom: 1em;
   color: #434343;
   padding-top: .5em;
+  font-size: 18px;
 }
 
 .ServiceMain {
   text-align: center;
   color: #0069a7;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .PadTop {
@@ -94,7 +95,7 @@
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   float: left;
-  font-size: 14px;
+  font-size: 18px;
   margin-bottom: 0.5em;
   white-space: nowrap;
 }
@@ -102,7 +103,7 @@
 .SummaryAmount {
   width: 41.66666667%;
   float: right;
-  font-size: 14px;
+  font-size: 18px;
   text-align: right;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -113,7 +114,7 @@
   padding-right: 0.9375rem;
   float: left;
   text-transform: uppercase;
-  font-size: 2em;
+  font-size: 3em;
   color: #0069a7;
 }
 
@@ -125,12 +126,12 @@
 .Total {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
-  width: 66.66666667%;
+  width: 100%;
   float: left;
   text-align: right;
   color: #0069a7;
   padding-right: .2em;
-  font-size: 2.4em;
+  font-size: 3em;
 }
 
 .SummaryTime {
@@ -175,7 +176,7 @@
   border: 1px solid #0069a7;
   color: white;
   margin: 0.5em 0 1em;
-  font-size: 1.6em;
+  font-size: 2.3em;
   height: 2.25em;
   font-weight: 500;
   width: 100%;
@@ -189,7 +190,7 @@
 .Link {
   text-decoration: none;
   color: black;
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .Link:hover {

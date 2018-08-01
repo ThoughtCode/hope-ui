@@ -28,6 +28,9 @@ const styles = theme => ({
     position: 'relative',
     minHeight: 200,
   },
+  indicator: {
+    backgroundColor: '#0069a7',
+  },
 });
 
 class MyJobsMain extends React.Component {
@@ -89,13 +92,32 @@ class MyJobsMain extends React.Component {
           <Tabs
             value={this.state.value}
             onChange={this.handleChange}
-            indicatorColor="primary"
-            textColor="primary"
+            classes={{
+              indicator: classes.indicator
+            }}
             fullWidth
           >
-            <Tab label="Actuales" />
-            <Tab label="Completados" />
-            <Tab label="Postulados" />
+            <Tab label={<span style={{
+                                      backgroundColor: 'transparent',
+                                      color: '#0069a7',
+                                      fontWeight: '700',
+                                      fontSize: '16px',
+                                      textTransform: 'initial',
+                                    }}>Actuales</span>} />
+            <Tab label={<span style={{
+                                      backgroundColor: 'transparent',
+                                      color: '#0069a7',
+                                      fontWeight: '700',
+                                      fontSize: '16px',
+                                      textTransform: 'initial',
+                                    }}>Completados</span>} />
+            <Tab label={<span style={{
+                                      backgroundColor: 'transparent',
+                                      color: '#0069a7',
+                                      fontWeight: '700',
+                                      fontSize: '16px',
+                                      textTransform: 'initial',
+                                    }}>Postulados</span>} />
           </Tabs>
         </AppBar>
         <SwipeableViews

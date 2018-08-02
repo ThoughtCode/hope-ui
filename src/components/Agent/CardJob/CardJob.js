@@ -115,9 +115,7 @@ const cardJob = (props) => {
                       </Button>
                     </Grid>
                     <Grid item xs={6} sm={12}>
-                      <Button className={cls.Button}>
-                        Aplicar
-                      </Button>
+                      <Button className={cls.Button} onClick={() => props.apply(localStorage.getItem('token'), props.job.id)}>Aplicar</Button>
                     </Grid>
                   </Grid>
                 </Grid>

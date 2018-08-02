@@ -274,6 +274,55 @@ class BookingForm extends Component {
                           </Grid>
                         </div>
                       </div>
+                      {this.props.form.recurrent.value === '0' ? ( 
+                        <Grid container justify="center" align="center">
+                          <div className={cls.ServiceDate}>
+                            <div>
+                              <h3 className={cls.SubHeaderText}>
+                                <span>Elija la fecha de inicio del servicio</span>
+                              </h3>
+                            </div>
+                            <Grid container justify="center">
+                              <Grid item xs={12} sm={6} md={5} lg={5}>
+                                <Grid container justify="center">
+                                  <div className={cls.Property}>
+                                    <Datetime
+                                      isValidDate={this.validDates}
+                                      value={this.props.form.started_at}
+                                      dateFormat="MM/DD/YYYY"
+                                      timeFormat={false}
+                                      onChange={this.props.changeDatetimeHandler}
+                                      inputProps={{
+                                        className: `${cls.Input}`,
+                                      }} />
+                                  </div>
+                                </Grid>
+                              </Grid>
+                              <Grid item xs={12} sm={6} md={5} lg={5}>
+                                <Grid container justify="center">
+                                  <div className={cls.Property}>
+                                    <Datetime
+                                      timeConstraints={{
+                                        minutes: {
+                                          step: 30,
+                                        }
+                                      }}
+                                      isValidDate={this.validDates}
+                                      value={moment(this.props.form.started_at)}
+                                      dateFormat={false}
+                                      onChange={this.props.changeDatetimeHandler}
+                                      inputProps={{
+                                        className: `${cls.InputTime}`,
+                                      }} />
+                                  </div>
+                                </Grid>
+                              </Grid>
+                            </Grid>
+                          </div>
+                        </Grid>
+                      ) : (
+                        null
+                      )}
                       {this.props.form.recurrent.value !== '0' ? (
                         <div>
                           <Grid container justify="center" align="center">

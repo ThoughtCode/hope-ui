@@ -51,35 +51,36 @@ const cardJob = (props) => {
   };
   let name = props.job.attributes.customer.first_name + " " + props.job.attributes.customer.last_name;
   return (
-    <div>
+    <div className="col-xs-12 col-md-6" style={{marginBottom: '2%'}}>
       <Card className={cls.CardBorder}>
         <Grid container alignItems="center">
-          <Grid item xs={12} md={6}>
-            <CardHeader
-              className={cls.sinPadding}
-              avatar = {
-                props.job.attributes.customer.avatar.url == null ? (
-                  <div className={cls.avatarHolder}>
-                    <div className={cls.siAgent}>{props.job.attributes.customer.first_name.toUpperCase().charAt(0)}{props.job.attributes.customer.last_name.toUpperCase().charAt(0)}</div>
-                  </div>
-                ) : (
-                  <div className={cls.avatarHolder}>
-                    <img className={cls.noAgent} src={props.job.attributes.customer.avatar.url} alt="profile"></img>
-                  </div>
-                )
-              }
-              title={
-                <div>
+          <CardHeader
+            className={cls.sinPadding}
+            avatar = {
+              props.job.attributes.customer.avatar.url == null ? (
+                <div className={cls.avatarHolder}>
+                  <div className={cls.siAgent}>{props.job.attributes.customer.first_name.toUpperCase().charAt(0)}{props.job.attributes.customer.last_name.toUpperCase().charAt(0)}</div>
+                </div>
+              ) : (
+                <div className={cls.avatarHolder}>
+                  <img className={cls.noAgent} src={props.job.attributes.customer.avatar.url} alt="profile"></img>
+                </div>
+              )
+            }
+            title={
+              <div>
+                <div className={cls.HeaderName}>
                   <div className={cls.AgentDetails}>
                     <p className={cls.JobAgent}>{name}</p>
                   </div>
-  
+                </div>
+                <div className={cls.FrequencyPrice}>
                   <span className={cls.JobFrecuency}>{frequency}</span>
                   <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.job.attributes.total}</span>
                 </div>
-              }
-            />
-          </Grid>
+              </div>
+            }
+          />
           <Grid item xs={12} sm={8} md={8} lg={8}>
             <Grid container>
               <div className={cls.jobBodyWrapper}>
@@ -110,12 +111,14 @@ const cardJob = (props) => {
                 <Grid className={`${cls.Border} ${cls.ViewDetails}`} item xs={12}>
                   <Grid container>
                     <Grid item xs={6} sm={12}>
-                      <Button className={cls.Button} component={Link} to={`/agente/trabajo/${props.job.id}`}>
+                      <button className={cls.Button} component={Link} to={`/agente/trabajo/${props.job.id}`}>
                         Ver Detalles
-                      </Button>
+                      </button>
                     </Grid>
                     <Grid item xs={6} sm={12}>
-                      <Button className={cls.Button} onClick={() => props.apply(localStorage.getItem('token'), props.job.id)}>Aplicar</Button>
+                      <button className={cls.Button} onClick={() => props.apply(localStorage.getItem('token'), props.job.id)}>
+                        Aplicar
+                      </button>
                     </Grid>
                   </Grid>
                 </Grid>

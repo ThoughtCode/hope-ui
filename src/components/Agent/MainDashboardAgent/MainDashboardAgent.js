@@ -23,9 +23,7 @@ class MainDashboardAgent extends Component {
         <div className="services">
           <h2 className={cls.Title}>Trabajos</h2>
           <div className="row">
-            <div className="col-xs-12 col-md-6">
-              {jobs}
-            </div>
+            {jobs}
           </div>  
         </div>
       </div>

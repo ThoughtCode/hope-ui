@@ -62,15 +62,6 @@
   font-weight: 700;
 }
 
-.JobBodyWrapper {
-  /* display: -webkit-box;
-  -ms-flex-direction: column;
-  flex-direction: column; */
-}
-
-.JobBodyWrapper {
-}
-
 .JobServicesWrapper {
   -ms-flex: 1 1 100%;
   flex: 1 1 100%;

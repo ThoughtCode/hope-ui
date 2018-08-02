@@ -84,11 +84,18 @@
 }
 
 .jobPrice{
-  float: right;
   font-size: 24px;
   letter-spacing: 1px;
   font-weight: 700;
   margin: 2% 0px auto auto;
+}
+
+.HeaderName{
+  display: inline-block;
+  margin: 0 45px 0 0;
+}
+.FrequencyPrice{
+  display: inline-block;
 }
 
 .PriceSi {
@@ -150,11 +157,6 @@
 .MarginIcon{
   margin: -7px 0px;
   padding: 3px 3px 3px 0px;
-}
-
-.Spacing {
-  max-width: 0 !important;
-  flex-basis: 0 !important;
 }
 
 @media (min-width: 768px) {
@@ -240,6 +242,7 @@
   border-radius: 5px !important;
   text-transform: initial !important;
   font-size: 14px !important;
+  width: 80%;
 }
 
 @media only screen and (min-width: 768px) {

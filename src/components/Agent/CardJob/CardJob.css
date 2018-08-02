@@ -151,6 +151,12 @@
   margin: -7px 0px;
   padding: 3px 3px 3px 0px;
 }
+
+.Spacing {
+  max-width: 0 !important;
+  flex-basis: 0 !important;
+}
+
 @media (min-width: 768px) {
   .Item {
     padding: 0;

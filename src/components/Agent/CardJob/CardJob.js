@@ -51,7 +51,7 @@ const cardJob = (props) => {
   };
   let name = props.job.attributes.customer.first_name + " " + props.job.attributes.customer.last_name;
   return (
-    <div className="">
+    <div>
       <Card className={cls.CardBorder}>
         <Grid container alignItems="center">
           <Grid item xs={12} md={6}>

@@ -152,8 +152,8 @@ class Filter extends Component {
                         </div>
                         <div className="col-xs-12 col-md-6">
                           <div className={cls.FilterBtnWrapper}>
-                            <button className={cls.FilterBtn}>Filtrar</button>
-                            <button className={cls.FilterBtn}>Mostrar Todos</button>
+                            <button onClick={(event) => this.props.filterHandler(event)} className={cls.FilterBtn}>Filtrar</button>
+                            <button onClick={() => window.location.reload() } className={cls.FilterBtn}>Mostrar Todos</button>
                           </div>
                         </div>
                       </div>

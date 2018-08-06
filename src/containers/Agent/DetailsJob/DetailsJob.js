@@ -25,7 +25,6 @@ class DetailsJob extends Component {
     this.props.onCanApply(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   componentDidUpdate() {
-    // this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
     if (this.props.jobDetails.attributes && this.props.reviews.length === 0) {
       this.props.onReviews(localStorage.getItem('token'), this.props.jobDetails.attributes.customer.data.attributes.hashed_id);
     }
@@ -127,8 +126,6 @@ class DetailsJob extends Component {
                 </div>
               ) : (
                 <Grid container className={cls.DetailsJob}>
-                {/* <div className={cls.JobDetailHeader} style={{backgroundImage: `url(${this.props.job.attributes.service_type_image.url})`}}>
-                </div> */}
                   <Grid item xs={5}>
                     <dl>
                       <Grid container>
@@ -263,7 +260,6 @@ class DetailsJob extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  // onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
   onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
   onReviews: (token, id) => dispatch(actions.reviews(token, id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
@@ -272,7 +268,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  // job: state.job.job,
   jobDetails: state.job.jobDetails,
   reviews: state.reviews.reviews,
   disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,

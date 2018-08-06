@@ -30,7 +30,7 @@ class DashboardAgent extends Component {
   componentDidMount() {
     let filter = {};
     filter.min_price = '0';
-    filter.max_price = '0';
+    filter.max_price = '';
     filter.date_from = null;
     filter.date_to = null;
     filter.frequency = null;
@@ -108,7 +108,7 @@ class DashboardAgent extends Component {
       } else {
         let filter = {};
         filter.min_price = '0';
-        filter.max_price = '0';
+        filter.max_price = '';
         filter.date_from = null;
         filter.date_to = null;
         filter.frequency = null;
@@ -142,7 +142,7 @@ class DashboardAgent extends Component {
     } else {
       let filter = {};
       filter.min_price = '0';
-      filter.max_price = '0';
+      filter.max_price = '';
       filter.date_from = null;
       filter.date_to = null;
       filter.frequency = null;

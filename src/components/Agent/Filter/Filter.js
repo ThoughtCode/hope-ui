@@ -42,6 +42,7 @@ class Filter extends Component {
                       <div className="filter-content">
                         <div className="form-group col-md-6">
                           <label>Min</label>
+                          {console.log(this.props)}
                           <input
                             type="number"
                             className="form-control"

@@ -120,7 +120,6 @@ class AppBarMenu extends Component {
                   src={this.props.profile}/>
               )}
                 <a className={`${cls.MenuItem} ${cls.Perfil} ${cls.DisplayNo}`}>Mi perfil <span className="caret"></span></a>
-                <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
               </IconButton>
               <Menu
                 className={cls.SubMenu}

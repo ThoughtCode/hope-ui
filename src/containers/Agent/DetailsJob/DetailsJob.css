@@ -1,15 +1,11 @@
 .DetailsJob {
-  margin-top: 22vh;
+  margin-top: 14vh;
 }
 
 .LoaderContainer {
   margin-top: 150px;
 }
 
-.ServiceDate {
-  text-align: center;
-  padding: 1rem;
-}
 .ContenUserCliente{
   padding: 1rem;
 } 
@@ -26,7 +22,61 @@
 }  
 .Services {
   padding: 20px;
-} 
+}
+.serviceBase {
+  color: #0069a7;
+  font-weight: 700;
+}
+.precio {
+  color: #0069a7;
+  font-weight: 700;
+}
+.TpWeightBold {
+  font-weight: 700!important;
+}
+.Ul {
+  list-style-type: disc;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 40px;
+  margin-top: 0;
+  margin-bottom: 10px;
+  display: block;
+}
+.Li {
+  display: list-item;
+  text-align: -webkit-match-parent;
+  list-style-type: disc;
+}
+.JobDetailsServices {
+  background-color: #fff;
+  border-top: 1px solid #e9eced;
+  font-size: 20px !important;
+  padding-left: 24px !important;
+  width: 100%;
+}
+
+.JobDetailsServices dl {
+  margin: 0;
+  padding-left: 0px;
+  text-align: left;
+  padding-bottom: 8px;
+}
+.JobDetailsServices dd {
+  border-bottom: 1px solid #e9eced;
+  margin-bottom: 12px;
+  margin-left: 0;
+  margin-right: 20px;
+  padding: 5px 5px 12px 0;
+  line-height: 22px;
+  letter-spacing: 1px;
+}
+
+.JobDetailsServices dt {
+  margin-right: 20px;
+}
 .HeadService{
   padding-top: 0.5em;
 }  
@@ -49,7 +99,51 @@
 } 
 .AvatarMargin {
   margin-right: 16px;
-} 
+}
+.ReviewAvatarCircle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ReviewAvatarCircle {
+  margin: 0 auto;
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.ReviewName {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.ReviewName p {
+  margin: 0px !important;
+  padding: 0px !important;
+  font-family: 'Helvetica', sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+.ReviewDetails {
+  margin-top: 0px;
+}
+
+.ReviewDetails p {
+  font-size: 18px;
+  font-style: italic;
+  margin: 0px !important;
+  padding: 0px !important;
+  font-family: 'Helvetica', sans-serif;
+  line-height: 1.42857143;
+  color: #333;
+}
 .Agents {
   display: inline-flex !important;
   margin-right: 16px;
@@ -78,4 +172,154 @@
 }
 .AgentPostulate{
   padding-top: 1em;
+}
+.JobAgentWrapper {
+  padding: 0 5%;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+.JobAgentsHeader {
+  padding: 10px 25px;
+  background-color: #fff;
+  border-bottom: 1px solid #e9eced;
+  border-top: 1px solid #e9eced;
+  width: 100%;
+}
+.Title {
+  font-size: 20px !important;
+  line-height: 28px !important;
+  font-weight: 700 !important;
+  margin-top: 32px !important;
+  margin-bottom: 32px !important;
+  -webkit-box-flex: 1 !important;
+  -ms-flex-positive: 1 !important;
+  flex-grow: 1 !important;
+}
+
+.QouteWrapper {
+  background-color: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.Qoute {
+  border: 1px solid #e9eced;
+  overflow: hidden;
+  padding: 20px;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+
+.QouteHeader {
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.AgentAvatarCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.AvatarInitials {
+  text-align: center;
+  background: #676d73;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.QouteName {
+  display: inline-block;
+  margin-left: 20px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+}
+.QouteName p {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: bold;
+  margin: 0px !important;
+  padding: 0px !important;
+  box-sizing: border-box;
+  display: block;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+}
+
+.QouteDetails {
+  width: 100%;
+  margin: 5px auto;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.StarsWrapper {
+  width: 100%;
+}
+
+.Items {
+  min-height: 1px;
+}
+
+.QuoteNumberHires {
+  border-left: 1px solid #e9eced;
+  padding-left: 10px;
+}
+
+.JobHire {
+  color: #009fd9;
+  line-height: 44px;
+  border-top: 1px solid #e9eced;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.JobHire:hover {
+  background-color: #dfdfdf;
+}
+
+@media only screen and (min-width: 375px) {
+  .QuoteNumberHires {
+    padding-left: 15px;
+  } 
 }

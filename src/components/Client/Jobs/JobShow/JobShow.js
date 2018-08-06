@@ -117,7 +117,7 @@ class JobShow extends Component {
                     <Grid item xs={6} className={cls.Items}>
                       <Grid className={cls.QuoteNumberHires} container justify="center">
                         <div>
-                          <div className={cls.TpBody}>1</div>
+                          <div className={cls.TpBody}>{p.attributes.agent_rewiews_count}</div>
                           <div className={cls.QouteDetailStats}>Veces Contratado
                           </div>
                         </div>
@@ -171,7 +171,7 @@ class JobShow extends Component {
                   <Grid item xs={6} className={cls.Items}>
                     <Grid className={cls.QuoteNumberHires} container justify="center">
                       <div>
-                        <div className={cls.TpBody}>1</div>
+                        <div className={cls.TpBody}>{this.props.job.attributes.agent_rewiews_count}</div>
                         <div className={cls.QouteDetailStats}>Veces Contratado
                         </div>
                       </div>
@@ -190,6 +190,7 @@ class JobShow extends Component {
       }
       services = (
         <Grid container className={cls.Background} justify="center">
+          {console.log(this.props.job.attributes)}
           <div className={cls.JobDetailHeader} style={{backgroundImage: `url(${this.props.job.attributes.service_type_image.url})`}}>
           </div>
           <div className={cls.JobDetailsCard}>
@@ -246,8 +247,11 @@ class JobShow extends Component {
                           <li className={cls.Li}>{detail.service.name}</li>
                         );
                       }
+                    } else {
+                      return (
+                        <li className={cls.Li}>Sin Servicos Adicionales</li>
+                      );
                     }
-                    return null;
                   })}
                 </ul>
               </dd>

@@ -111,9 +111,9 @@ const cardJob = (props) => {
                 <Grid className={`${cls.Border} ${cls.ViewDetails}`} item xs={12}>
                   <Grid container>
                     <Grid item xs={6} sm={12}>
-                      <button className={cls.Button} component={Link} to={`/agente/trabajo/${props.job.id}`}>
+                      <Button className={cls.Button} component={Link} to={`/agente/trabajo/${props.job.id}`}>
                         Ver Detalles
-                      </button>
+                      </Button>
                     </Grid>
                     <Grid item xs={6} sm={12}>
                       <button className={cls.Button} onClick={() => props.apply(localStorage.getItem('token'), props.job.id)}>

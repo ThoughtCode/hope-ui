@@ -12,6 +12,7 @@ import {
 } from 'material-ui';
 import Rating from 'react-rating';
 import Spinner from '../../../components/UI/Spinner/Spinner';
+import Stars from './Stars';
 
 // Css
 import cls from './DetailsJob.css';
@@ -24,6 +25,7 @@ class DetailsJob extends Component {
     this.props.onCanApply(localStorage.getItem('token'), this.props.match.params.job_id);
   };
   componentDidUpdate() {
+    // this.props.onFetchJob(localStorage.getItem('token'), this.props.match.params.job_id);
     if (this.props.jobDetails.attributes && this.props.reviews.length === 0) {
       this.props.onReviews(localStorage.getItem('token'), this.props.jobDetails.attributes.customer.data.attributes.hashed_id);
     }
@@ -39,9 +41,11 @@ class DetailsJob extends Component {
     let avatar = null;
     let commentCard = null;
     let rewiewsAverage = null;
+    let reviewsCount = null;
     let details = null;
     if(this.props.jobDetails.attributes){
       rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
+      reviewsCount = this.props.jobDetails.attributes.customer_rewiews_count;
       firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
       lastNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.last_name;
       total = this.props.jobDetails.attributes.total;
@@ -56,21 +60,32 @@ class DetailsJob extends Component {
             return (
               <div className={cls.AvatarAgent} key={cr.attributes.id}>
                 { avatar === null ? (
-                  <Avatar>
-                    {cr.attributes.owner.data.attributes.first_name.charAt(0).toUpperCase()}
-                    {cr.attributes.owner.data.attributes.last_name.charAt(0).toUpperCase()}
-                  </Avatar>
+                  <div className={cls.Review}>
+                    <div className={cls.ReviewHeader}>
+                      <div className={cls.ReviewAvatar}>
+                        <div className={cls.ReviewAvatarCircle}>
+                          <div className={cls.AvatarInitials}>
+                            {cr.attributes.owner.data.attributes.first_name.charAt(0).toUpperCase()}
+                            {cr.attributes.owner.data.attributes.last_name.charAt(0).toUpperCase()}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 ) : (
-                  <Avatar className={cls.AvatarMargin} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
+                  <Avatar className={cls.AvatarInitials} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
                 )}
-                <div className={cls.NameAgent}>
-                  <Typography variant="subheading">
-                    {cr.attributes.owner.data.attributes.first_name} {cr.attributes.owner.data.attributes.last_name}
-                  </Typography>
-                  <Typography variant="caption">
-                    {cr.attributes.comment}
-                  </Typography>
-                </div>
+                  <div className={cls.ReviewName}>
+                    <p>
+                      {cr.attributes.owner.data.attributes.first_name} {cr.attributes.owner.data.attributes.last_name}
+                    </p>
+                    <div>
+                      <Stars agentRewiewsAverage={cr.attributes.qualification}/>
+                    </div>
+                    <div className={cls.ReviewDetails}>
+                      <p>{cr.attributes.comment}</p>
+                    </div>
+                  </div>
               </div>
             );
           })
@@ -85,23 +100,26 @@ class DetailsJob extends Component {
           }
           return null;
         })
-        services_addon = this.props.jobDetails.attributes.job_details.map( detail => {
-          if (detail.service.type_service === 'addon') {
-            return (
-              <ul key={detail.id}>{detail.service.name}</ul>
-            );
-          }
-          return null;
-        })
+        services_addon = 
+        <ul className={cls.Ul}>
+          {this.props.jobDetails.attributes.job_details.map( detail => {
+            if (detail.service.type_service === 'addon') {
+              return (
+                <li className={cls.Li} key={detail.id}>{detail.service.name}</li>
+              );
+            }
+            return null;
+          })}
+        </ul>
       }
     }
     if (this.props.jobDetails.attributes){
       details = this.props.jobDetails.attributes.details
     }
     return (
-      <div>
-        <Grid container justify="center">
-          <Grid item xs={8}>
+      <div className={cls.JobDetailsServices}>
+        <dl>
+          <Grid item xs={12}>
             <Paper elevation={0}>
               {this.props.loading ? (
                 <div className={cls.LoaderContainer}>
@@ -109,45 +127,39 @@ class DetailsJob extends Component {
                 </div>
               ) : (
                 <Grid container className={cls.DetailsJob}>
+                {/* <div className={cls.JobDetailHeader} style={{backgroundImage: `url(${this.props.job.attributes.service_type_image.url})`}}>
+                </div> */}
                   <Grid item xs={5}>
-                    <Paper elevation={0}>
-                      <Grid container className={cls.ServiceDate}>
+                    <dl>
+                      <Grid container>
                         <Grid item xs={12}>
-                          <Paper>
-                            <Typography variant="headline" className={cls.TitleDate}>{service_base}</Typography>
-                            <Typography variant="caption" className={cls.TitleCaption}>{frequency}</Typography>
-                            <Typography variant="caption" className={cls.TitleCaption}>
-                              {finishedAt}
-                            </Typography>
+                          <Paper elevation={0}>
+                            <dt className={cls.TpWeightBold}>Servicios contratados</dt>
+                            <dd className={cls.serviceBase}>{service_base}</dd>
                           </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                          <Paper className={cls.ServiceDate}>
-                            <Typography variant="headline">Servicios Adicionales</Typography>
-                            <Grid container className={cls.ServiceDate}>
-                              <Grid item xs={12}>
-                                <Paper elevation={0}>
-                                  {services_addon}
-                                </Paper>
-                              </Grid>
-                            </Grid>
+                          <Paper elevation={0}>
+                            <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
+                            <dd>
+                              {services_addon}
+                            </dd>
                           </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                          <Paper className={cls.ServiceDate}>
-                            <Typography variant="headline">Detalles a considerar</Typography>
-                            <Grid container className={cls.ServiceDate}>
-                              <Grid item xs={12}>
-                                <Paper elevation={0}>
-                                  {details}
-                                </Paper>
-                              </Grid>
-                            </Grid>
+                          <Paper elevation={0}>
+                            <dt className={cls.TpWeightBold}>Detalles Adicionales</dt>
+                            <dd>
+                              {details}
+                            </dd>
                           </Paper>
                         </Grid>
                         <Grid item xs={12}>
-                          <Paper className={cls.ServiceDate}>
-                              <Typography variant="display3" gutterBottom className={cls.TypograFechaPrecio}>{total}$</Typography>
+                          <Paper elevation={0}>
+                            <dt className={cls.TpWeightBold}>Precio</dt>
+                            <dd className={cls.precio}>
+                              ${total}
+                            </dd>
                           </Paper>
                         </Grid>
                         {this.props.canApply.can_apply === true ? (
@@ -157,93 +169,101 @@ class DetailsJob extends Component {
                           )
                         }
                       </Grid>
-                    </Paper>
+                    </dl>
                   </Grid>
                   <Grid item xs={7}>
-                    <Paper elevation={0}>
-                      <Grid container className={cls.ContenUserCliente}>
-                        <Grid item xs={12}>
-                          <Paper elevation={0}><Typography variant="headline">Cliente</Typography></Paper>
-                        </Grid>
-                        <Grid item xs={12} className={cls.AgentPostulate}>
-                          <Paper elevation={0}>
-                            <div className={cls.AvatarAgent}>
-                              <Grid container spacing={24}>
-                                <Grid item xs={12} sm={1}>
-                                  <Paper elevation={0}>
-                                    {avatar === null ? (
-                                      <Avatar>
-                                        {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0).toUpperCase())}
-                                        {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0).toUpperCase())}
-                                      </Avatar>
-                                    ) : (
-                                      <Avatar src={avatar} className={cls.AvatarMargin}>
-                                      </Avatar>
-                                    )}
-                                  </Paper>
-                                </Grid>
-                                <Grid item xs={12} sm={7}>
-                                  <Paper elevation={0}>
-                                    <div className={cls.NameAgent}>
-                                      <Typography className={cls.Name} variant="subheading">
-                                        {firstNameCustomer} {lastNameCustomer}
-                                      </Typography>
-                                    </div>
-                                  </Paper>
-                                </Grid>
-                                <Grid item xs={12} sm={4}>
-                                  <Paper className={cls.TextRight} elevation={0}>
-                                    <Typography className={cls.Name} variant="subheading">
-                                      <Rating initialRating={rewiewsAverage}
-                                        readonly
-                                        emptySymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-empty.png" className={`${cls.Stars} ${"icon"}`} alt="starsMin" />}
-                                        fullSymbol={<img src="http://dreyescat.github.io/react-rating/assets/images/star-full.png" className={`${cls.Stars} ${"icon"}`} alt="startFull" />}
-                                      />
-                                    </Typography>
-                                  </Paper>
-                                </Grid>
-                                <Grid item xs={12}>
-                                  <Paper className={cls.TextRight} elevation={0}>
-                                  {this.props.disableButtonCustomer.can_review === true ? (
-                                    <Button
-                                    className={cls.ButtonContratar}
-                                    component={Link}
-                                    to={`/agente/${this.props.match.params.job_id}/calificar`}
-                                    >
-                                      CALIFICAR
-                                    </Button>
-                                    ) : (
-                                      <p></p>
-                                    )
-                                  }
-                                  </Paper>
-                                </Grid>
-                              </Grid>
+                    <Grid container className={cls.JobAgents}>
+                      <div className={cls.JobAgentWrapper}>
+                        <div className={cls.JobAgentsHeader}>
+                          <h2 className={cls.Title}>Cliente</h2>
+                        </div>
+                        <div className={cls.QouteWrapper}>
+                          <div className={cls.Qoute}>
+                            <div className={cls.QouteHeader}>
+                              <div className={cls.Avatar}>
+                                <div className={cls.AgentAvatarCircle}>
+                                {avatar === null ? (
+                                  <div className={cls.AvatarInitials}>
+                                    {firstNameCustomer === null ? (<p></p>) : (firstNameCustomer.charAt(0).toUpperCase())}
+                                    {lastNameCustomer === null ? (<p></p>) : (lastNameCustomer.charAt(0).toUpperCase())}
+                                  </div>
+                                ) : (
+                                  <Avatar src={avatar} className={cls.AvatarMargin}>
+                                  </Avatar>
+                                )}
+                                </div>
+                              </div>
+                              <div className={cls.QouteName}>
+                                <p>{firstNameCustomer} {lastNameCustomer}</p>
+                              </div>
                             </div>
-                          </Paper>
-                        </Grid>
+                            <div className={cls.QouteDetails}>
+                              <Grid container className={cls.Container}>
+                                <Grid item className={cls.Items} xs={6}>
+                                  <Grid container justify="center">
+                                    <div className={cls.StarsWrapper}>
+                                      <div>
+                                        <Rating initialRating={rewiewsAverage}
+                                          readonly
+                                          emptySymbol={<svg fill="#d3d4d5" className="_6fkXvDthZjQeULt0aYycL rLNwGbYp_J8ZBBDZBtgSD" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c-.297 0-.543.2-.62.473l-1.574 4.86H.64c-.357 0-.64.31-.64.67 0 .22.11.417.277.534C.38 6.607 4.45 9.58 4.45 9.58s-1.563 4.8-1.593 4.877a.648.648 0 0 0 .977.76L8 12.183s4.073 2.967 4.167 3.034a.65.65 0 0 0 .37.116.65.65 0 0 0 .606-.876c-.03-.077-1.593-4.877-1.593-4.877s4.07-2.973 4.173-3.043A.654.654 0 0 0 16 6c0-.356-.277-.667-.634-.667H10.2L8.62.473A.643.643 0 0 0 8 0"></path></svg>}
+                                          fullSymbol={<svg fill="#febe14" className="_6fkXvDthZjQeULt0aYycL rLNwGbYp_J8ZBBDZBtgSD" width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c-.297 0-.543.2-.62.473l-1.574 4.86H.64c-.357 0-.64.31-.64.67 0 .22.11.417.277.534C.38 6.607 4.45 9.58 4.45 9.58s-1.563 4.8-1.593 4.877a.648.648 0 0 0 .977.76L8 12.183s4.073 2.967 4.167 3.034a.65.65 0 0 0 .37.116.65.65 0 0 0 .606-.876c-.03-.077-1.593-4.877-1.593-4.877s4.07-2.973 4.173-3.043A.654.654 0 0 0 16 6c0-.356-.277-.667-.634-.667H10.2L8.62.473A.643.643 0 0 0 8 0"></path></svg>}
+                                        />
+                                        <div>
+                                          <div className={cls.QouteDetailStats}>{reviewsCount} Opiniones</div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </Grid>
+                                </Grid>
+                                <Grid item xs={6} className={cls.Items}>
+                                  <Grid className={cls.QuoteNumberHires} container justify="center">
+                                    <div>
+                                      <div className={cls.TpBody}>{reviewsCount}</div>
+                                      <div className={cls.QouteDetailStats}>Trabajos Completados</div>
+                                    </div>
+                                  </Grid>
+                                </Grid>
+                              </Grid>                      
+                            </div>
+                          </div>
+                          {this.props.disableButtonCustomer.can_review === true ? (
+                            <Link
+                            className={cls.JobHire}
+                            component={Link}
+                            to={`/agente/${this.props.match.params.job_id}/calificar`}
+                            >
+                              CALIFICAR
+                            </Link>
+                            ) : (
+                              <p></p>
+                            )
+                          }
+                        </div>
                         <Grid item xs={12}>
-                          <Paper elevation={0}><Typography variant="headline">Opiniones</Typography></Paper>
+                          <div className={cls.JobAgentsHeader}>
+                            <h2 className={cls.Title}>Opiniones</h2>
+                          </div>
                         </Grid>
                         <Grid item xs={12} className={cls.AgentPostulate}>
                           <Paper elevation={0}>
                             {commentCard}
                           </Paper>
                         </Grid>
-                      </Grid>
-                    </Paper>
+                      </div>
+                    </Grid>
                   </Grid>
                 </Grid>
               )}
             </Paper>
           </Grid>
-        </Grid>
+        </dl>
       </div>
     )
   }
 }
 
 const mapDispatchToProps = dispatch => ({
+  // onFetchJob: (token, job_id) => dispatch(actions.fetchJob(token, job_id)),
   onJobDetails: (token, job_id) => dispatch(actions.jobDetails(token, job_id)),
   onReviews: (token, id) => dispatch(actions.reviews(token, id)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
@@ -252,6 +272,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
+  // job: state.job.job,
   jobDetails: state.job.jobDetails,
   reviews: state.reviews.reviews,
   disableButtonCustomer: state.disableButtonCustomer.disableButtonCustomer,

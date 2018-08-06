@@ -16,6 +16,10 @@
   display: inline-block;
 }
 
+/* .AgentDetails p {
+  margin: 0 10% 10px 0 !important;
+} */
+
 .JobAgent {
   font-size: 20px !important;
   line-height: 20px;
@@ -92,10 +96,10 @@
 
 .HeaderName{
   display: inline-block;
-  margin: 0 45px 0 0;
 }
 .FrequencyPrice{
-  display: inline-block;
+  display: inline;
+  margin:  0 0 0 8vh;
 }
 
 .PriceSi {
@@ -283,5 +287,15 @@
   }
   .PriceSi {
     display: block !important;
+  }
+}
+@media (max-width: 1024px) {
+  .FrequencyPrice{
+    margin:  0 0 0 8vh !important;
+  }
+}
+@media (min-width: 1200px) {
+  .FrequencyPrice{
+    margin:  0 0 0 20vh !important;
   }
 }

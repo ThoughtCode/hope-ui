@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Datetime from 'react-datetime';
 import moment from 'moment';
-
+import {TextField} from 'material-ui';
 // Css
 import cls from './Filter.css'
 
@@ -12,6 +12,18 @@ class Filter extends Component {
 
   validDatesTo = current => {
     return current.isAfter(moment(this.props.filter.date_from));
+  };
+
+  renderInput = (props) => {
+    return (
+      <div>
+        <TextField
+          InputLabelProps={{
+            shrink: true,
+          }}
+        {...props}/>
+      </div>
+    );
   };
 
   render() {

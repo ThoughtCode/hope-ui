@@ -37,7 +37,10 @@ class DetailsJob extends Component {
     let finishedAt = null;
     let firstNameCustomer = null;
     let lastNameCustomer = null;
+    let firstNameCustomerService = null;
+    let lastNameCustomerService = null;    
     let avatar = null;
+    let avatarCustomerJob = null;
     let commentCard = null;
     let rewiewsAverage = null;
     let reviewsCount = null;
@@ -114,6 +117,9 @@ class DetailsJob extends Component {
     }
     if (this.props.jobDetails.attributes){
       details = this.props.jobDetails.attributes.details
+      firstNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.first_name
+      lastNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.last_name
+      avatarCustomerJob = this.props.jobDetails.attributes.customer.data.attributes.avatar.url
     }
     return (
       <div className={cls.JobDetailsServices}>
@@ -126,16 +132,42 @@ class DetailsJob extends Component {
                 </div>
               ) : (
                 <Grid container className={cls.DetailsJob}>
-                  <Grid item xs={5}>
+                  <Grid item xs={12} sm={5} md={5}>
+                    <div className={cls.jobDetailHeader}></div>
+                    <div className={cls.jobDetailsCard}>
+                      <div className={cls.jobDetailsAvatar}>
+                        {avatarCustomerJob === null ? (
+                          <avatar className={cls.avatar}>
+                            <div className={cls.avatarCircle}>
+                              <div className={cls.avatarInitials}>
+                                {firstNameCustomerService === null ? (<p></p>) : (firstNameCustomerService.charAt(0).toUpperCase())}
+                                {lastNameCustomerService === null ? (<p></p>) : (lastNameCustomerService.charAt(0).toUpperCase())}
+                              </div>
+                            </div>
+                          </avatar>
+                        ) : (
+                          <avatar className={cls.avatar}>
+                            <div className={cls.avatarCircle} style={{backgroundImage: `url(${avatarCustomerJob})`, backgroundColor: '#676d73' }}>
+                            </div>
+                          </avatar>
+                        )}
+                      </div>
+                      <p className={cls.jobDetailsCustomerName}>
+                        {firstNameCustomerService} {lastNameCustomerService}
+                      </p>
+                      <p className={cls.jobDetailsCustomerAddress}>
+                        Vos Andes N42-146 y Mariano Echeverria
+                      </p>
+                    </div>
                     <dl>
-                      <Grid container>
-                        <Grid item xs={12}>
+                      <Grid container justify="center">
+                        <Grid item xs={11}>
                           <Paper elevation={0}>
                             <dt className={cls.TpWeightBold}>Servicios contratados</dt>
                             <dd className={cls.serviceBase}>{service_base}</dd>
                           </Paper>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={11}>
                           <Paper elevation={0}>
                             <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
                             <dd>
@@ -143,15 +175,15 @@ class DetailsJob extends Component {
                             </dd>
                           </Paper>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={11}>
                           <Paper elevation={0}>
                             <dt className={cls.TpWeightBold}>Detalles Adicionales</dt>
-                            <dd>
+                            <dd style={{color: '#676d73'}}>
                               {details}
                             </dd>
                           </Paper>
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={11}>
                           <Paper elevation={0}>
                             <dt className={cls.TpWeightBold}>Precio</dt>
                             <dd className={cls.precio}>
@@ -168,7 +200,7 @@ class DetailsJob extends Component {
                       </Grid>
                     </dl>
                   </Grid>
-                  <Grid item xs={7}>
+                  <Grid item xs={12} sm={7} md={7}>
                     <Grid container className={cls.JobAgents}>
                       <div className={cls.JobAgentWrapper}>
                         <div className={cls.JobAgentsHeader}>

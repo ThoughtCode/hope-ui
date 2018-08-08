@@ -41,6 +41,7 @@ class JobShow extends Component {
     let agents = null;
     let agentTitle = null;
     let button = null;
+    let config = null;
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (
@@ -188,9 +189,9 @@ class JobShow extends Component {
           </div>
         );
       }
+      config = (this.props.job.attributes.config)
       services = (
         <Grid container className={cls.Background} justify="center">
-          {console.log(this.props.job.attributes)}
           <div className={cls.JobDetailHeader} style={{backgroundImage: `url(${this.props.job.attributes.service_type_image.url})`}}>
           </div>
           <div className={cls.JobDetailsCard}>
@@ -292,6 +293,7 @@ class JobShow extends Component {
         >
           <div className={cls.Modal}>
             <CancelBookingModal
+              config={config}
               close={this.handleClose}
               cancelled={this.props.cancelled}
               job_id={this.props.job.id} />

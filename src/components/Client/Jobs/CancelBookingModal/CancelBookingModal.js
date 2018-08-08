@@ -23,7 +23,7 @@ const cancelBookingModal = (props) => {
         <h2>Aviso de penalizacion</h2>
       </div>
       <div>
-        <p>{descriptionTime} {valueTime} {descriptionRode} {valueRode} por cargos administrativos</p>
+        <p>{descriptionTime} "{valueTime} Horas" {descriptionRode} {valueRode} por cargos administrativos</p>
       </div>
       <div>
         <span className={cls.ButtonWrapper}>

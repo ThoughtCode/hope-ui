@@ -205,7 +205,31 @@ padding-top: 24px;
   align-items: center;
 }
 
+.ContenButton {
+  text-align: center;
+}
+
 .JobHire {
+  color: #009fd9;
+  display: inline-block !important;
+  line-height: 44px;
+  border-top: 1px solid #e9eced;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  width: 50%;
+}
+
+.JobHire:hover {
+  color: #009fd9;
+  background-color: #dfdfdf;
+  text-decoration: none;
+}
+
+.JobHireContratado {
   color: #009fd9;
   line-height: 44px;
   border-top: 1px solid #e9eced;
@@ -216,9 +240,10 @@ padding-top: 24px;
   text-decoration: none;
   cursor: pointer;
 }
-
-.JobHire:hover {
+.JobHireContratado:hover {
+  color: #009fd9;
   background-color: #dfdfdf;
+  text-decoration: none;
 }
 
 .QouteAvatar {
@@ -435,8 +460,8 @@ padding-top: 24px;
 
 .Stars{
   width: 1.2em;
-}
+}*/
 
 .Link {
-  text-decoration: none;
-} */
+  display: contents;
+}

@@ -76,8 +76,7 @@ class JobShow extends Component {
         frequency = 'Mensual';
       }
       if (this.props.job.attributes.agent === null) {
-        agentTitle = 'Agentes Postulados';
-        agentTitle = this.props.job.attributes.proposals.data.length === 0 && 'No hay Agentes Postulados';
+        agentTitle = this.props.job.attributes.proposals.data.length === 0 ? ('No hay Agentes Postulados'):('Agentes Postulados'),
         agents = this.props.job.attributes.proposals.data.length > 0 ?
           this.props.job.attributes.proposals.data.map(p => (
             <div className={cls.QouteWrapper}>
@@ -98,10 +97,10 @@ class JobShow extends Component {
                         )}
                       </div>
                     </div>
+                    <div className={cls.QouteName}>
+                      <p>{p.attributes.agent.data.attributes.first_name} {p.attributes.agent.data.attributes.last_name}</p>
+                    </div>
                   </Link>
-                  <div className={cls.QouteName}>
-                    <p>{p.attributes.agent.data.attributes.first_name} {p.attributes.agent.data.attributes.last_name}</p>
-                  </div>
                 </div>
                 <div className={cls.QouteDetails}>
                   <Grid container className={cls.Container}>
@@ -127,10 +126,17 @@ class JobShow extends Component {
                   </Grid>                      
                 </div>
               </div>
-              <div
-                onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
-                className={cls.JobHire}>
-                Contratar
+              <div className={cls.ContenButton}>
+                <div
+                  onClick={(event) => this.props.accepted(event,localStorage.getItem('token'), this.props.job.id, p.id)}
+                  className={cls.JobHire}>
+                  Contratar
+                </div>
+                <Link
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/postulado/${p.id}`}
+                  className={cls.JobHire}>
+                  Ver perfil
+                </Link>
               </div>
             </div>
           )) : 
@@ -183,7 +189,7 @@ class JobShow extends Component {
             </div>
             <Link
               to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
-              className={cls.JobHire}>
+              className={cls.JobHireContratado}>
               VER PERFIL
             </Link>
           </div>

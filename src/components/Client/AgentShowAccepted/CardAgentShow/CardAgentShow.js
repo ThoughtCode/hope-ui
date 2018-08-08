@@ -19,7 +19,6 @@ class Profile extends Component {
   }
 
   render() {
-    console.log(this.props.disableButtonjob);
     let name = null;
     let count = null;
     let avatar = null;

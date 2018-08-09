@@ -104,9 +104,7 @@ class AppBarMenu extends Component {
                 <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
                 <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
-                  Logout
-                </MenuItem>
+                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">Cerrar sesión</MenuItem>
               </Menu>
             </div>
           </Toolbar>

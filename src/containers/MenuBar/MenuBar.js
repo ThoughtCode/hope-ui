@@ -111,12 +111,12 @@ class AppBarMenu extends Component {
                 color="inherit"
               >
               {this.props.profile === 'null' ? (
-                <Avatar >
+                <Avatar className={cls.IconUser}>
                   {(localStorage.getItem('first_name').charAt(0)).toUpperCase()}{(localStorage.getItem('last_name').charAt(0)).toUpperCase()}
                 </Avatar>
               ) : (
                 <Avatar
-                  
+                  className={cls.IconUser}
                   src={this.props.profile}/>
               )}
                 <i className={`${cls.IconAvatarMenuResponsive} ${"caret"}`}></i>
@@ -137,10 +137,10 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente">Inicio</MenuItem>
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente/trabajos">Trabajos</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} href="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} href="/">Cerrar sesión</MenuItem>
+                <a className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente">Inicio</a>
+                <a className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} href="/cliente/trabajos">Trabajos</a>
+                <a className={cls.SubMenuItem} onClick={this.handleClose} component={Link} href="/cliente/perfil/info">Mi Perfil</a>
+                <a className={cls.SubMenuItem} onClick={this.props.logout} component={Link} href="/">Cerrar sesión</a>
               </Menu>
             </div>
           </Toolbar>

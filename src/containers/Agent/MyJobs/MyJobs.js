@@ -26,12 +26,12 @@ class MyJobs extends Component {
       <div>
         <MenuBar />
         <Grid container justify="center" className={cls.root}>
-          <Grid item xs={12} sm={10} md={8} lg={6}>
+          <Grid item xs={12} sm={10} md={8}>
             {this.props.loading ? (
               <Spinner />
             ) : (
               <Paper elevation={0}>
-                <Grid container justify="center">
+                <Grid container justify="center" style={{backgroundColor: '#f9f9f9'}}>
                   <Grid item xs={12}>
                     <Paper elevation={0}>
                       <Typography variant="title" gutterBottom className={cls.Typogra}>Mis Trabajos</Typography>

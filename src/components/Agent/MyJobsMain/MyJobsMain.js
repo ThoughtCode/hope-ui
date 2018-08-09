@@ -3,6 +3,7 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
+import Grid from 'material-ui/Grid';
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import Typography from 'material-ui/Typography';
@@ -23,11 +24,6 @@ function TabContainer(props) {
 }
 
 const styles = theme => ({
-  root: {
-    width: 'auto',
-    position: 'relative',
-    minHeight: 200,
-  },
   indicator: {
     backgroundColor: '#0069a7',
   },
@@ -55,8 +51,7 @@ class MyJobsMain extends React.Component {
     if (this.props.jobs.length > 0) {
       jobs = this.props.jobs.map(job => (
         <TabContainer key={job.id} dir={theme.direction}>
-          <JobCurrent
-            job={job} />
+          <JobCurrent job={job}/>
         </TabContainer>
       ));
     }
@@ -87,7 +82,7 @@ class MyJobsMain extends React.Component {
       ));
     }
     return (
-      <div className={classes.root}>
+      <div className={cls.root}>
         <AppBar position="static" className={cls.AppBar} elevation={0}>
           <Tabs
             value={this.state.value}
@@ -125,15 +120,15 @@ class MyJobsMain extends React.Component {
           index={this.state.value}
           onChangeIndex={this.handleChangeIndex}
         >
-          <TabContainer dir={theme.direction}>
+          <div dir={theme.direction} className={cls.TabContainerSpace}>
             {jobs} 
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
+          </div>
+          <div dir={theme.direction} className={cls.TabContainerSpace}>
             {jobsCompleted}
-          </TabContainer>
-          <TabContainer dir={theme.direction}>
+          </div>
+          <div dir={theme.direction} className={cls.TabContainerSpace}>
             {jobsPostulated}
-          </TabContainer>
+          </div>
         </SwipeableViews>
       </div>
     );

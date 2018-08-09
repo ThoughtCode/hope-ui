@@ -31,6 +31,11 @@
   font-size: 20px !important;
 }
 
+a:focus, a:hover {
+  text-decoration: none !important;
+  outline: none !important;
+}
+
 .MenuItemFix{
   padding-left: 17px !important;
   padding-right: 17px !important;
@@ -40,6 +45,7 @@
 .MenuItem:hover{
   background-color: transparent !important;
   color: #0069A7 !important;
+  text-decoration: none;
 }
 
 .SubMenu{
@@ -48,7 +54,6 @@
 }
 
 .SubMenuItem{
-  /* background-color: #303641 !important; */
   border-bottom: 1px solid #fff !important;
   font-size: 14px !important;
   padding: 10px 15px !important;
@@ -81,6 +86,10 @@
   background-color: transparent !important;
 }
 
+.IconAvatarMenuResponsive{
+  display: none;
+}
+
 .AppBar {
   background-color: #fff !important;
 }
@@ -111,11 +120,15 @@
   .Applogo {
     margin-top: 6px;
     width: 50px;
+    margin-bottom: 6px;
   }
   .Avatar {
     width: 80px !important;
     height: 1 !important;
     padding-top: 0px !important;
+  }
+  .IconAvatarMenuResponsive{
+    display: inline-block;
   }
   .Display{
     display: inline-block !important;
@@ -149,11 +162,12 @@
   .Applogo {
     width: 100px;
     margin-top: 16px;
+    margin-bottom: 10px;
   }
   .Avatar {
-    width: 170px !important;
+    width: 60px !important;
     height: 1 !important;
-    padding-top: 10px !important;
+    padding-top: 0px !important;
   }
   .IconUser {
     margin: 0px 4px;
@@ -175,7 +189,7 @@
   .Avatar {
     width: 160px !important;
     height: 1 !important;
-    padding-top: 10px !important;
+    padding-top: 0px !important;
   }
   .IconUser {
     margin: 0px 4px;

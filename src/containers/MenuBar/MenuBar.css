@@ -165,7 +165,7 @@ a:focus, a:hover {
     margin-bottom: 10px;
   }
   .Avatar {
-    width: 60px !important;
+    width: 100% !important;
     height: 1 !important;
     padding-top: 0px !important;
   }
@@ -189,7 +189,6 @@ a:focus, a:hover {
   .Avatar {
     width: 160px !important;
     height: 1 !important;
-    padding-top: 0px !important;
   }
   .IconUser {
     margin: 0px 4px;
@@ -200,5 +199,11 @@ a:focus, a:hover {
   ul {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
+  }
+}
+
+@media (max-width: 1025px) {
+  .Avatar {
+    padding-top: 0px !important;
   }
 }

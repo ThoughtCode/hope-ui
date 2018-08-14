@@ -10,8 +10,12 @@ import {Grid,
   Typography,
   Paper,
   withStyles,
+  InputAdornment,
+  IconButton,
 } from 'material-ui';
 import Spinner from './Spinner/Spinner';
+import Visibility from 'material-ui-icons/Visibility';
+import VisibilityOff from 'material-ui-icons/VisibilityOff';
 
 // Css
 import cls from './Form.css';
@@ -40,7 +44,7 @@ const styles = theme => ({
     fontSize: 16,
     padding: '10px 12px',
     width: 'calc(100% - 24px)',
-    margin: 10,
+    margin: 4,
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     '&:focus': {
       borderColor: '#80bdff',
@@ -130,10 +134,11 @@ class Form extends Component {
         value: '',
         validation: {
           required: true,
+          maxLength: 10,
         },
         valid: false,
         touched: false,
-        errorText: null,
+        // errorText: null,
       },
     },
     formIsValid: false,
@@ -218,6 +223,18 @@ class Form extends Component {
       agent: formData,
     };
     this.props.onRegisterUser(agent);
+  }
+
+  handleMouseDownPassword = event => {
+    event.preventDefault();
+  }
+
+  handleClickShowPassword = () => {
+    this.setState(state => ({ showPassword: !state.showPassword }));
+  }
+
+  handleClickShowPasswordConfirmation = () => {
+    this.setState(state => ({ showPasswordConfirmation: !state.showPasswordConfirmation }));
   }
 
   render() {
@@ -326,20 +343,31 @@ class Form extends Component {
             <Grid item xs={12}>
               <Paper className={classes.paper} elevation={0}>
                 <TextField
+                  id="password"
+                  type={this.state.showPassword ? 'text' : 'password'}
                   value={this.state.registerForm.password.value}
                   onChange={(event) => this.inputChangedHandler(event, 'password')}
                   fullWidth
-                  type="password"
                   placeholder="Contraseña"
-                  id="password"
                   InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.registerForm.password.valid && this.state.registerForm.password.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                  },
+                    disableUnderline: true,
+                    classes: {
+                      root: classes.bootstrapRoot,
+                      input: !this.state.registerForm.password.valid && this.state.registerForm.password.touched ? 
+                        classes.bootstrapInputError : 
+                        classes.bootstrapInput,
+                    },
+                    endAdornment: (
+                      <InputAdornment position="end" className={cls.InputPassword}>
+                        <IconButton
+                          aria-label="Toggle password visibility"
+                          onClick={this.handleClickShowPassword}
+                          onMouseDown={this.handleMouseDownPassword}
+                        >
+                          {this.state.showPassword ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
                   }}
                   InputLabelProps={{
                     shrink: true,
@@ -359,7 +387,7 @@ class Form extends Component {
                   value={this.state.registerForm.password_confirmation.value}
                   onChange={(event) => this.inputChangedHandler(event, 'password_confirmation')}
                   fullWidth
-                  type="password"
+                  type={this.state.showPasswordConfirmation ? 'text' : 'password'}
                   placeholder="Confirme Contraseña"
                   id="password-confirmation"
                   InputProps={{
@@ -370,6 +398,17 @@ class Form extends Component {
                         classes.bootstrapInputError : 
                         classes.bootstrapInput,
                     },
+                    endAdornment: (
+                      <InputAdornment position="end" className={cls.InputPassword}>
+                        <IconButton
+                          aria-label="Toggle password visibility"
+                          onClick={this.handleClickShowPasswordConfirmation}
+                          onMouseDown={this.handleMouseDownPassword}
+                        >
+                          {this.state.showPasswordConfirmation ? <VisibilityOff /> : <Visibility />}
+                        </IconButton>
+                      </InputAdornment>
+                    ),
                   }}
                   InputLabelProps={{
                     shrink: true,
@@ -418,6 +457,7 @@ class Form extends Component {
                 <TextField
                   value={this.state.registerForm.cell_phone.value}
                   onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}
+                  type="number"
                   fullWidth
                   placeholder="Celular"
                   id="celular"

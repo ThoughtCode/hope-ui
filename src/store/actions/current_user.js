@@ -88,7 +88,6 @@ export const updatedCurrentUser = (token, form) => dispatch => {
   };
   axios.put('/customers/update', form, headers)
     .then((res) => {
-      console.log(res);
       let user = {};
       user = res.data.customer.data;
       localStorage.setItem('first_name', user.attributes.first_name);
@@ -130,7 +129,6 @@ export const updatedCurrentAgent = (token, form) => dispatch => {
   };
   axios.put('/agents/update', form, headers)
     .then((res) => {
-      console.log(res);
       let user = {};
       user = res.data.agent.data;
       localStorage.setItem('first_name', user.attributes.first_name);
@@ -172,7 +170,6 @@ export const updatedCurrentUserAvatar = (token, file) => dispatch => {
   };
   axios.put('/customers/update', file, headers)
     .then((res) => {
-      console.log(res);
       let user = {};
       user = res.data.customer.data;
       localStorage.setItem('profile', user.attributes.avatar.url);
@@ -213,7 +210,6 @@ export const updatedCurrentAgentAvatar = (token, file) => dispatch => {
   };
   axios.put('/agents/update', file, headers)
     .then((res) => {
-      console.log(res);
       let user = {};
       user = res.data.agent.data;
       localStorage.setItem('profile', user.attributes.avatar.url);
@@ -253,7 +249,6 @@ export const changePassword = (token, form) => dispatch => {
   };
   axios.put('/customers/change_password', form, headers)
     .then((res) => {
-      console.log(res);
       dispatch(changePasswordSuccess());
       Alert.success(res.data.message, {
         position: 'top',

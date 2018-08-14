@@ -36,6 +36,7 @@ class DashboardAgent extends Component {
     filter.frequency = null;
     filter.current_page = this.state.filter.current_page;
     this.props.onFetchJobs(localStorage.getItem('token'), filter);
+    this.props.onFetchUser(localStorage.getItem('token'));
   };
 
   filterHandler = (event) => {
@@ -151,6 +152,14 @@ class DashboardAgent extends Component {
     }
   };
   render() {
+    let status = null;
+    let firstNameUser = null;
+    let lastNameUser = null;
+    if (this.props.user.attributes) {
+      status = this.props.user.attributes.status,
+      firstNameUser = this.props.user.attributes.first_name,
+      lastNameUser = this.props.user.attributes.last_name
+    }
     return (
       <div className={cls.Dashboard}>
         <MenuBar />
@@ -159,20 +168,27 @@ class DashboardAgent extends Component {
             <Spinner/>
           </div>
         ) : (
-          <div>
-            <Filter 
-              filter={this.state.filter}
-              filterHandler={this.filterHandler}
-              handleChange={this.handleChange}
-              changeDatetimeHandler={this.changeDatetimeHandler} />
-            <MainDashboardAgent 
-              jobs={this.props.jobs}
-              total_pages={this.props.total_pages}
-              current_page={this.state.filter.current_page}
-              goNext={this.goNext}
-              goBack={this.goBack} 
-              applyProposal={this.props.onApplyProposal} />
-          </div>
+          status === 'pending' ? (
+            <div className={cls.StatusPending}>
+              <h1>Hola, {firstNameUser} {lastNameUser}</h1>
+              <h3>en este momento estamos evaluando tu postulación, nuestro equipo de Noc Noc se contactará contigo"</h3> 
+            </div>
+          ) : (
+            <div>
+              <Filter 
+                filter={this.state.filter}
+                filterHandler={this.filterHandler}
+                handleChange={this.handleChange}
+                changeDatetimeHandler={this.changeDatetimeHandler} />
+              <MainDashboardAgent 
+                jobs={this.props.jobs}
+                total_pages={this.props.total_pages}
+                current_page={this.state.filter.current_page}
+                goNext={this.goNext}
+                goBack={this.goBack} 
+                applyProposal={this.props.onApplyProposal} />
+            </div>
+          )
         )}
       </div>
     );
@@ -180,11 +196,13 @@ class DashboardAgent extends Component {
 };
 
 const mapDispatchToProps = dispatch => ({
+  onFetchUser: (token) => dispatch(actions.fetchCurrentAgent(token)),
   onFetchJobs: (token, filter) => dispatch(actions.fetchJobsAgent(token, filter)),
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
 });
 
 const mapStateToProps = state => ({
+  user: state.user.user,
   jobs: state.job.jobs,
   total_pages: state.job.total_pages,
   loading: state.job.loading,

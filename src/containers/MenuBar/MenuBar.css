@@ -12,7 +12,7 @@
 .styleAnchor {
   color: #676d73 !important;
   text-decoration: none;
-  text-transform: capitalize !important;
+  text-transform: none !important;
   font-family: Arial !important;
   font-size: 20px !important;
 }

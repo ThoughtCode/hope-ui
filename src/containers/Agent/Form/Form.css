@@ -3,7 +3,7 @@
   padding: 20px;
   border-radius: 5px;
   text-align: center !important;
-  height: 689px;
+  height: 620px;
 }
 .LoadingContainer {
   margin-top: 50%;
@@ -79,14 +79,21 @@
   text-decoration: underline;
 }
 
+.InputPassword {
+  margin: 8px auto;
+  margin-left: 0px !important;
+}
+
 @media only screen and (max-width: 600px) {
   .Form{
     padding: 10px !important;
+    margin: 0 !important;
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (max-width: 1600px) {
   .Form{
-    padding: 10px !important;
+    margin:  90px -40px;
+    height: 620px !important;
   }
 }

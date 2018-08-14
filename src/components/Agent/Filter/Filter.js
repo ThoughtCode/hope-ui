@@ -145,7 +145,7 @@ class Filter extends Component {
                                   checked={this.props.filter.frequency === '2'}
                                   value="2"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" for="Check3" value="2">Quincenal</label>
+                                <label className="custom-control-label" htmlFor="Check3" value="2">Quincenal</label>
                               </div>
                             </div>
                             <div className="col-xs-6 col-md-3">
@@ -157,7 +157,7 @@ class Filter extends Component {
                                   checked={this.props.filter.frequency === '3'}
                                   value="3"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" for="Check4" value="3">Mensual</label>
+                                <label className="custom-control-label" htmlFor="Check4" value="3">Mensual</label>
                             </div>
                             </div>
                           </div>

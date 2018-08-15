@@ -110,59 +110,64 @@ class Filter extends Component {
                   <div className="filter-content">
                     <div className="card-body">
                       <div className="row">
-                        <div className="col-xs-12 col-md-6">
-                          <div className="row text-center">
-                            <div className="col-xs-6 col-md-3">
+                        <div className={`${cls.paddingFrequencyConten} ${"col-xs-12 col-md-8"}`}>
+                          <div className="row">
+                            <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
+                              <div className="custom-control custom-checkbox">
+                                <label onClick={() => window.location.reload() } className={`${cls.spaceLabelFrequencyAll} ${"custom-control-label"}`} >Todas</label>
+                              </div>
+                            </div>
+                            <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
                               <div className="custom-control custom-checkbox">
                                 <input
                                   type="checkbox"
                                   className="custom-control-input"
-                                  id="Check1" 
+                                  id="Check0" 
                                   checked={this.props.filter.frequency === '0'}
                                   value="0"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" htmlFor="Check1" value="0">Una vez</label>
+                                <label className={`${cls.spaceLabelFrequency} ${"custom-control-label"}`} htmlFor="Check0" value="0">Una vez</label>
                               </div>
                             </div>
-                            <div className="col-xs-6 col-md-3">
+                            <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
                               <div className="custom-control custom-checkbox">
                                 <input
                                   type="checkbox"
                                   className="custom-control-input"
-                                  id="Check2"
+                                  id="Check1"
                                   checked={this.props.filter.frequency === '1'}
                                   value="1"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" htmlFor="Check2" value="1">Semanal</label>
+                                <label className={`${cls.spaceLabelFrequency} ${"custom-control-label"}`} htmlFor="Check1" value="1">Semanal</label>
                               </div>
                             </div>
-                            <div className="col-xs-6 col-md-3">
+                            <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
                               <div className="custom-control custom-checkbox">
                                 <input
                                   type="checkbox"
                                   className="custom-control-input"
-                                  id="Check3" 
+                                  id="Check2" 
                                   checked={this.props.filter.frequency === '2'}
                                   value="2"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" htmlFor="Check3" value="2">Quincenal</label>
+                                <label className={`${cls.spaceLabelFrequency} ${"custom-control-label"}`} htmlFor="Check2" value="2">Quincenal</label>
                               </div>
                             </div>
-                            <div className="col-xs-6 col-md-3">
+                            <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
                               <div className="custom-control custom-checkbox">
                                 <input
                                   type="checkbox"
                                   className="custom-control-input"
-                                  id="Check4"
+                                  id="Check3"
                                   checked={this.props.filter.frequency === '3'}
                                   value="3"
                                   onChange={(event) => this.props.handleChange(event, 'frequency')} />
-                                <label className="custom-control-label" htmlFor="Check4" value="3">Mensual</label>
+                                <label className={`${cls.spaceLabelFrequency} ${"custom-control-label"}`} htmlFor="Check3" value="3">Mensual</label>
                             </div>
                             </div>
                           </div>
                         </div>
-                        <div className="col-xs-12 col-md-6">
+                        <div className="col-xs-12 col-md-4">
                           <div className={cls.FilterBtnWrapper}>
                             <button onClick={(event) => this.props.filterHandler(event)} className={cls.FilterBtn}>Filtrar</button>
                             <button onClick={() => window.location.reload() } className={cls.FilterBtn}>Mostrar Todos</button>

@@ -171,7 +171,7 @@ class DashboardAgent extends Component {
           status === 'pending' ? (
             <div className={cls.StatusPending}>
               <h1>Hola, {firstNameUser} {lastNameUser}</h1>
-              <h3>en este momento estamos evaluando tu postulación, nuestro equipo de Noc Noc se contactará contigo"</h3> 
+              <h3>en este momento estamos evaluando tu postulación, nuestro equipo de Noc Noc se contactará contigo</h3> 
             </div>
           ) : (
             <div>

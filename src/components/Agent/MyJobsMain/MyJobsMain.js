@@ -127,6 +127,7 @@ class MyJobsMain extends React.Component {
             {jobsCompleted}
           </div>
           <div dir={theme.direction} className={cls.TabContainerSpace}>
+          {console.log(this.props)}
             {jobsPostulated}
           </div>
         </SwipeableViews>

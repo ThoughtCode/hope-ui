@@ -3,6 +3,13 @@
   border-radius: 5px !important;
 }
 
+.Button:hover{
+  background-color: #f7feff !important;
+  border-color: #0069a7 !important;
+  color: #0069a7 !important;
+  /* background-color: rgba(29.9, 102.6, 169.1, 0.3) !important; */
+}
+
 .Item {
   padding: 10px 0;
 }

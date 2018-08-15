@@ -24,6 +24,7 @@ const cardJob = (props) => {
   let services = null;
   let addon = null;
   let frequency = null;
+  let title = null;
   if (props.job.attributes.job_details) {
     services = props.job.attributes.job_details.map(detail => {
       if (detail.service.type_service === 'base') {
@@ -33,6 +34,7 @@ const cardJob = (props) => {
     });
     addon = props.job.attributes.job_details.map(detail => {
       if (detail.service.type_service === 'addon') {
+        title = "Servicios Adicionales"
         return (
           <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
         );
@@ -96,6 +98,7 @@ const cardJob = (props) => {
                     {moment(props.job.attributes.started_at).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                   </div>  
                   <div className={cls.jobDetails}>
+                    <p className={cls.jobService}>{title}</p>
                     {addon}
                   </div>
                 </div>

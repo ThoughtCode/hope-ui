@@ -15,6 +15,24 @@
   padding: 10px 25px;
 }
 
+.paddingFrequency {
+  padding: 0 !important;
+}
+
+.paddingFrequencyConten {
+  padding: 0 0 0 48px;
+}
+
+.spaceLabelFrequency {
+  margin-left: 4px;
+  cursor: pointer;
+}
+
+.spaceLabelFrequencyAll {
+  margin-left: 0;
+  cursor: pointer;
+}
+
 .Title {
   font-size: 20px !important;
   line-height: 28px !important;
@@ -28,7 +46,7 @@
 
 .FilterBtnWrapper {
   text-align: center;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .FilterBtn {
@@ -41,9 +59,13 @@
   margin-top: 10px;
 }
 
+.FilterBtn:hover {
+  background-color: #f7feff !important;
+}
+
 @media only screen and (min-width: 374px) {
   .FilterBtn {
-    margin: 5px 10px;
+    margin: 0px 4px;
   }
   
   .SearchFilter {

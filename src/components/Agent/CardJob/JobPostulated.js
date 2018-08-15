@@ -29,6 +29,7 @@ const jobPostulated = ( props ) => {
   let propertyPStreet = null;
   let propertySStreet = null;
   let propertyStartedAt = null;
+  let title = null;
   props.job.attributes.job_details.forEach(j => {
     if (j.service.type_service === 'base') {
       service_base = j.service.name;
@@ -36,6 +37,7 @@ const jobPostulated = ( props ) => {
   });
   services_addon = props.job.attributes.job_details.map(j => {
     if (j.service.type_service === 'addon') {
+      title = "Servicios Adicionales"
       return (
         <div key={j.id} className={cls.jobExtraServices}>{j.service.name}</div>
       );
@@ -97,6 +99,7 @@ const jobPostulated = ( props ) => {
                       {moment(propertyStartedAt).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                     </div>  
                     <div className={cls.jobDetails}>
+                      <p className={cls.jobService}>{title}</p>
                       {services_addon}
                     </div>
                   </div>

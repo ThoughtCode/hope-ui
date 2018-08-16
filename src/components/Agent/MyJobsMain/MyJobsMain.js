@@ -3,7 +3,6 @@ import React from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
-import Grid from 'material-ui/Grid';
 import Tabs from 'material-ui/Tabs/Tabs';
 import Tab from 'material-ui/Tabs/Tab';
 import Typography from 'material-ui/Typography';
@@ -127,7 +126,6 @@ class MyJobsMain extends React.Component {
             {jobsCompleted}
           </div>
           <div dir={theme.direction} className={cls.TabContainerSpace}>
-          {console.log(this.props)}
             {jobsPostulated}
           </div>
         </SwipeableViews>

@@ -45,6 +45,8 @@ class DetailsJob extends Component {
     let rewiewsAverage = null;
     let reviewsCount = null;
     let details = null;
+    let startedAtDetails = null;
+    let finishedAtDetails = null;
     if(this.props.jobDetails.attributes){
       rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
       reviewsCount = this.props.jobDetails.attributes.customer_rewiews_count;
@@ -120,6 +122,8 @@ class DetailsJob extends Component {
       firstNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.first_name
       lastNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.last_name
       avatarCustomerJob = this.props.jobDetails.attributes.customer.data.attributes.avatar.url
+      startedAtDetails = this.props.jobDetails.attributes.started_at
+      finishedAtDetails = this.props.jobDetails.attributes.finished_at
     }
     return (
       <div className={cls.JobDetailsServices}>
@@ -156,7 +160,7 @@ class DetailsJob extends Component {
                         {firstNameCustomerService} {lastNameCustomerService}
                       </p>
                       <p className={cls.jobDetailsCustomerAddress}>
-                        Vos Andes N42-146 y Mariano Echeverria
+                        {moment(startedAtDetails).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())} - {moment(finishedAtDetails).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                       </p>
                     </div>
                     <dl>

@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { withStyles } from 'material-ui/styles';
@@ -21,6 +22,8 @@ import cls from './MenuBar.css';
 import Logo from './img/logo.svg';
 import Login from '../../components/Client/Login/Login';
 
+import * as actions from '../../store/actions';
+
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -37,6 +40,10 @@ class AppBarMenu extends Component {
     open: false,
     openNotification: false,
   }
+
+  componentDidMount() {
+    this.props.onFetchUser(localStorage.getItem('token'));
+  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
@@ -65,6 +72,10 @@ class AppBarMenu extends Component {
     const openNotification = Boolean(anchorElNotification);
     const { classes } = this.props;
     let menu = null;
+    let status = null;
+    if (this.props.user.attributes) {
+      status = this.props.user.attributes.status
+    }
     if (this.props.auth) {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
@@ -74,63 +85,67 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
-            <div>
-              <IconButton
-                className={cls.ButtonNotification}
-                aria-label="4 pending messages"
-                aria-owns={openNotification ? 'menu-appbar-notification' : null}
-                aria-haspopup="true"
-                onClick={this.handleNotification}
-              >
-                <Badge badgeContent={4} color="primary">
-                  <i className="fa notification-icons fa-bell-o"></i>
-                </Badge>
-              </IconButton>
-              <Menu
-                className={cls.SubMenu}
-                id="menu-appbar-notification"
-                anchorEl={anchorElNotification}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={openNotification}
-                onClose={this.handleClose}
-              >
-                <div className={`${cls.notificationBox} ${cls.show} ${cls.arrowNotificationTip}`}>
-                  <ul className={cls.notificationList} id="notification-list-transactions">
-                    <li className={cls.notificationMessage} data-notification="">
-                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                      <a className={cls.notificationLink} href="##">
-                        <p className={cls.notificationContent}>Nuevos trabajos disponibles</p>
-                      </a>
-                    </li>
-                    <li className={cls.notificationMessage} data-notification="">
-                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                      <a className={cls.notificationLink} href="##">
-                        <p className={cls.notificationContent}>Te Calificaron</p>
-                      </a>
-                    </li>
-                    <li className={cls.notificationMessage} data-notification="">
-                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                      <a className={cls.notificationLink} href="##">
-                        <p className={cls.notificationContent}>Trabajo Aceptado</p>
-                      </a>
-                    </li>
-                    <li className={cls.notificationMessage} data-notification="">
-                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                      <a className={cls.notificationLink} href="##">
-                        <p className={cls.notificationContent}>Postulastes un trabajo</p>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </Menu>
-            </div>
+            {status === 'pending' ? (
+              <p></p>
+            ) : (
+              <div>
+                <IconButton
+                  className={cls.ButtonNotification}
+                  aria-label="4 pending messages"
+                  aria-owns={openNotification ? 'menu-appbar-notification' : null}
+                  aria-haspopup="true"
+                  onClick={this.handleNotification}
+                >
+                  <Badge badgeContent={4} color="primary">
+                    <i className="fa notification-icons fa-bell-o"></i>
+                  </Badge>
+                </IconButton>
+                <Menu
+                  className={cls.SubMenu}
+                  id="menu-appbar-notification"
+                  anchorEl={anchorElNotification}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={openNotification}
+                  onClose={this.handleClose}
+                >
+                  <div className={`${cls.notificationBox} ${cls.show} ${cls.arrowNotificationTip}`}>
+                    <ul className={cls.notificationList} id="notification-list-transactions">
+                      <li className={cls.notificationMessage} data-notification="">
+                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                        <a className={cls.notificationLink} href="##">
+                          <p className={cls.notificationContent}>Nuevos trabajos disponibles</p>
+                        </a>
+                      </li>
+                      <li className={cls.notificationMessage} data-notification="">
+                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                        <a className={cls.notificationLink} href="##">
+                          <p className={cls.notificationContent}>Te Calificaron</p>
+                        </a>
+                      </li>
+                      <li className={cls.notificationMessage} data-notification="">
+                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                        <a className={cls.notificationLink} href="##">
+                          <p className={cls.notificationContent}>Trabajo Aceptado</p>
+                        </a>
+                      </li>
+                      <li className={cls.notificationMessage} data-notification="">
+                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                        <a className={cls.notificationLink} href="##">
+                          <p className={cls.notificationContent}>Postulastes un trabajo</p>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </Menu>
+              </div>
+            )}
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="">Reportes</MenuItem>
@@ -207,6 +222,14 @@ class AppBarMenu extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  onFetchUser: (token) => dispatch(actions.fetchCurrentAgent(token)),
+});
+
+const mapStateToProps = state => ({
+  user: state.user.user,
+});
+
 const MenuAppBar = withStyles(styles)(AppBarMenu);
 
-export default MenuAppBar;
+export default connect(mapStateToProps, mapDispatchToProps) (MenuAppBar);

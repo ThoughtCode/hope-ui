@@ -85,6 +85,10 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/reporte">Reportes</MenuItem>
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
             {status === 'pending' ? (
               <p></p>
             ) : (
@@ -146,10 +150,6 @@ class AppBarMenu extends Component {
                 </Menu>
               </div>
             )}
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="">Reportes</MenuItem>
-            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
             <div>
               <IconButton
                 className={cls.Avatar}
@@ -184,10 +184,10 @@ class AppBarMenu extends Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="">Reportes</MenuItem>
-                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} onClick={this.handleClose} component={Link} to="/agente">Inicio</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} onClick={this.handleClose} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} onClick={this.handleClose} component={Link} to="/agente/reporte">Reportes</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} onClick={this.handleClose} component={Link} to="/agente/calendario">Calendario</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">Cerrar sesión</MenuItem>
               </Menu>

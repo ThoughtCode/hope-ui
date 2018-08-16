@@ -7,6 +7,7 @@ import MenuBar from '../MenuBar/MenuBarAgent';
 import Dashboard from './Dashboard/Dashboard';
 import MyJobs from './MyJobs/MyJobs';
 import Calendario from './Calendario/Calendario';
+import Report from './Report/Report';
 import Profile from './Profile/Profile';
 import DetailsJob from './DetailsJob/DetailsJob';
 import CustomerShowQualify from './CustomerShowQualify/CustomerShowQualify';
@@ -25,6 +26,7 @@ class Agent extends Component {
           <Route path={`${this.props.match.url}/dashboard`} exact component={Dashboard}/>
           <Route path={`${this.props.match.url}/trabajos`} exact component={MyJobs}/>
           <Route path={`${this.props.match.url}/calendario`} exact component={Calendario}/>
+          <Route path={`${this.props.match.url}/reporte`} exact component={Report}/>
           <Route path={`${this.props.match.url}/perfil`} component={Profile}/>
           <Route path={`${this.props.match.url}/trabajo/:job_id`} component={DetailsJob}/>
           <Route path={`${this.props.match.url}/:job_id/calificar`} exact component={CustomerShowQualify}/>

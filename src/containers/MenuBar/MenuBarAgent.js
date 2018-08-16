@@ -12,7 +12,8 @@ import {
   Menu,
   Avatar,
   Modal,
-  Grid
+  Grid,
+  Badge,
 } from 'material-ui';
 
 // Component
@@ -25,33 +26,43 @@ const styles = theme => ({
     position: 'absolute',
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
-  },
+  }
 });
 
 class AppBarMenu extends Component {
   state = {
     anchorEl: null,
+    anchorElNotification: null,
     openLogin: false,
     open: false,
+    openNotification: false,
   }
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  handleNotification = event => {
+    this.setState({ anchorElNotification: event.currentTarget });
+  };
+
   handleOpen = (modal) => {
     this.setState({ openLogin: true });
     this.setState({ open: true });
+    this.setState({ openNotification: true });
   };
 
   handleClose = () => {
     this.setState({ anchorEl: null });
     this.setState({ open: false });
+    this.setState({ anchorElNotification: false });
   };
 
   render() {
     const { anchorEl } = this.state;
+    const { anchorElNotification } = this.state;
     const open = Boolean(anchorEl);
+    const openNotification = Boolean(anchorElNotification);
     const { classes } = this.props;
     let menu = null;
     if (this.props.auth) {
@@ -63,8 +74,66 @@ class AppBarMenu extends Component {
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </AnchorLink>
             </Typography>
+            <div>
+              <IconButton
+                className={cls.ButtonNotification}
+                aria-label="4 pending messages"
+                aria-owns={openNotification ? 'menu-appbar-notification' : null}
+                aria-haspopup="true"
+                onClick={this.handleNotification}
+              >
+                <Badge badgeContent={4} color="primary">
+                  <i className="fa notification-icons fa-bell-o"></i>
+                </Badge>
+              </IconButton>
+              <Menu
+                className={cls.SubMenu}
+                id="menu-appbar-notification"
+                anchorEl={anchorElNotification}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={openNotification}
+                onClose={this.handleClose}
+              >
+                <div className={`${cls.notificationBox} ${cls.show} ${cls.arrowNotificationTip}`}>
+                  <ul className={cls.notificationList} id="notification-list-transactions">
+                    <li className={cls.notificationMessage} data-notification="">
+                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                      <a className={cls.notificationLink} href="##">
+                        <p className={cls.notificationContent}>Nuevos trabajos disponibles</p>
+                      </a>
+                    </li>
+                    <li className={cls.notificationMessage} data-notification="">
+                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                      <a className={cls.notificationLink} href="##">
+                        <p className={cls.notificationContent}>Te Calificaron</p>
+                      </a>
+                    </li>
+                    <li className={cls.notificationMessage} data-notification="">
+                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                      <a className={cls.notificationLink} href="##">
+                        <p className={cls.notificationContent}>Trabajo Aceptado</p>
+                      </a>
+                    </li>
+                    <li className={cls.notificationMessage} data-notification="">
+                      <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
+                      <a className={cls.notificationLink} href="##">
+                        <p className={cls.notificationContent}>Postulastes un trabajo</p>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </Menu>
+            </div>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
+            <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="">Reportes</MenuItem>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
             <div>
               <IconButton
@@ -74,13 +143,13 @@ class AppBarMenu extends Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-              {this.props.profile === 'null' ? (
-                <Avatar>
-                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
-                </Avatar>
-              ) : (
-                <Avatar
-                  src={this.props.profile}/>
+                {this.props.profile === 'null' ? (
+                  <Avatar>
+                    {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
+                  </Avatar>
+                ) : (
+                  <Avatar
+                    src={this.props.profile}/>
                 )}
                 <i className={`${cls.IconAvatarMenuResponsive} ${"caret"}`}></i>
                 <a className={`${cls.MenuItem} ${cls.Perfil} ${cls.DisplayNo}`}>Mi perfil <span className="caret"></span></a>
@@ -102,6 +171,7 @@ class AppBarMenu extends Component {
               >
                 <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente">Inicio</MenuItem>
                 <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/trabajos">Mis Trabajos</MenuItem>
+                <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="">Reportes</MenuItem>
                 <MenuItem className={`${cls.Display} ${cls.SubMenuItem}`} component={Link} to="/agente/calendario">Calendario</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/agente/perfil/info">Mi Perfil</MenuItem>
                 <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">Cerrar sesión</MenuItem>

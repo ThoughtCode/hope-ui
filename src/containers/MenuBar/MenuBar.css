@@ -49,7 +49,7 @@ a:focus, a:hover {
 }
 
 .SubMenu{
-  top: 55px !important;
+  top: 65px !important;
   left: 0px !important;
 }
 
@@ -111,6 +111,61 @@ a:focus, a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* .arrowNotificationTip {
+  height: 12px;
+} */
+
+.ButtonNotification {
+  padding-top: 10px !important;
+}
+
+.notificationBox {
+  -moz-box-shadow: 0 2px 3px rgba(0,0,0,0.15) !important;
+  -webkit-box-shadow: 0 2px 3px rgba(0,0,0,0.15) !important;
+  background: #fff !important;
+  /* border: 1px solid #aeaeae !important; */
+  box-shadow: 0 2px 3px rgba(0,0,0,0.15) !important;
+  float: left !important;
+  min-width: 200px !important;
+  /* position: absolute !important; */
+  right: -100px !important;
+  top: 45px !important;
+  z-index: 3 !important;
+  max-height: 100px !important;
+  min-height: 50px !important;
+  overflow-y: scroll !important;
+  padding: 4px !important;
+  text-align: left !important;
+}
+
+.show {
+  display: block !important;
+}
+
+.notificationList {
+  list-style-type: none !important;
+  padding: 0px !important;
+}
+
+.notificationMessage {
+  border-bottom: 1px solid #b8b8b8;
+}
+
+.notifTitle {
+  font-size: 10px;
+}
+
+.notificationLink {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.notificationContent {
+  color: #3c495d;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 @media only screen and (max-width: 600px) {

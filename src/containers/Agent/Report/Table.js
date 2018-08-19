@@ -11,6 +11,37 @@ import cls from './Report.css';
 
 class Report extends Component {
   render() {
+    let firstNameUserCurrent = null;
+    let lastNameUserCurrent = null;
+    let rjd = null;
+    if(this.props.userCurrent){
+      firstNameUserCurrent = this.props.userCurrent.first_name
+      lastNameUserCurrent = this.props.userCurrent.last_name
+    };
+    if(this.props.reportjobs.length > 0 ){
+      this.props.reportjobs.map( rj => (
+        rjd = rj.attributes.job_details
+      ))
+      if(rjd.length > 0 ){
+        rjd.map( rjds => (
+          console.log(rjds.service)
+        ))
+      };
+    };
+    // props.job.attributes.job_details.forEach(j => {
+    //   if (j.service.type_service === 'base') {
+    //     service_base = j.service.name;
+    //   };
+    // });
+    // services_addon = props.job.attributes.job_details.map(j => {
+    //   if (j.service.type_service === 'addon') {
+    //     title = "Servicios Adicionales"
+    //     return (
+    //       <div key={j.id} className={cls.jobExtraServices}>{j.service.name}</div>
+    //     );
+    //   };
+    //   return null;
+    // });
     return (
       <div className={cls.Table}>
         <table class="table table-dark">
@@ -42,7 +73,7 @@ class Report extends Component {
               <td>$14.6</td>
             </tr>
             <tr className="bg-success">
-              <td>Total para Sebastian Remache</td>
+              <td>Total para {firstNameUserCurrent} {lastNameUserCurrent}</td>
               <td></td>
               <td></td>
               <td></td>

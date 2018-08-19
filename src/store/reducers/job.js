@@ -16,6 +16,7 @@ const initialState = {
   calendar: [],
   canApply: [],
   loading: false,
+  reportjobs: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -136,6 +137,10 @@ const canApplySuccess = (state, action) => updateObject(state, {
   canApply: action.canApply,
 });
 
+const fetchJobAgentReport = (state, action) => updateObject(state, {
+  reportjobs: action.reportjobs,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -186,6 +191,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CAN_APPLY_START: return state;
     case actionTypes.CAN_APPLY_SUCCESS: return canApplySuccess(state, action);
     case actionTypes.CAN_APPLY_FAIL: return state;
+    case actionTypes.FETCH_JOB_AGENT_REPORT_START: return state;
+    case actionTypes.FETCH_JOB_AGENT_REPORT_SUCCESS: return fetchJobAgentReport(state, action);
+    case actionTypes.FETCH_JOB_AGENT_REPORT_FAIL: return state;
     default: return state;
   }
 };

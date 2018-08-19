@@ -9,7 +9,7 @@ import cls from './MainDashboardAgent.css'
 class MainDashboardAgent extends Component {
   render() {
     let jobs = (
-      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>No trabajos</Typography>
+      <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>No se encuentran trabajos</Typography>
     );
     if (this.props.jobs.length > 0) {
       jobs = this.props.jobs.map(job => (

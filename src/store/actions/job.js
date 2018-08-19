@@ -647,3 +647,47 @@ export const canApply = (token, job_id) => dispatch => {
     dispatch(canApplyFail(err));
   })
 };
+
+export const fetchJobAgentReportStart = () => ({
+  type: actionTypes.FETCH_JOB_AGENT_REPORT_START,
+});
+
+export const fetchJobAgentReportFail = error => ({
+  type: actionTypes.FETCH_JOB_AGENT_REPORT_FAIL,
+  error,
+});
+
+export const fetchJobAgentReportSuccess = (reportjobs, total_pages) => ({
+  type: actionTypes.FETCH_JOB_AGENT_REPORT_SUCCESS,
+  reportjobs,
+  total_pages,
+});
+
+export const fetchJobAgentReport = (token, filter) => dispatch => {  
+  dispatch(fetchJobAgentReportStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  var body = [];
+  if (filter !== null) {
+    body.push(`date_from=${filter.date_from}`);
+    body.push(`date_to=${filter.date_to}`);
+  }
+  axios.get(`agents/jobs/completed?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
+  .then((res) => {
+    let reportjobs = [];
+    if (res.data.job) {
+      reportjobs = res.data.job.data;
+    } else {
+      reportjobs = res.data.data;
+    }
+    let total_pages = 0;
+    total_pages = res.headers['x-total-pages'];
+    dispatch(fetchJobAgentReportSuccess(reportjobs, total_pages));
+  })
+  .catch((err) => {
+    dispatch(fetchJobAgentReportFail(err));
+  });  
+}

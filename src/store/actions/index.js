@@ -49,6 +49,7 @@ export {
   disableButtonCustomer,
   jobCalendar,
   canApply,
+  fetchJobAgentReport,
 } from './job';
 export {
   fetchCurrentUser,

@@ -277,8 +277,8 @@ class ServiceBooking extends Component {
       } else {
         this.setState({
           service: false,
-          checking: true,
-          payment: false,
+          checking: false,
+          payment: true,
           thanks: false
         });
       }
@@ -311,8 +311,8 @@ class ServiceBooking extends Component {
       });
     } else if (actual_page === 'Payment') {
       this.setState({
-        service: false,
-        checking: true,
+        service: true,
+        checking: false,
         payment: false,
         thanks: false,
       });
@@ -360,7 +360,20 @@ class ServiceBooking extends Component {
                   </Grid>
                 </Grid>
               ) : null}
-              {this.state.checking ? (
+              {this.state.payment ? (
+                <Grid container justify="center">
+                  <Grid item xs={12} sm={11} md={8} lg={8}>
+                    <Grid container>
+                      <Grid item xs={12} lg={12}>
+                        <Payment
+                          backPage={this.backPage}
+                          nextPage={this.nextPage} />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>                
+              ) : null}
+              {/* {this.state.checking ? (
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container justify="center">
@@ -376,20 +389,7 @@ class ServiceBooking extends Component {
                     </Grid>
                   </Grid>
                 </Grid>                
-              ) : null}
-              {this.state.payment ? (
-                <Grid container justify="center">
-                  <Grid item xs={12} sm={11} md={8} lg={8}>
-                    <Grid container>
-                      <Grid item xs={12} lg={12}>
-                        <Payment
-                          backPage={this.backPage}
-                          nextPage={this.nextPage} />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                </Grid>                
-              ) : null}
+              ) : null} */}
               {this.state.thanks ? (
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>

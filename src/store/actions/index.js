@@ -63,6 +63,7 @@ export {
   notificationsAgent,
   notificationsCustomer,
   notificationsAgentRead,
+  notificationsCustomerRead,
 } from './current_user';
 export {
   showReviews,

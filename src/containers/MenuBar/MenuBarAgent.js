@@ -54,9 +54,9 @@ class AppBarMenu extends Component {
     this.setState({ anchorElNotification: event.currentTarget });
   };
   
-  handleNotificationRead = (event, id) => {
+  handleNotificationRead = (event, id, job_id) => {
     event.preventDefault();
-    this.props.onNotificationsAgentRead(localStorage.getItem('token'), id)
+    this.props.onNotificationsAgentRead(localStorage.getItem('token'), id, job_id)
   }
 
   handleOpen = (modal) => {
@@ -92,11 +92,11 @@ class AppBarMenu extends Component {
         badgeContentState = this.props.notifiAgent.length
       }
       notifiAgent = this.props.notifiAgent.map(notification => (
-          textNotification =
+        textNotification =
         <ul className={cls.notificationList} id="notification-list-transactions">
           <li className={cls.notificationMessage} data-notification="" key={notification.id}>
             { notification.attributes.job.data ? (
-              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationRead(event, notification.id)} >
+              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationRead(event, notification.id, notification.attributes.job.data.id)} href={`/agente/trabajo/${notification.attributes.job.data.id}`} >
                 <p className={cls.notificationContent}>{notification.attributes.text}</p>
               </a>
             ) : (
@@ -230,7 +230,7 @@ class AppBarMenu extends Component {
 const mapDispatchToProps = dispatch => ({
   onFetchUser: (token) => dispatch(actions.fetchCurrentAgent(token)),
   onNotificationsAgent: (token) => dispatch(actions.notificationsAgent(token)),
-  onNotificationsAgentRead: (token, id) => dispatch(actions.notificationsAgentRead(token, id))
+  onNotificationsAgentRead: (token, id, job_id) => dispatch(actions.notificationsAgentRead(token, id, job_id))
 });
 
 const mapStateToProps = state => ({

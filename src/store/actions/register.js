@@ -87,7 +87,7 @@ export const registerAgent = formData => (dispatch) => {
       });
     })
     .catch((error) => {
-      dispatch(registerClientFail(error));
+      dispatch(registerAgentFail(error));
       if (typeof(error.response.data.message) === 'object') {
         const message = error.response.data.message.email;
         Alert.error(message, {

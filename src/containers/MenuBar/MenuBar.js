@@ -58,6 +58,11 @@ class AppBarMenu extends Component {
     this.setState({ anchorElNotification: event.currentTarget });
   };
 
+  handleNotificationReadCustomer = (event, id, job_id) => {
+    event.preventDefault();
+    this.props.onNotificationsCustomerRead(localStorage.getItem('token'), id, job_id)
+  }
+
   handleOpen = (modal) => {
     this.setState({ openNotification: true });
     if (localStorage.getItem('signInAs') === 'customer') {
@@ -115,11 +120,11 @@ class AppBarMenu extends Component {
         badgeContentState = this.props.notifiCustomer.length
       }
       notifiCustomer = this.props.notifiCustomer.map(notification => (
-          textNotification =
+        textNotification =
         <ul className={cls.notificationList} id="notification-list-transactions">
           <li className={cls.notificationMessage} data-notification="" key={notification.id}>
             { notification.attributes.job.data ? (
-              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationRead(event, notification.id)} >
+              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationReadCustomer(event, notification.id, notification.attributes.job.data.id)} href={`/cliente/trabajo/${notification.attributes.job.data.id}`} >
                 <p className={cls.notificationContent}>{notification.attributes.text}</p>
               </a>
             ) : (
@@ -129,7 +134,6 @@ class AppBarMenu extends Component {
         </ul>
       ));
     }
-    console.log(this.props.notifiCustomer)
     if (this.props.auth) {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
@@ -288,6 +292,7 @@ class AppBarMenu extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onNotificationsCustomer: (token) => dispatch(actions.notificationsCustomer(token)),
+  onNotificationsCustomerRead: (token, id, job_id) => dispatch(actions.notificationsCustomerRead(token, id, job_id))
 });
 
 const mapStateToProps = state => ({

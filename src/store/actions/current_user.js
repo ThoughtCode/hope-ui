@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import { push } from 'react-router-redux';
 import axios from '../../axios-instance';
 import Alert from 'react-s-alert';
 
@@ -354,8 +355,7 @@ export const notificationsAgentReadStart = () => ({
   type: notificationsAgentReadStart,
 });
 
-export const notificationsAgentRead = (token, id) => (dispatch) => {
-  console.log(token)
+export const notificationsAgentRead = (token, id, job_id) => (dispatch) => {
   dispatch(notificationsAgentReadStart());
   const headers = {
     headers: {
@@ -367,14 +367,13 @@ export const notificationsAgentRead = (token, id) => (dispatch) => {
     let notificationRead = [];
     notificationRead = response.data.review.data.attributes;
     dispatch(notificationsAgentReadSuccess(notificationRead));
-    // dispatch(push(`/agente/trabajo/${job_id}`));
+    dispatch(push(`/agente/trabajo/${job_id}`));
     // Alert.success(response.data.message, {
       //   position: 'top',
       //   effect: 'genie',
       // });
     })
   .catch((err) => {
-    console.log(err)
     dispatch(notificationsAgentReadFail(err));
       // Alert.error(err.response.data.message, {
       //   position: 'top',
@@ -416,6 +415,47 @@ export const notificationsCustomer = token => (dispatch) => {
     })
     .catch((err) => {
       dispatch(notificationsCustomerFail(err));
+      // Alert.error(err.response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    });
+};
+
+export const notificationsCustomerReadSuccess = id => ({
+  type: actionTypes.NOTIFICATIONS_CUSTOMER_READ_SUCCESS,
+  id,
+});
+
+export const notificationsCustomerReadFail = error => ({
+  type: actionTypes.NOTIFICATIONS_CUSTOMER_READ_FAIL,
+  error,
+});
+
+export const notificationsCustomerReadStart = () => ({
+  type: notificationsCustomerReadStart,
+});
+
+export const notificationsCustomerRead = (token, id, job_id) => (dispatch) => {
+  dispatch(notificationsCustomerReadStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post(`/customers/read_notifications/${id}`, '', headers)
+  .then((response) => {
+    let notificationRead = [];
+    notificationRead = response.data.review.data.attributes;
+    dispatch(notificationsCustomerReadSuccess(notificationRead));
+    dispatch(push(`/customers/trabajo/${job_id}`));
+    // Alert.success(response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    })
+  .catch((err) => {
+    dispatch(notificationsCustomerReadFail(err));
       // Alert.error(err.response.data.message, {
       //   position: 'top',
       //   effect: 'genie',

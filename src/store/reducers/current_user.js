@@ -7,6 +7,7 @@ const initialState = {
   notificationsAgent: [],
   notificationsCustomer: [],
   notificationsAgentRead: [],
+  notificationsCustomerRead: [],
 };
 
 const fetchCurrentUserStart = (state, action) => updateObject(state, {
@@ -65,6 +66,10 @@ const notificationsCustomerSuccess = (state, action) => updateObject(state, {
   notificationsCustomer: action.notificationsCustomer,
 });
 
+const notificationsCustomerReadSuccess = (state, action) => updateObject(state, {
+  notificationsCustomerRead: action.notificationsCustomerRead,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_CURRENT_USER_SUCCESS: return fetchCurrentUserSuccess(state, action);
@@ -86,6 +91,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.NOTIFICATIONS_CUSTOMER_START: return state;
     case actionTypes.NOTIFICATIONS_CUSTOMER_SUCCESS: return notificationsCustomerSuccess(state, action);
     case actionTypes.NOTIFICATIONS_CUSTOMER_FAIL: return state;
+    case actionTypes.NOTIFICATIONS_CUSTOMER_READ_START: return state;
+    case actionTypes.NOTIFICATIONS_CUSTOMER_READ_SUCCESS: return notificationsCustomerReadSuccess(state, action);
+    case actionTypes.NOTIFICATIONS_CUSTOMER_READ_FAIL: return state;
     default: return state;
   }
 };

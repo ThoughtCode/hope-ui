@@ -299,3 +299,126 @@ export const changePasswordAgent = (token, form) => dispatch => {
       });
     });
 };
+
+export const notificationsAgentStart = () => ({
+  type: actionTypes.NOTIFICATIONS_AGENT_START,
+});
+
+export const notificationsAgentSuccess = (notificationsAgent) => ({
+  type: actionTypes.NOTIFICATIONS_AGENT_SUCCESS,
+  notificationsAgent
+});
+
+export const notificationsAgentFail = error => ({
+  type: actionTypes.NOTIFICATIONS_AGENT_FAIL,
+  error,
+});
+
+export const notificationsAgent = token => (dispatch) => {
+  dispatch(notificationsAgentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/agents/notifications', headers)
+  .then((res) => {
+      let notifications = {};
+      notifications = res.data.notification.data;
+      dispatch(notificationsAgentSuccess(notifications));
+      // Alert.success(res.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    })
+    .catch((err) => {
+      dispatch(notificationsAgentFail(err));
+      // Alert.error(err.response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    });
+};
+
+export const notificationsAgentReadSuccess = id => ({
+  type: actionTypes.NOTIFICATIONS_AGENT_READ_SUCCESS,
+  id,
+});
+
+export const notificationsAgentReadFail = error => ({
+  type: actionTypes.NOTIFICATIONS_AGENT_READ_FAIL,
+  error,
+});
+
+export const notificationsAgentReadStart = () => ({
+  type: notificationsAgentReadStart,
+});
+
+export const notificationsAgentRead = (token, id) => (dispatch) => {
+  console.log(token)
+  dispatch(notificationsAgentReadStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post(`/agents/read_notifications/${id}`, '', headers)
+  .then((response) => {
+    let notificationRead = [];
+    notificationRead = response.data.review.data.attributes;
+    dispatch(notificationsAgentReadSuccess(notificationRead));
+    // dispatch(push(`/agente/trabajo/${job_id}`));
+    // Alert.success(response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    })
+  .catch((err) => {
+    console.log(err)
+    dispatch(notificationsAgentReadFail(err));
+      // Alert.error(err.response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    });
+};
+
+export const notificationsCustomerStart = () => ({
+  type: actionTypes.NOTIFICATIONS_CUSTOMER_START,
+});
+
+export const notificationsCustomerSuccess = (notificationsCustomer) => ({
+  type: actionTypes.NOTIFICATIONS_CUSTOMER_SUCCESS,
+  notificationsCustomer
+});
+
+export const notificationsCustomerFail = error => ({
+  type: actionTypes.NOTIFICATIONS_CUSTOMER_FAIL,
+  error,
+});
+
+export const notificationsCustomer = token => (dispatch) => {
+  dispatch(notificationsCustomerStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/customers/notifications', headers)
+  .then((res) => {
+      let notifications = {};
+      notifications = res.data.notification.data;
+      dispatch(notificationsCustomerSuccess(notifications));
+      // Alert.success(res.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    })
+    .catch((err) => {
+      dispatch(notificationsCustomerFail(err));
+      // Alert.error(err.response.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
+    });
+};

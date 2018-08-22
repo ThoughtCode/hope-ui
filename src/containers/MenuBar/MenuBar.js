@@ -1,5 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { withStyles } from 'material-ui/styles';
@@ -13,7 +14,8 @@ import {
   Menu,
   Avatar,
   Modal,
-  Grid
+  Grid,
+  Badge
 } from 'material-ui';
 
 // Component
@@ -22,6 +24,8 @@ import Logo from './img/logo.svg';
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
 import LoginAgent from '../../containers/Agent/Login/Login';
+
+import * as actions from '../../store/actions';
 
 const styles = theme => ({
   paper: {
@@ -34,17 +38,28 @@ const styles = theme => ({
 class AppBarMenu extends Component {
   state = {
     anchorEl: null,
+    anchorElNotification: null,
     openLogin: false,
     openRegister: false,
     openAgentLogin: false,
-    open: false
+    open: false,
+    openNotification: false,
   }
+
+  componentDidMount() {
+    this.props.onNotificationsCustomer(localStorage.getItem('token'));
+  };
 
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
 
+  handleNotification = event => {
+    this.setState({ anchorElNotification: event.currentTarget });
+  };
+
   handleOpen = (modal) => {
+    this.setState({ openNotification: true });
     if (localStorage.getItem('signInAs') === 'customer') {
       this.props.history.push('/cliente')
     }
@@ -78,15 +93,43 @@ class AppBarMenu extends Component {
       openAgentLogin: false,
       openRegister: false,
       anchorEl: null,
+      anchorElNotification: false,
       open: false
     });
   };
 
   render() {
     const { anchorEl } = this.state;
+    const { anchorElNotification } = this.state;
     const open = Boolean(anchorEl);
+    const openNotification = Boolean(anchorElNotification);
     const { classes } = this.props;
     let menu = null;
+    let notifiCustomer = null;
+    let textNotification = null;
+    let badgeContentState = null;
+    if (this.props.notifiCustomer.length > 0) {
+      if(this.props.notifiCustomer.length > 9) {
+        badgeContentState = '9+'
+      } else {
+        badgeContentState = this.props.notifiCustomer.length
+      }
+      notifiCustomer = this.props.notifiCustomer.map(notification => (
+          textNotification =
+        <ul className={cls.notificationList} id="notification-list-transactions">
+          <li className={cls.notificationMessage} data-notification="" key={notification.id}>
+            { notification.attributes.job.data ? (
+              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationRead(event, notification.id)} >
+                <p className={cls.notificationContent}>{notification.attributes.text}</p>
+              </a>
+            ) : (
+              <p></p>
+            ) }
+          </li> 
+        </ul>
+      ));
+    }
+    console.log(this.props.notifiCustomer)
     if (this.props.auth) {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
@@ -102,6 +145,38 @@ class AppBarMenu extends Component {
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente/trabajos">
               Trabajos
             </MenuItem>
+            <div>
+              <IconButton
+                className={cls.ButtonNotification}
+                aria-label="4 pending messages"
+                aria-owns={openNotification ? 'menu-appbar-notification' : null}
+                aria-haspopup="true"
+                onClick={this.handleNotification}
+              >
+                <Badge badgeContent={badgeContentState} color="primary">
+                  <i className="fa notification-icons fa-bell-o"></i>
+                </Badge>
+              </IconButton>
+              <Menu
+                className={cls.SubMenu}
+                id="menu-appbar-notification"
+                anchorEl={anchorElNotification}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={openNotification}
+                onClose={this.handleClose}
+              >
+                <div className={`${cls.notificationBox} ${cls.show} ${cls.arrowNotificationTip}`}>
+                  {notifiCustomer}
+                </div>
+              </Menu>
+            </div>
             <div>
               <IconButton
                 className={cls.Avatar}
@@ -211,6 +286,14 @@ class AppBarMenu extends Component {
   }
 }
 
+const mapDispatchToProps = dispatch => ({
+  onNotificationsCustomer: (token) => dispatch(actions.notificationsCustomer(token)),
+});
+
+const mapStateToProps = state => ({
+  notifiCustomer: state.notificationsCustomer.notificationsCustomer,
+});
+
 const MenuAppBar = withStyles(styles)(AppBarMenu);
 
-export default withRouter(MenuAppBar);
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(MenuAppBar));

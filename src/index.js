@@ -25,6 +25,9 @@ import disableButtonQualify from './store/reducers/job';
 import disableButtonCustomer from './store/reducers/job';
 import canApply from './store/reducers/job';
 import formContac from './store/reducers/contac';
+import notificationsAgent from './store/reducers/current_user';
+import notificationsCustomer from './store/reducers/current_user';
+import notificationsAgentRead from './store/reducers/current_user';
 
 const history = createHistory();
 
@@ -47,7 +50,10 @@ const rootReducer = combineReducers({
   disableButton: disableButtonQualify,
   disableButtonCustomer: disableButtonCustomer,
   canApply: canApply,
-  formContac : formContac
+  formContac : formContac,
+  notificationsAgent: notificationsAgent,
+  notificationsCustomer: notificationsCustomer,
+  notificationsAgentRead: notificationsAgentRead
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

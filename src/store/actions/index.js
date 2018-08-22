@@ -60,6 +60,9 @@ export {
   updatedCurrentAgent,
   updatedCurrentAgentAvatar,
   changePasswordAgent,
+  notificationsAgent,
+  notificationsCustomer,
+  notificationsAgentRead,
 } from './current_user';
 export {
   showReviews,

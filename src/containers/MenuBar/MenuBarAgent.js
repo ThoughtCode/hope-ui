@@ -43,15 +43,21 @@ class AppBarMenu extends Component {
 
   componentDidMount() {
     this.props.onFetchUser(localStorage.getItem('token'));
+    this.props.onNotificationsAgent(localStorage.getItem('token'));
   };
-
+  
   handleMenu = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
-
+  
   handleNotification = event => {
     this.setState({ anchorElNotification: event.currentTarget });
   };
+  
+  handleNotificationRead = (event, id) => {
+    event.preventDefault();
+    this.props.onNotificationsAgentRead(localStorage.getItem('token'), id)
+  }
 
   handleOpen = (modal) => {
     this.setState({ openLogin: true });
@@ -73,8 +79,32 @@ class AppBarMenu extends Component {
     const { classes } = this.props;
     let menu = null;
     let status = null;
+    let notifiAgent = null;
+    let textNotification = null;
+    let badgeContentState = null;
     if (this.props.user.attributes) {
       status = this.props.user.attributes.status
+    }
+    if (this.props.notifiAgent.length > 0) {
+      if(this.props.notifiAgent.length > 9) {
+        badgeContentState = '9+'
+      } else {
+        badgeContentState = this.props.notifiAgent.length
+      }
+      notifiAgent = this.props.notifiAgent.map(notification => (
+          textNotification =
+        <ul className={cls.notificationList} id="notification-list-transactions">
+          <li className={cls.notificationMessage} data-notification="" key={notification.id}>
+            { notification.attributes.job.data ? (
+              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationRead(event, notification.id)} >
+                <p className={cls.notificationContent}>{notification.attributes.text}</p>
+              </a>
+            ) : (
+              <p></p>
+            ) }
+          </li> 
+        </ul>
+      ));
     }
     if (this.props.auth) {
       menu = (
@@ -100,7 +130,7 @@ class AppBarMenu extends Component {
                   aria-haspopup="true"
                   onClick={this.handleNotification}
                 >
-                  <Badge badgeContent={4} color="primary">
+                  <Badge badgeContent={badgeContentState} color="primary">
                     <i className="fa notification-icons fa-bell-o"></i>
                   </Badge>
                 </IconButton>
@@ -120,32 +150,7 @@ class AppBarMenu extends Component {
                   onClose={this.handleClose}
                 >
                   <div className={`${cls.notificationBox} ${cls.show} ${cls.arrowNotificationTip}`}>
-                    <ul className={cls.notificationList} id="notification-list-transactions">
-                      <li className={cls.notificationMessage} data-notification="">
-                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                        <a className={cls.notificationLink} href="##">
-                          <p className={cls.notificationContent}>Nuevos trabajos disponibles</p>
-                        </a>
-                      </li>
-                      <li className={cls.notificationMessage} data-notification="">
-                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                        <a className={cls.notificationLink} href="##">
-                          <p className={cls.notificationContent}>Te Calificaron</p>
-                        </a>
-                      </li>
-                      <li className={cls.notificationMessage} data-notification="">
-                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                        <a className={cls.notificationLink} href="##">
-                          <p className={cls.notificationContent}>Trabajo Aceptado</p>
-                        </a>
-                      </li>
-                      <li className={cls.notificationMessage} data-notification="">
-                        <i className={`${"fa"} ${cls.notifTitle}`} aria-hidden="true"></i>
-                        <a className={cls.notificationLink} href="##">
-                          <p className={cls.notificationContent}>Postulastes un trabajo</p>
-                        </a>
-                      </li>
-                    </ul>
+                    {notifiAgent}
                   </div>
                 </Menu>
               </div>
@@ -224,10 +229,13 @@ class AppBarMenu extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onFetchUser: (token) => dispatch(actions.fetchCurrentAgent(token)),
+  onNotificationsAgent: (token) => dispatch(actions.notificationsAgent(token)),
+  onNotificationsAgentRead: (token, id) => dispatch(actions.notificationsAgentRead(token, id))
 });
 
 const mapStateToProps = state => ({
   user: state.user.user,
+  notifiAgent: state.notificationsAgent.notificationsAgent,
 });
 
 const MenuAppBar = withStyles(styles)(AppBarMenu);

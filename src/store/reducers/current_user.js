@@ -4,6 +4,9 @@ import { updateObject } from '../utility';
 const initialState = {
   user: {},
   loading: false,
+  notificationsAgent: [],
+  notificationsCustomer: [],
+  notificationsAgentRead: [],
 };
 
 const fetchCurrentUserStart = (state, action) => updateObject(state, {
@@ -50,6 +53,18 @@ const updatedCurrentAgentSuccess = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const notificationsAgentSuccess = (state, action) => updateObject(state, {
+  notificationsAgent: action.notificationsAgent,
+});
+
+const notificationsAgentReadSuccess = (state, action) => updateObject(state, {
+  notificationsAgentRead: action.notificationsAgentRead,
+});
+
+const notificationsCustomerSuccess = (state, action) => updateObject(state, {
+  notificationsCustomer: action.notificationsCustomer,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_CURRENT_USER_SUCCESS: return fetchCurrentUserSuccess(state, action);
@@ -62,6 +77,15 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_CURRENT_AGENT_FAIL: return fetchCurrentAgentFail(state, action);
     case actionTypes.UPDATED_CURRENT_AGENT_SUCCESS: return updatedCurrentAgentSuccess(state, action);
     case actionTypes.UPDATED_CURRENT_AGENT_START: return updatedCurrentAgentStart(state, action);
+    case actionTypes.NOTIFICATIONS_AGENT_START: return state;
+    case actionTypes.NOTIFICATIONS_AGENT_SUCCESS: return notificationsAgentSuccess(state, action);
+    case actionTypes.NOTIFICATIONS_AGENT_FAIL: return state;
+    case actionTypes.NOTIFICATIONS_AGENT_READ_START: return state;
+    case actionTypes.NOTIFICATIONS_AGENT_READ_SUCCESS: return notificationsAgentReadSuccess(state, action);
+    case actionTypes.NOTIFICATIONS_AGENT_READ_FAIL: return state;
+    case actionTypes.NOTIFICATIONS_CUSTOMER_START: return state;
+    case actionTypes.NOTIFICATIONS_CUSTOMER_SUCCESS: return notificationsCustomerSuccess(state, action);
+    case actionTypes.NOTIFICATIONS_CUSTOMER_FAIL: return state;
     default: return state;
   }
 };

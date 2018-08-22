@@ -82,7 +82,7 @@ class Report extends Component {
     }
     return (
       <div className={cls.Table}>
-        <table class="table table-dark">
+        <table className="table table-dark">
           <thead>
             <tr>
               <th scope="col">Servicio</th>

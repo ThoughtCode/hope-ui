@@ -41,3 +41,33 @@
   margin-top: 32px !important;
   margin-bottom: 32px !important;
 }
+.ContenDateCombo{
+  margin: 0 0 0 20px;
+}
+.ArrowLeft{
+  margin: 5px;
+  padding: 0px;
+}
+.Date{
+  border: 1px solid lightgray;
+  font-weight: 600;
+  margin: 0px;
+}
+.Parrafo{
+  display: inline-block;
+  margin: 8px 16px 6px 0 !important;
+  float: left;
+}
+.Icon{
+  display: inline-block;
+  margin: 6px 0 6px 14px !important;
+  font-size: 2em;
+  line-height: 0;
+  color: lightgrey;
+}
+.ArrowRight{
+  padding: 5px;
+}
+.Cursor{
+  cursor: pointer;
+}

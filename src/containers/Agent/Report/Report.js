@@ -8,7 +8,6 @@ import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Table from './Table';
-import DatetimeReport from './DatetimeReport';
 // import MyJobsMain from '../../../components/Agent/MyJobsMain/MyJobsMain';
 // import Spinner from '../../../components/UI/Spinner/Spinner';
 
@@ -20,43 +19,17 @@ import * as actions from '../../../store/actions';
 class Report extends Component {
   state = {
     filter: {
-      date_from: null,
-      date_to: null,
+      date_from: moment().startOf('week').format(),
+      date_to: moment().endOf('week').format(),
       current_page: 1,
       active: false,
     },
   };
   componentDidMount() {
-    let filter = {};
-    filter.date_from = null;
-    filter.date_to = null;
-    filter.current_page = this.state.filter.current_page;
-    this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+    this.props.onFetchJobAgentReport(localStorage.getItem('token'), this.state.filter);
     this.props.onFetchUser(localStorage.getItem('token'));
   };
-  filterHandler = (event) => {
-    event.preventDefault();
-    this.setState({
-      ...this.state,
-      filter: {
-        ...this.state.filter,
-        active: true,
-      }
-    });
-    let filter = {};
-    if (this.state.filter.date_from !== null) {
-      filter.date_from = moment(this.state.filter.date_from).format();
-    } else {
-      filter.date_from = null;
-    }
-    if (this.state.filter.date_to !== null) {
-      filter.date_to = moment(this.state.filter.date_to).format();
-    } else {
-      filter.date_to = null;
-    }
-    filter.current_page = this.state.filter.current_page;
-    this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
-  };
+  
   handleChange = (event, key) => {
     this.setState({
       ...this.state,
@@ -125,12 +98,72 @@ class Report extends Component {
       this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
     }
   };
+  weekBack = () => {
+    var date = moment(this.state.filter.date_from).subtract(3, 'days')
+    this.setState({
+      filter:{
+        date_from: moment(date).startOf('week'),
+        date_to: moment(date).endOf('week'),
+      }
+    },function(){
+      let filter = {};
+      if (this.state.filter.date_from !== null) {
+        filter.date_from = moment(this.state.filter.date_from).format();
+      } else {
+        filter.date_from = null;
+      }
+      if (this.state.filter.date_to !== null) {
+        filter.date_to = moment(this.state.filter.date_to).format();
+      } else {
+        filter.date_to = null;
+      }
+      this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+    })
+  };
+  
+  weekNext = () => {
+    var date = moment(this.state.filter.date_to).add(3, 'days')
+    this.setState({
+      filter:{
+        date_from: moment(date).startOf('week'),
+        date_to: moment(date).endOf('week'),
+      }
+    },function(){
+      let filter = {};
+      if (this.state.filter.date_from !== null) {
+        filter.date_from = moment(this.state.filter.date_from).format();
+      } else {
+        filter.date_from = null;
+      }
+      if (this.state.filter.date_to !== null) {
+        filter.date_to = moment(this.state.filter.date_to).format();
+      } else {
+        filter.date_to = null;
+      }
+      this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+    })    
+  };
   render() {
     let firstNameUser = null;
     let lastNameUser = null;
+    let jobsReport = null;
     if (this.props.user.attributes){
       firstNameUser = this.props.user.attributes.first_name
       lastNameUser = this.props.user.attributes.last_name
+    }
+    if(this.props.reportjobs.length > 0) {
+      jobsReport = this.props.reportjobs.map( jR => (
+        <Table
+          key={jR.id}
+          id={jR.id}
+          jobDetails={jR.attributes.job_details}
+          total={jR.attributes.total}
+          customer={jR.attributes.customer}
+          // current_page={this.state.filter.current_page}
+          // goNext={this.goNext}
+          // goBack={this.goBack} 
+        />
+      ))
     }
     return (
       <div>
@@ -147,19 +180,28 @@ class Report extends Component {
                   <Paper className={cls.ContenDatetime} elevation={0}>
                     <Grid item xs={6} sm={12} className={cls.ContenDate}>
                       <Typography variant="title" gutterBottom>Semana</Typography>
+                      <div className={`${cls.ContenDateCombo} ${"row align-items-center"}`}>
+                        <div className={`${cls.ArrowLeft} ${"col-sm-1"}`}>
+                          <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekBack()}>keyboard_arrow_left</i>
+                        </div>
+                        <div className={`${cls.Date} ${"col-sm-9"}`}>
+                          <p className={cls.Parrafo}>
+                            {this.state.filter.date_from &&
+                              moment(this.state.filter.date_from).format(' MMM D ').replace(/\b\w/g, l => l.toUpperCase())
+                            } - 
+                            {this.state.filter.date_from &&
+                              moment(this.state.filter.date_to).format(' D YYYY').replace(/\b\w/g, l => l.toUpperCase())
+                            }
+                          </p>
+                          <p className={cls.Icon}>
+                            <i className="material-icons">event_note</i>
+                          </p>
+                        </div>
+                        <div className={`${cls.ArrowRight} ${"col-sm-1"}`}>
+                          <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekNext()}>keyboard_arrow_right</i>
+                        </div>
+                      </div>
                     </Grid>  
-                  </Paper>
-                </Grid>
-                <Grid item>
-                  <Paper className={cls.ContenDatetime} elevation={0}>
-                    <Grid item xs={6} sm={12} className={cls.ContenDate}>                    
-                      <DatetimeReport
-                        filter={this.state.filter}
-                        filterHandler={this.filterHandler}
-                        handleChange={this.handleChange}
-                        changeDatetimeHandler={this.changeDatetimeHandler}
-                      />
-                    </Grid>
                   </Paper>
                 </Grid>
               </Grid>
@@ -178,33 +220,38 @@ class Report extends Component {
                     </Grid>
                   </Grid>
                   <Grid container>
-                    <Grid item xs={6} sm={2}>
-                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>Periodo</Typography>
-                    </Grid>  
-                    <Grid item xs={6} sm={10}>                    
-                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>
-                        {moment().format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                  <Grid container>
                     <Grid item xs={6} sm={12}>
-                      <Table
-                        userCurrent={this.props.user.attributes}
-                        reportjobs={this.props.reportjobs}
-                        total_pages={this.props.total_pages}
-                        current_page={this.state.filter.current_page}
-                        goNext={this.goNext}
-                        goBack={this.goBack} 
-                      />
+                      <table className="table table-dark">  
+                        <thead>
+                          <tr>
+                            <th scope="col">Servicio</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Total trabajo</th>
+                            <th scope="col">I.V.A</th>
+                            <th scope="col">Comisión Noc Noc</th>
+                            <th scope="col">TOTAL</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {jobsReport}
+                          <tr class="bg-warning">
+                            <td class="bg-success">Total Semanal</td>
+                            <td class="bg-success"></td>
+                            <td class="bg-success"></td>
+                            <td class="bg-success"></td>
+                            <td class="bg-success"></td>
+                            <td class="bg-success">$999.99</td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </Grid> 
                   </Grid>
                   <Grid container>
                     <Grid item xs={6} sm={1}>
                       <Typography variant="title" gutterBottom className={cls.SubTipogra}>Nota:</Typography>
                     </Grid>  
-                    <Grid item xs={6} sm={11}>                    
-                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>Los reportes se actualizan cada hora.</Typography>
+                    <Grid item xs={6} sm={11}>
+                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>Reporta con nosotros tú inconveniente, si tienes alguna duda.</Typography>
                     </Grid>
                   </Grid>
                 </Paper>

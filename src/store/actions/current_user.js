@@ -355,7 +355,7 @@ export const notificationsAgentReadStart = () => ({
   type: notificationsAgentReadStart,
 });
 
-export const notificationsAgentRead = (token, id, job_id) => (dispatch) => {
+export const notificationsAgentRead = (token, id) => (dispatch) => {
   dispatch(notificationsAgentReadStart());
   const headers = {
     headers: {
@@ -367,11 +367,10 @@ export const notificationsAgentRead = (token, id, job_id) => (dispatch) => {
     let notificationRead = [];
     notificationRead = response.data.review.data.attributes;
     dispatch(notificationsAgentReadSuccess(notificationRead));
-    dispatch(push(`/agente/trabajo/${job_id}`));
-    // Alert.success(response.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
+    Alert.success(response.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
     })
   .catch((err) => {
     dispatch(notificationsAgentReadFail(err));
@@ -422,7 +421,7 @@ export const notificationsCustomer = token => (dispatch) => {
     });
 };
 
-export const notificationsCustomerReadSuccess = id => ({
+export const notificationsCustomerReadSuccess = (id) => ({
   type: actionTypes.NOTIFICATIONS_CUSTOMER_READ_SUCCESS,
   id,
 });
@@ -436,7 +435,7 @@ export const notificationsCustomerReadStart = () => ({
   type: notificationsCustomerReadStart,
 });
 
-export const notificationsCustomerRead = (token, id, job_id) => (dispatch) => {
+export const notificationsCustomerRead = (token, id) => (dispatch) => {
   dispatch(notificationsCustomerReadStart());
   const headers = {
     headers: {
@@ -445,14 +444,12 @@ export const notificationsCustomerRead = (token, id, job_id) => (dispatch) => {
   };
   axios.post(`/customers/read_notifications/${id}`, '', headers)
   .then((response) => {
-    let notificationRead = [];
-    notificationRead = response.data.review.data.attributes;
+    const notificationRead = response.data.review.data.attributes;
     dispatch(notificationsCustomerReadSuccess(notificationRead));
-    dispatch(push(`/customers/trabajo/${job_id}`));
-    // Alert.success(response.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
+    Alert.success(response.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
     })
   .catch((err) => {
     dispatch(notificationsCustomerReadFail(err));

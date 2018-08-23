@@ -60,7 +60,10 @@ class AppBarMenu extends Component {
 
   handleNotificationReadCustomer = (event, id, job_id) => {
     event.preventDefault();
-    this.props.onNotificationsCustomerRead(localStorage.getItem('token'), id, job_id)
+    this.props.onNotificationsCustomerRead(localStorage.getItem('token'), id, job_id);
+    this.props.history.push(`/cliente/trabajo/${job_id}`);
+    this.handleClose();
+    window.location.reload()
   }
 
   handleOpen = (modal) => {
@@ -124,7 +127,9 @@ class AppBarMenu extends Component {
         <ul className={cls.notificationList} id="notification-list-transactions">
           <li className={cls.notificationMessage} data-notification="" key={notification.id}>
             { notification.attributes.job.data ? (
-              <a className={cls.notificationLink} onClick={(event) => this.handleNotificationReadCustomer(event, notification.id, notification.attributes.job.data.id)} href={`/cliente/trabajo/${notification.attributes.job.data.id}`} >
+              <a className={cls.notificationLink}
+                onClick={(event) => this.handleNotificationReadCustomer(event, notification.id, notification.attributes.job.data.id)}
+              >
                 <p className={cls.notificationContent}>{notification.attributes.text}</p>
               </a>
             ) : (

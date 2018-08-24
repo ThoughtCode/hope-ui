@@ -670,7 +670,7 @@ export const fetchJobAgentReport = (token, filter) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`agents/jobs/completed?date_from=${filter.date_from}&date_to=${filter.date_to}&current_page=1`, headers)
+  axios.get(`agents/jobs/reports?date_from=${filter.date_from}&date_to=${filter.date_to}&current_page=1`, headers)
   .then((res) => {
     let reportjobs = [];
     if (res.data.job) {

@@ -162,9 +162,15 @@ class AppBarMenu extends Component {
                 aria-haspopup="true"
                 onClick={this.handleNotification}
               >
-                <Badge badgeContent={badgeContentState} color="primary">
-                  <i className="fa notification-icons fa-bell-o"></i>
-                </Badge>
+                {this.props.notifiCustomer.length === 0 ? (
+                  <Badge>
+                    <i className="fa notification-icons fa-bell-o"></i>
+                  </Badge>
+                ):(
+                  <Badge badgeContent={badgeContentState} color="primary">
+                    <i className="fa notification-icons fa-bell-o"></i>
+                  </Badge>
+                )}
               </IconButton>
               <Menu
                 className={cls.SubMenu}

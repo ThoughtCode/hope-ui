@@ -1,7 +1,7 @@
 // Dependencias
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AnchorLink from 'react-anchor-link-smooth-scroll';
 import { withStyles } from 'material-ui/styles';
 import {
@@ -251,4 +251,4 @@ const mapStateToProps = state => ({
 
 const MenuAppBar = withStyles(styles)(AppBarMenu);
 
-export default connect(mapStateToProps, mapDispatchToProps) (MenuAppBar);
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(MenuAppBar));

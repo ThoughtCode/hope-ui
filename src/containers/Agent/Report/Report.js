@@ -147,17 +147,23 @@ class Report extends Component {
     let firstNameUser = null;
     let lastNameUser = null;
     let jobsReport = null;
+    let sumTotal = null;
     if (this.props.user.attributes){
       firstNameUser = this.props.user.attributes.first_name
       lastNameUser = this.props.user.attributes.last_name
     }
     if(this.props.reportjobs.length > 0) {
       jobsReport = this.props.reportjobs.map( jR => (
+        // console.log(jR.attributes),
+        // t.props.bind(this);
         <Table
           key={jR.id}
           id={jR.id}
           jobDetails={jR.attributes.job_details}
           total={jR.attributes.total}
+          vat={jR.attributes.vat}
+          serviceFee={jR.attributes.service_fee}
+          subTotal={jR.attributes.agent_earnings}
           customer={jR.attributes.customer}
           // current_page={this.state.filter.current_page}
           // goNext={this.goNext}

@@ -29,13 +29,7 @@ class Calendario extends Component {
       $(calendar).fullCalendar({
         eventClick: (eventObj) => {
           if (eventObj.url) {
-            alert(
-              'Servicio: ' + eventObj.title + '.\n' +
-              'Abrirá ' + eventObj.url + ' en una nueva ventana'
-            );
-    
             window.open(eventObj.url);
-    
             return false; // prevents browser from following link in current tab.
           } else {
             alert('Hecho clic ' + eventObj.title);

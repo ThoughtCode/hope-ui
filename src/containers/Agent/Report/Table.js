@@ -1,5 +1,6 @@
 // Dependencias
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // Css
 import cls from './Report.css';
@@ -24,20 +25,16 @@ const report = props => {
     customerFirstName = props.customer.first_name
     customerLastName = props.customer.last_name
   }
-  if(props.total){
-    totalJob = props.total
-    iva = props.total * 12 / 100
-    comision = props.total * 5 / 100
-    total = props.total - [iva + comision]
-  }
   return(
     <tr>
-      <th className="text-info" scope="row">{nameService}</th>
+      <th className="text-info" scope="row">
+        <a href={`/agente/trabajo/${props.id}`}>{nameService}</a>
+      </th>
       <td className="text-info">{customerFirstName} {customerLastName}</td>
-      <td className="text-info">{Math.trunc(totalJob)}.{Math.ceil(totalJob)}</td>
-      <td className="text-info">{Math.trunc(iva)}.{Math.ceil(iva)}</td>
-      <td className="text-info">{Math.trunc(comision)}.{Math.ceil(comision)}</td>
-      <td className="text-info">{Math.trunc(total)}.{Math.ceil(total)}</td>
+      <td className="text-info">${props.total}</td>
+      <td className="text-info">${props.vat}</td>
+      <td className="text-info">${props.serviceFee}</td>
+      <td className="text-info">${props.subTotal}</td>
     </tr>
   );
 }

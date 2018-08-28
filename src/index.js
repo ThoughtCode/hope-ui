@@ -28,6 +28,7 @@ import formContac from './store/reducers/contac';
 import notificationsAgent from './store/reducers/current_user';
 import notificationsCustomer from './store/reducers/current_user';
 import notificationsAgentRead from './store/reducers/current_user';
+import paymentAddCard from './store/reducers/payment';
 
 const history = createHistory();
 
@@ -53,7 +54,8 @@ const rootReducer = combineReducers({
   formContac : formContac,
   notificationsAgent: notificationsAgent,
   notificationsCustomer: notificationsCustomer,
-  notificationsAgentRead: notificationsAgentRead
+  notificationsAgentRead: notificationsAgentRead,
+  paymentAddCard: paymentAddCard,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

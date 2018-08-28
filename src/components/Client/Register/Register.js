@@ -183,7 +183,6 @@ class Register extends Component {
   }
 
   render() {
-    console.log(this.props.loading);
     const formElementsArray = [];
     for (const key in this.state.registerForm) {
       formElementsArray.push({

@@ -77,4 +77,7 @@ export {
 } from './proposal';
 export {
   formContact,
-} from './contact'
+} from './contact';
+export {
+  paymentAddCard,
+} from './payment'

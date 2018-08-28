@@ -179,7 +179,6 @@ class FormRegister extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
-    console.log('paso');
     const updatedControls = {
       ...this.state.registerForm,
       [controlName]: {

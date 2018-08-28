@@ -11,15 +11,15 @@ import {
 import MenuBar from '../../MenuBar/MenuBarAgent';
 import CalendarioComponent from '../../../components/Agent/Calendario/CalendarioComponent';
 
-// Css
+// Css    
 import cls from './Calendario.css';
 
-import * as actions from '../../../store/actions';
+// import * as actions from '../../../store/actions';
 
 class Calendario extends Component {
-  componentDidMount() {
-    this.props.onFetchCalendar(localStorage.getItem('token'));
-  }
+  // componentDidMount() {
+  //   this.props.onFetchCalendar(localStorage.getItem('token'));
+  // }
 
   render() {
     return (
@@ -36,7 +36,7 @@ class Calendario extends Component {
                 </Grid>
                 <Grid item xs={12} sm={8}>
                   <Paper elevation={0}>
-                    <CalendarioComponent events={this.props.calendar} />
+                    <CalendarioComponent />
                   </Paper>
                 </Grid>
               </Grid>
@@ -48,13 +48,13 @@ class Calendario extends Component {
   };
 }
 
-const mapStateToProps = (state) => ({
-  calendar: state.job.calendar,
-  loading: state.job.loading,
-});
+// const mapStateToProps = (state) => ({
+//   calendar: state.job.calendar,
+//   loading: state.job.loading,
+// });
 
-const mapDispatchToProps = (dispatch) => ({
-  onFetchCalendar: (token) => dispatch(actions.jobCalendar(token)),
-});
+// const mapDispatchToProps = (dispatch) => ({
+//   onFetchCalendar: (token) => dispatch(actions.jobCalendar(token)),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Calendario);
+export default Calendario;

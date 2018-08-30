@@ -365,11 +365,8 @@ class Payment extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-
     let id = this.state.selectedOption;
-
-    console.log(this.state);
-    console.log(id);
+    this.props.nextPage(e, 'Payment', this.state.cardId)
   }
 
   render() {
@@ -582,7 +579,7 @@ class Payment extends Component {
                                 </div>
                               </Grid>
                             </div> */}
-                            <input value="Submit" type='submit'>Escoger Tarjeta</input>
+                            <button value="Submit" type='submit'>Escoger Tarjeta</button>
                           </form>
                         </div>
                       )}

@@ -50,6 +50,7 @@ class ServiceBooking extends Component {
     payment: false,
     thanks: false,
     creditCardId: null,
+    cardId: null,
   };
 
   componentDidMount () {
@@ -242,14 +243,17 @@ class ServiceBooking extends Component {
     if (this.state.form.recurrent.value !== '0' ) {
       formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
     }
-    formData["credit_card_id"] = this.props.paymenData.id
+
+
+
+    formData["credit_card_id"] = this.props.paymenData.id || this.state.cardId
     const job = {
       job: formData,
     };
     this.props.createJob(localStorage.getItem('token'), job);
   };
 
-  nextPage = (event, actual_page) => {
+  nextPage = (event, actual_page, card_id) => {
     event.preventDefault();
     if (actual_page === 'Service') {
       if (this.state.form.services_base.id === 0) {
@@ -299,6 +303,7 @@ class ServiceBooking extends Component {
         checking: true,
         payment: false,
         thanks: false,
+        cardId: card_id,
       });
     }
   }

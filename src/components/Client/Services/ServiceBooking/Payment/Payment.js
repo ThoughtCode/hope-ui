@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
+import Alert from 'react-s-alert';
 
 // Components
 import {
@@ -352,21 +353,25 @@ class Payment extends Component {
     const target = event.target;
     const value = target.value;
     const name = target.name;
-    
-  
     this.setState({
       cardId: id,
       selectedOption: value,
     })
-
-    console.log(this.state)
   }
 
 
   handleFormSubmit = (e) => {
+    console.log('aquiiiii')
     e.preventDefault();
     let id = this.state.selectedOption;
-    this.props.nextPage(e, 'Payment', this.state.cardId)
+    if (this.state.cardId === null) {
+      Alert.error('Por favor escoge una tarjeta', {
+        position: 'top',
+        effect: 'genie',
+      });
+    } else {
+      this.props.nextPage(e, 'Payment', this.state.cardId)     
+    }
   }
 
   render() {
@@ -569,16 +574,6 @@ class Payment extends Component {
                         <div>
                           <form onSubmit={this.handleFormSubmit}>
                             {creditForm}
-                            {/* <div className={cls.ButtonBooking}>
-                              <Grid container>
-                                <div className={cls.Row}>
-                                  <button 
-                                    onClick={(event) => this.props.nextPage(event, 'Payment')}
-                                    className={cls.ButtonBookingCore}
-                                  >Seleccionar tarjeta</button>
-                                </div>
-                              </Grid>
-                            </div> */}
                             <button value="Submit" type='submit'>Escoger Tarjeta</button>
                           </form>
                         </div>

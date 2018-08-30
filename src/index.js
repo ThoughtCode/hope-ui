@@ -29,6 +29,8 @@ import notificationsAgent from './store/reducers/current_user';
 import notificationsCustomer from './store/reducers/current_user';
 import notificationsAgentRead from './store/reducers/current_user';
 import paymentAddCard from './store/reducers/payment';
+import paymenData from './store/reducers/payment';
+import listCard from './store/reducers/payment';
 
 const history = createHistory();
 
@@ -56,6 +58,8 @@ const rootReducer = combineReducers({
   notificationsCustomer: notificationsCustomer,
   notificationsAgentRead: notificationsAgentRead,
   paymentAddCard: paymentAddCard,
+  paymenData: paymenData,
+  listCard: listCard,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

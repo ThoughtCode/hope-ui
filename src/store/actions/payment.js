@@ -8,26 +8,39 @@ export const paymentAddCardStart = () => ({
   type: actionTypes.PAYMENT_ADD_CARD_START,
 });
 
-export const paymentAddCardSuccess = () => ({
+export const paymentAddCardSuccess = paymenData => ({
   type: actionTypes.PAYMENT_ADD_CARD_SUCCESS,
+  paymenData,
 });
 
 export const paymentAddCardFail = () => ({
   type: actionTypes.PAYMENT_ADD_CARD_FAIL,
 });
 
-export const paymentAddCard = (token, cardResponse) => dispatch => {
-  console.log(token, cardResponse, 'k-paso');
+export const paymentAddCard = (token, holder_name, card_type, number, cardtoken, status, expiry_month, expiry_year) => dispatch => {
   dispatch(paymentAddCardStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.post('/customers/add_card', cardResponse, headers)
+  const body = {
+    payment: {
+      holder_name: holder_name,
+      card_type: card_type,
+      number: number,
+      token: cardtoken,
+      status: status,
+      expiry_month: expiry_month,
+      expiry_year: expiry_year
+    }
+  }
+
+  axios.post('/customers/add_card', body, headers)
   .then((res) => {
-    console.log(res)
-    dispatch(paymentAddCardSuccess());
+    let paymenData = []
+      paymenData = res.data.payment.data
+    dispatch(paymentAddCardSuccess(paymenData));
     // dispatch(push(`/agente/trabajos`));
     // Alert.success(res.data.message, {
     //   position: 'top',
@@ -35,7 +48,6 @@ export const paymentAddCard = (token, cardResponse) => dispatch => {
     // });
   })
   .catch((err) => {
-    console.log(err)
     dispatch(paymentAddCardFail());
     // if (err.response.data.message.base) {
     //   Alert.error(err.response.data.message.base[0], {
@@ -50,3 +62,39 @@ export const paymentAddCard = (token, cardResponse) => dispatch => {
     // }
   });
 };
+
+export const listCardStart = () => ({
+  type: actionTypes.LIST_CARD_START,
+});
+
+export const listCardFail = error => ({
+  type: actionTypes.LIST_CARD_FAIL,
+  error,
+});
+
+export const listCardSuccess = listCard => ({
+  type: actionTypes.LIST_CARD_SUCCESS,
+  listCard,
+});
+
+export const listCard = (token) => dispatch => {
+  dispatch(listCardStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/customers/credit_cards', headers)
+  .then((res) => {
+      let listCard = [];
+        listCard = res.data.payment
+      dispatch(listCardSuccess(listCard));
+      Alert.success(res.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(listCardFail(err));
+    });
+}

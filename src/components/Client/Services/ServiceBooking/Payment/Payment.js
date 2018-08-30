@@ -7,80 +7,93 @@ import $ from 'jquery';
 import {
   Grid,
 } from 'material-ui';
+import ListCard from './ListCard';
 
 import cls from './Payment.css';
 
 import * as actions from '../../../../../store/actions';
 
 class Payment extends Component {
-  state = {
-    cardValidatorForm: {
-      number_card: {
-        elementType: 'number',
-        label: 'Numero de tarjeta',
-        value: '',
-        validation: {
-          required: true,
-          isCredCard: true,
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardValidatorForm: {
+        number_card: {
+          elementType: 'number',
+          label: 'Numero de tarjeta',
+          value: '',
+          validation: {
+            required: true,
+            isCredCard: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
         },
-        valid: false,
-        touched: false,
-        errorText: null,
-      },
-      first_name_card: {
-        elementType: 'text',
-        label: 'Contraseña',
-        value: '',
-        validation: {
-          required: true,
-          isAlphabetic: true,
+        first_name_card: {
+          elementType: 'text',
+          label: 'Contraseña',
+          value: '',
+          validation: {
+            required: true,
+            isAlphabetic: true,
+          },
+          valid: false,
+          touched: false,
         },
-        valid: false,
-        touched: false,
-      },
-      expiration_card_MM: {
-        elementType: 'number',
-        label: 'Mes de Expedición',
-        value: '',
-        validation: {
-          required: true,
-          // isExpirationDate: true,
+        expiration_card_MM: {
+          elementType: 'number',
+          label: 'Mes de Expedición',
+          value: '',
+          validation: {
+            required: true,
+            // isExpirationDate: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
         },
-        valid: false,
-        touched: false,
-        errorText: null,
-      },
-      expiration_card_YY: {
-        elementType: 'number',
-        label: 'Año de Expedición',
-        value: '',
-        validation: {
-          required: true,
-          // isExpirationDate: true,
+        expiration_card_YY: {
+          elementType: 'number',
+          label: 'Año de Expedición',
+          value: '',
+          validation: {
+            required: true,
+            // isExpirationDate: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
         },
-        valid: false,
-        touched: false,
-        errorText: null,
-      },
-      cvc_card: {
-        elementType: 'number',
-        label: 'CVC',
-        value: '',
-        validation: {
-          required: true,
-          isCVC: true,
+        cvc_card: {
+          elementType: 'number',
+          label: 'CVC',
+          value: '',
+          validation: {
+            required: true,
+            isCVC: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
         },
-        valid: false,
-        touched: false,
-        errorText: null,
       },
-    },
-    check: false,
-    formIsValid: false,
+      check: false,
+      formIsValid: false,
+      selectedOption: false,
+      cardId: null,
+    }
+
+    this.handlecardChecked = this.handlecardChecked.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
+
+  
 
   componentDidMount() {
     this.props.onFetchUser(localStorage.getItem('token'));
+    this.props.onListCard(localStorage.getItem('token'));
   };
   
   inputChangedHandler(value, rules) {
@@ -249,7 +262,7 @@ class Payment extends Component {
 
     return (checksum % 10) === 0;
   }
-
+  
   validateCCExpiration = (expire) => {
     var result = true;
     if(!expire.match(/(0[1-9]|1[0-2])[/][0-9]{2}/)){
@@ -271,9 +284,9 @@ class Payment extends Component {
     return result;
   }
 
-  
   paymentHandle = (event) => {
     event.preventDefault();
+    var saved_props = this.props;
     window.Paymentez.init('stg', 'NOC-EC-CLIENT', 'Owo41X6qbItrAcEy7Pz9DAL7wl8gAo');
     var form = $("#add-card-form");
     var submitButton = form.find("button");
@@ -296,15 +309,20 @@ class Payment extends Component {
                         }
                       };
     var successHandler = function(cardResponse) {
-        console.log(cardResponse.card);
         if(cardResponse.card.status === 'valid'){
           $('#messages').html('Card Successfully Added<br>'+
                         'status: ' + cardResponse.card.status + '<br>' +
                         "Card Token: " + cardResponse.card.token + "<br>" +
                         "transaction_reference: " + cardResponse.card.transaction_reference
                       );
-                      console.log(cardResponse.card)
-          this.props.onPaymentAddCard(localStorage.getItem('token'), cardResponse.card);
+                      var c_type = cardResponse.card.type
+                      var c_number = cardResponse.card.number
+                      var c_token = cardResponse.card.token
+                      var c_status = cardResponse.card.status
+                      var c_em = cardResponse.card.expiry_month
+                      var c_ey = cardResponse.card.expiry_year
+          saved_props.onPaymentAddCard(localStorage.getItem('token'),  holder_name, c_type, c_number, c_token, c_status, c_em, c_ey);
+          saved_props.nextPage(event, 'Payment')
         }else if(cardResponse.card.status === 'review'){
           $('#messages').html('Card Under Review<br>'+
                         'status: ' + cardResponse.card.status + '<br>' +
@@ -329,8 +347,64 @@ class Payment extends Component {
     }
     window.Paymentez.addCard(this.props.user.id, email, cardToSave, successHandler, errorHandler);
   }
+
+  handlecardChecked = (event, id) => {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    
+  
+    this.setState({
+      cardId: id,
+      selectedOption: value,
+    })
+
+    console.log(this.state)
+  }
+
+
+  handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    let id = this.state.selectedOption;
+
+    console.log(this.state);
+    console.log(id);
+  }
+
   render() {
-    console.log(this.state.cardValidatorForm)
+    let validadData = null;
+    let creditForm;
+    let creditCard;
+    if(this.props.listCard.data != undefined){
+      if (this.props.listCard.data.length > 0) {
+        validadData = this.props.listCard.data.length
+        creditForm = this.props.listCard.data.map(d => {
+          return(
+            <div>
+              <div className="text-info" scope="row">
+                <input
+                  name="cardId"
+                  type="radio"
+                  checked={this.state.selectedOption === d.id}
+                  onClick={(event) => this.handlecardChecked(event, d.id)}
+                  value={d.id}
+                />
+              </div>
+              <div className="text-info">
+                <label>
+                  <p>{d.id}</p>
+                  <p>{d.attributes.card_type} xxxxxxxxxxxx{d.attributes.number}</p>
+                  <p>{d.attributes.expiry_year}</p>
+                  <p>{d.attributes.holder_name}</p>
+                </label>
+              </div>
+            </div>
+          )
+          }
+        )
+      }
+    }
     const { props } = this.props;
     return (
       <Grid container>
@@ -348,150 +422,170 @@ class Payment extends Component {
                         </h3>
                       </div>
                     </div>
-                    <div className={cls.Row}>
-                      <Grid container>
-                        <div className={cls.MarginBottom}>
-                          <Grid container>
-                            <Grid item xs={12} sm={12} md={12} lg={6}>
+                      {validadData <= 0 && validadData != null ? (
+                        <div>
+                          <div className={cls.Row}>
+                            <Grid container>
+                              <div className={cls.MarginBottom}>
+                                <Grid container>
+                                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                                    <Grid container>
+                                      <div className={cls.Columns}>
+                                        <Grid container>
+                                          <Grid item xs={12} sm={12} md={12} lg={12}>
+                                            <label>Número de Tarjeta de Credito</label>
+                                            <div className={cls.Relative}>
+                                              <div className={cls.CardNumber}>
+                                                <input
+                                                  className={cls.Input}
+                                                  value={this.state.cardValidatorForm.number_card.value}
+                                                  onChange={(event) => this.changeValidator(event, 'number_card')}
+                                                />
+                                                {!this.state.cardValidatorForm.number_card.valid && this.state.cardValidatorForm.number_card.touched ? (
+                                                  <div className={cls.ErrorText}>
+                                                    {this.state.cardValidatorForm.number_card.errorText}
+                                                  </div>
+                                                ) : null}
+                                              </div>
+                                            </div>
+                                          </Grid>
+                                        </Grid>
+                                      </div>
+                                    </Grid>
+                                  </Grid>
+                                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                                    <Grid container>
+                                      <div className={cls.ColumnsIcon}>
+                                        <Grid container>
+                                          <img 
+                                            alt="Credit Cards" 
+                                            className={cls.CreditCardIcon} 
+                                            src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
+                                        </Grid>
+                                      </div>
+                                    </Grid>
+                                  </Grid>
+                                </Grid>
+                              </div>
+                            </Grid>
+                          </div>
+                          <div className={cls.Row}>
+                            <div className={cls.MarginBottom}>
                               <Grid container>
-                                <div className={cls.Columns}>
+                                <Grid item xs={12} sm={12} md={12} lg={6}>
                                   <Grid container>
-                                    <Grid item xs={12} sm={12} md={12} lg={12}>
-                                      <label>Número de Tarjeta de Credito</label>
+                                    <div className={cls.Columns}>
+                                      <label>Nombre de la tarjeta de credito</label>
                                       <div className={cls.Relative}>
-                                        <div className={cls.CardNumber}>
+                                        <div className={cls.CardName}>
                                           <input
                                             className={cls.Input}
-                                            value={this.state.cardValidatorForm.number_card.value}
-                                            onChange={(event) => this.changeValidator(event, 'number_card')}
+                                            value={this.state.cardValidatorForm.first_name_card.value}
+                                            onChange={(event) => this.changeValidator(event, 'first_name_card')}
                                           />
-                                          {!this.state.cardValidatorForm.number_card.valid && this.state.cardValidatorForm.number_card.touched ? (
+                                          {!this.state.cardValidatorForm.first_name_card.valid && this.state.cardValidatorForm.first_name_card.touched ? (
                                             <div className={cls.ErrorText}>
-                                              {this.state.cardValidatorForm.number_card.errorText}
+                                              {this.state.cardValidatorForm.first_name_card.errorText}
                                             </div>
                                           ) : null}
                                         </div>
                                       </div>
-                                    </Grid>
+                                    </div>
                                   </Grid>
-                                </div>
+                                </Grid>
                               </Grid>
-                            </Grid>
-                            <Grid item xs={12} sm={12} md={12} lg={6}>
+                            </div>
+                          </div>
+                          <div className={cls.Row}>
+                            <div className={cls.MarginBottom}>
                               <Grid container>
-                                <div className={cls.ColumnsIcon}>
+                                <Grid item xs={6} sm={6} md={6} lg={3}>
                                   <Grid container>
-                                    <img 
-                                      alt="Credit Cards" 
-                                      className={cls.CreditCardIcon} 
-                                      src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
+                                    <div className={cls.Columns}>
+                                      <label>Expiracion</label>
+                                      <div className={cls.Relative}>
+                                        <div className={cls.CardNumber}>
+                                          <input
+                                            className={cls.InputSmall}
+                                            value={this.state.cardValidatorForm.expiration_card_MM.value}
+                                            onChange={(event) => this.changeValidator(event, 'expiration_card_MM')}
+                                            placeholder="MM"
+                                          />
+                                          {!this.state.cardValidatorForm.expiration_card_MM.valid && this.state.cardValidatorForm.expiration_card_MM.touched ? (
+                                            <div className={cls.ErrorText}>
+                                              {this.state.cardValidatorForm.expiration_card_MM.errorText}
+                                            </div>
+                                          ) : null}
+                                          <input
+                                            className={cls.InputSmall}
+                                            value={this.state.cardValidatorForm.expiration_card_YY.value}
+                                            onChange={(event) => this.changeValidator(event, 'expiration_card_YY')}
+                                            placeholder="YYYY"
+                                          />
+                                          {!this.state.cardValidatorForm.expiration_card_YY.valid && this.state.cardValidatorForm.expiration_card_YY.touched ? (
+                                            <div className={cls.ErrorText}>
+                                              {this.state.cardValidatorForm.expiration_card_YY.errorText}
+                                            </div>
+                                          ) : null}                                    
+                                        </div>
+                                      </div>
+                                    </div>
                                   </Grid>
+                                </Grid>
+                                <Grid item xs={6} sm={6} md={6} lg={3}>
+                                  <Grid container>
+                                    <div>
+                                      <label>CVC</label>
+                                      <div className={cls.Relative}>
+                                        <div className={cls.CardNumber}>
+                                          <input
+                                            className={cls.InputSmall}
+                                            value={this.state.cardValidatorForm.cvc_card.value}
+                                            onChange={(event) => this.changeValidator(event, 'cvc_card')}
+                                            placeholder="989"
+                                          />
+                                          {!this.state.cardValidatorForm.cvc_card.valid && this.state.cardValidatorForm.cvc_card.touched ? (
+                                            <div className={cls.ErrorText}>
+                                              {this.state.cardValidatorForm.cvc_card.errorText}
+                                            </div>
+                                          ) : null}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </Grid>
+                                </Grid>
+                              </Grid>
+                            </div>
+                            <div className={cls.ButtonBooking}>
+                              <Grid container>
+                                <div className={cls.Row}>
+                                  <button 
+                                    onClick={(event) => this.paymentHandle(event)}
+                                    className={cls.ButtonBookingCore}
+                                  >Pagar</button>
                                 </div>
                               </Grid>
-                            </Grid>
-                          </Grid>
+                            </div>
+                          </div>
                         </div>
-                      </Grid>
-                    </div>
-                    <div className={cls.Row}>
-                      <div className={cls.MarginBottom}>
-                        <Grid container>
-                          <Grid item xs={12} sm={12} md={12} lg={6}>
-                            <Grid container>
-                              <div className={cls.Columns}>
-                                <label>Nombre de la tarjeta de credito</label>
-                                <div className={cls.Relative}>
-                                  <div className={cls.CardName}>
-                                    <input
-                                      className={cls.Input}
-                                      value={this.state.cardValidatorForm.first_name_card.value}
-                                      onChange={(event) => this.changeValidator(event, 'first_name_card')}
-                                    />
-                                    {!this.state.cardValidatorForm.first_name_card.valid && this.state.cardValidatorForm.first_name_card.touched ? (
-                                      <div className={cls.ErrorText}>
-                                        {this.state.cardValidatorForm.first_name_card.errorText}
-                                      </div>
-                                    ) : null}
-                                  </div>
+                      ) : (
+                        <div>
+                          <form onSubmit={this.handleFormSubmit}>
+                            {creditForm}
+                            {/* <div className={cls.ButtonBooking}>
+                              <Grid container>
+                                <div className={cls.Row}>
+                                  <button 
+                                    onClick={(event) => this.props.nextPage(event, 'Payment')}
+                                    className={cls.ButtonBookingCore}
+                                  >Seleccionar tarjeta</button>
                                 </div>
-                              </div>
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </div>
-                    </div>
-                    <div className={cls.Row}>
-                      <div className={cls.MarginBottom}>
-                        <Grid container>
-                          <Grid item xs={6} sm={6} md={6} lg={3}>
-                            <Grid container>
-                              <div className={cls.Columns}>
-                                <label>Expiracion</label>
-                                <div className={cls.Relative}>
-                                  <div className={cls.CardNumber}>
-                                    <input
-                                      className={cls.InputSmall}
-                                      value={this.state.cardValidatorForm.expiration_card_MM.value}
-                                      onChange={(event) => this.changeValidator(event, 'expiration_card_MM')}
-                                      placeholder="MM"
-                                    />
-                                    {!this.state.cardValidatorForm.expiration_card_MM.valid && this.state.cardValidatorForm.expiration_card_MM.touched ? (
-                                      <div className={cls.ErrorText}>
-                                        {this.state.cardValidatorForm.expiration_card_MM.errorText}
-                                      </div>
-                                    ) : null}
-                                    <input
-                                      className={cls.InputSmall}
-                                      value={this.state.cardValidatorForm.expiration_card_YY.value}
-                                      onChange={(event) => this.changeValidator(event, 'expiration_card_YY')}
-                                      placeholder="YYYY"
-                                    />
-                                    {!this.state.cardValidatorForm.expiration_card_YY.valid && this.state.cardValidatorForm.expiration_card_YY.touched ? (
-                                      <div className={cls.ErrorText}>
-                                        {this.state.cardValidatorForm.expiration_card_YY.errorText}
-                                      </div>
-                                    ) : null}                                    
-                                  </div>
-                                </div>
-                              </div>
-                            </Grid>
-                          </Grid>
-                          <Grid item xs={6} sm={6} md={6} lg={3}>
-                            <Grid container>
-                              <div>
-                                <label>CVC</label>
-                                <div className={cls.Relative}>
-                                  <div className={cls.CardNumber}>
-                                    <input
-                                      className={cls.InputSmall}
-                                      value={this.state.cardValidatorForm.cvc_card.value}
-                                      onChange={(event) => this.changeValidator(event, 'cvc_card')}
-                                      placeholder="989"
-                                    />
-                                    {!this.state.cardValidatorForm.cvc_card.valid && this.state.cardValidatorForm.cvc_card.touched ? (
-                                      <div className={cls.ErrorText}>
-                                        {this.state.cardValidatorForm.cvc_card.errorText}
-                                      </div>
-                                    ) : null}
-                                  </div>
-                                </div>
-                              </div>
-                            </Grid>
-                          </Grid>
-                        </Grid>
-                      </div>
-                    </div>
-                    <div className={cls.ButtonBooking}>
-                      <Grid container>
-                        <div className={cls.Row}>
-                          <button 
-                            onClick={(event) => this.props.nextPage(event, 'Payment')}
-                            // onClick={(event) => this.paymentHandle(event)}
-                            className={cls.ButtonBookingCore}
-                          >Pagar</button>
+                              </Grid>
+                            </div> */}
+                            <input value="Submit" type='submit'>Escoger Tarjeta</input>
+                          </form>
                         </div>
-                      </Grid>
-                    </div>
+                      )}
                   </Grid>
                 </div>  
               </div>
@@ -505,11 +599,14 @@ class Payment extends Component {
 
 const mapDispatchToProps = dispatch => ({
   onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
-  onPaymentAddCard: (token, cardResponse) => dispatch(actions.paymentAddCard(token, cardResponse)),
+  onListCard: (token) => dispatch(actions.listCard(token)),
+  onPaymentAddCard: (token, holder_name, c_type, c_number, c_token, c_status, c_em, c_ey) => dispatch(actions.paymentAddCard(token, holder_name, c_type, c_number, c_token, c_status, c_em, c_ey)),
 });
 
 const mapStateToProps = state => ({
   user: state.user.user,
+  paymenData: state.paymenData.paymenData,
+  listCard: state.listCard.listCard,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (Payment);

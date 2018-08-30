@@ -154,8 +154,6 @@ class Report extends Component {
     }
     if(this.props.reportjobs.length > 0) {
       jobsReport = this.props.reportjobs.map( jR => (
-        // console.log(jR.attributes),
-        // t.props.bind(this);
         <Table
           key={jR.id}
           id={jR.id}

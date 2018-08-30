@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import moment from 'moment';
 import Alert from 'react-s-alert';
 
@@ -48,6 +49,7 @@ class ServiceBooking extends Component {
     checking: false,
     payment: false,
     thanks: false,
+    creditCardId: null,
   };
 
   componentDidMount () {
@@ -240,6 +242,7 @@ class ServiceBooking extends Component {
     if (this.state.form.recurrent.value !== '0' ) {
       formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
     }
+    formData["credit_card_id"] = this.props.paymenData.id
     const job = {
       job: formData,
     };
@@ -283,19 +286,19 @@ class ServiceBooking extends Component {
         });
       }
     } else if (actual_page === 'Checking') {
-      this.setState({
-        service: false,
-        checking: false,
-        payment: true,
-        thanks: false,
-      });
-    } else if (actual_page === 'Payment') {
       this.createJobHandler(event);
       this.setState({
         service: false,
         checking: false,
         payment: false,
         thanks: true,
+      });
+    } else if (actual_page === 'Payment') {
+      this.setState({
+        service: false,
+        checking: true,
+        payment: false,
+        thanks: false,
       });
     }
   }
@@ -319,6 +322,7 @@ class ServiceBooking extends Component {
     }
   }
   render() {
+    {console.log(this.state)}
     return (
       <div className={cls.ServiceBooking}>
         <Grid container justify="center">
@@ -373,7 +377,7 @@ class ServiceBooking extends Component {
                   </Grid>
                 </Grid>                
               ) : null}
-              {/* {this.state.checking ? (
+              {this.state.checking ? (
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container justify="center">
@@ -389,7 +393,7 @@ class ServiceBooking extends Component {
                     </Grid>
                   </Grid>
                 </Grid>                
-              ) : null} */}
+              ) : null}
               {this.state.thanks ? (
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
@@ -409,4 +413,8 @@ class ServiceBooking extends Component {
   };
 };
 
-export default ServiceBooking;
+const mapStateToProps = state => ({
+  paymenData: state.paymenData.paymenData,
+});
+
+export default connect(mapStateToProps, null) (ServiceBooking);

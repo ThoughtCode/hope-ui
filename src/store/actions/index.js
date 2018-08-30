@@ -80,4 +80,6 @@ export {
 } from './contact';
 export {
   paymentAddCard,
+  paymenData,
+  listCard,
 } from './payment'

@@ -3,16 +3,19 @@ import moment from 'moment';
 import Alert from 'react-s-alert';
 
 // Components
-import {
-  Grid,
-} from 'material-ui';
+import Grid from 'material-ui/Grid';
 
 // Css
 import cls from './Checking.css';
 
 class Checking extends Component {
-  state = {
-    check: false
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedOption: 1,
+      check: false
+    };
+    this.handleChange = this.handleChange.bind(this);
   }
 
   handleCheckbox = () => {
@@ -23,14 +26,21 @@ class Checking extends Component {
 
   changePageValidator = (event) => {
     event.preventDefault();
+    let installment = this.state.selectedOption;
     if (this.state.check) {
-      this.props.nextPage(event, 'Checking')
+      this.props.nextPage(event, 'Checking', null, installment)
     } else {
       Alert.error('Debes aceptar los términos y condiciones para avanzar', {
         position: 'top',
         effect: 'genie',
       });
     }
+  }
+
+  handleChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    this.setState({ selectedOption: value });
   }
 
   render () {
@@ -172,6 +182,26 @@ class Checking extends Component {
                                   {total.toFixed(2)}
                                 </span>
                               </div>
+                            </Grid>
+                          </Grid>
+                        </div>
+                      </Grid>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} lg={12}>
+                    <div className={cls.BookingSectionNoBorderTerm}>
+                      <Grid container>
+                        <div className={cls.RowTotalTerm}>
+                          <Grid container>
+                            <Grid item xs={12} lg={12}>
+                              <form onChange={(event) => this.handleChange(event)}>
+                                <div className={cls.Term}>
+                                  <select className={cls.Select} >
+                                    <option value="1">No deseo diferir mi pago.</option>
+                                    <option value="3" onChange={(event) => this.handleChange(event)}>Diferir mi pago en 3 meses.</option>
+                                  </select>
+                                </div>
+                              </form>
                             </Grid>
                           </Grid>
                         </div>

@@ -51,6 +51,7 @@ class ServiceBooking extends Component {
     thanks: false,
     creditCardId: null,
     cardId: null,
+    installments: 1,
   };
 
   componentDidMount () {
@@ -221,7 +222,7 @@ class ServiceBooking extends Component {
     })
   };
 
-  createJobHandler = (event) => {
+  createJobHandler = (event, installments) => {
     event.preventDefault();
     const formData = {};
     formData["property_id"] = this.state.form.property.value;
@@ -244,16 +245,15 @@ class ServiceBooking extends Component {
       formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
     }
 
-
-
-    formData["credit_card_id"] = this.props.paymenData.id || this.state.cardId
+    formData["credit_card_id"] = this.props.paymenData.id || this.state.cardId;
+    formData["installments"] =  installments;
     const job = {
       job: formData,
     };
     this.props.createJob(localStorage.getItem('token'), job);
   };
 
-  nextPage = (event, actual_page, card_id) => {
+  nextPage = (event, actual_page, card_id, installments) => {
     event.preventDefault();
     if (actual_page === 'Service') {
       if (this.state.form.services_base.id === 0) {
@@ -290,13 +290,13 @@ class ServiceBooking extends Component {
         });
       }
     } else if (actual_page === 'Checking') {
-      this.createJobHandler(event);
       this.setState({
         service: false,
         checking: false,
         payment: false,
         thanks: true,
       });
+      this.createJobHandler(event, installments);
     } else if (actual_page === 'Payment') {
       this.setState({
         service: false,
@@ -327,7 +327,6 @@ class ServiceBooking extends Component {
     }
   }
   render() {
-    {console.log(this.state)}
     return (
       <div className={cls.ServiceBooking}>
         <Grid container justify="center">

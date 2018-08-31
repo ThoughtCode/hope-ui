@@ -203,3 +203,22 @@
   color: #0988d3;
   cursor: pointer;
 }
+
+.Select {
+  display: block;
+  width: 100%;
+  padding: 0.625em 1em;
+  font-weight: normal;
+  border: 1px solid #B1B9C3;
+  font-size: 1em;
+  border-radius: 4px;
+  -webkit-transition-property: border-color, color, box-shadow;
+  transition-property: border-color, color, box-shadow;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  max-width: 100%;
+  outline: none;
+  line-height: 1.5;
+  margin: 0;
+  background-color: white;
+}

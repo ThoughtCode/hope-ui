@@ -8,7 +8,6 @@ import Alert from 'react-s-alert';
 import {
   Grid,
 } from 'material-ui';
-import ListCard from './ListCard';
 
 import cls from './Payment.css';
 
@@ -49,7 +48,6 @@ class Payment extends Component {
           value: '',
           validation: {
             required: true,
-            // isExpirationDate: true,
           },
           valid: false,
           touched: false,
@@ -61,7 +59,6 @@ class Payment extends Component {
           value: '',
           validation: {
             required: true,
-            // isExpirationDate: true,
           },
           valid: false,
           touched: false,
@@ -84,13 +81,13 @@ class Payment extends Component {
       formIsValid: false,
       selectedOption: false,
       cardId: null,
+      showCardForm: false,
     }
 
     this.handlecardChecked = this.handlecardChecked.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.showCardForm = this.showCardForm.bind(this);
   }
-
-  
 
   componentDidMount() {
     this.props.onFetchUser(localStorage.getItem('token'));
@@ -269,15 +266,12 @@ class Payment extends Component {
     if(!expire.match(/(0[1-9]|1[0-2])[/][0-9]{2}/)){
       result = false;
     } else {
-      // get current year and month
       var d = new Date();
       var currentYear = d.getFullYear();
       var currentMonth = d.getMonth() + 1;
-      // get parts of the expiration date
       var parts = expire.split('/');
       var year = parseInt(parts[1], 10) + 2000;
       var month = parseInt(parts[0], 10);
-      // compare the dates
       if (year < currentYear || (year == currentYear && month < currentMonth)) {
         result = false;
       }
@@ -359,7 +353,6 @@ class Payment extends Component {
     })
   }
 
-
   handleFormSubmit = (e) => {
     console.log('aquiiiii')
     e.preventDefault();
@@ -374,11 +367,19 @@ class Payment extends Component {
     }
   }
 
+  showCardForm = (e) => {
+    e.preventDefault();
+    console.log('show card')
+    this.setState({
+      showCardForm: true,
+    })
+  }
+
   render() {
     let validadData = null;
     let creditForm;
     let creditCard;
-    if(this.props.listCard.data != undefined){
+    if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
       if (this.props.listCard.data.length > 0) {
         validadData = this.props.listCard.data.length
         creditForm = this.props.listCard.data.map(d => {
@@ -424,7 +425,7 @@ class Payment extends Component {
                         </h3>
                       </div>
                     </div>
-                      {validadData <= 0 && validadData != null ? (
+                      {(validadData <= 0 && validadData != null) || this.state.showCardForm === true ? (
                         <div>
                           <div className={cls.Row}>
                             <Grid container>
@@ -576,6 +577,7 @@ class Payment extends Component {
                             {creditForm}
                             <button value="Submit" type='submit'>Escoger Tarjeta</button>
                           </form>
+                          <button onClick={this.showCardForm}>Agregar nueva tarjeta</button>
                         </div>
                       )}
                   </Grid>

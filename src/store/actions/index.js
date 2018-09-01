@@ -50,6 +50,7 @@ export {
   jobCalendar,
   canApply,
   fetchJobAgentReport,
+  confirmationPayment,
 } from './job';
 export {
   fetchCurrentUser,

@@ -686,3 +686,39 @@ export const fetchJobAgentReport = (token, filter) => dispatch => {
     dispatch(fetchJobAgentReportFail(err));
   });  
 }
+
+export const confirmationPaymentSuccess = () => ({
+  type: actionTypes.CONFIRMATION_PAYMENT_SUCCESS,
+});
+
+export const confirmationPaymentStart = () => ({
+  type: actionTypes.CONFIRMATION_PAYMENT_START,
+});
+
+export const confirmationPaymentFail = () => ({
+  type: actionTypes.CONFIRMATION_PAYMENT_FAIL,
+});
+
+export const confirmationPayment = (token, job_id, wasSuccesful) => dispatch => {
+  console.log(token, job_id, wasSuccesful )
+  dispatch(confirmationPaymentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  const body = {
+    job: {
+      closed: wasSuccesful
+    }
+  };
+  axios.post(`/agents/jobs/${job_id}/confirm_payment`, body, headers)
+    .then((res) => {
+      console.log(res)
+      dispatch(confirmationPaymentSuccess(res));
+    })
+    .catch((err) => {
+      console.log(err)
+      dispatch(confirmationPaymentFail(err));
+    });
+}

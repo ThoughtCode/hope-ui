@@ -17,6 +17,7 @@ const initialState = {
   canApply: [],
   loading: false,
   reportjobs: [],
+  confirmationPayment: [],
 };
 
 const fetchJobsSuccess = (state, action) => updateObject(state, {
@@ -141,6 +142,10 @@ const fetchJobAgentReport = (state, action) => updateObject(state, {
   reportjobs: action.reportjobs,
 });
 
+const confirmationPayment = (state, action) => updateObject(state, {
+  confirmationPayment: action.confirmationPayment,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_JOBS_START: return state;
@@ -194,6 +199,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_AGENT_REPORT_START: return state;
     case actionTypes.FETCH_JOB_AGENT_REPORT_SUCCESS: return fetchJobAgentReport(state, action);
     case actionTypes.FETCH_JOB_AGENT_REPORT_FAIL: return state;
+    case actionTypes.CONFIRMATION_PAYMENT_START: return state;
+    case actionTypes.CONFIRMATION_PAYMENT_SUCCESS: return confirmationPayment(state, action);
+    case actionTypes.CONFIRMATION_PAYMENT_FAIL: return state;
     default: return state;
   }
 };

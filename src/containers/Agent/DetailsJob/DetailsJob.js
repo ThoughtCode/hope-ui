@@ -9,16 +9,43 @@ import {
     Typography,
     Avatar,
     Button,
+    Modal,
 } from 'material-ui';
 import Rating from 'react-rating';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Stars from './Stars';
+// import Confirmation from './Confirmation'
 
 // Css
 import cls from './DetailsJob.css';
 
 import * as actions from '../../../store/actions';
 class DetailsJob extends Component {
+  state = {
+    openCancell: false,
+  }
+  handleClose = () => {
+    this.setState({
+      openCancell: false,
+    });
+  };
+  handleOpen = () => {
+    this.setState({
+      openCancell: true,
+    });
+  }
+  sendJobReview(wasSuccesful){
+    if (wasSuccesful == true){
+      console.log(this.props)
+      console.log("Si")
+      this.props.onConfirmationPayment(localStorage.getItem('token'), this.props.match.params.job_id, wasSuccesful);
+      this.props.history.push(`/agente/${this.props.match.params.job_id}/calificar`)
+    } else {
+      console.log("No")
+      this.props.onConfirmationPayment(localStorage.getItem('token'), this.props.match.params.job_id, wasSuccesful);
+      this.props.history.push('/agente')
+    }
+  }
   componentDidMount() {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onDisableButtonCustomer(localStorage.getItem('token'), this.props.match.params.job_id);
@@ -260,17 +287,45 @@ class DetailsJob extends Component {
                             </div>
                           </div>
                           {this.props.disableButtonCustomer.can_review === true ? (
-                            <Link
-                            className={cls.JobHire}
-                            component={Link}
-                            to={`/agente/${this.props.match.params.job_id}/calificar`}
-                            >
-                              CALIFICAR
-                            </Link>
+                            <Button
+                              className={cls.JobHire}
+                              // component={Link}
+                              // to={`/agente/${this.props.match.params.job_id}/calificar`}
+                              onClick={this.handleOpen}>CALIFICAR
+                            </Button>
                             ) : (
                               <p></p>
                             )
                           }
+                          <Modal
+                            open={this.state.openCancell}
+                            onClose={this.handleClose}
+                          >
+                            <div className={cls.Modal}>
+                              <div>
+                                <h2>Aviso de penalizacion</h2>
+                              </div>
+                              <div>
+                                <p>Antes de continuar. Confirma que su trabajo se realizo con exito?</p>
+                              </div>
+                              <div>
+                                <span>
+                                  <button 
+                                    className={cls.ButtonAccept}
+                                    onClick={(e) => this.sendJobReview(true)}
+                                  >Si.
+                                  </button>
+                                </span>
+                                <span className={cls.ButtonWrapper}>
+                                  <button
+                                    className={cls.ButtonCancell}
+                                    onClick={(e) => this.sendJobReview(false)}
+                                  >No.
+                                  </button>
+                                </span>
+                              </div>
+                            </div>
+                          </Modal>
                         </div>
                         <Grid item xs={12}>
                           <div className={cls.JobAgentsHeader}>
@@ -301,6 +356,7 @@ const mapDispatchToProps = dispatch => ({
   onApplyProposal: (token, job_id) => dispatch(actions.applyProposal(token, job_id)),
   onDisableButtonCustomer: (token, job_id) => dispatch(actions.disableButtonCustomer(token, job_id)),
   onCanApply: (token, job_id) => dispatch(actions.canApply(token, job_id)),
+  onConfirmationPayment: (token, job_id, wasSuccesful) => dispatch(actions.confirmationPayment(token, job_id, wasSuccesful)),
 });
 
 const mapStateToProps = state => ({

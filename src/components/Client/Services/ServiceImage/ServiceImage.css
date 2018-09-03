@@ -1,14 +1,14 @@
 .ServiceImage {
+  width: 100%;
+  height: 150px;
   background-repeat: no-repeat;
-  background-position: 50% 50%;
   background-size: cover;
-  height: 400px;
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  background-position: center center;
+  color: #fff;
+  text-align: center;
+  margin-top: 118px;
+  text-align: center;
+  position: relative;
 }
 
 .ServiceContainer {
@@ -19,15 +19,32 @@
 }
 
 .ServiceTitle {
+  position: absolute;
+  top: 25%;
+  left: 40%;
   opacity: 1;
   z-index: 2;
   color: #0069a7 !important;
   font-size: 2rem !important;
 }
 
+@media only screen and (max-width: 600px) {
+  .ServiceContainer {
+    padding-top: 96px;
+    padding-bottom: 214px;
+    height: 250px;
+  }
+  .ServiceTitle {
+    font-size: 25px !important;
+  }
+  .ServiceImage {
+    height: 180px;
+  }
+}
+
 @media only screen and (min-width: 720px) {
   .ServiceImage {
-    height: 500px;
+    height: 250px;
   }
 
   .ServiceContainer {
@@ -41,16 +58,3 @@
   }
 }
 
-@media only screen and (max-width: 600px) {
-  .ServiceContainer {
-    padding-top: 96px;
-    padding-bottom: 214px;
-    height: 310px;
-  }
-  .ServiceTitle {
-    font-size: 25px !important;
-  }
-  .ServiceImage {
-    height: 180px;
-  }
-}

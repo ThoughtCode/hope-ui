@@ -372,11 +372,9 @@ class ServiceBooking extends Component {
                 <Grid container justify="center">
                   <Grid item xs={12} sm={11} md={8} lg={8}>
                     <Grid container>
-                      <Grid item xs={12} lg={12}>
-                        <Payment
-                          backPage={this.backPage}
-                          nextPage={this.nextPage} />
-                      </Grid>
+                      <Payment
+                        backPage={this.backPage}
+                        nextPage={this.nextPage} />
                     </Grid>
                   </Grid>
                 </Grid>                

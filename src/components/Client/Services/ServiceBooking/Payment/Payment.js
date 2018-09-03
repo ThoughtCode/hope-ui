@@ -385,7 +385,7 @@ class Payment extends Component {
         creditForm = this.props.listCard.data.map(d => {
           return(
             <div>
-              <div className="text-info" scope="row">
+              <div className={cls.text_info}>
                 <input
                   name="cardId"
                   type="radio"
@@ -393,13 +393,11 @@ class Payment extends Component {
                   onClick={(event) => this.handlecardChecked(event, d.id)}
                   value={d.id}
                 />
-              </div>
-              <div className="text-info">
                 <label>
-                  <p>{d.id}</p>
-                  <p>{d.attributes.card_type} xxxxxxxxxxxx{d.attributes.number}</p>
-                  <p>{d.attributes.expiry_year}</p>
-                  <p>{d.attributes.holder_name}</p>
+                  <span>{d.attributes.card_type}</span>
+                  <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
+                  <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
+                  <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
                 </label>
               </div>
             </div>
@@ -412,179 +410,175 @@ class Payment extends Component {
     return (
       <Grid container>
         <div className={cls.BookingForm}>
-          <Grid container>
-            <form className={cls.Form}>
-              <div className={cls.ContentWrapper}>
-                <div className={cls.ServiceSection}>
-                  <Grid container>
-                    <div className={cls.Row}>
-                      <div>
-                      <span onClick={(event) => this.props.backPage(event, 'Payment')} className={cls.ButtonBack}>{'<<'} Volver</span>
-                        <h3 className={cls.SubHeaderText}>
-                          <span>Ingresa tu forma de Pago</span>
-                        </h3>
-                      </div>
-                    </div>
-                      {(validadData <= 0 && validadData != null) || this.state.showCardForm === true ? (
-                        <div>
-                          <div className={cls.Row}>
+          <div className={cls.Form}>
+            <div className={cls.ContentWrapper}>
+              <div className={cls.ServiceSection}>
+                <div className={cls.Row}>
+                  <div>
+                  <span onClick={(event) => this.props.backPage(event, 'Payment')} className={cls.ButtonBack}>{'<<'} Volver</span>
+                    <h3 className={cls.SubHeaderText}>
+                      <span>Ingresa tu forma de Pago</span>
+                    </h3>
+                  </div>
+                </div>
+                  {(validadData <= 0 && validadData != null) || this.state.showCardForm === true ? (
+                    <div>
+                      <div className={cls.Row}>
+                        <Grid container>
+                          <div className={cls.MarginBottom}>
                             <Grid container>
-                              <div className={cls.MarginBottom}>
+                              <Grid item xs={12} sm={12} md={12} lg={6}>
                                 <Grid container>
-                                  <Grid item xs={12} sm={12} md={12} lg={6}>
+                                  <div className={cls.Columns}>
                                     <Grid container>
-                                      <div className={cls.Columns}>
-                                        <Grid container>
-                                          <Grid item xs={12} sm={12} md={12} lg={12}>
-                                            <label>Número de Tarjeta de Credito</label>
-                                            <div className={cls.Relative}>
-                                              <div className={cls.CardNumber}>
-                                                <input
-                                                  className={cls.Input}
-                                                  value={this.state.cardValidatorForm.number_card.value}
-                                                  onChange={(event) => this.changeValidator(event, 'number_card')}
-                                                />
-                                                {!this.state.cardValidatorForm.number_card.valid && this.state.cardValidatorForm.number_card.touched ? (
-                                                  <div className={cls.ErrorText}>
-                                                    {this.state.cardValidatorForm.number_card.errorText}
-                                                  </div>
-                                                ) : null}
+                                      <Grid item xs={12} sm={12} md={12} lg={12}>
+                                        <label>Número de Tarjeta de Credito</label>
+                                        <div className={cls.Relative}>
+                                          <div className={cls.CardNumber}>
+                                            <input
+                                              className={cls.Input}
+                                              value={this.state.cardValidatorForm.number_card.value}
+                                              onChange={(event) => this.changeValidator(event, 'number_card')}
+                                            />
+                                            {!this.state.cardValidatorForm.number_card.valid && this.state.cardValidatorForm.number_card.touched ? (
+                                              <div className={cls.ErrorText}>
+                                                {this.state.cardValidatorForm.number_card.errorText}
                                               </div>
-                                            </div>
-                                          </Grid>
-                                        </Grid>
-                                      </div>
+                                            ) : null}
+                                          </div>
+                                        </div>
+                                      </Grid>
                                     </Grid>
-                                  </Grid>
-                                  <Grid item xs={12} sm={12} md={12} lg={6}>
-                                    <Grid container>
-                                      <div className={cls.ColumnsIcon}>
-                                        <Grid container>
-                                          <img 
-                                            alt="Credit Cards" 
-                                            className={cls.CreditCardIcon} 
-                                            src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
-                                        </Grid>
-                                      </div>
-                                    </Grid>
-                                  </Grid>
+                                  </div>
                                 </Grid>
-                              </div>
+                              </Grid>
+                              <Grid item xs={12} sm={12} md={12} lg={6}>
+                                <Grid container>
+                                  <div className={cls.ColumnsIcon}>
+                                    <Grid container>
+                                      <img 
+                                        alt="Credit Cards" 
+                                        className={cls.CreditCardIcon} 
+                                        src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
+                                    </Grid>
+                                  </div>
+                                </Grid>
+                              </Grid>
                             </Grid>
                           </div>
-                          <div className={cls.Row}>
-                            <div className={cls.MarginBottom}>
+                        </Grid>
+                      </div>
+                      <div className={cls.Row}>
+                        <div className={cls.MarginBottom}>
+                          <Grid container>
+                            <Grid item xs={12} sm={12} md={12} lg={6}>
                               <Grid container>
-                                <Grid item xs={12} sm={12} md={12} lg={6}>
-                                  <Grid container>
-                                    <div className={cls.Columns}>
-                                      <label>Nombre de la tarjeta de credito</label>
-                                      <div className={cls.Relative}>
-                                        <div className={cls.CardName}>
-                                          <input
-                                            className={cls.Input}
-                                            value={this.state.cardValidatorForm.first_name_card.value}
-                                            onChange={(event) => this.changeValidator(event, 'first_name_card')}
-                                          />
-                                          {!this.state.cardValidatorForm.first_name_card.valid && this.state.cardValidatorForm.first_name_card.touched ? (
-                                            <div className={cls.ErrorText}>
-                                              {this.state.cardValidatorForm.first_name_card.errorText}
-                                            </div>
-                                          ) : null}
+                                <div className={cls.Columns}>
+                                  <label>Nombre de la tarjeta de credito</label>
+                                  <div className={cls.Relative}>
+                                    <div className={cls.CardName}>
+                                      <input
+                                        className={cls.Input}
+                                        value={this.state.cardValidatorForm.first_name_card.value}
+                                        onChange={(event) => this.changeValidator(event, 'first_name_card')}
+                                      />
+                                      {!this.state.cardValidatorForm.first_name_card.valid && this.state.cardValidatorForm.first_name_card.touched ? (
+                                        <div className={cls.ErrorText}>
+                                          {this.state.cardValidatorForm.first_name_card.errorText}
                                         </div>
-                                      </div>
+                                      ) : null}
                                     </div>
-                                  </Grid>
-                                </Grid>
-                              </Grid>
-                            </div>
-                          </div>
-                          <div className={cls.Row}>
-                            <div className={cls.MarginBottom}>
-                              <Grid container>
-                                <Grid item xs={6} sm={6} md={6} lg={3}>
-                                  <Grid container>
-                                    <div className={cls.Columns}>
-                                      <label>Expiracion</label>
-                                      <div className={cls.Relative}>
-                                        <div className={cls.CardNumber}>
-                                          <input
-                                            className={cls.InputSmall}
-                                            value={this.state.cardValidatorForm.expiration_card_MM.value}
-                                            onChange={(event) => this.changeValidator(event, 'expiration_card_MM')}
-                                            placeholder="MM"
-                                          />
-                                          {!this.state.cardValidatorForm.expiration_card_MM.valid && this.state.cardValidatorForm.expiration_card_MM.touched ? (
-                                            <div className={cls.ErrorText}>
-                                              {this.state.cardValidatorForm.expiration_card_MM.errorText}
-                                            </div>
-                                          ) : null}
-                                          <input
-                                            className={cls.InputSmall}
-                                            value={this.state.cardValidatorForm.expiration_card_YY.value}
-                                            onChange={(event) => this.changeValidator(event, 'expiration_card_YY')}
-                                            placeholder="YYYY"
-                                          />
-                                          {!this.state.cardValidatorForm.expiration_card_YY.valid && this.state.cardValidatorForm.expiration_card_YY.touched ? (
-                                            <div className={cls.ErrorText}>
-                                              {this.state.cardValidatorForm.expiration_card_YY.errorText}
-                                            </div>
-                                          ) : null}                                    
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </Grid>
-                                </Grid>
-                                <Grid item xs={6} sm={6} md={6} lg={3}>
-                                  <Grid container>
-                                    <div>
-                                      <label>CVC</label>
-                                      <div className={cls.Relative}>
-                                        <div className={cls.CardNumber}>
-                                          <input
-                                            className={cls.InputSmall}
-                                            value={this.state.cardValidatorForm.cvc_card.value}
-                                            onChange={(event) => this.changeValidator(event, 'cvc_card')}
-                                            placeholder="989"
-                                          />
-                                          {!this.state.cardValidatorForm.cvc_card.valid && this.state.cardValidatorForm.cvc_card.touched ? (
-                                            <div className={cls.ErrorText}>
-                                              {this.state.cardValidatorForm.cvc_card.errorText}
-                                            </div>
-                                          ) : null}
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </Grid>
-                                </Grid>
-                              </Grid>
-                            </div>
-                            <div className={cls.ButtonBooking}>
-                              <Grid container>
-                                <div className={cls.Row}>
-                                  <button 
-                                    onClick={(event) => this.paymentHandle(event)}
-                                    className={cls.ButtonBookingCore}
-                                  >Pagar</button>
+                                  </div>
                                 </div>
                               </Grid>
+                            </Grid>
+                          </Grid>
+                        </div>
+                      </div>
+                      <div className={cls.Row}>
+                        <div className={cls.MarginBottom}>
+                          <Grid container>
+                            <Grid item xs={6} sm={6} md={6} lg={3}>
+                              <Grid container>
+                                <div className={cls.Columns}>
+                                  <label>Expiracion</label>
+                                  <div className={cls.Relative}>
+                                    <div className={cls.CardNumber}>
+                                      <input
+                                        className={cls.InputSmall}
+                                        value={this.state.cardValidatorForm.expiration_card_MM.value}
+                                        onChange={(event) => this.changeValidator(event, 'expiration_card_MM')}
+                                        placeholder="MM"
+                                      />
+                                      {!this.state.cardValidatorForm.expiration_card_MM.valid && this.state.cardValidatorForm.expiration_card_MM.touched ? (
+                                        <div className={cls.ErrorText}>
+                                          {this.state.cardValidatorForm.expiration_card_MM.errorText}
+                                        </div>
+                                      ) : null}
+                                      <input
+                                        className={cls.InputSmall}
+                                        value={this.state.cardValidatorForm.expiration_card_YY.value}
+                                        onChange={(event) => this.changeValidator(event, 'expiration_card_YY')}
+                                        placeholder="YYYY"
+                                      />
+                                      {!this.state.cardValidatorForm.expiration_card_YY.valid && this.state.cardValidatorForm.expiration_card_YY.touched ? (
+                                        <div className={cls.ErrorText}>
+                                          {this.state.cardValidatorForm.expiration_card_YY.errorText}
+                                        </div>
+                                      ) : null}                                    
+                                    </div>
+                                  </div>
+                                </div>
+                              </Grid>
+                            </Grid>
+                            <Grid item xs={6} sm={6} md={6} lg={3}>
+                              <Grid container>
+                                <div>
+                                  <label>CVC</label>
+                                  <div className={cls.Relative}>
+                                    <div className={cls.CardNumber}>
+                                      <input
+                                        className={cls.InputSmall}
+                                        value={this.state.cardValidatorForm.cvc_card.value}
+                                        onChange={(event) => this.changeValidator(event, 'cvc_card')}
+                                        placeholder="989"
+                                      />
+                                      {!this.state.cardValidatorForm.cvc_card.valid && this.state.cardValidatorForm.cvc_card.touched ? (
+                                        <div className={cls.ErrorText}>
+                                          {this.state.cardValidatorForm.cvc_card.errorText}
+                                        </div>
+                                      ) : null}
+                                    </div>
+                                  </div>
+                                </div>
+                              </Grid>
+                            </Grid>
+                          </Grid>
+                        </div>
+                        <div className={cls.ButtonBooking}>
+                          <Grid container>
+                            <div className={cls.Row}>
+                              <button 
+                                onClick={(event) => this.paymentHandle(event)}
+                                className={cls.ButtonBookingCore}
+                              >Pagar</button>
                             </div>
-                          </div>
+                          </Grid>
                         </div>
-                      ) : (
-                        <div>
-                          <form onSubmit={this.handleFormSubmit}>
-                            {creditForm}
-                            <button value="Submit" type='submit'>Escoger Tarjeta</button>
-                          </form>
-                          <button onClick={this.showCardForm}>Agregar nueva tarjeta</button>
-                        </div>
-                      )}
-                  </Grid>
-                </div>  
-              </div>
-            </form>
-          </Grid>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <form onSubmit={this.handleFormSubmit}>
+                        {creditForm}
+                        <button value="Submit" type='submit'>Escoger Tarjeta</button>
+                      </form>
+                      <button onClick={this.showCardForm}>Agregar nueva tarjeta</button>
+                    </div>
+                  )}
+              </div>  
+            </div>
+          </div>
         </div>
       </Grid>
     );

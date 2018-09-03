@@ -9,6 +9,18 @@
   box-shadow: 0 2px 4px rgba(0,0,0,.1);
 }
 
+.card_label{
+  margin: 0px !important;
+}
+
+.text_info input {
+  vertical-align: top !important;
+  margin-top: 5% !important;
+  margin-right: 20px !important;
+  margin-left: 20px !important;
+}
+
+
 @media only screen and (min-width: 48.0625em) {
   .BookingForm {
     padding-left: 0.9375rem;

@@ -559,7 +559,7 @@ class Payment extends Component {
                               <button 
                                 onClick={(event) => this.paymentHandle(event)}
                                 className={cls.ButtonBookingCore}
-                              >Pagar</button>
+                              >Agregar tarjeta</button>
                             </div>
                           </Grid>
                         </div>
@@ -569,8 +569,15 @@ class Payment extends Component {
                     <div className={cls.formConten}>
                       <form className={cls.formCreditCard} onSubmit={this.handleFormSubmit}>
                         {creditForm}
-                        <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
-                        <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+                        {console.log(validadData)}
+                        {(validadData <= 0 && validadData != null) ? (
+                          <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+                        ):(
+                          <div>
+                            <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+                            <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+                          </div>
+                        )}
                       </form>
                     </div>
                   )}

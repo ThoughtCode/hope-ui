@@ -194,6 +194,7 @@ class Checking extends Component {
                         <div className={cls.RowTotalTerm}>
                           <Grid container>
                             <Grid item xs={12} lg={12}>
+                              <h4 className={cls.titleQuestion}>¿Quieres diferir tú pago?</h4>
                               <form onChange={(event) => this.handleChange(event)}>
                                 <div className={cls.Term}>
                                   <select className={cls.Select} >

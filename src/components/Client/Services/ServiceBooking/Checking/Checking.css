@@ -222,3 +222,10 @@
   margin: 0;
   background-color: white;
 }
+
+.titleQuestion{
+  color: #0069a7;
+  font-weight: 600;
+  text-align: left;
+  padding-left: 0.9375rem;
+}

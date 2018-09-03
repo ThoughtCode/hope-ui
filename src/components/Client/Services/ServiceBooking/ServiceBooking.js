@@ -37,6 +37,7 @@ class ServiceBooking extends Component {
         errorText: 'Debe elegir un servicio principal',
       },
       services_addons: [],
+      services_parameters: [],
       property: {
         value: '',
         errorText: 'Debe elegir una propiedad'
@@ -56,6 +57,8 @@ class ServiceBooking extends Component {
 
   componentDidMount () {
     let services_addons = [];
+    let services_parameters =[]
+
     this.props.services_addons.forEach(service => {
       if (service.quantity) {
         let input = {
@@ -83,11 +86,42 @@ class ServiceBooking extends Component {
         services_addons.push(checkbox);
       }
     })
+
+    this.props.services_parameters.forEach(service => {
+      if (service.quantity) {
+        let input = {
+          label: service.name,
+          value: 1,
+          active: false,
+          id: service.id,
+          icon: service.icon,
+          quantity: service.quantity,
+          time: service.time,
+          price: service.price,
+          time_per_price: service.time,
+        };   
+      services_parameters.push(input)
+      } else {
+        let checkbox = {
+          id: service.id,
+          label: service.name,
+          value: 1,
+          active: false,
+          time: service.time,
+          price: service.price,
+          icon: service.icon,
+        };
+        services_parameters.push(checkbox);
+      }
+    })
+
+
     this.setState({
       ...this.state,
       form: {
         ...this.state.form,
-        services_addons: services_addons
+        services_addons: services_addons,
+        services_parameters: services_parameters,
       }
     })
   };
@@ -200,6 +234,16 @@ class ServiceBooking extends Component {
       ...this.state.form,
       services_addons: a,
     });
+  };
+
+  inputEventsChanger = (event, key) => {
+    // let a = this.state.form.services_addons.slice();
+    // a[key].value = event.target.value;
+    // a[key].time = event.target.value * a[key].time_per_price;
+    // this.setState({
+    //   ...this.state.form,
+    //   services_addons: a,
+    // });
   };
 
   changeDatetimeFinishedHandler = (dateTime) => {
@@ -350,6 +394,7 @@ class ServiceBooking extends Component {
                         handleRecurrentChange={this.handleRecurrentChange}
                         handleServiceChange={this.handleServiceChange}
                         changeCheckboxHandler={this.changeCheckboxHandler}
+                        inputEventsChanger={this.inputEventsChanger}
                         inputChangedHandler={this.inputChangedHandler}
                         changeDatetimeHandler={this.changeDatetimeHandler}
                         changeDatetimeFinishedHandler={this.changeDatetimeFinishedHandler}

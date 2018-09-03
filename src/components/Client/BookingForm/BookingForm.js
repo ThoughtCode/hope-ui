@@ -46,6 +46,17 @@ class BookingForm extends Component {
         config: this.props.form.services_addons[key]
       });
     }
+
+
+
+    const formElementParameters = [];
+    for (let key in this.props.form.services_parameters) {
+      formElementParameters.push({
+        id: key,
+        config: this.props.form.services_parameters[key]
+      });
+    }
+
     let properties = null;
     if (this.props.properties.length > 0 && !this.state.showCreateProperty) {
       properties = (
@@ -161,11 +172,38 @@ class BookingForm extends Component {
                                     className={cls.Select}
                                     value={this.props.value}
                                     onChange={this.props.handleServiceChange}>
-                                    <option value="">Servicio Principal</option>
                                     {this.props.service_base.map(service => (
                                       <option key={service.id} value={service.id}>{service.name}</option>
                                     ))}
                                   </select>
+
+                                  <p>Elije la cantidad de habitaciona y banos de tu hogar</p>
+                                  {formElementParameters.map((parameter) => (
+
+                                    <li key={parameter.id} className={cls.Extras}>
+                                      <label onClick={(event) => this.props.changeCheckboxHandler(event, parameter.id)} className={cls.ExtraLabel}>
+                                        <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
+                                        <div className={cls.ExtraSvg}>
+                                          <p className={cls.HeightDef}>{parameter.config.label}</p>
+                                          <div dangerouslySetInnerHTML={{__html: parameter.config.icon}} className={parameter.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
+                                          </div>
+                                        </div>
+                                      </label>
+                                      {parameter.config.quantity && parameter.config.active ? (
+                                        <div className={cls.CenterInput}>
+                                          <p className={cls.NoMargin}><span>Cantidad</span></p>
+                                          <input
+                                            type="number"
+                                            value={parameter.config.value}
+                                            onChange={(event) => this.props.inputEventsChanger(event, parameter.id)}
+                                            className={cls.InputQuantity} />
+                                        </div>
+                                      ) : (
+                                        null
+                                      )}
+                                    </li>
+                                    ))}
+
                                 </Grid>
                               </div>
                             </Grid>

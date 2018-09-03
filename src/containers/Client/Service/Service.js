@@ -18,9 +18,14 @@ class Service extends Component {
     this.props.onFetchCities(this.props.token);
   }
   render () {
+
+
     let serviceImage = <ServiceImage />
     let serviceBooking = null;
     if (this.props.service.attributes) {
+
+
+
       serviceImage = (
         <ServiceImage title={this.props.service.attributes.name} image={this.props.service.attributes.image.url}/>
       )
@@ -28,6 +33,7 @@ class Service extends Component {
         <ServiceBooking
           service_base={this.props.service.attributes.service_base}
           services_addons={this.props.service.attributes.services_addons}
+          services_parameters={this.props.service.attributes.services_parameters}
           properties={this.props.properties}
           cities={this.props.cities}
           neightborhoods={this.props.neightborhoods}

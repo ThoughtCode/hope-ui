@@ -148,12 +148,14 @@ class Report extends Component {
     let lastNameUser = null;
     let jobsReport = null;
     let sumTotal = null;
+
     if (this.props.user.attributes){
       firstNameUser = this.props.user.attributes.first_name
       lastNameUser = this.props.user.attributes.last_name
     }
     if(this.props.reportjobs.length > 0) {
       jobsReport = this.props.reportjobs.map( jR => (
+        sumTotal += jR.attributes.agent_earnings,
         <Table
           key={jR.id}
           id={jR.id}
@@ -244,7 +246,7 @@ class Report extends Component {
                             <td class="bg-success"></td>
                             <td class="bg-success"></td>
                             <td class="bg-success"></td>
-                            <td class="bg-success">$999.99</td>
+                            <td class="bg-success">${sumTotal}</td>
                           </tr>
                         </tbody>
                       </table>

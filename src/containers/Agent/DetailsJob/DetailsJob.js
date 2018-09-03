@@ -287,12 +287,10 @@ class DetailsJob extends Component {
                             </div>
                           </div>
                           {this.props.disableButtonCustomer.can_review === true ? (
-                            <Button
-                              className={cls.JobHire}
-                              // component={Link}
-                              // to={`/agente/${this.props.match.params.job_id}/calificar`}
+                            <button
+                              className={`${"btn"} ${cls.JobHire}`}
                               onClick={this.handleOpen}>CALIFICAR
-                            </Button>
+                            </button>
                             ) : (
                               <p></p>
                             )
@@ -302,27 +300,26 @@ class DetailsJob extends Component {
                             onClose={this.handleClose}
                           >
                             <div className={cls.Modal}>
-                              <div>
-                                <h2>Aviso de penalizacion</h2>
-                              </div>
-                              <div>
-                                <p>Antes de continuar. Confirma que su trabajo se realizo con exito?</p>
-                              </div>
-                              <div>
-                                <span>
-                                  <button 
-                                    className={cls.ButtonAccept}
-                                    onClick={(e) => this.sendJobReview(true)}
-                                  >Si.
-                                  </button>
-                                </span>
-                                <span className={cls.ButtonWrapper}>
-                                  <button
-                                    className={cls.ButtonCancell}
-                                    onClick={(e) => this.sendJobReview(false)}
-                                  >No.
-                                  </button>
-                                </span>
+                              <div className={cls.CancelBookingModal}>
+                                <div>
+                                  <h2 className={cls.tytleModal}>Antes de continuar. Confirma que tú trabajo se realizo con éxito.</h2>
+                                </div>
+                                <div>
+                                  <span className={cls.ButtonWrapper}>
+                                    <button
+                                      className={cls.ButtonAccept}
+                                      onClick={(e) => this.sendJobReview(true)}
+                                    >Si.
+                                    </button>
+                                  </span>
+                                  <span className={cls.ButtonWrapper}>
+                                    <button
+                                      className={cls.ButtonCancell}
+                                      onClick={(e) => this.sendJobReview(false)}
+                                    >No.
+                                    </button>
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </Modal>

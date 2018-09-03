@@ -365,19 +365,100 @@
 }
 
 .JobHire {
-  color: #009fd9;
-  line-height: 44px;
-  border-top: 1px solid #e9eced;
-  text-align: center;
-  font-size: 18px;
-  font-weight: 700;
-  display: block;
-  text-decoration: none;
-  cursor: pointer;
+  background-color: transparent;
+  color: #009fd9 !important;
+  line-height: 44px !important;
+  /* border-top: 1px solid #e9eced !important; */
+  text-align: center !important;
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  display: block !important;
+  text-decoration: none !important;
+  cursor: pointer !important;
+  width: 100%;
 }
 
 .JobHire:hover {
   background-color: #dfdfdf;
+}
+
+.Modal {
+  position: absolute;
+  background-color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px 5px 5px 5px !important;
+  box-shadow: 0px;
+}
+
+.ButtonAccept {
+  font-weight: normal;
+  vertical-align: middle;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  font-size: 1.2rem;
+  color: #0069a7;
+  border: 1px solid #0069a7;
+  background-color: white;
+  text-align: center;
+  padding: 10px 70px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition-property: background, color, border-color, box-shadow;
+  transition-timing-function: ease;
+  transition-duration: 0.16s;
+  line-height: 1.4;
+}
+
+.ButtonAccept:hover {
+  color: #E8EBEF;
+  border: 1px solid #cd1d1d;
+  background-color: #cd1d1d;
+}
+
+.ButtonWrapper {
+  padding: 20px 20px;
+}
+
+.CancelBookingModal {
+  border-radius: 5px 5px 5px 5px !important;
+  margin: 0px auto;
+  text-align: center;
+  width: 600px;
+  background-color: #ffffff !important;
+  padding: 20px;
+}
+
+.ButtonCancell {
+  font-weight: normal;
+  vertical-align: middle;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  font-size: 1.2rem;
+  color: #cd1d1d;
+  border: 1px solid #cd1d1d;
+  background-color: white;
+  text-align: center;
+  padding: 10px 70px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition-property: background, color, border-color, box-shadow;
+  transition-timing-function: ease;
+  transition-duration: 0.16s;
+  line-height: 1.4;
+}
+
+.ButtonCancell:hover {
+  color: #0069A7;
+  border: 1px solid #0069A7;
+  background-color: #E8EBEF;
+}
+
+.tytleModal {
+  margin: 0px 0px 20px 0px;
 }
 
 @media only screen and (min-width: 375px) {

@@ -384,22 +384,20 @@ class Payment extends Component {
         validadData = this.props.listCard.data.length
         creditForm = this.props.listCard.data.map(d => {
           return(
-            <div>
-              <div className={cls.text_info}>
-                <input
-                  name="cardId"
-                  type="radio"
-                  checked={this.state.selectedOption === d.id}
-                  onClick={(event) => this.handlecardChecked(event, d.id)}
-                  value={d.id}
-                />
-                <label>
-                  <span>{d.attributes.card_type}</span>
-                  <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
-                  <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
-                  <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
-                </label>
-              </div>
+            <div className={cls.text_info}>
+              <input
+                name="cardId"
+                type="radio"
+                checked={this.state.selectedOption === d.id}
+                onClick={(event) => this.handlecardChecked(event, d.id)}
+                value={d.id}
+              />
+              <label>
+                <span>{d.attributes.card_type}</span>
+                <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
+                <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
+                <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
+              </label>
             </div>
           )
           }
@@ -568,12 +566,12 @@ class Payment extends Component {
                       </div>
                     </div>
                   ) : (
-                    <div>
-                      <form onSubmit={this.handleFormSubmit}>
+                    <div className={cls.formConten}>
+                      <form className={cls.formCreditCard} onSubmit={this.handleFormSubmit}>
                         {creditForm}
-                        <button value="Submit" type='submit'>Escoger Tarjeta</button>
+                        <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+                        <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
                       </form>
-                      <button onClick={this.showCardForm}>Agregar nueva tarjeta</button>
                     </div>
                   )}
               </div>  

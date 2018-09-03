@@ -12,6 +12,10 @@
 .card_label{
   margin: 0px !important;
 }
+.text_info {
+  text-align: left !important;
+  margin-bottom: 20px;
+}
 
 .text_info input {
   vertical-align: top !important;
@@ -469,4 +473,61 @@
   text-decoration: underline;
   color: #0988d3;
   cursor: pointer;
+}
+
+.formConten{
+  text-align: center !important;
+}
+
+.formCreditCard{
+  max-width: 100%;
+}
+
+.AddCardHolder{
+  text-align: end;
+  margin: 0 20px 0 30px;
+
+}
+
+.AddCard{
+  display: inline-block;
+  font-weight: normal;
+  vertical-align: middle;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  font-size: 1.2rem;
+  color: #0069a7;
+  border: 1px solid #0069a7;
+  background-color: white;
+  text-align: center;
+  width: 45%;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition-property: background, color, border-color, box-shadow;
+  transition-timing-function: ease;
+  transition-duration: 0.16s;
+  line-height: 1.4;
+}
+
+.Selection{
+  display: inline-block;
+  font-weight: normal;
+  vertical-align: middle;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  font-size: 1.2rem;
+  color: #0069a7;
+  border: 1px solid #0069a7;
+  background-color: white;
+  text-align: center;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition-property: background, color, border-color, box-shadow;
+  transition-timing-function: ease;
+  transition-duration: 0.16s;
+  line-height: 1.4;
+  width: 45%;
+  margin-right: 20px;
 }

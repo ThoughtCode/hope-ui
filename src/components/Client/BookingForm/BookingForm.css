@@ -277,6 +277,17 @@
   min-width: 100%;
 }
 
+.ExtrasAddon {
+  list-style: none;
+  /* display: block;
+  clear: both;
+  height: auto;
+  float: left;
+  padding: 0;
+  font-size: .9em;
+  min-width: 100%; */
+}
+
 .InputNone {
   display: none;
 }
@@ -438,8 +449,8 @@
 }
 
 .InputQuantity {
-  width: 55%;
-  padding: 0.625em 1em;
+  width: 80%;
+  padding: 5px 2px;
   font-weight: normal;
   border: 1px solid #B1B9C3;
   font-size: 1em;
@@ -457,8 +468,8 @@
 
 .CenterInput {
   margin: 0 auto;
-  width: 110px;
-  text-align: center;
+  width: 72px;
+  text-align: left;
 }
 
 .HeightDef {
@@ -517,5 +528,12 @@
     font-size: 16px !important;
     margin-top: 0;
     margin-bottom: 0;
+  }
+  .ExtraLabel {
+    min-width: 50%;
+  }
+  .InputQuantityBase {
+    width: 26%;
+    padding: 6px 4px;
   }
 }

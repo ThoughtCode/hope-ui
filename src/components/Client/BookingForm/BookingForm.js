@@ -16,8 +16,17 @@ class BookingForm extends Component {
   state = {
     showCreateProperty: false,
     has_properties: this.props.properties.length > 0,
+    showOption: false,
   }
 
+  showMenu(event) {
+    event.preventDefault();
+    
+    this.setState({
+      showOption: true,
+    });
+}
+  
   componentDidUpdate() {
     if (!this.state.has_properties) {
       if (this.props.properties.length > 0) {
@@ -168,11 +177,6 @@ class BookingForm extends Component {
                             <Grid item xs={12} sm={12} md={12} lg={6}>
                               <div className={cls.BorderPadding}>
                                 <Grid container>
-                                  {/* <select
-                                    className={cls.Select}
-                                    value={this.props.value}
-                                    onChange={this.props.handleServiceChange}>
-                                  </select> */}
                                   {this.props.service_base.map(service => (
                                     <p key={service.id} value={service.id}>{service.name}</p>
                                   ))}
@@ -187,8 +191,7 @@ class BookingForm extends Component {
                                         onChange={(event) => this.props.inputEventsChanger(event, parameter.id)}
                                         className={cls.InputQuantityBase} />
                                     </li>
-                                    ))}
-
+                                  ))}
                                 </Grid>
                               </div>
                             </Grid>
@@ -439,7 +442,7 @@ class BookingForm extends Component {
                         <div className={cls.BorderPadding}>
                           <Grid container>
                             {formElementAddon.map((addon) => (
-                              <li key={addon.id} className={cls.Extras}>
+                              <li key={addon.id} className={cls.ExtrasAddon}>
                                 <label onClick={(event) => this.props.changeCheckboxHandler(event, addon.id)} className={cls.ExtraLabel}>
                                   <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
                                   <div className={cls.ExtraSvg}>

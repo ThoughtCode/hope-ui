@@ -162,45 +162,30 @@ class BookingForm extends Component {
                         <Grid container>
                           <h3 className={cls.SubHeaderText}>
                             <span className={cls.SubHeaderNumber}>1</span>
-                            <span>Elige el tipo de servicio que necesitas</span>
+                            <span>Elije la cantidad de habitaciones y baños de tu hogar</span>
                           </h3>
                           <div className={cls.Service}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>
                               <div className={cls.BorderPadding}>
                                 <Grid container>
-                                  <select
+                                  {/* <select
                                     className={cls.Select}
                                     value={this.props.value}
                                     onChange={this.props.handleServiceChange}>
-                                    {this.props.service_base.map(service => (
-                                      <option key={service.id} value={service.id}>{service.name}</option>
-                                    ))}
-                                  </select>
-
-                                  <p>Elije la cantidad de habitaciona y banos de tu hogar</p>
+                                  </select> */}
+                                  {this.props.service_base.map(service => (
+                                    <p key={service.id} value={service.id}>{service.name}</p>
+                                  ))}
                                   {formElementParameters.map((parameter) => (
-
                                     <li key={parameter.id} className={cls.Extras}>
-                                      <label onClick={(event) => this.props.changeCheckboxHandler(event, parameter.id)} className={cls.ExtraLabel}>
-                                        <input className={cls.InputNone} id="extra1" type="checkbox" value="1"/>
-                                        <div className={cls.ExtraSvg}>
-                                          <p className={cls.HeightDef}>{parameter.config.label}</p>
-                                          <div dangerouslySetInnerHTML={{__html: parameter.config.icon}} className={parameter.config.active ? cls.ExtraIconActive : cls.ExtraIcon}>
-                                          </div>
-                                        </div>
+                                      <label onClick={(event) => this.props.changeEventsHandler(event, parameter.id)} className={cls.ExtraLabel}>
+                                        <p className={cls.HeightDef}>{parameter.config.label}</p>
                                       </label>
-                                      {parameter.config.quantity && parameter.config.active ? (
-                                        <div className={cls.CenterInput}>
-                                          <p className={cls.NoMargin}><span>Cantidad</span></p>
-                                          <input
-                                            type="number"
-                                            value={parameter.config.value}
-                                            onChange={(event) => this.props.inputEventsChanger(event, parameter.id)}
-                                            className={cls.InputQuantity} />
-                                        </div>
-                                      ) : (
-                                        null
-                                      )}
+                                      <input
+                                        type="number"
+                                        value={parameter.config.value}
+                                        onChange={(event) => this.props.inputEventsChanger(event, parameter.id)}
+                                        className={cls.InputQuantityBase} />
                                     </li>
                                     ))}
 

@@ -58,6 +58,17 @@ class ServiceBooking extends Component {
   componentDidMount () {
     let services_addons = [];
     let services_parameters =[]
+    let service_principal;
+    this.props.service_base.forEach(service =>{
+      service_principal =  {
+        id: service.id,
+        value: 1,
+        name: service.name,
+        time: service.time,
+        price: service.price,
+        errorText: '',
+      }
+    })
 
     this.props.services_addons.forEach(service => {
       if (service.quantity) {
@@ -86,13 +97,12 @@ class ServiceBooking extends Component {
         services_addons.push(checkbox);
       }
     })
-
     this.props.services_parameters.forEach(service => {
       if (service.quantity) {
         let input = {
           label: service.name,
           value: 1,
-          active: false,
+          active: true,
           id: service.id,
           icon: service.icon,
           quantity: service.quantity,
@@ -101,20 +111,8 @@ class ServiceBooking extends Component {
           time_per_price: service.time,
         };   
       services_parameters.push(input)
-      } else {
-        let checkbox = {
-          id: service.id,
-          label: service.name,
-          value: 1,
-          active: false,
-          time: service.time,
-          price: service.price,
-          icon: service.icon,
-        };
-        services_parameters.push(checkbox);
       }
     })
-
 
     this.setState({
       ...this.state,
@@ -122,6 +120,7 @@ class ServiceBooking extends Component {
         ...this.state.form,
         services_addons: services_addons,
         services_parameters: services_parameters,
+        services_base: service_principal,
       }
     })
   };
@@ -236,14 +235,23 @@ class ServiceBooking extends Component {
     });
   };
 
+  changeEventsHandler = (event, key) => {
+    event.preventDefault();
+    let a = this.state.form.services_parameters.slice();
+    this.setState({
+      ...this.state.form,
+      services_parameters: a
+    });
+  };
+
   inputEventsChanger = (event, key) => {
-    // let a = this.state.form.services_addons.slice();
-    // a[key].value = event.target.value;
-    // a[key].time = event.target.value * a[key].time_per_price;
-    // this.setState({
-    //   ...this.state.form,
-    //   services_addons: a,
-    // });
+    let a = this.state.form.services_parameters.slice();
+    a[key].value = event.target.value;
+    a[key].time = event.target.value * a[key].time_per_price;
+    this.setState({
+      ...this.state.form,
+      services_parameters: a,
+    });
   };
 
   changeDatetimeFinishedHandler = (dateTime) => {
@@ -284,6 +292,12 @@ class ServiceBooking extends Component {
           value: this.state.form.services_addons[formElementIdentifier].value
         })
       }
+    }
+    for (const formElementIdentifier in this.state.form.services_parameters) {
+      formData["job_details_attributes"].push({
+        service_id: this.state.form.services_parameters[formElementIdentifier].id,
+        value: this.state.form.services_parameters[formElementIdentifier].value
+      })
     }
     if (this.state.form.recurrent.value !== '0' ) {
       formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
@@ -394,6 +408,7 @@ class ServiceBooking extends Component {
                         handleRecurrentChange={this.handleRecurrentChange}
                         handleServiceChange={this.handleServiceChange}
                         changeCheckboxHandler={this.changeCheckboxHandler}
+                        changeEventsHandler={this.changeEventsHandler}
                         inputEventsChanger={this.inputEventsChanger}
                         inputChangedHandler={this.inputChangedHandler}
                         changeDatetimeHandler={this.changeDatetimeHandler}

@@ -70,6 +70,7 @@ class Checking extends Component {
     } else if (this.props.form.recurrent.value === '3') {
       frequency = 'mensual';
     }
+    console.log(this.props.form)
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -127,6 +128,24 @@ class Checking extends Component {
                                     </Grid>
                                   </Grid>
                                 )}
+                                {this.props.form.services_parameters.length > 0 ? 
+                                  this.props.form.services_parameters.map(addon => {
+                                    if (addon.active) {
+                                      return (
+                                        <Grid key={addon.id} container>
+                                          <Grid item xs={6} lg={6}>
+                                            <div className={cls.SummaryTitle}>{addon.label}</div>
+                                          </Grid>
+                                          <Grid item xs={6} lg={6}>
+                                            <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                          </Grid>
+                                        </Grid>
+                                      );
+                                    } else {
+                                      return null;
+                                    }
+                                  })
+                                : null}
                                 {this.props.form.services_addons.length > 0 ? 
                                   this.props.form.services_addons.map(addon => {
                                     if (addon.active) {

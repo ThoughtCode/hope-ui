@@ -21,9 +21,9 @@ const howWorks = props => {
             </h3>
           </div>
           <ul>
-            <li className={cls.ListItem}>
+          <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige el tipo de servicio que necesitas
+              &nbsp;&nbsp;Dinos el número de habitaciones y baños de tu hogar.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
@@ -35,15 +35,11 @@ const howWorks = props => {
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige o registra tu dirección
+              &nbsp;&nbsp;Elige o registra tú dirección
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Paga tu servicio con una tarjeta de crédito o débito
-            </li>
-            <li className={cls.ListItem}>
-              <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige la fecha del servicio
+              &nbsp;&nbsp;Paga tú servicio con una tarjeta de crédito o débito
             </li>
           </ul>
         </div>

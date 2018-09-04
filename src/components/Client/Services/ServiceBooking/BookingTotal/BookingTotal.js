@@ -31,6 +31,14 @@ const bookingTotal = (props) => {
       }
     })
   }
+  if (props.form.services_parameters.length > 0) {
+    props.form.services_parameters.forEach(s => {
+      if (s.active) {
+        price = ((s.price * s.time)) + price;
+        time = s.time + time
+      }
+    })
+  }
   base = props.form.services_base.name !== '' ? (props.form.services_base.price * props.form.services_base.time) : 0;
   time = time + props.form.services_base.time;
   let iva = 0;
@@ -89,6 +97,22 @@ const bookingTotal = (props) => {
                                 </Grid>
                               </Grid>
                             )}
+                            {props.form.services_parameters.length > 0 ? 
+                              props.form.services_parameters.map(addon => {
+                                  {
+                                  return (
+                                    <Grid key={addon.id} container>
+                                      <Grid item xs={12} md={6} lg={6}>
+                                        <div className={cls.SummaryTitle}>{addon.label}</div>
+                                      </Grid>
+                                      <Grid item xs={12} md={6} lg={6}>
+                                        <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                      </Grid>
+                                    </Grid>
+                                  );
+                                }
+                              })
+                            : null}
                             {props.form.services_addons.length > 0 ? 
                               props.form.services_addons.map(addon => {
                                 if (addon.active) {

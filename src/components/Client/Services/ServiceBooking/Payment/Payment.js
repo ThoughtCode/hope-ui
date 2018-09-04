@@ -354,7 +354,6 @@ class Payment extends Component {
   }
 
   handleFormSubmit = (e) => {
-    console.log('aquiiiii')
     e.preventDefault();
     let id = this.state.selectedOption;
     if (this.state.cardId === null) {
@@ -383,6 +382,9 @@ class Payment extends Component {
       if (this.props.listCard.data.length > 0) {
         validadData = this.props.listCard.data.length
         creditForm = this.props.listCard.data.map(d => {
+          if(d.attributes.card_type === "vi") {
+            d.attributes.card_type = "Visa"
+          }
           return(
             <div className={cls.text_info}>
               <input
@@ -569,15 +571,8 @@ class Payment extends Component {
                     <div className={cls.formConten}>
                       <form className={cls.formCreditCard} onSubmit={this.handleFormSubmit}>
                         {creditForm}
-                        {console.log(validadData)}
-                        {(validadData <= 0 && validadData != null) ? (
-                          <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
-                        ):(
-                          <div>
-                            <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
-                            <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
-                          </div>
-                        )}
+                        <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+                        <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
                       </form>
                     </div>
                   )}

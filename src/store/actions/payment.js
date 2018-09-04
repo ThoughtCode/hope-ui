@@ -89,10 +89,10 @@ export const listCard = (token) => dispatch => {
       let listCard = [];
         listCard = res.data.payment
       dispatch(listCardSuccess(listCard));
-      Alert.success(res.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
+      // Alert.success(res.data.message, {
+      //   position: 'top',
+      //   effect: 'genie',
+      // });
     })
     .catch((err) => {
       dispatch(listCardFail(err));

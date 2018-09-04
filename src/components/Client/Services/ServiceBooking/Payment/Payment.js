@@ -334,7 +334,11 @@ class Payment extends Component {
     var errorHandler = function(err) {   
       console.log('hubo un error') 
       console.log(err.error);
-      $('#messages').html(err.error.type);  
+      $('#messages').html(err.error.type);
+      Alert.error( 'Hubo un error al agregar tu tarjeta', {
+        position: 'top',
+        effect: 'genie',
+      });  
     };
     var email = null;
     if(this.props.user.attributes){

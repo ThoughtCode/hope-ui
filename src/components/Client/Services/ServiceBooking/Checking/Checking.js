@@ -76,7 +76,6 @@ class Checking extends Component {
     } else if (this.props.form.recurrent.value === '3') {
       frequency = 'mensual';
     }
-    console.log(this.props.form)
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>

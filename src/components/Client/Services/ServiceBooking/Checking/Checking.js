@@ -56,6 +56,12 @@ class Checking extends Component {
         }
       })
     }
+    if (this.props.form.services_parameters.length > 0) {
+      this.props.form.services_parameters.forEach(s => {
+        price = ((s.price * s.time)) + price;
+        time = s.time + time
+      })
+    }
     base = this.props.form.services_base.name !== '' ? (this.props.form.services_base.price * this.props.form.services_base.time) : 0;
     time = time + this.props.form.services_base.time;
     let iva = 0;

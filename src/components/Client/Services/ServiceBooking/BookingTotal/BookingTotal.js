@@ -33,10 +33,8 @@ const bookingTotal = (props) => {
   }
   if (props.form.services_parameters.length > 0) {
     props.form.services_parameters.forEach(s => {
-      if (s.active) {
-        price = ((s.price * s.time)) + price;
-        time = s.time + time
-      }
+      price = ((s.price * s.time)) + price;
+      time = s.time + time
     })
   }
   base = props.form.services_base.name !== '' ? (props.form.services_base.price * props.form.services_base.time) : 0;

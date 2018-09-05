@@ -415,7 +415,7 @@ class BookingForm extends Component {
                                   <div className={cls.CenterInput}>
                                     <p className={cls.NoMargin}><span>Cantidad</span></p>
                                     <input
-                                      min="0"
+                                      min="1"
                                       type="number"
                                       value={addon.config.value}
                                       onChange={(event) => this.props.inputChangedHandler(event, addon.id)}

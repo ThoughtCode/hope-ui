@@ -208,96 +208,56 @@ class BookingForm extends Component {
                       </h3>
                       <div className={cls.service}>
                         <div className={cls.Selection}>
-                          <Grid container>
-                            <Grid item xs={12} className={cls.MaxWidthSelection}>
-                              <Tooltip
-                                title="Te visitaremos una sola vez en la fecha seleccionada"
-                                position="top"
-                              >
-                                <div className={cls.SelectionButtons}>
-                                  <input className={cls.RadioInput}
-                                    id="one_time"
-                                    type="radio"
-                                    value="0"
-                                    checked={this.props.form.recurrent.value === '0'}
-                                    onChange={this.props.handleRecurrentChange}/>
-                                  <label className={cls.LabelInput} htmlFor="one_time">
-                                    <div className={cls.BoxRadio}>
-                                      <div className={cls.BoxPlanRadio}>
-                                        Una Vez
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              </Tooltip>
-                            </Grid>
-                            <Grid item xs={12} className={cls.MaxWidthSelection}>
-                              <Tooltip
-                                title="Te visitemos semanalmente el día que tu elijas"
-                                position="top"
-                              >
-                                <div className={cls.SelectionButtons}>
-                                  <input className={cls.RadioInput}
-                                    id="diary"
-                                    type="radio"
-                                    value="1"
-                                    checked={this.props.form.recurrent.value === '1'}
-                                    onChange={this.props.handleRecurrentChange}/>
-                                  <label className={cls.LabelInput} htmlFor="diary">
-                                    <div className={cls.BoxRadio}>
-                                      <div className={cls.BoxPlanRadio}>
-                                        Semanal
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              </Tooltip>
-                            </Grid>
-                            <Grid item xs={12} className={cls.MaxWidthSelection}>
-                              <Tooltip
-                                title="Te visitaremos cada 15 días el día que tu elijas"
-                                position="top"
-                              >
-                                <div className={cls.SelectionButtons}>
-                                  <input className={cls.RadioInput}
-                                    id="weekly"
-                                    type="radio"
-                                    value="2"
-                                    checked={this.props.form.recurrent.value === '2'}
-                                    onChange={this.props.handleRecurrentChange}/>
-                                  <label className={cls.LabelInput} htmlFor="weekly">
-                                    <div className={cls.BoxRadio}>
-                                      <div className={cls.BoxPlanRadio}>
-                                        Quincenal
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              </Tooltip>
-                            </Grid>
-                            <Grid item xs={12} className={cls.MaxWidthSelection}>
-                              <Tooltip
-                                title="Te visitaremos una vez al mes el día que tu elijas"
-                                position="top"
-                              >
-                                <div className={cls.SelectionButtons}>
-                                  <input className={cls.RadioInput}
-                                    id="monthly"
-                                    type="radio"
-                                    value="3"
-                                    checked={this.props.form.recurrent.value === '3'}
-                                    onChange={this.props.handleRecurrentChange}/>
-                                  <label className={cls.LabelInput} htmlFor="monthly">
-                                    <div className={cls.BoxRadio}>
-                                      <div className={cls.BoxPlanRadio}>
-                                        Mensual
-                                      </div>
-                                    </div>
-                                  </label>
-                                </div>
-                              </Tooltip>
-                            </Grid>
-                          </Grid>
+                          <select
+                            className={cls.Select}
+                            checked={this.props.form.recurrent.value}
+                            onChange={this.props.handleRecurrentChange}
+                          >
+                            <option
+                              id="one_time"
+                              type="radio"
+                              value="0"
+                              checked={this.props.form.recurrent.value === '0'}
+                              onChange={this.props.handleRecurrentChange}
+                            >
+                              <label className={cls.LabelInput} htmlFor="one_time">
+                                Una Vez
+                              </label>
+                            </option>
+                            <option
+                              id="diary"
+                              type="radio"
+                              value="1"
+                              checked={this.props.form.recurrent.value === '1'}
+                              onChange={this.props.handleRecurrentChange}
+                            >
+                              <label className={cls.LabelInput} htmlFor="diary">
+                                Semanal
+                              </label>
+                            </option>
+                            <option
+                              id="weekly"
+                              type="radio"
+                              value="2"
+                              checked={this.props.form.recurrent.value === '2'}
+                              onChange={this.props.handleRecurrentChange}
+                            >
+                              <label className={cls.LabelInput} htmlFor="weekly">
+                                Quincenal
+                              </label>
+                            </option>
+                            <option
+                              id="monthly"
+                              type="radio"
+                              value="3"
+                              checked={this.props.form.recurrent.value === '3'}
+                              onChange={this.props.handleRecurrentChange}
+                            >
+                              <label className={cls.LabelInput} htmlFor="monthly">
+                                Mensual
+                              </label>
+                            </option>
+                          </select>
                         </div>
                       </div>
                       {this.props.form.recurrent.value === '0' ? ( 

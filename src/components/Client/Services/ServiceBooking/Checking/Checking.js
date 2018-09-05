@@ -222,7 +222,7 @@ class Checking extends Component {
                               <form onChange={(event) => this.handleChange(event)}>
                                 <div className={cls.Term}>
                                   <select className={cls.Select} >
-                                    <option value="1">No deseo diferir mi pago.</option>
+                                    <option value="0">No deseo diferir mi pago.</option>
                                     <option value="3" onChange={(event) => this.handleChange(event)}>Diferir mi pago en 3 meses.</option>
                                   </select>
                                 </div>

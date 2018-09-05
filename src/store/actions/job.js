@@ -700,7 +700,6 @@ export const confirmationPaymentFail = () => ({
 });
 
 export const confirmationPayment = (token, job_id, wasSuccesful) => dispatch => {
-  console.log(token, job_id, wasSuccesful )
   dispatch(confirmationPaymentStart());
   const headers = {
     headers: {
@@ -714,11 +713,9 @@ export const confirmationPayment = (token, job_id, wasSuccesful) => dispatch => 
   };
   axios.post(`/agents/jobs/${job_id}/confirm_payment`, body, headers)
     .then((res) => {
-      console.log(res)
       dispatch(confirmationPaymentSuccess(res));
     })
     .catch((err) => {
-      console.log(err)
       dispatch(confirmationPaymentFail(err));
     });
 }

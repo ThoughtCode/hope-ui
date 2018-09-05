@@ -36,12 +36,9 @@ class DetailsJob extends Component {
   }
   sendJobReview(wasSuccesful){
     if (wasSuccesful == true){
-      console.log(this.props)
-      console.log("Si")
       this.props.onConfirmationPayment(localStorage.getItem('token'), this.props.match.params.job_id, wasSuccesful);
       this.props.history.push(`/agente/${this.props.match.params.job_id}/calificar`)
     } else {
-      console.log("No")
       this.props.onConfirmationPayment(localStorage.getItem('token'), this.props.match.params.job_id, wasSuccesful);
       this.props.history.push('/agente')
     }

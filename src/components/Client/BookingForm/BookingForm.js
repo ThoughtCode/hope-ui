@@ -6,7 +6,6 @@ import {
   Grid,
 } from 'material-ui';
 import Datetime from 'react-datetime';
-import { Tooltip, } from 'react-tippy';
 import PropertyForm from '../PropertyForm/PropertyForm';
 
 // Css
@@ -186,6 +185,7 @@ class BookingForm extends Component {
                                         <p className={cls.HeightDef}>{parameter.config.label}</p>
                                       </label>
                                       <input
+                                        min="0"
                                         type="number"
                                         value={parameter.config.value}
                                         onChange={(event) => this.props.inputEventsChanger(event, parameter.id)}
@@ -415,6 +415,7 @@ class BookingForm extends Component {
                                   <div className={cls.CenterInput}>
                                     <p className={cls.NoMargin}><span>Cantidad</span></p>
                                     <input
+                                      min="0"
                                       type="number"
                                       value={addon.config.value}
                                       onChange={(event) => this.props.inputChangedHandler(event, addon.id)}

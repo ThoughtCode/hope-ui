@@ -179,7 +179,6 @@
 
 .InputTime {
   display: block;
-  /* width: 100%; */
   padding: 0.625em 1em;
   font-weight: normal;
   border: 1px solid #B1B9C3;
@@ -194,12 +193,11 @@
   line-height: 1.5;
   margin: 0;
   background-color: white;
-  /* margin-left: 3em; */
+  text-align: center;
 }
 
 .Input {
   display: block;
-  /* width: 100%; */
   padding: 0.625em 1em;
   font-weight: normal;
   border: 1px solid #B1B9C3;
@@ -214,6 +212,7 @@
   line-height: 1.5;
   margin: 0;
   background-color: white;
+  text-align: center;
 }
 
 @media only screen and (min-width: 768px) {

@@ -431,7 +431,7 @@
 }
 
 .InputQuantityBase {
-  width: 15%;
+  width: 70px;
   padding: 0.625em 1em;
   font-weight: normal;
   border: 1px solid #B1B9C3;

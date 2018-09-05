@@ -380,7 +380,7 @@
 }
 
 .InputSmall {
-  width: 30%;
+  width: 70px;
   padding: 0.625em 1em;
   font-weight: normal;
   border: 1px solid #B1B9C3;
@@ -530,4 +530,41 @@
   line-height: 1.4;
   width: 45%;
   margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px){
+  .Input {
+    width: 85% !important;
+  }
+  .CreditCardIcon {
+    width: 170px !important;
+  }
+  .Selection{
+    font-size: 1rem;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .AddCard{
+    font-size: 1rem;
+    width: 100%;
+  }
+  .text_info input{
+    margin-top: 0% !important;
+    margin-right: 5px !important;
+    margin-left: 0px !important;
+  }
+  .textCardSelect{
+    font-size: 0.7em;
+  }
+  .SubHeaderText {
+    font-size: 1em;
+    padding-top: 1em !important;
+  }
+}
+
+@media only screen and (min-width: 1280px){
+  .Ajuste{
+    max-width: 50% !important;
+    flex-basis: 50% !important;
+  }  
 }

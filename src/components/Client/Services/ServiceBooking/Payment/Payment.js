@@ -398,7 +398,7 @@ class Payment extends Component {
                 onClick={(event) => this.handlecardChecked(event, d.id)}
                 value={d.id}
               />
-              <label>
+              <label className={cls.textCardSelect}>
                 <span>{d.attributes.card_type}</span>
                 <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
                 <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
@@ -502,7 +502,7 @@ class Payment extends Component {
                       <div className={cls.Row}>
                         <div className={cls.MarginBottom}>
                           <Grid container>
-                            <Grid item xs={6} sm={6} md={6} lg={3}>
+                            <Grid className={cls.Ajuste} item xs={6} sm={6} md={6} lg={3}>
                               <Grid container>
                                 <div className={cls.Columns}>
                                   <label>Expiracion</label>
@@ -535,7 +535,7 @@ class Payment extends Component {
                                 </div>
                               </Grid>
                             </Grid>
-                            <Grid item xs={6} sm={6} md={6} lg={3}>
+                            <Grid className={cls.Ajuste} item xs={6} sm={6} md={6} lg={3}>
                               <Grid container>
                                 <div>
                                   <label>CVC</label>

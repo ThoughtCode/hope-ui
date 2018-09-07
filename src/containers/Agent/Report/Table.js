@@ -31,10 +31,10 @@ const report = props => {
         <a href={`/agente/trabajo/${props.id}`}>{nameService}</a>
       </th>
       <td className="text-info">{customerFirstName} {customerLastName}</td>
-      <td className="text-info">${props.total}</td>
-      <td className="text-info">${props.vat}</td>
-      <td className="text-info">${props.serviceFee}</td>
-      <td className="text-info">${props.subTotal}</td>
+      <td className="text-info">${props.total.toFixed(2)}</td>
+      <td className="text-info">${props.vat.toFixed(2)}</td>
+      <td className="text-info">${props.serviceFee.toFixed(2)}</td>
+      <td className="text-info">${props.subTotal.toFixed(2)}</td>
     </tr>
   );
 }

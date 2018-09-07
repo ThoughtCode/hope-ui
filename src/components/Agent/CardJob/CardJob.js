@@ -78,7 +78,7 @@ const cardJob = (props) => {
                 </div>
                 <div className={cls.FrequencyPrice}>
                   <span className={cls.JobFrecuency}>{frequency}</span>
-                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.job.attributes.total}</span>
+                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.job.attributes.total.toFixed(2)}</span>
                 </div>
               </div>
             }

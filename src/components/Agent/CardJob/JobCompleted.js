@@ -75,7 +75,7 @@ const CardJob = ( props ) => {
                 title={
                   <div className={cls.agentDetails}>
                     <p className={cls.jobAgent}>{props.job.attributes.customer.first_name} {props.job.attributes.customer.last_name}</p>
-                    <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.job.attributes.total}</span>
+                    <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.job.attributes.total.toFixed(2)}</span>
                   </div>
                 }
               />
@@ -105,7 +105,7 @@ const CardJob = ( props ) => {
             <Grid item xs={12} sm={4} md={4} lg={4} className={cls.TotalContainer}>
               <Grid container className={cls.TotalMargin} justify="center">
                 <div className={cls.agentDetails}>
-                  <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.job.attributes.total}</span>
+                  <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.job.attributes.total.toFixed(2)}</span>
                 </div>
               </Grid>
             </Grid>

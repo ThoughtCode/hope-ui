@@ -246,7 +246,7 @@ class Report extends Component {
                             <td class="bg-success"></td>
                             <td class="bg-success"></td>
                             <td class="bg-success"></td>
-                            <td class="bg-success">${sumTotal}</td>
+                            <td class="bg-success">${sumTotal === null ? ("00.00"):(sumTotal.toFixed(2))}</td>
                           </tr>
                         </tbody>
                       </table>

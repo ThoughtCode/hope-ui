@@ -98,13 +98,16 @@ const bookingTotal = (props) => {
                             {props.form.services_parameters.length > 0 ? 
                               props.form.services_parameters.map(addon => {
                                   {
+                                  let price = addon.price;
+                                  let time = addon.time;
+                                  let summary = price * time;
                                   return (
                                     <Grid key={addon.id} container>
                                       <Grid item xs={12} md={6} lg={6}>
                                         <div className={cls.SummaryTitle}>{addon.label}</div>
                                       </Grid>
                                       <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                        <div className={cls.SummaryAmount}>${summary.toFixed(2)}</div>
                                       </Grid>
                                     </Grid>
                                   );
@@ -114,13 +117,16 @@ const bookingTotal = (props) => {
                             {props.form.services_addons.length > 0 ? 
                               props.form.services_addons.map(addon => {
                                 if (addon.active) {
+                                  let price = addon.price;
+                                  let time = addon.time;
+                                  let summary = price * time;
                                   return (
                                     <Grid key={addon.id} container>
                                       <Grid item xs={12} md={6} lg={6}>
                                         <div className={cls.SummaryTitle}>{addon.label}</div>
                                       </Grid>
                                       <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                        <div className={cls.SummaryAmount}>${summary.toFixed(2)}</div>
                                       </Grid>
                                     </Grid>
                                   );

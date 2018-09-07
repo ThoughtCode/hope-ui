@@ -68,7 +68,7 @@ const job = props => {
               title={
                 <div className={cls.agentDetails}>
                   <p className={cls.jobAgent}>{name}</p>
-                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.total}</span>
+                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.total.toFixed(2)}</span>
                 </div>
               }
             />

@@ -68,7 +68,7 @@ const job = props => {
               title={
                 <div className={cls.agentDetails}>
                   <p className={cls.jobAgent}>{name}</p>
-                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.total}</span>
+                  <span className={`${cls.PriceNo} ${cls.jobPrice}`}>${props.total.toFixed(2)}</span>
                 </div>
               }
             />
@@ -97,7 +97,7 @@ const job = props => {
           <Grid item xs={12} sm={4} md={4} lg={4} className={cls.TotalContainer}>
             <Grid container className={cls.TotalMargin} justify="center">
               <div className={cls.agentDetails}>
-                <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.total}</span>
+                <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.total.toFixed(2)}</span>
               </div>
               <Grid container alignItems="flex-end">
                 <Grid className={`${cls.Border} ${cls.ViewDetails}`} item xs={12}>

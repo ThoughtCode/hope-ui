@@ -237,7 +237,7 @@ class JobShow extends Component {
               })}
               </dd>
               <dt className={cls.TpWeightBold}>Precio</dt>
-              <dd>$ {this.props.job.attributes.total}</dd>
+              <dd>$ {this.props.job.attributes.total.toFixed(2)}</dd>
               <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
               <dd>
                 <ul className={cls.Ul}>

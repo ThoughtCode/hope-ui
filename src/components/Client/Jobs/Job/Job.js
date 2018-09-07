@@ -21,6 +21,7 @@ moment.locale('es');
 const job = props => {
   let services = null;
   let addon = null;
+  let parameter = null;
   if (props.job_details) {
     services = props.job_details.map(detail => {
       if (detail.service.type_service === 'base') {
@@ -32,6 +33,14 @@ const job = props => {
       if (detail.service.type_service === 'addon') {
         return (
           <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
+        );
+      }
+      return null;
+    });
+    parameter = props.job_details.map(detail => {
+      if (detail.service.type_service === 'parameter') {
+        return (
+          <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name}</div>
         );
       }
       return null;
@@ -88,6 +97,7 @@ const job = props => {
                     {moment(props.date).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                   </div>  
                   <div className={cls.jobDetails}>
+                    {parameter}
                     {addon}
                   </div>
                 </div>

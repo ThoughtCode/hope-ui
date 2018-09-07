@@ -23,6 +23,7 @@ const styles = theme => ({
 const cardJob = (props) => {
   let services = null;
   let addon = null;
+  let parameter = null;
   let frequency = null;
   let title = null;
   if (props.job.attributes.job_details) {
@@ -35,6 +36,15 @@ const cardJob = (props) => {
     addon = props.job.attributes.job_details.map(detail => {
       if (detail.service.type_service === 'addon') {
         title = "Servicios Adicionales"
+        return (
+          <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
+        );
+      }
+      return null;
+    })
+    parameter = props.job.attributes.job_details.map(detail => {
+      if (detail.service.type_service === 'parameter') {
+        title = "Servicios Parametros"
         return (
           <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
         );
@@ -99,6 +109,7 @@ const cardJob = (props) => {
                   </div>  
                   <div className={cls.jobDetails}>
                     <p className={cls.jobService}>{title}</p>
+                    {parameter}
                     {addon}
                   </div>
                 </div>

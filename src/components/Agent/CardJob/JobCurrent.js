@@ -23,6 +23,7 @@ const CardJob = ( props ) => {
   let service_base = null;
   let frequency = null;
   let services_addon = null;
+  let services_parameter = null;
   let propertyName = null;
   let propertyPStreet = null;
   let propertySStreet = null;
@@ -36,6 +37,15 @@ const CardJob = ( props ) => {
   services_addon = props.job.attributes.job_details.map(j => {
     if (j.service.type_service === 'addon') {
       title = "Servicios Adicionales"
+      return (
+        <div key={j.id} className={cls.jobExtraServices}>{j.service.name}</div>
+      );
+    };
+    return null;
+  });
+  services_parameter = props.job.attributes.job_details.map(j => {
+    if (j.service.type_service === 'parameter') {
+      title = "Servicios Parameter"
       return (
         <div key={j.id} className={cls.jobExtraServices}>{j.service.name}</div>
       );
@@ -98,6 +108,7 @@ const CardJob = ( props ) => {
                     </div>
                     <div className={cls.jobDetails}>
                       <p className={cls.jobService}>{title}</p>
+                      {services_parameter}
                       {services_addon}
                     </div>
                   </div>

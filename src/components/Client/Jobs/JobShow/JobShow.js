@@ -118,8 +118,7 @@ class JobShow extends Component {
                       <Grid className={cls.QuoteNumberHires} container justify="center">
                         <div>
                           <div className={cls.TpBody}>{p.attributes.agent_rewiews_count}</div>
-                          <div className={cls.QouteDetailStats}>Veces Contratado
-                          </div>
+                          <div className={cls.QouteDetailStats}>Veces Contratado</div>
                         </div>
                       </Grid>
                     </Grid>
@@ -238,27 +237,24 @@ class JobShow extends Component {
               </dd>
               <dt className={cls.TpWeightBold}>Precio</dt>
               <dd>$ {this.props.job.attributes.total.toFixed(2)}</dd>
-              <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
+              {this.props.job.attributes.job_details.length > 1 ? (
+                <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
+              ):(
+                <dt className={cls.TpWeightBold}>Sin Servicios Adicionales</dt>
+              )}
               <dd>
                 <ul className={cls.Ul}>
                   {this.props.job.attributes.job_details.map(detail => {
-                    if (detail.service.type_service === 'addon') {
-                      if (detail.service.quantity) {
-                        return (
-                          <li className={cls.Li}>
-                            {detail.service.name} x{detail.value}
-                          </li>
-                        );
-                      } else {
-                        return (
-                          <li className={cls.Li}>{detail.service.name}</li>
-                        );
-                      }
-                    } else {
+                    if (detail.service.type_service === 'parameter') {
                       return (
-                        <li className={cls.Li}>Sin Servicos Adicionales</li>
-                      );
+                        <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name}</div>
+                      )
                     }
+                    if (detail.service.type_service === 'addon') {
+                      return (
+                        <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name} x {detail.value}</div>
+                      )
+                    };
                   })}
                 </ul>
               </dd>

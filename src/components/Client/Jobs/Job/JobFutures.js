@@ -21,6 +21,7 @@ moment.locale('es');
 const job = props => {
   let services = null;
   let addon = null;
+  let parameter = null;
   if (props.job_details) {
     services = props.job_details.map(detail => {
       if (detail.service.type_service === 'base') {
@@ -32,6 +33,14 @@ const job = props => {
       if (detail.service.type_service === 'addon') {
         return (
           <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
+        );
+      }
+      return null;
+    })
+    parameter = props.job_details.map(detail => {
+      if (detail.service.type_service === 'parameter') {
+        return (
+          <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name}</div>
         );
       }
       return null;
@@ -86,7 +95,8 @@ const job = props => {
                     <svg className={`${cls.MarginIcon} ${"job-icon"}`} xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="18" height="18" viewBox="0 0 18 18"><path fill-rule="evenodd" d="M9 5.25a.75.75 0 0 0-.75.75v2.25H6a.75.75 0 0 0 0 1.5h3.75V6A.75.75 0 0 0 9 5.25M9 15c-3.309 0-6-2.691-6-6s2.691-6 6-6c3.31 0 6 2.691 6 6s-2.69 6-6 6M9 1C4.589 1 1 4.589 1 9s3.589 8 8 8 8-3.589 8-8-3.589-8-8-8"></path></svg>
                     {moment(props.date).format('MMMM D YYYY').replace(/\b\w/g, l => l.toUpperCase())}/
                     {moment(props.date).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
-                  </div>  
+                  </div>
+                  {parameter}
                   <div className={cls.jobDetails}>
                     {addon}
                   </div>

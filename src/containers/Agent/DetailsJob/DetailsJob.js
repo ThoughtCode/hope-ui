@@ -58,6 +58,7 @@ class DetailsJob extends Component {
     let service_base = null;
     let frequency = null;
     let services_addon = null;
+    let services_parameter = null;
     let finishedAt = null;
     let firstNameCustomer = null;
     let lastNameCustomer = null;
@@ -128,17 +129,37 @@ class DetailsJob extends Component {
           }
           return null;
         })
-        services_addon = 
+        services_parameter = 
         <ul className={cls.Ul}>
           {this.props.jobDetails.attributes.job_details.map( detail => {
-            if (detail.service.type_service === 'addon') {
+            if (detail.service.type_service === 'parameter') {
               return (
-                <li className={cls.Li} key={detail.id}>{detail.service.name}</li>
+                <li className={cls.Li} key={detail.id}>{detail.service.name} x {detail.value}</li>
               );
             }
             return null;
           })}
         </ul>
+        services_addon = 
+        <div>
+          {this.props.jobDetails.attributes.job_details.length > 1 ? (
+            <dt className={cls.TpWeightBold}>
+              Servicios Adicionales
+            </dt>
+          ):(
+            ""
+          )}
+          <ul className={cls.Ul}>
+            {this.props.jobDetails.attributes.job_details.map( detail => {
+              if (detail.service.type_service === 'addon') {
+                return (
+                  <li className={cls.Li} key={detail.id}>{detail.service.name} x {detail.value}</li>
+                );
+              }
+              return null;
+            })}
+          </ul>
+        </div>
       }
     }
     if (this.props.jobDetails.attributes){
@@ -192,12 +213,12 @@ class DetailsJob extends Component {
                         <Grid item xs={11}>
                           <Paper elevation={0}>
                             <dt className={cls.TpWeightBold}>Servicios contratados</dt>
-                            <dd className={cls.serviceBase}>{service_base}</dd>
+                            <dd className={cls.serviceBase}>{service_base}{services_parameter}</dd>
                           </Paper>
                         </Grid>
                         <Grid item xs={11}>
                           <Paper elevation={0}>
-                            <dt className={cls.TpWeightBold}>Servicios Adicionales</dt>
+                            {/* <dt className={cls.TpWeightBold}>Servicios Adicionales</dt> */}
                             <dd>
                               {services_addon}
                             </dd>

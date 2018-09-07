@@ -11,6 +11,12 @@ class MainDashboardAgent extends Component {
     let jobs = (
       <Typography variant="title" gutterBottom align="center" className={cls.Typogra}>No se encuentran trabajos</Typography>
     );
+    let items = [];
+    for (let page = 1; page <= this.props.total_pages; page++) {
+      items.push(
+        <a onClick={(a) => this.props.goTo(a, page)} active={page = this.props.current_page}>{page}</a>
+      );
+    }
     if (this.props.jobs.length > 0) {
       jobs = this.props.jobs.map(job => (
         <CardJob
@@ -24,7 +30,22 @@ class MainDashboardAgent extends Component {
           <h2 className={cls.Title}>Trabajos</h2>
           <div className="row">
             {jobs}
-          </div>  
+          </div>
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li>
+                <a onClick={() => this.props.goBack()} aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+              </li>
+              <li>{items}</li>
+              <li>
+                <a onClick={() => this.props.goNext()} aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     );

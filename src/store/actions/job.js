@@ -398,23 +398,32 @@ export const fetchJobAgentCurrentFail = error => ({
   error,
 });
 
-export const fetchJobAgentCurrentSuccess = acceptedjobs => ({
+export const fetchJobAgentCurrentSuccess = (acceptedjobs, totalPagesCurrent) => ({
   type: actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS,
   acceptedjobs,
+  totalPagesCurrent,
 });
 
-export const fetchJobAgentCurrent = (token) => dispatch => {
+export const fetchJobAgentCurrent = (token, filter) => dispatch => {
+  console.log(filter)
   dispatch(fetchJobAgentCurrentStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`/agents/jobs/accepted?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
+  axios.get(`/agents/jobs/accepted?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=${filter.current_page}`, headers)
   .then((res) => {
-      let jobs = [];
+    let jobs = [];
+    jobs = res.data.job.data;
+    if (res.data.job) {
       jobs = res.data.job.data;
-      dispatch(fetchJobAgentCurrentSuccess(jobs));
+    } else {
+      jobs = res.data.data;
+    }
+    let totalPagesCurrent = 0;
+    totalPagesCurrent = res.headers['x-total-pages'];
+      dispatch(fetchJobAgentCurrentSuccess(jobs, totalPagesCurrent));
     })
     .catch((err) => {
       dispatch(fetchJobAgentCurrentFail(err));
@@ -430,27 +439,35 @@ export const fetchJobAgentCompletedFail = error => ({
   error,
 });
 
-export const fetchJobAgentCompletedSuccess = completedjobs => ({
+export const fetchJobAgentCompletedSuccess = (completedjobs, totalPagesCompleted) => ({
   type: actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS,
   completedjobs,
+  totalPagesCompleted,
 });
 
-export const fetchJobAgentCompleted = (token) => dispatch => {  
+export const fetchJobAgentCompleted = (token, filter) => dispatch => {  
   dispatch(fetchJobAgentCompletedStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`agents/jobs/completed?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
+  axios.get(`agents/jobs/completed?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=${filter.current_page}`, headers)
   .then((res) => {
-      let jobs = [];
+    let jobs = [];
+    jobs = res.data.job.data;
+    if (res.data.job) {
       jobs = res.data.job.data;
-      dispatch(fetchJobAgentCompletedSuccess(jobs));
-    })
-    .catch((err) => {
-      dispatch(fetchJobAgentCompletedFail(err));
-    });
+    } else {
+      jobs = res.data.data;
+    }
+    let totalPagesCompleted = 0;
+    totalPagesCompleted = res.headers['x-total-pages'];
+    dispatch(fetchJobAgentCompletedSuccess(jobs, totalPagesCompleted));
+  })
+  .catch((err) => {
+    dispatch(fetchJobAgentCompletedFail(err));
+  });
 }
 
 export const fetchJobAgentPostulatedStart = () => ({
@@ -462,23 +479,31 @@ export const fetchJobAgentPostulatedFail = error => ({
   error,
 });
 
-export const fetchJobAgentPostulatedSuccess = postulatedJobs => ({
+export const fetchJobAgentPostulatedSuccess = (postulatedjobs, totalPagesPostulated) => ({
   type: actionTypes.FETCH_JOB_AGENT_POSTULATED_SUCCESS,
-  postulatedJobs,
+  postulatedjobs,
+  totalPagesPostulated,
 });
 
-export const fetchJobAgentPostulated = (token) => dispatch => {  
+export const fetchJobAgentPostulated = (token, filter) => dispatch => {
   dispatch(fetchJobAgentPostulatedStart());
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`agents/jobs/postulated?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=1`, headers)
+  axios.get(`agents/jobs/postulated?date_from=null&date_to=null&min_price=0&max_price=0&frequency=null&current_page=${filter.current_page}`, headers)
   .then((res) => {
       let jobs = [];
       jobs = res.data.job.data;
-      dispatch(fetchJobAgentPostulatedSuccess(jobs));
+      if (res.data.job) {
+        jobs = res.data.job.data;
+      } else {
+        jobs = res.data.data;
+      }
+      let totalPagesPostulated = 0;
+      totalPagesPostulated = res.headers['x-total-pages'];
+      dispatch(fetchJobAgentPostulatedSuccess(jobs, totalPagesPostulated));
     })
     .catch((err) => {
       dispatch(fetchJobAgentPostulatedFail(err));

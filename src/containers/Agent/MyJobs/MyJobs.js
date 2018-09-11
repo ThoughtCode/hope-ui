@@ -16,10 +16,13 @@ import cls from './MyJobs.css';
 import * as actions from '../../../store/actions';
 
 class MyJobs extends Component {
+  state = {
+    filter: {
+      current_page_current: 1,
+    },
+  };
   componentDidMount() {
-    this.props.onFetchJobAgentCurrent(localStorage.getItem('token'));
-    this.props.onFetchJobAgentCompleted(localStorage.getItem('token'));
-    this.props.onFetchJobAgentPostulated(localStorage.getItem('token'));
+    this.props.onFetchJobAgentCurrent(localStorage.getItem('token'), this.state.filter.current_page_current);
   };
   render() {
     return (
@@ -40,9 +43,8 @@ class MyJobs extends Component {
                   <Grid item xs={12}>
                     <Paper elevation={0}>
                       <MyJobsMain
-                        jobs={this.props.acceptedjobs}
-                        jobsCompleted={this.props.completedjobs}
-                        jobsPostulated={this.props.postulatedjobs} />
+                        {...this.props}
+                      />
                     </Paper>
                   </Grid>
                 </Grid>
@@ -56,9 +58,9 @@ class MyJobs extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onFetchJobAgentCurrent: (token) => dispatch(actions.fetchJobAgentCurrent(token)),
-  onFetchJobAgentCompleted: (token) => dispatch(actions.fetchJobAgentCompleted(token)),
-  onFetchJobAgentPostulated: (token) => dispatch(actions.fetchJobAgentPostulated(token)),
+  onFetchJobAgentCurrent: (token, filter) => dispatch(actions.fetchJobAgentCurrent(token, filter)),
+  onFetchJobAgentCompleted: (token, filter) => dispatch(actions.fetchJobAgentCompleted(token, filter)),
+  onFetchJobAgentPostulated: (token, filter) => dispatch(actions.fetchJobAgentPostulated(token, filter)),
 });
 
 const mapStateToProps = state => ({
@@ -66,6 +68,9 @@ const mapStateToProps = state => ({
   completedjobs: state.job.completedjobs,
   postulatedjobs: state.job.postulatedjobs,
   total_pages: state.job.total_pages,
+  totalPagesCurrent: state.job.totalPagesCurrent,
+  totalPagesCompleted: state.job.totalPagesCompleted,
+  totalPagesPostulated: state.job.totalPagesPostulated,
   loading: state.job.loading,
 });
 

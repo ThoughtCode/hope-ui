@@ -152,36 +152,33 @@ class DashboardAgent extends Component {
     }
   };
 
-  goTo = (page) => {
-    if (this.state.filter.current_page === parseInt(this.props.total_pages, 10)) {
-
-    } else {
-      this.setState({
-        ...this.state,
-        filter: {
-          ...this.state.filter,
-          current_page: page,
-        }
-      });
-      if (this.state.filter.active) {
-        let filter = {};
-        filter.min_price = this.state.filter.min_price;
-        filter.max_price = this.state.filter.max_price;
-        filter.date_from = moment(this.state.filter.date_from).format();
-        filter.date_to = moment(this.state.filter.date_to).format();
-        filter.frequency = this.state.filter.frequency;
-        filter.current_page = page;
-        this.props.onFetchJobs(localStorage.getItem('token'), filter);
-      } else {
-        let filter = {};
-        filter.min_price = '0';
-        filter.max_price = '';
-        filter.date_from = null;
-        filter.date_to = null;
-        filter.frequency = null;
-        filter.current_page = page;
-        this.props.onFetchJobs(localStorage.getItem('token'), filter);
+  goTo = (a, page) => {
+    this.setState({
+      ...this.state,
+      filter: {
+        ...this.state.filter,
+        current_page: page,
       }
+    }, function(){
+    });
+    if (this.state.filter.active) {
+      let filter = {};
+      filter.min_price = this.state.filter.min_price;
+      filter.max_price = this.state.filter.max_price;
+      filter.date_from = moment(this.state.filter.date_from).format();
+      filter.date_to = moment(this.state.filter.date_to).format();
+      filter.frequency = this.state.filter.frequency;
+      filter.current_page = page;
+      this.props.onFetchJobs(localStorage.getItem('token'), filter);
+    } else {
+      let filter = {};
+      filter.min_price = '0';
+      filter.max_price = '';
+      filter.date_from = null;
+      filter.date_to = null;
+      filter.frequency = null;
+      filter.current_page = page;
+      this.props.onFetchJobs(localStorage.getItem('token'), filter);
     }
   };
   render() {

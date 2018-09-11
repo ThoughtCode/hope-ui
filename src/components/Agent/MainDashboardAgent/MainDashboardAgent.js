@@ -14,7 +14,7 @@ class MainDashboardAgent extends Component {
     let items = [];
     for (let page = 1; page <= this.props.total_pages; page++) {
       items.push(
-        <a onClick={(a) => this.props.goTo(a, page)} active={page = this.props.current_page}>{page}</a>
+        <li key={page}><a onClick={(a) => this.props.goTo(a, page)} active={page === this.props.current_page}>{page}</a></li>
       );
     }
     if (this.props.jobs.length > 0) {
@@ -38,7 +38,7 @@ class MainDashboardAgent extends Component {
                   <span aria-hidden="true">&laquo;</span>
                 </a>
               </li>
-              <li>{items}</li>
+              {items}
               <li>
                 <a onClick={() => this.props.goNext()} aria-label="Next">
                   <span aria-hidden="true">&raquo;</span>

@@ -10,6 +10,8 @@ const initialState = {
   nextjobs: [],
   historyjobs: [],
   total_pages: 0,
+  totalPagesPostulated: 0,
+  totalPagesCurrent: 0,
   jobDetails: [],
   disableButton: [],
   disableButtonCustomer: [],
@@ -78,11 +80,13 @@ const fetchAgentJobsFail = (state, action) => updateObject(state, {
 
 const fetchJobAgentCurrentStart = (state, action) => updateObject(state, {
   acceptedjobs: [],
+  totalPagesCurrent: 0,
   loading: true,
 });
 
 const fetchJobAgentCurrentSuccess = (state, action) => updateObject(state, {
   acceptedjobs: action.acceptedjobs,
+  totalPagesCurrent: action.totalPagesCurrent,
   loading: false,
 });
 
@@ -90,12 +94,28 @@ const fetchJobAgentCurrentFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
-const fetchJobAgentCompleted = (state, action) => updateObject(state, {
-  completedjobs: action.completedjobs,
+const fetchJobAgentCompletedStart = (state, action) => updateObject(state, {
+  Completedjobs: [],
+  totalPagesCompleted: 0,
+  // loading: true,
 });
 
-const fetchJobAgentPostulated = (state, action) => updateObject(state, {
-  postulatedjobs: action.postulatedJobs,
+const fetchJobAgentCompletedSuccess = (state, action) => updateObject(state, {
+  completedjobs: action.completedjobs,
+  totalPagesCompleted: action.totalPagesCompleted,
+  // loading: false,
+});
+
+const fetchJobAgentPostulatedStart = (state, action) => updateObject(state, {
+  postulatedjobs: [],
+  totalPagesPostulated: 0,
+  // loading: true,
+});
+
+const fetchJobAgentPostulatedSuccess = (state, action) => updateObject(state, {
+  postulatedjobs: action.postulatedjobs,
+  totalPagesPostulated: action.totalPagesPostulated,
+  // loading: false,
 });
 
 const jobDetailsStart = (state, action) => updateObject(state, {
@@ -175,11 +195,11 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_JOB_AGENT_CURRENT_START: return fetchJobAgentCurrentStart(state, action);
     case actionTypes.FETCH_JOB_AGENT_CURRENT_SUCCESS: return fetchJobAgentCurrentSuccess(state, action);
     case actionTypes.FETCH_JOB_AGENT_CURRENT_FAIL: return fetchJobAgentCurrentFail(state, action);
-    case actionTypes.FETCH_JOB_AGENT_COMPLETED_START: return state;
-    case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgentCompleted(state, action);
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_START: return fetchJobAgentCompletedStart(state, action);
+    case actionTypes.FETCH_JOB_AGENT_COMPLETED_SUCCESS: return fetchJobAgentCompletedSuccess(state, action);
     case actionTypes.FETCH_JOB_AGENT_COMPLETED_FAIL: return state;
-    case actionTypes.FETCH_JOB_AGENT_POSTULATED_START: return state;
-    case actionTypes.FETCH_JOB_AGENT_POSTULATED_SUCCESS: return fetchJobAgentPostulated(state, action);
+    case actionTypes.FETCH_JOB_AGENT_POSTULATED_START: return fetchJobAgentPostulatedStart (state, action);
+    case actionTypes.FETCH_JOB_AGENT_POSTULATED_SUCCESS: return fetchJobAgentPostulatedSuccess(state, action);
     case actionTypes.FETCH_JOB_AGENT_POSTULATED_FAIL: return state;
     case actionTypes.JOB_DETAILS_START: return jobDetailsStart(state, action);
     case actionTypes.JOB_DETAILS_SUCCESS: return jobDetailsSuccess(state, action);

@@ -405,7 +405,6 @@ export const fetchJobAgentCurrentSuccess = (acceptedjobs, totalPagesCurrent) => 
 });
 
 export const fetchJobAgentCurrent = (token, filter) => dispatch => {
-  console.log(filter)
   dispatch(fetchJobAgentCurrentStart());
   const headers = {
     headers: {

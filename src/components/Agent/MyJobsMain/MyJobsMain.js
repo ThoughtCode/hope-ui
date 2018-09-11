@@ -411,7 +411,6 @@ class MyJobsMain extends React.Component {
         <li key={pagePostulated}><a onClick={(a) => this.goTo(a, pagePostulated)} active={pagePostulated === this.state.filter.current_page}>{pagePostulated}</a></li>
       );
     }
-    console.log(this.props)
     return (
       <div className={cls.root}>
         <AppBar position="static" className={cls.AppBar} elevation={0}>

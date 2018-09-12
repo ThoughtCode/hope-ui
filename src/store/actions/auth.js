@@ -188,7 +188,6 @@ export const facebookLogin = accessToken => (dispatch) => {
     .then((response) => {
       const customer = response.data.customer.data;
       localStorage.clear();
-      console.log(response);
       localStorage.setItem('token', customer.attributes.access_token);
       localStorage.setItem('userId', customer.id);
       localStorage.setItem('signInAs', 'customer');

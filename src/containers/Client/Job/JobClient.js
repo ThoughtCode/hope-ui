@@ -15,9 +15,13 @@ import cls from './JobClient.css';
 import * as actions from '../../../store/actions';
 
 class JobClient extends Component {
+  state = {
+    filter: {
+      current_page_current: 1,
+    },
+  };
   componentDidMount () {
-    this.props.onFetchNextJobs(this.props.token, null);
-    this.props.onFetchHistoryJobs(this.props.token);
+    this.props.onFetchNextJobsCurrent(this.props.token, this.state.filter.current_page_current);
   }
   render() {
     return (
@@ -39,8 +43,7 @@ class JobClient extends Component {
                   <Grid item xs={11} md={12}>
                     <Paper elevation={0}>
                       <MainJobClient
-                        futureJobsMain={this.props.futureJobs}
-                        jobsPast={this.props.historyjobs}
+                        {...this.props}
                       />
                     </Paper>
                   </Grid>
@@ -57,16 +60,18 @@ class JobClient extends Component {
 const mapStateToProps = state => {
   return {
     token: localStorage.getItem('token'),
-    futureJobs: state.job.nextjobs,
-    historyjobs: state.job.historyjobs,
+    futureJobsMain: state.job.nextjobsCurrent,
+    jobsPast: state.job.listJobsCompleted,
+    totalPagesCurrentCustomer: state.job.totalPagesCurrentCustomer,
+    totalPagesCurrentPast: state.job.totalPagesCurrentPast,
     loading: state.job.loading, 
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFetchNextJobs: (token) => dispatch(actions.fetchNextJobs(token, null)),
-    onFetchHistoryJobs: (token) => dispatch(actions.fetchHistoryJobs(token)),
+    onFetchNextJobsCurrent: (token, filter) => dispatch(actions.fetchNextJobsCurrent(token, filter)),
+    onFetchListJobsCompleted: (token, filter) => dispatch(actions.fetchListJobsCompleted(token, filter)),
   }
 }
 

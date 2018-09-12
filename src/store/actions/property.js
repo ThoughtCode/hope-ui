@@ -185,7 +185,6 @@ export const deleteProperty = (token, id) => (dispatch) => {
   };
   axios.delete(`/customers/properties/${id}`, headers)
     .then((res) => {
-      console.log(res);
       dispatch(deletePropertySuccess(id));
       dispatch(push('/cliente/perfil/propiedades'));
       Alert.success(res.data.message, {

@@ -137,6 +137,45 @@ export const fetchNextJobs = (token, limit = 4) => dispatch => {
     });
 }
 
+export const fetchNextJobsCurrentStart = () => ({
+  type: actionTypes.FETCH_NEXTJOBS_CURRENT_START,
+});
+
+export const fetchNextJobsCurrentFail = error => ({
+  type: actionTypes.FETCH_NEXTJOBS_CURRENT_FAIL,
+  error,
+});
+
+export const fetchNextJobsCurrentSuccess = (nextjobsCurrent, totalPagesCurrentCustomer) => ({
+  type: actionTypes.FETCH_NEXTJOBS_CURRENT_SUCCESS,
+  totalPagesCurrentCustomer,
+  nextjobsCurrent,
+});
+
+export const fetchNextJobsCurrent = (token, data) => dispatch => {
+  dispatch(fetchNextJobsCurrentStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get(`/customers/jobs/current?current_page=${data.current_page_current}`, headers)
+    .then((res) => {
+      let nextjobsCurrent = [];
+      if (res.data.job) {
+        nextjobsCurrent = res.data.job.data;
+      } else {
+        nextjobsCurrent = res.data.data;
+      }
+      let totalPagesCurrentCustomer = 0;
+      totalPagesCurrentCustomer = res.headers['x-total-pages'];
+      dispatch(fetchNextJobsCurrentSuccess(nextjobsCurrent, totalPagesCurrentCustomer));
+    })
+    .catch((err) => {
+      dispatch(fetchNextJobsCurrentFail(err));
+    });
+}
+
 export const fetchHistoryJobsStart = () => ({
   type: actionTypes.FETCH_HISTORYJOBS_START,
 });
@@ -174,6 +213,45 @@ export const fetchHistoryJobs = (token, limit = 4) => dispatch => {
     })
     .catch((err) => {
       dispatch(fetchHistoryJobsFail(err));
+    });
+}
+
+export const fetchListJobsCompletedStart = () => ({
+  type: actionTypes.FETCH_LIST_JOBS_COMPLETED_START,
+});
+
+export const fetchListJobsCompletedFail = error => ({
+  type: actionTypes.FETCH_LIST_JOBS_COMPLETED_FAIL,
+  error,
+});
+
+export const fetchListJobsCompletedSuccess = (listJobsCompleted, totalPagesCurrentPast) => ({
+  type: actionTypes.FETCH_LIST_JOBS_COMPLETED_SUCCESS,
+  listJobsCompleted,
+  totalPagesCurrentPast,
+});
+
+export const fetchListJobsCompleted = (token, data) => dispatch => {
+  dispatch(fetchListJobsCompletedStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get(`/customers/jobs/completed?current_page=${data.current_page_current}`, headers)
+    .then((res) => {
+      let listJobsCompleted = [];
+      if (res.data.job) {
+        listJobsCompleted = res.data.job.data;
+      } else {
+        listJobsCompleted = res.data.data;
+      }
+      let totalPagesCurrentPast = 0;
+      totalPagesCurrentPast = res.headers['x-total-pages'];
+      dispatch(fetchListJobsCompletedSuccess(listJobsCompleted, totalPagesCurrentPast));
+    })
+    .catch((err) => {
+      dispatch(fetchListJobsCompletedFail(err));
     });
 }
 

@@ -192,7 +192,6 @@ class Edit extends Component {
   inputFileHandler = event => {
     const fd = new FormData();
     fd.append('customer[avatar]', event.target.files[0]);
-    console.log(fd);
 
     this.props.updateAvatar(localStorage.getItem('token'), fd);
   }

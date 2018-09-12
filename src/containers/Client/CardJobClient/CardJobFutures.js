@@ -38,7 +38,6 @@ function CardJob(props) {
   } else if (props.frequency === 'monthly') {
     frequency = 'Mensual';
   };
-  // console.log(props.total)
   return (
     <div className={cls.root}>
         

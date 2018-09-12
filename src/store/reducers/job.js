@@ -8,10 +8,14 @@ const initialState = {
   completedjobs: [],
   postulatedjobs: [],
   nextjobs: [],
+  nextjobsCurrent: [],
   historyjobs: [],
+  listJobsCompleted: [],
   total_pages: 0,
   totalPagesPostulated: 0,
   totalPagesCurrent: 0,
+  totalPagesCurrentCustomer: 0,
+  totalPagesCurrentPast: 0,
   jobDetails: [],
   disableButton: [],
   disableButtonCustomer: [],
@@ -40,8 +44,36 @@ const fetchNextJobsFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const fetchNextJobsCurrentStart = (state, action) => updateObject(state, {
+  nextjobsCurrent: [],
+  totalPagesCurrentCustomer: 0,
+  loading: true,
+});
+
+const fetchNextJobsCurrentSuccess = (state, action) => updateObject(state, {
+  nextjobsCurrent: action.nextjobsCurrent,
+  totalPagesCurrentCustomer: action.totalPagesCurrentCustomer,
+  loading: false,
+});
+
+const fetchNextJobsCurrentFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
 const fetchHistoryJobsSuccess = (state, action) => updateObject(state, {
   historyjobs: action.historyjobs,
+});
+
+const fetchListJobsCompletedStart = (state, action) => updateObject(state, {
+  nextjobsCurrent: [],
+  totalPagesCurrentCustomer: 0,
+  // loading: true,
+});
+
+const fetchListJobsCompletedSuccess = (state, action) => updateObject(state, {
+  listJobsCompleted: action.listJobsCompleted,
+  totalPagesCurrentPast: action.totalPagesCurrentPast,
+  // loading: false,
 });
 
 const fetchJobStart = (state, action) => updateObject(state, {
@@ -177,7 +209,12 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_NEXTJOBS_START: return fetchNextJobsStart(state,action);
     case actionTypes.FETCH_NEXTJOBS_FAIL: return fetchNextJobsFail(state, action);
     case actionTypes.FETCH_NEXTJOBS_SUCCESS: return fetchNextJobsSuccess(state, action);
+    case actionTypes.FETCH_NEXTJOBS_CURRENT_START: return fetchNextJobsCurrentStart(state,action);
+    case actionTypes.FETCH_NEXTJOBS_CURRENT_FAIL: return fetchNextJobsCurrentFail(state, action);
+    case actionTypes.FETCH_NEXTJOBS_CURRENT_SUCCESS: return fetchNextJobsCurrentSuccess(state, action);
     case actionTypes.FETCH_HISTORYJOBS_START: return state;
+    case actionTypes.FETCH_LIST_JOBS_COMPLETED_START: return fetchListJobsCompletedStart(state,action);
+    case actionTypes.FETCH_LIST_JOBS_COMPLETED_SUCCESS: return fetchListJobsCompletedSuccess(state, action);
     case actionTypes.FETCH_HISTORYJOBS_SUCCESS: return fetchHistoryJobsSuccess(state, action);
     case actionTypes.FETCH_HISTORYJOBS_FAIL: return state;
     case actionTypes.ACCEPTED_JOB_START: return state;

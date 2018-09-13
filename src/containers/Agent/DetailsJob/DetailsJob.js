@@ -60,6 +60,8 @@ class DetailsJob extends Component {
     let services_addon = null;
     let services_parameter = null;
     let finishedAt = null;
+    let startedAt = null;
+    let finishedRecurrencyAt = null;
     let firstNameCustomer = null;
     let lastNameCustomer = null;
     let firstNameCustomerService = null;
@@ -78,7 +80,9 @@ class DetailsJob extends Component {
       firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
       lastNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.last_name;
       total = this.props.jobDetails.attributes.total;
-      finishedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      startedAt = moment.utc(this.props.jobDetails.attributes.started_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      finishedRecurrencyAt = moment.utc(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      finishedAt = moment.utc(this.props.jobDetails.attributes.finished_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
       avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       if(this.props.jobDetails.attributes.customer){
         avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
@@ -205,7 +209,7 @@ class DetailsJob extends Component {
                         {firstNameCustomerService} {lastNameCustomerService}
                       </p>
                       <p className={cls.jobDetailsCustomerAddress}>
-                        {moment(startedAtDetails).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())} - {moment(finishedAtDetails).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
+                        {startedAt} - {finishedAt = 'Invalid Date' ? (finishedRecurrencyAt):(finishedAt)}
                       </p>
                     </div>
                     <dl>

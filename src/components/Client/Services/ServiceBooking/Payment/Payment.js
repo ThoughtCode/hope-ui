@@ -282,7 +282,11 @@ class Payment extends Component {
   paymentHandle = (event) => {
     event.preventDefault();
     var saved_props = this.props;
-    window.Paymentez.init('stg', process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE, process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY);
+
+    const API_CODE = process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE;
+    const API_KEY = process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY;
+
+    window.Paymentez.init('stg', API_CODE, API_KEY );
     var form = $("#add-card-form");
     var submitButton = form.find("button");
     var submitInitialText = submitButton.text();

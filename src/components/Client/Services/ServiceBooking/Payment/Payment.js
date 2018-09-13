@@ -283,10 +283,10 @@ class Payment extends Component {
     event.preventDefault();
     var saved_props = this.props;
 
-    const API_CODE = process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE;
-    const API_KEY = process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY;
+    // const API_CODE = process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE;
+    // const API_KEY = process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY;
 
-    window.Paymentez.init('stg', API_CODE, API_KEY );
+    window.Paymentez.init('stg', 'NOC-EC-CLIENT', 'Owo41X6qbItrAcEy7Pz9DAL7wl8gAo' );
     var form = $("#add-card-form");
     var submitButton = form.find("button");
     var submitInitialText = submitButton.text();

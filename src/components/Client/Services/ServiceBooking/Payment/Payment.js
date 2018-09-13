@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
@@ -282,7 +281,7 @@ class Payment extends Component {
   paymentHandle = (event) => {
     event.preventDefault();
     var saved_props = this.props;
-    window.Paymentez.init('stg', 'NOC-EC-CLIENT', 'Owo41X6qbItrAcEy7Pz9DAL7wl8gAo');
+    window.Paymentez.init('stg', process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE, process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY);
     var form = $("#add-card-form");
     var submitButton = form.find("button");
     var submitInitialText = submitButton.text();
@@ -379,6 +378,7 @@ class Payment extends Component {
   }
 
   render() {
+    console.log(process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE, process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY)
     let validadData = null;
     let creditForm;
     let creditCard;

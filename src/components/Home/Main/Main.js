@@ -111,7 +111,7 @@ class Main extends Component {
                 <Grid container>
                   <Grid item xs={12} sm={12}>
                     <Button className={cls.pageButtonActive} onClick={() => this.handleOpen("register")}>Regístrate</Button>
-                    <Button className={cls.pageButton} onClick={() => this.handleOpen("login")} >Iniciar Sesion</Button>
+                    <Button className={cls.pageButton} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
                   </Grid>
                   <Grid item xs={12} sm={6}>
                   </Grid>

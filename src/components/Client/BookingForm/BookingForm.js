@@ -304,6 +304,7 @@ class BookingForm extends Component {
                                 </Grid>
                               </Grid>
                             </Grid>
+                            <div>Te visitaremos una sola vez en la fecha seleccionada</div>
                           </div>
                         </Grid>
                       ) : (
@@ -378,6 +379,15 @@ class BookingForm extends Component {
                                         }} />
                                     </div>
                                   </Grid>
+                                  {this.props.form.recurrent.value == 1 ? (
+                                    <div>Te visitaremos semanalmente el día que tu elijas</div>
+                                  ):('')}
+                                  {this.props.form.recurrent.value == 2 ? (
+                                    <div>Te visitaremos cada 15 días el día que tu elijas</div>
+                                  ):('')}
+                                  {this.props.form.recurrent.value == 3 ? (
+                                    <div>Te visitaremos una vez al mes el día que tu elijas</div>
+                                  ):('')}
                                 </div>
                               </Grid>
                             </div>
@@ -445,14 +455,14 @@ class BookingForm extends Component {
                       <div>
                         <Grid container>
                           <h3 className={cls.SubHeaderText}>
-                            <span>¿Algo mas que quieras contarnos?</span>
+                            <span>¿Algo más que quieras contarnos?</span>
                           </h3>
                           <div className={cls.Service}>
                             <Grid item xs={12} sm={12} md={12} lg={12}>
                               <div className={cls.BorderPadding}>
                                 <Grid container>
                                   <textarea
-                                    placeholder="Informacion adicional acerca del trabajo"
+                                    placeholder="Información adicional acerca del trabajo"
                                     rows="8"
                                     className={cls.Textarea}
                                     value={this.props.form.details}

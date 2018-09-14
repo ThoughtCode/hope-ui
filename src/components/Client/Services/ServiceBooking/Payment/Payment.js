@@ -425,7 +425,7 @@ class Payment extends Component {
                   <div>
                   <span onClick={(event) => this.props.backPage(event, 'Payment')} className={cls.ButtonBack}>{'<<'} Volver</span>
                     <h3 className={cls.SubHeaderText}>
-                      <span>Ingresa tu forma de Pago</span>
+                      <span>Ingresa tú forma de Pago</span>
                     </h3>
                   </div>
                 </div>

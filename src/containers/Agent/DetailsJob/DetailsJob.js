@@ -84,6 +84,15 @@ class DetailsJob extends Component {
       finishedRecurrencyAt = moment.utc(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
       finishedAt = moment.utc(this.props.jobDetails.attributes.finished_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
       avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
+      if (this.props.jobDetails.attributes.frequency === 'one_time') {
+        frequency = 'Una vez';
+      } else if (this.props.jobDetails.attributes.frequency === 'weekly') {
+        frequency = 'Semanal';
+      } else if (this.props.jobDetails.attributes.frequency === 'fortnightly') {
+        frequency = 'Quincenal';
+      } else if (this.props.jobDetails.attributes.frequency === 'monthly') {
+        frequency = 'Mensual';
+      };
       if(this.props.jobDetails.attributes.customer){
         avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       }
@@ -216,7 +225,7 @@ class DetailsJob extends Component {
                       <Grid container justify="center">
                         <Grid item xs={11}>
                           <Paper elevation={0}>
-                            <dt className={cls.TpWeightBold}>Servicios contratados</dt>
+                            <dt className={cls.TpWeightBold}>Servicios contratados {frequency}</dt>
                             <dd className={cls.serviceBase}>{service_base}{services_parameter}</dd>
                           </Paper>
                         </Grid>

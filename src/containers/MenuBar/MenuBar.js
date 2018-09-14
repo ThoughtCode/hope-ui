@@ -114,7 +114,6 @@ class AppBarMenu extends Component {
     const { classes } = this.props;
     let menu = null;
     let notifiCustomer = null;
-    let textNotification = null;
     let badgeContentState = null;
     if (this.props.notifiCustomer.length > 0) {
       if(this.props.notifiCustomer.length > 9) {
@@ -123,10 +122,9 @@ class AppBarMenu extends Component {
         badgeContentState = this.props.notifiCustomer.length
       }
       notifiCustomer = this.props.notifiCustomer.map(notification => (
-        textNotification =
         <ul className={cls.notificationList} id="notification-list-transactions">
           <li className={cls.notificationMessage} data-notification="" key={notification.id}>
-            { notification.attributes.job.data ? (
+            {notification.attributes.job.data ? (
               <a className={cls.notificationLink}
                 onClick={(event) => this.handleNotificationReadCustomer(event, notification.id, notification.attributes.job.data.id)}
               >
@@ -134,7 +132,7 @@ class AppBarMenu extends Component {
               </a>
             ) : (
               <p></p>
-            ) }
+            )}
           </li> 
         </ul>
       ));
@@ -163,7 +161,7 @@ class AppBarMenu extends Component {
                 onClick={this.handleNotification}
               >
                 {this.props.notifiCustomer.length === 0 ? (
-                  <Badge>
+                  <Badge badgeContent=''>
                     <i className="fa notification-icons fa-bell-o"></i>
                   </Badge>
                 ):(

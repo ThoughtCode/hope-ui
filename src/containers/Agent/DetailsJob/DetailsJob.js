@@ -74,6 +74,7 @@ class DetailsJob extends Component {
     let details = null;
     let startedAtDetails = null;
     let finishedAtDetails = null;
+    let titleServiceAddon = null;
     if(this.props.jobDetails.attributes){
       rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
       reviewsCount = this.props.jobDetails.attributes.customer_rewiews_count;
@@ -155,18 +156,14 @@ class DetailsJob extends Component {
         </ul>
         services_addon = 
         <div>
-          {this.props.jobDetails.attributes.job_details.length > 1 ? (
-            <dt className={cls.TpWeightBold}>
-              Servicios Adicionales
-            </dt>
-          ):(
-            ""
-          )}
           <ul className={cls.Ul}>
             {this.props.jobDetails.attributes.job_details.map( detail => {
               if (detail.service.type_service === 'addon') {
+                titleServiceAddon = "Servicios Adicionales"
                 return (
-                  <li className={cls.Li} key={detail.id}>{detail.service.name} x {detail.value}</li>
+                  <li className={cls.Li} key={detail.service.id}>
+                    {detail.service.name} x {detail.value}
+                  </li>
                 );
               }
               return null;
@@ -218,22 +215,32 @@ class DetailsJob extends Component {
                         {firstNameCustomerService} {lastNameCustomerService}
                       </p>
                       <p className={cls.jobDetailsCustomerAddress}>
-                        {startedAt} - {finishedAt = 'Invalid Date' ? (finishedRecurrencyAt):(finishedAt)}
+                        {startedAt}<br/>
+                        {finishedRecurrencyAt === 'Invalid Date' ? (''):(finishedRecurrencyAt)}
+                        {finishedAt === 'Invalid Date' ? (''):(finishedAt)}
                       </p>
                     </div>
                     <dl>
                       <Grid container justify="center">
                         <Grid item xs={11}>
                           <Paper elevation={0}>
-                            <dt className={cls.TpWeightBold}>Servicios contratados {frequency}</dt>
+                            <dt className={cls.TpWeightBold}>Servicios contratados</dt>
                             <dd className={cls.serviceBase}>{service_base}{services_parameter}</dd>
                           </Paper>
                         </Grid>
                         <Grid item xs={11}>
                           <Paper elevation={0}>
-                            {/* <dt className={cls.TpWeightBold}>Servicios Adicionales</dt> */}
+                            <dt className={cls.TpWeightBold}>{titleServiceAddon}</dt>
                             <dd>
                               {services_addon}
+                            </dd>
+                          </Paper>
+                        </Grid>
+                        <Grid item xs={11}>
+                          <Paper elevation={0}>
+                            <dt className={cls.TpWeightBold}>Frecuencia</dt>
+                            <dd>
+                              {frequency}
                             </dd>
                           </Paper>
                         </Grid>

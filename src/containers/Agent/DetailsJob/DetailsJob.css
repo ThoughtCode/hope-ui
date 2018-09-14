@@ -189,7 +189,7 @@
   width: 100%;
 }
 .jobDetailHeader{
-  background-image: url(https://noc-noc.s3.amazonaws.com/uploads/service_type/image/2/apartment-blinds-cabinets-349749.jpg);
+  background-image: url("https://noc-noc.s3.amazonaws.com/uploads/service_type/image/1/clean-decoration-home-6412.jpg");
   height: 200px;
   display: block;
   background-size: cover;

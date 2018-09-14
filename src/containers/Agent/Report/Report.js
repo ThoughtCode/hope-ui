@@ -165,9 +165,6 @@ class Report extends Component {
           serviceFee={jR.attributes.service_fee}
           subTotal={jR.attributes.agent_earnings}
           customer={jR.attributes.customer}
-          // current_page={this.state.filter.current_page}
-          // goNext={this.goNext}
-          // goBack={this.goBack} 
         />
       ))
     }

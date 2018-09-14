@@ -224,8 +224,8 @@ class JobShow extends Component {
             </p>
             <p className={cls.JobDetailsCustomerAddress}>
               {startedAt}<br/>
-              {finishedRecurrencyAt == 'Invalid Date' ? (''):(finishedRecurrencyAt)}
-              {finishedAt == 'Invalid Date' ? (''):(finishedAt)}
+              {finishedRecurrencyAt === 'Invalid Date' ? (''):(finishedRecurrencyAt)}
+              {finishedAt === 'Invalid Date' ? (''):(finishedAt)}
             </p>
           </div>
           <div className={cls.JobDetailsServices}>
@@ -251,7 +251,7 @@ class JobShow extends Component {
                   {this.props.job.attributes.job_details.map(detail => {
                     if (detail.service.type_service === 'parameter') {
                       return (
-                        <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name}</div>
+                        <div key={detail.service.id} className={cls.jobExtraServices}>{detail.service.name} x {detail.value}</div>
                       )
                     }
                     if (detail.service.type_service === 'addon') {

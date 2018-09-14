@@ -285,7 +285,7 @@ class Contact extends Component {
                       className={cls.Field}
                       placeholder="Nombre"
                       id="name"
-                      multiline
+                      multiline="true"
                       margin="normal"
                       onChange={(event) => this.inputChangedHandler(event, 'name')}
                       InputProps={{
@@ -312,7 +312,7 @@ class Contact extends Component {
                     <input
                       placeholder="Celular"
                       id="multiline-static"
-                      multiline
+                      multiline="true"
                       margin="normal"
                       onChange={(event) => this.inputChangedHandler(event, 'celular')}
                       InputProps={{
@@ -339,7 +339,7 @@ class Contact extends Component {
                     <input
                       placeholder="Correo"
                       id="multiline-static"
-                      multiline
+                      multiline="true"
                       margin="normal"
                       onChange={(event) => this.inputChangedHandler(event, 'email')}
                       InputProps={{

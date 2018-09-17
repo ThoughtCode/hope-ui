@@ -39,7 +39,7 @@ class ServiceBooking extends Component {
       services_addons: [],
       services_parameters: [],
       property: {
-        value: '',
+        value: 1,
         errorText: 'Debe elegir una propiedad'
       },
       details: '',
@@ -126,6 +126,7 @@ class ServiceBooking extends Component {
   };
 
   handlePropertyChange = (event) => {
+    console.log(event)
     if (event.target.value !== "") {
       this.setState({
         ...this.state,

@@ -88,7 +88,6 @@ class BookingForm extends Component {
                               className={cls.Select}
                               value={this.props.form.property.value}
                               onChange={this.props.handlePropertyChange}>
-                              <option>Propiedad</option>
                               {this.props.properties.map(property => (
                                 <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>
                               ))}

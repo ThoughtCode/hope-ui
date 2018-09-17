@@ -60,7 +60,7 @@ const bookingTotal = (props) => {
                         <div>
                           <div className={cls.PadTop}>
                             <div>
-                              {moment(props.form.started_at).format('MMM D, YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
+                              {moment.utc(props.form.started_at).format('MMM D, YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
                             </div>
                           </div>
                         </div>
@@ -160,11 +160,9 @@ const bookingTotal = (props) => {
                   <Grid container>
                     <div className={cls.RowTotal}>
                       <Grid container>
-                        <Grid item xs={6} md={6} lg={6}>
                           <div className={cls.TotalText}>
-                            <span>Total</span>
+                            <span>Te cobraremos</span>
                           </div>
-                        </Grid>
                         <Grid item xs={6} md={6} lg={6}>
                           <div className={cls.Total}>
                             $
@@ -172,6 +170,9 @@ const bookingTotal = (props) => {
                               {total.toFixed(2)}
                             </span>
                           </div>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <span className={cls.TotalText}>{frequency} cada vez que te visitemos.</span>
                         </Grid>
                       </Grid>
                     </div>

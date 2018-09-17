@@ -381,14 +381,20 @@ class Payment extends Component {
       showCardForm: true,
     })
   }
-
+  
   render() {
     let validadData = null;
     let creditForm;
     let creditCard;
+    let crediCardButton;
     if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
       if (this.props.listCard.data.length > 0) {
         validadData = this.props.listCard.data.length
+        crediCardButton = 
+          <div>
+            <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+            <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+          </div>
         creditForm = this.props.listCard.data.map(d => {
           if(d.attributes.card_type === "vi") {
             d.attributes.card_type = "Visa"
@@ -410,10 +416,15 @@ class Payment extends Component {
               </label>
             </div>
           )
-          }
-        )
+        })
       }
-    }
+    } else {
+      crediCardButton =
+        <div>
+          <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+          <div>"No existen tarjetas guardadas, crea una para continuar"</div>
+        </div>
+  }
     const { props } = this.props;
     return (
       <Grid container>
@@ -579,8 +590,7 @@ class Payment extends Component {
                     <div className={cls.formConten}>
                       <form className={cls.formCreditCard} onSubmit={this.handleFormSubmit}>
                         {creditForm}
-                        <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
-                        <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+                        {crediCardButton}
                       </form>
                     </div>
                   )}

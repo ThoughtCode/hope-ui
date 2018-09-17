@@ -297,7 +297,7 @@ class MainJobClient extends Component {
           <div dir={theme.direction} className={cls.TabContainerSpace}>
             <JobFutures futureJob={this.props.futureJobsMain} />
             <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul className="pagination">
                 <li>
                   <a
                     onClick={() => this.goBack()}
@@ -321,7 +321,7 @@ class MainJobClient extends Component {
           <div dir={theme.direction} className={cls.TabContainerSpace}>
             <JobPast jobPast={this.props.jobsPast} />
             <nav aria-label="Page navigation">
-              <ul class="pagination">
+              <ul className="pagination">
                 <li>
                   <a
                     onClick={() => this.goBackPast()}

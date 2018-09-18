@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import Datetime from 'react-datetime';
 
 // Componentes
 import Typography from 'material-ui/Typography';
@@ -48,6 +49,64 @@ class Report extends Component {
       }
     })
   };
+  filterHandler = (event) => {
+    event.preventDefault();
+    this.setState({
+      ...this.state,
+      filter: {
+        ...this.state.filter,
+        active: true,
+      }
+    });
+    let filter = {};
+    if (this.state.filter.date_from !== null) {
+      filter.date_from = moment(this.state.filter.date_from).format();
+    } else {
+      filter.date_from = null;
+    }
+    if (this.state.filter.date_to !== null) {
+      filter.date_to = moment(this.state.filter.date_to).endOf('day').format();
+    } else {
+      filter.date_to = null;
+    }
+    this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+  };
+  // changeDatetimeHandler = (dateTimeFrom) => {
+  //   this.setState({
+  //     filter:{
+  //       date_from: moment(dateTimeFrom).startOf('days'),
+  //       date_to: moment(this.state.filter.date_to).format(),
+  //     }
+  //   },function(){
+  //     let filter = {};
+  //     if (this.state.filter.date_from !== null) {
+  //       filter.date_from = moment(this.state.filter.date_from).format();
+  //       filter.date_to = moment(this.state.filter.date_to).format();
+  //     } else {
+  //       filter.date_from = null;
+  //       filter.date_to = null;
+  //     }
+  //     this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+  //   })
+  // };
+  // changeDatetimeHandlerTo = (dateTimeTo) => {
+  //   this.setState({
+  //     filter:{
+  //       date_from: moment(this.state.filter.date_from).format(),
+  //       date_to: moment(dateTimeTo).endOf('days'),
+  //     }
+  //   },function(){
+  //     let filter = {};
+  //     if (this.state.filter.date_to !== null) {
+  //       filter.date_from = moment(this.state.filter.date_from).format();
+  //       filter.date_to = moment(this.state.filter.date_to).format();
+  //     } else {
+  //       filter.date_from = null;
+  //       filter.date_to = null;
+  //     }
+  //     this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+  //   })
+  // };
   goNext = () => {
     if (this.state.filter.current_page === parseInt(this.props.total_pages, 10)) {
  
@@ -98,51 +157,51 @@ class Report extends Component {
       this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
     }
   };
-  weekBack = () => {
-    var date = moment(this.state.filter.date_from).subtract(3, 'days')
-    this.setState({
-      filter:{
-        date_from: moment(date).startOf('week'),
-        date_to: moment(date).endOf('week'),
-      }
-    },function(){
-      let filter = {};
-      if (this.state.filter.date_from !== null) {
-        filter.date_from = moment(this.state.filter.date_from).format();
-      } else {
-        filter.date_from = null;
-      }
-      if (this.state.filter.date_to !== null) {
-        filter.date_to = moment(this.state.filter.date_to).format();
-      } else {
-        filter.date_to = null;
-      }
-      this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
-    })
-  };
+  // weekBack = () => {
+  //   var date = moment(this.state.filter.date_from).subtract(3, 'days')
+  //   this.setState({
+  //     filter:{
+  //       date_from: moment(date).startOf('week'),
+  //       date_to: moment(date).endOf('week'),
+  //     }
+  //   },function(){
+  //     let filter = {};
+  //     if (this.state.filter.date_from !== null) {
+  //       filter.date_from = moment(this.state.filter.date_from).format();
+  //     } else {
+  //       filter.date_from = null;
+  //     }
+  //     if (this.state.filter.date_to !== null) {
+  //       filter.date_to = moment(this.state.filter.date_to).format();
+  //     } else {
+  //       filter.date_to = null;
+  //     }
+  //     this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+  //   })
+  // };
   
-  weekNext = () => {
-    var date = moment(this.state.filter.date_to).add(3, 'days')
-    this.setState({
-      filter:{
-        date_from: moment(date).startOf('week'),
-        date_to: moment(date).endOf('week'),
-      }
-    },function(){
-      let filter = {};
-      if (this.state.filter.date_from !== null) {
-        filter.date_from = moment(this.state.filter.date_from).format();
-      } else {
-        filter.date_from = null;
-      }
-      if (this.state.filter.date_to !== null) {
-        filter.date_to = moment(this.state.filter.date_to).format();
-      } else {
-        filter.date_to = null;
-      }
-      this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
-    })    
-  };
+  // weekNext = () => {
+  //   var date = moment(this.state.filter.date_to).add(3, 'days')
+  //   this.setState({
+  //     filter:{
+  //       date_from: moment(date).startOf('week'),
+  //       date_to: moment(date).endOf('week'),
+  //     }
+  //   },function(){
+  //     let filter = {};
+  //     if (this.state.filter.date_from !== null) {
+  //       filter.date_from = moment(this.state.filter.date_from).format();
+  //     } else {
+  //       filter.date_from = null;
+  //     }
+  //     if (this.state.filter.date_to !== null) {
+  //       filter.date_to = moment(this.state.filter.date_to).format();
+  //     } else {
+  //       filter.date_to = null;
+  //     }
+  //     this.props.onFetchJobAgentReport(localStorage.getItem('token'), filter);
+  //   })    
+  // };
   render() {
     let firstNameUser = null;
     let lastNameUser = null;
@@ -157,16 +216,28 @@ class Report extends Component {
       jobsReport = this.props.reportjobs.map( jR => (
         sumTotal += jR.attributes.agent_earnings,
         <Table
-          key={jR.id}
-          id={jR.id}
-          jobDetails={jR.attributes.job_details}
-          total={jR.attributes.total}
-          vat={jR.attributes.vat}
-          serviceFee={jR.attributes.service_fee}
-          subTotal={jR.attributes.agent_earnings}
-          customer={jR.attributes.customer}
+        key={jR.id}
+        id={jR.id}
+        jobDetails={jR.attributes.job_details}
+        total={jR.attributes.total}
+        vat={jR.attributes.vat}
+        serviceFee={jR.attributes.service_fee}
+        subTotal={jR.attributes.agent_earnings}
+        customer={jR.attributes.customer}
         />
-      ))
+        ))
+      } else {
+      jobsReport = 
+        <tr>
+          <th className="text-info" scope="row">
+            No tienes trabajos en ésta fecha seleccionada.
+          </th>
+          <td className="text-info"></td>
+          <td className="text-info"></td>
+          <td className="text-info"></td>
+          <td className="text-info"></td>
+          <td className="text-info"></td>
+        </tr>
     }
     return (
       <div>
@@ -184,25 +255,33 @@ class Report extends Component {
                     <Grid item xs={6} sm={12} className={cls.ContenDate}>
                       <Typography variant="title" gutterBottom>Semana</Typography>
                       <div className={`${cls.ContenDateCombo} ${"row align-items-center"}`}>
-                        <div className={`${cls.ArrowLeft} ${"col-sm-1"}`}>
+                        {/* <div className={`${cls.ArrowLeft} ${"col-sm-1"}`}>
                           <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekBack()}>keyboard_arrow_left</i>
-                        </div>
-                        <div className={`${cls.Date} ${"col-sm-9"}`}>
-                          <p className={cls.Parrafo}>
-                            {this.state.filter.date_from &&
-                              moment(this.state.filter.date_from).format(' MMM D ').replace(/\b\w/g, l => l.toUpperCase())
-                            } - 
-                            {this.state.filter.date_from &&
-                              moment(this.state.filter.date_to).format(' D YYYY').replace(/\b\w/g, l => l.toUpperCase())
-                            }
-                          </p>
+                        </div> */}
+                        <Datetime className={`${cls.Date} ${"col-sm-9"}`}
+                          value={moment(this.state.filter.date_from).format(' MMM D ').replace(/\b\w/g, l => l.toUpperCase())}
+                          // onChange={(dateTimeFrom) => this.changeDatetimeHandler(dateTimeFrom, 'date_from')}
+                          onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_from')}
+                          timeFormat={false}
+                        >
                           <p className={cls.Icon}>
                             <i className="material-icons">event_note</i>
                           </p>
-                        </div>
-                        <div className={`${cls.ArrowRight} ${"col-sm-1"}`}>
+                        </Datetime>
+                        <Datetime className={`${cls.Date} ${"col-sm-9"}`}
+                          value={moment(this.state.filter.date_to).format(' D YYYY').replace(/\b\w/g, l => l.toUpperCase())}
+                          // onChange={(dateTimeTo) => this.changeDatetimeHandlerTo(dateTimeTo, 'date_to')}
+                          onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_to')}
+                          timeFormat={false}
+                        >
+                        </Datetime>
+                        <p className={cls.Icon}>
+                          <i className="material-icons">event_note</i>
+                        </p>
+                        <button onClick={(event) => this.filterHandler(event)} className={cls.FilterBtn}>Filtrar</button>
+                        {/* <div className={`${cls.ArrowRight} ${"col-sm-1"}`}>
                           <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekNext()}>keyboard_arrow_right</i>
-                        </div>
+                        </div> */}
                       </div>
                     </Grid>  
                   </Paper>

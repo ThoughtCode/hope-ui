@@ -127,7 +127,6 @@ class ServiceBooking extends Component {
 
   handlePropertyChange = (event) => {
     if (event.target.value !== "") {
-      console.log(event.target.value)
       this.setState({
         ...this.state,
         form: {

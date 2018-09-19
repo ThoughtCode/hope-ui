@@ -20,19 +20,18 @@ class BookingForm extends Component {
 
   showMenu(event) {
     event.preventDefault();
-    
     this.setState({
       showOption: true,
     });
-}
+  }
   
   componentDidUpdate() {
-    if (!this.state.has_properties) {
-      if (this.props.properties.length > 0) {
-        this.setState({
-          has_properties: true,
-        });
-      }
+    let property;
+    if (this.props.properties.length > 0){
+      property = this.props.properties[0];
+    } 
+    if (this.props.form.property.value == '') {
+      this.props.handlePropertyUpdate(property);
     }
   }
 
@@ -45,7 +44,6 @@ class BookingForm extends Component {
   validDates = current => {
     return current.isAfter(Datetime.moment().subtract(1, 'day'));
   };
-
   render () {
     const formElementAddon = [];
     for (let key in this.props.form.services_addons) {
@@ -54,8 +52,6 @@ class BookingForm extends Component {
         config: this.props.form.services_addons[key]
       });
     }
-
-
 
     const formElementParameters = [];
     for (let key in this.props.form.services_parameters) {
@@ -86,7 +82,7 @@ class BookingForm extends Component {
                           <div className={cls.Property}>
                             <select
                               className={cls.Select}
-                              value={this.props.form.property.value}
+                              value=''
                               onChange={this.props.handlePropertyChange}>
                               {this.props.properties.map(property => (
                                 <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>
@@ -123,7 +119,9 @@ class BookingForm extends Component {
                   neightborhoods={this.props.neightborhoods}
                   fetchNeightborhoods={this.props.fetchNeightborhoods}
                   createProperty={this.props.createProperty}
-                  cancelDisabled={this.state.has_properties}/>
+                  cancelDisabled={this.state.has_properties}
+                  cancel={this.changeCreatePropertyHandler}
+                />
               </div>
             </div>
           </div>

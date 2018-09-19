@@ -39,7 +39,7 @@ class ServiceBooking extends Component {
       services_addons: [],
       services_parameters: [],
       property: {
-        value: 1,
+        value: '',
         errorText: 'Debe elegir una propiedad'
       },
       details: '',
@@ -120,10 +120,25 @@ class ServiceBooking extends Component {
         ...this.state.form,
         services_addons: services_addons,
         services_parameters: services_parameters,
-        services_base: service_principal,
+        services_base: service_principal
       }
     })
   };
+
+  handlePropertyUpdate = (property) => {
+    if (property != undefined){
+        this.setState({
+          ...this.state,
+          form: {
+            ...this.state.form,
+            property: {
+              ...this.state.form.property,
+              value: property.attributes.id,
+            },
+          },
+        });
+      } 
+    }
 
   handlePropertyChange = (event) => {
     if (event.target.value !== "") {
@@ -258,7 +273,7 @@ class ServiceBooking extends Component {
     this.setState({
       ...this.state,
       form: {
-        ...this.state.form,
+         ...this.state.form,
         finished_recurrency_at: moment(dateTime),
       }
     });
@@ -404,6 +419,7 @@ class ServiceBooking extends Component {
                         neightborhoods={this.props.neightborhoods}
                         fetchNeightborhoods={this.props.fetchNeightborhoods}
                         createProperty={this.props.createProperty}
+                        handlePropertyUpdate={this.handlePropertyUpdate}
                         handlePropertyChange={this.handlePropertyChange}
                         handleRecurrentChange={this.handleRecurrentChange}
                         handleServiceChange={this.handleServiceChange}

@@ -12,7 +12,7 @@ class Checking extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedOption: 0,
+      selectedOption: 1,
       check: false
     };
     this.handleChange = this.handleChange.bind(this);

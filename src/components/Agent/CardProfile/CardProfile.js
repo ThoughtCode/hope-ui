@@ -8,6 +8,7 @@ import {
 import Info from './Info/Info';
 import Edit from './Info/Edit/Edit';
 import EditPassword from './EditPassword/EditPassword';
+import Comentarios from './Reviews/Reviews';
 
 // Css
 import cls from './CardProfile.css';
@@ -29,6 +30,11 @@ const cardProfile = props => {
                     <NavLink className={cls.Link} to="/agente/perfil/contraseña">Contraseña</NavLink>
                   </li>
                 )}/>
+                <Route path="/agente/perfil/comentarios" children={({match}) => (
+                  <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                    <NavLink className={cls.Link} to="/agente/perfil/comentarios">Comentarios</NavLink>
+                  </li>
+                )}/>
               </ul>
             </div>
         </Grid>
@@ -42,6 +48,7 @@ const cardProfile = props => {
                 updateAvatar={props.updateAvatar}
                 loading={props.loading}/>}/>
               <Route path="/agente/perfil/contraseña" exact render={() => <EditPassword changePassword={props.changePassword} />}/>
+              <Route path="/agente/perfil/comentarios" exact render={() => <Comentarios userAttributes={props.user.attributes} />}/>
             </div>
           </Grid>
         </Grid>

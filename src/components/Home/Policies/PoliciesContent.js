@@ -10,6 +10,7 @@ import cls from './Policies.css'
 const styles = theme => ({
   root: {
     flexGrow: 1,
+    paddingTop: 130,
   },
   paper: {
     padding: theme.spacing.unit * 2,
@@ -22,7 +23,7 @@ function FullWidthGrid(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id="policies">
       <Grid container justify="center">
         <Grid item xs={12} sm={10}>
           <Paper className={`${cls.Title} ${classes.paper}`} elevation={0}>

@@ -4,7 +4,6 @@ import React from 'react';
 import cls from './Reviews.css';
 
 const Review = (props) => {
-  console.log(props)
   let qualification = props.qualification;
   let comment = props.owner.comment;
   return (

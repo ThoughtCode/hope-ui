@@ -42,7 +42,22 @@
   margin-bottom: 32px !important;
 }
 .ContenDateCombo{
-  margin: 0 0 0 20px;
+  /* margin: 0 0 0 20px; */
+}
+.FilterBtn {
+  border: 1px solid #0069a7!important;
+  border-radius: 5px;
+  color: #0069a7!important;
+  font-weight: 700!important;
+  background-color: #fff;
+  padding: 6px 25px;
+  margin: 0 7px 0 0;
+}
+.FilterBtn:hover {
+  background-color: #f7feff !important;
+}
+.alaingButton{
+  text-align: right;
 }
 .ArrowLeft{
   margin: 5px;
@@ -70,4 +85,7 @@
 }
 .Cursor{
   cursor: pointer;
+}
+.content{
+  padding-bottom: 10px;
 }

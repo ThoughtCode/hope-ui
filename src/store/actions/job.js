@@ -765,7 +765,8 @@ export const fetchJobAgentReportSuccess = (reportjobs, total_pages) => ({
   total_pages,
 });
 
-export const fetchJobAgentReport = (token, filter) => dispatch => {  
+export const fetchJobAgentReport = (token, filter) => dispatch => {
+  console.log(filter)
   dispatch(fetchJobAgentReportStart());
   const headers = {
     headers: {

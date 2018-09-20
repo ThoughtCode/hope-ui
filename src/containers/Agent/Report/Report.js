@@ -247,47 +247,60 @@ class Report extends Component {
               <Typography variant="title" gutterBottom className={cls.Typogra}>Reporte</Typography>
             </Paper>
           </Grid>
-          <Grid item xs={12} sm={10} md={8}>
-            <Paper elevation={0}>
-              <Grid container alignItems="center">
-                <Grid item>
-                  <Paper className={cls.ContenDatetime} elevation={0}>
-                    <Grid item xs={6} sm={12} className={cls.ContenDate}>
-                      <Typography variant="title" gutterBottom>Semana</Typography>
+          <Grid item xs={12} sm={10} md={8} className={cls.content}>
+            <Grid container>
+              <Grid item xs={6} sm={12}>
+                <Paper elevation={0}>
+                  <Grid container>
+                    <Grid item xs={6} sm={2}>
+                      <Typography variant="title" gutterBottom>Inicio</Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={10}>
                       <div className={`${cls.ContenDateCombo} ${"row align-items-center"}`}>
-                        {/* <div className={`${cls.ArrowLeft} ${"col-sm-1"}`}>
-                          <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekBack()}>keyboard_arrow_left</i>
-                        </div> */}
-                        <Datetime className={`${cls.Date} ${"col-sm-9"}`}
-                          value={moment(this.state.filter.date_from).format(' MMM D ').replace(/\b\w/g, l => l.toUpperCase())}
-                          // onChange={(dateTimeFrom) => this.changeDatetimeHandler(dateTimeFrom, 'date_from')}
+                        <Datetime className="col-sm-5"
+                          value={moment(this.state.filter.date_from).format(' MMM D YYYY ').replace(/\b\w/g, l => l.toUpperCase())}
                           onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_from')}
                           timeFormat={false}
                         >
-                          <p className={cls.Icon}>
-                            <i className="material-icons">event_note</i>
-                          </p>
                         </Datetime>
-                        <Datetime className={`${cls.Date} ${"col-sm-9"}`}
-                          value={moment(this.state.filter.date_to).format(' D YYYY').replace(/\b\w/g, l => l.toUpperCase())}
-                          // onChange={(dateTimeTo) => this.changeDatetimeHandlerTo(dateTimeTo, 'date_to')}
+                      </div>
+                    </Grid>
+                  </Grid>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sm={10} md={8} className={cls.content}>
+            <Grid container>
+              <Grid item xs={6} sm={12}>
+                <Paper elevation={0}>
+                  <Grid container>
+                    <Grid item xs={6} sm={2}>
+                      <Typography variant="title" gutterBottom>Fin</Typography>
+                    </Grid>
+                    <Grid item xs={6} sm={10}>
+                      <div className={`${cls.ContenDateCombo} ${"row align-items-center"}`}>
+                        <Datetime className="col-sm-5"
+                          value={moment(this.state.filter.date_to).format('MMM D YYYY').replace(/\b\w/g, l => l.toUpperCase())}
                           onChange={(dateTime) => this.changeDatetimeHandler(dateTime, 'date_to')}
                           timeFormat={false}
                         >
                         </Datetime>
-                        <p className={cls.Icon}>
-                          <i className="material-icons">event_note</i>
-                        </p>
-                        <button onClick={(event) => this.filterHandler(event)} className={cls.FilterBtn}>Filtrar</button>
-                        {/* <div className={`${cls.ArrowRight} ${"col-sm-1"}`}>
-                          <i className={`${cls.Cursor} ${"material-icons"}`} onClick={() => this.weekNext()}>keyboard_arrow_right</i>
-                        </div> */}
                       </div>
-                    </Grid>  
-                  </Paper>
-                </Grid>
+                    </Grid>
+                  </Grid>
+                </Paper>
               </Grid>
-            </Paper>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sm={10} md={8}>
+            <Grid container>
+              <Grid item xs={6} sm={6} md={6}>
+                <Paper elevation={0} className={cls.alaingButton}>
+                  <button onClick={(event) => this.filterHandler(event)} className={cls.FilterBtn}>Filtrar</button>
+                </Paper>
+              </Grid>
+            </Grid>
           </Grid>
           <Grid item xs={12} sm={10} md={8}>
             <Grid container>
@@ -324,6 +337,16 @@ class Report extends Component {
                             <td class="bg-success"></td>
                             <td class="bg-success">${sumTotal === null ? ("00.00"):(sumTotal.toFixed(2))}</td>
                           </tr>
+                          <tr>
+                          <th className="text-info" scope="row">
+                              <a></a>
+                            </th>
+                            <td className="text-info"></td>
+                            <td className="text-info"></td>
+                            <td className="text-info"></td>
+                            <td className="text-info"></td>
+                            <td className="text-info">Descarga</td>
+                          </tr>
                         </tbody>
                       </table>
                     </Grid> 
@@ -332,7 +355,7 @@ class Report extends Component {
                     <Grid item xs={6} sm={1}>
                       <Typography variant="title" gutterBottom className={cls.SubTipogra}>Nota:</Typography>
                     </Grid>  
-                    <Grid item xs={6} sm={11}>
+                    <Grid item xs={11} sm={11}>
                       <Typography variant="title" gutterBottom className={cls.SubTipogra}>Reporta con nosotros tú inconveniente, si tienes alguna duda.</Typography>
                     </Grid>
                   </Grid>

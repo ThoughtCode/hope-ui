@@ -286,7 +286,7 @@ class Payment extends Component {
     // const API_CODE = process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE;
     // const API_KEY = process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY;
 
-    window.Paymentez.init('prod', 'NOC-EC-CLIENT', '4lHGnVGLzFdLJu43EyQtb3sMVkuKf6' );
+    window.Paymentez.init('stg', 'NOC-EC-CLIENT', 'Owo41X6qbItrAcEy7Pz9DAL7wl8gAo' );
     var form = $("#add-card-form");
     var submitButton = form.find("button");
     var submitInitialText = submitButton.text();
@@ -296,6 +296,31 @@ class Payment extends Component {
     var expiry_month = parseInt(this.state.cardValidatorForm.expiration_card_MM.value)
     var expiry_year = parseInt(this.state.cardValidatorForm.expiration_card_YY.value)
     var cvc = this.state.cardValidatorForm.cvc_card.value
+    var type = window.PaymentezForm.cardTypeFromNumber(number)
+
+    if (type == 'Visa') {
+      type = 'vi' 
+    }else if (type == 'Mastercard') {
+      type = 'mc'
+    }else if (type == 'American Express') {
+      type = 'ax'
+    }else if (type == 'Diners') {
+      type = 'di'
+    }else if (type == 'Discover') {
+      type = 'dc'
+    }else if (type == 'Elo') {
+      type = 'el'
+    }else if (type == 'Credisensa') {
+      type = 'cs'
+    }else if (type == 'Solidario') {
+      type = 'so'
+    }else if (type == 'Exito') {
+      type = 'ex'
+    }else if (type == 'Alkosto') {
+      type = 'ak'
+    }else {
+      type = ''
+    }
 
     var cardToSave = {
                         "card": {
@@ -304,7 +329,7 @@ class Payment extends Component {
                           "expiry_month": expiry_month,
                           "expiry_year": expiry_year,
                           "cvc": cvc,
-                          "type": "vi"
+                          "type": type,
                         }
                       };
     var successHandler = function(cardResponse) {
@@ -400,20 +425,25 @@ class Payment extends Component {
             d.attributes.card_type = "Visa"
           }
           return(
-            <div className={cls.text_info}>
-              <input
-                name="cardId"
-                type="radio"
-                checked={this.state.selectedOption === d.id}
-                onClick={(event) => this.handlecardChecked(event, d.id)}
-                value={d.id}
-              />
-              <label className={cls.textCardSelect}>
-                <span>{d.attributes.card_type}</span>
-                <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
-                <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
-                <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
-              </label>
+            <div className={cls.formContainer}>
+              <div className={cls.text_info}>
+                <input
+                  name="cardId"
+                  type="radio"
+                  checked={this.state.selectedOption === d.id}
+                  onClick={(event) => this.handlecardChecked(event, d.id)}
+                  value={d.id}
+                />
+                <label className={cls.textCardSelect}>
+                  <span>{d.attributes.card_type}</span>
+                  <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
+                  <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
+                  <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
+                </label>
+                <div className={cls.buttonDeleteCard}>
+                  <button>- Eliminar tarjeta</button>
+                </div>
+              </div>
             </div>
           )
         })

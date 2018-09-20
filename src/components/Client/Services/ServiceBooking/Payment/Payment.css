@@ -12,18 +12,26 @@
 .card_label{
   margin: 0px !important;
 }
+
+.formContainer{
+  text-align: left;
+}
+
 .text_info {
   text-align: left !important;
   margin-bottom: 20px;
 }
 
 .text_info input {
-  vertical-align: top !important;
   margin-top: 5% !important;
   margin-right: 20px !important;
   margin-left: 20px !important;
+  vertical-align: top !important;
 }
 
+.buttonDeleteCard {
+  display: inline-block;
+}
 
 @media only screen and (min-width: 48.0625em) {
   .BookingForm {

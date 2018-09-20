@@ -318,8 +318,6 @@ class Payment extends Component {
       type = 'ex'
     }else if (type == 'Alkosto') {
       type = 'ak'
-    }else {
-      type = ''
     }
 
     var cardToSave = {
@@ -423,6 +421,24 @@ class Payment extends Component {
         creditForm = this.props.listCard.data.map(d => {
           if(d.attributes.card_type === "vi") {
             d.attributes.card_type = "Visa"
+          }else if (d.attributes.card_type == 'mc') {
+            d.attributes.card_type = 'Mastercard'
+          }else if (d.attributes.card_type == 'ax') {
+            d.attributes.card_type = 'American Express'
+          }else if (d.attributes.card_type == 'di') {
+            d.attributes.card_type = 'Diners'
+          }else if (d.attributes.card_type == 'dc') {
+            d.attributes.card_type = 'Discover'
+          }else if (d.attributes.card_type == 'el') {
+            d.attributes.card_type = 'Elo'
+          }else if (d.attributes.card_type == 'cs') {
+            d.attributes.card_type = 'Credisensa'
+          }else if (d.attributes.card_type == 'so') {
+            d.attributes.card_type = 'Solidario'
+          }else if (d.attributes.card_type == 'ex') {
+            d.attributes.card_type = 'Exito'
+          }else if (d.attributes.card_type == 'ak') {
+            d.attributes.card_type = 'Alkosto'
           }
           return(
             <div className={cls.formContainer}>
@@ -441,7 +457,7 @@ class Payment extends Component {
                   <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
                 </label>
                 <div className={cls.buttonDeleteCard}>
-                  <button>- Eliminar tarjeta</button>
+                  <a href="" >- Eliminar tarjeta</a>
                 </div>
               </div>
             </div>

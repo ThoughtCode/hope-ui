@@ -82,7 +82,7 @@ class BookingForm extends Component {
                           <div className={cls.Property}>
                             <select
                               className={cls.Select}
-                              value=''
+                              value={this.props.form.property.value}
                               onChange={this.props.handlePropertyChange}>
                               {this.props.properties.map(property => (
                                 <option key={property.id} value={property.attributes.id}>{property.attributes.name}</option>

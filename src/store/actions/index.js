@@ -85,4 +85,5 @@ export {
   paymentAddCard,
   paymenData,
   listCard,
+  deleteCard,
 } from './payment'

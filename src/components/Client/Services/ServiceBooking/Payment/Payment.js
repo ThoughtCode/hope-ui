@@ -82,9 +82,6 @@ class Payment extends Component {
       selectedOption: false,
       cardId: null,
       showCardForm: false,
-      creditCards: [],
-      update: false,
-      creditcardUpdate: false,
     }
 
     this.handlecardChecked = this.handlecardChecked.bind(this);
@@ -95,43 +92,8 @@ class Payment extends Component {
   componentDidMount() {
     this.props.onFetchUser(localStorage.getItem('token'));
     this.props.onListCard(localStorage.getItem('token'));
-    this.setState({
-      update: true,
-      creditcardUpdate: true,
-    })
   };
-
-  componentDidUpdate() {
-    if (this.state.update != false){
-      this.shouldGetCards();
-    }
-    if (this.state.creditcardUpdate =! true){
-      this.shouldGetCardsAfterDelete();
-    }
-  };
-
-  shouldGetCards(){
-    if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
-      if (this.props.listCard.data.length > 0) {
-        this.setState({
-          creditCards: this.props.listCard.data,
-          update: false,
-        });    
-      }
-    }
-  }
-
-  shouldGetCardsAfterDelete(){
-    if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
-      if (this.props.listCard.data.length > 0) {
-        this.setState({
-          creditCards: this.props.listCard.data,
-          creditcardUpdate: false,
-        });    
-      }
-    }
-  }
-
+  
   inputChangedHandler(value, rules) {
     let isValid = true;
     let errorText = null;
@@ -442,54 +404,43 @@ class Payment extends Component {
       showCardForm: true,
     })
   }
-
-  deleteCreditCard = (id) => {
-    this.props.onDeleteCard(localStorage.getItem('token'), id)
-    var array = [...this.state.creditCards]; // make a separate copy of the array
-    var index = array.indexOf(id)
-    array.splice(index, 1);
-    this.setState({
-      creditCards: array, 
-      creditcardUpdate: true,
-    });
-  }
   
   render() {
-
     let validadData = null;
     let creditForm;
+    let creditCard;
     let crediCardButton;
-    if(this.state.creditCards.length > 0){
-      validadData = this.props.listCard.data.length
-      crediCardButton = 
-        <div>
-          <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
-          <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
-        </div>
-      creditForm = this.state.creditCards.map(d => {
-        if(d.attributes.card_type === "vi") {
-          d.attributes.card_type = "Visa"
-        }else if (d.attributes.card_type == 'mc') {
-          d.attributes.card_type = 'Mastercard'
-        }else if (d.attributes.card_type == 'ax') {
-          d.attributes.card_type = 'American Express'
-        }else if (d.attributes.card_type == 'di') {
-          d.attributes.card_type = 'Diners'
-        }else if (d.attributes.card_type == 'dc') {
-          d.attributes.card_type = 'Discover'
-        }else if (d.attributes.card_type == 'el') {
-          d.attributes.card_type = 'Elo'
-        }else if (d.attributes.card_type == 'cs') {
-          d.attributes.card_type = 'Credisensa'
-        }else if (d.attributes.card_type == 'so') {
-          d.attributes.card_type = 'Solidario'
-        }else if (d.attributes.card_type == 'ex') {
-          d.attributes.card_type = 'Exito'
-        }else if (d.attributes.card_type == 'ak') {
-          d.attributes.card_type = 'Alkosto'
-        }
-        return(
-          <div className={cls.formContainer}>
+    if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
+      if (this.props.listCard.data.length > 0) {
+        validadData = this.props.listCard.data.length
+        crediCardButton = 
+          <div>
+            <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
+            <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
+          </div>
+        creditForm = this.props.listCard.data.map(d => {
+          if(d.attributes.card_type === "vi") {
+            d.attributes.card_type = "Visa"
+          }else if (d.attributes.card_type == 'mc') {
+            d.attributes.card_type = 'Mastercard'
+          }else if (d.attributes.card_type == 'ax') {
+            d.attributes.card_type = 'American Express'
+          }else if (d.attributes.card_type == 'di') {
+            d.attributes.card_type = 'Diners'
+          }else if (d.attributes.card_type == 'dc') {
+            d.attributes.card_type = 'Discover'
+          }else if (d.attributes.card_type == 'el') {
+            d.attributes.card_type = 'Elo'
+          }else if (d.attributes.card_type == 'cs') {
+            d.attributes.card_type = 'Credisensa'
+          }else if (d.attributes.card_type == 'so') {
+            d.attributes.card_type = 'Solidario'
+          }else if (d.attributes.card_type == 'ex') {
+            d.attributes.card_type = 'Exito'
+          }else if (d.attributes.card_type == 'ak') {
+            d.attributes.card_type = 'Alkosto'
+          }
+          return(
             <div className={cls.text_info}>
               <input
                 name="cardId"
@@ -504,14 +455,10 @@ class Payment extends Component {
                 <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
                 <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>
               </label>
-              <div className={cls.buttonDeleteCard}>
-                <a onClick={() => this.deleteCreditCard(d.id)} >- Eliminar tarjeta</a>
-              </div>
             </div>
-          </div>
-        )
-      })
-      
+          )
+        })
+      }
     } else {
       crediCardButton =
         <div>
@@ -701,7 +648,6 @@ const mapDispatchToProps = dispatch => ({
   onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
   onListCard: (token) => dispatch(actions.listCard(token)),
   onPaymentAddCard: (token, holder_name, c_type, c_number, c_token, c_status, c_em, c_ey) => dispatch(actions.paymentAddCard(token, holder_name, c_type, c_number, c_token, c_status, c_em, c_ey)),
-  onDeleteCard: (token, id) => dispatch(actions.deleteCard(token, id)),
 });
 
 const mapStateToProps = state => ({

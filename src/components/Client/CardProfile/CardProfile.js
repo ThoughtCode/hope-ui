@@ -8,6 +8,7 @@ import {
 import Info from './Info/Info';
 import Edit from './Info/Edit/Edit';
 import EditPassword from './EditPassword/EditPassword';
+import MetodoPago from './MetodoPago/MetodoPago';
 import CardProperties from './CardProperties/CardProperties';
 import NewProperty from './CardProperties/NewProperty/NewProperty';
 
@@ -70,6 +71,7 @@ const cardProfile = props => {
                     fetchProperty={props.fetchProperty}
                     property={props.property}/>} 
                 />
+                <Route path="/cliente/perfil/metodo-pago" exact render={() => <MetodoPago changePassword={props.changePassword} />}/>
             </div>
           </Grid>
         </Grid>

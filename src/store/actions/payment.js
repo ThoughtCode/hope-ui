@@ -1,5 +1,4 @@
 import Alert from 'react-s-alert';
-import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
 
@@ -40,25 +39,9 @@ export const paymentAddCard = (token, holder_name, card_type, number, cardtoken,
     let paymenData = []
       paymenData = res.data.payment.data
     dispatch(paymentAddCardSuccess(paymenData));
-    // dispatch(push(`/agente/trabajos`));
-    // Alert.success(res.data.message, {
-    //   position: 'top',
-    //   effect: 'genie',
-    // });
   })
   .catch((err) => {
     dispatch(paymentAddCardFail());
-    // if (err.response.data.message.base) {
-    //   Alert.error(err.response.data.message.base[0], {
-    //     position: 'top',
-    //     effect: 'genie',
-    //   });
-    // } else if (err.response.data.message) {
-    //   Alert.error(err.response.data.message, {
-    //     position: 'top',
-    //     effect: 'genie',
-    //   });
-    // }
   });
 };
 
@@ -88,10 +71,6 @@ export const listCard = (token) => dispatch => {
       let listCard = [];
         listCard = res.data.payment
       dispatch(listCardSuccess(listCard));
-      // Alert.success(res.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
     })
     .catch((err) => {
       dispatch(listCardFail(err));
@@ -126,12 +105,10 @@ export const deleteCard = (token, id) => (dispatch) => {
         position: 'top',
         effect: 'genie',
       });
+      window.location.reload()
     })
     .catch((err) => {
       dispatch(deleteCardFail(err));
-      Alert.error(err.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
+      console.log(err)
     });
 };

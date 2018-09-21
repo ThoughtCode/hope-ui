@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 import Table from './Table';
+import DownloadFileComponent from './DownloadReport';
 // import MyJobsMain from '../../../components/Agent/MyJobsMain/MyJobsMain';
 // import Spinner from '../../../components/UI/Spinner/Spinner';
 
@@ -207,7 +208,6 @@ class Report extends Component {
     let lastNameUser = null;
     let jobsReport = null;
     let sumTotal = null;
-
     if (this.props.user.attributes){
       firstNameUser = this.props.user.attributes.first_name
       lastNameUser = this.props.user.attributes.last_name
@@ -345,7 +345,14 @@ class Report extends Component {
                             <td className="text-info"></td>
                             <td className="text-info"></td>
                             <td className="text-info"></td>
-                            <td className="text-info">Descarga</td>
+                            <td className="text-info">
+                            {console.log(this.props.reportjobs)}
+                            {this.props.reportjobs.length > 0 ? (
+                              <DownloadFileComponent {...this.props}/>
+                            ):(
+                              ''
+                            )}
+                            </td>
                           </tr>
                         </tbody>
                       </table>

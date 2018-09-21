@@ -1,5 +1,4 @@
 import Alert from 'react-s-alert';
-import moment from 'moment';
 import { push } from 'react-router-redux';
 import * as actionTypes from './actionTypes';
 import axios from '../../axios-instance';
@@ -98,3 +97,41 @@ export const listCard = (token) => dispatch => {
       dispatch(listCardFail(err));
     });
 }
+
+export const deleteCardStart = () => ({
+  type: actionTypes.DELETE_CARD_START,
+});
+
+export const deleteCardSuccess = id => ({
+  type: actionTypes.DELETE_CARD_SUCCESS,
+  id,
+});
+
+export const deleteCardFail = error => ({
+  type: actionTypes.DELETE_CARD_FAIL,
+  error,
+});
+
+export const deleteCard = (token, id) => (dispatch) => {
+  dispatch(deleteCardStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.delete(`/customers/delete_card/${id}`, headers)
+    .then((res) => {
+      dispatch(deleteCardSuccess(id));
+      Alert.success(res.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(deleteCardFail(err));
+      Alert.error(err.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    });
+};

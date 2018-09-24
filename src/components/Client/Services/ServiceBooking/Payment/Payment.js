@@ -286,7 +286,7 @@ class Payment extends Component {
     // const API_CODE = process.env.REACT_APP_PAYMENTEZ_CLIENT_CODE;
     // const API_KEY = process.env.REACT_APP_PAYMENTEZ_CLIENT_KEY;
 
-    window.Paymentez.init('prod', 'NOC-EC-CLIENT', '4lHGnVGLzFdLJu43EyQtb3sMVkuKf6' );
+    window.Paymentez.init('stg', 'NOC-EC-CLIENT', 'Owo41X6qbItrAcEy7Pz9DAL7wl8gAo' );
     var form = $("#add-card-form");
     var submitButton = form.find("button");
     var submitInitialText = submitButton.text();
@@ -487,7 +487,7 @@ class Payment extends Component {
                         <Grid container>
                           <div className={cls.MarginBottom}>
                             <Grid container>
-                              <Grid item xs={12} sm={12} md={12} lg={6}>
+                              <Grid item xs={12} sm={12} md={12} lg={12}>
                                 <Grid container>
                                   <div className={cls.Columns}>
                                     <Grid container>
@@ -508,18 +508,6 @@ class Payment extends Component {
                                           </div>
                                         </div>
                                       </Grid>
-                                    </Grid>
-                                  </div>
-                                </Grid>
-                              </Grid>
-                              <Grid item xs={12} sm={12} md={12} lg={6}>
-                                <Grid container>
-                                  <div className={cls.ColumnsIcon}>
-                                    <Grid container>
-                                      <img 
-                                        alt="Credit Cards" 
-                                        className={cls.CreditCardIcon} 
-                                        src="https://cache.hbfiles.com/assets/miscellaneous/payment-strip-f751680936dec11c6599aacdd9dbfa9b.png"/>
                                     </Grid>
                                   </div>
                                 </Grid>

@@ -317,7 +317,6 @@ class ServiceBooking extends Component {
     if (this.state.form.recurrent.value !== '0' ) {
       formData["finished_recurrency_at"] = this.state.form.finished_recurrency_at;
     }
-
     formData["credit_card_id"] = this.props.paymenData.id || this.state.cardId;
     formData["installments"] =  installments;
     const job = {
@@ -368,8 +367,9 @@ class ServiceBooking extends Component {
         checking: false,
         payment: false,
         thanks: true,
+        cardId: card_id,
       });
-      this.createJobHandler(event, installments);
+      this.createJobHandler(event, installments, this.state.cardId);
     } else if (actual_page === 'Payment') {
       this.setState({
         service: false,

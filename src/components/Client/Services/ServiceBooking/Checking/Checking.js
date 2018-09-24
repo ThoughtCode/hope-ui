@@ -13,22 +13,24 @@ class Checking extends Component {
     super(props);
     this.state = {
       selectedOption: 1,
-      check: false
+      check: false,
+      card_id: 1
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
+  
   handleCheckbox = () => {
     this.setState({
       check: !this.state.check,
     });
   }
-
+  
   changePageValidator = (event) => {
     event.preventDefault();
     let installment = this.state.selectedOption;
+    let cardId = this.state.card_id;
     if (this.state.check) {
-      this.props.nextPage(event, 'Checking', null, installment)
+      this.props.nextPage(event, 'Checking', cardId, installment)
     } else {
       Alert.error('Debes aceptar los términos y condiciones para avanzar', {
         position: 'top',
@@ -255,7 +257,11 @@ class Checking extends Component {
                         <div className={cls.RowTotalTerm}>
                           <Grid container>
                             <Grid item xs={12} lg={12}>
-                              <button onClick={(event) => this.changePageValidator(event)} className={cls.ButtonBookingCore}>Pagar</button>
+                              <button
+                                className={cls.ButtonBookingCore}
+                                value={this.state.card_id}
+                                onClick={(event) => this.changePageValidator(event)}
+                              >Pagar</button>
                             </Grid>
                           </Grid>
                         </div>

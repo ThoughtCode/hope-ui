@@ -41,6 +41,10 @@ const info = props => {
                   <span>{props.user.attributes.email}</span>
                 </li>
                 <li>
+                  <i className="fas fa-mobile"></i>
+                  <span>{props.user.attributes.cell_phone}</span>
+                </li>
+                <li>
                   <i className="fas fa-id-card"></i>
                   <span>{props.user.attributes.national_id}</span>
                 </li>

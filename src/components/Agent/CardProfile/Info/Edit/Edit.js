@@ -54,6 +54,15 @@ class Edit extends Component {
         touched: false,
         errorText: null,
       },
+      national_id: {
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: true,
+        touched: false,
+        errorText: null,
+      },
     },
   }
 
@@ -77,6 +86,13 @@ class Edit extends Component {
       "email": {
         ...this.state.agent["email"],
         value: this.props.user.attributes.email,
+        valid: true,
+        errorText: null,
+        touched: false,
+      },
+      "national_id": {
+        ...this.state.agent["national_id"],
+        value: this.props.user.attributes.national_id,
         valid: true,
         errorText: null,
         touched: false,
@@ -297,6 +313,21 @@ class Edit extends Component {
                   onChange={(event) => this.inputChangedHandler(event, 'email')}/>
                   {(!this.state.agent.email.valid && this.state.agent.email.touched) && (
                     <div className={cls.Error}>{this.state.agent.email.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="national_id"><span>Cédula</span></label>
+                <input className={`${cls.Input} ${(!this.state.agent.national_id.valid && this.state.agent.national_id.touched) && cls.ContainerError}`}
+                  type="text"
+                  name="national_id"
+                  value={this.state.agent.national_id.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'national_id')}/>
+                  {(!this.state.agent.national_id.valid && this.state.agent.national_id.touched) && (
+                    <div className={cls.Error}>{this.state.agent.national_id.errorText}</div>
                   )}
               </Grid>
             </Grid>

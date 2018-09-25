@@ -44,7 +44,7 @@ const cardJob = (props) => {
     })
     parameter = props.job.attributes.job_details.map(detail => {
       if (detail.service.type_service === 'parameter') {
-        title = "Servicios Parametros"
+        title = "Servicios"
         return (
           <div key={detail.id} className={cls.jobExtraServices}>{detail.service.name}</div>
         );

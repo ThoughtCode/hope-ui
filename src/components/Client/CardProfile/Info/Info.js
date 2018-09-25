@@ -42,7 +42,12 @@ const info = props => {
                 </li>
                 <li>
                   <i className="fas fa-id-card"></i>
+                  {console.log(props.user.attributes)}
                   <span>{props.user.attributes.national_id}</span>
+                </li>
+                <li>
+                  <i className="fas fa-mobile"></i>
+                  <span>{props.user.attributes.cell_phone}</span>
                 </li>
                 <li>
                   <Link className={cls.ButtonLogout} onClick={props.logout} to="#"><span>Cerrar Sesion</span></Link>

@@ -20,7 +20,7 @@ const cardProperties = props => {
             {Object.keys(props.properties).length > 0 ? 
               props.properties.map(property => (
                 <p key={property.id}>
-                  <strong>Working Up</strong>
+                  <strong>{property.name}</strong>
                   <span className={cls.MarginLeft}>{property.attributes.p_street} con {property.attributes.s_street}</span>
                   <Link className={cls.LinkEdit} to={`/cliente/perfil/propiedades/editar/${property.id}`}>Editar</Link>
                   <a className={cls.LinkDelete} onClick={() => props.deleteProperty(localStorage.getItem('token'), property.id)}>Borrar</a>

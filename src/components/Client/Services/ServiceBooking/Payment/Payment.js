@@ -13,6 +13,18 @@ import cls from './Payment.css';
 
 import * as actions from '../../../../../store/actions';
 
+//Credit card images
+import imgCreditCardAlia from '../../../../../assets/creditCard/ic_alia.svg';
+import imgCreditCardAlkosto from '../../../../../assets/creditCard/ic_alkosto.png';
+import imgCreditCardAmex from '../../../../../assets/creditCard/ic_amex.svg';
+import imgCreditCardCredisensa from '../../../../../assets/creditCard/ic_credisensa.png';
+import imgCreditCardDiners from '../../../../../assets/creditCard/ic_diners.svg';
+import imgCreditCardDiscover from '../../../../../assets/creditCard/ic_discover.svg';
+import imgCreditCardElo from '../../../../../assets/creditCard/ic_elo.png';
+import imgCreditCardExito from '../../../../../assets/creditCard/ic_exito.png';
+import imgCreditCardMasterCard from '../../../../../assets/creditCard/ic_mastercard.svg';
+import imgCreditCardVisa from '../../../../../assets/creditCard/ic_visa.svg';
+
 class Payment extends Component {
 
   constructor(props) {
@@ -420,25 +432,25 @@ class Payment extends Component {
           </div>
         creditForm = this.props.listCard.data.map(d => {
           if(d.attributes.card_type === "vi") {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_visa.svg"
+            d.attributes.card_image_url = imgCreditCardVisa
           }else if (d.attributes.card_type == 'mc') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_mastercard.svg"
+            d.attributes.card_image_url = imgCreditCardMasterCard
           }else if (d.attributes.card_type == 'ax') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_amex.svg"
+            d.attributes.card_image_url = imgCreditCardAmex
           }else if (d.attributes.card_type == 'di') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_diners.svg"
+            d.attributes.card_image_url = imgCreditCardDiners
           }else if (d.attributes.card_type == 'dc') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_discover.svg"
+            d.attributes.card_image_url = imgCreditCardDiscover
           }else if (d.attributes.card_type == 'el') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_alkosto.png"
+            d.attributes.card_image_url = imgCreditCardElo
           }else if (d.attributes.card_type == 'cs') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_credisensa.png"
+            d.attributes.card_image_url = imgCreditCardCredisensa
           }else if (d.attributes.card_type == 'so') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_alia.svg"
+            d.attributes.card_image_url = imgCreditCardAlia
           }else if (d.attributes.card_type == 'ex') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_exito.png"
+            d.attributes.card_image_url = imgCreditCardExito
           }else if (d.attributes.card_type == 'ak') {
-            d.attributes.card_image_url = "https://cdn.paymentez.com/js/1.0.1/ic_alkosto.png"
+            d.attributes.card_image_url = imgCreditCardAlkosto
           }
           return(
             <div className={cls.text_info}>

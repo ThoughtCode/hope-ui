@@ -380,7 +380,7 @@ class Edit extends Component {
           </Grid>
           <Grid container>
             <Grid item xs={12} className={cls.FormItem}>
-              <Link className={cls.Button} to="/cliente/perfil/info">
+              <Link className={cls.Button} to="/agente/perfil/info">
                 Cancelar
               </Link>
               {this.state.formIsValid ? (

@@ -362,6 +362,9 @@
   box-shadow: inset 0 0 0 1px #0069a7;
 }
 
+.width100 {
+    width: 100% !important;
+}
 .Columns {
   padding-left: 0.9375em;
   padding-right: 0.9375em;
@@ -402,6 +405,23 @@
   outline: none;
   line-height: 1.5;
   margin: 0 5px 0 0;
+  background-color: white;
+}
+
+.CreditCardInputSmall {
+  width: 48.8%;
+  padding: 0.625em 1em;
+  font-weight: normal;
+  border: 1px solid #B1B9C3;
+  font-size: 1em;
+  border-radius: 4px;
+  -webkit-transition-property: border-color, color, box-shadow;
+  transition-property: border-color, color, box-shadow;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  max-width: 100%;
+  outline: none;
+  line-height: 1.5;
   background-color: white;
 }
 
@@ -544,6 +564,9 @@
   .Input {
     width: 85% !important;
   }
+  .width100 {
+    width: 100% !important;
+  }
   .CreditCardIcon {
     width: 170px !important;
   }
@@ -570,9 +593,15 @@
   }
 }
 
+@media (max-width: 756px) {
+    .CreditCardInputSmall {
+        width: 100%;
+    }
+}
+
 @media only screen and (min-width: 1280px){
   .Ajuste{
     max-width: 50% !important;
     flex-basis: 50% !important;
-  }  
+  }
 }

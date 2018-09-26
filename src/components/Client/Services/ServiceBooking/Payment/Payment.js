@@ -13,6 +13,18 @@ import cls from './Payment.css';
 
 import * as actions from '../../../../../store/actions';
 
+//Credit card images
+import imgCreditCardAlia from '../../../../../assets/creditCard/ic_alia.svg';
+import imgCreditCardAlkosto from '../../../../../assets/creditCard/ic_alkosto.png';
+import imgCreditCardAmex from '../../../../../assets/creditCard/ic_amex.svg';
+import imgCreditCardCredisensa from '../../../../../assets/creditCard/ic_credisensa.png';
+import imgCreditCardDiners from '../../../../../assets/creditCard/ic_diners.svg';
+import imgCreditCardDiscover from '../../../../../assets/creditCard/ic_discover.svg';
+import imgCreditCardElo from '../../../../../assets/creditCard/ic_elo.png';
+import imgCreditCardExito from '../../../../../assets/creditCard/ic_exito.png';
+import imgCreditCardMasterCard from '../../../../../assets/creditCard/ic_mastercard.svg';
+import imgCreditCardVisa from '../../../../../assets/creditCard/ic_visa.svg';
+
 class Payment extends Component {
 
   constructor(props) {
@@ -93,19 +105,19 @@ class Payment extends Component {
     this.props.onFetchUser(localStorage.getItem('token'));
     this.props.onListCard(localStorage.getItem('token'));
   };
-  
+
   inputChangedHandler(value, rules) {
     let isValid = true;
     let errorText = null;
     if (!rules) {
       return true;
     }
-    
+
     if (rules.required) {
       isValid = value.trim() !== '' && isValid;
       errorText = 'Requerido.';
     }
-    
+
     if (rules.isNumeric) {
       const pattern = /^\d+$/;
       isValid = pattern.test(value) && isValid;
@@ -260,7 +272,7 @@ class Payment extends Component {
 
     return (checksum % 10) === 0;
   }
-  
+
   validateCCExpiration = (expire) => {
     var result = true;
     if(!expire.match(/(0[1-9]|1[0-2])[/][0-9]{2}/)){
@@ -350,22 +362,22 @@ class Payment extends Component {
                         'status: ' + cardResponse.card.status + '<br>' +
                         "Card Token: " + cardResponse.card.token + "<br>" +
                         "transaction_reference: " + cardResponse.card.transaction_reference
-                      ); 
+                      );
         }else{
           $('#messages').html('Error<br>'+
                         'status: ' + cardResponse.card.status + '<br>' +
                         "message Token: " + cardResponse.card.message + "<br>"
-                      ); 
+                      );
         }
       };
-    var errorHandler = function(err) {   
-      console.log('hubo un error') 
+    var errorHandler = function(err) {
+      console.log('hubo un error')
       console.log(err.error);
       $('#messages').html(err.error.type);
       Alert.error( 'Hubo un error al agregar tu tarjeta', {
         position: 'top',
         effect: 'genie',
-      });  
+      });
     };
     var email = null;
     if(this.props.user.attributes){
@@ -393,7 +405,7 @@ class Payment extends Component {
         effect: 'genie',
       });
     } else {
-      this.props.nextPage(e, 'Payment', this.state.cardId)     
+      this.props.nextPage(e, 'Payment', this.state.cardId)
     }
   }
 
@@ -404,7 +416,7 @@ class Payment extends Component {
       showCardForm: true,
     })
   }
-  
+
   render() {
     let validadData = null;
     let creditForm;
@@ -413,32 +425,32 @@ class Payment extends Component {
     if(this.props.listCard !== undefined && this.props.listCard.length !== 0){
       if (this.props.listCard.data.length > 0) {
         validadData = this.props.listCard.data.length
-        crediCardButton = 
+        crediCardButton =
           <div>
             <button className={cls.Selection} value="Submit" type='submit'>Escoger Tarjeta</button>
             <button className={cls.AddCard} onClick={this.showCardForm}>+ Agregar nueva tarjeta</button>
           </div>
         creditForm = this.props.listCard.data.map(d => {
           if(d.attributes.card_type === "vi") {
-            d.attributes.card_type = "Visa"
+            d.attributes.card_image_url = imgCreditCardVisa
           }else if (d.attributes.card_type == 'mc') {
-            d.attributes.card_type = 'Mastercard'
+            d.attributes.card_image_url = imgCreditCardMasterCard
           }else if (d.attributes.card_type == 'ax') {
-            d.attributes.card_type = 'American Express'
+            d.attributes.card_image_url = imgCreditCardAmex
           }else if (d.attributes.card_type == 'di') {
-            d.attributes.card_type = 'Diners'
+            d.attributes.card_image_url = imgCreditCardDiners
           }else if (d.attributes.card_type == 'dc') {
-            d.attributes.card_type = 'Discover'
+            d.attributes.card_image_url = imgCreditCardDiscover
           }else if (d.attributes.card_type == 'el') {
-            d.attributes.card_type = 'Elo'
+            d.attributes.card_image_url = imgCreditCardElo
           }else if (d.attributes.card_type == 'cs') {
-            d.attributes.card_type = 'Credisensa'
+            d.attributes.card_image_url = imgCreditCardCredisensa
           }else if (d.attributes.card_type == 'so') {
-            d.attributes.card_type = 'Solidario'
+            d.attributes.card_image_url = imgCreditCardAlia
           }else if (d.attributes.card_type == 'ex') {
-            d.attributes.card_type = 'Exito'
+            d.attributes.card_image_url = imgCreditCardExito
           }else if (d.attributes.card_type == 'ak') {
-            d.attributes.card_type = 'Alkosto'
+            d.attributes.card_image_url = imgCreditCardAlkosto
           }
           return(
             <div className={cls.text_info}>
@@ -450,7 +462,7 @@ class Payment extends Component {
                 value={d.id}
               />
               <label className={cls.textCardSelect}>
-                <span>{d.attributes.card_type}</span>
+		<img src={d.attributes.card_image_url}/>
                 <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
                 <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
                 <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>

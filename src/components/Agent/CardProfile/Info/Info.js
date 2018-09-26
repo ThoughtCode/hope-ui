@@ -49,6 +49,10 @@ const info = props => {
                   <span>{props.user.attributes.national_id}</span>
                 </li>
                 <li>
+                  <i className="fas fa-birthday-cake"></i>
+                  <span>{props.user.attributes.birthday}</span>
+                </li>
+                <li>
                   <Link className={cls.ButtonLogout} onClick={props.logout} to="#"><span>Cerrar Sesión</span></Link>
                 </li>
               </ul>

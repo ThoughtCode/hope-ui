@@ -50,6 +50,10 @@ const info = props => {
                   <span>{props.user.attributes.cell_phone}</span>
                 </li>
                 <li>
+                  <i className="fas fa-birthday-cake"></i>
+                  <span>{props.user.attributes.birthday}</span>
+                </li>
+                <li>
                   <Link className={cls.ButtonLogout} onClick={props.logout} to="#"><span>Cerrar Sesion</span></Link>
                 </li>
               </ul>
@@ -67,7 +71,7 @@ const info = props => {
         <Spinner />
       ) : (
         <div>
-          {profile}  
+          {profile}
         </div>
       )}
     </div>

@@ -63,6 +63,15 @@ class Edit extends Component {
         touched: false,
         errorText: null,
       },
+      birthday: {
+        value: '',
+        validation: {
+          required: true,
+        },
+        valid: true,
+        touched: false,
+        errorText: null,
+      },
     },
   }
 
@@ -100,6 +109,13 @@ class Edit extends Component {
       "national_id": {
         ...this.state.customer["national_id"],
         value: this.props.user.attributes.national_id,
+        valid: true,
+        errorText: null,
+        touched: false,
+      },
+      "birthday": {
+        ...this.state.customer["birthday"],
+        value: this.props.user.attributes.birthday,
         valid: true,
         errorText: null,
         touched: false,
@@ -352,7 +368,21 @@ class Edit extends Component {
               </Grid>
             </Grid>
           </Grid>
-          {console.log(this.state.customer.national_id.value)}
+          <Grid container>
+            <Grid item xs={12} sm={12} md={12} lg={6} className={cls.FormItem}>
+              <Grid container>
+                <label htmlFor="birthday"><span>Fecha de cumpleaños</span></label>
+                <input className={`${cls.Input} ${(!this.state.customer.birthday.valid && this.state.customer.birthday.touched) && cls.ContainerError}`}
+                  type="date"
+                  name="birthday"
+                  value={this.state.customer.birthday.value}
+                  onChange={(event) => this.inputChangedHandler(event, 'birthday')}/>
+                  {(!this.state.customer.birthday.valid && this.state.customer.birthday.touched) && (
+                    <div className={cls.Error}>{this.state.customer.birthday.errorText}</div>
+                  )}
+              </Grid>
+            </Grid>
+          </Grid>
           <Grid container>
             <Grid item xs={12} sm={12} md={12} lg={12} className={cls.FormItem}>
               <Grid container>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import $ from 'jquery';
 import Alert from 'react-s-alert';
+import creditCardType from 'credit-card-type';
 
 // Components
 import {
@@ -308,7 +309,10 @@ class Payment extends Component {
     var expiry_month = parseInt(this.state.cardValidatorForm.expiration_card_MM.value)
     var expiry_year = parseInt(this.state.cardValidatorForm.expiration_card_YY.value)
     var cvc = this.state.cardValidatorForm.cvc_card.value
-    var type = window.PaymentezForm.cardTypeFromNumber(number)
+    var type = '';
+    var card_types = creditCardType(number);
+    
+    type = card_types[0].niceType
 
     if (type == 'Visa') {
       type = 'vi'
@@ -365,19 +369,12 @@ class Payment extends Component {
                       );
         }else{
           $('#messages').html('Error<br>'+
-                        'status: ' + cardResponse.card.status + '<br>' +
                         "message Token: " + cardResponse.card.message + "<br>"
                       );
         }
       };
     var errorHandler = function(err) {
-      console.log('hubo un error')
-      console.log(err.error);
       $('#messages').html(err.error.type);
-      Alert.error( 'Hubo un error al agregar tu tarjeta', {
-        position: 'top',
-        effect: 'genie',
-      });
     };
     var email = null;
     if(this.props.user.attributes){
@@ -590,7 +587,8 @@ class Payment extends Component {
                   </div>
               </Grid>
           </div>
-  </div>
+          <div id='messages'></div>
+          </div>
                   ) : (
                     <div className={cls.formConten}>
                         <form className={cls.formCreditCard} onSubmit={this.handleFormSubmit}>

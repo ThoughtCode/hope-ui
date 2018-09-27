@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Grid from 'material-ui/Grid';
 import cls from './AgentShow.css';
 import CardAgentShow from './CardAgentShow/CardAgentShow';
-import Reviews from '../../../components/Agent/Reviews/Reviews';
+import ReviewsPostulated from '../../../components/Agent/Reviews/ReviewsPostulated';
 import Spinner from '../../UI/Spinner/Spinner';
 
 
@@ -38,7 +38,7 @@ class AgentShow extends Component {
       };
       if (this.props.proposal.agent.data.attributes.rewiews.data.length > 0) {
         reviews = this.props.proposal.agent.data.attributes.rewiews.data.map(r => (
-          <Reviews key={r.id} review={r.attributes} />
+          <ReviewsPostulated key={r.id} review={r.attributes} />
         ))
       }
       agent = this.props.proposal.agent.data.attributes;

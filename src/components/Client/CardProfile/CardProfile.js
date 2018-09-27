@@ -8,6 +8,7 @@ import {
 import Info from './Info/Info';
 import Edit from './Info/Edit/Edit';
 import EditPassword from './EditPassword/EditPassword';
+import Commentary from './Commentary/Commentary'
 import MetodoPago from './MetodoPago/MetodoPago';
 import CardProperties from './CardProperties/CardProperties';
 import NewProperty from './CardProperties/NewProperty/NewProperty';
@@ -35,6 +36,11 @@ const cardProfile = props => {
               <Route path="/cliente/perfil/propiedades" children={({match}) => (
                 <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
                   <NavLink className={cls.Link} to="/cliente/perfil/propiedades">Propiedades</NavLink>
+                </li>
+              )}/>
+              <Route path="/cliente/perfil/commentary" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/comentarios">Comentarios</NavLink>
                 </li>
               )}/>
               <Route path="/cliente/perfil/metodo-pago" children={({match}) => (
@@ -71,7 +77,8 @@ const cardProfile = props => {
                     fetchProperty={props.fetchProperty}
                     property={props.property}/>} 
                 />
-                <Route path="/cliente/perfil/metodo-pago" exact render={() => <MetodoPago changePassword={props.changePassword} />}/>
+                <Route path="/cliente/perfil/comentarios" exact render={() => <Commentary rewiewsData={props.user.attributes} />}/>
+                <Route path="/cliente/perfil/metodo-pago" exact render={() => <MetodoPago />}/>
             </div>
           </Grid>
         </Grid>

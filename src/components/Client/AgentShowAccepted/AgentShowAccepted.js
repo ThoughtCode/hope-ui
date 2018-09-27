@@ -39,7 +39,7 @@ class AgentShow extends Component {
       agent = this.props.job.attributes.agent;
       job_id = this.props.job.id;
       review_average = this.props.job.attributes.agent_rewiews_average;
-      review_count = this.props.job.attributes.agent.agent_rewiews_count;
+      review_count = this.props.job.attributes.agent_rewiews_count;
     };
     if (this.props.reviews.length === 0) {
       review_title = 'No hay opiniones';

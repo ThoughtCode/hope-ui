@@ -16,7 +16,7 @@ class Info extends Component {
     let avatar = null;
     if (this.props.agent) {
       name = (`${this.props.agent.first_name} ${this.props.agent.last_name}`).replace(/\b\w/g, l => l.toUpperCase());
-      count = this.props.review_count;
+      count = this.props.agent.rewiews_count;
       avatar = this.props.agent.avatar.url === null ? (
         <div className={cls.AvatarInitials}>
           {this.props.agent.first_name.charAt(0).toUpperCase()}{this.props.agent.last_name.charAt(0).toUpperCase()}
@@ -43,7 +43,11 @@ class Info extends Component {
                 <Grid item xs={12} sm={4}>
                   <p>{name}</p>
                   <div>
-                    <Stars agentRewiewsAverage={this.props.review_average}/>
+                    {this.props.agent == null ? (
+                      ''
+                    ):(
+                      <Stars agentRewiewsAverage={this.props.agent.rewiews_average}/>
+                    )}
                   </div>  
                   <div className={cls.QouteDetailStats}>{count} opiniones</div>
                 </Grid>

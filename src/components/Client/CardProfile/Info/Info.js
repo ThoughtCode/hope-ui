@@ -42,7 +42,6 @@ const info = props => {
                 </li>
                 <li>
                   <i className="fas fa-id-card"></i>
-                  {console.log(props.user.attributes)}
                   <span>{props.user.attributes.national_id}</span>
                 </li>
                 <li>

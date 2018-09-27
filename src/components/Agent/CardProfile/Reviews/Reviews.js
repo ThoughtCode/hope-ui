@@ -11,7 +11,7 @@ class Reviews extends Component {
       reviews = this.props.userAttributes.rewiews.data.map( rv => {
         return(
           <Review
-            key={rv.attributes.id}
+            key={rv.id}
             owner={rv.attributes}
             qualification={rv.attributes.qualification}
           />

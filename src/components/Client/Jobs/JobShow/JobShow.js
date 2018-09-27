@@ -110,16 +110,16 @@ class JobShow extends Component {
                       <Grid container justify="center">
                         <div className={cls.StarsWrapper}>
                           <Stars
-                            agentRewiewsAverage={p.attributes.agent_rewiews_average}
+                            agentRewiewsAverage={p.attributes.agent.data.attributes.rewiews_average}
                           />
                         </div>
-                        <div className={cls.QouteDetailStats}>{p.attributes.agent_rewiews_count} opiniones</div>
+                        <div className={cls.QouteDetailStats}>{p.attributes.agent.data.attributes.rewiews_count} opiniones</div>
                       </Grid>
                     </Grid>
                     <Grid item xs={6} className={cls.Items}>
                       <Grid className={cls.QuoteNumberHires} container justify="center">
                         <div>
-                          <div className={cls.TpBody}>{p.attributes.agent_rewiews_count}</div>
+                          <div className={cls.TpBody}>{p.attributes.agent.data.attributes.rewiews_count}</div>
                           <div className={cls.QouteDetailStats}>Veces Contratado</div>
                         </div>
                       </Grid>

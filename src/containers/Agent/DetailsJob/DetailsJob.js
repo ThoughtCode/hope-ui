@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import 'moment/locale/es';
 import moment from 'moment';
 import {
@@ -108,19 +107,19 @@ class DetailsJob extends Component {
                       <div className={cls.ReviewAvatar}>
                         <div className={cls.ReviewAvatarCircle}>
                           <div className={cls.AvatarInitials}>
-                            {cr.attributes.owner.data.attributes.first_name.charAt(0).toUpperCase()}
-                            {cr.attributes.owner.data.attributes.last_name.charAt(0).toUpperCase()}
+                            {cr.attributes.my_reviews.data.attributes.owner_first_name.charAt(0).toUpperCase()}
+                            {cr.attributes.my_reviews.data.attributes.owner_last_name.charAt(0).toUpperCase()}
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 ) : (
-                  <Avatar className={cls.AvatarInitials} src={cr.attributes.owner.data.attributes.avatar.url}></Avatar>
+                  <Avatar className={cls.AvatarInitials} src={cr.attributes.my_reviews.data.attributes.owner_avatar.url}></Avatar>
                 )}
                   <div className={cls.ReviewName}>
                     <p>
-                      {cr.attributes.owner.data.attributes.first_name} {cr.attributes.owner.data.attributes.last_name}
+                      {cr.attributes.my_reviews.data.attributes.owner_first_name} {cr.attributes.my_reviews.data.attributes.owner_last_name}
                     </p>
                     <div>
                       <Stars agentRewiewsAverage={cr.attributes.qualification}/>

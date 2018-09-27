@@ -375,6 +375,10 @@ class Payment extends Component {
       };
     var errorHandler = function(err) {
       $('#messages').html(err.error.type);
+      Alert.error( 'Por favor ingresa todos los datos requeridos', {
+        position: 'top',
+        effect: 'genie',
+      });
     };
     var email = null;
     if(this.props.user.attributes){

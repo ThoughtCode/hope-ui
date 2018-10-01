@@ -194,16 +194,16 @@ class MenuAppBar extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                   <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
                 </MenuItem>
-                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                   <AnchorLink className={cls.styleAnchor} href="#ServiceRes">Servicios</AnchorLink>
                 </MenuItem>
-                <MenuItem style={{fontFamily: 'Arial', backgroundColor: 'transparent'}}>
+                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                   <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
                 </MenuItem>
-                <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
+                <Button className={cls.styleAnchorButton} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
               </Menu>
             </div>
           </Toolbar>

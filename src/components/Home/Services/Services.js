@@ -27,10 +27,10 @@ function FullWidthGrid(props) {
 
   return (
     <div className={cls.root}>
-      <Grid container justify="center">
+      <Grid container justify="center" className={cls.contenTitle}>
         <Grid item xs={12}>
           <Paper className={cls.Paper} elevation={0}>
-            <Typography variant="headline" gutterBottom className={cls.Typogra}>Servicios</Typography>
+            <h1 variant="headline" gutterBottom className={cls.Typogra}>Servicios</h1>
           </Paper>
         </Grid>
       </Grid>

@@ -51,9 +51,13 @@
     font-size: 1.4rem !important;
     font-weight: bold !important;
   }
+  .iconStyleFuntion{
+    margin: .875em 0 !important;
+  }
   .SubTypogra {
     font-size: 1rem !important;
     font-weight: bold !important;
+    margin: .875em 0 !important;
   }
   .imgicon{
     width: 1.5rem;
@@ -69,6 +73,7 @@
   }
   .IconDownload{
     height: 2em;
+    margin: 0 5px;
   }
   .Separator {
     padding: 10px 0 !important;

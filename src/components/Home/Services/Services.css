@@ -6,7 +6,11 @@
   padding-bottom: 0px;
   background-color: #fafafa;
 }
+.contenTitle{
+  background-color: #fafafa !important;
+}
 .Typogra {
+  background-color: #fafafa;
   font-size: 2.25em !important;
   font-family: Arial !important;
   color: #0069a7 !important;
@@ -54,6 +58,7 @@
 }
 
 .Paper{
+  background-color: #fafafa;
   text-align: center !important;
 }
 

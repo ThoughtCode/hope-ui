@@ -46,7 +46,7 @@ function FullWidthGrid(props) {
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper elevation={0}>
-                  <img src={NumberOne} alt="One" />
+                  <img src={NumberOne} className={cls.iconStyleFuntion} alt="One" />
                 </Paper>
               </Grid>
               <Grid item xs={12}>
@@ -62,16 +62,10 @@ function FullWidthGrid(props) {
                   </Typography>
                 </Paper>
               </Grid>
-              <Grid item xs={5} sm={6}>
-                <Paper elevation={0}>
-                  <img src={GooglePlay} className={cls.IconDownload} alt="GoolglePlay" />
-                </Paper>
-              </Grid>
-              <Grid item xs={5} sm={6}>
-                <Paper elevation={0}>
-                  <img src={AppStore} className={cls.IconDownload} alt="App Store" />
-                </Paper>
-              </Grid>
+              <div elevation={0}>
+                <img src={GooglePlay} className={cls.IconDownload} alt="GoolglePlay" />
+                <img src={AppStore} className={cls.IconDownload} alt="App Store" />
+              </div>
             </Grid>
           </Paper>
         </Grid>
@@ -80,7 +74,7 @@ function FullWidthGrid(props) {
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper elevation={0}>
-                  <img src={NumberTwo} alt="Two" />
+                  <img src={NumberTwo} className={cls.iconStyleFuntion} alt="Two" />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={8}>
@@ -104,7 +98,7 @@ function FullWidthGrid(props) {
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper elevation={0}>
-                  <img src={NumberThree} alt="Three" />
+                  <img src={NumberThree} className={cls.iconStyleFuntion} alt="Three" />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={10}>
@@ -128,7 +122,7 @@ function FullWidthGrid(props) {
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Paper elevation={0}>
-                  <img src={NumberFour} alt="Four" />
+                  <img src={NumberFour} className={cls.iconStyleFuntion} alt="Four" />
                 </Paper>
               </Grid>
               <Grid item xs={12} sm={10}>

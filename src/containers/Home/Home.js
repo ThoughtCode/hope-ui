@@ -56,17 +56,17 @@ class Home extends Component {
               <Funtion />
             </Paper>
           </Grid>
-          <Grid item xs={12} className={cls.Services}>
+          <Grid item xs={12}>
             <Paper elevation={0} className={classes.paper}>
               <Services />
             </Paper>
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={12} className={cls.testimonioHome}>
             <Paper elevation={0} className={classes.paper} id="Services">
               <Testimonio />
             </Paper>
           </Grid>
-          <Grid item xs={12} md={8} className={cls.Download}>
+          <Grid item xs={12} md={8}>
             <Paper elevation={0} className={classes.paper}>
               <Download />
             </Paper>

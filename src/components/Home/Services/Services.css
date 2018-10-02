@@ -66,7 +66,7 @@
   .Services{
     background-image: url('../../../assets/image.jpg');
     background-repeat: no-repeat !important;
-    background-size: 17em !important;
+    background-size: 20em !important;
     background-position: center !important;
     padding-top: 20p x !important;
     padding-bottom: 0px !important;
@@ -79,7 +79,7 @@
   }
   .ContentServices{
     text-align: center !important;
-    padding-top: 40px !important;
+    padding-top: 20px !important;
   }
   .SubTytle{
     color: #0069a7 !important;

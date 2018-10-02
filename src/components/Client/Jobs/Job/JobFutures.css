@@ -202,6 +202,7 @@
   padding: 8px 10px !important;
   border-radius: 5px !important;
   text-transform: initial !important;
+  width: 90%;
 }
 
 .Button:hover {
@@ -214,11 +215,8 @@
 }
 
 .TotalContainer {
-  border-top: 1px solid #e9eced !important;
-}
-
-.Border {
-  border-right: none !important;
+  text-align: center;
+  margin: 0 0 10px 0 !important;
 }
 
 .jobAddress {
@@ -236,9 +234,6 @@
 }
 
 @media (max-width: 600px) {
-  .PriceNo {
-    display: none !important;
-  }
   .PriceSi {
     display: block !important;
   }

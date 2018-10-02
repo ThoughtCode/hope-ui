@@ -475,16 +475,8 @@ class BookingForm extends Component {
                   </div>
                 </Grid>
               </div>
-              <div className={cls.ServiceSection}>
-                <Grid container>
-                  <div className={cls.ButtonBooking}>
-                    <Grid container>
-                      <div className={cls.Row}>
-                        <button onClick={(event) => this.props.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar servicio</button>
-                      </div>
-                    </Grid>
-                  </div>
-                </Grid>
+              <div className={cls.ButtonSolicitud}>
+                <button onClick={(event) => this.props.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar servicio</button>
               </div>
             </div>
           </form>

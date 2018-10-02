@@ -310,6 +310,7 @@ class Contact extends Component {
                 <Grid item xs={12}>
                   <Paper className={cls.Paper} elevation={0}>
                     <input
+                      className={cls.Field}
                       placeholder="Celular"
                       id="multiline-static"
                       multiline="true"
@@ -337,6 +338,7 @@ class Contact extends Component {
                 <Grid item xs={12}>
                   <Paper className={cls.Paper} elevation={0}>
                     <input
+                      className={cls.Field}
                       placeholder="Correo"
                       id="multiline-static"
                       multiline="true"
@@ -386,40 +388,17 @@ class Contact extends Component {
                   <Paper className={`${cls.SubSubTitle} ${cls.Paper}`} elevation={0}>Descarga Noc Noc desde la tienda de tu Smatphone</Paper>
                 </Grid>
                 <Grid item xs={12}>
-                  <Paper className={cls.Paper} elevation={0}>
-                    <Grid container spacing={24}>
-                      <Grid item xs={6} sm={6}>
-                        <Paper className={cls.Paper} elevation={0}>
-                          <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
-                        </Paper>
-                      </Grid>
-                      <Grid item xs={6} sm={6}>
-                        <Paper className={cls.Paper} elevation={0}>
-                          <img src={AppStore} className={cls.iconSocial} alt="App Store" />
-                        </Paper>
-                      </Grid>
-                    </Grid>
+                  <Paper className={cls.PaperSocial} elevation={0}>
+                    <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
+                    <img src={AppStore} className={cls.iconSocial} alt="App Store" />
                   </Paper>
                 </Grid>
               </Grid>
             </Paper>
           </Grid>
-          <Grid item xs={12}>
-            <Paper className={cls.Paper} elevation={0}>
-              <Grid container className={cls.ContentSocial} justify="flex-end" align="right">
-                <Grid item xs={8}>
-                  <Paper className={cls.PaperSocial} elevation={0}>
-                    <img src={Facebook} alt="AppLogo" className={cls.Styleicon} />
-                  </Paper>
-                  <Paper className={cls.PaperSocial} elevation={0}>
-                    <img src={Twitter} alt="AppLogo" className={cls.Styleicon} />
-                  </Paper>
-                  <Paper className={cls.PaperSocial} elevation={0}>
-                    <img src={Instagram} alt="AppLogo" className={cls.Styleicon} />
-                  </Paper>
-                </Grid>
-              </Grid>
-            </Paper>
+          <Grid item xs={12} className={cls.PaperSocial}>
+            <a href="https://www.facebook.com/appnocnoc/" target="_blank"><img src={Facebook} alt="AppLogo" className={cls.Styleicon} /></a>
+            <a href="https://www.instagram.com/nocnoc_ec/?hl=es-la" target="_blank"><img src={Instagram} alt="AppLogo" className={cls.Styleicon} /></a>
           </Grid>
         </Grid>
       </div>

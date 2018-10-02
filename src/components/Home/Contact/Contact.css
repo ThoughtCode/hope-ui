@@ -5,6 +5,11 @@
   flex-grow: 1 !important;
 }
 
+.Field{
+  color: black;
+  width: 80%;
+}
+
 .textField > label {
   color: #ffffff !important;
 }
@@ -51,13 +56,14 @@
 .Paper {
   background-color: transparent !important;
   color: #fff !important;
+  margin: 0 0 3px 0;
 }
 
 .PaperSocial {
   background-color: transparent !important;
   color: #fff !important;
   display: inline-block;
-  padding: 0 36px !important;
+  padding: 0 !important;
 }
 
 .Styleicon {
@@ -66,6 +72,7 @@
 
 .iconSocial{
   height: 2.25em;
+  margin: 2px 5px 2px 5px;
 }
 
 .LogoNocNoc{
@@ -75,7 +82,7 @@
 .Border{
   border-left: 1px solid #fff;
   border-right: 1px solid #fff;
-  height: 90%;
+  height: 100%;
 }
 
 .SubTitle{
@@ -113,6 +120,7 @@
   padding: 0 72px !important;
   text-transform: capitalize !important;
   min-height: 34px !important;
+  width: 80%;
 }
 
 .pageButtonInvalid {
@@ -123,6 +131,7 @@
   text-transform: capitalize !important;
   min-height: 34px !important;
   cursor: not-allowed !important;
+  width: 80%;
 }
 
 .ErrorText {
@@ -140,14 +149,25 @@
   .LogoNocNoc{
     display: none !important;
   }
+  .Field{
+    color: black;
+    width: 100%;
+  }
   .textField{
     font-size: 0.5rem !important;
+  }
+  .ButtonContratar{
+    width: 100%;
+  }
+  .pageButtonInvalid {
+    width: 100%;
   }
   .Paper{
     font-size: 0.6rem !important;
     padding-top: 0.5rem;
   }
   .PaperSocial {
+    text-align: center !important;
     padding: 0 11px !important;
   }
   .SubTitle{
@@ -161,10 +181,16 @@
     height: 3.25em;
   }
   .Styleicon {
-    height: 3em !important;
+    height: 2.3em !important;
+    margin: 2px 6px 2px 6px;
   }
   .UlContact{
     text-align: center;
+    padding: 0 !important;
+    width: 100%;
+  }
+  .ListContact{
+    padding: 3px 0;
   }
   .Link {
     font-size: 1.7em !important;
@@ -174,15 +200,22 @@
   }
 }
 
-@media only screen and (max-width: 960px) {
+@media only screen and (min-width: 600px) {
   .LogoNocNoc{
     display: block;
   }
   .Paper{
     padding: 0.5rem 0;
   }
+  .PaperSocial{
+    text-align: right !important;
+    padding: 0 2 !important;
+  }
   .Border{
     border: none
+  }
+  .Styleicon {
+    margin: 2px 6px 2px 6px;
   }
   .UlContact{
     text-align: center;
@@ -192,8 +225,17 @@
   }
 }
 
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 960px) {
   .Paper{
     padding: 0.5rem 0 !important;
+  }
+  .Border{
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    height: 100%;
+  }
+  .UlContact{
+    text-align: left;
+    padding: 0 20px;
   }
 }

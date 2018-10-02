@@ -1,7 +1,7 @@
 // Dependencias
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import Modal from 'material-ui/Modal';
 
 // Components
 import {Grid,
@@ -16,6 +16,7 @@ import {Grid,
 import Spinner from './Spinner/Spinner';
 import Visibility from 'material-ui-icons/Visibility';
 import VisibilityOff from 'material-ui-icons/VisibilityOff';
+import LoginAgent from '../../../containers/Agent/Login/Login'
 
 // Css
 import cls from './Form.css';
@@ -30,6 +31,10 @@ const styles = theme => ({
     padding: theme.spacing.unit * 0,
     textAlign: 'center',
     backgroundColor: 'transparent',
+  },
+  modalLoginAgent: {
+    position: 'absolute',
+    backgroundColor: theme.palette.background.paper,
   },
   bootstrapRoot: {
     padding: 0,
@@ -142,7 +147,47 @@ class Form extends Component {
       },
     },
     formIsValid: false,
+    openRegister: false,
+    openLogin: false,
+    openAgentLogin: false,
   }
+
+  handleOpen = (modal) => {
+    console.log(modal)
+    if (localStorage.getItem('signInAs') === 'customer') {
+      this.props.history.push('/cliente')
+    }
+    if (localStorage.getItem('signInAs') === 'agent') {
+      this.props.history.push('/agente')
+    }
+    if (modal === "register") {
+      this.setState({
+        openLogin: false,
+        openAgentLogin: false,
+        openRegister: true,
+      });
+    } else if (modal === "login") {
+      this.setState({
+        openLogin: true,
+        openAgentLogin: false,
+        openRegister: false,
+      });
+    } else if (modal === "loginAgent") {
+      this.setState({
+        openLogin: false,
+        openAgentLogin: true,
+        openRegister: false,
+      });
+    }
+  };
+
+  handleClose = () => {
+    this.setState({
+      openLogin: false,
+      openAgentLogin: false,
+      openRegister: false,
+    });
+  };
 
   checkValidity(value, rules) {
     let isValid = true;
@@ -254,7 +299,7 @@ class Form extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
+              <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
                 <TextField
                   value={this.state.registerForm.first_name.value}
                   onChange={(event) => this.inputChangedHandler(event, 'first_name')}
@@ -281,9 +326,7 @@ class Form extends Component {
                   </div>
                 ) : null}
               </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
+              <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
                 <TextField
                   value={this.state.registerForm.last_name.value}
                   onChange={(event) => this.inputChangedHandler(event, 'last_name')}
@@ -423,7 +466,7 @@ class Form extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
+              <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
               <TextField
                   value={this.state.registerForm.national_id.value}
                   onChange={(event) => this.inputChangedHandler(event, 'national_id')}
@@ -451,9 +494,7 @@ class Form extends Component {
                   </div>
                 ) : null}
               </Paper>
-            </Grid>
-            <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
+              <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
                 <TextField
                   value={this.state.registerForm.cell_phone.value}
                   onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}
@@ -492,12 +533,20 @@ class Form extends Component {
             <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Términos y politicas de privacidad.</a></span></p>
             <Grid container justify="center">
               <Grid item xs={12}>
-                <Button className={cls.ButtonLogin} component={Link} to="/agente/login" >INICIAR SESIÓN</Button>
+                <Button className={cls.ButtonLogin} onClick={() => this.handleOpen("loginAgent")} >INICIAR SESIÓN</Button>
               </Grid>
             </Grid>
           </Grid>
           )}
         </form>
+        <Modal
+          open={this.state.openAgentLogin}
+          onClose={this.handleClose}
+        >
+          <div className={`${cls.Modal} ${classes.modalLoginAgent}`}>
+            <LoginAgent className={cls.Modal} close={this.handleClose} />
+          </div>
+        </Modal>
       </div>
     );
   }

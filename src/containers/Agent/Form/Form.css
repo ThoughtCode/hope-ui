@@ -3,8 +3,14 @@
   padding: 20px;
   border-radius: 5px;
   text-align: center !important;
-  height: 620px;
+  height: 500px !important;
 }
+
+.paperInput{
+  display: inline-block;
+  width: 50% !important;
+}
+
 .LoadingContainer {
   margin-top: 50%;
 }
@@ -66,6 +72,7 @@
 
 .None {
   color: #0069a7 !important;
+  font-size: 0.8rem !important;
   font-weight: 500 !important;
 }
 
@@ -84,16 +91,24 @@
   margin-left: 0px !important;
 }
 
+.Modal {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px 5px 5px 5px !important;
+}
+
 @media only screen and (max-width: 600px) {
   .Form{
     padding: 10px !important;
     margin: 0 !important;
+    height: 470px !important;
   }
 }
 
 @media only screen and (max-width: 1600px) {
   .Form{
     margin:  90px -40px;
-    height: 620px !important;
+    height: 620px;
   }
 }

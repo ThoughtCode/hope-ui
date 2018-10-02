@@ -8,21 +8,14 @@ import Button from 'material-ui/Button';
 import cls from './Reset.css';
 import Logo from '../../../assets/Logo.svg'
 import ResetPassword from '../../../components/Client/Reset/Reset'
+import MenuResponsive from '../../MenuBar/MenuResponsiveReset'
 
 class Reset extends Component {
   render() {
     return (
       <div>
+        <MenuResponsive />
         <div className={cls.Reset}>
-          <Grid container className={cls.ButtonClose}>
-            <Grid item xs={12}>
-              <Paper className={cls.paper} elevation={0}>
-                <Button component={Link} to="/">
-                  <i className="material-icons">clear</i>
-                </Button>
-              </Paper>
-            </Grid>
-          </Grid>
           <Grid container className={cls.ResetContainer} justify="center">
             <Grid item xs={12}>
               <Paper className={cls.paper} elevation={0}>

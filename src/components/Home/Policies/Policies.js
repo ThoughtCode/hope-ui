@@ -42,7 +42,7 @@ class Policies extends Component {
           </Grid>
           <Grid item xs={12}>
             <Paper elevation={0} className={classes.paper}>
-              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20}}>
+              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20, marginBottom: 0}}>
                 <a component="a" href="http://thoughtcode.co/" style={{textDecoration: 'none', color: 'white' }}>Diseñado por Thoughtcode</a>
               </Typography>
             </Paper>

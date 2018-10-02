@@ -154,7 +154,6 @@ class AppBarMenu extends Component {
             </MenuItem>
             <div>
               <IconButton
-                className={cls.ButtonNotification}
                 aria-label="4 pending messages"
                 aria-owns={openNotification ? 'menu-appbar-notification' : null}
                 aria-haspopup="true"

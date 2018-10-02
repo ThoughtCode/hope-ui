@@ -113,13 +113,9 @@ a:focus, a:hover {
   transform: translate(-50%, -50%);
 }
 
-/* .arrowNotificationTip {
-  height: 12px;
-} */
-
-.ButtonNotification {
+/*.ButtonNotification {
   padding-top: 10px !important;
-}
+} */
 
 .notificationBox {
   -moz-box-shadow: 0 2px 3px rgba(0,0,0,0.15) !important;

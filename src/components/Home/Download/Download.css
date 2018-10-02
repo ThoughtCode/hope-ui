@@ -38,6 +38,10 @@
   height: 3em;
 }
 
+.ContentDownloadImg img{
+  margin-left: 10px;
+}
+
 @media only screen and (max-width: 600px) {
   .stylesDownload {
     background-color: #fafafa;

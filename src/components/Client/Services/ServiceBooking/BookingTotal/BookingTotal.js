@@ -74,82 +74,54 @@ const bookingTotal = (props) => {
                   <Grid container>
                     <div className={cls.Row}>
                       <Grid item xs={12} md={12} lg={12}>
-                        <Grid container>
-                          <div className={cls.SummaryRow}>
-                            {props.form.services_base.name !== '' ? (
-                              <Grid container>
-                                <Grid item md={12} lg={6}>
-                                  <div className={cls.SummaryTitle}>{props.form.services_base.name}</div>
-                                </Grid>
-                                <Grid item md={12} lg={6}>
-                                  <div className={cls.SummaryAmount}>${base.toFixed(2)}</div>
-                                </Grid>
-                              </Grid>
-                            ) : (
-                              <Grid container>
-                                <Grid item xs={12} md={12} lg={6}>
-                                  <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
-                                </Grid>
-                                <Grid item xs={12} md={12} lg={6}>
-                                  <div className={cls.SummaryAmount}></div>
-                                </Grid>
-                              </Grid>
-                            )}
-                            {props.form.services_parameters.length > 0 ? 
-                              props.form.services_parameters.map(addon => {
-                                  {
-                                  let price = addon.price;
-                                  let time = addon.time;
-                                  let summary = price * time;
-                                  return (
-                                    <Grid key={addon.id} container>
-                                      <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryTitle}>{addon.label}</div>
-                                      </Grid>
-                                      <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryAmount}>${summary.toFixed(2)}</div>
-                                      </Grid>
-                                    </Grid>
-                                  );
-                                }
-                              })
-                            : null}
-                            {props.form.services_addons.length > 0 ? 
-                              props.form.services_addons.map(addon => {
-                                if (addon.active) {
-                                  let price = addon.price;
-                                  let time = addon.time;
-                                  let summary = price * time;
-                                  return (
-                                    <Grid key={addon.id} container>
-                                      <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryTitle}>{addon.label}</div>
-                                      </Grid>
-                                      <Grid item xs={12} md={6} lg={6}>
-                                        <div className={cls.SummaryAmount}>${summary.toFixed(2)}</div>
-                                      </Grid>
-                                    </Grid>
-                                  );
-                                } else {
-                                  return null;
-                                }
-                              })
-                            : null}
-                            <Grid container>
-                              <Grid item md={6} lg={6}>
-                                <div className={cls.SummaryTitle}>IVA <small>12%</small></div>
-                              </Grid>
-                              <Grid item md={6} lg={6}>
-                                <div className={cls.SummaryAmount}>${iva.toFixed(2)}</div>
-                              </Grid>
-                            </Grid>
-                            <Grid container justify="center">
-                              <Grid item md={8} lg={8}>
-                                <div className={cls.SummaryTitle}><small>Total horas de limpieza {time}h</small></div>
-                              </Grid>
-                            </Grid>
+                        {props.form.services_base.name !== '' ? (
+                          <div className={cls.containerTotal}>
+                            <div className={cls.SummaryTitle}>{props.form.services_base.name}</div>
+                            <div className={cls.SummaryAmount}>${base.toFixed(2)}</div>
                           </div>
-                        </Grid>
+                        ) : (
+                          <div container>
+                            <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
+                            <div className={cls.SummaryAmount}></div>
+                          </div>
+                        )}
+                        {props.form.services_parameters.length > 0 ? 
+                          props.form.services_parameters.map(addon => {
+                              {
+                              let price = addon.price;
+                              let time = addon.time;
+                              let summary = price * time;
+                              return (
+                                <div key={addon.id} className={cls.containerTotal}>
+                                  <div className={cls.titleParameters}>{addon.label}</div>
+                                  <div className={cls.priceParameters}>${summary.toFixed(2)}</div>
+                                </div>
+                              );
+                            }
+                          })
+                        : null}
+                        {props.form.services_addons.length > 0 ? 
+                          props.form.services_addons.map(addon => {
+                            if (addon.active) {
+                              let price = addon.price;
+                              let time = addon.time;
+                              let summary = price * time;
+                              return (
+                                <div key={addon.id} className={cls.containerTotal}>
+                                  <div className={cls.titleAddon}>{addon.label}</div>
+                                  <div className={cls.priceAddon}>${summary.toFixed(2)}</div>
+                                </div>
+                              );
+                            } else {
+                              return null;
+                            }
+                          })
+                        : null}
+                        <div className={cls.containerTotal}>
+                          <div className={cls.vatPorciento}>IVA <small>12%</small></div>
+                          <div className={cls.vat}>${iva.toFixed(2)}</div>
+                          <div><small>Total horas de limpieza {time}h</small></div>
+                        </div>
                       </Grid>
                     </div>
                   </Grid>

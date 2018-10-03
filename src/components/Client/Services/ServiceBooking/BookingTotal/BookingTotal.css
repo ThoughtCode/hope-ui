@@ -28,6 +28,7 @@
 }
 
 .RowInfo {
+  background-color: #fafafa !important;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -39,6 +40,7 @@
 }
 
 .Row {
+  background-color: #fafafa !important;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -50,6 +52,7 @@
 }
 
 .RowTotal {
+  background-color: #fafafa !important;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
@@ -84,35 +87,87 @@
   margin-top: 0.5em;
 }
 
-.SummaryTitle {
-  padding-left: 0.9375rem;
-  padding-right: 0.9375rem;
-  float: left;
-  font-size: 14px;
-  margin-bottom: 0.5em;
-  white-space: nowrap;
-}
-
-.SummaryAmount {
-  width: 41.66666667%;
-  float: right;
-  font-size: 14px;
-  text-align: right;
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-}
-
 .TotalText {
   padding-left: 0.9375rem;
   padding-right: 0.9375rem;
   float: left;
   text-transform: uppercase;
   font-size: 1.0em;
-  margin-top: 1em;
 }
 
 .Total {
   text-align: right;
   color: #0069a7;
   font-size: 2.4em;
+}
+
+.containerTotal {
+  text-align: left;
+}
+
+.SummaryTitle {
+  display: inline-block;
+  margin: 0 90px 0 0;
+}
+
+.SummaryAmount {
+  display: inline-block;
+  text-align: right;
+  width: 20%;
+}
+
+.titleParameters {
+  display: inline-block;
+  margin: 0 114px 0 0;
+}
+
+.priceParameters {
+  display: inline-block;
+  text-align: right;
+  width: 22%;
+}
+
+.titleAddon {
+  display: inline-block;
+  margin: 0 140px 0 0;
+}
+
+.priceAddon {
+  display: inline-block;
+  text-align: right;
+  width: 20%;
+}
+
+.vatPorciento {
+  display: inline-block;
+  margin: 0 150px 0 0;
+}
+
+.vat {
+  display: inline-block;
+  text-align: right;
+  width: 20%;
+}
+
+
+@media only screen and (max-width: 600px){
+  .BookingTotal {
+    background-color: #fafafa;
+    width: 100%;
+  }
+  .RowInfo {
+    background-color: #fafafa !important;
+  }
+  
+  .Row {
+    background-color: #fafafa !important;
+  }
+  
+  .RowTotal {
+    background-color: #fafafa !important;
+  }
+
+  .BookingTotalWrapper {
+    background-color: #fafafa !important;
+  }
 }

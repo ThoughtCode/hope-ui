@@ -383,7 +383,7 @@ class BookingForm extends Component {
                                     <div>Te visitaremos cada 15 días el día que tu elijas</div>
                                   ):('')}
                                   {this.props.form.recurrent.value == 3 ? (
-                                    <div>Te visitaremos una vez al mes el día que tu elijas</div>
+                                    <div>Te visitaremos mensualmente el día que tu elijas</div>
                                   ):('')}
                                 </div>
                               </Grid>

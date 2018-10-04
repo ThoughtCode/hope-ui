@@ -80,9 +80,9 @@ class DetailsJob extends Component {
       firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
       lastNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.last_name;
       total = this.props.jobDetails.attributes.total;
-      startedAt = moment.utc(this.props.jobDetails.attributes.started_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedRecurrencyAt = moment.utc(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedAt = moment.utc(this.props.jobDetails.attributes.finished_at).format('MMMM D h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      startedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      finishedRecurrencyAt = moment(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      finishedAt = moment(this.props.jobDetails.attributes.finished_at).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase());
       avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       if (this.props.jobDetails.attributes.frequency === 'one_time') {
         frequency = 'Una vez';
@@ -214,9 +214,9 @@ class DetailsJob extends Component {
                         {firstNameCustomerService} {lastNameCustomerService}
                       </p>
                       <p className={cls.jobDetailsCustomerAddress}>
-                        {startedAt}<br/>
+                        {startedAt}/
+                        {finishedAt === 'Invalid Date' ? (''):(finishedAt)}<br/>
                         {finishedRecurrencyAt === 'Invalid Date' ? (''):(finishedRecurrencyAt)}
-                        {finishedAt === 'Invalid Date' ? (''):(finishedAt)}
                       </p>
                     </div>
                     <dl>
@@ -339,7 +339,7 @@ class DetailsJob extends Component {
                             <div className={cls.Modal}>
                               <div className={cls.CancelBookingModal}>
                                 <div>
-                                  <h2 className={cls.tytleModal}>Antes de continuar. Confirma que tú trabajo se realizo con éxito.</h2>
+                                  <h2 className={cls.tytleModal}>Antes de continuar. Confirma que tú trabajo se realizó con éxito.</h2>
                                 </div>
                                 <div>
                                   <span className={cls.ButtonWrapper}>

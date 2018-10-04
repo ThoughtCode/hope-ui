@@ -154,7 +154,7 @@ class AgentShowQualify extends Component {
               <Grid container justify="center">
                 <Grid item xs={12}>
                   <Paper elevation={0}>
-                    <Typography variant="title" gutterBottom className={cls.Typogra}>Calificar Agenten</Typography>
+                    <Typography variant="title" gutterBottom className={cls.Typogra}>Calificar Agente</Typography>
                   </Paper>
                 </Grid>
               </Grid>

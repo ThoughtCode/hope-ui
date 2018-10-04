@@ -19,7 +19,7 @@ const cancelBookingModal = (props) => {
         <h2>Aviso de penalización</h2>
       </div>
       <div>
-        <p>Recuerda que si cancelas el servicio antes de "{valueTime} HORAS" de inicio de trabajo se cobrará un valor de {valueRode} por cargos administrativos</p>
+        <p>Recuerda que si cancelas el servicio "{valueTime} HORAS" antes del inicio del trabajo se cobrará un valor de {valueRode} USD por cargos administrativos</p>
       </div>
       <div>
         <span className={cls.ButtonWrapper}>

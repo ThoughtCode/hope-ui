@@ -182,7 +182,6 @@ class DetailsJob extends Component {
       avatarCustomerJob = this.props.jobDetails.attributes.customer.data.attributes.avatar.url
       startedAtDetails = this.props.jobDetails.attributes.started_at
       finishedAtDetails = this.props.jobDetails.attributes.finished_at
-      propertyName = this.props.jobDetails.attributes.property.name
       propertyNumer = this.props.jobDetails.attributes.property.number
       propertyPStreet = this.props.jobDetails.attributes.property.p_street
       propertySStreet = this.props.jobDetails.attributes.property.s_street
@@ -221,7 +220,7 @@ class DetailsJob extends Component {
                       <p className={cls.jobDetailsCustomerName}>
                         {firstNameCustomerService} {lastNameCustomerService}
                       </p>
-                      {propertyName} - {propertyNumer} / {propertyPStreet} con {propertySStreet}<br/>
+                      {propertyPStreet} {propertyNumer} {propertySStreet}<br/>
                       <p className={cls.jobDetailsCustomerAddress}>
                         {startedAt}/
                         {finishedAt === 'Invalid Date' ? (''):(finishedAt)}<br/>

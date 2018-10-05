@@ -94,6 +94,6 @@ export const registerAgent = formData => (dispatch) => {
           position: 'top',
           effect: 'genie',
         });
-      }
+      }else{}
     });
 };

@@ -261,8 +261,6 @@ class Form extends Component {
   registerHandler = (event) => {
     event.preventDefault();
     const formData = {};
-    console.log(formData)
-    console.log(this.state.registerForm.password.value)
     if (this.state.registerForm.password.value !== this.state.registerForm.password_confirmation.value) {
       Alert.error( 'Contraseña no coinciden, por favor verifique sus datos', {
         position: 'top',
@@ -270,7 +268,6 @@ class Form extends Component {
       });
     }
     for (const formElementIdentifier in this.state.registerForm) {
-      console.log(formElementIdentifier)
       formData[formElementIdentifier] = this.state.registerForm[formElementIdentifier].value;
     }
     const agent = {

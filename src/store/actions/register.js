@@ -88,19 +88,12 @@ export const registerAgent = formData => (dispatch) => {
     })
     .catch((error) => {
       dispatch(registerAgentFail(error));
-      if (error.response !== undefined) {
-        if (typeof(error.response.data.message) === 'object') {
-          const message = error.response.data.message.email;
-          Alert.error(message, {
-            position: 'bottom-right',
-            effect: 'genie',
-          });
-        } else {
-          Alert.error(error.response.data.message, {
-            position: 'bottom-right',
-            effect: 'genie',
-          });
-        }
+      if (typeof(error.response.data.message) === 'object') {
+        const message = error.response.data.message.email;
+        Alert.error(message, {
+          position: 'top',
+          effect: 'genie',
+        });
       }
     });
 };

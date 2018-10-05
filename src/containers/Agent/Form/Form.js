@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'material-ui/Modal';
+import Alert from 'react-s-alert';
 
 // Components
 import {Grid,
@@ -153,7 +154,6 @@ class Form extends Component {
   }
 
   handleOpen = (modal) => {
-    console.log(modal)
     if (localStorage.getItem('signInAs') === 'customer') {
       this.props.history.push('/cliente')
     }
@@ -261,7 +261,16 @@ class Form extends Component {
   registerHandler = (event) => {
     event.preventDefault();
     const formData = {};
+    console.log(formData)
+    console.log(this.state.registerForm.password.value)
+    if (this.state.registerForm.password.value !== this.state.registerForm.password_confirmation.value) {
+      Alert.error( 'Contraseña no coinciden, por favor verifique sus datos', {
+        position: 'top',
+        effect: 'genie',
+      });
+    }
     for (const formElementIdentifier in this.state.registerForm) {
+      console.log(formElementIdentifier)
       formData[formElementIdentifier] = this.state.registerForm[formElementIdentifier].value;
     }
     const agent = {

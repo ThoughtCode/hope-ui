@@ -84,9 +84,9 @@ class DetailsJob extends Component {
       firstNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.first_name;
       lastNameCustomer = this.props.jobDetails.attributes.customer.data.attributes.last_name;
       total = this.props.jobDetails.attributes.total;
-      startedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedRecurrencyAt = moment(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedAt = moment(this.props.jobDetails.attributes.finished_at).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      startedAt = moment(this.props.jobDetails.attributes.started_at).format('MMMM D YYYY h:mm a');
+      finishedRecurrencyAt = moment(this.props.jobDetails.attributes.finished_recurrency_at).format('MMMM D YYYY h:mm a');
+      finishedAt = moment(this.props.jobDetails.attributes.finished_at).format('h:mm a');
       avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       if (this.props.jobDetails.attributes.frequency === 'one_time') {
         frequency = 'Una vez';
@@ -223,8 +223,8 @@ class DetailsJob extends Component {
                       {propertyPStreet} {propertyNumer} {propertySStreet}<br/>
                       <p className={cls.jobDetailsCustomerAddress}>
                         {startedAt}/
-                        {finishedAt === 'Invalid Date' ? (''):(finishedAt)}<br/>
-                        {finishedRecurrencyAt === 'Invalid Date' ? (''):(finishedRecurrencyAt)}
+                        {finishedAt === 'Invalid date' ? (''):(finishedAt)}<br/>
+                        {finishedRecurrencyAt === 'Invalid date' ? (''):(finishedRecurrencyAt)}
                       </p>
                     </div>
                     <dl>

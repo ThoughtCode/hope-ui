@@ -60,7 +60,7 @@ const bookingTotal = (props) => {
                         <div>
                           <div className={cls.PadTop}>
                             <div>
-                              {moment.utc(props.form.started_at).format('MMM D, YYYY h:mm a').replace(/\b\w/g, l => l.toUpperCase())}
+                              {moment.utc(props.form.started_at).format('MMM D, YYYY h:mm a')}
                             </div>
                           </div>
                         </div>

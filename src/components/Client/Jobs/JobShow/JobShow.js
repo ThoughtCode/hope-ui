@@ -65,9 +65,9 @@ class JobShow extends Component {
       if (this.props.job.attributes.status === 'completed') {
         button = null;
       }
-      startedAt = moment(this.props.job.attributes.started_at).format('MMMM D-YYYY, h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedAt = moment(this.props.job.attributes.finished_at).format('h:mm a').replace(/\b\w/g, l => l.toUpperCase());
-      finishedRecurrencyAt = moment(this.props.job.attributes.finished_recurrency_at).format('MMMM D-YYYY, h:mm a').replace(/\b\w/g, l => l.toUpperCase());
+      startedAt = moment(this.props.job.attributes.started_at).format('MMMM D-YYYY, h:mm a');
+      finishedAt = moment(this.props.job.attributes.finished_at).format('h:mm a');
+      finishedRecurrencyAt = moment(this.props.job.attributes.finished_recurrency_at).format('MMMM D-YYYY, h:mm a');
       if (this.props.job.attributes.frequency === 'one_time') {
         frequency = 'Una vez';
       } else if (this.props.job.attributes.frequency === 'fortnightly') {
@@ -224,8 +224,8 @@ class JobShow extends Component {
             </p>
             <p className={cls.JobDetailsCustomerAddress}>
               {startedAt}/
-              {finishedAt === 'Invalid Date' ? (''):(finishedAt)}<br/>
-              {finishedRecurrencyAt === 'Invalid Date' ? (''):(finishedRecurrencyAt)}
+              {finishedAt === 'Invalid date' ? (''):(finishedAt)}<br/>
+              {finishedRecurrencyAt === 'Invalid date' ? (''):(finishedRecurrencyAt)}
             </p>
           </div>
           <div className={cls.JobDetailsServices}>

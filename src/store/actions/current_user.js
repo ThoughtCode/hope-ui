@@ -355,7 +355,7 @@ export const notificationsAgentReadStart = () => ({
   type: notificationsAgentReadStart,
 });
 
-export const notificationsAgentRead = (token, id) => (dispatch) => {
+export const notificationsAgentRead = (token, id) => dispatch => {
   dispatch(notificationsAgentReadStart());
   const headers = {
     headers: {
@@ -435,7 +435,7 @@ export const notificationsCustomerReadStart = () => ({
   type: notificationsCustomerReadStart,
 });
 
-export const notificationsCustomerRead = (token, id) => (dispatch) => {
+export const notificationsCustomerRead = (token, id) => dispatch => {
   dispatch(notificationsCustomerReadStart());
   const headers = {
     headers: {

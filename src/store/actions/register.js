@@ -94,6 +94,11 @@ export const registerAgent = formData => (dispatch) => {
           position: 'top',
           effect: 'genie',
         });
-      }else{}
+      } else {
+        Alert.error(error.response.data.message, {
+          position: 'top',
+          effect: 'genie',
+        });
+      }
     });
 };

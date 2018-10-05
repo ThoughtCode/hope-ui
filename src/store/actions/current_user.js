@@ -442,20 +442,20 @@ export const notificationsCustomerRead = (token, id) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.post(`/customers/read_notifications/${id}`, '', headers)
-  .then((response) => {
-    const notificationRead = response.data.review.data.attributes;
-    dispatch(notificationsCustomerReadSuccess(notificationRead));
-    Alert.success(response.data.message, {
+  axios.put(`/customers/read_notifications/${id}`, '', headers)
+    .then((response) => {
+      let notificationRead = response.data.review.data.attributes;
+      dispatch(notificationsCustomerReadSuccess(notificationRead));
+      Alert.success(response.data.message, {
         position: 'top',
         effect: 'genie',
       });
     })
-  .catch((err) => {
-    dispatch(notificationsCustomerReadFail(err));
-      // Alert.error(err.response.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
+    .catch((err) => {
+      dispatch(notificationsCustomerReadFail(err));
+      //Alert.error(err.response.data.message, {
+      //  position: 'top',
+      //  effect: 'genie',
+      //});
     });
 };

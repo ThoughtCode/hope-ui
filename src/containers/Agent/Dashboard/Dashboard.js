@@ -21,7 +21,7 @@ class DashboardAgent extends Component {
       max_price: '',
       date_from: null,
       date_to: null,
-      frequency: '0',
+      frequency: '4',
       current_page: 1,
       active: false,
     },

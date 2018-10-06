@@ -114,7 +114,14 @@ class Filter extends Component {
                           <div className="row">
                             <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>
                               <div className="custom-control custom-checkbox">
-                                <label onClick={() => window.location.reload() } className={`${cls.spaceLabelFrequencyAll} ${"custom-control-label"}`} >Todas</label>
+                                <input
+                                  type="checkbox"
+                                  className="custom-control-input"
+                                  id="Check4" 
+                                  checked={this.props.filter.frequency === '4'}
+                                  value="4"
+                                  onChange={(event) => this.props.handleChange(event, 'frequency')} />
+                                <label className={`${cls.spaceLabelFrequency} ${"custom-control-label"}`} htmlFor="Check4" value="4">Todas</label>
                               </div>
                             </div>
                             <div className={`${cls.paddingFrequency} ${"col-xs-6 col-md-2"}`}>

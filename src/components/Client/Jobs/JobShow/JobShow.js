@@ -43,6 +43,7 @@ class JobShow extends Component {
     let agentTitle = null;
     let button = null;
     let config = null;
+    let cellPhone = null;
     if (this.props.job.attributes) {
       if (this.props.job.attributes.can_cancel) {
         button = (
@@ -143,6 +144,7 @@ class JobShow extends Component {
           )) : 
           null
       } else {
+        cellPhone = this.props.job.attributes.agent.cell_phone
         agentTitle = 'Agente Contratado';
         agents = (
           <div className={cls.QouteWrapper}>
@@ -162,6 +164,7 @@ class JobShow extends Component {
                 </div>
                 <div className={cls.QouteName}>
                   <p>{this.props.job.attributes.agent.first_name} {this.props.job.attributes.agent.last_name}</p>
+                  <p>Celular: {cellPhone === null ? (''):(cellPhone)}</p>
                 </div>
               </div>
               <div className={cls.QouteDetails}>

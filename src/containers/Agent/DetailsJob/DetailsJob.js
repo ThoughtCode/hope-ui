@@ -78,6 +78,7 @@ class DetailsJob extends Component {
     let propertyNumer = null;
     let propertyPStreet = null;
     let propertySStreet = null;
+    let cellPhone = null;
     if(this.props.jobDetails.attributes){
       rewiewsAverage = this.props.jobDetails.attributes.customer_rewiews_average;
       reviewsCount = this.props.jobDetails.attributes.customer_rewiews_count;
@@ -176,6 +177,11 @@ class DetailsJob extends Component {
       }
     }
     if (this.props.jobDetails.attributes){
+      if (this.props.jobDetails.attributes.agent === null) {
+        ''
+      }else if (this.props.jobDetails.attributes.agent.access_token === localStorage.getItem('token')) {
+        cellPhone = this.props.jobDetails.attributes.customer.data.attributes.cell_phone
+      }
       details = this.props.jobDetails.attributes.details
       firstNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.first_name
       lastNameCustomerService = this.props.jobDetails.attributes.customer.data.attributes.last_name
@@ -225,6 +231,7 @@ class DetailsJob extends Component {
                         {startedAt}/
                         {finishedAt === 'Invalid date' ? (''):(finishedAt)}<br/>
                         {finishedRecurrencyAt === 'Invalid date' ? (''):(finishedRecurrencyAt)}
+                        {cellPhone === null ? (''):(<p>Celular: {cellPhone}</p>)}
                       </p>
                     </div>
                     <dl>

@@ -22,7 +22,9 @@ class Profile extends Component {
     let name = null;
     let count = null;
     let avatar = null;
+    let cellPhone = null;
     if (this.props.agent) {
+      cellPhone = this.props.agent.cell_phone
       name = (`${this.props.agent.first_name} ${this.props.agent.last_name}`).replace(/\b\w/g, l => l.toUpperCase());
       count = this.props.review_count;
       avatar = this.props.agent.avatar.url === null ? (
@@ -54,6 +56,7 @@ class Profile extends Component {
                     <Stars agentRewiewsAverage={this.props.review_average}/>
                   </div>  
                   <div className={cls.QouteDetailStats}>{count} opiniones</div>
+                  <div className={cls.QouteDetailStats}>{cellPhone === null ? (''):(<div>Celular: {cellPhone}</div>)}</div>
                 </Grid>
                 <Grid item xs={12} sm={4}>
                   <div className={cls.AgentConfirmedAvatar}>

@@ -362,7 +362,7 @@ export const notificationsAgentRead = (token, id) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.put(`/agents/read_notifications/${id}`, '', headers)
+  axios.get(`/agents/read_notifications/${id}`, '', headers)
     .then((res) => {
       let notificationRead = {};
       notificationRead = res.data.customer.data;
@@ -374,10 +374,6 @@ export const notificationsAgentRead = (token, id) => dispatch => {
     })
     .catch((err) => {
       dispatch(notificationsAgentReadFail(err));
-      //Alert.error(err.response.data.message, {
-      //  position: 'top',
-      //  effect: 'genie',
-      //});
     });
 };
 
@@ -442,7 +438,7 @@ export const notificationsCustomerRead = (token, id) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.put(`/customers/read_notifications/${id}`, '', headers)
+  axios.get(`/customers/read_notifications/${id}`, headers)
     .then((response) => {
       let notificationRead = response.data.review.data.attributes;
       dispatch(notificationsCustomerReadSuccess(notificationRead));
@@ -453,9 +449,5 @@ export const notificationsCustomerRead = (token, id) => dispatch => {
     })
     .catch((err) => {
       dispatch(notificationsCustomerReadFail(err));
-      //Alert.error(err.response.data.message, {
-      //  position: 'top',
-      //  effect: 'genie',
-      //});
     });
 };

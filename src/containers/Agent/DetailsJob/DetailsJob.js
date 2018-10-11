@@ -103,7 +103,6 @@ class DetailsJob extends Component {
         avatar = this.props.jobDetails.attributes.customer.data.attributes.avatar.url;
       }
       if(this.props.reviews){
-        console.log(this.props)
         if(this.props.reviews.length > 0 ){
           commentCard = this.props.reviews.map( cr => {
             return (

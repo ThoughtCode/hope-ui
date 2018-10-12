@@ -433,6 +433,7 @@ export const notificationsCustomerReadStart = () => ({
 
 export const notificationsCustomerRead = (token, id) => dispatch => {
   dispatch(notificationsCustomerReadStart());
+  console.log('leyendo')
   const headers = {
     headers: {
       Authorization: `Token token=${token}`,
@@ -440,12 +441,9 @@ export const notificationsCustomerRead = (token, id) => dispatch => {
   };
   axios.get(`/customers/read_notifications/${id}`, headers)
     .then((response) => {
-      let notificationRead = response.data.review.data.attributes;
-      dispatch(notificationsCustomerReadSuccess(notificationRead));
-      Alert.success(response.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
+
+      console.log('aqui')
+      
     })
     .catch((err) => {
       dispatch(notificationsCustomerReadFail(err));

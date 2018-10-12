@@ -56,10 +56,18 @@ class AppBarMenu extends Component {
   
   handleNotificationRead = (event, id, job_id) => {
     event.preventDefault();
-    this.props.onNotificationsAgentRead(localStorage.getItem('token'), id, job_id);
-    this.props.history.push(`/agente/trabajo/${job_id}`);
-    this.handleClose();
-    window.location.reload()
+    
+    let response
+    response = this.props.onNotificationsAgentRead(localStorage.getItem('token'), id, job_id);
+    response.then((res) => {
+      this.props.history.push(`/agente/trabajo/${job_id}`);
+      this.handleClose();
+      window.location.reload()
+    })
+    .catch((err) => {
+      console.log('error')
+    })
+    
   }
 
   handleOpen = (modal) => {

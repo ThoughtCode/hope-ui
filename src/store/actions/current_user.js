@@ -327,17 +327,8 @@ export const notificationsAgent = token => (dispatch) => {
       let notifications = {};
       notifications = res.data.notification.data;
       dispatch(notificationsAgentSuccess(notifications));
-      // Alert.success(res.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
     })
     .catch((err) => {
-      dispatch(notificationsAgentFail(err));
-      // Alert.error(err.response.data.message, {
-      //   position: 'top',
-      //   effect: 'genie',
-      // });
     });
 };
 
@@ -362,19 +353,9 @@ export const notificationsAgentRead = (token, id) => dispatch => {
       Authorization: `Token token=${token}`,
     },
   };
-  axios.get(`/agents/read_notifications/${id}`, '', headers)
-    .then((res) => {
-      let notificationRead = {};
-      notificationRead = res.data.customer.data;
-      dispatch(notificationsAgentReadSuccess(notificationRead));
-      Alert.success(res.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
-    })
-    .catch((err) => {
-      dispatch(notificationsAgentReadFail(err));
-    });
+  let response
+  response = axios.get(`/agents/read_notifications/${id}`, '', headers)
+    return response
 };
 
 export const notificationsCustomerStart = () => ({

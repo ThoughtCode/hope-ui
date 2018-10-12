@@ -320,7 +320,7 @@ class Payment extends Component {
       type = 'mc'
     }else if (type == 'American Express') {
       type = 'ax'
-    }else if (type == 'Diners') {
+    }else if (type == 'Diners' || type == 'Diners Club' ) {
       type = 'di'
     }else if (type == 'Discover') {
       type = 'dc'

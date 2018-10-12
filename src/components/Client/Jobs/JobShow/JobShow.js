@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
   Link,
 } from 'react-router-dom';
@@ -11,7 +12,10 @@ import {
   Modal,
 } from 'material-ui';
 import CancelBookingModal from '../CancelBookingModal/CancelBookingModal';
-import Stars from './Stars'
+import Stars from './Stars';
+
+// Actions
+import * as actions from '../../../../store/actions';
 
 // Css
 import cls from './JobShow.css';
@@ -31,6 +35,10 @@ class JobShow extends Component {
     this.setState({
       openCancell: true,
     });
+  }
+
+  componentDidMount() {
+    this.props.onDisableButton(localStorage.getItem('token'), this.props.job.id);
   }
   
   render() {
@@ -191,11 +199,26 @@ class JobShow extends Component {
                 </Grid>                      
               </div>
             </div>
-            <Link
-              to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
-              className={cls.JobHireContratado}>
-              VER PERFIL
-            </Link>
+            {this.props.disableButtonjob.can_review === false ? (
+              <Link
+                to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
+                className={cls.JobHireContratado}>
+                VER PERFIL
+              </Link>
+            ):(
+              <div>
+                <Link
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/contratado`}
+                  className={cls.JobHire}>
+                  VER PERFIL
+                </Link>
+                <Link
+                  to={`/cliente/trabajo/${this.props.job.id}/agente/calificar`}
+                  className={cls.JobHire}>
+                  CALIFICAR
+                </Link>
+              </div>
+            )}
           </div>
         );
       }
@@ -313,4 +336,16 @@ class JobShow extends Component {
   }
 }
 
-export default JobShow;
+const mapStateToProps = state => {
+  return {
+    disableButtonjob: state.disableButton.disableButton,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onDisableButton: (token, job_id) => dispatch(actions.disableButton(token, job_id)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(JobShow);

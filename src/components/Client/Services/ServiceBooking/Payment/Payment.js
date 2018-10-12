@@ -463,7 +463,7 @@ class Payment extends Component {
                 value={d.id}
               />
               <label className={cls.textCardSelect}>
-		<img src={d.attributes.card_image_url}/>
+		            <img src={d.attributes.card_image_url}/>
                 <p className={cls.card_label}> Numero de tarjeta XXXX-XXXX-XXXX-{d.attributes.number}</p>
                 <p className={cls.card_label}> Fecha de expiración: {d.attributes.expiry_month}/{d.attributes.expiry_year}</p>
                 <p className={cls.card_label}> Nombre: {d.attributes.holder_name}</p>

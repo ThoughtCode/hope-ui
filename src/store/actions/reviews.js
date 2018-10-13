@@ -178,3 +178,8 @@ export const reviewsAgent = (token, id) => dispatch => {
       dispatch(reviewsAgentFail(err));
   })
 };
+
+export const clearReviews = () => dispatch => {
+  dispatch(reviewsStart());
+  dispatch(reviewsSuccess([]));
+};

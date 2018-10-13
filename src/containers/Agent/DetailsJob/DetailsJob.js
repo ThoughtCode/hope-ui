@@ -46,6 +46,7 @@ class DetailsJob extends Component {
     this.props.onJobDetails(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onDisableButtonCustomer(localStorage.getItem('token'), this.props.match.params.job_id);
     this.props.onCanApply(localStorage.getItem('token'), this.props.match.params.job_id);
+    this.props.clearReviews();
   };
   componentDidUpdate() {
     if (this.props.jobDetails.attributes && this.props.reviews.length === 0) {
@@ -409,6 +410,7 @@ const mapDispatchToProps = dispatch => ({
   onDisableButtonCustomer: (token, job_id) => dispatch(actions.disableButtonCustomer(token, job_id)),
   onCanApply: (token, job_id) => dispatch(actions.canApply(token, job_id)),
   onConfirmationPayment: (token, job_id, wasSuccesful) => dispatch(actions.confirmationPayment(token, job_id, wasSuccesful)),
+  clearReviews: () => dispatch(actions.clearReviews()),
 });
 
 const mapStateToProps = state => ({

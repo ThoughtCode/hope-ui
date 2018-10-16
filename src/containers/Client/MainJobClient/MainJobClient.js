@@ -286,7 +286,7 @@ class MainJobClient extends Component {
                                       fontWeight: '700',
                                       fontSize: '16px',
                                       textTransform: 'initial',
-                                    }}>Completados</span>} />
+                                    }}>Historial</span>} />
           </Tabs>
         </AppBar>
         <SwipeableViews

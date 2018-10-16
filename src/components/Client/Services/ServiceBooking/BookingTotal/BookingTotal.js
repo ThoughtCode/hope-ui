@@ -40,8 +40,21 @@ const bookingTotal = (props) => {
   base = props.form.services_base.name !== '' ? (props.form.services_base.price * props.form.services_base.time) : 0;
   time = time + props.form.services_base.time;
   let iva = 0;
-  iva = ((base + price) * 0.12);
-  const total = (base + price + iva);
+
+  let subtotal = 0;
+  let total = 0
+  console.log(props.form);
+
+  if (props.form.isHolidays) {
+    subtotal =  (base + price) * 0.25;
+    iva = (subtotal * 0.12);
+    total = (base + price + iva) * 1.25;
+  } else {
+    subtotal =  0;
+    iva = ((base + price) * 0.12);
+    total = (base + price + iva);
+  }
+
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -118,6 +131,8 @@ const bookingTotal = (props) => {
                           })
                         : null}
                         <div className={cls.containerTotal}>
+                          <div>Recargo fin de semana o feriados</div>
+                          <div>${subtotal.toFixed(2)}</div>
                           <div className={cls.vatPorciento}>IVA <small>12%</small></div>
                           <div className={cls.vat}>${iva.toFixed(2)}</div>
                           <div><small>Total horas de limpieza {time}h</small></div>
@@ -132,14 +147,13 @@ const bookingTotal = (props) => {
                   <Grid container>
                     <div className={cls.RowTotal}>
                       <Grid container>
-                          <div className={cls.TotalText}>
-                            <span>Te cobraremos</span>
-                          </div>
+                        <div className={cls.TotalText}>
+                          <span>Te cobraremos</span>
+                        </div>
                         <Grid item xs={6} md={6} lg={6}>
                           <div className={cls.Total}>
                             $
-                            <span>
-                              {total.toFixed(2)}
+                            <span> {total.toFixed(2)}
                             </span>
                           </div>
                         </Grid>

@@ -5,6 +5,7 @@ const initialState = {
   services: [],
   service: [],
   loading: false,
+  holidays: [],
 };
 
 const fetchServicesStart = (state, action) => updateObject(state, {
@@ -34,6 +35,19 @@ const fetchServiceFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const holidaysStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
+const holidaysSuccess = (state, action) => updateObject(state, {
+  holidays: action.holidays,
+  loading: false,
+});
+
+const holidaysFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SERVICES_START: return fetchServicesStart(state, action);
@@ -42,6 +56,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.FETCH_SERVICE_START: return fetchServiceStart(state, action);
     case actionTypes.FETCH_SERVICE_SUCCESS: return fetchServiceSuccess(state, action);
     case actionTypes.FETCH_SERVICE_FAIL: return fetchServiceFail(state, action);
+    case actionTypes.HOLIDAYS_START: return holidaysStart(state, action);
+    case actionTypes.HOLIDAYS_SUCCESS: return holidaysSuccess(state, action);
+    case actionTypes.HOLIDAYS_FAIL: return holidaysFail(state, action);
     default: return state;
   }
 };

@@ -64,3 +64,35 @@ export const fetchService = (id, token) => dispatch => {
       dispatch(fetchServiceFail(err));
     });
 }
+
+export const holidaysStart = () => ({
+  type: actionTypes.HOLIDAYS_START,
+});
+
+export const holidaysSuccess = holidays => ({
+  type: actionTypes.HOLIDAYS_SUCCESS,
+  holidays,
+})
+
+export const holidaysFail = error => ({
+  type: actionTypes.HOLIDAYS_FAIL,
+  error,
+});
+
+export const holidays = (token) => dispatch => {
+  dispatch(holidaysStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/customers/holidays', headers)
+    .then((res) => {
+      let holidays = [];
+      holidays = res.data.holiday.data;
+      dispatch(holidaysSuccess(holidays));
+    })
+    .catch((err) => {
+      dispatch(holidaysFail(err));
+    });
+}

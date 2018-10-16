@@ -16,6 +16,7 @@ class Service extends Component {
     this.props.onFetchService(this.props.match.params.service_id, this.props.token);
     this.props.onFetchProperties(this.props.token);
     this.props.onFetchCities(this.props.token);
+    this.props.onHolidays(this.props.token);
   }
   render () {
 
@@ -34,6 +35,7 @@ class Service extends Component {
           service_base={this.props.service.attributes.service_base}
           services_addons={this.props.service.attributes.services_addons}
           services_parameters={this.props.service.attributes.services_parameters}
+          holidays={this.props.holidays}
           properties={this.props.properties}
           cities={this.props.cities}
           neightborhoods={this.props.neightborhoods}
@@ -67,6 +69,7 @@ const mapDispatchToProps = dispatch => {
     onFetchNeightborhoods: (token, id) => dispatch(actions.fetchNeightborhoods(token, id)),
     onCreateProperty: (token, formData) => dispatch(actions.createProperty(token, formData)),
     onCreateJob: (token, formData) => dispatch(actions.createJob(token, formData)),
+    onHolidays: (token) => dispatch(actions.holidays(token)),
   };
 };
 
@@ -74,6 +77,7 @@ const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
     service: state.service.service,
+    holidays: state.service.holidays,
     properties: state.property.properties,
     cities: state.city.cities,
     neightborhoods: state.neightborhood.neightborhoods,

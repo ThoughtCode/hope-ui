@@ -107,7 +107,8 @@
 
 .SummaryTitle {
   display: inline-block;
-  margin: 0 90px 0 0;
+  margin: 0;
+  width: 79%;
 }
 
 .SummaryAmount {
@@ -118,7 +119,8 @@
 
 .titleParameters {
   display: inline-block;
-  margin: 0 114px 0 0;
+  margin: 0;
+  width: 77%;
 }
 
 .priceParameters {
@@ -140,7 +142,8 @@
 
 .vatPorciento {
   display: inline-block;
-  margin: 0 150px 0 0;
+  margin: 0;
+  width: 79%;
 }
 
 .vat {

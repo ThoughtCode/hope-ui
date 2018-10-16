@@ -1,11 +1,13 @@
 import React from 'react';
 import { withStyles } from 'material-ui/styles';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import {
   Card,
   CardHeader,
   Grid,
+  Button,
 } from 'material-ui';
 
 // Css
@@ -120,6 +122,11 @@ const CardJob = ( props ) => {
                 <div className={cls.agentDetails}>
                   <span className={`${cls.PriceSi} ${cls.jobPrice}`}>${props.job.attributes.total.toFixed(2)}</span>
                 </div>
+                <Grid container alignItems="flex-end">
+                  <Grid className={`${cls.Border} ${cls.ViewDetails}`} item xs={12}>
+                    <Button className={cls.Button} component={Link} to={`/agente/trabajo/${props.job.id}`} >VER DETALLES</Button>
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>

@@ -286,6 +286,8 @@ class ServiceBooking extends Component {
   changeDatetimeHandler = (dateTime) => {
     let holiday = this.is_holiday(dateTime)
 
+
+
     this.setState({
       ...this.state,
       form: {
@@ -297,16 +299,18 @@ class ServiceBooking extends Component {
   };
 
   is_holiday = (date) => {
-    
-    //this.props.holidays.forEach(holiday =>{
-      //if (holiday.attributes.holiday_date === moment(this.state.form.started_at).format('YYYY-M-D')) {
-        //let holiday = true;
-      //}else{
-        //console.log('esto si da falso')
-      //}
-    //})
-
-    return true
+    let date_to_compare = moment(date).format('YYYY-M-D')
+    let is_holiday =  false;
+    this.props.holidays.find(function(element) {
+      while (element.attributes.holiday_date == date_to_compare) {
+        is_holiday = true;
+        break;
+      }
+    });
+    if(moment(date).day() == 0 || moment(date).day() == 6){
+      is_holiday = true
+    }
+    return is_holiday
   }
 
   createJobHandler = (event, installments) => {

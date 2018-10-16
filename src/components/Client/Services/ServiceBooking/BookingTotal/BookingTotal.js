@@ -39,18 +39,16 @@ const bookingTotal = (props) => {
   }
   base = props.form.services_base.name !== '' ? (props.form.services_base.price * props.form.services_base.time) : 0;
   time = time + props.form.services_base.time;
+  
+  let recharge = 0;
   let iva = 0;
-
-  let subtotal = 0;
   let total = 0
-  console.log(props.form);
-
   if (props.form.isHolidays) {
-    subtotal =  (base + price) * 0.25;
-    iva = (subtotal * 0.12);
+    recharge =  (base + price) * 0.25;
+    iva = (base + price + recharge) * 0.12;
     total = (base + price + iva) * 1.25;
   } else {
-    subtotal =  0;
+    recharge =  0;
     iva = ((base + price) * 0.12);
     total = (base + price + iva);
   }
@@ -131,8 +129,8 @@ const bookingTotal = (props) => {
                           })
                         : null}
                         <div className={cls.containerTotal}>
-                          <div>Recargo fin de semana o feriados</div>
-                          <div>${subtotal.toFixed(2)}</div>
+                          <div className={cls.titleParameters}>Recargo fin de semana o feriados</div>
+                          <div className={cls.priceParameters}>${recharge.toFixed(2)}</div>
                           <div className={cls.vatPorciento}>IVA <small>12%</small></div>
                           <div className={cls.vat}>${iva.toFixed(2)}</div>
                           <div><small>Total horas de limpieza {time}h</small></div>

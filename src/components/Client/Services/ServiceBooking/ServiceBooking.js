@@ -45,6 +45,7 @@ class ServiceBooking extends Component {
       details: '',
       started_at: dateTime,
       finished_recurrency_at: null,
+      isHolidays: false,
     },
     service: true,
     checking: false,
@@ -113,6 +114,8 @@ class ServiceBooking extends Component {
       services_parameters.push(input)
       }
     })
+    
+    let holiday = this.is_holiday(moment(this.state.form.started_at).format('YYYY-M-D'));
 
     this.setState({
       ...this.state,
@@ -120,7 +123,8 @@ class ServiceBooking extends Component {
         ...this.state.form,
         services_addons: services_addons,
         services_parameters: services_parameters,
-        services_base: service_principal
+        services_base: service_principal,
+        isHolidays: holiday,
       }
     })
   };
@@ -280,14 +284,34 @@ class ServiceBooking extends Component {
   };
 
   changeDatetimeHandler = (dateTime) => {
+    let holiday = this.is_holiday(dateTime)
+
+
+
     this.setState({
       ...this.state,
       form: {
         ...this.state.form,
         started_at: moment(dateTime),
+        isHolidays: holiday
       }
     })
   };
+
+  is_holiday = (date) => {
+    let date_to_compare = moment(date).format('YYYY-M-D')
+    let is_holiday =  false;
+    this.props.holidays.find(function(element) {
+      while (element.attributes.holiday_date == date_to_compare) {
+        is_holiday = true;
+        break;
+      }
+    });
+    if(moment(date).day() == 0 || moment(date).day() == 6){
+      is_holiday = true
+    }
+    return is_holiday
+  }
 
   createJobHandler = (event, installments) => {
     event.preventDefault();

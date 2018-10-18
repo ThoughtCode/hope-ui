@@ -24,6 +24,7 @@ export {
 export {
   fetchServices,
   fetchService,
+  holidays,
 } from './service';
 export {
   fetchCities,

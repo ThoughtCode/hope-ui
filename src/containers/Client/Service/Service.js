@@ -41,7 +41,8 @@ class Service extends Component {
           neightborhoods={this.props.neightborhoods}
           fetchNeightborhoods={this.props.onFetchNeightborhoods}
           createProperty={this.props.onCreateProperty}
-          createJob={this.props.onCreateJob}/>
+          createJob={this.props.onCreateJob}
+          serviceFee={this.props.service.attributes.extra_service_fee_holiday}/>
       )
     }
     return (

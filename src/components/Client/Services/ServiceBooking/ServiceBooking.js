@@ -459,7 +459,7 @@ class ServiceBooking extends Component {
                   <Grid item xs={12} sm={12} md={5} lg={5}>
                     <Grid container>
                       <Grid item xs={12} sm={6} md={12} lg={12}>
-                        <BookingTotal form={this.state.form} />
+                        <BookingTotal form={this.state.form} serviceFee={this.props.serviceFee} />
                       </Grid>
                       <div className={cls.ButtonSolicitud}>
                         <button onClick={(event) => this.nextPage(event, 'Service')} className={cls.ButtonBookingCore}>Solicitar servicio</button>
@@ -490,7 +490,8 @@ class ServiceBooking extends Component {
                         <Checking
                           backPage={this.backPage}
                           nextPage={this.nextPage}
-                          form={this.state.form} />
+                          form={this.state.form}
+                          serviceFee={this.props.serviceFee} />
                       </Grid>
                       <Grid item xs={12} sm={8} md={7} lg={6}>
                         <HowWorks />

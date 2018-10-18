@@ -42,17 +42,17 @@ const bookingTotal = (props) => {
   
   let recharge = 0;
   let iva = 0;
-  let total = 0
+  let total = 0;
+  let extra_fee = props.serviceFee.value;
   if (props.form.isHolidays) {
-    recharge =  (base + price) * 0.25;
+    recharge =  (base + price) * (extra_fee/100);
     iva = (base + price + recharge) * 0.12;
-    total = (base + price + iva) * 1.25;
+    total = (base + price + iva) * (1 + (extra_fee/100));
   } else {
     recharge =  0;
     iva = ((base + price) * 0.12);
     total = (base + price + iva);
   }
-
   return (
     <Grid container>
       <Grid item xs={12} sm={12} md={12} lg={12}>

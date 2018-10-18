@@ -66,9 +66,24 @@ class Checking extends Component {
     }
     base = this.props.form.services_base.name !== '' ? (this.props.form.services_base.price * this.props.form.services_base.time) : 0;
     time = time + this.props.form.services_base.time;
+    
+    let recharge = 0;
     let iva = 0;
-    iva = ((base + price) * 0.12);
-    const total = (base + price + iva);
+    let total = 0
+    //iva = ((base + price) * 0.12);
+    //const total = (base + price + iva);
+
+    if (this.props.form.isHolidays) {
+      recharge =  (base + price) * 0.25;
+      iva = (base + price + recharge) * 0.12;
+      total = (base + price + iva) * 1.25;
+    } else {
+      recharge =  0;
+      iva = ((base + price) * 0.12);
+      total = (base + price + iva);
+    }
+    
+    
     if (this.props.form.recurrent.value === '0') {
       frequency = 'una vez';
     } else if (this.props.form.recurrent.value === '1') {
@@ -171,6 +186,14 @@ class Checking extends Component {
                                     }
                                   })
                                 : null}
+                                <Grid container>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryTitle}>Recargo fin de semana o feriados</div>
+                                  </Grid>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryAmount}>${recharge.toFixed(2)}</div>
+                                  </Grid>
+                                </Grid>
                                 <Grid container>
                                   <Grid item xs={6} lg={6}>
                                     <div className={cls.SummaryTitle}>IVA <small>12%</small></div>

@@ -27,7 +27,7 @@ class Itworks extends Component {
       	<Grid container align='center' alignItems='center'>
           <Grid item xs={12} className={cls.TopSeccion}>
             <Paper className={classes.paper} elevation={0}>
-            	<Typography variant="headline" gutterBottom className={cls.Typogra}>Como Funciona</Typography>
+            	<Typography variant="headline" gutterBottom className={cls.Typogra}>Cómo Funciona</Typography>
             </Paper>
           </Grid>
           <Grid item xs={12} sm={6}>

@@ -1,9 +1,9 @@
 .ServiceImage {
   width: 100%;
   height: 150px;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+  background-position: center center !important;
   color: #fff;
   text-align: center;
   margin-top: 118px;
@@ -23,7 +23,7 @@
   left: 40%;
   opacity: 1;
   z-index: 2;
-  color: #0069a7 !important;
+  color: white !important;
   font-size: 2rem !important;
 }
 
@@ -34,17 +34,18 @@
     height: 250px;
   }
   .ServiceTitle {
+    padding-top: 30px;
     font-size: 25px !important;
   }
   .ServiceImage {
     margin-top: 60px;
-    height: 160px;
+    height: 90px;
   }
 }
 
 @media only screen and (min-width: 720px) {
   .ServiceImage {
-    height: 250px;
+    height: 210px;
   }
 
   .ServiceContainer {

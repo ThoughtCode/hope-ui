@@ -17,7 +17,7 @@ const howWorks = props => {
         <div>
           <div className={cls.Question}>
             <h3>
-              Como funciona?
+              Cómo funciona?
             </h3>
           </div>
           <ul>
@@ -27,19 +27,19 @@ const howWorks = props => {
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige la frecuencia, dia y hora de nuestra visita
+              &nbsp;&nbsp;Elige la frecuencia, día y hora de nuestra visita.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige servicios adicionales
+              &nbsp;&nbsp;Elige servicios adicionales.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige o registra tú dirección
+              &nbsp;&nbsp;Elige o registra tú dirección.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Paga tú servicio con una tarjeta de crédito o débito
+              &nbsp;&nbsp;Paga tú servicio con una tarjeta de crédito o débito.
             </li>
           </ul>
         </div>

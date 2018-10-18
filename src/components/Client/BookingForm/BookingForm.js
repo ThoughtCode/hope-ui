@@ -201,7 +201,7 @@ class BookingForm extends Component {
                     <div>
                       <h3 className={cls.SubHeaderText}>
                         <span className={cls.SubHeaderNumber}>2</span>
-                        <span>Elige la frecuencia, dia y hora de nuestra visita</span>
+                        <span>Elige la frecuencia, día y hora de nuestra visita</span>
                       </h3>
                       <div className={cls.service}>
                         <div className={cls.Selection}>

@@ -461,6 +461,14 @@
   margin: 0px 0px 20px 0px;
 }
 
+.titleCancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160px;
+  width: 100%;
+}
+
 @media only screen and (min-width: 375px) {
   .QuoteNumberHires {
     padding-left: 15px;

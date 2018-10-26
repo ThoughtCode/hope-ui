@@ -96,3 +96,37 @@ export const holidays = (token) => dispatch => {
       dispatch(holidaysFail(err));
     });
 }
+
+export const invoiceStart = () => ({
+  type: actionTypes.INVOICE_START,
+});
+
+export const invoiceSuccess = invoice => ({
+  type: actionTypes.INVOICE_SUCCESS,
+  invoice,
+})
+
+export const invoiceFail = error => ({
+  type: actionTypes.INVOICE_FAIL,
+  error,
+});
+
+export const invoice = (token) => dispatch => {
+  dispatch(invoiceStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.post('/customers/invoice_details', headers)
+    .then((res) => {
+      console.log(res)
+      let invoice = [];
+      invoice = res.data.holiday.data;
+      dispatch(invoiceSuccess(invoice));
+    })
+    .catch((err) => {
+      console.log(err)
+      dispatch(invoiceFail(err));
+    });
+}

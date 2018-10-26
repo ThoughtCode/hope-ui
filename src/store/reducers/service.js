@@ -6,6 +6,7 @@ const initialState = {
   service: [],
   loading: false,
   holidays: [],
+  invoice: [],
 };
 
 const fetchServicesStart = (state, action) => updateObject(state, {
@@ -48,6 +49,19 @@ const holidaysFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const invoiceStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
+const invoiceSuccess = (state, action) => updateObject(state, {
+  invoice: action.invoice,
+  loading: false,
+});
+
+const invoiceFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SERVICES_START: return fetchServicesStart(state, action);
@@ -59,6 +73,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.HOLIDAYS_START: return holidaysStart(state, action);
     case actionTypes.HOLIDAYS_SUCCESS: return holidaysSuccess(state, action);
     case actionTypes.HOLIDAYS_FAIL: return holidaysFail(state, action);
+    case actionTypes.INVOICE_START: return invoiceStart(state, action);
+    case actionTypes.INVOICE_SUCCESS: return invoiceSuccess(state, action);
+    case actionTypes.INVOICE_FAIL: return invoiceFail(state, action);
     default: return state;
   }
 };

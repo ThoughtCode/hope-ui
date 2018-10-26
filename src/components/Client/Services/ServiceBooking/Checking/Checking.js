@@ -263,6 +263,72 @@ class Checking extends Component {
                         <div className={cls.RowTotalTerm}>
                           <Grid container>
                             <Grid item xs={12} lg={12}>
+                              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
+                              <form>
+                                <div className={cls.row}>
+                                  <div className={cls.col25}>
+                                    <label for="socialReason">Razón social:</label>
+                                  </div>
+                                  <div className={cls.col75}>
+                                    <input type="text" id="fname" name="firstname" placeholder="Tú nombre completo" />
+                                  </div>
+                                </div>
+                                <div className={cls.row}>
+                                  <div className={cls.col25}>
+                                    <label for="identification">Identificación:</label>
+                                  </div>
+                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                                    <select id="identification" name="identification">
+                                      <option value="consumidor">Consumidor final</option>
+                                      <option value="cedula">Cédula</option>
+                                      <option value="ruc">RUC</option>
+                                    </select>
+                                  </div>
+                                  <div className={cls.col25}>
+                                    <label for="identificationNumber">N° de identificación:</label>
+                                  </div>
+                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                                    <input type="text" id="identificationType" name="identificationType" />
+                                  </div>
+                                </div>
+                                <div className={cls.row}>
+                                  <div className={cls.col25}>
+                                    <label for="email">Correo electrónico:</label>
+                                  </div>
+                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                                    <input type="text" id="email" name="email" placeholder="email@email.com" />
+                                  </div>
+                                  <div className={cls.col25}>
+                                    <label for="telephone">Teléfono:</label>
+                                  </div>
+                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                                    <input type="text" id="telephone" name="telephone" placeholder="+593 98 978 9878" />
+                                  </div>
+                                </div>
+                                <div className={cls.row}>
+                                  <div className={cls.col25}>
+                                    <label for="address">Dirección:</label>
+                                  </div>
+                                  <div className={cls.col75}>
+                                    <input type="text" id="address" name="address" placeholder="La floresta, 32-43" />
+                                  </div>
+                                </div>
+                                <div className={cls.row}>
+                                  <input type="submit" value="Guardar" />
+                                </div>
+                              </form>
+                            </Grid>
+                          </Grid>
+                        </div>
+                      </Grid>
+                    </div>
+                  </Grid>
+                  <Grid item xs={12} lg={12}>
+                    <div className={cls.BookingSectionNoBorderTerm}>
+                      <Grid container>
+                        <div className={cls.RowTotalTerm}>
+                          <Grid container>
+                            <Grid item xs={12} lg={12}>
                               <div className={cls.Term}>
                                 <input onChange={this.handleCheckbox} checked={this.state.check} type="checkbox"/>
                                 <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto términos y condiciones</a></span>

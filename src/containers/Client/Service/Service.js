@@ -17,6 +17,7 @@ class Service extends Component {
     this.props.onFetchProperties(this.props.token);
     this.props.onFetchCities(this.props.token);
     this.props.onHolidays(this.props.token);
+    this.props.onInvoice(this.props.token);
   }
   render () {
 
@@ -71,6 +72,7 @@ const mapDispatchToProps = dispatch => {
     onCreateProperty: (token, formData) => dispatch(actions.createProperty(token, formData)),
     onCreateJob: (token, formData) => dispatch(actions.createJob(token, formData)),
     onHolidays: (token) => dispatch(actions.holidays(token)),
+    onInvoice: (token) => dispatch(actions.invoice(token)),
   };
 };
 

@@ -15,7 +15,7 @@ class Itworks extends Component {
       <div className={cls.Itworks}>
       	<Grid container align='center' alignItems='center'>
           <Grid item xs={12} className={cls.TopSeccion}>
-            <Typography variant="headline" gutterBottom className={cls.Typogra}>Como Funciona</Typography>
+            <Typography variant="headline" gutterBottom className={cls.Typogra}>Cómo Funciona</Typography>
           </Grid>
           <Grid item xs={12} sm={6} className={`${cls.Block} ${cls.alinear}`}>
             <img src={Movil} className={cls.Movil} alt="Movil" />

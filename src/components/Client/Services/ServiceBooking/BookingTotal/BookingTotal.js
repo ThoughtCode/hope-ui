@@ -121,8 +121,8 @@ const bookingTotal = (props) => {
                               let summary = price * time;
                               return (
                                 <div key={addon.id} className={cls.containerTotal}>
-                                  <div className={cls.titleAddon}>{addon.label}</div>
-                                  <div className={cls.priceAddon}>${summary.toFixed(2)}</div>
+                                  <div className={cls.titleParameters}>{addon.label}</div>
+                                  <div className={cls.priceParameters}>${summary.toFixed(2)}</div>
                                 </div>
                               );
                             } else {

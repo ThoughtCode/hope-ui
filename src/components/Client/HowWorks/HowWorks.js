@@ -17,7 +17,7 @@ const howWorks = props => {
         <div>
           <div className={cls.Question}>
             <h3>
-              Cómo funciona?
+              ¿Cómo Funciona?
             </h3>
           </div>
           <ul>

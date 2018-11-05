@@ -86,7 +86,6 @@ const cardProfile = props => {
                 <Route path="/cliente/perfil/comentarios" exact render={() => <Commentary rewiewsData={props.user.attributes} />}/>
                 <Route path="/cliente/perfil/metodo-pago" exact render={() => <MetodoPago />}/>
                 <Route path="/cliente/perfil/detalles-facturacion" exact render={() => <InvoicesDetails />}/>
-                {/* <Route path="/cliente/perfil/detalles-facturacion/nuevo" exact render={() => <NewInvoicesDetails />}/> */}
             </div>
           </Grid>
         </Grid>

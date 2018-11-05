@@ -8,6 +8,7 @@ const initialState = {
   holidays: [],
   invoices: [],
   createdInvoice: [],
+  deleteInvoice: [],
 };
 
 const fetchServicesStart = (state, action) => updateObject(state, {
@@ -76,6 +77,19 @@ const createdInvoiceFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const deleteInvoiceStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
+const deleteInvoiceSuccess = (state, action) => updateObject(state, {
+  deleteInvoice: action.deleteInvoice,
+  loading: false,
+});
+
+const deleteInvoiceFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SERVICES_START: return fetchServicesStart(state, action);
@@ -93,6 +107,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.CREATED_INVOICE_START: return createdInvoiceStart(state, action);
     case actionTypes.CREATED_INVOICE_SUCCESS: return createdInvoiceSuccess(state, action);
     case actionTypes.CREATED_INVOICE_FAIL: return createdInvoiceFail(state, action);
+    case actionTypes.DELETE_INVOICE_START: return deleteInvoiceStart(state, action);
+    case actionTypes.DELETE_INVOICE_SUCCESS: return deleteInvoiceSuccess(state, action);
+    case actionTypes.DELETE_INVOICE_FAIL: return deleteInvoiceFail(state, action);
     default: return state;
   }
 };

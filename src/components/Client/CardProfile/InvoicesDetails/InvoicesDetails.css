@@ -99,15 +99,27 @@
   }
 
   .submit {
-    background-color: white;
-    color: #0069a7;
+    background-color: #0069a7;
+    color: white;
     font-size: 1.8em;
     padding: 12px 20px;
     border: none;
     cursor: pointer;
     float: right;
     width: 48%;
-    margin: 10px 0 0 0;
+    margin: 10px 0px 0 10PX;
+  }
+
+  .buttonClose {
+    background-color: #0069a7;
+    color: white;
+    font-size: 1.8em;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    width: 48%;
+    margin: 10px 10px 0 0;
   }
 
   .submit:hover {
@@ -119,11 +131,11 @@
     background-color: #6aa7ca;
     color: white;
     font-size: 1.8rem;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border: none;
     float: right;
     width: 48%;
-    margin: 10px 0 0 0;
+    margin: 10px 0 0 10px;
   }
 
   .ContainerError {

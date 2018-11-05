@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from '../../../../../axios-instance';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Alert from 'react-s-alert';
@@ -13,26 +14,239 @@ class Checking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      formData: {
+        social_reason: {
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        identification_type: {
+          value: 'consumidor_final',
+          validation: {
+            required: true,
+          },
+          valid: true,
+          touched: true,
+          errorText: null,
+        },
+        identification: {
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        email: {
+          elementType: 'input',
+          label: 'Correo',
+          elementConfig: {
+            type: 'email',
+            placeholder: 'ejemplo@ejemplo.com',
+          },
+          value: '',
+          validation: {
+            required: true,
+            isEmail: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        telephone: {
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+        address: {
+          value: '',
+          validation: {
+            required: true,
+          },
+          valid: false,
+          touched: false,
+          errorText: null,
+        },
+      },
       formIsValid: false,
       selectedOption: 1,
       check: false,
       card_id: 1,
       invoiceSelect: 0,
+      close: true,
+      invoiceDetails: [],
     };
     this.handleChange = this.handleChange.bind(this);
+    this.invoiceSelectOptionType = this.invoiceSelectOptionType.bind(this);
+    this.handlerClose = this.handlerClose.bind(this);
+    this.handlerOpen = this.handlerOpen.bind(this);
   }
   
+  componentDidMount () {
+    if (this.props.invoices[0]) {
+      let idInvoiceDefault = this.props.invoices[0].id;
+      let invoice_details = this.props.invoices
+      this.setState({
+        invoiceSelect: idInvoiceDefault,
+        invoiceDetails: invoice_details,
+      })
+    }
+  }
+
+  checkValidity(value, rules) {
+    let isValid = true;
+    let errorText = null;
+    if (!rules) {
+      return true;
+    }
+
+    if (rules.required) {
+      isValid = value.trim() !== '' && isValid;
+      errorText = 'Requerido.';
+    }
+
+    if (rules.minLength) {
+      isValid = value.length >= rules.minLength && isValid;
+      errorText = `Debe contener mas de ${rules.minLength} caracteres.`;
+    }
+
+    if (rules.maxLength) {
+      isValid = value.length <= rules.maxLength && isValid;
+      errorText = `Debe contener menos de ${rules.maxLength} caracteres.`;
+    }
+
+    if (rules.isEmail) {
+      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+      isValid = pattern.test(value) && isValid;
+      errorText = 'Debe ser un email valido.';
+    }
+
+    if (rules.isNumeric) {
+      const pattern = /^\d+$/;
+      isValid = pattern.test(value) && isValid;
+      errorText = 'Debe ser solo numerico.';
+    }
+
+    return {
+      isValid,
+      errorText,
+    };
+  }
+
+  inputChangedHandler = (event, controlName) => {
+    const updatedControls = {
+      ...this.state.formData,
+      [controlName]: {
+        ...this.state.formData[controlName],
+        value: event.target.value,
+        valid: this.checkValidity(
+          event.target.value,
+          this.state.formData[controlName].validation,
+        ).isValid,
+        errorText: this.checkValidity(
+          event.target.value,
+          this.state.formData[controlName].validation,
+        ).errorText,
+        touched: true,
+      },
+    };
+
+    let formIsValid = true;
+    for (const inputIdentifier in updatedControls) {
+      formIsValid = updatedControls[inputIdentifier].valid && formIsValid;
+    }
+
+    this.setState({
+      formData: updatedControls,
+      formIsValid,
+    });
+  }
+  
+  invoiceSelectOptionType = (event) => {
+    const target = event.target;
+    const value = target.value;
+    this.setState({
+      ...this.state,
+      formData: {
+        ...this.state.formData,
+        identification_type: {
+          ...this.state.formData.identification_type,
+          value: value
+        }
+      }
+    })
+  }
+
+  formInvoice = (event) => {
+    event.preventDefault();
+    const formData = {};
+    for (const formElementIdentifier in this.state.formData) {
+      formData[formElementIdentifier] = this.state.formData[formElementIdentifier].value;
+    }
+    const invoice_detail = {
+      invoice_detail: formData,
+    };
+    const headers = {
+      headers: {
+        Authorization: `Token token=${localStorage.getItem('token')}`,
+      },
+    };
+      axios.post('/customers/invoice_details', invoice_detail, headers)
+        .then((res) => {
+          let new_invoice = res.data.invoice_detail.data
+
+          console.log(new_invoice)
+          
+          let new_invoices = [new_invoice].concat(this.state.invoiceDetails)
+
+          console.log(new_invoices)
+
+          let id_invoice_select = res.data.invoice_detail.data.id;
+          this.setState({ 
+            invoiceDetails: new_invoices,
+            invoiceSelect: id_invoice_select, 
+          })
+          Alert.success(res.data.message, {
+            position: 'top',
+            effect: 'genie',
+           });
+         })
+        .catch((err) => {
+          Alert.error(err, {
+            position: 'top',
+            effect: 'genie',
+          });
+        });
+    this.handlerClose()
+  }
+
+  handlerClose = () => {
+    this.setState({
+      ...this.state,
+        close: true
+    })
+  }
+
+  handlerOpen = () => {
+    this.setState({
+      ...this.state,
+        close: false
+    })
+  }
+
   handleCheckbox = () => {
     this.setState({
       check: !this.state.check,
     });
-  }
-  
-  componentDidMount = () => {
-    if (this.props.invoices[0]) {
-      let idInvoiceDefault = this.props.invoices[0].id;
-      this.setState({invoiceSelect: idInvoiceDefault})
-    }
   }
   
   changePageValidator = (event) => {
@@ -65,8 +279,9 @@ class Checking extends Component {
     event.preventDefault();
     const target = event.target;
     const value = target.value;
-    this.props.handleInvoiceChange(value)
-    //this.setState({ invoiceSelect: value});
+    console.log(value)
+    this.setState({ invoiceSelect: value });
+
   }
 
   render () {
@@ -117,18 +332,20 @@ class Checking extends Component {
     }
 
     let invoice = null;
-    if (this.props.invoices.length > 0) {
+    if (this.props.invoices.length > 0 && this.state.close) {
       invoice = (
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
-              {Object.keys(this.props.invoices).length > 0 &&
+              <h4 className={cls.titleQuestion}>Detalles de facturación 1</h4>
+              {Object.keys(this.state.invoiceDetails).length > 0 &&
               <form>
                 <div className={cls.Term}>
-                  <select className={cls.Select}
+                  <select
+                    className={cls.Select}
+                    onChange={this.invoiceSelectChange}
                   >
-                    {this.props.invoices.map( i => {
+                    {this.state.invoiceDetails.map( i => {
                       let identificationType = null;
                       if(i.attributes.identification_type === "consumidor_final" ) {
                         identificationType = "Consumidor final"
@@ -140,11 +357,20 @@ class Checking extends Component {
                         identificationType = "Sin tipo de identificación"
                       }
                       return (
-                        <option key = {i.id} id = {i.id} value = {i.id} onChange={this.invoiceSelectChange}
+                        <option
+                          key = {i.id}
+                          id = {i.id}
+                          value = {i.id}
+                          selected={this.state.invoiceSelect == i.id ? 'selected' : ''}
                         >Razón social: {i.attributes.social_reason}, Identificación: {identificationType}, N°: {i.attributes.identification}</option>
                       )
                     })}
                   </select>
+                  <button
+                    type="button"
+                    className={cls.ButonNewDetailsInvoice}
+                    onClick={this.handlerOpen}
+                  >Agregar facturación</button>
                 </div>
               </form>
               }
@@ -158,16 +384,140 @@ class Checking extends Component {
           <Grid container>
             <Grid item xs={12} lg={12}>
               <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
-              <div>No tiene detalles de facturación, agrege para continuar.</div><br/>
-              <a component={Link} href="/cliente/perfil/detalles-facturacion">
-                <button type="button" className={cls.ButonNewDetailsInvoice}>Agregar facturación</button>
-              </a>
+              <form>
+                <div className={cls.row}>
+                  <div className={cls.col25}>
+                    <label for="socialReason">Razón social:</label>
+                  </div>
+                  <div className={cls.col75}>
+                    <input
+                      className={(!this.state.formData.social_reason.valid && this.state.formData.social_reason.touched) && cls.ContainerError}
+                      type="text"
+                      id="social_reason"
+                      name="social_reason"
+                      value={this.state.formData.social_reason.value}
+                      placeholder="Tú nombre completo"
+                      onChange={(event) => this.inputChangedHandler(event, 'social_reason')}
+                    />
+                    {!this.state.formData.social_reason.valid && this.state.formData.social_reason.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.social_reason.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className={cls.row}>
+                  <div className={cls.col25}>
+                    <label for="identificationType">Identificación:</label>
+                  </div>
+                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                    <select onChange={(event) => this.invoiceSelectOptionType(event)}>
+                      <option value="consumidor_final">Consumidor final</option>
+                      <option value="cedula">Cédula</option>
+                      <option value="ruc">RUC</option>
+                    </select>
+                    {!this.state.formData.identification_type.valid && this.state.formData.identification_type.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.identification_type.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className={cls.col25}>
+                    <label for="identificationNumber">N° de identificación:</label>
+                  </div>
+                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                    <input
+                      className={(!this.state.formData.identification.valid && this.state.formData.identification.touched) && cls.ContainerError}
+                      type="text"
+                      id="identification"
+                      name="identification"
+                      value={this.state.formData.identification.value}
+                      placeholder="00-000-000-000"
+                      onChange={(event) => this.inputChangedHandler(event, 'identification')}
+                    />
+                    {!this.state.formData.identification.valid && this.state.formData.identification.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.identification.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className={cls.row}>
+                  <div className={cls.col25}>
+                    <label for="email">Correo electrónico:</label>
+                  </div>
+                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                    <input
+                      className={(!this.state.formData.email.valid && this.state.formData.email.touched) && cls.ContainerError}
+                      type="text"
+                      id="email"
+                      name="email"
+                      value={this.state.formData.email.value}
+                      placeholder="email@email.com"
+                      onChange={(event) => this.inputChangedHandler(event, 'email')}
+                    />
+                    {!this.state.formData.email.valid && this.state.formData.email.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.email.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className={cls.col25}>
+                    <label for="telephone">Teléfono:</label>
+                  </div>
+                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
+                    <input
+                      className={(!this.state.formData.telephone.valid && this.state.formData.telephone.touched) && cls.ContainerError}
+                      type="text"
+                      id="telephone"
+                      name="telephone"
+                      value={this.state.formData.telephone.value}
+                      placeholder="+593 00 000 0000"
+                      onChange={(event) => this.inputChangedHandler(event, 'telephone')}
+                    />
+                    {!this.state.formData.telephone.valid && this.state.formData.telephone.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.telephone.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div className={cls.row}>
+                  <div className={cls.col25}>
+                    <label for="address">Dirección:</label>
+                  </div>
+                  <div className={cls.col75}>
+                    <input
+                      className={(!this.state.formData.address.valid && this.state.formData.address.touched) && cls.ContainerError}
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={this.state.formData.address.value}
+                      placeholder="Ecuador, Quito - Pichincha"
+                      onChange={(event) => this.inputChangedHandler(event, 'address')}
+                    />
+                    {!this.state.formData.address.valid && this.state.formData.address.touched ? (
+                      <div className={cls.ErrorText}>
+                        {this.state.formData.address.errorText}
+                      </div>
+                    ) : null}
+                  </div>
+                </div>
+                <div>
+                  {this.state.formIsValid ? (
+                    <button className={cls.submit} onClick={(event) => this.formInvoice(event)} >Guardar</button>
+                  ):(
+                    <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
+                  )}
+                </div>
+                <button className={cls.buttonClose} onClick={this.handlerClose}>Cancelar</button>
+              </form>
             </Grid>
           </Grid>
         </div>
       )
     }
-
+    console.log(this.state.invoiceSelect)
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>

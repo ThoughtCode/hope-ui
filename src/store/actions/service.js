@@ -166,3 +166,42 @@ export const createdInvoice = (token, form) => dispatch => {
          dispatch(createdInvoiceFail(err));
        });
 }
+
+export const deleteInvoiceStart = () => ({
+  type: actionTypes.DELETE_INVOICE_START,
+});
+
+export const deleteInvoiceSuccess = id => ({
+  type: actionTypes.DELETE_INVOICE_SUCCESS,
+  id,
+});
+
+export const deleteInvoiceFail = error => ({
+  type: actionTypes.DELETE_INVOICE_FAIL,
+  error,
+});
+
+export const deleteInvoice = (token, id) => (dispatch) => {
+  dispatch(deleteInvoiceStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.delete(`/customers/invoice_details/${id}`, headers)
+    .then((res) => {
+      dispatch(deleteInvoiceSuccess(id));
+      Alert.success(res.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(deleteInvoiceFail(err));
+      Alert.error(err.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    });
+    window.location.reload()
+};

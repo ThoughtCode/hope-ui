@@ -27,6 +27,7 @@ export {
   holidays,
   invoices,
   createdInvoice,
+  deleteInvoice,
 } from './service';
 export {
   fetchCities,

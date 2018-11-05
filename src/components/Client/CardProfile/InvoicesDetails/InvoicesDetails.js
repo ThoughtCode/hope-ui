@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Invoice from './invoice'
 
 // Components
 import {
@@ -85,16 +86,29 @@ class InvoicesDetails extends Component {
       card_id: 1,
       newInvoice: false,
       invoiceSelect: 0,
+      openForm: true,
     };
-    //this.handleChange = this.handleChange.bind(this);
-    //this.invoiceUpdate = this.invoiceUpdate.bind(this);
-    //this.invoiceChangeType = this.invoiceChangeType.bind(this);
     this.formInvoice = this.formInvoice.bind(this);
-    ///this.invoiceSelectChange = this.invoiceSelectChange.bind(this);
+    this.handlerOpenForm = this.handlerOpenForm.bind(this);
+    this.handlerClose = this.handlerClose.bind(this);
   }
 
   componentDidMount () {
     this.props.onInvoices(localStorage.getItem('token'));
+  }
+
+  handlerOpenForm = () => {
+    this.setState({
+      ...this.state,
+        openForm: false
+    })
+  }
+
+  handlerClose = () => {
+    this.setState({
+      ...this.state,
+        openForm: true
+    })
   }
 
   checkValidity(value, rules) {
@@ -180,21 +194,19 @@ class InvoicesDetails extends Component {
 
   render () {
     let formReg = null;
-    if (this.props.invoices.length > 0) {
+    if (this.props.invoices.length > 0 && this.state.openForm) {
       formReg = (
         <Grid container>
-          Tarjeta creada y listada
-          {/* {Object.keys(props.properties).length > 0 ? 
-            props.properties.map(property => (
-              <p key={property.id}>
-                <strong>{property.name}</strong>
-                <span className={cls.MarginLeft}>{property.attributes.p_street} con {property.attributes.s_street}</span>
-                <Link className={cls.LinkEdit} to={`/cliente/perfil/propiedades/editar/${property.id}`}>Editar</Link>
-                <a className={cls.LinkDelete} onClick={() => props.deleteProperty(localStorage.getItem('token'), property.id)}>Borrar</a>
-              </p>
+          {Object.keys(this.props.invoices).length > 0 ? 
+            this.props.invoices.map(i => (
+              <Invoice
+                key={i.id}
+                id={i.id}
+                data={i.attributes}
+              />
           )) : (
             <h2><strong>No tienes detalles de facturación</strong></h2>
-          )}      */}
+          )}     
         </Grid>
       )
     } else {
@@ -331,13 +343,14 @@ class InvoicesDetails extends Component {
               <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
             )}
           </div>
+          <button className={cls.buttonClose} onClick={this.handlerClose}>Cancelar</button>
         </form>
       )
     }
     return (
       <div className={cls.Div}>
-        {this.props.invoices.length > 0 ? (
-          <Link className={cls.ButtonEdit} to="/cliente/perfil/detalles-facturacion/nuevo"><span>Nuevo</span></Link>
+        {this.props.invoices.length > 0 && this.state.openForm ? (
+          <button className={cls.ButtonEdit} onClick={this.handlerOpenForm}><span>Nuevo</span></button>
         ):('')}
         <h3 className={cls.CardTitle}><span>Detalles de facturación</span></h3>
         <Grid className={cls.CardPrincipalAccount} container>

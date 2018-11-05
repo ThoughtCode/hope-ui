@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Alert from 'react-s-alert';
 
@@ -12,9 +13,11 @@ class Checking extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      formIsValid: false,
       selectedOption: 1,
       check: false,
-      card_id: 1
+      card_id: 1,
+      invoiceSelect: 0,
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -25,12 +28,25 @@ class Checking extends Component {
     });
   }
   
+  componentDidMount = () => {
+    if (this.props.invoices[0]) {
+      let idInvoiceDefault = this.props.invoices[0].id;
+      this.setState({invoiceSelect: idInvoiceDefault})
+    }
+  }
+  
   changePageValidator = (event) => {
     event.preventDefault();
     let installment = this.state.selectedOption;
     let cardId = this.state.card_id;
+    let invoiceId = this.state.invoiceSelect;
     if (this.state.check) {
-      this.props.nextPage(event, 'Checking', cardId, installment)
+      this.props.nextPage(event, 'Checking', cardId, installment, invoiceId)
+    } else if (this.state.invoiceSelect == 0) {
+      Alert.error('Debes seleccionar un detalle de facturacion', {
+        position: 'top',
+        effect: 'genie',
+      });
     } else {
       Alert.error('Debes aceptar los términos y condiciones para avanzar', {
         position: 'top',
@@ -43,6 +59,14 @@ class Checking extends Component {
     const target = e.target;
     const value = target.value;
     this.setState({ selectedOption: value });
+  }
+
+  invoiceSelectChange = (event) => {
+    event.preventDefault();
+    const target = event.target;
+    const value = target.value;
+    this.props.handleInvoiceChange(value)
+    //this.setState({ invoiceSelect: value});
   }
 
   render () {
@@ -82,7 +106,6 @@ class Checking extends Component {
       total = (base + price + iva);
     }
     
-    
     if (this.props.form.recurrent.value === '0') {
       frequency = 'una vez';
     } else if (this.props.form.recurrent.value === '1') {
@@ -92,6 +115,59 @@ class Checking extends Component {
     } else if (this.props.form.recurrent.value === '3') {
       frequency = 'mensual';
     }
+
+    let invoice = null;
+    if (this.props.invoices.length > 0) {
+      invoice = (
+        <div className={cls.RowTotalTerm}>
+          <Grid container>
+            <Grid item xs={12} lg={12}>
+              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
+              {Object.keys(this.props.invoices).length > 0 &&
+              <form>
+                <div className={cls.Term}>
+                  <select className={cls.Select}
+                  >
+                    {this.props.invoices.map( i => {
+                      let identificationType = null;
+                      if(i.attributes.identification_type === "consumidor_final" ) {
+                        identificationType = "Consumidor final"
+                      }else if(i.attributes.identification_type === "cedula") {
+                        identificationType = "Cédula"
+                      }else if(i.attributes.identification_type === "ruc") {
+                        identificationType = "RUC"
+                      }else{
+                        identificationType = "Sin tipo de identificación"
+                      }
+                      return (
+                        <option key = {i.id} id = {i.id} value = {i.id} onChange={this.invoiceSelectChange}
+                        >Razón social: {i.attributes.social_reason}, Identificación: {identificationType}, N°: {i.attributes.identification}</option>
+                      )
+                    })}
+                  </select>
+                </div>
+              </form>
+              }
+            </Grid>
+          </Grid>
+        </div>
+      )
+    } else {
+      invoice = (
+        <div className={cls.RowTotalTerm}>
+          <Grid container>
+            <Grid item xs={12} lg={12}>
+              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
+              <div>No tiene detalles de facturación, agrege para continuar.</div><br/>
+              <a component={Link} href="/cliente/perfil/detalles-facturacion">
+                <button type="button" className={cls.ButonNewDetailsInvoice}>Agregar facturación</button>
+              </a>
+            </Grid>
+          </Grid>
+        </div>
+      )
+    }
+
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>
@@ -260,66 +336,7 @@ class Checking extends Component {
                   <Grid item xs={12} lg={12}>
                     <div className={cls.BookingSectionNoBorderTerm}>
                       <Grid container>
-                        <div className={cls.RowTotalTerm}>
-                          <Grid container>
-                            <Grid item xs={12} lg={12}>
-                              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
-                              <form>
-                                <div className={cls.row}>
-                                  <div className={cls.col25}>
-                                    <label for="socialReason">Razón social:</label>
-                                  </div>
-                                  <div className={cls.col75}>
-                                    <input type="text" id="fname" name="firstname" placeholder="Tú nombre completo" />
-                                  </div>
-                                </div>
-                                <div className={cls.row}>
-                                  <div className={cls.col25}>
-                                    <label for="identification">Identificación:</label>
-                                  </div>
-                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
-                                    <select id="identification" name="identification">
-                                      <option value="consumidor">Consumidor final</option>
-                                      <option value="cedula">Cédula</option>
-                                      <option value="ruc">RUC</option>
-                                    </select>
-                                  </div>
-                                  <div className={cls.col25}>
-                                    <label for="identificationNumber">N° de identificación:</label>
-                                  </div>
-                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
-                                    <input type="text" id="identificationType" name="identificationType" />
-                                  </div>
-                                </div>
-                                <div className={cls.row}>
-                                  <div className={cls.col25}>
-                                    <label for="email">Correo electrónico:</label>
-                                  </div>
-                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
-                                    <input type="text" id="email" name="email" placeholder="email@email.com" />
-                                  </div>
-                                  <div className={cls.col25}>
-                                    <label for="telephone">Teléfono:</label>
-                                  </div>
-                                  <div className={`${cls.col25} ${cls.fixNoPadding}`}>
-                                    <input type="text" id="telephone" name="telephone" placeholder="+593 98 978 9878" />
-                                  </div>
-                                </div>
-                                <div className={cls.row}>
-                                  <div className={cls.col25}>
-                                    <label for="address">Dirección:</label>
-                                  </div>
-                                  <div className={cls.col75}>
-                                    <input type="text" id="address" name="address" placeholder="La floresta, 32-43" />
-                                  </div>
-                                </div>
-                                <div className={cls.row}>
-                                  <input type="submit" value="Guardar" />
-                                </div>
-                              </form>
-                            </Grid>
-                          </Grid>
-                        </div>
+                        {invoice}
                       </Grid>
                     </div>
                   </Grid>

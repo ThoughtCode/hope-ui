@@ -54,6 +54,10 @@ class ServiceBooking extends Component {
     creditCardId: null,
     cardId: null,
     installments: 1,
+    invoiceId: {
+      value: '',
+      errorText: 'Debe elegir un detalle de facturación'
+    }
   };
 
   componentDidMount () {
@@ -138,6 +142,21 @@ class ServiceBooking extends Component {
             property: {
               ...this.state.form.property,
               value: property.attributes.id,
+            },
+          },
+        });
+      } 
+    }
+
+  handleInvoiceUpdate = (invoice) => {
+    if (invoice != undefined){
+        this.setState({
+          ...this.state,
+          invoiceId: {
+            ...this.state.invoiceId,
+            value: {
+              ...this.state.form.value,
+              value: invoice
             },
           },
         });
@@ -285,9 +304,6 @@ class ServiceBooking extends Component {
 
   changeDatetimeHandler = (dateTime) => {
     let holiday = this.is_holiday(dateTime)
-
-
-
     this.setState({
       ...this.state,
       form: {
@@ -313,12 +329,13 @@ class ServiceBooking extends Component {
     return is_holiday
   }
 
-  createJobHandler = (event, installments) => {
+  createJobHandler = (event, installments, invoice_detail_id) => {
     event.preventDefault();
     const formData = {};
     formData["property_id"] = this.state.form.property.value;
     formData["started_at"] = this.state.form.started_at;
     formData["details"] = this.state.form.details;
+    formData["invoice_detail_id"] = invoice_detail_id;
     formData["frequency"] = parseInt(this.state.form.recurrent.value, 10);
     formData["job_details_attributes"] = [{
       service_id: this.state.form.services_base.id,
@@ -349,7 +366,7 @@ class ServiceBooking extends Component {
     this.props.createJob(localStorage.getItem('token'), job);
   };
 
-  nextPage = (event, actual_page, card_id, installments) => {
+  nextPage = (event, actual_page, card_id, installments, invoiceId) => {
     event.preventDefault();
     if (actual_page === 'Service') {
       if (this.state.form.services_base.id === 0) {
@@ -393,7 +410,7 @@ class ServiceBooking extends Component {
         thanks: true,
         cardId: card_id,
       });
-      this.createJobHandler(event, installments, this.state.cardId);
+      this.createJobHandler(event, installments, invoiceId);
     } else if (actual_page === 'Payment') {
       this.setState({
         service: false,
@@ -491,7 +508,11 @@ class ServiceBooking extends Component {
                           backPage={this.backPage}
                           nextPage={this.nextPage}
                           form={this.state.form}
-                          serviceFee={this.props.serviceFee} />
+                          serviceFee={this.props.serviceFee}
+                          invoices={this.props.invoices}
+                          handleInvoiceUpdate={this.handleInvoiceUpdate}
+                          handleInvoiceChange={this.handleInvoiceChange}
+                          />
                       </Grid>
                       <Grid item xs={12} sm={8} md={7} lg={6}>
                         <HowWorks />

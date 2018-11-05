@@ -6,7 +6,8 @@ const initialState = {
   service: [],
   loading: false,
   holidays: [],
-  invoice: [],
+  invoices: [],
+  createdInvoice: [],
 };
 
 const fetchServicesStart = (state, action) => updateObject(state, {
@@ -49,16 +50,29 @@ const holidaysFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
-const invoiceStart = (state, action) => updateObject(state, {
+const invoicesStart = (state, action) => updateObject(state, {
   loading: true,
 });
 
-const invoiceSuccess = (state, action) => updateObject(state, {
-  invoice: action.invoice,
+const invoicesSuccess = (state, action) => updateObject(state, {
+  invoices: action.invoices,
   loading: false,
 });
 
-const invoiceFail = (state, action) => updateObject(state, {
+const invoicesFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
+const createdInvoiceStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
+const createdInvoiceSuccess = (state, action) => updateObject(state, {
+  createdInvoice: action.createdInvoice,
+  loading: false,
+});
+
+const createdInvoiceFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
@@ -73,9 +87,12 @@ const reducer = (state = initialState, action) => {
     case actionTypes.HOLIDAYS_START: return holidaysStart(state, action);
     case actionTypes.HOLIDAYS_SUCCESS: return holidaysSuccess(state, action);
     case actionTypes.HOLIDAYS_FAIL: return holidaysFail(state, action);
-    case actionTypes.INVOICE_START: return invoiceStart(state, action);
-    case actionTypes.INVOICE_SUCCESS: return invoiceSuccess(state, action);
-    case actionTypes.INVOICE_FAIL: return invoiceFail(state, action);
+    case actionTypes.INVOICES_START: return invoicesStart(state, action);
+    case actionTypes.INVOICES_SUCCESS: return invoicesSuccess(state, action);
+    case actionTypes.INVOICES_FAIL: return invoicesFail(state, action);
+    case actionTypes.CREATED_INVOICE_START: return createdInvoiceStart(state, action);
+    case actionTypes.CREATED_INVOICE_SUCCESS: return createdInvoiceSuccess(state, action);
+    case actionTypes.CREATED_INVOICE_FAIL: return createdInvoiceFail(state, action);
     default: return state;
   }
 };

@@ -1,4 +1,5 @@
 import * as actionTypes from './actionTypes';
+import Alert from 'react-s-alert';
 import axios from '../../axios-instance';
 
 export const fetchServicesSuccess = services => ({
@@ -96,3 +97,111 @@ export const holidays = (token) => dispatch => {
       dispatch(holidaysFail(err));
     });
 }
+
+export const invoicesStart = () => ({
+  type: actionTypes.INVOICES_START,
+});
+
+export const invoicesSuccess = invoices => ({
+  type: actionTypes.INVOICES_SUCCESS,
+  invoices,
+})
+
+export const invoicesFail = error => ({
+  type: actionTypes.INVOICES_FAIL,
+  error,
+});
+
+export const invoices = (token) => dispatch => {
+  dispatch(invoicesStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.get('/customers/invoice_details', headers)
+    .then((res) => {
+      let invoices = [];
+      invoices = res.data.invoice_detail.data;
+      dispatch(invoicesSuccess(invoices));
+    })
+    .catch((err) => {
+      dispatch(invoicesFail(err));
+    });
+}
+
+export const createdInvoiceStart = () => ({
+  type: actionTypes.CREATED_INVOICE_START,
+});
+
+export const createdInvoiceSuccess = createdInvoice => ({
+  type: actionTypes.CREATED_INVOICE_SUCCESS,
+  createdInvoice,
+})
+
+export const createdInvoiceFail = error => ({
+  type: actionTypes.CREATED_INVOICE_FAIL,
+  error,
+});
+
+export const createdInvoice = (token, form) => dispatch => {
+  dispatch(createdInvoiceStart());
+  const headers = {
+   headers: {
+     Authorization: `Token token=${token}`,
+   },
+  };
+  axios.post('/customers/invoice_details', form, headers)
+       .then((res) => {
+         let createdInvoice = [];
+         createdInvoice = res.data.invoice_detail.data;
+         dispatch(createdInvoiceSuccess(createdInvoice));
+         Alert.success(res.data.message, {
+          position: 'top',
+          effect: 'genie',
+         });
+         window.location.reload()
+        })
+       .catch((err) => {
+         dispatch(createdInvoiceFail(err));
+       });
+}
+
+export const deleteInvoiceStart = () => ({
+  type: actionTypes.DELETE_INVOICE_START,
+});
+
+export const deleteInvoiceSuccess = id => ({
+  type: actionTypes.DELETE_INVOICE_SUCCESS,
+  id,
+});
+
+export const deleteInvoiceFail = error => ({
+  type: actionTypes.DELETE_INVOICE_FAIL,
+  error,
+});
+
+export const deleteInvoice = (token, id) => (dispatch) => {
+  dispatch(deleteInvoiceStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.delete(`/customers/invoice_details/${id}`, headers)
+    .then((res) => {
+      dispatch(deleteInvoiceSuccess(id));
+      Alert.success(res.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(deleteInvoiceFail(err));
+      Alert.error(err.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    });
+    window.location.reload()
+};

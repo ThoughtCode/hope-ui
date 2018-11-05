@@ -12,6 +12,7 @@ import Commentary from './Commentary/Commentary'
 import MetodoPago from './MetodoPago/MetodoPago';
 import CardProperties from './CardProperties/CardProperties';
 import NewProperty from './CardProperties/NewProperty/NewProperty';
+import InvoicesDetails from './InvoicesDetails/InvoicesDetails';
 
 // Css
 import cls from './CardProfile.css';
@@ -48,6 +49,11 @@ const cardProfile = props => {
                   <NavLink className={cls.Link} to="/cliente/perfil/metodo-pago">Metodo de pago</NavLink>
                 </li>
               )}/>
+              <Route path="/cliente/perfil/invoices-details" children={({match}) => (
+                <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
+                  <NavLink className={cls.Link} to="/cliente/perfil/detalles-facturacion">Detalles de facturación</NavLink>
+                </li>
+              )}/>
             </ul>
           </div>
         </Grid>
@@ -79,6 +85,7 @@ const cardProfile = props => {
                 />
                 <Route path="/cliente/perfil/comentarios" exact render={() => <Commentary rewiewsData={props.user.attributes} />}/>
                 <Route path="/cliente/perfil/metodo-pago" exact render={() => <MetodoPago />}/>
+                <Route path="/cliente/perfil/detalles-facturacion" exact render={() => <InvoicesDetails />}/>
             </div>
           </Grid>
         </Grid>

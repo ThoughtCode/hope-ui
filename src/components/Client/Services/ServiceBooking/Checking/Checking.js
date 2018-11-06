@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from '../../../../../axios-instance';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Alert from 'react-s-alert';
 
@@ -203,20 +202,13 @@ class Checking extends Component {
     axios.post('/customers/invoice_details', invoice_detail, headers)
       .then((res) => {
         let new_invoice = res.data.invoice_detail.data
-
-        console.log(new_invoice)
-        
         let new_invoices = [new_invoice].concat(this.state.invoiceDetails)
-
-        console.log(new_invoices)
-
         let id_invoice_select = res.data.invoice_detail.data.id;
         this.setState({ 
           invoiceDetails: new_invoices,
           invoiceSelect: id_invoice_select, 
           close: true,
         })
-        console.log(this.state)
         Alert.success(res.data.message, {
           position: 'top',
           effect: 'genie',
@@ -282,7 +274,6 @@ class Checking extends Component {
     event.preventDefault();
     const target = event.target;
     const value = target.value;
-    console.log(value)
     this.setState({ invoiceSelect: value });
 
   }

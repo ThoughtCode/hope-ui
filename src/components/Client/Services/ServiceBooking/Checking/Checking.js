@@ -200,41 +200,44 @@ class Checking extends Component {
         Authorization: `Token token=${localStorage.getItem('token')}`,
       },
     };
-      axios.post('/customers/invoice_details', invoice_detail, headers)
-        .then((res) => {
-          let new_invoice = res.data.invoice_detail.data
+    axios.post('/customers/invoice_details', invoice_detail, headers)
+      .then((res) => {
+        let new_invoice = res.data.invoice_detail.data
 
-          console.log(new_invoice)
-          
-          let new_invoices = [new_invoice].concat(this.state.invoiceDetails)
+        console.log(new_invoice)
+        
+        let new_invoices = [new_invoice].concat(this.state.invoiceDetails)
 
-          console.log(new_invoices)
+        console.log(new_invoices)
 
-          let id_invoice_select = res.data.invoice_detail.data.id;
-          this.setState({ 
-            invoiceDetails: new_invoices,
-            invoiceSelect: id_invoice_select, 
-          })
-          Alert.success(res.data.message, {
-            position: 'top',
-            effect: 'genie',
-           });
-         })
-        .catch((err) => {
-          Alert.error(err, {
-            position: 'top',
-            effect: 'genie',
+        let id_invoice_select = res.data.invoice_detail.data.id;
+        this.setState({ 
+          invoiceDetails: new_invoices,
+          invoiceSelect: id_invoice_select, 
+          close: true,
+        })
+        console.log(this.state)
+        Alert.success(res.data.message, {
+          position: 'top',
+          effect: 'genie',
           });
+        })
+      .catch((err) => {
+        Alert.error(err, {
+          position: 'top',
+          effect: 'genie',
         });
-    this.handlerClose()
+      });
   }
 
-  handlerClose = () => {
+  handlerClose = (e) => {
+    e.preventDefault();
     this.setState({
       ...this.state,
         close: true
     })
   }
+
 
   handlerOpen = () => {
     this.setState({
@@ -332,12 +335,12 @@ class Checking extends Component {
     }
 
     let invoice = null;
-    if (this.props.invoices.length > 0 && this.state.close) {
+    if (this.state.invoiceDetails.length > 0 && this.state.close) {
       invoice = (
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Detalles de facturación 1</h4>
+              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
               {Object.keys(this.state.invoiceDetails).length > 0 &&
               <form>
                 <div className={cls.Term}>
@@ -510,14 +513,13 @@ class Checking extends Component {
                     <button disabled className={cls.ButtonDisabled}><span>Guardar</span></button>
                   )}
                 </div>
-                <button className={cls.buttonClose} onClick={this.handlerClose}>Cancelar</button>
+                <button className={cls.buttonClose} onClick={(event) => this.handlerClose(event)}>Cancelar</button>
               </form>
             </Grid>
           </Grid>
         </div>
       )
     }
-    console.log(this.state.invoiceSelect)
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>

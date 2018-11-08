@@ -9,6 +9,8 @@ import Grid from 'material-ui/Grid';
 // Css
 import cls from './Checking.css';
 
+var _updated = false;
+
 class Checking extends Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,8 @@ class Checking extends Component {
           value: '',
           validation: {
             required: true,
+            maxLength: 10,
+            minLength: 10,
           },
           valid: false,
           touched: false,
@@ -61,6 +65,8 @@ class Checking extends Component {
           value: '',
           validation: {
             required: true,
+            maxLength: 10,
+            minLength: 10,
           },
           valid: false,
           touched: false,
@@ -82,7 +88,7 @@ class Checking extends Component {
       card_id: 1,
       invoiceSelect: 0,
       close: true,
-      invoiceDetails: [],
+      invoiceDetails: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.invoiceSelectOptionType = this.invoiceSelectOptionType.bind(this);
@@ -91,6 +97,7 @@ class Checking extends Component {
   }
   
   componentDidMount () {
+    _updated = false;
     if (this.props.invoices[0]) {
       let idInvoiceDefault = this.props.invoices[0].id;
       let invoice_details = this.props.invoices
@@ -98,6 +105,78 @@ class Checking extends Component {
         invoiceSelect: idInvoiceDefault,
         invoiceDetails: invoice_details,
       })
+    } else {
+      let socialReason = this.props.user.attributes.first_name +' '+ this.props.user.attributes.last_name;
+      let emailUser = this.props.user.attributes.email;
+      let telephone = this.props.user.attributes.cell_phone ? this.props.user.attributes.cell_phone : this.props.selectedProperty.attributes.phone ;
+      let nameAddress = this.props.selectedProperty.attributes.name + ' ' + this.props.selectedProperty.attributes.number + ' ' + this.props.selectedProperty.attributes.city;
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          social_reason: {
+            ...this.state.formData.social_reason,
+            value: socialReason,
+            valid: true,
+            touched: true,
+          },
+          email: {
+            ...this.state.formData.email,
+            value: emailUser,
+            valid: true,
+            touched: true,
+          },
+          telephone: {
+            ...this.state.formData.telephone,
+            value: telephone,
+            valid: true,
+            touched: true,
+          },
+          address: {
+            ...this.state.formData.address,
+            value: nameAddress,
+            valid: true,
+            touched: true,
+          },
+        }
+      })
+    };
+  }
+
+  componentDidUpdate() {
+    if (this.state.formData.identification_type.value === "cedula" && !_updated) {
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          identification: {
+            ...this.state.formData.identification,
+            validation: {
+              ...this.state.formData.identification.validation,
+              maxLength: 10,
+              minLength: 10,
+            }
+          }
+        }
+      })
+      _updated = true;
+    }
+    if (this.state.formData.identification_type.value === "ruc" && !_updated) {
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          identification: {
+            ...this.state.formData.identification,
+            validation: {
+              ...this.state.formData.identification.validation,
+              maxLength: 13,
+              minLength: 13,
+            }
+          }
+        }
+      })
+      _updated = true;
     }
   }
 
@@ -115,12 +194,12 @@ class Checking extends Component {
 
     if (rules.minLength) {
       isValid = value.length >= rules.minLength && isValid;
-      errorText = `Debe contener mas de ${rules.minLength} caracteres.`;
+      errorText = `Debe contener ${rules.minLength} caracteres.`;
     }
 
     if (rules.maxLength) {
       isValid = value.length <= rules.maxLength && isValid;
-      errorText = `Debe contener menos de ${rules.maxLength} caracteres.`;
+      errorText = `Debe contener ${rules.maxLength} caracteres.`;
     }
 
     if (rules.isEmail) {
@@ -173,6 +252,7 @@ class Checking extends Component {
   invoiceSelectOptionType = (event) => {
     const target = event.target;
     const value = target.value;
+    _updated = false;
     this.setState({
       ...this.state,
       formData: {
@@ -275,7 +355,6 @@ class Checking extends Component {
     const target = event.target;
     const value = target.value;
     this.setState({ invoiceSelect: value });
-
   }
 
   render () {
@@ -331,13 +410,13 @@ class Checking extends Component {
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
+              <h4 className={cls.titleQuestion}>Datos para tú factura</h4>
               {Object.keys(this.state.invoiceDetails).length > 0 &&
               <form>
                 <div className={cls.Term}>
                   <select
                     className={cls.Select}
-                    onChange={this.invoiceSelectChange}
+                    onChange={(e) => this.invoiceSelectChange(e)}
                   >
                     {this.state.invoiceDetails.map( i => {
                       let identificationType = null;
@@ -377,7 +456,7 @@ class Checking extends Component {
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Detalles de facturación</h4>
+              <h4 className={cls.titleQuestion}>Datos para tú factura</h4>
               <form>
                 <div className={cls.row}>
                   <div className={cls.col25}>
@@ -466,7 +545,7 @@ class Checking extends Component {
                       id="telephone"
                       name="telephone"
                       value={this.state.formData.telephone.value}
-                      placeholder="+593 00 000 0000"
+                      placeholder="9999999999"
                       onChange={(event) => this.inputChangedHandler(event, 'telephone')}
                     />
                     {!this.state.formData.telephone.valid && this.state.formData.telephone.touched ? (

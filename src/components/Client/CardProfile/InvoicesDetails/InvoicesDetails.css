@@ -106,8 +106,8 @@
     border: none;
     cursor: pointer;
     float: right;
-    width: 48%;
-    margin: 10px 0px 0 10PX;
+    width: 46%;
+    margin: 10px 0px 0 3%;
   }
 
   .buttonClose {
@@ -118,8 +118,8 @@
     border: none;
     cursor: pointer;
     float: right;
-    width: 48%;
-    margin: 10px 10px 0 0;
+    width: 46%;
+    margin: 10px 3% 0 0;
   }
 
   .submit:hover {

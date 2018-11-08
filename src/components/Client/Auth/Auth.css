@@ -48,6 +48,10 @@
   width: 92% !important;
 }
 
+.bootstrapInput{
+  width: 94% !important;
+}
+
 @media only screen and (max-width: 600px){
   .bootstrapInput{
     width: 100% !important;

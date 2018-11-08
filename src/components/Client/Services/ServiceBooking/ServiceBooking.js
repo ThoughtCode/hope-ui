@@ -57,7 +57,8 @@ class ServiceBooking extends Component {
     invoiceId: {
       value: '',
       errorText: 'Debe elegir un detalle de facturación'
-    }
+    },
+    selectedProperty: 'Mi Casa'
   };
 
   componentDidMount () {
@@ -135,18 +136,19 @@ class ServiceBooking extends Component {
 
   handlePropertyUpdate = (property) => {
     if (property != undefined){
-        this.setState({
-          ...this.state,
-          form: {
-            ...this.state.form,
-            property: {
-              ...this.state.form.property,
-              value: property.attributes.id,
-            },
-          },
-        });
-      } 
+      this.setState({
+        ...this.state,
+        form: {
+          ...this.state.form,
+          property: {
+            ...this.state.form.property,
+            value: property.attributes.id,
+          }, 
+        },
+        selectedProperty: property
+      });
     }
+  }
 
   handleInvoiceUpdate = (invoice) => {
     if (invoice != undefined){
@@ -164,7 +166,14 @@ class ServiceBooking extends Component {
     }
 
   handlePropertyChange = (event) => {
-    if (event.target.value !== "") {
+    if (event.target.value !== "" && this.props.properties.length > 0) {
+      let property = this.props.properties.filter(p => parseInt(p.attributes.id) === parseInt(event.target.value))
+      let selectProperty = null
+      if (property.length > 0){
+        property.map( pro => (
+          selectProperty = pro
+        ))
+      }
       this.setState({
         ...this.state,
         form: {
@@ -174,6 +183,7 @@ class ServiceBooking extends Component {
             value: event.target.value,
           },
         },
+        selectedProperty: selectProperty,
       });
     } else {
       this.setState({
@@ -470,7 +480,8 @@ class ServiceBooking extends Component {
                         inputChangedHandler={this.inputChangedHandler}
                         changeDatetimeHandler={this.changeDatetimeHandler}
                         changeDatetimeFinishedHandler={this.changeDatetimeFinishedHandler}
-                        handleTextChange={this.handleTextChange}/>
+                        handleTextChange={this.handleTextChange}
+                        selectedProperty={this.state.selectedProperty}/>
                     </Grid>
                   </Grid>
                   <Grid item xs={12} sm={12} md={5} lg={5}>
@@ -505,6 +516,7 @@ class ServiceBooking extends Component {
                     <Grid container justify="center">
                       <Grid item xs={12} sm={12} md={12} lg={12}>
                         <Checking
+                          user={this.props.user}
                           backPage={this.backPage}
                           nextPage={this.nextPage}
                           form={this.state.form}
@@ -512,7 +524,8 @@ class ServiceBooking extends Component {
                           invoices={this.props.invoices}
                           handleInvoiceUpdate={this.handleInvoiceUpdate}
                           handleInvoiceChange={this.handleInvoiceChange}
-                          />
+                          selectedProperty={this.state.selectedProperty}
+                        />
                       </Grid>
                       <Grid item xs={12} sm={8} md={7} lg={6}>
                         <HowWorks />

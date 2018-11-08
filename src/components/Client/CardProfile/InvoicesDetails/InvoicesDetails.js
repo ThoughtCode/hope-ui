@@ -205,7 +205,7 @@ class InvoicesDetails extends Component {
                 data={i.attributes}
               />
           )) : (
-            <h2><strong>No tienes detalles de facturación</strong></h2>
+            <h2><strong>No tienes datos para tú factura</strong></h2>
           )}     
         </Grid>
       )

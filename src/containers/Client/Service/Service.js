@@ -13,6 +13,7 @@ import * as actions from '../../../store/actions';
 
 class Service extends Component {
   componentDidMount () {
+    this.props.onFetchUser(this.props.token);
     this.props.onFetchService(this.props.match.params.service_id, this.props.token);
     this.props.onFetchProperties(this.props.token);
     this.props.onFetchCities(this.props.token);
@@ -33,6 +34,7 @@ class Service extends Component {
       )
       serviceBooking = (
         <ServiceBooking
+          user={this.props.user}
           service_base={this.props.service.attributes.service_base}
           services_addons={this.props.service.attributes.services_addons}
           services_parameters={this.props.service.attributes.services_parameters}
@@ -66,6 +68,7 @@ class Service extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
+    onFetchUser: (token) => dispatch(actions.fetchCurrentUser(token)),
     onFetchService: (id, token) => dispatch(actions.fetchService(id, token)),
     onFetchProperties: (token) => dispatch(actions.fetchProperties(token)),
     onFetchCities: (token) => dispatch(actions.fetchCities(token)),
@@ -80,6 +83,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     token: state.auth.token || localStorage.getItem('token'),
+    user: state.user.user,
     service: state.service.service,
     holidays: state.service.holidays,
     invoices: state.service.invoices,

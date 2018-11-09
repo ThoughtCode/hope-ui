@@ -21,7 +21,6 @@ class Invoice extends Component {
         position: 'top',
         effect: 'genie',
       });
-      window.location.reload()
     })
     .catch((err) => {
       Alert.error(err.data.message, {

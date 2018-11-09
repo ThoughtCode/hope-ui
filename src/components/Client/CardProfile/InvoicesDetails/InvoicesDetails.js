@@ -92,6 +92,8 @@ class InvoicesDetails extends Component {
       newInvoice: false,
       invoiceSelect: 0,
       openForm: true,
+      invoiceDetails: [],
+      invoicesUpdated: false,
     };
     this.formInvoice = this.formInvoice.bind(this);
     this.handlerOpenForm = this.handlerOpenForm.bind(this);
@@ -104,6 +106,15 @@ class InvoicesDetails extends Component {
   }
 
   componentDidUpdate() {
+    if (this.props.invoices && this.state.invoicesUpdated == false) {      
+      let invoice_details = this.props.invoices
+      this.setState({
+        ...this.state,
+        invoiceDetails: invoice_details,
+        invoicesUpdated: true,
+      })
+    }
+
     if (this.state.formData.identification_type.value === "cedula" && !_updated) {
       this.setState({
         ...this.state,
@@ -152,6 +163,18 @@ class InvoicesDetails extends Component {
       ...this.state,
         openForm: true
     })
+  }
+
+  deleteInvoiceDetail = (id) => {
+    this.props.onDeleteInvoice(localStorage.getItem('token'), id)
+    this.setState(
+      {
+        invoiceDetails: this.state.invoiceDetails.filter(function(invoiceDetails) 
+        { 
+          return invoiceDetails.id !== id
+        }
+      )}
+    );
   }
 
   checkValidity(value, rules) {
@@ -238,15 +261,16 @@ class InvoicesDetails extends Component {
 
   render () {
     let formReg = null;
-    if (this.props.invoices.length > 0 && this.state.openForm) {
+    if (this.state.invoiceDetails.length > 0 && this.state.openForm) {
       formReg = (
         <Grid container>
-          {Object.keys(this.props.invoices).length > 0 ? 
-            this.props.invoices.map(i => (
+          {Object.keys(this.state.invoiceDetails).length > 0 ? 
+            this.state.invoiceDetails.map(i => (
               <Invoice
                 key={i.id}
                 id={i.id}
                 data={i.attributes}
+                deleteInvoice={this.deleteInvoiceDetail}
               />
           )) : (
             <h2><strong>No tienes datos para tú factura</strong></h2>
@@ -419,6 +443,7 @@ const mapDispatchToProps = dispatch => {
   return {
     onInvoices: (token) => dispatch(actions.invoices(token)),
     onCreatedInvoice: (token, formDataInvoice) => dispatch(actions.createdInvoice(token, formDataInvoice)),
+    onDeleteInvoice: (token, id) => dispatch(actions.deleteInvoice(token, id)),
   }
 }
 

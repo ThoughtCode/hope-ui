@@ -1,34 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Alert from 'react-s-alert';
-import axios from '../../../../axios-instance';
 
 import cls from './invoice.css';
 
-import * as actions from '../../../../store/actions';
-
 
 class Invoice extends Component {
-  deleteInvoice (e, id) {
-    const headers = {
-      headers: {
-        Authorization: `Token token=${localStorage.getItem('token')}`,
-      },
-    };
-    axios.delete(`/customers/invoice_details/${id}`, headers)
-    .then((res) => {
-      Alert.success(res.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
-    })
-    .catch((err) => {
-      Alert.error(err.data.message, {
-        position: 'top',
-        effect: 'genie',
-      });
-    });
-  }
+
   render () {
     let socialReason = this.props.data.social_reason;
     let identificationType = null;
@@ -53,17 +29,11 @@ class Invoice extends Component {
           <p>Teléfono: {telephone}</p>
         </div>
         <div className={cls.deleteButton}>
-          <a className={cls.LinkDelete} onClick={(e) => this.deleteInvoice(e, this.props.id)} >Borrar</a>
+          <a className={cls.LinkDelete} onClick={() => this.props.deleteInvoice(this.props.id)} >Borrar</a>
         </div>
       </div>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onDeleteInvoice: (token, id) => dispatch(actions.deleteInvoice(token, id)),
-  }
-}
-
-export default connect(null, mapDispatchToProps)(Invoice);
+export default Invoice;

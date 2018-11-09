@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import Invoice from './invoice'
 
 // Components
@@ -12,6 +11,8 @@ import {
 import cls from './InvoicesDetails.css';
 
 import * as actions from '../../../../store/actions';
+
+var _updated = false;
 
 class InvoicesDetails extends Component {
   constructor(props) {
@@ -40,6 +41,8 @@ class InvoicesDetails extends Component {
           value: '',
           validation: {
             required: true,
+            maxLength: 10,
+            minLength: 10,
           },
           valid: false,
           touched: false,
@@ -65,6 +68,8 @@ class InvoicesDetails extends Component {
           value: '',
           validation: {
             required: true,
+            maxLength: 10,
+            minLength: 10,
           },
           valid: false,
           touched: false,
@@ -94,7 +99,45 @@ class InvoicesDetails extends Component {
   }
 
   componentDidMount () {
+    _updated = false;
     this.props.onInvoices(localStorage.getItem('token'));
+  }
+
+  componentDidUpdate() {
+    if (this.state.formData.identification_type.value === "cedula" && !_updated) {
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          identification: {
+            ...this.state.formData.identification,
+            validation: {
+              ...this.state.formData.identification.validation,
+              maxLength: 10,
+              minLength: 10,
+            }
+          }
+        }
+      })
+      _updated = true;
+    }
+    if (this.state.formData.identification_type.value === "ruc" && !_updated) {
+      this.setState({
+        ...this.state,
+        formData: {
+          ...this.state.formData,
+          identification: {
+            ...this.state.formData.identification,
+            validation: {
+              ...this.state.formData.identification.validation,
+              maxLength: 13,
+              minLength: 13,
+            }
+          }
+        }
+      })
+      _updated = true;
+    }
   }
 
   handlerOpenForm = () => {
@@ -125,12 +168,12 @@ class InvoicesDetails extends Component {
 
     if (rules.minLength) {
       isValid = value.length >= rules.minLength && isValid;
-      errorText = `Debe contener mas de ${rules.minLength} caracteres.`;
+      errorText = `Debe contener ${rules.minLength} caracteres.`;
     }
 
     if (rules.maxLength) {
       isValid = value.length <= rules.maxLength && isValid;
-      errorText = `Debe contener menos de ${rules.maxLength} caracteres.`;
+      errorText = `Debe contener ${rules.maxLength} caracteres.`;
     }
 
     if (rules.isEmail) {
@@ -152,6 +195,7 @@ class InvoicesDetails extends Component {
   }
 
   inputChangedHandler = (event, controlName) => {
+    _updated = false;
     const updatedControls = {
       ...this.state.formData,
       [controlName]: {

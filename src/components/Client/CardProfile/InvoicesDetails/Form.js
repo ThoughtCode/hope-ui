@@ -17,12 +17,12 @@ class Form extends Component {
     this.state = {
       id: null,
       attributes: {
-        address: null,
-        email: null,
-        identification: null,
-        identification_type: null,
-        social_reason: null,
-        telephone: null,
+        address: '',
+        email: '',
+        identification: '',
+        identification_type: '',
+        social_reason: '',
+        telephone: '',
       },
       emailErrorText: null,
       idErrorText: null,
@@ -41,12 +41,12 @@ class Form extends Component {
       this.setState({
         id: this.props.invoiceSelected.id || null,
         attributes: {
-          address: this.props.invoiceSelected.attributes.address || null,
-          email: this.props.invoiceSelected.attributes.email || null,
-          identification: this.props.invoiceSelected.attributes.identification || null,
-          identification_type: this.props.invoiceSelected.attributes.identification_type || null,
-          social_reason: this.props.invoiceSelected.attributes.social_reason || null,
-          telephone: this.props.invoiceSelected.attributes.telephone || null,
+          address: this.props.invoiceSelected.attributes.address || "",
+          email: this.props.invoiceSelected.attributes.email || "",
+          identification: this.props.invoiceSelected.attributes.identification || "",
+          identification_type: this.props.invoiceSelected.attributes.identification_type || "",
+          social_reason: this.props.invoiceSelected.attributes.social_reason || "",
+          telephone: this.props.invoiceSelected.attributes.telephone || "",
         },
         identification_length: this.props.invoiceSelected.attributes.identification.length || 10,
       });

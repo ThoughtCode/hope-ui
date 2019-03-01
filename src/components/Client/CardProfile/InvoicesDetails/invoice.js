@@ -28,6 +28,9 @@ class Invoice extends Component {
           <p>Dirección: {address}</p>
           <p>Teléfono: {telephone}</p>
         </div>
+        <a onClick={() => this.props.editInvoice(this.props.object)} >
+          <div className={cls.ButtonEdit}>Editar</div>
+        </a>
         <div className={cls.deleteButton}>
           <a className={cls.LinkDelete} onClick={() => this.props.deleteInvoice(this.props.id)} >Borrar</a>
         </div>

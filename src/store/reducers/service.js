@@ -90,6 +90,19 @@ const deleteInvoiceFail = (state, action) => updateObject(state, {
   loading: false,
 });
 
+const updateInvoiceStart = (state, action) => updateObject(state, {
+  loading: true,
+});
+
+const updateInvoiceSuccess = (state, action) => updateObject(state, {
+  updateInvoice: action.updateInvoice,
+  loading: false,
+});
+
+const updateInvoiceFail = (state, action) => updateObject(state, {
+  loading: false,
+});
+
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_SERVICES_START: return fetchServicesStart(state, action);
@@ -110,6 +123,9 @@ const reducer = (state = initialState, action) => {
     case actionTypes.DELETE_INVOICE_START: return deleteInvoiceStart(state, action);
     case actionTypes.DELETE_INVOICE_SUCCESS: return deleteInvoiceSuccess(state, action);
     case actionTypes.DELETE_INVOICE_FAIL: return deleteInvoiceFail(state, action);
+    case actionTypes.UPDATE_INVOICE_START: return updateInvoiceStart(state, action);
+    case actionTypes.UPDATE_INVOICE_SUCCESS: return updateInvoiceSuccess(state, action);
+    case actionTypes.UPDATE_INVOICE_FAIL: return updateInvoiceFail(state, action);
     default: return state;
   }
 };

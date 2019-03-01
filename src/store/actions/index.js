@@ -28,6 +28,7 @@ export {
   invoices,
   createdInvoice,
   deleteInvoice,
+  updateInvoice,
 } from './service';
 export {
   fetchCities,

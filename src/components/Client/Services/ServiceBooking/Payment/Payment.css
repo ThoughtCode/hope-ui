@@ -605,3 +605,14 @@
     flex-basis: 50% !important;
   }
 }
+
+.CompraSegura {
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 250px
+}
+
+.row {
+  padding-left: 0.9375rem;
+  padding-right: 0.9375rem;
+}

@@ -25,6 +25,7 @@ import imgCreditCardElo from '../../../../../assets/creditCard/ic_elo.png';
 import imgCreditCardExito from '../../../../../assets/creditCard/ic_exito.png';
 import imgCreditCardMasterCard from '../../../../../assets/creditCard/ic_mastercard.svg';
 import imgCreditCardVisa from '../../../../../assets/creditCard/ic_visa.svg';
+import imgCompraSegura from '../../../../../assets/creditCard/compra_segura.png';
 
 class Payment extends Component {
 
@@ -584,7 +585,7 @@ class Payment extends Component {
           <div className={cls.ButtonBooking}>
               <Grid container>
                   <div className={cls.Row}>
-                      <button 
+                      <button
                           onClick={(event) => this.paymentHandle(event)}
                           className={cls.ButtonBookingCore}
                       >Agregar tarjeta</button>
@@ -592,6 +593,14 @@ class Payment extends Component {
               </Grid>
           </div>
           <div id='messages'></div>
+          <br/>
+          <div className={cls.row}>
+            <Grid container>
+              <div className={cls.Row}>
+                <center><img className={cls.CompraSegura} src={imgCompraSegura} alt="Asegurado con Paymentez"/></center>
+              </div>
+            </Grid>
+          </div>
           </div>
                   ) : (
                     <div className={cls.formConten}>

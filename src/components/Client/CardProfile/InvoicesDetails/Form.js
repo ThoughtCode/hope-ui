@@ -10,6 +10,9 @@ import {
 import cls from './InvoicesDetails.css';
 
 var _updated = false;
+var pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
+var telephone_pattern = /^\d+$/;
+var identification_length = 10;
 
 class Form extends Component {
   constructor (props){
@@ -24,11 +27,16 @@ class Form extends Component {
         social_reason: '',
         telephone: '',
       },
-      emailErrorText: null,
-      idErrorText: null,
-      addressErrorText: null,
-      srErrorText: null,
-      telephoneErrorText: null,
+      emailErrorText: '',
+      idErrorText: '',
+      addressErrorText: '',
+      srErrorText: '',
+      telephoneErrorText: '',
+      emailCheck: true,
+      idCheck: true,
+      addressCheck: true,
+      srCheck: true,
+      telephoneCheck: true,
       is_disabled: true,
       identification_length: 10,
     }
@@ -51,9 +59,92 @@ class Form extends Component {
         identification_length: this.props.invoiceSelected.attributes.identification.length || 10,
       });
     }
+    this.validateData();
+  }
+
+  validateData = () => {
+    var validations = {};
+
+    if (!pattern.test(this.state.attributes.email)){
+      validations["emailErrorText"] = "Debe ser un email valido";
+      validations["emailCheck"] = true;
+    }else{
+      validations["emailErrorText"] = "";
+      validations["emailCheck"] = false;
+    }
+
+    switch (this.state.attributes.identification_type) {
+      case 'ruc':
+        identification_length = 13;
+          validations["identification_length"] = identification_length;
+        break;
+      case 'consumidor_final':
+        validations["attributes"] = {
+          ...this.state.attributes,
+          identification: "9999999999",
+        };
+        validations["identification_length"] = identification_length;
+        break;
+      default:
+        validations["identification_length"] = identification_length;
+    }
+    if (this.state.attributes.identification_type == "consumidor_final") {
+      validations["idErrorText"] = "";
+      validations["idCheck"] = false;
+    }else{
+      if (this.state.attributes.identification.length == identification_length) {
+        validations["idErrorText"] = '';
+        validations["idCheck"] = false
+      }else{
+        validations["idErrorText"] = `Longitud debe ser igual a ${identification_length}`;
+        validations["idCheck"] = true;
+      }
+    }
+
+    if (this.state.attributes.address.length === 0) {
+      validations["addressErrorText"] = "Campo requerido";
+      validations["addressCheck"] = true;
+    }else{
+      validations["addressErrorText"] = "";
+      validations["addressCheck"] = false;
+    }
+
+    if (!telephone_pattern.test(this.state.attributes.telephone)){
+        validations["telephoneErrorText"] = 'Deben ser solo numeros.';
+        validations["telephoneCheck"] = true;
+    } else if (this.state.attributes.telephone.length != 10){
+      validations["telephoneErrorText"] = "Longitud debe ser igual a 10";
+      validations["telephoneCheck"] = true;
+    }else{
+      validations["telephoneErrorText"] = "";
+      validations["telephoneCheck"] = false;
+    }
+
+    if (this.state.attributes.social_reason.length === 0) {
+      validations["srErrorText"] = "Campo requerido";
+      validations["srCheck"] = true;
+    }else{
+      validations["srErrorText"] = "";
+      validations["srCheck"] = false;
+    }
+
+    var inputsChecked = validations["emailCheck"] || validations["idCheck"] || validations["addressCheck"] || validations["srCheck"] || validations["telephoneCheck"]
+
+    if (!_updated) {
+      this.setState({
+        ...this.state,
+        ...validations,
+        is_disabled: inputsChecked
+      });
+    }
+  }
+  componentDidUpdate(){
+    this.validateData();
+    _updated = true;
   }
 
   handleInputChange(event) {
+    _updated = false;
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -63,67 +154,6 @@ class Form extends Component {
         ...this.state.attributes,
         [name]: value
       }
-    });
-
-    switch (name) {
-      case 'email':
-        var pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-        pattern.test(value) ? this.setState({emailErrorText: ''}) : this.setState({emailErrorText: 'Debe ser un email valido.'});
-        break;
-      case 'address':
-        value == 0 ? this.setState({addressErrorText: 'Campo requerido'}) : this.setState({addressErrorText: ''});
-        break;
-      case 'identification_type':
-        var identification_length = 10;
-        if (value == 'ruc'){
-          identification_length = 13;
-          this.setState({
-            identification_length: identification_length
-          })
-        } else if (value == 'consumidor_final'){
-          this.setState({
-            attributes: {
-              ...this.state.attributes,
-              identification: "9999999999",
-              [name]: value
-            },
-            identification_length: identification_length,
-          });
-        }else {
-          this.setState({
-            identification_length: identification_length
-          })
-        }
-        if (value == "consumidor_final") {
-          this.setState({idErrorText: ''})
-        }else{
-          this.state.attributes.identification.length == identification_length ? this.setState({idErrorText: ''}) : this.setState({idErrorText: `Longitud debe ser igual a ${identification_length}`});
-        }
-        break;
-      case 'identification':
-        if (this.state.identification_type == "consumidor_final") {
-          this.setState({idErrorText: ''})
-        }else{
-          value.length == this.state.identification_length ? this.setState({idErrorText: ''}) : this.setState({idErrorText: `Longitud debe ser igual a ${this.state.identification_length}`});
-        }
-        break;
-      case 'social_reason':
-        value == 0 ? this.setState({srErrorText: 'Campo requerido'}) : this.setState({srErrorText: ''});
-        break;
-      case 'telephone':
-        var pattern = /^\d+$/;
-        if (!pattern.test(value)){
-          this.setState({telephoneErrorText: 'Deben ser solo numeros.'});
-        } else if (value.length != 10){
-          this.setState({telephoneErrorText: 'Longitud debe ser igual a 10'});
-        } else {
-          this.setState({telephoneErrorText: ''})
-        }
-        break;
-    }
-
-    this.setState({
-      is_disabled: !!this.state.emailErrorText || !!this.state.idErrorText || !!this.state.addressErrorText || !!this.state.srErrorText || !!this.state.telephoneErrorText,
     });
   }
 

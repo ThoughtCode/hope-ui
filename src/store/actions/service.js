@@ -201,3 +201,38 @@ export const deleteInvoice = (token, id) => (dispatch) => {
       });
     });
 };
+
+export const updateInvoiceStart = () => ({
+  type: actionTypes.UPDATE_INVOICE_START,
+});
+export const updateInvoiceSuccess = id => ({
+  type: actionTypes.UPDATE_INVOICE_SUCCESS,
+  id,
+});
+export const updateInvoiceFail = error => ({
+  type: actionTypes.UPDATE_INVOICE_FAIL,
+  error,
+});
+export const updateInvoice = (token, form, id) => (dispatch) => {
+  dispatch(updateInvoiceStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  axios.put(`/customers/invoice_details/${id}`, form, headers)
+    .then((res) => {
+      dispatch(updateInvoiceSuccess(id));
+      Alert.success(res.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    })
+    .catch((err) => {
+      dispatch(updateInvoiceFail(err));
+      Alert.error(err.data.message, {
+        position: 'top',
+        effect: 'genie',
+      });
+    });
+};

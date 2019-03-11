@@ -18,6 +18,7 @@
   cursor: pointer;
 }
 .centradoComment {
+  display: inline-flex;
   padding: 2% 0;
   width: 100%;
 }
@@ -49,10 +50,46 @@
   color: #333;
 }
 .deleteButton {
+  width: 50px;
+  height: 44px;
+  margin-top: 10px;
   text-align: right;
   display: inline-block;
 }
 .LinkDelete {
   cursor: pointer;
   color: red;
+}
+
+.ButtonEdit {
+  width: 100px;
+  height: 44px;
+  margin-right: 1rem;
+  font-weight: normal;
+  vertical-align: middle;
+  padding-top: 0.625em;
+  padding-bottom: 0.625em;
+  font-size: 1rem;
+  color: #0069A7;
+  border: 1px solid #0069A7;
+  background-color: white;
+  -webkit-appearance: none;
+  text-align: center;
+  padding: 0.5em 1.38em 0.5em;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition-property: background, color, border-color, box-shadow;
+  transition-property: background, color, border-color, box-shadow;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+  -webkit-transition-duration: 0.16s;
+  transition-duration: 0.16s;
+  line-height: 1.4;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  text-decoration: none;
 }

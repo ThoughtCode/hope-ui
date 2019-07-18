@@ -30,7 +30,7 @@ const thanks = (props) => {
                 <div className={cls.Row}>
                   <div className={cls.PaddingTop}>
                     <h3 className={cls.SubHeaderText}>
-                      <span>Gracias por tu pago</span>
+                      <span>Tú servicio se ha programado correctamente</span>
                     </h3>
                   </div>
                 </div>

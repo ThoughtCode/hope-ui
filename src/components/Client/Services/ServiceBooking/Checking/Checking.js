@@ -701,7 +701,7 @@ class Checking extends Component {
                                 </Grid>
                                 <Grid container>
                                   <Grid item xs={8} lg={8}>
-                                    <div className={cls.SummaryTime}><small>Total horas de limpieza <span className={cls.Hour}>{time}h</span></small></div>
+                                    <div className={cls.SummaryTime}><small>Total horas de servicio <span className={cls.Hour}>{time}h</span></small></div>
                                   </Grid>
                                 </Grid>
                               </div>
@@ -788,7 +788,7 @@ class Checking extends Component {
                                 className={cls.ButtonBookingCore}
                                 value={this.state.card_id}
                                 onClick={(event) => this.changePageValidator(event)}
-                              >Pagar</button>
+                              >Solicitar Servicio</button>
                             </Grid>
                           </Grid>
                         </div>

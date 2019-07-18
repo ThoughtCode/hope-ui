@@ -23,7 +23,7 @@ const howWorks = props => {
           <ul>
           <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige el número de habitaciones y baños de tu hogar.
+              &nbsp;&nbsp;Detalla tú solicitud.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>

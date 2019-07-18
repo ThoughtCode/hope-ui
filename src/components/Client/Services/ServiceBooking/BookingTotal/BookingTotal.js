@@ -133,7 +133,7 @@ const bookingTotal = (props) => {
                           <div className={cls.priceParameters}>${recharge.toFixed(2)}</div>
                           <div className={cls.vatPorciento}>IVA <small>12%</small></div>
                           <div className={cls.vat}>${iva.toFixed(2)}</div>
-                          <div><small>Total horas de limpieza {time}h</small></div>
+                          <div><small>Total horas de servicio {time}h</small></div>
                         </div>
                       </Grid>
                     </div>

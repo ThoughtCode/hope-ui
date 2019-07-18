@@ -167,7 +167,7 @@ class BookingForm extends Component {
                         <Grid container>
                           <h3 className={cls.SubHeaderText}>
                             <span className={cls.SubHeaderNumber}>1</span>
-                            <span>Detalla tu solicitud.</span>
+                            <span>Detalla tú solicitud.</span>
                           </h3>
                           <div className={cls.Service}>
                             <Grid item xs={12} sm={12} md={12} lg={6}>

@@ -114,5 +114,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "dotenv-webpack": "^1.7.0"
   }
 }

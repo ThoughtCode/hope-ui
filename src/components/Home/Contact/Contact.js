@@ -389,8 +389,8 @@ class Contact extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   <Paper className={cls.PaperSocial} elevation={0}>
-                    <img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" />
-                    <img src={AppStore} className={cls.iconSocial} alt="App Store" />
+                    <a href="https://play.google.com/store/apps/details?id=com.nocnoc.app" target="_black"><img src={GooglePlay} className={cls.iconSocial} alt="GoolglePlay" /></a>
+                    <a href="https://apps.apple.com/ec/app/noc-noc/id1460598374" target="_black"><img src={AppStore} className={cls.iconSocial} alt="App Store" /></a>
                   </Paper>
                 </Grid>
               </Grid>

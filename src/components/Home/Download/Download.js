@@ -30,8 +30,8 @@ function Download(props) {
             </h1>
             <div container className={cls.ContentDownload} align="center">
               <div className={cls.ContentDownloadImg}>
-                <img className={cls.IconDownload} src={GooglePlay} alt="GoolglePlay" />
-                <img className={cls.IconDownload} src={AppStore} alt="App Store" />
+                <a href="https://play.google.com/store/apps/details?id=com.nocnoc.app" target="_black"><img className={cls.IconDownload} src={GooglePlay} alt="GoolglePlay" /></a>
+                <a href="https://apps.apple.com/ec/app/noc-noc/id1460598374" target="_black"><img className={cls.IconDownload} src={AppStore} alt="App Store" /></a>
               </div>
             </div>
           </Paper>

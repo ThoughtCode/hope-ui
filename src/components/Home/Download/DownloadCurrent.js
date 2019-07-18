@@ -37,10 +37,10 @@ function Download(props) {
                       <Paper className={classes.paper} elevation={0}>
                         <Grid container className={cls.ContentDownload} align="center">
                           <Grid item xs={6} sm={4} md={6}>
-                            <img className={cls.IconDownload} src={GooglePlay} alt="GoolglePlay" />
+                            <a href="https://play.google.com/store/apps/details?id=com.nocnoc.app" target="_black"><img className={cls.IconDownload} src={GooglePlay} alt="GoolglePlay" /></a>
                           </Grid>
                           <Grid item xs={6} sm={4} md={6}>
-                            <img className={cls.IconDownload} src={AppStore} alt="App Store" />
+                            <a href="https://apps.apple.com/ec/app/noc-noc/id1460598374" target="_black"><img className={cls.IconDownload} src={AppStore} alt="App Store" /></a>
                           </Grid>
                         </Grid>
                       </Paper>

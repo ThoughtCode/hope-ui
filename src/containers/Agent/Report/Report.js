@@ -363,7 +363,7 @@ class Report extends Component {
                       <Typography variant="title" gutterBottom className={cls.SubTipogra}>Nota:</Typography>
                     </Grid>  
                     <Grid item xs={11} sm={11}>
-                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>Reporta con nosotros tú inconveniente, si tienes alguna duda.</Typography>
+                      <Typography variant="title" gutterBottom className={cls.SubTipogra}>Reporta con nosotros tu inconveniente, si tienes alguna duda.</Typography>
                     </Grid>
                   </Grid>
                 </Paper>

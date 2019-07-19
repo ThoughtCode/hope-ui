@@ -9,22 +9,19 @@
 .Services {
     padding-top: 10vh !important;
 }
-.Title{
-    margin-top: 3em;
-    text-align: center !important;
-}
 .Content{
-    margin-bottom: 5em;
+    margin-bottom: 1em;
     color: #0069a7 !important;
     font-weight: 700 !important;
 }
-.SubContent{
-    margin-top: 1.5em !important;
-    color: #0069a7 !important;
-    font-weight: 700 !important;
+.Typography_term{
+    margin: 1.2em;
 }
-.Text{
-    font-size: 1em !important;
+.Typography_term_sub{
+    margin: 1em 0 1em 2.4em;
+}
+.Typography_term_sub_text{
+    margin: 1em 0 1em 2.4em;
 }
 .SmallText{
     background-color: yellow;
@@ -35,12 +32,6 @@
     .PoliciesContent {
         padding-top: 50px !important;
         padding-bottom: 0 !important;
-    }
-    .Title{
-        margin-top: 2em;
-    }
-    .TitlePrincipal{
-        font-size: 1.5em !important;
     }
     .Content{
         font-size: 1.3em !important;

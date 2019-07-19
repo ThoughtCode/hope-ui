@@ -273,7 +273,7 @@ class InvoicesDetails extends Component {
                 deleteInvoice={this.deleteInvoiceDetail}
               />
           )) : (
-            <h2><strong>No tienes datos para tú factura</strong></h2>
+            <h2><strong>No tienes datos para tu factura</strong></h2>
           )}     
         </Grid>
       )
@@ -291,7 +291,7 @@ class InvoicesDetails extends Component {
                 id="social_reason"
                 name="social_reason"
                 value={this.state.formData.social_reason.value}
-                placeholder="Tú nombre completo"
+                placeholder="Tu nombre completo"
                 onChange={(event) => this.inputChangedHandler(event, 'social_reason')}
               />
               {!this.state.formData.social_reason.valid && this.state.formData.social_reason.touched ? (

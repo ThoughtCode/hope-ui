@@ -410,7 +410,7 @@ class Checking extends Component {
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Datos para tú factura</h4>
+              <h4 className={cls.titleQuestion}>Datos para tu factura</h4>
               {Object.keys(this.state.invoiceDetails).length > 0 &&
               <form>
                 <div className={cls.Term}>
@@ -456,7 +456,7 @@ class Checking extends Component {
         <div className={cls.RowTotalTerm}>
           <Grid container>
             <Grid item xs={12} lg={12}>
-              <h4 className={cls.titleQuestion}>Datos para tú factura</h4>
+              <h4 className={cls.titleQuestion}>Datos para tu factura</h4>
               <form>
                 <div className={cls.row}>
                   <div className={cls.col25}>
@@ -469,7 +469,7 @@ class Checking extends Component {
                       id="social_reason"
                       name="social_reason"
                       value={this.state.formData.social_reason.value}
-                      placeholder="Tú nombre completo"
+                      placeholder="Tu nombre completo"
                       onChange={(event) => this.inputChangedHandler(event, 'social_reason')}
                     />
                     {!this.state.formData.social_reason.valid && this.state.formData.social_reason.touched ? (
@@ -740,7 +740,7 @@ class Checking extends Component {
                         <div className={cls.RowTotalTerm}>
                           <Grid container>
                             <Grid item xs={12} lg={12}>
-                              <h4 className={cls.titleQuestion}>¿Quieres diferir tú pago?</h4>
+                              <h4 className={cls.titleQuestion}>¿Quieres diferir tu pago?</h4>
                               <form onChange={(event) => this.handleChange(event)}>
                                 <div className={cls.Term}>
                                   <select className={cls.Select} >

@@ -51,7 +51,7 @@ const cardProfile = props => {
               )}/>
               <Route path="/cliente/perfil/invoices-details" children={({match}) => (
                 <li className={`${cls.SideItem} ${match ? cls.IsSelected : null}`}>
-                  <NavLink className={cls.Link} to="/cliente/perfil/detalles-facturacion">Datos para tú factura</NavLink>
+                  <NavLink className={cls.Link} to="/cliente/perfil/detalles-facturacion">Datos para tu factura</NavLink>
                 </li>
               )}/>
             </ul>

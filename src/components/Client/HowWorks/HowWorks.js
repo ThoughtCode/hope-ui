@@ -23,7 +23,7 @@ const howWorks = props => {
           <ul>
           <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Detalla tú solicitud.
+              &nbsp;&nbsp;Detalla tu solicitud.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
@@ -35,11 +35,11 @@ const howWorks = props => {
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Elige o registra tú dirección.
+              &nbsp;&nbsp;Elige o registra tu dirección.
             </li>
             <li className={cls.ListItem}>
               <img src={Check} className={cls.Check} alt="check"/>
-              &nbsp;&nbsp;Paga tú servicio con una tarjeta de crédito o débito.
+              &nbsp;&nbsp;Paga tu servicio con una tarjeta de crédito o débito.
             </li>
           </ul>
         </div>

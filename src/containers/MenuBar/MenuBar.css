@@ -10,7 +10,7 @@
 }
 
 .styleAnchor {
-  color: #676d73 !important;
+  color: #fff !important;
   text-decoration: none;
   text-transform: none !important;
   font-family: Arial !important;
@@ -19,7 +19,26 @@
 
 .styleAnchor:hover{
   background-color: transparent !important;
-  color: #0069A7 !important;
+  color: #fff !important;
+}
+
+.pageButtonActive {
+  background-color: #0069a7 !important;
+  border-radius: 5px !important;
+  color: #fff !important;
+  font-size: 20px !important;
+  border: 1px solid #fff !important;
+  text-decoration: none !important;
+  text-transform: none !important;
+  /* padding: .75em 0 !important; */
+  /* width: 32% !important; */
+  /*margin-bottom: .875em !important;*/
+  /* margin: 4px 20px !important;
+  font-family: Arial !important; */
+}
+
+.pageButtonActive:hover {
+  background-color: #0089d7 !important;
 }
 
 .stykeItem:hover{
@@ -95,8 +114,23 @@ a:focus, a:hover {
 }
 
 .Toolbar {
-  background-color: #fff !important;
-  padding-left: 16px !important;
+  padding: 0 10% !important;
+}
+
+.NavBar {
+  /* background: transparent !important; */
+  background: rgba(76,148,207,1);
+  background: -moz-linear-gradient(left, rgba(76,148,207,1) 0%, rgba(34,94,128,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,148,207,1)), color-stop(100%, rgba(34,94,128,1)));
+  background: -webkit-linear-gradient(left, rgba(76,148,207,1) 0%, rgba(34,94,128,1) 100%);
+  background: -o-linear-gradient(left, rgba(76,148,207,1) 0%, rgba(34,94,128,1) 100%);
+  background: -ms-linear-gradient(left, rgba(76,148,207,1) 0%, rgba(34,94,128,1) 100%);
+  background: linear-gradient(to right, rgba(76,148,207,1) 0%, rgba(34,94,128,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c94cf', endColorstr='#225e80', GradientType=1 );
+  
+  overflow: hidden;
+  position: fixed; /* Set the navbar to fixed position */
+  width: 100%; /* Full width */
 }
 
 .flex {

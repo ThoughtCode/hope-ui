@@ -20,7 +20,7 @@ import {
 
 // Component
 import cls from './MenuBar.css';
-import Logo from './img/logo.svg';
+import Logo from './img/logo.png';
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
 import LoginAgent from '../../containers/Agent/Login/Login';
@@ -242,31 +242,27 @@ class AppBarMenu extends Component {
       )
     } else {
       menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
+        <nav>
           <Toolbar className={cls.Toolbar}>
-            <Typography variant="title" color="secondary" className={cls.flex}>
-              <AnchorLink href="#main">
-                <img src={Logo} className={cls.Applogo} alt="logo" />
-              </AnchorLink>
-            </Typography>
-            <MenuItem className={cls.MenuItem}>
+            <p className={cls.flex}><AnchorLink href="#main"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink></p>
+            <MenuItem>
               <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
             </MenuItem>
-            <MenuItem className={cls.MenuItem}>
+            <MenuItem>
               <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
             </MenuItem>
-            <MenuItem className={cls.MenuItem}>
+            <MenuItem>
               <Button className={cls.styleAnchor} component={Link} to="/agente/registro">Únete a Noc Noc</Button>
             </MenuItem>
             <MenuItem className={cls.MenuItem}>
-              <Button className={cls.styleAnchor} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
+              <Button className={cls.pageButtonActive} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
             </MenuItem>
           </Toolbar>
-        </AppBar>
+        </nav>
       );
     }
     return (
-      <div className={cls.root}>
+      <div className={`${cls.root} ${cls.NavBar}`}>
         {menu}
         <Grid container justify="center" className={cls.style}>
           <Grid item xs={12} md={8} sm={12}>

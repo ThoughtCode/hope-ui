@@ -14,7 +14,7 @@ import NumberFour from '../../../assets/Four.png';
 import IconUno from '../../../assets/Icono-03.svg';
 import IconDos from '../../../assets/Icono-05.svg';
 import IconCuatro from '../../../assets/Icono-06.svg';
-import IconTres from '../../../assets/Icono-07.svg';
+import IconTres from '../../../assets/Icono2.png';
 import GooglePlay from '../../../assets/AppPlayStore.svg';
 import AppStore from '../../../assets/AppStore.svg';
 import cls from './Funtion.css'

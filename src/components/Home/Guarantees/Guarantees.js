@@ -2,47 +2,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
 
 // Component
 import cls from './Guarantees.css';
-import Profesionales from '../../../assets/Icono-07.svg';
-import Icon1 from '../../../assets/Icono1.png';
-import Guarante from '../../../assets/Icono-04.svg'
+import Profesionales from '../../../assets/Icono2.png';
+import GuaranteesAlDia from '../../../assets/Icono3.png';
+import Guarante from '../../../assets/Icono4.png'
 
 const styles = theme => ({
   paper: {
     padding: theme.spacing.unit * 2,
     color: theme.palette.text.secondary,
-    // backgroundColor: 'transparent',
+    backgroundColor: 'transparent',
   },
 });
 
-function FullWidthGrid(props) {
+function Guarantees(props) {
   const { classes } = props;
 
   return (
-    <Grid container align="center" justify="center" className={`${cls.Guarante} ${cls.TopSeccion}`}>
-      <Grid item xs={12} sm={6} md={4}>
-        <img src={Icon1} alt="Img."/>
-        <div className={classes.paper} elevation={0}>
+    <Grid container className={cls.Guarante} align="center" justify="center">
+      <Grid item xs={12} sm={6} md={3}>
+        <div className={classes.paper}>
+          <img src={Profesionales} alt="Profesionales" />
+          <p className={cls.Text}>Personas que tienen como principal objetivo <br/> <small className={cls.small}>Tu satisfacción</small></p>
         </div>
       </Grid>
-      <Grid item xs={12} sm={6} md={4}>
-        <div className={classes.paper} elevation={0}>
-          <p item xs={12} className={cls.Text}>
-            NOC NOC es una plataforma digital que tiene el propósito de generar empleo digno y ayudar a clientes a contratar servicios de forma fácil, rápida y segura.
-          </p>
+      <Grid item xs={12} sm={6} md={3}>
+        <div className={classes.paper}>
+          <img src={GuaranteesAlDia} alt="Garantias Al Dia"/>
+          <p className={cls.Text}>Tú eliges el día que necesitas nuestra visita</p>
+        </div>
+      </Grid>
+      <Grid item xs={12} sm={6} md={3}>
+        <div className={classes.paper}>
+          <img className={cls.icon} src={Guarante} alt="Garantias" />
+          <p className={cls.Text} id="works">Noc Noc garantiza el servicio con nuestro seguro de protección.</p>
         </div>
       </Grid>
     </Grid>
   );
 }
 
-FullWidthGrid.propTypes = {
+Guarantees.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FullWidthGrid);
+export default withStyles(styles)(Guarantees);

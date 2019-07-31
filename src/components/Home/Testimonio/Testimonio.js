@@ -8,7 +8,7 @@ import Typography from 'material-ui/Typography';
 
 // Component
 import cls from './Testimonio.css'
-import IconUser from '../../../assets/Icono-07.svg'
+import IconUser from '../../../assets/Icono2.png'
 
 const styles = theme => ({
   paper: {

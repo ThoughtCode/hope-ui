@@ -17,7 +17,7 @@ import * as action from '../../../store/actions';
 import LogoNocNoc from '../../../assets/LogoBlanco.svg';
 import Twitter from '../../../assets/twittericon.svg';
 import Facebook from '../../../assets/facebookicon.svg';
-import Instagram from '../../../assets/InstagramIcon.svg';
+import Instagram from '../../../assets/icono-instagram.png';
 import GooglePlay from '../../../assets/AppPlayStore.svg';
 import AppStore from '../../../assets/AppStore.svg';
 import cls from './Contact.css';

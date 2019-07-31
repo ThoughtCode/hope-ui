@@ -1,23 +1,17 @@
 .Guarante{
-  background: transparent !important;
-}
-
-.TopSeccion{
+  background-color: #fff;
   padding: 35px 0 !important;
-  background-color: #fff !important;
 }
-.Typogra{
+.SubTytle{
   color: #0069a7 !important;
-  font-size: 2rem !important;
-  text-align: center;
   font-family: Arial !important;
+  font-size: 1.125em !important;
+  font-weight: bold !important;
+  line-height: 1.375em !important;
+  margin: .875em 0 !important;
 }
 .Text{
-  max-width: 15em;
-  margin-left: auto;
-  margin-right: auto;
-  font-family: Arial;
-  line-height: 1.5em;
+  max-width: 50%;
 }
 .small{
   font-size: 1em;
@@ -26,12 +20,7 @@
 @media only screen and (max-width: 600px) {
   .Guarante {
     padding: 0 2rem;
-  }
-  .TopSeccion{
     margin-top: 5vh !important;
-  }
-  .Typogra {
-    font-size: 1.75rem !important;
   }
   .SubTypogra {
     font-size: 1rem !important;

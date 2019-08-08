@@ -1,9 +1,3 @@
-@font-face {
-  font-family: Fabada, Arial;
-  src:  url('./assets/Font/Fabada-regular.ttf') format('truetype'), /* Safari, Android, iOS */
-        url('./assets/Font/arial.ttf') format('truetype'); /* Safari, Android, iOS */
-}
-
 html {
   font-size: 16px !important;
 }
@@ -12,4 +6,65 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Fabada', sans-serif;
+}
+
+.MenuNone{
+  display: none;  
+}
+
+/* .stylesFuntion{
+  background: -webkit-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../src/assets/BackgrounFuntion.png');
+  background: -o-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../src/assets/BackgrounFuntion.png');
+  background: url('../src/assets/BackgrounFuntion.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 40% 55%;
+  width: 130vh;
+} */
+
+.stylesTestimonio{
+  background: -webkit-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../src/assets/BackgrounTestimonio.png');
+  background: -o-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../src/assets/BackgrounTestimonio.png');
+  background: url('../src/assets/BackgrounTestimonio.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.textTitle{
+  font-size: 5em;
+  text-align: center;
+  font-family: Fontgrab;
+  margin: 2% auto;
+}
+
+.subTitle{
+  text-align: center;
+  margin: 0 auto 3%;
+  color: gray;
+}
+
+@media only screen and (max-width: 600px) {
+  .smallTitle{
+    display: none;
+  }
+  /* .stylesFuntion {
+    background-image: none;
+    background: rgba(74,137,189,0.59) !important;
+    background: -moz-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(74,137,189,0.59)), color-stop(100%, rgba(0,106,167,1))) !important;
+    background: -webkit-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -o-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -ms-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: linear-gradient(135deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a89bd', endColorstr='#006aa7', GradientType=1 ) !important;
+  } */
+}
+
+@media (max-width: 960px) {
+  .MenuNone {
+    display: block;
+  }
+  .MenuBar {
+  	display: none;
+  }
 }

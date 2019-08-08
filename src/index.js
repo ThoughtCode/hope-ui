@@ -6,8 +6,6 @@ import createHistory from 'history/createBrowserHistory';
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 
-import { MuiThemeProvider, createMuiTheme} from 'material-ui/styles';
-
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -65,18 +63,10 @@ const rootReducer = combineReducers({
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));
 
-const theme = createMuiTheme({
-  typography: {
-    fontFamily: 'Helvetica',
-  },
-});
-
 const app = (
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <MuiThemeProvider theme={theme}>
-        <App />
-      </MuiThemeProvider>
+      <App />
     </ConnectedRouter>
   </Provider>
 );

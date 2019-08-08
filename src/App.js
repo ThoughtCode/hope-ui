@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 
 //Component
-import cls from './App.css';
+import cls from './index.css';
 import Layout from './containers/Layout/Layout';
 import Home from './containers/Home/Home';
 import Client from './containers/Client/Client';

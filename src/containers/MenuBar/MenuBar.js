@@ -249,7 +249,7 @@ class AppBarMenu extends Component {
               <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
             </MenuItem>
             <MenuItem>
-              <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
+              <AnchorLink className={cls.styleAnchor} href="#services">Servicios</AnchorLink>
             </MenuItem>
             <MenuItem>
               <Button className={cls.styleAnchor} component={Link} to="/agente/registro">Únete a Noc Noc</Button>

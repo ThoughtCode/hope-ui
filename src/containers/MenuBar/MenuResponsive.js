@@ -198,7 +198,7 @@ class MenuAppBar extends React.Component {
                   <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
                 </MenuItem>
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#ServiceRes">Servicios</AnchorLink>
+                  <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
                 </MenuItem>
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                   <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>

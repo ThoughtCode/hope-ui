@@ -6,7 +6,7 @@ import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
 // Component
-import classes from '../../../App.css';
+import classes from '../../../index.css';
 import MenuBar from '../../../containers/MenuBar/MenuBarPolicies';
 import MenuResponsive from '../../../containers/MenuBar/MenuResponsive';
 import PoliciesContent from './PoliciesContent.js'

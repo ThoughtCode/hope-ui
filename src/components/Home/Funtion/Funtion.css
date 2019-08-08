@@ -1,82 +1,49 @@
-.stylesFuntion {
-  background-image: url(https://cache.hbfiles.com/assets/home/bee_line-5390828ee24500c636ca98f9682b99ac.svg);
-  background-position: 40% 55%;
+.stylesFuntion{
+  background: -webkit-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounFuntion.png');
+  background: -o-linear-gradient(rgba(255,255,255,0.8), rgba(0,0,0,0.4)),url('../../../assets/BackgrounFuntion.png');
+  background: url('../../../assets/BackgrounFuntion.png');
   background-repeat: no-repeat;
-  padding-top: 15px;
-  padding-bottom: 30px;
+  background-size: cover;
+  background-position: 50% 55%;
+  height: 130vh;
+  width: 100%;
 }
 
-.Typogra {
+.textTitle{
+  font-size: 5em !important;
   text-align: center;
-  font-size: 2.25em !important;
-  color: #0069a7 !important;
-  font-family: Arial !important;
+  font-family: Fontgrab !important;
+  margin: 5% auto;
 }
 
-.Styleicon {
-  height: 4rem;
+.styleContainer{
+  margin-top: 10%;
 }
 
-.IconDownload{
-  height: 2em;
-}
-
-.SubTypogra{
-  font-size: 1em !important;
-  font-family: Arial !important;
-  font-weight: 700 !important;
-  color: #0069a7 !important;
-}
-
-.SubSubTypogra{
-  background-color: white !important;
-  color: #676d73 !important;
-  font-family: Arial !important;
-  /* font-size: 0.8em !important; */
-  font-size: 14px !important;
-  padding: 10px !important;
-}
-
-.congratulation{
-  color: #0069a7 !important;
-  font-weight: 700 !important;
-  margin-top: 20px !important;
+.styleImg{
+  margin: 10%;
 }
 
 @media only screen and (max-width: 600px) {
   .stylesFuntion {
     background-image: none;
+    background: rgba(74,137,189,0.59) !important;
+    background: -moz-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(74,137,189,0.59)), color-stop(100%, rgba(0,106,167,1))) !important;
+    background: -webkit-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -o-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -ms-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: linear-gradient(135deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a89bd', endColorstr='#006aa7', GradientType=1 ) !important;
   }
-  .Typogra {
+  .textTitle{
     font-size: 1.4rem !important;
     font-weight: bold !important;
+    margin: 10% auto;
+    color: #fff;
   }
-  .iconStyleFuntion{
-    margin: .875em 0 !important;
-  }
-  .SubTypogra {
-    font-size: 1rem !important;
-    font-weight: bold !important;
-    margin: .875em 0 !important;
-  }
-  .imgicon{
-    width: 1.5rem;
-  }
-  .SubSubTypogra{
-    text-align: center;
-    font-family: Arial !important;
-  }
-  .congratulation{
-    font-size: 1rem !important;
-    text-align: center;
-    color: #0069a7 !important;
-  }
-  .IconDownload{
-    height: 2em;
-    margin: 0 5px;
-  }
-  .Separator {
-    padding: 10px 0 !important;
+  .smallTitle{
+    display: none;
   }
 }
 
@@ -84,24 +51,24 @@
   .stylesFuntion {
     background-image: none !important;
     padding-top: 5rem;
+    background: rgba(74,137,189,0.59) !important;
+    background: -moz-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(74,137,189,0.59)), color-stop(100%, rgba(0,106,167,1))) !important;
+    background: -webkit-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -o-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: -ms-linear-gradient(-45deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    background: linear-gradient(135deg, rgba(74,137,189,0.59) 0%, rgba(0,106,167,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4a89bd', endColorstr='#006aa7', GradientType=1 ) !important;
   }
-  .Styleicon {
-    width: 4.5rem;
-  }
-  .imgicon{
-    width: 1.5rem;
-  }
-  .Typogra {
-    font-size: 1.4rem !important;
+  .textTitle{
+    font-size: 3rem !important;
     font-weight: bold !important;
+    margin: 10% auto;
+  }
+  .smallTitle{
+    display: none;
   }
 }
 
 @media only screen and (max-width: 1280px) {
-  .Styleicon {
-    width: 5rem;
-  }
-  .imgicon{
-    width: 2rem;
-  }
 }

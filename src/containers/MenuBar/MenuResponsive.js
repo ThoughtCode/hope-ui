@@ -166,11 +166,10 @@ class MenuAppBar extends React.Component {
       menu = (
         <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
-            <Typography variant="title" color="inherit" className={classes.flex}>
-              <AnchorLink style={ styleAnchor } href='/'>
-                <img src={Logo} className={cls.Applogo} alt="logo" />
-              </AnchorLink>
-            </Typography>
+            <p className={cls.flex}><AnchorLink href="/"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink></p>
+            {/* <AnchorLink style={ styleAnchor } href='/'>
+              <img src={Logo} className={cls.Applogo} alt="logo" />
+            </AnchorLink> */}
             <div>
               <IconButton
                 aria-owns={open ? 'menu-appbar' : null}
@@ -195,7 +194,7 @@ class MenuAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cómo Funciona?</AnchorLink>
+                  <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cóm Funciona?</AnchorLink>
                 </MenuItem>
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
                   <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>

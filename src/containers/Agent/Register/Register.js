@@ -14,39 +14,37 @@ import cls from './Register.css';
 class Register extends Component {
   render () {
     return (
-      <div className={cls.Registro}>
-        <Grid container>
-          <Grid item xs={12} sm={6}>
-            <Paper className={cls.PaperStile} elevation={0}>
-              <Grid container>
-                <Grid item xs={12}>
-                  <Paper className={cls.PaperStile} elevation={0}>
-                    <Button component={Link} to="/" >
-                      <img src={AppLogo} className={cls.logo} alt="logo" />
-                    </Button>
-                  </Paper>
-                </Grid>
-                <Grid item xs={12}>
-                  <Paper className={cls.PaperStile} elevation={0}>
-                    <Typography variant="headline" gutterBottom className={cls.Typogra}>Bienvenidos a Noc Noc, un lugar donde tu decides cuando trabajar</Typography>
-                  </Paper>
-                </Grid>
+      <Grid container className={cls.Registro} justify="flex-end">
+        {/* <Grid item xs={12} sm={6}>
+          <Paper className={cls.PaperStile} elevation={0}>
+            <Grid container>
+              <Grid item xs={12}>
+                <Paper className={cls.PaperStile} elevation={0}>
+                  <Button component={Link} to="/" >
+                    <img src={AppLogo} className={cls.logo} alt="logo" />
+                  </Button>
+                </Paper>
               </Grid>
-            </Paper>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-            <Paper className={cls.PaperStile} elevation={0}>
-              <Grid container justify="center">
-                <Grid item xs={11} sm={6}>
-                  <Paper className= {`${cls.Form} ${cls.PaperStile}`} elevation={0}>
-                    <Form />
-                  </Paper>
-                </Grid>
+              <Grid item xs={12}>
+                <Paper className={cls.PaperStile} elevation={0}>
+                  <Typography variant="headline" gutterBottom className={cls.Typogra}>Bienvenidos a Noc Noc, un lugar donde tu decides cuando trabajar</Typography>
+                </Paper>
               </Grid>
-            </Paper>
-          </Grid>
+            </Grid>
+          </Paper>
+        </Grid> */}
+        <Grid item xs={12} sm={6}>
+          <Paper className={cls.PaperStile} elevation={0}>
+            <Grid container justify="center">
+              <Grid item xs={11} sm={6}>
+                <Paper className= {`${cls.Form} ${cls.PaperStile}`} elevation={0}>
+                  <Form />
+                </Paper>
+              </Grid>
+            </Grid>
+          </Paper>
         </Grid>
-      </div>
+      </Grid>
     );
   }
 }

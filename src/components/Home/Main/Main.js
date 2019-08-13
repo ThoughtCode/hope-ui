@@ -1,6 +1,7 @@
 // Dependencias
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import Modal from 'material-ui/Modal';
 import Button from 'material-ui/Button';
@@ -12,6 +13,14 @@ import Main_Imagen_2 from '../../../assets/main_2.png';
 import Registro from '../../../components/Client/Register/Register';
 import Login from '../../../components/Client/Login/Login';
 import LoginAgent from '../../../containers/Agent/Login/Login';
+
+const styles = theme => ({
+  paper: {
+    position: 'absolute',
+    backgroundColor: 'transparent',
+    boxShadow: theme.shadows[5],
+  },
+});
 
 class Main extends Component {
   state = {
@@ -57,6 +66,7 @@ class Main extends Component {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div className={cls.Main}>
         <Grid container justify="center" className={cls.style}>
@@ -70,35 +80,31 @@ class Main extends Component {
               <Grid item xs={12} sm={6}>
                 <img src={Main_Imagen_2} className={cls.ImgMain_2} alt="Main imagen"/>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                
+              <Grid item xs={12} sm={6} align="right">
                 <Modal
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >
-                  <div className={cls.Modal}>
+                  <div className={`${cls.Modal} ${classes.paper}`}>
                     <Registro close={this.handleClose} />
                   </div>
                 </Modal>
-                
                 <Modal
                   open={this.state.openLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={cls.Modal}>
+                  <div className={`${cls.Modal} ${classes.paper}`}>
                     <Login className={cls.Modal} close={this.handleClose} switchModal={this.handleOpen}/>
                   </div>
                 </Modal>
-                
                 <Modal
                   open={this.state.openAgentLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={cls.Modal}>
+                  <div className={`${cls.Modal} ${classes.paper}`}>
                     <LoginAgent className={cls.Modal} close={this.handleClose} />
                   </div>
                 </Modal>
-              
               </Grid>
             </Grid>
           </Grid>
@@ -108,4 +114,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(Main);
+export default withRouter(withStyles(styles)(Main))

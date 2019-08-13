@@ -1,5 +1,5 @@
 .pageButton {
-  background-color: #0069a7 !important;
+  /* background-color: #0069a7 !important;
   border-radius: 4px !important;
   border-color: #286090;
   border: 1px solid #fff !important;
@@ -16,7 +16,12 @@
   position: relative;
   padding: 0px 32px;
   vertical-align: baseline;
-  width: 92% !important;
+  width: 92% !important; */
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  font-size: 1.5em;
+  padding: 2% 7%;
 }
 .Form > div > div{
   width: 31vh;
@@ -28,7 +33,7 @@
 }
 
 .pageButtonInvalid {
-  background-color: #0984cd !important;
+  /* background-color: #0984cd !important;
   border-radius: 4px !important;
   border-color: #0984cd;
   border: 1px solid #fff !important;
@@ -45,7 +50,13 @@
   position: relative;
   padding: 0px 32px;
   vertical-align: baseline;
-  width: 92% !important;
+  width: 92% !important; */
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  font-size: 1.5em;
+  padding: 2% 7%;
+  cursor: not-allowed;
 }
 
 .bootstrapInput{

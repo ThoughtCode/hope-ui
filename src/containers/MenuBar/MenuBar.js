@@ -30,7 +30,7 @@ import * as actions from '../../store/actions';
 const styles = theme => ({
   paper: {
     position: 'absolute',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: 'transparent',
     boxShadow: theme.shadows[5],
   },
 });

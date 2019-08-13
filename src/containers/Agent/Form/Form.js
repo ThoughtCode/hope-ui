@@ -292,12 +292,8 @@ class Form extends Component {
               <Spinner />
             </Grid>
           ) : (
-          <Grid container>
-            <Grid item xs={12}>
-              <Paper className={classes.paper} elevation={0}>
-                <Typography variant="title" gutterBottom className={cls.None}>Déjanos tus datos y nos contactaremos contigo lo antes posible</Typography>
-              </Paper>
-            </Grid>
+          <Grid container justify="center">
+            <p className={cls.None}>Déjanos tus datos y nos contactaremos contigo lo antes posible</p>
             <Grid item xs={12}>
               <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
                 <TextField
@@ -355,7 +351,7 @@ class Form extends Component {
               </Paper>
             </Grid>
             <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={0}>
+              <Paper className={classes.paper} elevation={0}>
                 <TextField
                   value={this.state.registerForm.email.value}
                   onChange={(event) => this.inputChangedHandler(event, 'email')}
@@ -467,7 +463,7 @@ class Form extends Component {
             </Grid>
             <Grid item xs={12}>
               <Paper className={`${cls.paperInput} ${classes.paper}`} elevation={0}>
-              <TextField
+                <TextField
                   value={this.state.registerForm.national_id.value}
                   onChange={(event) => this.inputChangedHandler(event, 'national_id')}
                   fullWidth
@@ -525,12 +521,12 @@ class Form extends Component {
             </Grid>
             <Grid item xs={12}>
               {this.state.formIsValid ? (
-                <Button onClick={this.registerHandler} className={cls.pageButton}>Registrar</Button>
+                <button onClick={this.registerHandler} className={cls.pageButton}>Registrar</button>
               ): (
-                <Button disabled className={cls.pageButtonInvalid}>Registrar</Button>
+                <button disabled className={cls.pageButtonInvalid}>Registrar</button>
               )}
             </Grid>
-            <p className={cls.Term}>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Términos y politicas de privacidad.</a></span></p>
+            <p>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Términos y politicas de privacidad.</a></span></p>
             <Grid container justify="center">
               <Grid item xs={12}>
                 <Button className={cls.ButtonLogin} onClick={() => this.handleOpen("loginAgent")} >INICIAR SESIÓN</Button>

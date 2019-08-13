@@ -1,9 +1,17 @@
 .Form{
-  background-color: #E8EBEF;
-  padding: 20px;
+  /* background-color: #0069a7; */
+  background: rgba(76,148,207,0.7);
+  background: -moz-linear-gradient(left, rgba(76,148,207,0.7) 0%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,148,207,0.7)), color-stop(50%, rgba(76,148,207,0.7)), color-stop(50%, rgba(76,148,207,0.7)), color-stop(100%, rgba(76,148,207,0.7)));
+  background: -webkit-linear-gradient(left, rgba(76,148,207,0.7) 0%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 100%);
+  background: -o-linear-gradient(left, rgba(76,148,207,0.7) 0%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 100%);
+  background: -ms-linear-gradient(left, rgba(76,148,207,0.7) 0%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 100%);
+  background: linear-gradient(to right, rgba(76,148,207,0.7) 0%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 50%, rgba(76,148,207,0.7) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006aa7', endColorstr='#006aa7', GradientType=1 );
+  padding: 2%;
   border-radius: 5px;
   text-align: center !important;
-  height: 500px !important;
+  height: 100% !important;
 }
 
 .paperInput{
@@ -16,7 +24,13 @@
 }
 
 .pageButton {
-  background-color: #0069a7 !important;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  font-size: 1.5em;
+  padding: 2% 7%;
+  margin: 4% auto;
+  /* background-color: #0069a7 !important;
   border-radius: 4px !important;
   border-color: #286090;
   border: 1px solid #fff !important;
@@ -33,11 +47,18 @@
   position: relative !important;
   padding: 0px 32px !important;
   vertical-align: baseline !important;
-  width: 95% !important;
+  width: 95% !important; */
 }
 
 .pageButtonInvalid {
-  background-color: #0072b5b8 !important;
+  background-color: black;
+  border: 1px solid black;
+  color: white;
+  font-size: 1.5em;
+  padding: 2% 7%;
+  margin: 4% auto;
+  cursor: not-allowed !important;
+  /* background-color: #0072b5b8 !important;
   border-radius: 4px !important;
   border-color: #0072b5b8;
   border: 1px solid #fff !important;
@@ -54,8 +75,9 @@
   position: relative !important;
   padding: 0px 32px !important;
   vertical-align: baseline !important;
-  width: 95% !important;
+  width: 95% !important; */
 }
+
 .ErrorText {
   color: #b80808;
   font-size: 0.9em;
@@ -71,9 +93,9 @@
 }
 
 .None {
-  color: #0069a7 !important;
-  font-size: 0.8rem !important;
-  font-weight: 500 !important;
+  color: #fff;
+  font-size: 1.5rem;
+  font-family: Arial-Rounded-MT-Light;
 }
 
 .Link {
@@ -99,16 +121,16 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .Form{
+  /* .Form{
     padding: 10px !important;
     margin: 0 !important;
-    height: 470px !important;
-  }
+    height: 100% !important;
+  } */
 }
 
 @media only screen and (max-width: 1600px) {
-  .Form{
+  /* .Form{
     margin:  90px -40px;
-    height: 620px;
-  }
+    height: 100%;
+  } */
 }

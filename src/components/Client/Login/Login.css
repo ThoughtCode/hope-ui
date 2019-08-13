@@ -4,7 +4,33 @@
   text-align: center;
   height: 600px;
   width: 600px;
-  background-color: #ffffff !important;
+  background: rgba(76,148,207,0.8);
+  background: -moz-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,148,207,0.8)), color-stop(50%, rgba(76,148,207,0.8)), color-stop(50%, rgba(76,148,207,0.8)), color-stop(100%, rgba(76,148,207,0.8)));
+  background: -webkit-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -o-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -ms-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: linear-gradient(to right, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006aa7', endColorstr='#006aa7', GradientType=1 );
+}
+
+.Applogo {
+  margin: 3% auto;
+  width: 12%;
+}
+
+.Title{
+  color: #023a5c;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.SubTitle {
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
 }
 
 .ModalHeader{
@@ -25,11 +51,11 @@
 }
 
 .PageButtonRegister{
-  font-family: Arial !important;
+  background-color: #FFF !important;
   font-size: 0.8rem !important;
-  margin: 4px 0 !important;
+  margin: 3% 5% !important;
   justify-content: center;
-  width: 160px !important;
+  width: 24% !important;
 }
 
 .Button {
@@ -41,18 +67,6 @@
   border-radius: 5px !important;
   border: 1px solid #fff !important;
   width: 200px !important;
-}
-
-.Title{
-  padding-top: 4vh;
-  font-weight: bold !important;
-}
-
-.Typogra {
-  color: #0069a7 !important;
-  text-align: center !important;
-  font-size: 1.2rem !important;
-  font-family: Arial !important;
 }
 
 .ButtonRegistroAgente{

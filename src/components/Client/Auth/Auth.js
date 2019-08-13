@@ -148,76 +148,70 @@ class Auth extends Component {
   render () {
     const { classes } = this.props;
     return (
-      <div>
-        <Grid container>
-          <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                className={cls.bootstrapInput}
-                placeholder="Correo"
-                value={this.state.controls.email.value}
-                onChange={(event) => this.inputChangedHandler(event, 'email')}
-                id="name"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.controls.email.valid && this.state.controls.email.touched ? 
-                    classes.bootstrapInputError : 
-                    classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.controls.email.valid && this.state.controls.email.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.controls.email.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={12} className={cls.InputLogin}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                className={cls.bootstrapInput}
-                type={'password'}  
-                placeholder="Contraseña"
-                id="Contrasena"
-                value={this.state.controls.password.value}
-                onChange={(event) => this.inputChangedHandler(event, 'password')}
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.controls.password.valid && this.state.controls.password.touched ? 
-                    classes.bootstrapInputError : 
-                    classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.controls.password.valid && this.state.controls.password.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.controls.password.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid> 
-          <Grid item xs={12}>
-            {this.state.formIsValid ? (
-              <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button>
-            ): (
-              <button className={cls.pageButtonInvalid}>Ingresar</button>
-            )}
-          </Grid>
+      <Grid container>
+        <Grid item xs={12}>
+          <TextField
+            className={cls.bootstrapInput}
+            placeholder="Correo"
+            value={this.state.controls.email.value}
+            onChange={(event) => this.inputChangedHandler(event, 'email')}
+            id="name"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.controls.email.valid && this.state.controls.email.touched ? 
+                classes.bootstrapInputError : 
+                classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.controls.email.valid && this.state.controls.email.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.controls.email.errorText}
+            </div>
+          ) : null}
         </Grid>
-      </div>
+        <Grid item xs={12} className={cls.InputLogin}>
+          <TextField
+            className={cls.bootstrapInput}
+            type={'password'}  
+            placeholder="Contraseña"
+            id="Contrasena"
+            value={this.state.controls.password.value}
+            onChange={(event) => this.inputChangedHandler(event, 'password')}
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.controls.password.valid && this.state.controls.password.touched ? 
+                classes.bootstrapInputError : 
+                classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.controls.password.valid && this.state.controls.password.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.controls.password.errorText}
+            </div>
+          ) : null}
+        </Grid> 
+        <Grid item xs={12}>
+          {this.state.formIsValid ? (
+            <button onClick={(event) => this.submitHandler(event)} className={cls.pageButton}>Ingresar</button>
+          ): (
+            <button className={cls.pageButtonInvalid}>Ingresar</button>
+          )}
+        </Grid>
+      </Grid>
     );
   }
 }

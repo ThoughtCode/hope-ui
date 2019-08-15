@@ -21,6 +21,7 @@ import {
 // Component
 import cls from './MenuBar.css';
 import Logo from './img/logo.png';
+import LogoAzul from './img/logo.svg'
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
 import LoginAgent from '../../containers/Agent/Login/Login';
@@ -148,11 +149,11 @@ class AppBarMenu extends Component {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
-            <Typography variant="title" color="secondary" className={cls.flex}>
+            <p className={cls.flex}>
               <Link to="/">
-                <img src={Logo} className={cls.Applogo} alt="logo" />
+                <img src={LogoAzul} className={cls.Applogo} alt="logo" />
               </Link>
-            </Typography>
+            </p>
             <MenuItem className={`${cls.DisplayMenuItem} ${cls.MenuItem}`} component={Link} to="/cliente">
               Inicio
             </MenuItem>

@@ -25,7 +25,7 @@ class Contact extends Component {
               <p className={`${cls.SubTitle} ${cls.Paper}`}>CONÓCENOS</p>
               <ul className={cls.UlContact}>
                 <li className={cls.ListContact}>
-                  <NavLink className={cls.Link} to="/">Quiénes Somos?</NavLink>
+                  <a className={cls.Link} href="/aboutus#aboutus">¿Quiénes Somos?</a>
                 </li>
                 <li className={cls.ListContact}>
                   <NavLink className={cls.Link} to="/agente/registro">Quiero ser agente</NavLink>
@@ -34,7 +34,7 @@ class Contact extends Component {
                   <NavLink className={cls.Link} to="/">Principios y Valores</NavLink>
                 </li>
                 <li className={cls.ListContact}>
-                  <a className={cls.Link} href="/politicas#policies">Términos y Condiciones</a>
+                  <a className={cls.Link} href="/terms#terms">Términos y Condiciones</a>
                 </li>
                 <li className={cls.ListContact}>
                   <a className={cls.Link} href="/politicas#policies">Politicas de privacidad</a>

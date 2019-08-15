@@ -1,7 +1,6 @@
 // Dependencias
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
 import Paper from 'material-ui/Paper';
 import Grid from 'material-ui/Grid';
 
@@ -9,9 +8,10 @@ import Grid from 'material-ui/Grid';
 import classes from '../../../index.css';
 import MenuBar from '../../../containers/MenuBar/MenuBarPolicies';
 import MenuResponsive from '../../../containers/MenuBar/MenuResponsive';
-import PoliciesContent from './PoliciesContent.js'
+import PoliciesContent from './PoliciesContent.js';
+import Footer from '../Footer/Footer';
 
-import cls from './Policies.css';
+import cls from './KnowUs.css';
 
 const styles = myTheme => ({
   root: myTheme.mixins.gutters({
@@ -36,17 +36,9 @@ class Policies extends Component {
             </Paper>
           </Grid>
           <Grid item xs={12} sm={7} className={cls.PoliciesContent}>
-            <Paper elevation={0} className={classes.paper}>
-                <PoliciesContent />
-            </Paper>
+            <PoliciesContent />
           </Grid>
-          <Grid item xs={12}>
-            <Paper elevation={0} className={classes.paper}>
-              <Typography gutterBottom style={{backgroundColor: '#0069a7', color:'#fff', fontFamily: 'Arial', padding: 20, marginBottom: 0}}>
-                <a component="a" href="http://thoughtcode.co/" style={{textDecoration: 'none', color: 'white' }}>Diseñado por Thoughtcode</a>
-              </Typography>
-            </Paper>
-          </Grid>
+          <Footer/>
         </Grid>
     );
   }

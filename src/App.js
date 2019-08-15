@@ -17,7 +17,9 @@ import ResetClient from './containers/Client/Reset/Reset';
 import UpdatePasswordClient from './containers/Client/UpdatePassword/UpdatePassword';
 import UpdatePasswordAgent from './containers/Agent/UpdatePassword/UpdatePassword';
 import ResetAgent from './containers/Agent/Reset/Reset';
-import Policies from './components/Home/Policies/Policies'
+import AboutUs from './components/Home/KnowUs/AboutUs';
+import Policies from './components/Home/KnowUs/Policies';
+import Terms from './components/Home/KnowUs/Terms';
 import Alert from 'react-s-alert';
 
 class App extends Component {
@@ -47,7 +49,9 @@ class App extends Component {
             <Route path="/agente/login" component={LoginAgent}/>
             <Route path="/agente/registro" component={HomeAgent}/>
             <Route path="/cliente/registro" component={RegisterClient}/>
+            <Route path="/aboutus" component={AboutUs}/>
             <Route path="/politicas" component={Policies}/>
+            <Route path="/terms" component={Terms}/>
             <Route path="/" exact component={Home}/>
             <Redirect to="/"/>
           </Switch>

@@ -528,8 +528,11 @@ class Form extends Component {
             </Grid>
             <p>Al registrarte aceptas los <span><a className={cls.Link} href="/politicas" target="_blank">Términos y politicas de privacidad.</a></span></p>
             <Grid container justify="center">
-              <Grid item xs={12}>
-                <Button className={cls.ButtonLogin} onClick={() => this.handleOpen("loginAgent")} >INICIAR SESIÓN</Button>
+              <Grid item xs={6}>
+                <a className={cls.ButtonLogin} onClick={() => this.handleOpen("loginAgent")} >INICIAR SESIÓN</a>
+              </Grid>
+              <Grid item xs={6}>
+                <a className={cls.ButtonLogin} href="/">REGRESAR</a>
               </Grid>
             </Grid>
           </Grid>

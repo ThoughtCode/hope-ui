@@ -86,6 +86,7 @@
 .ButtonLogin{
   color: #0069a7 !important;
   font-family: Arial !important;
+  cursor: pointer;
 }
 
 .small{

@@ -87,11 +87,11 @@ class AppBarMenu extends Component {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
-            <Typography variant="title" color="secondary" className={cls.flex}>
+            <p className={cls.flex}>
               <Link to="/">
                 <img src={Logo} className={cls.Applogo} alt="logo" />
               </Link>
-            </Typography>
+            </p>
             <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
               Dashboard
             </MenuItem>
@@ -144,11 +144,7 @@ class AppBarMenu extends Component {
       menu = (
         <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
           <Toolbar className={cls.Toolbar}>
-            <Typography variant="title" color="secondary" className={cls.flex}>
-              <NavLink to="/">
-                <img src={Logo} className={cls.Applogo} alt="logo" />
-              </NavLink>
-            </Typography>
+            <p className={cls.flex}><NavLink to="/"><img src={Logo} className={cls.Applogo} alt="logo" /></NavLink></p>
             <MenuItem>
               <NavLink className={cls.styleAnchor} to="/">Regístrate</NavLink>
             </MenuItem>

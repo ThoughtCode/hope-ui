@@ -1,45 +1,26 @@
-.PoliciesContent {
-    padding-top: 150px !important;
-    padding-bottom: 50px !important;
-    text-align: center;
-}
-.Policies{
-    background-color: #fff;
-}
-.Services {
-    padding-top: 10vh !important;
-}
 .Content{
-    margin-bottom: 1em;
-    color: #0069a7 !important;
-    font-weight: 700 !important;
+  margin-bottom: 1em;
+  color: #0069a7 !important;
+  font-weight: 700 !important;
 }
 .Typography_term{
-    margin: 1.2em;
+  margin: 1.2em;
 }
 .Typography_term_sub{
-    margin: 1em 0 1em 2.4em;
+  margin: 1em 0 1em 2.4em;
 }
 .Typography_term_sub_text{
-    margin: 1em 0 1em 2.4em;
-}
-.SmallText{
-    background-color: yellow;
-    font-size: 1em !important;
+  margin: 1em 0 1em 2.4em;
 }
 
 @media only screen and (max-width: 600px){
-    .PoliciesContent {
-        padding-top: 50px !important;
-        padding-bottom: 0 !important;
-    }
-    .Content{
-        font-size: 1.3em !important;
-    }
-    .SubContent{
-        font-size: 1.3em !important;
-    }
-    .Text{
-        font-size: 0.8em !important;
-    }
+  .Content{
+    font-size: 1.3em !important;
+  }
+  .SubContent{
+    font-size: 1.3em !important;
+  }
+  .Text{
+    font-size: 0.8em !important;
+  }
 }

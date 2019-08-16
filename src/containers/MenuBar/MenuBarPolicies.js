@@ -18,7 +18,7 @@ import {
 
 // Component
 import cls from './MenuBar.css';
-import Logo from './img/logo.svg';
+import Logo from './img/logo.png';
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
 import LoginAgent from '../../containers/Agent/Login/Login';
@@ -142,7 +142,7 @@ class AppBarMenu extends Component {
       )
     } else {
       menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
+        <AppBar topfixed="true" className={cls.AppBarKnowUs} elevation={0}>
           <Toolbar className={cls.Toolbar}>
             <p className={cls.flex}><NavLink to="/"><img src={Logo} className={cls.Applogo} alt="logo" /></NavLink></p>
             <MenuItem>

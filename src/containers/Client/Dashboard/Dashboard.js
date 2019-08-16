@@ -10,7 +10,7 @@ import Services from '../../../components/Client/Services/Services';
 import NextJobs from '../../../components/Client/NextJobs/NextJobs';
 import PastJobs from '../../../components/Client/PastJobs/PastJobs';
 import Download from '../../../components/Home/Download/DownloadCurrent';
-import Contact from '../../../components/Home/Contact/Contact';
+import Footer from '../../../components/Home/Footer/Footer';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 
 // Css
@@ -51,7 +51,7 @@ class Dashboard extends Component {
             <Download />
           </div>
         )}
-        <Contact />
+        <Footer />
       </div>
     );
   };

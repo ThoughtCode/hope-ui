@@ -12,7 +12,7 @@ class Funtion extends Component {
   render() {
     return (
       <div className={cls.stylesFuntion}>
-        <h2 className={cls.textTitle}><small className={cls.smallTitle}>----------</small>  ¿Cómo Funciona?  <small className={cls.smallTitle}>----------</small></h2>
+        <h2 className={cls.textTitle}><small className={cls.smallTitle}>---------------</small>  ¿Cómo Funciona?  <small className={cls.smallTitle}>---------------</small></h2>
         <Grid container align="center" className={cls.styleContainer}>
           <Grid item xs={12} md={6}>
             <img src={NumberOne} className={cls.styleImg} alt="AppLogo" />

@@ -24,12 +24,12 @@ class Home extends Component {
         <Description />
         <Guarantees />
         <Funtion />
-        <h2 className={classes.textTitle}><small className={classes.smallTitle}>----------</small> Servicios <small className={classes.smallTitle}>----------</small></h2>
+        <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Servicios <small className={classes.smallTitle}>---------------</small></h2>
         <Services />
-        <h2 className={classes.textTitle}><small className={classes.smallTitle}>----------</small> Contáctanos <small className={classes.smallTitle}>----------</small></h2>
+        <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Contáctanos <small className={classes.smallTitle}>---------------</small></h2>
         <p className={classes.subTitle}>Déjanos tus datos y nos contactaremos contigo.</p>
         <Contact />
-        <h2 className={classes.textTitle}><small className={classes.smallTitle}>----------</small> Nuestros Clientes <small className={classes.smallTitle}>----------</small></h2>
+        <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Nuestros Clientes <small className={classes.smallTitle}>---------------</small></h2>
         <div className={classes.stylesTestimonio}>
           <Testimonio />
           <Footer />

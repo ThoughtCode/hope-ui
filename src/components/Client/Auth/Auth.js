@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, TextField, Paper, Grid} from 'material-ui';
+import { withStyles, TextField, Grid } from 'material-ui';
 
 import * as actions from '../../../store/actions';
 import cls from './Auth.css'

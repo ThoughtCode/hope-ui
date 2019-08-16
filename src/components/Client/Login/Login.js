@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Grid } from 'material-ui';
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
-import Button from 'material-ui/Button';
 import Auth from '../Auth/Auth';
 import cls from './Login.css';
 import FacebookIcon from '../../../assets/facebookicon.svg';
@@ -17,6 +16,19 @@ class Login extends Component {
   state = {
     accessToken: null,
   }
+
+  // onLoginWithFacebook = () => {
+  //   this.props.onLogin(this.state.accessToken);
+  // }
+
+  // responseFacebook = (response) => {
+  //   const { accessToken } = response.accessToken;
+  //   this.setState({
+  //       accessToken,
+  //     },
+  //     this.onLoginWithFacebook,
+  //   );
+  // }
 
   responseFacebook = (response) => {
     this.props.onLogin(response.accessToken);
@@ -55,17 +67,17 @@ class Login extends Component {
                   callback={this.responseFacebook}
                   isMobile={false}
                   render={renderProps => (
-                    <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
+                    <a onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
                       <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
                       Inicia Sesión con Facebook
-                    </Button>
+                    </a>
                   )}
                 />
               </div>
             </Grid>
             <Grid container justify="center" className={cls.ContainerOpciones}>
-              <Button className={cls.PageButtonRegister} onClick={() => this.props.switchModal("loginAgent")}>ENTRA COMO AGENTE</Button>
-              <Button className={cls.PageButtonRegister} component={Link} to="/resetear">¿OLVIDÓ SU CONTRASEÑA?</Button>
+              <a className={cls.PageButtonRegister} onClick={() => this.props.switchModal("loginAgent")}>ENTRA COMO AGENTE</a>
+              <a className={cls.PageButtonRegister} component={Link} href="/resetear">¿OLVIDÓ SU CONTRASEÑA?</a>
             </Grid>
           </Grid>
         )}

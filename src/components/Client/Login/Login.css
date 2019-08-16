@@ -13,103 +13,55 @@
   background: linear-gradient(to right, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006aa7', endColorstr='#006aa7', GradientType=1 );
 }
-
 .Applogo {
   margin: 3% auto;
   width: 12%;
 }
-
 .Title{
   color: #023a5c;
   text-align: center;
   font-size: 1.2rem;
   margin: 0;
 }
-
 .SubTitle {
   color: #fff;
   text-align: center;
   font-size: 1.2rem;
   margin: 0;
 }
-
-.ModalHeader{
-  background-color: #0069a7;
-  border-radius: 5px 5px 0px 0px;
-  text-align: right !important;
-  font-weight: 500;
-  padding: 10px;
-  color: #FFF !important;
-}
-
 .LoginContainer{
   flex-grow: 1;
 }
-
 .ContainerOpciones{
   text-align: center;
 }
-
 .PageButtonRegister{
-  background-color: #FFF !important;
-  font-size: 0.8rem !important;
-  margin: 3% 5% !important;
+  background-color: #FFF;
+  cursor: pointer;
   justify-content: center;
-  width: 24% !important;
+  margin: 3% 5%;
+  padding: 1%;
+  width: 24%;
 }
-
-.Button {
-  background-color: #0069a7 !important;
-  color: #eee !important;
-  font-family: Arial !important;
-  margin: 4px 0 !important;
-  font-size: 1rem !important;
-  border-radius: 5px !important;
-  border: 1px solid #fff !important;
-  width: 200px !important;
-}
-
-.ButtonRegistroAgente{
-  font-family: Arial !important;
-  font-size: 0.6rem !important;
-  margin: 4px 0 !important;
-  justify-content: center;
-  width: 200px !important;
-}
-
-.ButtonClose{
-  text-align: right;
-}
-
-.ModalAgent {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: absolute !important;
-  background-color: white;
-}
-
 .ButtonFacebookContainer{
-  border-radius: 5px 5px 5px 5px !important;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
   padding: 6px 0;
   width: 95%;
 }
-
 .ButtonFacebookText{
-  background-color: #337ab7 !important;
-  border-color: #2e6da4 !important;
-  color: #fff !important;
-  font-size: 1.2rem !important;
-  font-weight: bold !important;
-  font-family: Arial !important;
-  padding: 20px !important;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: Arial;
+  padding: 3% 18%;
 }
-
 .IconFacebook{
   width: 4vh;
   margin: 0 3vh;
 }
-
 .Divider{
   border: 0 !important;
   height: 1px !important;
@@ -120,19 +72,6 @@
   clear: both !important;
   width: 90% !important;
 }
-
-.DividerIcon{
-  background: #fff !important;
-  color: #bbb !important;
-  line-height: 50px !important;
-  position: absolute !important;
-  width: 30px !important;
-  font-size: 1rem !important;
-  margin: 0 auto 0 -25px !important;
-  top: -25px !important;
-  left: 52% !important;
-}
-
 .LoadingContainer {
   margin-top: 30%;
 }
@@ -146,12 +85,6 @@
     font-size: 1em !important;
     padding: 8px 15px !important;
   }
-  .Typogra {
-    font-size: 0.8em !important;
-  }
-  .ButtonConten {
-    text-align: center;
-  }
   .ButtonFacebookText{
     font-size: 0.8rem !important;
     padding: 10px !important;
@@ -164,9 +97,6 @@
   }
   .LoginContainer{
     padding-top: 0vh !important;
-  }
-  .ModalHeader{
-    padding: 0px;
   }
   .IconFacebook{
     width: 30px;

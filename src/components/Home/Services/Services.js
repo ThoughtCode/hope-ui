@@ -76,7 +76,6 @@ class Services extends Component {
         <div className={cls.styleImg}>
           <img src={ServiceThree} onClick={() => this.handleOpen("login")} alt="AppLogo" />
         </div>
-        
         <Modal
           open={this.state.openRegister}
           onClose={this.handleClose}
@@ -101,7 +100,6 @@ class Services extends Component {
             <LoginAgent className={cls.Modal} close={this.handleClose} />
           </div>
         </Modal>
-
       </Grid>
     );
   }

@@ -18,10 +18,10 @@ class Funtion extends Component {
             <img src={NumberOne} className={cls.styleImg} alt="AppLogo" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <img src={NumberThree} className={cls.styleImg} alt="AppLogo" />
+            <img src={NumberTwo} className={cls.styleImg} alt="AppLogo" />
           </Grid>
           <Grid item xs={12} md={6}>
-            <img src={NumberTwo} className={cls.styleImg} alt="AppLogo" />
+            <img src={NumberThree} className={cls.styleImg} alt="AppLogo" />
           </Grid>
           <Grid item xs={12} md={6}>
             <img src={NumberFour} className={cls.styleImg} alt="AppLogo" />

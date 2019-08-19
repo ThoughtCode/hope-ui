@@ -17,16 +17,16 @@ import Footer from '../../components/Home/Footer/Footer';
 class Home extends Component {
   render() {
     return (
-      <div justify="center">
+      <div id="main" justify="center">
         <div className={classes.MenuBar}><MenuBar /></div>
         <div className={classes.MenuNone}><MenuResponsive /></div>
-        <Main id="main" />
+        <Main />
         <Description />
         <Guarantees />
         <Funtion />
-        <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Servicios <small className={classes.smallTitle}>---------------</small></h2>
+        <h2 id="services" className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Servicios <small className={classes.smallTitle}>---------------</small></h2>
         <Services />
-        <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Contáctanos <small className={classes.smallTitle}>---------------</small></h2>
+        <h2 id="contact" className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Contáctanos <small className={classes.smallTitle}>---------------</small></h2>
         <p className={classes.subTitle}>Déjanos tus datos y nos contactaremos contigo.</p>
         <Contact />
         <h2 className={classes.textTitle}><small className={classes.smallTitle}>---------------</small> Nuestros Clientes <small className={classes.smallTitle}>---------------</small></h2>

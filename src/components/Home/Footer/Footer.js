@@ -44,8 +44,8 @@ class Contact extends Component {
             <Grid item xs={12} sm={3} md={3}>
               <p className={`${cls.SubTitle} ${cls.Paper}`}>VISÍTANOS</p>
               <a href="https://www.facebook.com/appnocnoc/" target="_blank"><img src={Facebook} alt="Facebook" className={cls.Styleicon} /></a>
-              <a href="https://www.instagram.com/nocnoc_ec/?hl=es-la" target="_blank"><img src={Instagram} alt="Instagram" className={cls.Styleicon} /></a>
-              <a href="#" target="_black" ><img src={WhatsApp} alt="WhatsApp" className={cls.Styleicon} /></a>
+              <a href="https://www.instagram.com/nocnoc_app/?hl=es-la" target="_blank"><img src={Instagram} alt="Instagram" className={cls.Styleicon} /></a>
+              <a href="https://wa.me/593995388728" target="_black" ><img src={WhatsApp} alt="WhatsApp" className={cls.Styleicon} /></a>
             </Grid>
             <Grid item xs={12} sm={3} md={3}>
               <p className={`${cls.SubTitle} ${cls.Paper}`}>Descarga la app</p>

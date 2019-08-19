@@ -245,7 +245,7 @@ class AppBarMenu extends Component {
       menu = (
         <nav>
           <Toolbar className={cls.Toolbar}>
-            <p className={cls.flex}><AnchorLink href="#main"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink></p>
+            <AnchorLink className={cls.flex} href="#main"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink>
             <MenuItem>
               <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
             </MenuItem>

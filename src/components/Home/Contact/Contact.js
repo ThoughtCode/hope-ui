@@ -22,6 +22,7 @@ class Contact extends Component {
         valid: false,
         touched: false,
         errorText: null,
+        placeholder: 'Nombre'
       },
       celular: {
         value: '',
@@ -31,13 +32,14 @@ class Contact extends Component {
         valid: false,
         touched: false,
         errorText: null,
+        placeholder: 'Número de teléfono'
       },
       email: {
         elementType: 'input',
         label: 'Correo',
         elementConfig: {
           type: 'email',
-          placeholder: 'ejemplo@ejemplo.com',
+          placeholder: 'Email',
         },
         value: '',
         validation: {
@@ -163,13 +165,13 @@ class Contact extends Component {
         <Grid item xs={12} sm={7} align="center" justify="center" className={cls.Contact}>
           <div>
             <a href="https://www.facebook.com/appnocnoc/" target="_blank"><img src={Facebook} alt="Facebook" className={cls.Styleicon} /></a>
-            <a href="https://www.instagram.com/nocnoc_ec/?hl=es-la" target="_blank"><img src={Instagram} alt="Instagram" className={cls.Styleicon} /></a>
-            <a href="#" target="_black" ><img src={WhatsApp} alt="WhatsApp" className={cls.Styleicon} /></a>
+            <a href="https://www.instagram.com/nocnoc_app/?hl=es-la" target="_blank"><img src={Instagram} alt="Instagram" className={cls.Styleicon} /></a>
+            <a href="https://wa.me/593995388728" target="_black" ><img src={WhatsApp} alt="WhatsApp" className={cls.Styleicon} /></a>
           </div>
           <div className={cls.Paper}>
             <input
               className={cls.Field}
-              placeholder="Nombre"
+              placeholder={this.state.formData.name.placeholder}
               id="name"
               multiline="true"
               margin="normal"
@@ -190,7 +192,7 @@ class Contact extends Component {
           <div className={cls.Paper}>
             <input
               className={cls.Field}
-              placeholder="Número de teléfono"
+              placeholder={this.state.formData.celular.placeholder}
               id="multiline-static"
               multiline="true"
               margin="normal"
@@ -211,7 +213,7 @@ class Contact extends Component {
           <div className={cls.Paper}>
             <input
               className={cls.Field}
-              placeholder="Email"
+              placeholder={this.state.formData.email.elementConfig.placeholder}
               id="multiline-static"
               multiline="true"
               margin="normal"
@@ -231,11 +233,11 @@ class Contact extends Component {
           </div>
           <div className={cls.Paper}>
             {this.state.formIsValid ? (
-              <button
+              <a
                 onClick={(event) => this.formContact(event, this.formContact)}
-                className={cls.ButtonContratar}>ENVIAR</button>
+                className={cls.ButtonContratar}>ENVIAR</a>
             ): (
-              <button className={cls.pageButtonInvalid}>ENVIAR</button>
+              <a className={cls.pageButtonInvalid}>ENVIAR</a>
             )}
           </div>
         </Grid>
@@ -245,7 +247,7 @@ class Contact extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-  onFormContact: formData => dispatch(action.formContact(formData)),
+  onFormContact: (formData) => dispatch(action.formContact(formData)),
 });
 
 export default connect(null, mapDispatchToProps) (Contact);

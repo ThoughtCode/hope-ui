@@ -108,6 +108,7 @@ body {
   text-align: center;
   font-family: Fontgrab;
   margin: 2% auto;
+  padding-top: 11%;
 }
 
 .subTitle{
@@ -133,6 +134,9 @@ body {
   .PoliciesContent {
     padding-top: 50px !important;
     padding-bottom: 0 !important;
+  }
+  .textTitle{
+    padding-top: 16%;
   }
 }
 

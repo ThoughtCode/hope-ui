@@ -166,7 +166,7 @@ class MenuAppBar extends React.Component {
       menu = (
         <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
-            <p className={cls.flex}><AnchorLink href="/"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink></p>
+            <AnchorLink className={cls.flex} href="#main"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink>
             {/* <AnchorLink style={ styleAnchor } href='/'>
               <img src={Logo} className={cls.Applogo} alt="logo" />
             </AnchorLink> */}
@@ -194,13 +194,13 @@ class MenuAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#Funtion">¿Cóm Funciona?</AnchorLink>
+                  <AnchorLink className={cls.styleAnchor} href="#works">¿Cóm Funciona?</AnchorLink>
                 </MenuItem>
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#Services">Servicios</AnchorLink>
+                  <AnchorLink className={cls.styleAnchor} href="#services">Servicios</AnchorLink>
                 </MenuItem>
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#Download">Descarga</AnchorLink>
+                  <AnchorLink className={cls.styleAnchor} href="#contact">Contáctanos</AnchorLink>
                 </MenuItem>
                 <Button className={cls.styleAnchorButton} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
               </Menu>

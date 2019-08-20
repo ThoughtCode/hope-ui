@@ -25,7 +25,7 @@ function FullWidthGrid(props) {
       <Grid container justify="center">
         <Grid item xs={12} sm={10}>
           <div>
-            <h1>Términos y Condiciones</h1>
+            <h1 className={cls.textTitle}><small className={cls.smallTitle}>---------------</small> Términos y Condiciones <small className={cls.smallTitle}>---------------</small></h1>
             <p className={classes.paper}>Los presentes términos y condiciones generales regulan el uso de la plataforma digital NOC NOC, compuesta por un sitio web www.nocnoc.com.ec y una aplicación móvil. La plataforma digital es propiedad de HOPESERV CIA LTDA, una compañía constituida bajo la leyes de la República del Ecuador, con Registro Único de Contribuyentes No. 1792851300001, domiciliada en la ciudad de Quito, Ecuador.</p>
           </div>
         </Grid>

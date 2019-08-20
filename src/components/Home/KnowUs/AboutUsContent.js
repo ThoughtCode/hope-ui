@@ -24,7 +24,7 @@ function FullWidthGrid(props) {
     <div className={classes.root} id="aboutus">
       <Grid container justify="center">
         <Grid item xs={12} sm={10}>
-          <h1>¿Quiénes Somos?</h1>
+          <h1 className={cls.textTitle}><small className={cls.smallTitle}>---------------</small> ¿Quiénes Somos? <small className={cls.smallTitle}>---------------</small></h1>
           <p className={classes.paper}>Somos una plataforma digital innovadora y disruptiva del Ecuador que facilita a la gente contratar diferentes servicios para su hogar u oficinas. Funcionamos como un medio de conexión entre personas que necesitan contratar un servicio (clientes) y los profesionales que ofrecen el servicio (agentes). Facilitando el pago electrónico mediante un botón de pagos que acepta tarjetas de crédito o débito, garantizando una compra 100% segura. Por los servicios prestados se emiten facturas con un sistema de facturación electrónica. Los servicios ofrecidos en la plataforma cuentan con la garantía NOC NOC y todo el proceso de contratación es realizado digitalmente.</p>
         </Grid>
         <Grid item xs={12} sm={10}>

@@ -25,7 +25,7 @@ function FullWidthGrid(props) {
       <Grid container justify="center">
         <Grid item xs={12} sm={10}>
           <div>
-            <h1>Política de Privacidad</h1>
+            <h1 className={cls.textTitle}><small className={cls.smallTitle}>---------------</small> Política de Privacidad <small className={cls.smallTitle}>---------------</small></h1>
             <p className={classes.paper}>La presente política de privacidad aplica a los USUARIOS que aceptaron los TÉRMINOS y CONDICIONES y se registraron en la PLATAFORMA NOC NOC, de propiedad de HOPESERV CIA LTDA, una compañía constituida bajo las leyes de la República del Ecuador, con Registro Único de Contribuyentes No. 1792851300001, domiciliada en la ciudad de Quito-Ecuador.</p>
           </div>
         </Grid>

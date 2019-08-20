@@ -4,7 +4,24 @@
   text-align: center;
   height: 600px;
   width: 600px;
-  background-color: #ffffff !important;
+  background: rgba(76,148,207,0.8);
+  background: -moz-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(76,148,207,0.8)), color-stop(50%, rgba(76,148,207,0.8)), color-stop(50%, rgba(76,148,207,0.8)), color-stop(100%, rgba(76,148,207,0.8)));
+  background: -webkit-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -o-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: -ms-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  background: linear-gradient(to right, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006aa7', endColorstr='#006aa7', GradientType=1 );
+}
+.Applogo {
+  margin: 3% auto;
+  width: 12%;
+}
+.Title{
+  color: #fff;
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 0;
 }
 .RegisterContainer{
   flex-grow: 1;
@@ -18,18 +35,19 @@
   color: #FFF !important;
 }
 .ButtonFacebookContainer{
-  border-radius: 5px 5px 5px 5px !important;
-  padding: 2px 22px;
-  width: 100%;
+  border-radius: 5px 5px 5px 5px;
+  cursor: pointer;
+  padding: 6px 0;
+  width: 95%;
 }
 .ButtonFacebookText{
-  background-color: #337ab7 !important;
-  border-color: #2e6da4 !important;
-  color: #fff !important;
-  font-size: 1.2rem !important;
-  font-weight: bold !important;
-  font-family: Arial !important;
-  padding: 20px !important;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: Arial;
+  padding: 3% 18%;
 }
 .IconFacebook{
   width: 4vh;
@@ -78,11 +96,12 @@
   width: 100%;
 }
 .pageButtonRegistroAgente{
-  font-family: Arial !important;
-  font-size: 0.8rem !important;
-  margin: 4px 0 !important;
+  background-color: #FFF;
+  cursor: pointer;
   justify-content: center;
-  width: 160px !important;
+  margin: 3% 5%;
+  padding: 1%;
+  width: 24%;
 }
 .Typogra {
   color: #0069a7 !important;
@@ -120,9 +139,6 @@
     width: 30px;
     margin: 0 8px;
   }
-  .ButtonFacebookText{
-    font-size: 0.8rem !important;
-  }
   .ModalHeader{
     padding: 0px;
   }
@@ -130,6 +146,7 @@
     width: 130px !important;
   }
   .ButtonFacebookText{
+    font-size: 0.8rem !important;
     padding: 10px !important;
   }
   .ButtonFacebookContainer{

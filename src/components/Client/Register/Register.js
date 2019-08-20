@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withStyles } from 'material-ui/styles';
-import { Link } from 'react-router-dom';
 import Grid from 'material-ui/Grid';
-import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 import * as actions from '../../../store/actions';
@@ -12,6 +9,7 @@ import cls from './Register.css';
 import FacebookIcon from '../../../assets/facebookicon.svg';
 import FormRegister from '../FormRegister/FormRegister';
 import Spinner from '../../UI/Spinner/Spinner';
+import Logo from '../../../assets/LogoBlanco.svg';
 
 const styles = theme => ({
   input: {
@@ -192,26 +190,21 @@ class Register extends Component {
     }
     return (
       <div className={cls.Register}>
-        <Grid container className={cls.ModalHeader}>
-          <Grid item xs={12} sm={12}>
-            <Button onClick={this.props.close}>
-              <i className="material-icons">clear</i>
-            </Button>
-          </Grid>
-        </Grid>
         {this.props.loading ? (
           <Grid container className={cls.LoadingContainer} style={this.props.formClass} justify="center" >
             <Spinner />
           </Grid>
         ) : (
           <Grid container className={cls.RegisterContainer} style={this.props.formClass} justify="center" >
+            <Grid item xs={12}>
+              <img src={Logo} className={cls.Applogo} alt="logo" />
+            </Grid>
             <Grid item xs={12} sm={12} align="center" >
-              <Typography variant="headline" gutterBottom className={cls.Typogra}>Crea una cuenta con tus datos</Typography>
+              <p className={cls.Title}>Crea una cuenta con tus datos</p>
               <div><FormRegister /></div>
             </Grid>
             <div className={cls.Divider}>
               <i className="material-icons">circle</i>
-              <i className={`${cls.DividerIcon} ${"material-icons"}`}>radio_button_unchecked</i>
               <i className="material-icons">circle</i>
             </div>
             <div className={cls.ButtonFacebookContainer}>
@@ -221,17 +214,17 @@ class Register extends Component {
                 fields="name,email"
                 callback={this.responseFacebook}
                 render={renderProps => (
-                  <Button onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
+                  <a onClick={renderProps.onClick} className={`${cls.ButtonFacebookContainer} ${cls.ButtonFacebookText}`} >
                     <img className={cls.IconFacebook} src={FacebookIcon} alt="IconFacebook" />
                     Regístrate con Facebook
-                  </Button>      
+                  </a>      
                 )}
               />
             </div>
-            <div className={cls.ButtonConten}>
-              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/agente/registro" >Regístrate como Agente</Button>
-              <Button className={cls.pageButtonRegistroAgente} component={Link} to="/resetear" >Olvido su contraseña</Button>
-            </div>
+            <Grid container justify="center" className={cls.ButtonConten}>
+              <a className={cls.pageButtonRegistroAgente} href="/agente/registro" >Regístrate como Agente</a>
+              <a className={cls.pageButtonRegistroAgente} href="/resetear" >Olvido su contraseña</a>
+            </Grid>
           </Grid>
         )}
       </div>

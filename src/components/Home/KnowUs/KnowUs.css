@@ -1,7 +1,18 @@
 .Content{
   margin-bottom: 1em;
-  color: #0069a7 !important;
+  color: grey !important;
   font-weight: 700 !important;
+  text-decoration: underline gray;
+}
+.textTitle{
+  /* font-size: 5em; */
+  text-align: center;
+  font-family: Fontgrab;
+  /* margin: 2% auto; */
+  /* padding-top: 11%; */
+}
+.smallTitle{
+  letter-spacing: -0.2em;
 }
 .Typography_term{
   margin: 1.2em;
@@ -22,5 +33,8 @@
   }
   .Text{
     font-size: 0.8em !important;
+  }
+  .smallTitle{
+    display: none;
   }
 }

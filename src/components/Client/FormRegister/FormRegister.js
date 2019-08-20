@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withStyles, TextField, Paper, Grid} from 'material-ui';
+import { withStyles, TextField, Grid} from 'material-ui';
 import cls from './FormRegister.css'
 import * as action from '../../../store/actions';
 
@@ -210,164 +210,152 @@ class FormRegister extends Component {
   render() {
     const { classes } = this.props;
     return (
-      <div className={cls.container}>
-        <Grid container>
-          <Grid item xs={6} sm={6}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                value={this.state.registerForm.first_name.value}
-                onChange={(event) => this.inputChangedHandler(event, 'first_name')}
-                fullWidth
-                placeholder="Nombre"
-                id="name"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.registerForm.first_name.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                value={this.state.registerForm.last_name.value}
-                onChange={(event) => this.inputChangedHandler(event, 'last_name')}
-                fullWidth
-                placeholder="Apellido"
-                id="Apellido"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.registerForm.last_name.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                value={this.state.registerForm.email.value}
-                onChange={(event) => this.inputChangedHandler(event, 'email')}
-                fullWidth
-                placeholder="Correo"
-                id="Correo"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.registerForm.email.valid && this.state.registerForm.email.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.registerForm.email.valid && this.state.registerForm.email.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.registerForm.email.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                value={this.state.registerForm.password.value}
-                onChange={(event) => this.inputChangedHandler(event, 'password')}
-                type={'password'}  
-                fullWidth
-                placeholder="Contraseña"
-                id="Contrasena"
-                InputProps={{
-                  disableUnderline: true,
-                  classes: {
-                    root: classes.bootstrapRoot,
-                    input: !this.state.registerForm.password.valid && this.state.registerForm.password.touched ? 
-                      classes.bootstrapInputError : 
-                      classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                shrink: true,
-                className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.registerForm.password.valid && this.state.registerForm.password.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.registerForm.password.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={6} sm={6}>
-            <Paper className={classes.paper} elevation={0}>
-              <TextField
-                type={'password'}
-                value={this.state.registerForm.password_confirmation.value}
-                onChange={(event) => this.inputChangedHandler(event, 'password_confirmation')}
-                fullWidth
-                placeholder="Confirme Contraseña"
-                id="Confirmacion"
-                InputProps={{
-                disableUnderline: true,
-                classes: {
-                  root: classes.bootstrapRoot,
-                  input: !this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? 
-                    classes.bootstrapInputError : 
-                    classes.bootstrapInput,
-                  },
-                }}
-                InputLabelProps={{
-                  shrink: true,
-                  className: classes.bootstrapFormLabel,
-                }}
-              />
-              {!this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? (
-                <div className={cls.ErrorText}>
-                  {this.state.registerForm.password_confirmation.errorText}
-                </div>
-              ) : null}
-            </Paper>
-          </Grid>
-          <Grid item xs={12}>
-            {this.state.formIsValid ? (
-              <button onClick={(event) => this.registerHandler(event, this.registerHandler)} className={cls.pageButton} >Registrar</button>
-            ): (
-              <button disabled className={cls.pageButtonInvalid} >Registrar</button>
-            )}
-          </Grid>
+      <Grid container>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            value={this.state.registerForm.first_name.value}
+            onChange={(event) => this.inputChangedHandler(event, 'first_name')}
+            fullWidth
+            placeholder="Nombre"
+            id="name"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? 
+                  classes.bootstrapInputError : 
+                  classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.first_name.valid && this.state.registerForm.first_name.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.first_name.errorText}
+            </div>
+          ) : null}
         </Grid>
-      </div>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            value={this.state.registerForm.last_name.value}
+            onChange={(event) => this.inputChangedHandler(event, 'last_name')}
+            fullWidth
+            placeholder="Apellido"
+            id="Apellido"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? 
+                  classes.bootstrapInputError : 
+                  classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.last_name.valid && this.state.registerForm.last_name.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.last_name.errorText}
+            </div>
+          ) : null}
+        </Grid>
+        <Grid item xs={12}>
+          <TextField
+            value={this.state.registerForm.email.value}
+            onChange={(event) => this.inputChangedHandler(event, 'email')}
+            fullWidth
+            placeholder="Correo"
+            id="Correo"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.registerForm.email.valid && this.state.registerForm.email.touched ? 
+                  classes.bootstrapInputError : 
+                  classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.email.valid && this.state.registerForm.email.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.email.errorText}
+            </div>
+          ) : null}
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            value={this.state.registerForm.password.value}
+            onChange={(event) => this.inputChangedHandler(event, 'password')}
+            type={'password'}  
+            fullWidth
+            placeholder="Contraseña"
+            id="Contrasena"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.registerForm.password.valid && this.state.registerForm.password.touched ? 
+                  classes.bootstrapInputError : 
+                  classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+            shrink: true,
+            className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.password.valid && this.state.registerForm.password.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.password.errorText}
+            </div>
+          ) : null}
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            type={'password'}
+            value={this.state.registerForm.password_confirmation.value}
+            onChange={(event) => this.inputChangedHandler(event, 'password_confirmation')}
+            fullWidth
+            placeholder="Confirme Contraseña"
+            id="Confirmacion"
+            InputProps={{
+            disableUnderline: true,
+            classes: {
+              root: classes.bootstrapRoot,
+              input: !this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? 
+                classes.bootstrapInputError : 
+                classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.password_confirmation.valid && this.state.registerForm.password_confirmation.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.password_confirmation.errorText}
+            </div>
+          ) : null}
+        </Grid>
+        <Grid item xs={12}>
+          {this.state.formIsValid ? (
+            <button onClick={(event) => this.registerHandler(event, this.registerHandler)} className={cls.pageButton} >Registrar</button>
+          ): (
+            <button disabled className={cls.pageButtonInvalid} >Registrar</button>
+          )}
+        </Grid>
+      </Grid>
     );
   }
 }

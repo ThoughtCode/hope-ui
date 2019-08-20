@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 import { Grid } from 'material-ui';
 import Modal from 'material-ui/Modal';
+import Carousel from 'nuka-carousel';
 
 // Component
 import cls from './Services.css';
@@ -67,15 +68,28 @@ class Services extends Component {
     const { classes } = this.props;
     return (
       <Grid container direction="row" alignItems="center" justify="center" className={cls.stylesServices}>
-        <div className={cls.styleImg}>
-          <img src={ServiceOne} onClick={() => this.handleOpen("login")} alt="AppLogo" />
-        </div>
-        <div className={cls.styleImg}>
-          <img src={ServiceTwo} onClick={() => this.handleOpen("login")} alt="AppLogo" />
-        </div>
-        <div className={cls.styleImg}>
-          <img src={ServiceThree} onClick={() => this.handleOpen("login")} alt="AppLogo" />
-        </div>
+        <Grid item xs={10} md={6}>
+          <Carousel
+            renderCenterLeftControls={({ previousSlide }) => (
+              <a className={cls.OnClickCarousel} onClick={previousSlide}>{"<"}</a>
+            )}
+            renderCenterRightControls={({ nextSlide }) => (
+              <a className={cls.OnClickCarousel} onClick={nextSlide}>{">"}</a>
+            )}
+            autoplay={true}
+            autoplayReverse={true}
+          >
+            <div className={cls.styleImg}>
+              <img src={ServiceOne} onClick={() => this.handleOpen("login")} alt="AppLogo" />
+            </div>
+            <div className={cls.styleImg}>
+              <img src={ServiceTwo} onClick={() => this.handleOpen("login")} alt="AppLogo" />
+            </div>
+            <div className={cls.styleImg}>
+              <img src={ServiceThree} onClick={() => this.handleOpen("login")} alt="AppLogo" />
+            </div>
+          </Carousel>
+        </Grid>
         <Modal
           open={this.state.openRegister}
           onClose={this.handleClose}

@@ -47,8 +47,8 @@ class Login extends Component {
               <img src={Logo} className={cls.Applogo} alt="logo" />
             </Grid>
             <Grid item xs={12}>
-              <p className={cls.Title}>"Queremos facilitar tu vida</p>
-              <p className={cls.SubTitle}>en NOC NOC, lo hacemos por ti"</p>
+              <p className={cls.Title}>Queremos facilitar tu vida.</p>
+              <p className={cls.SubTitle}>En NOC NOC, lo hacemos por ti</p>
             </Grid>
             <Grid item xs={12}>
               <Auth />

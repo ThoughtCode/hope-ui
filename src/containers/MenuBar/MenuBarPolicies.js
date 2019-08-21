@@ -1,17 +1,11 @@
 // Dependencias
 import React, { Component } from 'react';
-import { Link, withRouter } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles';
 import {
   MenuItem,
   AppBar,
   Toolbar,
-  Typography,
   Button,
-  IconButton,
-  Menu,
-  Avatar,
   Modal,
   Grid
 } from 'material-ui';
@@ -22,14 +16,6 @@ import Logo from './img/logo.png';
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
 import LoginAgent from '../../containers/Agent/Login/Login';
-
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-  },
-});
 
 class AppBarMenu extends Component {
   state = {
@@ -79,68 +65,8 @@ class AppBarMenu extends Component {
   };
 
   render() {
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
-    const { classes } = this.props;
     let menu = null;
-    if (this.props.auth) {
-      menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
-          <Toolbar className={cls.Toolbar}>
-            <p className={cls.flex}>
-              <Link to="/">
-                <img src={Logo} className={cls.Applogo} alt="logo" />
-              </Link>
-            </p>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
-              Dashboard
-            </MenuItem>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente/trabajos">
-              Mis Trabajos
-            </MenuItem>
-            <div>
-              <IconButton
-                className={cls.Avatar}
-                aria-owns={open ? 'menu-appbar' : null}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
-              {this.props.profile === null ? (
-                <Avatar>
-                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
-                </Avatar>
-              ) : (
-                <Avatar
-                  src={this.props.profile}/>
-                )}
-                <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
-              </IconButton>
-              <Menu
-                className={cls.SubMenu}
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={this.handleClose}
-              >
-                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
-                  Cerrar sesión
-                </MenuItem>
-              </Menu>
-            </div>
-          </Toolbar>
-        </AppBar>        
-      )
-    } else {
+    if (!this.props.auth) {
       menu = (
         <AppBar topfixed="true" className={cls.AppBarKnowUs} elevation={0}>
           <Toolbar className={cls.Toolbar}>
@@ -153,7 +79,7 @@ class AppBarMenu extends Component {
             </MenuItem>
           </Toolbar>
         </AppBar>
-      );
+      )
     }
     return (
       <div className={cls.root}>
@@ -166,7 +92,7 @@ class AppBarMenu extends Component {
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Registro close={this.handleClose} />
                   </div>
                 </Modal>
@@ -174,7 +100,7 @@ class AppBarMenu extends Component {
                   open={this.state.openLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Login className={cls.Modal} close={this.handleClose} switchModal={this.handleOpen}/>
                   </div>
                 </Modal>
@@ -182,7 +108,7 @@ class AppBarMenu extends Component {
                   open={this.state.openAgentLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <LoginAgent className={cls.Modal} close={this.handleClose} />
                   </div>
                 </Modal>
@@ -195,6 +121,4 @@ class AppBarMenu extends Component {
   }
 }
 
-const MenuAppBar = withStyles(styles)(AppBarMenu);
-
-export default withRouter(MenuAppBar);
+export default AppBarMenu;

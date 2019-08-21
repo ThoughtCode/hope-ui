@@ -18,7 +18,6 @@
   background-color: transparent !important;
   color: #0069A7 !important;
 }
-
 .styleAnchorButton{
   color: rgba(0, 0, 0, 0.6) !important;
   width: auto !important;
@@ -67,6 +66,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  position: absolute;
 }
 
 .root {

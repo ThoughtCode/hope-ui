@@ -1,19 +1,14 @@
 // Dependencias
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Menu, { MenuItem } from 'material-ui/Menu';
-import AnchorLink from 'react-anchor-link-smooth-scroll';
 import {
   Button,
   Grid,
   Modal,
-  Avatar,
 } from 'material-ui';
 
 // Component
@@ -21,25 +16,9 @@ import Logo from './img/logo.svg';
 import cls from './MenuResponsive.css';
 import Registro from '../../components/Client/Register/Register';
 import Login from '../../components/Client/Login/Login';
-import LoginAgent from '../../containers/Agent/Login/Login';
+import LoginAgent from '../Agent/Login/Login';
 
-const styleAnchor = {
-  textDecoration: 'none',
-  color: '#0069A7'
-};
-
-const styles = theme => ({
-  flex: {
-    flex: 1,
-  },
-  paper: {
-    position: 'absolute',
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-  },
-});
-
-class MenuAppBar extends React.Component {
+class MenuAppBarResponsive extends React.Component {
   state = {
     anchorEl: null,
     openLogin: false,
@@ -101,75 +80,14 @@ class MenuAppBar extends React.Component {
   }
 
   render() {
-    const { classes } = this.props;
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
     let menu = null;
-    if (this.props.auth) {
-      menu = (
-        <AppBar topfixed="true" className={cls.AppBar} elevation={0}>
-          <Toolbar className={cls.Toolbar}>
-            <Typography variant="title" color="secondary" className={cls.flex}>
-              <Link to="/">
-                <img src={Logo} className={cls.Applogo} alt="logo" />
-              </Link>
-            </Typography>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente">
-              Dashboard
-            </MenuItem>
-            <MenuItem className={cls.MenuItem} component={Link} to="/cliente/trabajos">
-              Mis Trabajos
-            </MenuItem>
-            <div>
-              <IconButton
-                className={cls.Avatar}
-                aria-owns={open ? 'menu-appbar' : null}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
-              {this.props.profile === null ? (
-                <Avatar>
-                  {localStorage.getItem('first_name').charAt(0)}{localStorage.getItem('last_name').charAt(0)}
-                </Avatar>
-              ) : (
-                <Avatar
-                  src={this.props.profile}/>
-                )}
-                <i className={`${cls.IconAvatarMenu} ${"material-icons"}`}>keyboard_arrow_down</i>
-              </IconButton>
-              <Menu
-                className={cls.SubMenu}
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={open}
-                onClose={this.handleClose}
-              >
-                <MenuItem className={cls.SubMenuItem} onClick={this.handleClose} component={Link} to="/cliente/perfil/info">Mi Perfil</MenuItem>
-                <MenuItem className={cls.SubMenuItem} onClick={this.props.logout} component={Link} to="/">
-                  Cerrar sesión
-                </MenuItem>
-              </Menu>
-            </div>
-          </Toolbar>
-        </AppBar>
-      )
-    } else {
+    if (!this.props.auth) {
       menu = (
         <AppBar style={{backgroundColor: 'transparent'}} elevation={0}>
           <Toolbar style={{ backgroundColor: this.state.bgColor }}>
-            <AnchorLink className={cls.flex} href="#main"><img src={Logo} className={cls.Applogo} alt="logo" /></AnchorLink>
-            {/* <AnchorLink style={ styleAnchor } href='/'>
-              <img src={Logo} className={cls.Applogo} alt="logo" />
-            </AnchorLink> */}
+            <a className={cls.flex} href="/"><img src={Logo} className={cls.Applogo} alt="logo" /></a>
             <div>
               <IconButton
                 aria-owns={open ? 'menu-appbar' : null}
@@ -194,16 +112,7 @@ class MenuAppBar extends React.Component {
                 onClose={this.handleClose}
               >
                 <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#works">¿Cómo Funciona?</AnchorLink>
-                </MenuItem>
-                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#services">Servicios</AnchorLink>
-                </MenuItem>
-                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <a className={cls.styleAnchor} href="/agente/registro">Quiero ser agente</a>
-                </MenuItem>
-                <MenuItem style={{height: '13px', paddingLeft: '10px', fontFamily: 'Arial', backgroundColor: 'transparent'}}>
-                  <AnchorLink className={cls.styleAnchor} href="#contact">Contáctanos</AnchorLink>
+                  <a className={cls.styleAnchor} href="/">Regístrate</a>
                 </MenuItem>
                 <Button className={cls.styleAnchorButton} onClick={() => this.handleOpen("login")} >Iniciar Sesión</Button>
               </Menu>
@@ -223,7 +132,7 @@ class MenuAppBar extends React.Component {
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Registro close={this.handleClose} />
                   </div>
                 </Modal>
@@ -231,7 +140,7 @@ class MenuAppBar extends React.Component {
                   open={this.state.openLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Login className={cls.Modal} close={this.handleClose} switchModal={this.handleOpen}/>
                   </div>
                 </Modal>
@@ -239,7 +148,7 @@ class MenuAppBar extends React.Component {
                   open={this.state.openAgentLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <LoginAgent className={cls.Modal} close={this.handleClose} />
                   </div>
                 </Modal>
@@ -252,4 +161,4 @@ class MenuAppBar extends React.Component {
   }
 }
 
-export default withRouter(withStyles(styles)(MenuAppBar));
+export default MenuAppBarResponsive;

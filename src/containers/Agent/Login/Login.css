@@ -2,7 +2,7 @@
   border-radius: 5px 5px 5px 5px !important;
   margin: 0px auto;
   text-align: center;
-  height: 600px;
+  /* height: 600px; */
   width: 600px;
   background: rgba(76,148,207,0.8);
   background: -moz-linear-gradient(left, rgba(76,148,207,0.8) 0%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 50%, rgba(76,148,207,0.8) 100%);
@@ -54,7 +54,7 @@
 
 @media only screen and (max-width: 600px) {
   .Login{
-    height: 412px;
+    /* height: 412px; */
     width: 300px;
   }
   .PageButtonRegister{

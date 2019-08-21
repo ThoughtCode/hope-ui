@@ -14,14 +14,6 @@ import Registro from '../../../components/Client/Register/Register';
 import Login from '../../../components/Client/Login/Login';
 import LoginAgent from '../../../containers/Agent/Login/Login';
 
-const styles = theme => ({
-  paper: {
-    position: 'absolute',
-    backgroundColor: 'transparent',
-    boxShadow: theme.shadows[5],
-  },
-});
-
 class Main extends Component {
   state = {
     openRegister: false,
@@ -66,7 +58,6 @@ class Main extends Component {
   };
 
   render() {
-    const { classes } = this.props;
     return (
       <div className={cls.Main}>
         <Grid container justify="center" className={cls.style}>
@@ -85,7 +76,7 @@ class Main extends Component {
                   open={this.state.openRegister}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Registro close={this.handleClose} />
                   </div>
                 </Modal>
@@ -93,7 +84,7 @@ class Main extends Component {
                   open={this.state.openLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <Login className={cls.Modal} close={this.handleClose} switchModal={this.handleOpen}/>
                   </div>
                 </Modal>
@@ -101,7 +92,7 @@ class Main extends Component {
                   open={this.state.openAgentLogin}
                   onClose={this.handleClose}
                 >
-                  <div className={`${cls.Modal} ${classes.paper}`}>
+                  <div className={cls.Modal}>
                     <LoginAgent className={cls.Modal} close={this.handleClose} />
                   </div>
                 </Modal>
@@ -114,4 +105,4 @@ class Main extends Component {
   }
 }
 
-export default withRouter(withStyles(styles)(Main))
+export default Main

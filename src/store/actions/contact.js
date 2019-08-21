@@ -26,7 +26,7 @@ export const formContact = (formData) => (dispatch) => {
       position: 'top',
       effect: 'genie',
       onShow: function () {
-        setTimeout(window.location.reload(),3000)
+        setTimeout(window.location.reload(),30000)
       }
     });
   })
@@ -36,7 +36,7 @@ export const formContact = (formData) => (dispatch) => {
         position: 'bottom',
         effect: 'genie',
         onShow: function () {
-          setTimeout(window.location.reload(),3000)
+          setTimeout(window.location.reload(),30000)
         }
       });
     });

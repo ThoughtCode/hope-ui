@@ -26,7 +26,7 @@ export const formContact = (formData) => (dispatch) => {
       position: 'top',
       effect: 'genie',
     });
-    setTimeout(window.location.reload(),10000);
+    setTimeout(window.location.reload(),9000);
   })
   .catch((err) => {
     dispatch(formContactFail(err));

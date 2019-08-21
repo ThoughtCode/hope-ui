@@ -63,7 +63,20 @@ class Contact extends Component {
     const contact = {
       contact: formData,
     };
-    this.props.onFormContact(contact);
+    this.props.onFormContact(contact, this.responseContact);
+  }
+
+  responseContact = {
+    success: (response) => {
+      try {
+        console.log("Aqui======",response)
+      } catch (error) {
+        alert.alert("NOC NOC",error.message)
+      }
+    },
+    error: (err) => {
+      console.log('create properties error ' + JSON.stringify(err));
+    }
   }
 
   inputChangedHandler = (event, controlName) => {

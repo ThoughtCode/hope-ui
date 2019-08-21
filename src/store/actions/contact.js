@@ -25,14 +25,19 @@ export const formContact = (formData) => (dispatch) => {
     Alert.success(response.data.message, {
       position: 'top',
       effect: 'genie',
+      onShow: function () {
+        setTimeout(window.location.reload(),3000)
+      }
     });
-    setTimeout(window.location.reload(),9000);
   })
   .catch((err) => {
     dispatch(formContactFail(err));
     Alert.error(err.response.data.message, {
         position: 'bottom',
         effect: 'genie',
+        onShow: function () {
+          setTimeout(window.location.reload(),3000)
+        }
       });
     });
 };

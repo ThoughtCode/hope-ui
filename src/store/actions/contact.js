@@ -33,11 +33,11 @@ export const formContact = (formData) => (dispatch) => {
   .catch((err) => {
     dispatch(formContactFail(err));
     Alert.error(err.response.data.message, {
-        position: 'bottom',
-        effect: 'genie',
-        onShow: function () {
-          setTimeout(window.location.reload(),30000)
-        }
-      });
+      position: 'bottom',
+      effect: 'genie',
+      onShow: function () {
+        setTimeout(window.location.reload(),30000)
+      }
     });
+  });
 };

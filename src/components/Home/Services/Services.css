@@ -9,7 +9,6 @@
   text-align: center;
 }
 .styleImg > img{
-  /* width: 120%; */
   cursor: pointer;
 }
 .Modal {
@@ -22,6 +21,10 @@
   cursor: pointer;
   font-size: 2em;
   font-weight: bold;
+}
+
+.Carousel{
+  z-index: 0 !important;
 }
 
 @media only screen and (max-width: 600px) {

@@ -78,6 +78,7 @@ class Services extends Component {
             )}
             autoplay={true}
             autoplayReverse={true}
+            className={cls.Carousel}
           >
             <div className={cls.styleImg}>
               <img src={ServiceOne} onClick={() => this.handleOpen("login")} alt="AppLogo" />

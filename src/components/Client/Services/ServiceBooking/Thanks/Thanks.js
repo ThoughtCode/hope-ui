@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // Components
 import {
@@ -36,9 +36,9 @@ const thanks = (props) => {
                 </div>
                 <div className={cls.Row}>
                   <div className={cls.LinkWrapper}>
-                    <Link to="/cliente/trabajos">
-                      Volver a los trabajos
-                    </Link>
+                    <a href="/cliente/trabajos">
+                      Volver a los trabajoss
+                    </a>
                   </div>
                 </div>
               </Grid>

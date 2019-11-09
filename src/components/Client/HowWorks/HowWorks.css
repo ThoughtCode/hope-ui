@@ -12,7 +12,7 @@
 }
 
 .ListItem {
-  position: relative;
+  /* position: relative; */
   margin-top: 1em;
   color: #434343;
   list-style-type: none;

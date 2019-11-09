@@ -88,7 +88,8 @@ class Checking extends Component {
       card_id: 1,
       invoiceSelect: 0,
       close: true,
-      invoiceDetails: []
+      invoiceDetails: [],
+      discount: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.invoiceSelectOptionType = this.invoiceSelectOptionType.bind(this);
@@ -393,6 +394,15 @@ class Checking extends Component {
       iva = ((base + price) * 0.12);
       total = (base + price + iva);
     }
+
+    let sdp = this.props.dataDiscount.sdp;
+    let discount = this.props.dataDiscount.discount;
+
+    if(discount > 0){
+      let subTotal = ((base + price + recharge) - discount)
+      iva = (subTotal * 0.12)
+      total = (subTotal + iva)
+    }
     
     if (this.props.form.recurrent.value === '0') {
       frequency = 'una vez';
@@ -593,212 +603,218 @@ class Checking extends Component {
     return (
       <Grid container>
         <Grid item xs={12} sm={12} md={12} lg={12}>
-          <Grid container>
-            <div className={cls.BookingTotal}>
-              <Grid container>
-                <div className={cls.BookingTotalWrapper}>
-                  <Grid item xs={12} sm={12} lg={12}>
-                    <Grid container>
-                      <div className={cls.BookingSection}>
-                        <Grid container>
-                          <div className={cls.RowInfo}>
-                            <div className={cls.InfoContent}>
-                              <span onClick={(event) => this.props.backPage(event, 'Checking')} className={cls.ButtonBack}>{'<<'} Volver</span>
-                              <h3 className={cls.ServiceMain}>
-                                <span>{this.props.form.services_base.name === '' ? 'No ha seleccionado un servicio' : this.props.form.services_base.name} </span>
-                                <span>{frequency}</span>
-                              </h3>
-                              <div>
-                                <div className={cls.PadTop}>
-                                  <div>
-                                    {moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').charAt(0).toUpperCase() + moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').slice(1)}
-                                  </div>
+          <div className={cls.BookingTotal}>
+            <Grid container>
+              <div className={cls.BookingTotalWrapper}>
+                <Grid item xs={12} sm={12} lg={12}>
+                  <Grid container>
+                    <div className={cls.BookingSection}>
+                      <Grid container>
+                        <div className={cls.RowInfo}>
+                          <div className={cls.InfoContent}>
+                            <span onClick={(event) => this.props.backPage(event, 'Checking')} className={cls.ButtonBack}>{'<<'} Volver</span>
+                            <h3 className={cls.ServiceMain}>
+                              <span>{this.props.form.services_base.name === '' ? 'No ha seleccionado un servicio' : this.props.form.services_base.name} </span>
+                              <span>{frequency}</span>
+                            </h3>
+                            <div>
+                              <div className={cls.PadTop}>
+                                <div>
+                                  {moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').charAt(0).toUpperCase() + moment(this.props.form.started_at).format('MMM D, YYYY h:mm a').slice(1)}
                                 </div>
                               </div>
                             </div>
                           </div>
+                        </div>
+                      </Grid>
+                    </div>
+                  </Grid>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSection}>
+                    <Grid container>
+                      <div className={cls.Row}>
+                        <Grid item xs={12} lg={12}>
+                          <Grid container>
+                            <div className={cls.SummaryRow}>
+                              {this.props.form.services_base.name !== '' ? (
+                                <Grid container>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryTitle}>{this.props.form.services_base.name}</div>
+                                  </Grid>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryAmount}>${base.toFixed(2)}</div>
+                                  </Grid>
+                                </Grid>
+                              ) : (
+                                <Grid container>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
+                                  </Grid>
+                                  <Grid item xs={6} lg={6}>
+                                    <div className={cls.SummaryAmount}></div>
+                                  </Grid>
+                                </Grid>
+                              )}
+                              {this.props.form.services_parameters.length > 0 ? 
+                                this.props.form.services_parameters.map(addon => {
+                                  if (addon.active) {
+                                    return (
+                                      <Grid key={addon.id} container>
+                                        <Grid item xs={6} lg={6}>
+                                          <div className={cls.SummaryTitle}>{addon.label}</div>
+                                        </Grid>
+                                        <Grid item xs={6} lg={6}>
+                                          <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                        </Grid>
+                                      </Grid>
+                                    );
+                                  } else {
+                                    return null;
+                                  }
+                                })
+                              : null}
+                              {this.props.form.services_addons.length > 0 ? 
+                                this.props.form.services_addons.map(addon => {
+                                  if (addon.active) {
+                                    return (
+                                      <Grid key={addon.id} container>
+                                        <Grid item xs={6} lg={6}>
+                                          <div className={cls.SummaryTitle}>{addon.label}</div>
+                                        </Grid>
+                                        <Grid item xs={6} lg={6}>
+                                          <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
+                                        </Grid>
+                                      </Grid>
+                                    );
+                                  } else {
+                                    return null;
+                                  }
+                                })
+                              : null}
+                              <Grid container>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryTitle}>Recargo fin de semana o feriados</div>
+                                </Grid>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryAmount}>${recharge.toFixed(2)}</div>
+                                </Grid>
+                              </Grid>
+                              <Grid container>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryTitle}>{"Descuento Promoción " + sdp + "%"}</div>
+                                </Grid>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryAmount}>${discount > 0 ? "-" + discount.toFixed(2) : "0.00"}</div>
+                                </Grid>
+                              </Grid>
+                              <Grid container>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryTitle}>IVA <small>12%</small></div>
+                                </Grid>
+                                <Grid item xs={6} lg={6}>
+                                  <div className={cls.SummaryAmount}>${iva.toFixed(2)}</div>
+                                </Grid>
+                              </Grid>
+                              <Grid container>
+                                <Grid item xs={8} lg={8}>
+                                  <div className={cls.SummaryTime}><small>Total horas de servicio <span className={cls.Hour}>{time}h</span></small></div>
+                                </Grid>
+                              </Grid>
+                            </div>
+                          </Grid>
                         </Grid>
                       </div>
                     </Grid>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSection}>
-                      <Grid container>
-                        <div className={cls.Row}>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSectionNoBorder}>
+                    <Grid container>
+                      <div className={cls.RowTotal}>
+                        <Grid container>
+                          <Grid item xs={6} lg={6}>
+                            <div className={cls.TotalText}>
+                              <span>Total</span>
+                            </div>
+                          </Grid>
+                          <Grid item xs={6} lg={6}>
+                            <div className={cls.Total}>
+                              $
+                              <span>
+                                {total.toFixed(2)}
+                              </span>
+                            </div>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSectionNoBorderTerm}>
+                    <Grid container>
+                      <div className={cls.RowTotalTerm}>
+                        <Grid container>
                           <Grid item xs={12} lg={12}>
-                            <Grid container>
-                              <div className={cls.SummaryRow}>
-                                {this.props.form.services_base.name !== '' ? (
-                                  <Grid container>
-                                    <Grid item xs={6} lg={6}>
-                                      <div className={cls.SummaryTitle}>{this.props.form.services_base.name}</div>
-                                    </Grid>
-                                    <Grid item xs={6} lg={6}>
-                                      <div className={cls.SummaryAmount}>${base.toFixed(2)}</div>
-                                    </Grid>
-                                  </Grid>
-                                ) : (
-                                  <Grid container>
-                                    <Grid item xs={6} lg={6}>
-                                      <div className={cls.SummaryTitle}>No ha seleccionado servicios</div>
-                                    </Grid>
-                                    <Grid item xs={6} lg={6}>
-                                      <div className={cls.SummaryAmount}></div>
-                                    </Grid>
-                                  </Grid>
-                                )}
-                                {this.props.form.services_parameters.length > 0 ? 
-                                  this.props.form.services_parameters.map(addon => {
-                                    if (addon.active) {
-                                      return (
-                                        <Grid key={addon.id} container>
-                                          <Grid item xs={6} lg={6}>
-                                            <div className={cls.SummaryTitle}>{addon.label}</div>
-                                          </Grid>
-                                          <Grid item xs={6} lg={6}>
-                                            <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
-                                          </Grid>
-                                        </Grid>
-                                      );
-                                    } else {
-                                      return null;
-                                    }
-                                  })
-                                : null}
-                                {this.props.form.services_addons.length > 0 ? 
-                                  this.props.form.services_addons.map(addon => {
-                                    if (addon.active) {
-                                      return (
-                                        <Grid key={addon.id} container>
-                                          <Grid item xs={6} lg={6}>
-                                            <div className={cls.SummaryTitle}>{addon.label}</div>
-                                          </Grid>
-                                          <Grid item xs={6} lg={6}>
-                                            <div className={cls.SummaryAmount}>${(addon.price * addon.time)}</div>
-                                          </Grid>
-                                        </Grid>
-                                      );
-                                    } else {
-                                      return null;
-                                    }
-                                  })
-                                : null}
-                                <Grid container>
-                                  <Grid item xs={6} lg={6}>
-                                    <div className={cls.SummaryTitle}>Recargo fin de semana o feriados</div>
-                                  </Grid>
-                                  <Grid item xs={6} lg={6}>
-                                    <div className={cls.SummaryAmount}>${recharge.toFixed(2)}</div>
-                                  </Grid>
-                                </Grid>
-                                <Grid container>
-                                  <Grid item xs={6} lg={6}>
-                                    <div className={cls.SummaryTitle}>IVA <small>12%</small></div>
-                                  </Grid>
-                                  <Grid item xs={6} lg={6}>
-                                    <div className={cls.SummaryAmount}>${iva.toFixed(2)}</div>
-                                  </Grid>
-                                </Grid>
-                                <Grid container>
-                                  <Grid item xs={8} lg={8}>
-                                    <div className={cls.SummaryTime}><small>Total horas de servicio <span className={cls.Hour}>{time}h</span></small></div>
-                                  </Grid>
-                                </Grid>
-                              </div>
-                            </Grid>
-                          </Grid>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSectionNoBorder}>
-                      <Grid container>
-                        <div className={cls.RowTotal}>
-                          <Grid container>
-                            <Grid item xs={6} lg={6}>
-                              <div className={cls.TotalText}>
-                                <span>Total</span>
-                              </div>
-                            </Grid>
-                            <Grid item xs={6} lg={6}>
-                              <div className={cls.Total}>
-                                $
-                                <span>
-                                  {total.toFixed(2)}
-                                </span>
-                              </div>
-                            </Grid>
-                          </Grid>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSectionNoBorderTerm}>
-                      <Grid container>
-                        <div className={cls.RowTotalTerm}>
-                          <Grid container>
-                            <Grid item xs={12} lg={12}>
-                              <h4 className={cls.titleQuestion}>¿Quieres diferir tu pago?</h4>
-                              <form onChange={(event) => this.handleChange(event)}>
-                                <div className={cls.Term}>
-                                  <select className={cls.Select} >
-                                    <option value="1">No deseo diferir mi pago.</option>
-                                    <option value="3" onChange={(event) => this.handleChange(event)}>Diferir mi pago en 3 meses. Sin intereses.</option>
-                                  </select>
-                                </div>
-                              </form>
-                            </Grid>
-                          </Grid>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSectionNoBorderTerm}>
-                      <Grid container>
-                        {invoice}
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSectionNoBorderTerm}>
-                      <Grid container>
-                        <div className={cls.RowTotalTerm}>
-                          <Grid container>
-                            <Grid item xs={12} lg={12}>
+                            <h4 className={cls.titleQuestion}>¿Quieres diferir tu pago?</h4>
+                            <form onChange={(event) => this.handleChange(event)}>
                               <div className={cls.Term}>
-                                <input onChange={this.handleCheckbox} checked={this.state.check} type="checkbox"/>
-                                <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto términos y condiciones</a></span>
+                                <select className={cls.Select} >
+                                  <option value="1">No deseo diferir mi pago.</option>
+                                  <option value="3" onChange={(event) => this.handleChange(event)}>Diferir mi pago en 3 meses. Sin intereses.</option>
+                                </select>
                               </div>
-                            </Grid>
+                            </form>
                           </Grid>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Grid>
-                  <Grid item xs={12} lg={12}>
-                    <div className={cls.BookingSectionNoBorderTerm}>
-                      <Grid container>
-                        <div className={cls.RowTotalTerm}>
-                          <Grid container>
-                            <Grid item xs={12} lg={12}>
-                              <button
-                                className={cls.ButtonBookingCore}
-                                value={this.state.card_id}
-                                onClick={(event) => this.changePageValidator(event)}
-                              >Solicitar Servicio</button>
-                            </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSectionNoBorderTerm}>
+                    <Grid container>
+                      {invoice}
+                    </Grid>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSectionNoBorderTerm}>
+                    <Grid container>
+                      <div className={cls.RowTotalTerm}>
+                        <Grid container>
+                          <Grid item xs={12} lg={12}>
+                            <div className={cls.Term}>
+                              <input onChange={this.handleCheckbox} checked={this.state.check} type="checkbox"/>
+                              <span className={cls.TermText}><a className={cls.Link} href="/politicas" target="_blank">Acepto términos y condiciones</a></span>
+                            </div>
                           </Grid>
-                        </div>
-                      </Grid>
-                    </div>
-                  </Grid>
-                </div>
-              </Grid>
-            </div>
-          </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+                <Grid item xs={12} lg={12}>
+                  <div className={cls.BookingSectionNoBorderTerm}>
+                    <Grid container>
+                      <div className={cls.RowTotalTerm}>
+                        <Grid container>
+                          <Grid item xs={12} lg={12}>
+                            <button
+                              className={cls.ButtonBookingCore}
+                              value={this.state.card_id}
+                              onClick={(event) => this.changePageValidator(event)}
+                            >Solicitar Servicio</button>
+                          </Grid>
+                        </Grid>
+                      </div>
+                    </Grid>
+                  </div>
+                </Grid>
+              </div>
+            </Grid>
+          </div>
         </Grid>
       </Grid>
     );

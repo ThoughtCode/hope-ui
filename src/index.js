@@ -30,6 +30,7 @@ import paymentAddCard from './store/reducers/payment';
 import paymenData from './store/reducers/payment';
 import listCard from './store/reducers/payment';
 import confirmationPayment from './store/reducers/job';
+import validateCode from './store/reducers/payment';
 const history = createHistory();
 
 const middleware = routerMiddleware(history);
@@ -59,6 +60,7 @@ const rootReducer = combineReducers({
   paymenData: paymenData,
   listCard: listCard,
   confirmationPayment: confirmationPayment,
+  validateCode: validateCode,
 });
 
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, middleware)));

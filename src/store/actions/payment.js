@@ -112,3 +112,47 @@ export const deleteCard = (token, id) => (dispatch) => {
       console.log(err)
     });
 };
+
+export const validateCodeStart = () => ({
+  type: actionTypes.VALIDATE_CODE_START,
+});
+
+export const validateCodeSuccess = validateCode => ({
+  type: actionTypes.VALIDATE_CODE_SUCCESS,
+  validateCode,
+});
+
+export const validateCodeFail = () => ({
+  type: actionTypes.VALIDATE_CODE_FAIL,
+});
+
+export const validateCode = (token, code) => dispatch => {
+  dispatch(validateCodeStart());
+  const headers = {
+    headers: {
+      Authorization: `Token token=${token}`,
+    },
+  };
+  const body = {
+    promo_code: code.toUpperCase()
+  }
+
+  axios.post('/customers/validate_promo_code', body, headers)
+  .then((res) => {
+    let validateCode = []
+    validateCode = res
+    dispatch(validateCodeSuccess(validateCode));
+  })
+  .catch((err) => {
+    console.log("ACTION RESPONSE ERROR",err)
+    Alert.error('CÓDIGO invalido, no encontrado ó no pertenece a este servicio', {
+      position: 'top',
+      effect: 'genie',
+    });
+    dispatch(validateCodeFail(err));
+  });
+};
+
+export const cleanPromoCode = () => dispatch => {
+  dispatch(validateCodeStart());
+}

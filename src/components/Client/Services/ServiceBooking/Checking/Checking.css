@@ -9,7 +9,7 @@
 
 .BookingTotalWrapper {
   border-radius: 5px;
-  position: relative;
+  /* position: relative; */
   background-color: white;
   padding-top: .9375em;
   width: 100%;

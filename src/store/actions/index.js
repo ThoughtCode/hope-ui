@@ -91,4 +91,6 @@ export {
   paymenData,
   listCard,
   deleteCard,
+  validateCode,
+  cleanPromoCode,
 } from './payment'

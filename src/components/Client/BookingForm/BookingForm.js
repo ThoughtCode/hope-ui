@@ -276,7 +276,7 @@ class BookingForm extends Component {
                                       timeFormat={false}
                                       onChange={this.props.changeDatetimeHandler}
                                       inputProps={{
-                                        className: `${cls.Input}`,
+                                        className: `${cls.InputDateTime}`,
                                       }} />
                                   </div>
                                 </Grid>
@@ -327,7 +327,7 @@ class BookingForm extends Component {
                                         timeFormat={false}
                                         onChange={this.props.changeDatetimeHandler}
                                         inputProps={{
-                                          className: `${cls.Input}`,
+                                          className: `${cls.InputDateTime}`,
                                         }} />
                                     </div>
                                   </Grid>
@@ -372,7 +372,7 @@ class BookingForm extends Component {
                                         timeFormat={false}
                                         onChange={this.props.changeDatetimeFinishedHandler}
                                         inputProps={{
-                                          className: `${cls.Input}`,
+                                          className: `${cls.InputDateTime}`,
                                         }} />
                                     </div>
                                   </Grid>

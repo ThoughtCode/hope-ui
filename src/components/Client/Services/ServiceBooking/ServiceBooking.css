@@ -9,6 +9,28 @@
   display: none;
 }
 
+.table {
+  border-collapse: collapse;
+  width: 80%;
+}
+
+.th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+.texTotal{
+  font-weight: bold;
+}
+
+.total{
+  color:#0069a7;
+  font-weight: bold;
+  font-size: 2em;
+}
+
 @media only screen and (max-width: 600px){
   .ServiceBooking {
     padding-top: 0em !important;

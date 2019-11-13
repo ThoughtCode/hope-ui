@@ -144,7 +144,6 @@ export const validateCode = (token, code) => dispatch => {
     dispatch(validateCodeSuccess(validateCode));
   })
   .catch((err) => {
-    console.log("ACTION RESPONSE ERROR",err)
     Alert.error('CÓDIGO invalido, no encontrado ó no pertenece a este servicio', {
       position: 'top',
       effect: 'genie',

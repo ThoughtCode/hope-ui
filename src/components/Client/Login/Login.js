@@ -60,10 +60,10 @@ class Login extends Component {
               </div>
               <div className={cls.ButtonFacebookContainer}>
                 <FacebookLogin
-                  appId="2057031764572769"
+                  appId="1490804821049867"
                   autoLoad={false}
                   fields="name,email,picture"
-                  scope="public_profile"
+                  // scope="public_profile"
                   callback={this.responseFacebook}
                   isMobile={false}
                   render={renderProps => (

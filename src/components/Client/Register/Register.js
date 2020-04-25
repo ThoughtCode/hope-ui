@@ -209,7 +209,7 @@ class Register extends Component {
             </div>
             <div className={cls.ButtonFacebookContainer}>
               <FacebookLogin
-                appId="2057031764572769"
+                appId="1490804821049867"
                 autoLoad={false}
                 fields="name,email"
                 callback={this.responseFacebook}

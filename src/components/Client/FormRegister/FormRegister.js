@@ -92,6 +92,16 @@ class FormRegister extends Component {
         touched: false,
         errorText: null,
       },
+      cell_phone: {
+        value: '',
+        validation: {
+          required: true,
+          maxLength: 10,
+        },
+        valid: false,
+        touched: false,
+        // errorText: null,
+      },
       password: {
         elementType: 'input',
         label: 'Contraseña',
@@ -265,7 +275,7 @@ class FormRegister extends Component {
             </div>
           ) : null}
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={6} sm={6}>
           <TextField
             value={this.state.registerForm.email.value}
             onChange={(event) => this.inputChangedHandler(event, 'email')}
@@ -289,6 +299,34 @@ class FormRegister extends Component {
           {!this.state.registerForm.email.valid && this.state.registerForm.email.touched ? (
             <div className={cls.ErrorText}>
               {this.state.registerForm.email.errorText}
+            </div>
+          ) : null}
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <TextField
+            value={this.state.registerForm.cell_phone.value}
+            onChange={(event) => this.inputChangedHandler(event, 'cell_phone')}
+            type="number"
+            fullWidth
+            placeholder="Celular"
+            id="celular"
+            InputProps={{
+              disableUnderline: true,
+              classes: {
+                root: classes.bootstrapRoot,
+                input: !this.state.registerForm.cell_phone.valid && this.state.registerForm.cell_phone.touched ? 
+                  classes.bootstrapInputError : 
+                  classes.bootstrapInput,
+              },
+            }}
+            InputLabelProps={{
+              shrink: true,
+              className: classes.bootstrapFormLabel,
+            }}
+          />
+          {!this.state.registerForm.cell_phone.valid && this.state.registerForm.cell_phone.touched ? (
+            <div className={cls.ErrorText}>
+              {this.state.registerForm.cell_phone.errorText}
             </div>
           ) : null}
         </Grid>

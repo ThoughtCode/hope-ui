@@ -29,6 +29,7 @@ export const registerClient = formData => (dispatch) => {
       localStorage.setItem('profile', customer.attributes.avatar.url);
       localStorage.setItem('first_name', customer.attributes.first_name);
       localStorage.setItem('last_name', customer.attributes.last_name);
+      localStorage.setItem('cell_phone', customer.attributes.cell_phone);
       dispatch(registerClientSuccess(customer.id, formData));
       dispatch(push('/cliente/dashboard'));
       Alert.success(response.data.message, {

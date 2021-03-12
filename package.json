@@ -47,7 +47,7 @@
     "react-anchor-link-smooth-scroll": "^1.0.9",
     "react-data-export": "^0.4.2",
     "react-datetime": "^2.14.0",
-    "react-dev-utils": "^5.0.0",
+    "react-dev-utils": "^11.0.4",
     "react-dom": "^16.2.0",
     "react-facebook-login": "^4.0.1",
     "react-inlinesvg": "^0.8.1",
